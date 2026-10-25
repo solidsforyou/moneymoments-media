@@ -28,7 +28,7 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
   square, so their headlines stay in the centre. Worth comparing views: vertical Blinkit
   vs horizontal Shaadi.com and Zepto.
 
-## Next 6 reels (drafted, rendering)
+## Next 6 reels (rendered, processed on Instagram, scheduled)
 | Time | Reel | Music section |
 |---|---|---|
 | 1:00 pm | Zerodha | 0:24 |
