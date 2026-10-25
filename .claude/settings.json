@@ -9,7 +9,20 @@
     }
   },
   "enabledPlugins": {
-    "master@solidsforyou": true
+    "audio-review@solidsforyou": true,
+    "motion-design-taste@solidsforyou": true,
+    "harsh-buyer-review@solidsforyou": true,
+    "careful-mode@solidsforyou": true,
+    "economy-mode@solidsforyou": true,
+    "master@solidsforyou": true,
+    "social-media@solidsforyou": true,
+    "competitor-research@solidsforyou": true,
+    "ecom@solidsforyou": true,
+    "ai-visuals@solidsforyou": true,
+    "transcriber@solidsforyou": true,
+    "humanizer@solidsforyou": true,
+    "linkedin@solidsforyou": true,
+    "clipper@solidsforyou": true
   },
   "pluginConfigs": {
     "master@solidsforyou": {
