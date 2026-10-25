@@ -1,8 +1,7 @@
-# Startup clipping page strategy (draft, 25 Oct 2026)
+# Startup motion-graphics page strategy (draft, 25 Oct 2026)
 
-A clipping page: no original videos. Every reel is a clip cut from someone
-else's long video (podcasts, interviews, talks) with permission, using the
-SOLIDS FOR YOU Clipper. The Solids For You main page comes later.
+Motion-graphics videos only, voiced with ElevenLabs. No filming and no
+clipping. The Solids For You main page comes later.
 
 ## 1. Goal and metric (90 days)
 An Indian startup clipping page followed by Indian Gen Z (21-30) with money
@@ -19,43 +18,33 @@ Instagram Reels first. The same clips can go to YouTube Shorts where the
 campaign brief allows it. One clip per platform, never the same clip on
 several of our own accounts (Clipper rule 4).
 
-## 4. Where clips come from (permission is required)
-1. **Paid clipping campaigns** from Indian startup podcasts, founders and
-   brands that hire clippers. They give source files and a brief, and pay
-   per 1,000 views.
-2. **Creators who say yes in writing.** Email or DM Indian startup podcasts
-   and founders. Keep the yes in `clips/<source>/brief.md`.
-3. **Not allowed:** ripping Shark Tank India, news channels or any podcast
-   that hasn't said yes. That brings copyright strikes, and platforms don't
-   pay for reused content.
+## 4. How videos are made
+Motion graphics only: no filming, no clipping. Every video goes through the
+Master Skill's video workflow (Design head):
+1. Topic and sourced facts (every number has a public source).
+2. Script, through Humanizer; hook scored with Social Media.
+3. Voice-over from ElevenLabs (needs an API key in the environment).
+4. Scene plan in the reference style, built as an HTML scene, rendered
+   9:16 at 1080x1920 with sound effects mixed under the voice.
+5. Review: Motion Design Taste (bar 85/100, no criterion under 7), Audio
+   Review, Harsh Buyer Review; fix and re-render up to 3 rounds.
+6. Founder posts. Claude never posts unless asked to for that exact action.
 
-## 5. The 3 Solids For You reels a day
-No SFY footage exists yet. Options, from best to weakest:
-1. Record one long talk a week about building Solids For You (phone, one
-   take, 30-60 minutes) and clip it like any other source. Not a produced
-   video, just talking.
-2. Until then, run 9 startup clips a day and mention SFY only in the bio.
-Campaign clips can't carry SFY mentions unless the brief allows it. The bio
-says who runs the page, for example "By the team building @solidsforyou".
-SFY product facts come only from `memory/memory.csv`; none are recorded yet.
+## 5. The 3 Solids For You videos a day
+Same style and pipeline, about the viewer's clothes and money rather than
+the brand. SFY product facts come only from `memory/memory.csv`; none are
+recorded yet. The bio says who runs the page, for example "By the team
+building @solidsforyou".
 
-## 6. The pipeline per source
-1. Write `clips/<campaign>/brief.md` from the campaign page (rate, cap, fee,
-   length, required tags and disclosure, banned edits, deadline).
-2. Founder downloads the source video into the folder.
-3. Transcriber: transcript with word timings (Hinglish supported).
-4. Clipper `find`: candidate spans; Claude picks the 3-5 that stand alone.
-5. Hook line on screen per clip, scored with Social Media's hook scorer.
-6. Clipper `render`: 9:16 clip, word-by-word captions, hook, -14 LUFS.
-7. Check with Motion Design Taste: first 3 seconds, ending, captions.
-8. Caption per platform with the brief's required tags, through Humanizer.
-9. Founder posts and submits. Claude never logs in, posts or submits.
-10. Log in `social/posts.csv`; earnings computed in code from the brief.
+## 6. Templates make the volume possible
+One reusable scene template per series (Startup Math, Decoded, 30-Second
+Founder, Brand Autopsy, Your First Rs 1 Lakh, SFY). A daily video is then a
+new script, new numbers and a new voice-over in an existing template, plus
+the review loop.
 
 ## 7. Cadence
-Start at 3 clips a day for two weeks, then 6, then 9 once the pipeline runs
-without gaps. One long source usually gives 3-5 good clips, so 9 a day needs
-about 2-3 sources a day.
+Start at 3 videos a day for two weeks, then 6, then 9 once templates and
+the review loop run without gaps.
 
 ## 8. Test first
 1. Hinglish vs English hook line.
