@@ -69,15 +69,26 @@ $("g1").style.background = `radial-gradient(circle, ${hex(T.accent, .48)}, ${hex
 $("g2").style.background = `radial-gradient(circle, ${hex(T.accent2 || T.accent, .3)}, transparent 65%)`;
 $("flash").style.background = `radial-gradient(circle at 50% 50%, rgba(255,250,240,.9), ${hex(T.accent, .5)} 40%, transparent 72%)`;
 window.MOTION = { fps: 30, beat: S.music.beat, beat0: S.music.beat0, drop: S.music.drop };
+// Scenes may give `to` (absolute end time) instead of `dur`, so cuts can sit exactly on the music.
+S.scenes.reduce((start, c) => { if (c.to != null) c.dur = +(c.to - start).toFixed(3); return start + c.dur; }, 0);
 const DURATION = S.scenes.reduce((s, c) => s + c.dur, 0);
 
 // Build scene DOM and cue windows.
 let acc = 0;
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 // "Text with [pill] words": square brackets mark the highlighted word(s).
-const wordsHTML = (text) => text.split(/(\[[^\]]+\])/).filter(Boolean).flatMap((part) =>
-  part.startsWith("[") ? [`<span class="w pill">${esc(part.slice(1, -1))}</span>`]
-    : part.split(/(\s+)/).filter((x) => x.trim()).map((x) => `<span class="w">${esc(x)}</span>`)).join("");
+// Spaces are explicit (rows have no gap), so punctuation right after a pill stays attached.
+const wordsHTML = (text) => {
+  const toks = text.split(/(\[[^\]]+\])/).filter(Boolean).flatMap((part) =>
+    part.startsWith("[") ? [{ pill: true, s: part.slice(1, -1) }]
+      : part.split(/(\s+)/).filter((x) => x !== "").map((x) => ({ s: x })));
+  let html = "";
+  toks.forEach((tk) => {
+    if (!tk.pill && !tk.s.trim()) { html += `<span class="w">&nbsp;</span>`; return; }
+    html += tk.pill ? `<span class="w pill">${esc(tk.s)}</span>` : `<span class="w">${esc(tk.s)}</span>`;
+  });
+  return html;
+};
 S.scenes.forEach((c, i) => {
   c.cue = [acc, acc + c.dur]; acc += c.dur;
   const el = document.createElement("div");
@@ -87,8 +98,8 @@ S.scenes.forEach((c, i) => {
   let h = "";
   if (c.type === "line") {
     h += c.kicker ? `<div class="row" style="top:${c.top || 330}px; font-size:52px; font-weight:600; opacity:.75">${esc(c.kicker)}</div>` : "";
-    h += `<div class="row lineA" style="top:${(c.top || 330) + (c.kicker ? 110 : 0)}px; font-size:${c.size || 92}px; font-weight:800; letter-spacing:-3px">${wordsHTML(c.text)}</div>`;
-    if (c.text2) h += `<div class="row lineB" style="top:${(c.top || 330) + (c.kicker ? 110 : 0) + (c.size || 92) * 1.35}px; font-size:${c.size2 || 60}px; font-weight:600; opacity:.85">${wordsHTML(c.text2)}</div>`;
+    h += `<div class="row lineA" style="gap:0; top:${(c.top || 330) + (c.kicker ? 110 : 0)}px; font-size:${c.size || 92}px; font-weight:800; letter-spacing:-3px">${wordsHTML(c.text)}</div>`;
+    if (c.text2) h += `<div class="row lineB" style="gap:0; top:${(c.top || 330) + (c.kicker ? 110 : 0) + (c.size || 92) * 1.35}px; font-size:${c.size2 || 60}px; font-weight:600; opacity:.85">${wordsHTML(c.text2)}</div>`;
   } else if (c.type === "counter") {
     h += `<div class="row" style="top:230px; font-size:58px; font-weight:600; opacity:.75">${esc(c.label)}</div>`;
     h += `<div class="row big num" style="top:330px; font-size:${c.size || 220}px; color:${color}; text-shadow:0 0 40px ${color ? hex(c.color === "red" ? "#ff5a5a" : T.accent, .5) : "transparent"}">0</div>`;
@@ -115,7 +126,7 @@ S.scenes.forEach((c, i) => {
       (j ? `<div class="arrow ch">→</div>` : "") + `<div class="node ch" style="${j === c.nodes.length - 1 ? `background:${T.accent}` : ""}">${esc(n)}</div>`).join("") + `</div>`;
   } else if (c.type === "ring") {
     h += `<svg class="ring" style="position:absolute; left:660px; top:240px" width="600" height="600" viewBox="0 0 600 600"><circle cx="300" cy="300" r="260" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="12"/><circle class="arc" cx="300" cy="300" r="260" fill="none" stroke="${T.accent}" stroke-width="12" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1634" stroke-dashoffset="1634" style="filter: drop-shadow(0 0 14px ${hex(T.accent, .9)})"/></svg>`;
-    h += `<div class="row lineA" style="top:470px; font-size:84px; font-weight:800; letter-spacing:-2px">${wordsHTML(c.text)}</div>`;
+    h += `<div class="row lineA" style="gap:0; top:470px; font-size:84px; font-weight:800; letter-spacing:-2px">${wordsHTML(c.text)}</div>`;
   } else if (c.type === "end") {
     h += `<div class="row" style="top:400px; gap:26px"><span class="e1" style="font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></span><span class="e2" style="font-size:130px; font-weight:800; letter-spacing:-5px; padding:0 30px 12px; border:4px solid ${T.accent}; background:${hex(T.accent, .2)}; box-shadow:0 0 40px ${hex(T.accent, .5)}">Hisab</span></div>`;
     h += `<div class="row e3" style="top:640px; font-size:44px; opacity:.8">${esc(c.text || "Follow for the next one")}</div>`;

@@ -2,6 +2,7 @@
 """Publishes a reel to the Instagram account behind IG_ACCESS_TOKEN.
 
   python3 videos/publish_reel.py VIDEO_URL CAPTION_FILE [--thumb-ms 2500] [--dry-run]
+  python3 videos/publish_reel.py --publish CONTAINER_ID   (publish a container made by --dry-run)
 
 VIDEO_URL must be a public HTTPS link Instagram can fetch. --dry-run creates and
 processes the container but does not publish it. The token is never printed.
@@ -29,7 +30,15 @@ def call(method, path, **params):
         sys.exit(f"Instagram API error {e.code}: {e.read().decode()[:500]}")
 
 
+def publish(cid):
+    m = call("POST", f"{IG_USER}/media_publish", creation_id=cid)
+    info = call("GET", m["id"], fields="permalink,timestamp")
+    print("published", m["id"], info.get("permalink"), info.get("timestamp"))
+
+
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--publish":
+        return publish(sys.argv[2])
     if len(sys.argv) < 3:
         sys.exit(__doc__)
     video_url, caption_file = sys.argv[1], sys.argv[2]
@@ -54,9 +63,7 @@ def main():
     if dry:
         print("dry run: not published")
         return
-    m = call("POST", f"{IG_USER}/media_publish", creation_id=cid)
-    info = call("GET", m["id"], fields="permalink,timestamp")
-    print("published", m["id"], info.get("permalink"), info.get("timestamp"))
+    publish(cid)
 
 
 if __name__ == "__main__":
