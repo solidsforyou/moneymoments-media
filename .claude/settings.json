@@ -24,6 +24,12 @@
     "linkedin@solidsforyou": true,
     "clipper@solidsforyou": true
   },
+  "skillOverrides": {
+    "sfy-reel-virality": "off",
+    "quell-reel-virality": "off",
+    "anthropic-skills:sfy-reel-virality": "off",
+    "anthropic-skills:quell-reel-virality": "off"
+  },
   "pluginConfigs": {
     "master@solidsforyou": {
       "options": {
