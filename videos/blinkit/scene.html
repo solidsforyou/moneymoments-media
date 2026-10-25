@@ -1,0 +1,527 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: Blinkit (Startup Math #1). 1080x1920, 60 s, no audio.
+  Timed to the founder's track from 0:24 to 1:24: break 18.0-20.2 s, drop 20.25 s,
+  beat about 0.615 s from 0.605 s.
+  Facts (Inc42, 28 Apr 2026, Eternal Q4 FY26 results; quarter Jan-Mar 2026):
+    NOV Rs 14,386 Cr (+95% YoY), adjusted EBITDA Rs 37 Cr, revenue Rs 13,232 Cr
+    (+675% YoY, mostly accounting after the inventory-led switch),
+    216 dark stores added, 2,243 at quarter end.
+  Grofers renamed Blinkit Dec 2021 (YourStory). Zomato deal Rs 4,447 Cr, June 2022.
+  All motion comes from renderFrame(t).
+-->
+<style>
+  :root {
+    --bg: #070708;
+    --yellow: #f8cb46;
+    --green: #2fbf55;
+    --white: #f5f5f7;
+    --muted: rgba(245,245,247,.62);
+    --card: rgba(255,255,255,.06);
+    --line: rgba(255,255,255,.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .abs { position: absolute; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(40px); }
+  #glowY { width: 1400px; height: 1400px; left: -160px; top: 260px;
+    background: radial-gradient(circle, rgba(248,203,70,.42) 0%, rgba(248,203,70,.10) 40%, transparent 68%); }
+  #glowG { width: 1200px; height: 1200px; left: -60px; top: 700px;
+    background: radial-gradient(circle, rgba(47,191,85,.38) 0%, rgba(47,191,85,.08) 42%, transparent 68%); opacity: 0; }
+  #flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, rgba(255,240,190,.95), rgba(248,203,70,.5) 35%, transparent 70%); opacity: 0; }
+  #fx { position: absolute; inset: 0; }
+  #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+
+  /* Header (persistent) */
+  #tag { left: 70px; top: 220px; display: flex; gap: 16px; align-items: center; }
+  .pill { padding: 12px 24px; border-radius: 999px; font-size: 28px; font-weight: 600; letter-spacing: .08em;
+    border: 2px solid rgba(248,203,70,.7); color: var(--yellow); background: rgba(248,203,70,.10); }
+  .handle { font-size: 28px; font-weight: 500; color: var(--muted); letter-spacing: .02em; }
+
+  .scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
+  .center { left: 70px; right: 70px; text-align: center; }
+  .kicker { font-size: 56px; font-weight: 600; color: var(--muted); letter-spacing: -1px; }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .yellow { color: var(--yellow); text-shadow: 0 0 40px rgba(248,203,70,.55); }
+  .green { color: var(--green); text-shadow: 0 0 40px rgba(47,191,85,.55); }
+  .w { display: inline-block; white-space: pre; }
+  .chip { display: inline-block; padding: 14px 30px; border-radius: 999px; font-size: 34px; font-weight: 600;
+    background: var(--card); border: 2px solid var(--line); color: var(--white); }
+  .note { font-size: 36px; color: var(--muted); font-weight: 500; }
+  .hl { position: relative; padding: 0 18px 6px; border: 4px solid var(--yellow);
+    background: rgba(248,203,70,.18); box-shadow: 0 0 36px rgba(248,203,70,.45); }
+  .hl .dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: var(--white);
+    box-shadow: 0 0 12px rgba(255,255,255,.9); }
+  .card { position: absolute; border-radius: 34px; background: rgba(20,20,22,.72);
+    border: 2px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.5); backdrop-filter: blur(12px); }
+  .strike { position: absolute; height: 8px; background: #ff5a5a; border-radius: 4px; box-shadow: 0 0 18px rgba(255,90,90,.8); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="glow" id="glowY"></div>
+  <div class="glow" id="glowG"></div>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="abs" id="tag"><span class="pill">STARTUP MATH</span><span class="handle">@unicornkahisab</span></div>
+
+  <!-- S1: the order number -->
+  <div class="scene" id="s1">
+    <div class="abs center kicker" id="s1a" style="top:680px">Blinkit sold</div>
+    <div class="abs center big yellow" id="s1n" style="top:780px; font-size:190px">₹0 Cr</div>
+    <div class="abs center kicker" id="s1b" style="top:1020px">worth of orders</div>
+    <div class="abs center" id="s1c" style="top:1130px"><span class="chip">in just 3 months · Jan–Mar 2026</span></div>
+  </div>
+
+  <!-- S2: the profit -->
+  <div class="scene" id="s2">
+    <div class="abs center kicker" id="s2a" style="top:720px">And made just</div>
+    <div class="abs center big green" id="s2n" style="top:820px; font-size:260px">₹37 Cr</div>
+    <div class="abs center note" id="s2b" style="top:1120px">operating profit (adjusted EBITDA)</div>
+  </div>
+
+  <!-- S3: 100 coins -->
+  <div class="scene" id="s3">
+    <div class="abs center" id="s3a" style="top:430px; font-size:62px; font-weight:700; letter-spacing:-1px">Every ₹100 of orders</div>
+    <div class="abs" id="coins" style="left:190px; top:560px; width:700px; height:700px"></div>
+    <div class="abs center" id="s3b" style="top:1310px; font-size:64px; font-weight:700; letter-spacing:-1px">→ about <span class="green">26 paise</span> profit</div>
+    <div class="abs center note" id="s3c" style="top:1420px">a quarter of one coin</div>
+  </div>
+
+  <!-- S4: the question -->
+  <div class="scene" id="s4">
+    <div class="abs center" id="s4a" style="top:760px; font-size:92px; font-weight:800; letter-spacing:-3px; line-height:1.15">
+      <span class="w">So </span><span class="w">why </span><span class="w">is </span><span class="w">everyone </span><span class="w">racing </span><span class="w">to </span><span class="w">do </span><span class="w hl" id="s4hl"><span class="dot" style="left:-10px;top:-10px"></span>10-minute<span class="dot" style="right:-10px;bottom:-10px"></span></span><span class="w"> delivery?</span>
+    </div>
+  </div>
+
+  <!-- S5: paisa kahan se -->
+  <div class="scene" id="s5">
+    <div class="abs center" id="s5a" style="top:880px; font-size:120px; font-weight:800; letter-spacing:-4px">Paisa kahan se<span class="yellow">?</span></div>
+  </div>
+
+  <!-- Break: the timer ring -->
+  <div class="scene" id="sb">
+    <svg class="abs" id="ring" style="left:240px; top:680px" width="600" height="600" viewBox="0 0 600 600">
+      <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14"/>
+      <circle id="ringArc" cx="300" cy="300" r="250" fill="none" stroke="#f8cb46" stroke-width="14" stroke-linecap="round"
+        transform="rotate(-90 300 300)" stroke-dasharray="1571" stroke-dashoffset="1571" style="filter: drop-shadow(0 0 16px rgba(248,203,70,.9))"/>
+    </svg>
+    <div class="abs center" id="sbT" style="top:900px; font-size:150px; font-weight:800; letter-spacing:-4px">10:00</div>
+    <div class="abs center kicker" id="sbA" style="top:1360px">The answer:</div>
+  </div>
+
+  <!-- S6: dark stores (drop) -->
+  <div class="scene" id="s6">
+    <div class="abs center big" id="s6a" style="top:330px; font-size:150px">Dark <span class="yellow">stores</span></div>
+    <div class="abs center kicker" id="s6b" style="top:500px">mini-warehouses close to you</div>
+    <div class="abs center big yellow" id="s6n" style="top:1180px; font-size:200px">0</div>
+    <div class="abs center kicker" id="s6c" style="top:1400px">stores by March 2026</div>
+    <div class="abs center" id="s6d" style="top:1500px"><span class="chip" style="border-color:rgba(47,191,85,.7); color:#7be08f">+216 opened in just 3 months</span></div>
+  </div>
+
+  <!-- S7: order flow -->
+  <div class="scene" id="s7">
+    <div class="abs center" id="s7a" style="top:330px; font-size:72px; font-weight:800; letter-spacing:-2px">How 10 minutes works</div>
+    <div class="card" id="c1" style="left:150px; top:500px; width:780px; height:220px"></div>
+    <div class="card" id="c2" style="left:150px; top:800px; width:780px; height:220px"></div>
+    <div class="card" id="c3" style="left:150px; top:1100px; width:780px; height:220px"></div>
+    <div class="abs" id="c1t" style="left:330px; top:572px; font-size:60px; font-weight:700">You order</div>
+    <div class="abs" id="c2t" style="left:330px; top:840px; font-size:56px; font-weight:700; line-height:1.15">Packed at a dark<br>store nearby</div>
+    <div class="abs" id="c3t" style="left:330px; top:1172px; font-size:60px; font-weight:700">At your door</div>
+    <svg class="abs" id="icons" style="left:150px; top:500px" width="180" height="820" viewBox="0 0 180 820">
+      <g id="i1" stroke="#f8cb46" stroke-width="7" fill="none" stroke-linejoin="round">
+        <rect x="62" y="62" width="56" height="96" rx="12"/><line x1="80" y1="142" x2="100" y2="142"/>
+      </g>
+      <g id="i2" stroke="#f8cb46" stroke-width="7" fill="none" stroke-linejoin="round" transform="translate(0,300)">
+        <path d="M50 92 L90 70 L130 92 L130 140 L90 162 L50 140 Z"/><path d="M50 92 L90 114 L130 92 M90 114 L90 162"/>
+      </g>
+      <g id="i3" stroke="#f8cb46" stroke-width="7" fill="none" stroke-linejoin="round" transform="translate(0,600)">
+        <path d="M52 110 L90 72 L128 110 L128 158 L52 158 Z"/><rect x="78" y="124" width="24" height="34"/>
+      </g>
+    </svg>
+    <svg class="abs" id="flow" style="left:150px; top:500px" width="180" height="820" viewBox="0 0 180 820">
+      <line id="fl1" x1="90" y1="220" x2="90" y2="300" stroke="#f8cb46" stroke-width="6" stroke-dasharray="80" stroke-dashoffset="80"/>
+      <line id="fl2" x1="90" y1="520" x2="90" y2="600" stroke="#f8cb46" stroke-width="6" stroke-dasharray="80" stroke-dashoffset="80"/>
+    </svg>
+    <div class="abs center note" id="s7b" style="top:1400px; font-size:38px; line-height:1.35">The promise: about 10 minutes. The cost: a store in every neighbourhood.</div>
+  </div>
+
+  <!-- S8: the big switch -->
+  <div class="scene" id="s8">
+    <div class="abs center kicker" id="s8a" style="top:360px">The big switch</div>
+    <div class="card" id="s8c1" style="left:120px; top:480px; width:840px; height:200px"></div>
+    <div class="abs center" id="s8t1" style="top:540px; font-size:58px; font-weight:700; color:var(--muted)">Just a marketplace</div>
+    <div class="strike" id="s8x" style="left:250px; top:575px; width:0"></div>
+    <div class="card" id="s8c2" style="left:120px; top:730px; width:840px; height:250px; border-color:rgba(248,203,70,.6); box-shadow: 0 0 60px rgba(248,203,70,.25)"></div>
+    <div class="abs center" id="s8t2" style="top:780px; font-size:58px; font-weight:800; line-height:1.2">Blinkit now buys<br>and owns the stock</div>
+    <div class="abs center kicker" id="s8b" style="top:1080px">So revenue jumped</div>
+    <div class="abs center big yellow" id="s8n" style="top:1170px; font-size:210px">+0%</div>
+    <div class="abs center note" id="s8d" style="top:1410px; font-size:38px; line-height:1.4">to ₹13,232 Cr, mostly an accounting change:<br>the full sale value now counts as revenue</div>
+  </div>
+
+  <!-- S9: timeline -->
+  <div class="scene" id="s9">
+    <div class="abs center" id="s9a" style="top:330px; font-size:72px; font-weight:800; letter-spacing:-2px">How it got here</div>
+    <svg class="abs" style="left:150px; top:480px" width="80" height="1000" viewBox="0 0 80 1000">
+      <line id="tl" x1="40" y1="40" x2="40" y2="900" stroke="#f8cb46" stroke-width="6" stroke-dasharray="860" stroke-dashoffset="860" style="filter: drop-shadow(0 0 10px rgba(248,203,70,.8))"/>
+      <circle id="n1" cx="40" cy="60" r="20" fill="#f8cb46"/>
+      <circle id="n2" cx="40" cy="440" r="20" fill="#f8cb46"/>
+      <circle id="n3" cx="40" cy="820" r="20" fill="#2fbf55"/>
+    </svg>
+    <div class="abs" id="t1" style="left:270px; top:500px"><div class="yellow" style="font-size:48px; font-weight:800">Dec 2021</div><div style="font-size:62px; font-weight:700; margin-top:8px; line-height:1.12">Grofers becomes<br>Blinkit</div></div>
+    <div class="abs" id="t2" style="left:270px; top:880px"><div class="yellow" style="font-size:48px; font-weight:800">June 2022</div><div style="font-size:62px; font-weight:700; margin-top:8px; line-height:1.12">Zomato buys it<br>for ₹4,447 Cr</div></div>
+    <div class="abs" id="t3" style="left:270px; top:1260px"><div class="green" style="font-size:48px; font-weight:800">Jan–Mar 2026</div><div style="font-size:62px; font-weight:700; margin-top:8px; line-height:1.12">2,243 stores<br>₹14,386 Cr of orders</div></div>
+  </div>
+
+  <!-- S10: the bet -->
+  <div class="scene" id="s10">
+    <div class="abs center" id="s10a" style="top:680px; font-size:64px; font-weight:700; color:var(--muted)">Orders up <span class="green">95%</span> in a year</div>
+    <div class="abs center" id="s10b" style="top:880px; font-size:104px; font-weight:800; letter-spacing:-3px; line-height:1.15">
+      <span class="w">The </span><span class="w">bet: </span><span class="w">be </span><span class="w hl" id="s10hl"><span class="dot" style="left:-10px;top:-10px"></span>everywhere<span class="dot" style="right:-10px;bottom:-10px"></span></span><span class="w"> first.</span>
+    </div>
+    <div class="abs center kicker" id="s10c" style="top:1230px">Profit comes later.</div>
+  </div>
+
+  <!-- S11: end card -->
+  <div class="scene" id="s11">
+    <div class="abs center" id="e1" style="top:890px; font-size:118px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; color:rgba(245,245,247,.75)">ka</span></div>
+    <div class="abs center" id="e2" style="top:1050px"><span class="hl" id="ehl" style="display:inline-block; font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 34px 14px"><span class="dot" style="left:-10px;top:-10px"></span>Hisab<span class="dot" style="right:-10px;bottom:-10px"></span></span></div>
+    <div class="abs center kicker" id="e3" style="top:1310px; font-size:46px">Follow for the next unicorn</div>
+    <div class="abs center note" id="e4" style="top:1500px; font-size:30px">Source: Eternal Q4 FY26 results via Inc42 (28 Apr 2026)</div>
+  </div>
+
+  <div id="flash"></div>
+  <div id="grain"></div>
+</div>
+<script>
+const DURATION = 60;
+const FPS = 30;
+const BEAT = 60 / 97.6, BEAT0 = 0.605;   // beat grid of the track section
+const DROP = 20.25;
+
+const ease = {
+  linear: (x) => x,
+  outCubic: (x) => 1 - Math.pow(1 - x, 3),
+  inCubic: (x) => x * x * x,
+  inOutCubic: (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2),
+  outExpo: (x) => (x === 1 ? 1 : 1 - Math.pow(2, -10 * x)),
+  outBack: (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); },
+};
+function tween(t, start, dur, from, to, e = ease.outCubic) {
+  if (t <= start) return from;
+  if (t >= start + dur) return to;
+  return from + (to - from) * e((t - start) / dur);
+}
+const frames = (n) => n / FPS;
+const $ = (id) => document.getElementById(id);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+// Scene windows: [in, out]. Cuts sit on beats from the grid above.
+const CUE = {
+  s1: [0.0, 3.07],
+  s2: [3.07, 6.15],
+  s3: [6.15, 11.05],
+  s4: [11.05, 15.35],
+  s5: [15.35, 18.0],
+  sb: [18.0, DROP],
+  s6: [DROP, 28.25],
+  s7: [28.25, 35.6],
+  s8: [35.6, 43.0],
+  s9: [43.0, 51.0],
+  s10: [51.0, 55.9],
+  s11: [55.9, 60.01],
+};
+
+// Scene container: quick fade and settle in, blur and push out.
+function scene(id, t) {
+  const [a, b] = CUE[id];
+  const el = $(id);
+  if (t < a - 0.01 || t > b + frames(8)) { el.style.opacity = 0; el.style.display = "none"; return false; }
+  el.style.display = "block";
+  const inK = tween(t, a, frames(8), 0, 1, ease.outCubic);
+  const outK = tween(t, b - frames(6), frames(6), 0, 1, ease.inCubic);
+  el.style.opacity = id === "s1" ? (1 - outK) : inK * (1 - outK);
+  const prog = clamp((t - a) / (b - a), 0, 1);
+  const s = 1 + 0.045 * prog + 0.03 * outK;
+  el.style.transform = `translateY(${60 * (1 - inK) - 90 * outK}px) scale(${s})`;
+  el.style.filter = outK > 0 ? `blur(${outK * 14}px)` : "none";
+  return true;
+}
+// Element entrance: rise, fade and unblur.
+function enter(el, t, start, { dur = frames(12), dy = 50, e = ease.outCubic, scaleFrom = 1 } = {}) {
+  const k = tween(t, start, dur, 0, 1, e);
+  el.style.opacity = clamp(tween(t, start, dur * 0.7, 0, 1, ease.linear), 0, 1);
+  el.style.transform = `translateY(${(1 - k) * dy}px) scale(${scaleFrom + (1 - scaleFrom) * k})`;
+  el.style.filter = k < 1 ? `blur(${(1 - Math.min(1, k * 1.4)) * 10}px)` : "none";
+}
+// Word-by-word entrance for the .w spans inside el.
+function words(el, t, start, stagger = frames(3)) {
+  [...el.querySelectorAll(":scope > .w")].forEach((w, i) => enter(w, t, start + i * stagger, { dur: frames(10), dy: 40 }));
+}
+function count(t, start, dur, to, e = ease.outExpo) { return Math.round(tween(t, start, dur, 0, to, e)); }
+const inr = (n) => n.toLocaleString("en-IN");
+// Beat pulse after the drop: 1 on the beat, decaying to 0.
+function pulse(t) {
+  if (t < DROP) return 0;
+  const ph = ((t - BEAT0) % BEAT + BEAT) % BEAT;
+  return Math.exp(-ph * 7);
+}
+
+// Deterministic random for the canvas effects.
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed); x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
+const R = rng(7);
+const PARTS = Array.from({ length: 70 }, () => ({ x: R() * 1080, y: R() * 1920, r: 1 + R() * 3, sp: 10 + R() * 30, ph: R() * 6.28 }));
+const STORES = Array.from({ length: 420 }, () => {
+  // Points clustered around a few "city" centres in the middle band.
+  const c = [[300, 820], [700, 760], [520, 980], [820, 1020], [260, 1060]][Math.floor(R() * 5)];
+  const a = R() * 6.28, d = Math.pow(R(), 0.6) * 230;
+  return { x: c[0] + Math.cos(a) * d, y: c[1] + Math.sin(a) * d * 0.8, k: R() };
+});
+const ROADS = Array.from({ length: 16 }, () => ({ x1: R() * 1080, y1: 620 + R() * 560, x2: R() * 1080, y2: 620 + R() * 560 }));
+
+// 100 coins for S3
+(function buildCoins() {
+  const box = $("coins");
+  for (let i = 0; i < 100; i++) {
+    const d = document.createElement("div");
+    d.className = "coin";
+    d.style.cssText = `position:absolute; width:56px; height:56px; border-radius:50%; left:${(i % 10) * 70 + 7}px; top:${Math.floor(i / 10) * 70 + 7}px;
+      border:3px solid rgba(248,203,70,.55); background: radial-gradient(circle at 35% 30%, rgba(248,203,70,.35), rgba(248,203,70,.08));`;
+    box.appendChild(d);
+  }
+  const q = document.createElement("div");   // the quarter-coin of profit, on coin 0
+  q.id = "qcoin";
+  q.style.cssText = `position:absolute; width:56px; height:56px; border-radius:50%; left:7px; top:7px;
+    background: conic-gradient(#2fbf55 0 25%, rgba(248,203,70,.16) 25% 100%); border:3px solid rgba(248,203,70,.8); box-shadow: 0 0 30px rgba(47,191,85,.9); opacity:0;`;
+  box.appendChild(q);
+})();
+
+const ctx = $("fx").getContext("2d");
+const ITEMS = ["🥛  Milk", "🍫  Chocolate", "🍌  Bananas", "🧴  Shampoo", "🍞  Bread", "🥚  Eggs", "🧃  Juice", "🍪  Biscuits"];
+const ORDERS = Array.from({ length: 14 }, (_, i) => ({
+  label: ITEMS[i % ITEMS.length], x: 60 + R() * 760, y0: 1500 + R() * 900, sp: 260 + R() * 260,
+  rot: (R() - 0.5) * 14, sc: 0.75 + R() * 0.5, depth: R(),
+}));
+function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+function renderFx(t) {
+  ctx.clearRect(0, 0, 1080, 1920);
+  // Floating dust everywhere, brighter on beats
+  const p = pulse(t);
+  for (const q of PARTS) {
+    const y = (q.y - t * q.sp + 1920 * 4) % 1920;
+    const a = 0.12 + 0.12 * Math.sin(t * 1.5 + q.ph) + 0.25 * p;
+    ctx.fillStyle = `rgba(248,203,70,${a})`;
+    ctx.beginPath(); ctx.arc(q.x + Math.sin(t + q.ph) * 8, y, q.r, 0, 6.28); ctx.fill();
+  }
+  // Order cards rising behind the hook (0 to 3.1 s), blurred by depth
+  if (t < CUE.s1[1] + 0.3) {
+    const fade = 1 - tween(t, CUE.s1[1] - 0.3, 0.5, 0, 1);
+    for (const o of ORDERS) {
+      const y = o.y0 - (t + 0.6) * o.sp * (0.6 + o.depth);
+      if (y < -200 || y > 2000) continue;
+      ctx.save();
+      ctx.translate(o.x + 150, y); ctx.rotate(o.rot * Math.PI / 180); ctx.scale(o.sc, o.sc);
+      // Keep clear of the headline band (about y 660-1260) and the header (y < 330).
+      const band = clamp((Math.abs(y - 960) - 300) / 120, 0, 1);
+      const top = clamp((y - 330) / 120, 0, 1);
+      ctx.globalAlpha = (0.18 + 0.32 * o.depth) * fade * (0.08 + 0.92 * band) * top;
+      ctx.filter = `blur(${(1 - o.depth) * 6}px)`;
+      roundRect(-150, -46, 300, 92, 26);
+      ctx.fillStyle = "rgba(255,255,255,.07)"; ctx.fill();
+      ctx.strokeStyle = "rgba(248,203,70,.55)"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = "#f5f5f7"; ctx.font = "600 34px 'Inter Display', 'Noto Color Emoji'";
+      ctx.textBaseline = "middle"; ctx.fillText(o.label, -124, 2);
+      ctx.restore();
+    }
+    ctx.filter = "none"; ctx.globalAlpha = 1;
+  }
+  // Dark-store map during S6
+  const [a, b] = CUE.s6;
+  if (t > a - 0.1 && t < b + 0.3) {
+    const vis = tween(t, a, frames(10), 0, 1) * (1 - tween(t, b - frames(6), frames(8), 0, 1));
+    ctx.strokeStyle = `rgba(255,255,255,${0.07 * vis})`; ctx.lineWidth = 3;
+    for (const r of ROADS) { ctx.beginPath(); ctx.moveTo(r.x1, r.y1); ctx.lineTo(r.x2, r.y2); ctx.stroke(); }
+    const shown = tween(t, a + 0.2, 4.6, 0, 1, ease.outCubic);
+    for (const s of STORES) {
+      if (s.k > shown) continue;
+      const age = clamp((shown - s.k) * 8, 0, 1);
+      const r = 5 + 6 * (1 - age) + 3 * p;
+      ctx.fillStyle = `rgba(248,203,70,${(0.55 + 0.45 * (1 - age)) * vis})`;
+      ctx.shadowColor = "rgba(248,203,70,.9)"; ctx.shadowBlur = 14;
+      ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, 6.28); ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+  }
+}
+
+function renderFrame(t) {
+  // Background: glows drift, green takes over for profit moments, beat pulse after the drop.
+  const p = pulse(t);
+  $("glowY").style.transform = `translate(${Math.sin(t * 0.4) * 60}px, ${Math.cos(t * 0.3) * 50}px) scale(${1 + 0.06 * p})`;
+  const greenOn = (t > 3.0 && t < 11.1) || (t > 51 && t < 56) ? 1 : 0;
+  $("glowG").style.opacity = String(tween(t, 0, 0, 0, 0) + greenOn * 0.9);
+  $("glowY").style.opacity = String(1 - greenOn * 0.6);
+  // Drop flash and shake
+  const fl = tween(t, DROP, frames(14), 1, 0, ease.outCubic) * (t >= DROP ? 1 : 0);
+  $("flash").style.opacity = String(fl * 0.85);
+  const shake = t >= DROP && t < DROP + 0.35 ? (1 - (t - DROP) / 0.35) * 14 : 0;
+  $("stage").style.transform = `translate(${Math.sin(t * 90) * shake}px, ${Math.cos(t * 77) * shake}px)`;
+  $("tag").style.opacity = 1;
+  renderFx(t);
+
+  // S1: number races from frame 0
+  if (scene("s1", t)) {
+    $("s1a").style.opacity = 1; $("s1a").style.transform = `translateY(${tween(t, 0, frames(10), 20, 0)}px)`;
+    $("s1n").textContent = `₹${inr(count(t, -0.35, 2.0, 14386))} Cr`;
+    $("s1n").style.transform = `scale(${tween(t, -0.35, 2.0, 0.86, 1, ease.outExpo) + 0.05 * tween(t, 1.9, frames(6), 1, 0, ease.outCubic) * (t > 1.9 ? 1 : 0)})`;
+    enter($("s1b"), t, 0.75, { dur: frames(10) });
+    enter($("s1c"), t, 1.2, { dur: frames(10), dy: 30, scaleFrom: 0.9 });
+  }
+  // S2: profit
+  if (scene("s2", t)) {
+    enter($("s2a"), t, CUE.s2[0] + frames(2));
+    const k = tween(t, CUE.s2[0] + 0.45, frames(16), 0, 1, ease.outBack);
+    $("s2n").style.opacity = clamp(k, 0, 1);
+    $("s2n").style.transform = `scale(${0.6 + 0.4 * k})`;
+    enter($("s2b"), t, CUE.s2[0] + 1.3, { dur: frames(12), dy: 24 });
+  }
+  // S3: 100 coins, then a quarter of one coin glows
+  if (scene("s3", t)) {
+    const a = CUE.s3[0];
+    enter($("s3a"), t, a + frames(2));
+    document.querySelectorAll(".coin").forEach((c, i) => {
+      const st = a + 0.25 + i * 0.012;
+      const k = tween(t, st, frames(8), 0, 1, ease.outBack);
+      const dim = tween(t, a + 2.3, frames(10), 1, 0.35) * tween(t, a + 2.9, frames(12), 1, 0.4);
+      c.style.opacity = String(clamp(k, 0, 1) * (i === 0 ? tween(t, a + 2.4, frames(4), 1, 0) : dim));
+      c.style.transform = `scale(${k})`;
+    });
+    const qk = tween(t, a + 2.4, frames(12), 0, 1, ease.outBack);
+    $("qcoin").style.opacity = String(clamp(qk, 0, 1));
+    const fk = tween(t, a + 2.9, frames(16), 0, 1, ease.inOutCubic);
+    $("qcoin").style.transform = `translate(${fk * 315}px, ${fk * 315}px) scale(${1 + 0.6 * qk + 3.4 * fk})`;
+    enter($("s3b"), t, a + 3.3);
+    enter($("s3c"), t, a + 3.8, { dy: 24 });
+  }
+  // S4: the question, word by word, highlight lands
+  if (scene("s4", t)) {
+    words($("s4a"), t, CUE.s4[0] + frames(2), frames(4));
+    const hk = tween(t, CUE.s4[0] + 1.6, frames(10), 0, 1, ease.outBack);
+    const hl = $("s4hl");
+    hl.style.borderColor = `rgba(248,203,70,${hk})`;
+    hl.style.background = `rgba(248,203,70,${0.18 * hk})`;
+    hl.style.boxShadow = `0 0 ${36 * hk}px rgba(248,203,70,.45)`;
+    hl.querySelectorAll(".dot").forEach((d) => (d.style.opacity = String(hk)));
+  }
+  // S5: paisa kahan se?
+  if (scene("s5", t)) {
+    const a = CUE.s5[0];
+    enter($("s5a"), t, a + frames(2), { dur: frames(14), scaleFrom: 0.9 });
+  }
+  // Break: timer ring closes into the drop
+  if (scene("sb", t)) {
+    const a = CUE.sb[0];
+    const k = tween(t, a, DROP - a, 0, 1, ease.inCubic);
+    $("ringArc").setAttribute("stroke-dashoffset", String(1571 * (1 - k)));
+    const left = Math.max(0, 600 * (1 - k));
+    const m = Math.floor(left / 60), s = Math.floor(left % 60);
+    $("sbT").textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    enter($("ring"), t, a, { dur: frames(10), dy: 0, scaleFrom: 0.85 });
+    enter($("sbT"), t, a + frames(3), { dur: frames(10), dy: 20 });
+    enter($("sbA"), t, a + 0.9, { dur: frames(10), dy: 20 });
+  }
+  // S6: dark stores slam on the drop, counter races
+  if (scene("s6", t)) {
+    const a = CUE.s6[0];
+    const k = tween(t, a, frames(10), 0, 1, ease.outBack);
+    $("s6a").style.opacity = String(clamp(k * 1.5, 0, 1));
+    $("s6a").style.transform = `scale(${1.5 - 0.5 * k})`;
+    enter($("s6b"), t, a + 0.5, { dy: 30 });
+    enter($("s6n"), t, a + 1.0, { dy: 30, scaleFrom: 0.9 });
+    $("s6n").textContent = inr(count(t, a + 1.0, 3.6, 2243));
+    $("s6n").style.textShadow = `0 0 ${40 + 40 * p}px rgba(248,203,70,.6)`;
+    if (t > a + 4.6) $("s6n").style.transform = `scale(${1 + 0.035 * p})`;
+    enter($("s6c"), t, a + 1.6, { dy: 24 });
+    enter($("s6d"), t, a + 4.0, { dy: 30, scaleFrom: 0.9 });
+  }
+  // S7: order flow, one card per beat pair
+  if (scene("s7", t)) {
+    const a = CUE.s7[0], B2 = BEAT * 2;
+    enter($("s7a"), t, a + frames(2));
+    [["c1", "c1t", "i1"], ["c2", "c2t", "i2"], ["c3", "c3t", "i3"]].forEach(([c, tx, ic], i) => {
+      const st = a + 0.6 + i * B2;
+      enter($(c), t, st, { dy: 80 }); enter($(tx), t, st + frames(4), { dy: 40 });
+      $(ic).style.opacity = String(tween(t, st + frames(4), frames(8), 0, 1));
+    });
+    $("fl1").setAttribute("stroke-dashoffset", String(tween(t, a + 0.6 + B2 - 0.3, 0.4, 80, 0)));
+    $("fl2").setAttribute("stroke-dashoffset", String(tween(t, a + 0.6 + 2 * B2 - 0.3, 0.4, 80, 0)));
+    enter($("s7b"), t, a + 0.6 + 3 * B2 + 0.2, { dy: 24 });
+  }
+  // S8: marketplace struck out, inventory-led, revenue counter
+  if (scene("s8", t)) {
+    const a = CUE.s8[0];
+    enter($("s8a"), t, a + frames(2));
+    enter($("s8c1"), t, a + 0.4, { dy: 60 }); enter($("s8t1"), t, a + 0.5, { dy: 30 });
+    $("s8x").style.width = `${tween(t, a + 1.4, frames(10), 0, 580, ease.inOutCubic)}px`;
+    enter($("s8c2"), t, a + 2.0, { dy: 60 }); enter($("s8t2"), t, a + 2.15, { dy: 30 });
+    enter($("s8b"), t, a + 3.4, { dy: 30 });
+    enter($("s8n"), t, a + 3.8, { dy: 30, scaleFrom: 0.9 });
+    $("s8n").textContent = `+${count(t, a + 3.8, 1.6, 675)}%`;
+    if (t > a + 5.4) $("s8n").style.transform = `scale(${1 + 0.03 * p})`;
+    enter($("s8d"), t, a + 4.9, { dy: 24 });
+  }
+  // S9: timeline draws down
+  if (scene("s9", t)) {
+    const a = CUE.s9[0];
+    enter($("s9a"), t, a + frames(2));
+    $("tl").setAttribute("stroke-dashoffset", String(tween(t, a + 0.4, 5.2, 860, 0, ease.inOutCubic)));
+    [["n1", "t1", 0.5], ["n2", "t2", 2.4], ["n3", "t3", 4.6]].forEach(([n, tx, d]) => {
+      const k = tween(t, a + d, frames(10), 0, 1, ease.outBack);
+      $(n).setAttribute("r", String(20 * k + 6 * p * (k > 0.99 ? 1 : 0)));
+      enter($(tx), t, a + d + frames(3), { dy: 40 });
+    });
+  }
+  // S10: the bet
+  if (scene("s10", t)) {
+    const a = CUE.s10[0];
+    enter($("s10a"), t, a + frames(2));
+    words($("s10b"), t, a + 0.8, frames(4));
+    const hk = tween(t, a + 2.0, frames(10), 0, 1, ease.outBack);
+    const hl = $("s10hl");
+    hl.style.borderColor = `rgba(248,203,70,${hk})`;
+    hl.style.background = `rgba(248,203,70,${0.18 * hk})`;
+    hl.style.boxShadow = `0 0 ${36 * hk}px rgba(248,203,70,.45)`;
+    hl.querySelectorAll(".dot").forEach((d) => (d.style.opacity = String(hk)));
+    enter($("s10c"), t, a + 3.0, { dy: 30 });
+  }
+  // S11: end card
+  if (scene("s11", t)) {
+    const a = CUE.s11[0];
+    enter($("e1"), t, a + frames(2), { dy: 40 });
+    const hk = tween(t, a + 0.5, frames(12), 0, 1, ease.outBack);
+    $("e2").style.opacity = String(clamp(hk * 1.4, 0, 1));
+    $("e2").style.transform = `scale(${0.8 + 0.2 * hk})`;
+    enter($("e3"), t, a + 1.3, { dy: 30 });
+    enter($("e4"), t, a + 1.8, { dy: 20 });
+  }
+}
+
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else {
+  renderFrame(0);
+}
+</script>
+</body>
+</html>
