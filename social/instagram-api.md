@@ -15,7 +15,11 @@ Done by the founder:
   `IG_ACCESS_TOKEN`, `IG_APP_ID`, `IG_APP_SECRET`, `IG_REDIRECT_URI`.
   They reach new sessions only. Never print them or paste them in chat.
 
-Next (in a new session):
+Verified 25 Oct 2026 (read-only): API returns username unicornkahisab,
+account_type MEDIA_CREATOR, user_id 17841423062814788; publishing quota
+100 posts per 24 hours, 0 used. The secrets also reach the current session.
+
+Next:
 1. Read-only check, no posting:
    `curl -s "https://graph.instagram.com/v24.0/me?fields=user_id,username,account_type&access_token=$IG_ACCESS_TOKEN"`
    should return username unicornkahisab. Don't echo the token.
