@@ -23,8 +23,7 @@ Next:
 1. Read-only check, no posting:
    `curl -s "https://graph.instagram.com/v24.0/me?fields=user_id,username,account_type&access_token=$IG_ACCESS_TOKEN"`
    should return username unicornkahisab. Don't echo the token.
-2. The client code is on branch `claude/solids-instagram-api-setup-w33sos`
-   (`sfy_instagram/`). It expects a token file from its `login` command;
+2. The client code is in `sfy_instagram/` (see README.md). It expects a token file from its `login` command;
    teach it to use `IG_ACCESS_TOKEN` when set.
 3. Dashboard tokens last about 60 days; refresh before then
    (`refresh_access_token` endpoint) and record the expiry date here.

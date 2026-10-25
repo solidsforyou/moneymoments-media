@@ -19,8 +19,8 @@ Fallbacks if the handle is taken: add `.in`, `_hq` or `daily`
   publishes to professional accounts. Pick Business if you will run ads
   from it later.
 - Category: Digital creator, or Media/news company.
-- Link it to the Meta app used by the `sfy_instagram` code (branch
-  `claude/solids-instagram-api-setup-w33sos`).
+- Link it to the Meta app used by the `sfy_instagram` code (done: see
+  `social/instagram-api.md`).
 - API publishing has a daily post limit; check the current number in Meta's
   docs (9 a day should be well within it).
 
