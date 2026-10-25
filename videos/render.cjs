@@ -14,7 +14,8 @@ const fps = Number(opt("fps", 30)), width = Number(opt("width", 1080)), height =
 (async () => {
   const browser = await chromium.launch();
   const tab = await browser.newPage({ viewport: { width, height } });
-  await tab.goto("file://" + path.resolve(page));
+  const [file, query] = page.split("?");   // keep ?story=... out of the path
+  await tab.goto("file://" + path.resolve(file) + (query ? "?" + query : ""));
   await tab.evaluate(() => document.fonts.ready);
   const duration = Number(opt("to", await tab.evaluate(() => window.DURATION)));
   const from = Number(opt("from", 0));

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publishes a reel to the Instagram account behind IG_ACCESS_TOKEN.
 
-  python3 videos/publish_reel.py VIDEO_URL CAPTION_FILE [--dry-run]
+  python3 videos/publish_reel.py VIDEO_URL CAPTION_FILE [--thumb-ms 2500] [--dry-run]
 
 VIDEO_URL must be a public HTTPS link Instagram can fetch. --dry-run creates and
 processes the container but does not publish it. The token is never printed.
@@ -34,8 +34,11 @@ def main():
         sys.exit(__doc__)
     video_url, caption_file = sys.argv[1], sys.argv[2]
     dry = "--dry-run" in sys.argv
+    extra = {}
+    if "--thumb-ms" in sys.argv:   # frame used as the cover
+        extra["thumb_offset"] = sys.argv[sys.argv.index("--thumb-ms") + 1]
     caption = open(caption_file, encoding="utf-8").read().strip()
-    c = call("POST", f"{IG_USER}/media", media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true")
+    c = call("POST", f"{IG_USER}/media", media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true", **extra)
     cid = c["id"]
     print("container", cid)
     for _ in range(60):   # up to 10 minutes
