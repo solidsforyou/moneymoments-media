@@ -4,9 +4,9 @@ Motion-graphics videos only, voiced with ElevenLabs. No filming and no
 clipping. The Solids For You main page comes later.
 
 ## 1. Goal and metric (90 days)
-An Indian startup clipping page followed by Indian Gen Z (21-30) with money
-to spend. Numbers that count: views on clips (paid campaigns pay per 1,000
-views) and profile visits that later go to Solids For You.
+An Indian startup page followed by Indian Gen Z (21-30) with money to
+spend. Numbers that count: average watch time, follows per video, and
+profile visits that later go to Solids For You.
 
 ## 2. Audience
 Indian, 21-30, college or early career, metros and tier-2 cities. Watches
@@ -14,9 +14,7 @@ startup podcasts in bits, never the full two hours. Wants the one line that
 matters, in English or Hinglish.
 
 ## 3. Platform
-Instagram Reels first. The same clips can go to YouTube Shorts where the
-campaign brief allows it. One clip per platform, never the same clip on
-several of our own accounts (Clipper rule 4).
+Instagram Reels first. The same files can go to YouTube Shorts later.
 
 ## 4. How videos are made
 Motion graphics only: no filming, no clipping. Every video goes through the
