@@ -1,0 +1,21 @@
+{
+  "extraKnownMarketplaces": {
+    "solidsforyou": {
+      "source": {
+        "source": "github",
+        "repo": "Founderwithabs/SOLIDSFORYOU"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "master@solidsforyou": true
+  },
+  "pluginConfigs": {
+    "master@solidsforyou": {
+      "options": {
+        "mode": "always-on"
+      }
+    }
+  }
+}
