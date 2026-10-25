@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: Shaadi.com. 1920x1080, 60 s. Timed to the founder's track from 1:58.4:
+  drop at 24.0 s, beat about 0.6144 s from 0.25 s. Dark build, bright UI after the drop,
+  in the style of the founder's reference (Video-35760.mp4).
+  Facts: Wikipedia "Shaadi.com" (Sagaai.com 1997, renamed 1999, 20 million users by 2011,
+  100+ Shaadi Centres, FY22 revenue Rs 261 Cr, net income Rs -13 Cr);
+  Shaadi.com support page on premium plans (contact numbers, unlimited chat, video and
+  voice calls, hidden photos). The profile card is an illustration, not a real member.
+-->
+<style>
+  :root { --coral: #ff5a60; --coral-d: #e8434a; --ink: #111114; --paper: #f6f5f2; --muted: #6e6e76; --line: #e6e4df; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0a0a0b; }
+  body { font-family: "Inter Display", "Inter", sans-serif; }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  #paper { position: absolute; inset: 0; background: var(--paper); opacity: 0; }
+  #wipe { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); transform: translate(-50%, -50%) scale(0); }
+  .glow { position: absolute; border-radius: 50%; filter: blur(50px); }
+  #g1 { width: 1100px; height: 1100px; left: 410px; top: -10px; background: radial-gradient(circle, rgba(255,90,96,.40), rgba(255,90,96,.08) 45%, transparent 70%); }
+  #g2 { width: 1400px; height: 900px; left: 260px; top: 420px; background: radial-gradient(ellipse, rgba(255,90,96,.22), transparent 65%); opacity: 0; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 50px; display: flex; gap: 14px; align-items: center; z-index: 5; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 22px; font-weight: 600; letter-spacing: .08em; border: 2px solid var(--coral); color: var(--coral); }
+  .handle { font-size: 22px; font-weight: 500; }
+
+  .scene { position: absolute; inset: 0; display: none; }
+  .row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 22px; }
+  .dark { color: #f5f5f7; }
+  .light { color: var(--ink); }
+  .h { font-size: 92px; font-weight: 600; letter-spacing: -3px; }
+  .w { display: inline-block; white-space: pre; }
+  .pill { display: inline-block; padding: 6px 26px 12px; border-radius: 18px; background: var(--coral); color: #fff; font-weight: 700;
+    box-shadow: 0 10px 40px rgba(255,90,96,.45); }
+  .caret { font-weight: 300; }
+  .card { position: absolute; background: #fff; border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(20,20,30,.12); }
+  .dcard { position: absolute; background: #141416; border-radius: 28px; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 30px 80px rgba(0,0,0,.35); color: #fff; }
+  .muted { color: var(--muted); }
+  .chk { display: flex; align-items: center; gap: 22px; font-size: 46px; font-weight: 600; }
+  .tick { width: 54px; height: 54px; border-radius: 50%; background: var(--coral); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 800; }
+  .btn { position: absolute; padding: 18px 34px; border-radius: 16px; font-size: 30px; font-weight: 700; }
+  #cur { position: absolute; left: 0; top: 0; width: 42px; height: 42px; z-index: 6; }
+  .node { padding: 26px 44px; border-radius: 22px; font-size: 48px; font-weight: 700; }
+  .arrow { width: 92px; height: 92px; border-radius: 22px; background: var(--coral); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 48px; font-weight: 800; box-shadow: 0 10px 30px rgba(255,90,96,.4); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="glow" id="g1"></div>
+  <div class="glow" id="g2"></div>
+  <div id="wipe"></div>
+  <div id="paper"></div>
+  <div id="tag"><span class="tpill">STARTUP MATH</span><span class="handle" id="hdl" style="color:#bbb">@unicornkahisab</span></div>
+
+  <!-- S1/S2: free to join -->
+  <div class="scene dark" id="s1">
+    <div class="row h" style="top:430px"><span id="s1t"></span><span class="pill" id="s1p" style="opacity:0">free</span></div>
+    <div class="row h" style="top:560px; font-size:72px; color:#bbb" id="s1b">to join.</div>
+  </div>
+  <div class="scene dark" id="s2">
+    <div class="row h" style="top:470px"><span class="w">So </span><span class="w">who&nbsp;</span><span class="pill w" id="s2p">pays?</span></div>
+  </div>
+
+  <!-- S3: Sagaai to Shaadi -->
+  <div class="scene dark" id="s3">
+    <div class="row" style="top:300px; font-size:44px; font-weight:700; color:var(--coral)" id="s3y">1997</div>
+    <div class="row h" style="top:380px; font-size:120px; font-weight:800" id="s3n">Sagaai.com</div>
+    <div class="row" style="top:560px; font-size:44px; font-weight:700; color:var(--coral)" id="s3y2">1999</div>
+    <div class="row h" style="top:640px; font-size:120px; font-weight:800" id="s3m">Shaadi.com</div>
+    <div class="row" style="top:820px; font-size:44px; color:#bbb" id="s3c">Founder Anupam Mittal picks a more marketable name</div>
+  </div>
+
+  <!-- S4: users -->
+  <div class="scene dark" id="s4">
+    <div class="row" style="top:300px; font-size:52px; font-weight:600; color:#bbb" id="s4a">By 2011</div>
+    <div class="row" style="top:390px; font-size:220px; font-weight:800; letter-spacing:-8px; color:#fff" id="s4n">0</div>
+    <div class="row" style="top:660px; font-size:60px; font-weight:600" id="s4b">users</div>
+  </div>
+
+  <!-- S5: centres -->
+  <div class="scene dark" id="s5">
+    <div class="row h" style="top:330px; font-size:86px" id="s5a"><span class="pill" style="padding:6px 24px 12px">100+</span><span>Shaadi Centres</span></div>
+    <div class="row" style="top:490px; font-size:46px; color:#bbb" id="s5b">offline, across cities. The first opened in Mumbai in 2004.</div>
+    <svg id="pins" style="position:absolute; left:460px; top:600px" width="1000" height="320" viewBox="0 0 1000 320"></svg>
+  </div>
+
+  <!-- Break -->
+  <div class="scene dark" id="sb">
+    <div class="row h" style="top:470px; font-size:100px; font-weight:800" id="sbt"></div>
+  </div>
+
+  <!-- S6: the profile card (light) -->
+  <div class="scene light" id="s6">
+    <div style="position:absolute; left:140px; top:250px; width:640px">
+      <div style="font-size:30px; font-weight:700; color:var(--coral); letter-spacing:.06em" id="s6k">FREE</div>
+      <div class="chk" style="margin-top:30px" id="f1"><span class="tick">✓</span>Make a profile</div>
+      <div class="chk" style="margin-top:28px" id="f2"><span class="tick">✓</span>Search matches</div>
+      <div class="chk" style="margin-top:28px" id="f3"><span class="tick">✓</span>Send interest</div>
+      <div class="chk" style="margin-top:44px; color:#9a9aa2" id="f4"><span class="tick" style="background:#c9c7c2">🔒</span>Their phone number</div>
+    </div>
+    <div class="card" id="pc" style="left:960px; top:170px; width:780px; height:760px">
+      <div style="position:absolute; left:50px; top:50px; width:150px; height:150px; border-radius:50%; background:linear-gradient(135deg,#ffb199,#ff5a60); display:flex; align-items:center; justify-content:center; color:#fff; font-size:70px; font-weight:800">A</div>
+      <div style="position:absolute; left:240px; top:62px; font-size:50px; font-weight:800">A. Sharma</div>
+      <div style="position:absolute; left:240px; top:134px; font-size:30px" class="muted">27 · Mumbai · Engineer</div>
+      <div style="position:absolute; left:50px; top:250px; right:50px; height:2px; background:var(--line)"></div>
+      <div style="position:absolute; left:50px; top:290px; font-size:28px" class="muted">Phone</div>
+      <div style="position:absolute; left:50px; top:330px; font-size:52px; font-weight:700; letter-spacing:4px" id="phone">+91 ••••• •••••</div>
+      <div style="position:absolute; left:50px; top:430px; font-size:28px" class="muted">Chat</div>
+      <div style="position:absolute; left:50px; top:470px; font-size:40px; font-weight:600; color:#9a9aa2">Locked for free members</div>
+      <div class="btn" id="bInt" style="left:50px; top:600px; background:#f1efea; color:var(--ink)">Send interest</div>
+      <div class="btn" id="bCon" style="left:360px; top:600px; background:var(--coral); color:#fff">View contact</div>
+      <div style="position:absolute; right:30px; top:30px; font-size:20px; letter-spacing:.06em" class="muted">EXAMPLE PROFILE</div>
+    </div>
+    <div class="card" id="pop" style="left:1010px; top:420px; width:680px; height:300px; border:3px solid var(--coral)">
+      <div style="position:absolute; left:50px; top:50px; font-size:30px; font-weight:700; color:var(--coral); letter-spacing:.06em">PREMIUM ONLY</div>
+      <div style="position:absolute; left:50px; top:105px; font-size:50px; font-weight:800; line-height:1.15">Upgrade to see<br>contact details</div>
+    </div>
+    <svg id="cur" viewBox="0 0 42 42"><path d="M6 4 L6 34 L14 26 L20 38 L25 36 L19 24 L30 24 Z" fill="#111" stroke="#fff" stroke-width="2.5"/></svg>
+  </div>
+
+  <!-- S7: premium unlocks -->
+  <div class="scene light" id="s7">
+    <div class="row h" style="top:180px; font-size:84px"><span class="w">Premium&nbsp;</span><span class="pill w" id="s7p">unlocks</span></div>
+    <div class="card" id="u1" style="left:250px; top:380px; width:680px; height:200px"><div class="chk" style="position:absolute; left:50px; top:70px"><span class="tick">✓</span>Phone numbers</div></div>
+    <div class="card" id="u2" style="left:990px; top:380px; width:680px; height:200px"><div class="chk" style="position:absolute; left:50px; top:70px"><span class="tick">✓</span>Unlimited chat</div></div>
+    <div class="card" id="u3" style="left:250px; top:630px; width:680px; height:200px"><div class="chk" style="position:absolute; left:50px; top:70px"><span class="tick">✓</span>Video &amp; voice calls</div></div>
+    <div class="card" id="u4" style="left:990px; top:630px; width:680px; height:200px"><div class="chk" style="position:absolute; left:50px; top:70px"><span class="tick">✓</span>Hidden photos</div></div>
+    <div class="row" style="top:900px; font-size:30px" id="s7s"><span class="muted">Source: Shaadi.com help centre</span></div>
+  </div>
+
+  <!-- S8: the funnel -->
+  <div class="scene light" id="s8">
+    <div class="row" style="top:250px; font-size:60px; font-weight:600" id="s8a">The whole business, in one line</div>
+    <div class="row" style="top:470px; gap:30px">
+      <div class="node" id="n1" style="background:#111; color:#fff">Join free</div>
+      <div class="arrow" id="a1">→</div>
+      <div class="node" id="n2" style="background:#111; color:#fff">Find a match</div>
+      <div class="arrow" id="a2">→</div>
+      <div class="node" id="n3" style="background:var(--coral); color:#fff; box-shadow:0 10px 40px rgba(255,90,96,.45)">Pay to talk</div>
+    </div>
+  </div>
+
+  <!-- S9: the money -->
+  <div class="scene light" id="s9">
+    <div class="row" style="top:190px; font-size:56px; font-weight:600" id="s9a">Does it make money?</div>
+    <div class="dcard" id="m1" style="left:360px; top:330px; width:1200px; height:330px">
+      <div style="position:absolute; left:70px; top:60px; font-size:30px; color:#9a9aa2">Revenue, FY22</div>
+      <div style="position:absolute; left:70px; top:110px; font-size:130px; font-weight:800; letter-spacing:-4px" id="m1n">₹0 Cr</div>
+      <div style="position:absolute; left:680px; top:60px; font-size:30px; color:#9a9aa2">Net result, FY22</div>
+      <div style="position:absolute; left:680px; top:110px; font-size:130px; font-weight:800; letter-spacing:-4px; color:var(--coral)" id="m2n">₹0 Cr</div>
+    </div>
+    <div class="row" style="top:715px; font-size:48px; font-weight:600" id="s9b">It lost money that year. Newer numbers aren't widely reported.</div>
+    <div class="row" style="top:805px; font-size:30px" id="s9s"><span class="muted">Source: Wikipedia (Shaadi.com), latest widely reported figures</span></div>
+  </div>
+
+  <!-- S10: the line -->
+  <div class="scene light" id="s10">
+    <div class="row h" style="top:380px; font-size:96px; font-weight:800"><span class="w">Love&nbsp;</span><span class="w">is&nbsp;</span><span class="w">free.</span></div>
+    <div class="row h" style="top:520px; font-size:96px; font-weight:800"><span class="w">The&nbsp;</span><span class="pill w" id="s10p">phone number</span><span class="w">&nbsp;isn't.</span></div>
+  </div>
+
+  <!-- S11: end card -->
+  <div class="scene dark" id="s11">
+    <div class="row" style="top:400px; gap:26px">
+      <span style="font-size:120px; font-weight:700; letter-spacing:-4px; color:#fff" id="e1">Unicorn <span style="font-weight:400; color:#bbb">ka</span></span>
+      <span id="e2" style="position:relative; font-size:130px; font-weight:800; letter-spacing:-5px; color:#fff; padding:0 30px 12px; border:4px solid var(--coral); background:rgba(255,90,96,.18); box-shadow:0 0 40px rgba(255,90,96,.45)">Hisab</span>
+    </div>
+    <div class="row" style="top:640px; font-size:44px; color:#ccc" id="e3">Follow for the next one</div>
+  </div>
+
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script>
+const DURATION = 60;
+window.MOTION = { fps: 30, beat: 60 / 97.65, beat0: 0.25, drop: 24.0 };
+const B = window.MOTION.beat, DROP = window.MOTION.drop;
+const CUE = {
+  s1: [0, 3.3], s2: [3.3, 6.4], s3: [6.4, 12.2], s4: [12.2, 16.5], s5: [16.5, 21.2], sb: [21.2, DROP],
+  s6: [DROP, 33.2], s7: [33.2, 40.6], s8: [40.6, 46.8], s9: [46.8, 53.6], s10: [53.6, 56.9], s11: [56.9, 60.01],
+};
+const R = rng(11);
+(function pins() {   // decorative city pins for S5
+  const svg = $("pins");
+  for (let i = 0; i < 46; i++) {
+    const x = 30 + R() * 940, y = 40 + R() * 240;
+    svg.insertAdjacentHTML("beforeend", `<g class="pin" transform="translate(${x},${y})"><circle r="9" fill="#ff5a60"/><circle r="22" fill="none" stroke="rgba(255,90,96,.5)" stroke-width="3"/></g>`);
+  }
+})();
+
+function renderFrame(t) {
+  const p = pulse(t);
+  // Background: dark with a coral glow until the drop, then a paper wipe opens from the centre.
+  const wk = tween(t, DROP - 0.05, frames(12), 0, 1, ease.inOutCubic);
+  const back = tween(t, CUE.s11[0] - frames(4), frames(10), 0, 1, ease.inOutCubic);
+  $("wipe").style.transform = `translate(-50%, -50%) scale(${wk * 260})`;
+  $("wipe").style.opacity = String(1 - back);
+  $("paper").style.opacity = String(t >= DROP + frames(12) ? 1 - back : 0);
+  $("g1").style.transform = `translate(${Math.sin(t * .5) * 80}px, ${Math.cos(t * .4) * 40}px) scale(${1 + 0.05 * Math.sin(t)})`;
+  $("g1").style.opacity = String(t < DROP ? 1 : back);
+  $("g2").style.opacity = String(t > 26 && t < CUE.s11[0] ? 0.9 + 0.1 * p : 0);
+  const onPaper = t >= DROP && t < CUE.s11[0];
+  $("hdl").style.color = onPaper ? "#555" : "#bbb";
+
+  // S1: typed line, the pill lands, "to join." rises
+  if (scene("s1", t, CUE.s1)) {
+    typed($("s1t"), t, 0, "Shaadi.com is", 26);
+    pill($("s1p"), t, 0.75);
+    enter($("s1b"), t, 1.3, { dy: 30 });
+  }
+  if (scene("s2", t, CUE.s2)) {
+    words($("s2").querySelector(".row"), t, CUE.s2[0] + frames(2), frames(4));
+    pill($("s2p"), t, CUE.s2[0] + frames(10));
+  }
+  // S3: Sagaai.com struck, Shaadi.com rises
+  if (scene("s3", t, CUE.s3)) {
+    const a = CUE.s3[0];
+    enter($("s3y"), t, a + frames(2)); enter($("s3n"), t, a + frames(5));
+    const dim = tween(t, a + 2.0, frames(10), 1, 0.3);
+    $("s3n").style.opacity = String(Math.min(Number($("s3n").style.opacity), dim));
+    $("s3n").style.textDecoration = t > a + 2.0 ? "line-through" : "none";
+    $("s3n").style.textDecorationColor = "#ff5a60";
+    enter($("s3y2"), t, a + 2.3); enter($("s3m"), t, a + 2.5, { scaleFrom: 0.92 });
+    $("s3m").style.textShadow = `0 0 ${tween(t, a + 2.5, 0.6, 0, 40)}px rgba(255,90,96,.7)`;
+    enter($("s3c"), t, a + 3.4, { dy: 20 });
+  }
+  // S4: 20 million counter
+  if (scene("s4", t, CUE.s4)) {
+    const a = CUE.s4[0];
+    enter($("s4a"), t, a + frames(2));
+    enter($("s4n"), t, a + 0.3, { dy: 20 });
+    $("s4n").textContent = count(t, a + 0.3, 2.2, 20000000).toLocaleString("en-US");
+    enter($("s4b"), t, a + 1.2, { dy: 20 });
+  }
+  // S5: centres and pins
+  if (scene("s5", t, CUE.s5)) {
+    const a = CUE.s5[0];
+    enter($("s5a"), t, a + frames(2)); enter($("s5b"), t, a + 0.6, { dy: 20 });
+    document.querySelectorAll(".pin").forEach((g, i) => {
+      const k = tween(t, a + 0.9 + i * 0.045, frames(8), 0, 1, ease.outBack);
+      g.style.opacity = String(clamp(k, 0, 1));
+      g.setAttribute("transform", g.getAttribute("transform").replace(/ scale\([^)]*\)/, "") + ` scale(${k})`);
+    });
+  }
+  // Break: the setup line types out into the drop
+  if (scene("sb", t, CUE.sb)) typed($("sbt"), t, CUE.sb[0] + 0.1, "Here's the trick.", 14);
+
+  // S6: free list, the card, the cursor clicks "View contact", premium pop-up
+  if (scene("s6", t, CUE.s6)) {
+    const a = CUE.s6[0];
+    enter($("s6k"), t, a + 0.3, { dx: -40, dy: 0 });
+    ["f1", "f2", "f3"].forEach((id, i) => enter($(id), t, a + 0.5 + i * B, { dx: -40, dy: 0 }));
+    enter($("pc"), t, a + 0.2, { dy: 120, dur: frames(16) });
+    enter($("f4"), t, a + 0.5 + 3 * B, { dx: -40, dy: 0 });
+    const click = a + 5.0;
+    cursor($("cur"), t, [[a, 1900, 1000], [a + 2.2, 1250, 820], [a + 3.0, 1080, 640], [a + 4.6, 1080, 640], [a + 4.95, 1500, 640]], [a + 3.0, click]);
+    $("cur").style.opacity = String(tween(t, a + 1.8, frames(6), 0, 1));
+    $("bInt").style.background = t > a + 3.0 && t < a + 3.5 ? "#e4e1da" : "#f1efea";
+    $("bInt").textContent = t > a + 3.1 ? "Interest sent ✓" : "Send interest";
+    const pk = tween(t, click + 0.15, frames(12), 0, 1, ease.outBack);
+    $("pop").style.opacity = String(clamp(pk, 0, 1));
+    $("pop").style.transform = `scale(${0.8 + 0.2 * pk})`;
+    $("phone").style.filter = "blur(0)";
+  }
+  // S7: premium unlocks, four cards on beats
+  if (scene("s7", t, CUE.s7)) {
+    const a = CUE.s7[0];
+    words($("s7").querySelector(".row"), t, a + frames(2), frames(4));
+    pill($("s7p"), t, a + frames(8));
+    ["u1", "u2", "u3", "u4"].forEach((id, i) => enter($(id), t, a + 0.8 + i * B, { dy: 70 }));
+    enter($("s7s"), t, a + 3.4, { dy: 10 });
+  }
+  // S8: the funnel chain
+  if (scene("s8", t, CUE.s8)) {
+    const a = CUE.s8[0];
+    enter($("s8a"), t, a + frames(2));
+    [["n1", 0.5], ["a1", 0.5 + B], ["n2", 0.5 + 2 * B], ["a2", 0.5 + 3 * B], ["n3", 0.5 + 4 * B]].forEach(([id, d]) =>
+      enter($(id), t, a + d, { dx: -60, dy: 0, scaleFrom: id[0] === "a" ? 0.5 : 1, e: id[0] === "a" ? ease.outBack : ease.outCubic }));
+    $("n3").style.transform += ` scale(${1 + 0.04 * p})`;
+  }
+  // S9: the money card
+  if (scene("s9", t, CUE.s9)) {
+    const a = CUE.s9[0];
+    enter($("s9a"), t, a + frames(2));
+    enter($("m1"), t, a + 0.4, { dy: 80, dur: frames(14) });
+    $("m1n").textContent = `₹${count(t, a + 0.7, 1.4, 261)} Cr`;
+    $("m2n").textContent = `−₹${count(t, a + 1.3, 1.0, 13)} Cr`;
+    enter($("s9b"), t, a + 2.8, { dy: 20 });
+    enter($("s9s"), t, a + 3.3, { dy: 10 });
+  }
+  // S10: the line
+  if (scene("s10", t, CUE.s10)) {
+    const a = CUE.s10[0];
+    [...$("s10").querySelectorAll(".row")].forEach((r, i) => words(r, t, a + frames(2) + i * 0.7, frames(4)));
+    pill($("s10p"), t, a + 0.7 + frames(4));
+  }
+  // S11: end card
+  if (scene("s11", t, CUE.s11)) {
+    const a = CUE.s11[0];
+    enter($("e1"), t, a + frames(3), { dx: -40, dy: 0 });
+    enter($("e2"), t, a + 0.4, { scaleFrom: 0.8, e: ease.outBack });
+    enter($("e3"), t, a + 1.0, { dy: 20 });
+  }
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>

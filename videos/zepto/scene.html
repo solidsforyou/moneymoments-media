@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: Zepto. 1920x1080, 60 s. Timed to the founder's track from 2:16.4:
+  drop at 6.0 s, calm outro from 45.6 s, beat about 0.6148 s from 0.06 s.
+  Facts: Business Today (12 Nov 2021): founded 2021 by two 19-year-old Stanford dropouts.
+  TechCrunch (16 Oct 2025): $450M round at a $7B valuation.
+  Forbes India (3 Aug 2026, citing Zepto's DRHP): FY26 revenue from operations Rs 22,624 Cr,
+  net loss Rs 5,905.19 Cr (restated); institutional investors valued it at about $3B
+  post-money; listing planned for Aug 2026, now aimed at Feb-May 2027.
+-->
+<style>
+  :root { --purple: #8b3dff; --pink: #ff3e9a; --red: #ff5a5a; --white: #f5f5f7; --muted: rgba(245,245,247,.6); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #08060d; }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(60px); }
+  #g1 { width: 1300px; height: 1300px; left: 310px; top: -120px; background: radial-gradient(circle, rgba(139,61,255,.50), rgba(139,61,255,.10) 45%, transparent 70%); }
+  #g2 { width: 900px; height: 900px; left: 900px; top: 300px; background: radial-gradient(circle, rgba(255,62,154,.32), transparent 65%); }
+  #g3 { width: 1100px; height: 900px; left: 410px; top: 200px; background: radial-gradient(circle, rgba(255,90,90,.35), transparent 65%); opacity: 0; }
+  #flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,235,255,.9), rgba(139,61,255,.5) 40%, transparent 72%); opacity: 0; }
+  #fx { position: absolute; inset: 0; }
+  #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 50px; display: flex; gap: 14px; align-items: center; z-index: 5; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 22px; font-weight: 600; letter-spacing: .08em; border: 2px solid var(--purple); color: #b98cff; }
+  .handle { font-size: 22px; font-weight: 500; color: #bbb; }
+  .scene { position: absolute; inset: 0; display: none; }
+  .row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 22px; }
+  .w { display: inline-block; white-space: pre; }
+  .pill { display: inline-block; padding: 4px 26px 12px; border-radius: 18px; background: var(--purple); color: #fff; font-weight: 700; box-shadow: 0 10px 40px rgba(139,61,255,.5); }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .purple { color: #c39bff; text-shadow: 0 0 40px rgba(139,61,255,.8); }
+  .red { color: var(--red); text-shadow: 0 0 40px rgba(255,90,90,.6); }
+  .chip { display: inline-block; padding: 12px 28px; border-radius: 999px; font-size: 32px; font-weight: 600; background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
+  .note { font-size: 30px; color: var(--muted); }
+  .card { position: absolute; border-radius: 30px; background: rgba(22,18,32,.75); border: 2px solid rgba(255,255,255,.12); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .strike { position: absolute; height: 8px; background: var(--red); border-radius: 4px; box-shadow: 0 0 18px rgba(255,90,90,.8); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="glow" id="g1"></div>
+  <div class="glow" id="g2"></div>
+  <div class="glow" id="g3"></div>
+  <canvas id="fx" width="1920" height="1080"></canvas>
+  <div id="tag"><span class="tpill">STARTUP MATH</span><span class="handle">@unicornkahisab</span></div>
+
+  <div class="scene" id="s1">
+    <div class="row big purple" style="top:250px; font-size:200px" id="s1y">2021</div>
+    <div class="row" style="top:520px; font-size:84px; font-weight:700; letter-spacing:-2px" id="s1a">
+      <span class="w">Two&nbsp;</span><span class="w">19-year-olds&nbsp;</span><span class="w">drop&nbsp;</span><span class="w">out&nbsp;</span><span class="w">of&nbsp;</span><span class="w">Stanford</span>
+    </div>
+  </div>
+  <div class="scene" id="s2">
+    <svg id="ring" style="position:absolute; left:660px; top:240px" width="600" height="600" viewBox="0 0 600 600">
+      <circle cx="300" cy="300" r="260" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="12"/>
+      <circle id="arc" cx="300" cy="300" r="260" fill="none" stroke="#8b3dff" stroke-width="12" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1634" stroke-dashoffset="1634" style="filter: drop-shadow(0 0 14px rgba(139,61,255,.9))"/>
+    </svg>
+    <div style="position:absolute; left:0; right:0; top:420px; display:block; font-size:76px; font-weight:700; letter-spacing:-2px; line-height:1.25; text-align:center" id="s2a">to deliver groceries<br>in <span class="pill">10 minutes</span></div>
+  </div>
+
+  <div class="scene" id="s3">
+    <div class="row big" style="top:170px; font-size:230px" id="s3z">Zepto</div>
+    <div class="row" style="top:470px; font-size:56px; font-weight:600; color:#ccc" id="s3a">valued at</div>
+    <div class="row big purple" style="top:560px; font-size:210px" id="s3n">$0B</div>
+    <div class="row" style="top:820px" id="s3c"><span class="chip">October 2025 funding round</span></div>
+  </div>
+
+  <div class="scene" id="s4">
+    <div class="row" style="top:250px; font-size:60px; font-weight:600; color:#ccc" id="s4a">Revenue, FY26</div>
+    <div class="row big" style="top:350px; font-size:220px" id="s4n">₹0 Cr</div>
+    <div class="row" style="top:640px; font-size:52px; font-weight:600" id="s4b">Huge. <span class="w" style="color:var(--red)">&nbsp;But…</span></div>
+  </div>
+
+  <div class="scene" id="s5">
+    <div class="row" style="top:250px; font-size:60px; font-weight:600; color:#ccc" id="s5a">Net loss, FY26</div>
+    <div class="row big red" style="top:350px; font-size:220px" id="s5n">₹0 Cr</div>
+    <div class="row" style="top:650px" id="s5c"><span class="chip">in one year</span></div>
+  </div>
+
+  <div class="scene" id="s6">
+    <div class="row" style="top:230px; font-size:66px; font-weight:700" id="s6a">For every ₹100 of revenue</div>
+    <div id="bar" style="position:absolute; left:260px; top:430px; width:1400px; height:140px; border-radius:24px; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.14); overflow:hidden">
+      <div id="barR" style="position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg,#ff5a5a,#ff3e9a); box-shadow:0 0 40px rgba(255,90,90,.7)"></div>
+    </div>
+    <div class="row" style="top:630px; font-size:72px; font-weight:800" id="s6b">it lost about&nbsp;<span class="red">₹26</span></div>
+  </div>
+
+  <div class="scene" id="s7">
+    <div class="row" style="top:150px; font-size:66px; font-weight:700" id="s7a">Then came the IPO plan</div>
+    <div class="card" id="k1" style="left:160px; top:330px; width:500px; height:340px"></div>
+    <div class="card" id="k2" style="left:710px; top:330px; width:500px; height:340px"></div>
+    <div class="card" id="k3" style="left:1260px; top:330px; width:500px; height:340px; border-color:rgba(139,61,255,.6); box-shadow:0 0 60px rgba(139,61,255,.3)"></div>
+    <div id="k1t" style="position:absolute; left:210px; top:380px; width:400px"><div style="font-size:32px; color:#c39bff; font-weight:700">THE PLAN</div><div style="font-size:54px; font-weight:800; margin-top:14px; line-height:1.15">List in<br>Aug 2026</div></div>
+    <div class="strike" id="kx" style="left:205px; top:540px; width:0"></div>
+    <div id="k2t" style="position:absolute; left:760px; top:380px; width:400px"><div style="font-size:32px; color:#c39bff; font-weight:700">BIG INVESTORS (REPORTED)</div><div style="font-size:54px; font-weight:800; margin-top:14px; line-height:1.15">Valued it at<br>about $3B</div></div>
+    <div id="k3t" style="position:absolute; left:1310px; top:380px; width:400px"><div style="font-size:32px; color:#c39bff; font-weight:700">NOW</div><div style="font-size:54px; font-weight:800; margin-top:14px; line-height:1.15">Aiming for<br>Feb–May 2027</div></div>
+    <div class="row note" style="top:740px; font-size:34px" id="s7s">Source: Forbes India, 3 Aug 2026 (citing Zepto's IPO filing)</div>
+  </div>
+
+  <div class="scene" id="s8">
+    <div class="row" style="top:150px; font-size:62px; font-weight:700" id="s8a">Same company. Two prices.</div>
+    <div id="v1" style="position:absolute; left:560px; bottom:230px; width:300px; height:0; border-radius:24px 24px 0 0; background:linear-gradient(180deg,#b98cff,#8b3dff); box-shadow:0 0 50px rgba(139,61,255,.6)"></div>
+    <div id="v2" style="position:absolute; left:1060px; bottom:230px; width:300px; height:0; border-radius:24px 24px 0 0; background:linear-gradient(180deg,#ff8fb8,#ff3e9a); box-shadow:0 0 50px rgba(255,62,154,.5)"></div>
+    <div id="v1n" style="position:absolute; left:560px; width:300px; text-align:center; font-size:84px; font-weight:800">$7B</div>
+    <div id="v2n" style="position:absolute; left:1060px; width:300px; text-align:center; font-size:84px; font-weight:800">$3B</div>
+    <div id="v1l" style="position:absolute; left:480px; top:870px; width:460px; text-align:center; font-size:36px; color:#ccc">Private round, 2025</div>
+    <div id="v2l" style="position:absolute; left:980px; top:870px; width:460px; text-align:center; font-size:36px; color:#ccc">IPO investors, 2026</div>
+  </div>
+
+  <div class="scene" id="s9">
+    <div class="row" style="top:380px; font-size:96px; font-weight:800; letter-spacing:-3px" id="s9a"><span class="w">Who's&nbsp;</span><span class="w pill">right?</span></div>
+    <div class="row" style="top:560px; font-size:48px; color:#ccc" id="s9b">Would you buy Zepto's IPO? Comment below</div>
+  </div>
+
+  <div class="scene" id="s10">
+    <div class="row" style="top:400px; gap:26px">
+      <span style="font-size:120px; font-weight:700; letter-spacing:-4px" id="e1">Unicorn <span style="font-weight:400; color:#bbb">ka</span></span>
+      <span id="e2" style="font-size:130px; font-weight:800; letter-spacing:-5px; padding:0 30px 12px; border:4px solid #8b3dff; background:rgba(139,61,255,.2); box-shadow:0 0 40px rgba(139,61,255,.5)">Hisab</span>
+    </div>
+    <div class="row" style="top:640px; font-size:44px; color:#ccc" id="e3">Follow for the next one</div>
+  </div>
+
+  <div id="flash"></div>
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script>
+const DURATION = 60;
+window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.06, drop: 6.0 };
+const B = window.MOTION.beat, DROP = window.MOTION.drop, OUTRO = 45.6;
+const CUE = {
+  s1: [0, 3.0], s2: [3.0, DROP], s3: [DROP, 13.4], s4: [13.4, 20.8], s5: [20.8, 27.4], s6: [27.4, 34.8],
+  s7: [34.8, OUTRO], s8: [OUTRO, 53.4], s9: [53.4, 56.9], s10: [56.9, 60.01],
+};
+const LOSS_PER_100 = Math.round(5905.19 / 22624 * 100);   // 26
+const R = rng(5);
+const STARS = Array.from({ length: 90 }, () => ({ x: R() * 1920, y: R() * 1080, r: 1 + R() * 2.5, sp: 20 + R() * 60, ph: R() * 6.28 }));
+const ctx = $("fx").getContext("2d");
+function fx(t) {
+  ctx.clearRect(0, 0, 1920, 1080);
+  const p = pulse(t), calm = t > OUTRO ? 0.5 : 1;
+  for (const s of STARS) {
+    const x = (s.x - t * s.sp * calm + 1920 * 8) % 1920;
+    ctx.fillStyle = `rgba(195,155,255,${(0.15 + 0.15 * Math.sin(t * 1.3 + s.ph) + 0.3 * p) * calm})`;
+    ctx.beginPath(); ctx.arc(x, s.y, s.r, 0, 6.28); ctx.fill();
+  }
+}
+
+function renderFrame(t) {
+  const p = pulse(t);
+  fx(t);
+  $("g1").style.transform = `translate(${Math.sin(t * .4) * 90}px, ${Math.cos(t * .3) * 50}px) scale(${1 + 0.07 * p})`;
+  $("g2").style.transform = `translate(${Math.cos(t * .5) * 70}px, ${Math.sin(t * .35) * 60}px)`;
+  const lossOn = (t > CUE.s5[0] && t < CUE.s6[1]) ? 1 : 0;
+  $("g3").style.opacity = String(lossOn * 0.9);
+  $("g2").style.opacity = String(1 - lossOn * 0.7);
+  const fl = t >= DROP ? tween(t, DROP, frames(14), 1, 0) : 0;
+  $("flash").style.opacity = String(fl * 0.85);
+  const shake = t >= DROP && t < DROP + 0.35 ? (1 - (t - DROP) / 0.35) * 12 : 0;
+  $("stage").style.transform = `translate(${Math.sin(t * 90) * shake}px, ${Math.cos(t * 77) * shake}px)`;
+
+  if (scene("s1", t, CUE.s1)) {
+    $("s1y").style.opacity = 1;
+    $("s1y").style.transform = `scale(${tween(t, -0.3, 1.0, 1.25, 1, ease.outExpo)})`;
+    $("s1y").style.letterSpacing = `${tween(t, -0.3, 1.2, 30, -6, ease.outExpo)}px`;
+    words($("s1a"), t, 0.45, frames(4));
+  }
+  if (scene("s2", t, CUE.s2)) {
+    const a = CUE.s2[0];
+    enter($("s2a"), t, a + frames(2), { dy: 30 });
+    enter($("ring"), t, a, { dy: 0, scaleFrom: 0.85 });
+    $("arc").setAttribute("stroke-dashoffset", String(1634 * (1 - tween(t, a, DROP - a, 0, 1, ease.inCubic))));
+  }
+  if (scene("s3", t, CUE.s3)) {
+    const a = CUE.s3[0];
+    const k = tween(t, a, frames(10), 0, 1, ease.outBack);
+    $("s3z").style.opacity = String(clamp(k * 1.5, 0, 1));
+    $("s3z").style.transform = `scale(${1.5 - 0.5 * k})`;
+    $("s3z").style.textShadow = `0 0 ${50 + 50 * p}px rgba(139,61,255,.8)`;
+    enter($("s3a"), t, a + 1.0, { dy: 24 });
+    enter($("s3n"), t, a + 1.4, { dy: 30, scaleFrom: 0.9 });
+    $("s3n").textContent = `$${count(t, a + 1.4, 1.8, 7)}B`;
+    if (t > a + 3.3) $("s3n").style.transform = `scale(${1 + 0.04 * p})`;
+    enter($("s3c"), t, a + 3.0, { dy: 24 });
+  }
+  if (scene("s4", t, CUE.s4)) {
+    const a = CUE.s4[0];
+    enter($("s4a"), t, a + frames(2));
+    enter($("s4n"), t, a + 0.4, { dy: 30, scaleFrom: 0.9 });
+    $("s4n").textContent = `₹${inr(count(t, a + 0.4, 2.2, 22624))} Cr`;
+    enter($("s4b"), t, a + 3.4, { dy: 24 });
+  }
+  if (scene("s5", t, CUE.s5)) {
+    const a = CUE.s5[0];
+    enter($("s5a"), t, a + frames(2));
+    enter($("s5n"), t, a + 0.4, { dy: 30, scaleFrom: 0.9 });
+    $("s5n").textContent = `₹${inr(count(t, a + 0.4, 2.2, 5905))} Cr`;
+    if (t > a + 2.6) $("s5n").style.transform = `scale(${1 + 0.04 * p})`;
+    enter($("s5c"), t, a + 2.4, { dy: 24 });
+  }
+  if (scene("s6", t, CUE.s6)) {
+    const a = CUE.s6[0];
+    enter($("s6a"), t, a + frames(2));
+    enter($("bar"), t, a + 0.4, { dy: 40 });
+    $("barR").style.width = `${tween(t, a + 1.2, 1.6, 0, 1400 * LOSS_PER_100 / 100, ease.inOutCubic)}px`;
+    enter($("s6b"), t, a + 2.9, { dy: 30 });
+  }
+  if (scene("s7", t, CUE.s7)) {
+    const a = CUE.s7[0];
+    enter($("s7a"), t, a + frames(2));
+    [["k1", "k1t", 0.5], ["k2", "k2t", 0.5 + 4 * B], ["k3", "k3t", 0.5 + 8 * B]].forEach(([c, x, d]) => {
+      enter($(c), t, a + d, { dy: 80 }); enter($(x), t, a + d + frames(4), { dy: 40 });
+    });
+    $("kx").style.width = `${tween(t, a + 0.5 + 2.5 * B, frames(10), 0, 400, ease.inOutCubic)}px`;
+    enter($("s7s"), t, a + 0.5 + 9 * B, { dy: 10 });
+  }
+  if (scene("s8", t, CUE.s8)) {
+    const a = CUE.s8[0];
+    enter($("s8a"), t, a + frames(2));
+    const h1 = tween(t, a + 0.6, 1.6, 0, 7 * 70, ease.outCubic), h2 = tween(t, a + 2.2, 1.6, 0, 3 * 70, ease.outCubic);
+    $("v1").style.height = `${h1}px`; $("v2").style.height = `${h2}px`;
+    $("v1n").style.top = `${1080 - 230 - h1 - 110}px`; $("v2n").style.top = `${1080 - 230 - h2 - 110}px`;
+    $("v1n").style.opacity = String(tween(t, a + 1.6, frames(8), 0, 1)); $("v2n").style.opacity = String(tween(t, a + 3.2, frames(8), 0, 1));
+    enter($("v1l"), t, a + 0.8, { dy: 20 }); enter($("v2l"), t, a + 2.4, { dy: 20 });
+  }
+  if (scene("s9", t, CUE.s9)) {
+    const a = CUE.s9[0];
+    words($("s9a"), t, a + frames(2), frames(5));
+    enter($("s9b"), t, a + 1.0, { dy: 20 });
+  }
+  if (scene("s10", t, CUE.s10)) {
+    const a = CUE.s10[0];
+    enter($("e1"), t, a + frames(3), { dx: -40, dy: 0 });
+    enter($("e2"), t, a + 0.4, { scaleFrom: 0.8, e: ease.outBack });
+    enter($("e3"), t, a + 1.0, { dy: 20 });
+  }
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>
