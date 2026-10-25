@@ -27,8 +27,8 @@ Fallbacks if the handle is taken: add `.in`, `_hq` or `daily`
 ## 3. Bio (check it fits Instagram's character limit)
 
 ```
-Indian startups ka asli hisaab, 30 sec mein
-Har number ka source caption mein
+How Indian startups really make money, in 30 seconds
+Every number sourced in the caption
 By the team building @solidsforyou
 ```
 Link: www.solidsforyou.com (or a link page later).
