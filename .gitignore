@@ -7,3 +7,4 @@ __pycache__/
 # Intermediate video renders
 videos/**/*-draft.mp4
 videos/**/*-mix.wav
+videos/out/*.log
