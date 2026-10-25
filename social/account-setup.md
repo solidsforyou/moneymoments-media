@@ -7,12 +7,12 @@ before deciding.
 
 | Name | Handle | Why |
 |---|---|---|
-| **Paisa Kahan Se** (recommended) | @paisakahanse | Hinglish, says the promise: where the money in a startup comes from. Works as the hook line of every video. |
+| Paisa Kahan Se | @paisakahanse | Hinglish, says the promise: where the money in a startup comes from. Works as the hook line of every video. |
 | Startup Gully | @startupgully | Desi and casual, broad enough for any startup story. |
-| Unicorn Ka Hisaab | @unicornkahisaab | Strong for the numbers videos, longer to type. |
+| **Unicorn Ka Hisaab** (chosen) | handle to confirm | Strong for the numbers videos, longer to type. |
 
 Fallbacks if the handle is taken: add `.in`, `_hq` or `daily`
-(@paisakahanse.in), never random numbers.
+(for example `.in`), never random numbers.
 
 ## 2. Account type
 - **Professional account** (Creator or Business); the Instagram API only
@@ -36,8 +36,8 @@ The last line is required: SFY videos on a page that hides who runs it would
 be astroturfing.
 
 ## 4. Profile photo
-A rupee sign or "PKS" mark glowing on near-black, in the page's accent
-colour. Claude can design and render it as a 1080x1080 PNG.
+Done: `brand/logo/ukh-icon.png` (glowing unicorn horn in amber rings).
+Wordmark and stacked versions sit next to it.
 
 ## 5. Highlights
 Startup Math · Decoded · Founders · Autopsy · Paisa Tips · SFY
@@ -73,8 +73,8 @@ Flow per batch:
 4. Founder approves; posting by API only when the founder asks for it.
 
 ### Voice-over file rules
-- One file per script, named exactly as the script ID: `PKS-01.mp3` ...
-  `PKS-18.mp3`.
+- One file per script, named exactly as the script ID: `UKH-01.mp3` ...
+  `UKH-18.mp3`.
 - MP3 at 128 kbps or more, or WAV. Voice only: no music, no effects.
 - Same voice and settings for every file.
 - Leave about half a second of silence at the start and end.

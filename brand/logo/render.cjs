@@ -17,7 +17,7 @@ const versions = [
     await page.setViewportSize({ width, height });
     await page.goto(`${file}?v=${v}`);
     await page.evaluate(() => document.fonts.ready);
-    const out = path.join(__dirname, `pks-${v}.png`);
+    const out = path.join(__dirname, `ukh-${v}.png`);
     await page.screenshot({ path: out, clip: { x: 0, y: 0, width, height } });
     console.log("wrote", out);
   }

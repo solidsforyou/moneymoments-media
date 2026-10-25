@@ -37,6 +37,7 @@
   }
   #icon .r1 { width: 820px; height: 820px; border-color: rgba(255,176,46,.35); box-shadow: 0 0 18px rgba(255,150,30,.35); }
   #icon .r2 { width: 640px; height: 640px; }
+  #icon .horn { position: absolute; inset: 0; }
   #icon .mark {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 400px; letter-spacing: -10px; line-height: 1;
@@ -64,7 +65,7 @@
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     gap: 34px; font-weight: 700; letter-spacing: -4px; color: var(--white);
   }
-  #wordmark .words { font-size: 190px; padding-bottom: 80px; }
+  #wordmark .words { font-size: 170px; padding-bottom: 80px; }
   .hl {
     position: relative; color: var(--white); padding: 0 30px 12px;
     background: linear-gradient(180deg, rgba(255,176,46,.30), rgba(255,122,0,.18));
@@ -78,6 +79,7 @@
   }
   .hl::before { left: -11px; top: -11px; }
   .hl::after { right: -11px; bottom: -11px; }
+  .ka { font-weight: 400; color: rgba(245,245,247,.75); }
   .qmark { color: var(--amber); text-shadow: 0 0 30px rgba(255,150,30,.9); margin-left: -20px; }
 
   /* Stacked: 1080x1350 (4:5), for posts and the first frame of reels */
@@ -101,24 +103,47 @@
     <div class="glow"></div>
     <div class="ring r1"></div>
     <div class="ring r2"></div>
-    <div class="mark"><span class="rupee">₹</span><span class="q">?</span></div>
+    <svg class="horn" viewBox="0 0 1080 1080" width="1080" height="1080">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff7a00"/>
+          <stop offset=".55" stop-color="#ffb02e"/>
+          <stop offset="1" stop-color="#fff1d6"/>
+        </linearGradient>
+        <filter id="hglow" filterUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1080">
+          <feGaussianBlur stdDeviation="16" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <clipPath id="hclip"><path d="M452 790 Q510 812 570 796 L640 290 Z"/></clipPath>
+      </defs>
+      <g filter="url(#hglow)">
+        <path d="M452 790 Q510 812 570 796 L640 290 Z" fill="url(#hg)"/>
+        <g clip-path="url(#hclip)" fill="none" stroke="#07070a" stroke-width="14" stroke-linecap="round">
+          <path d="M420 760 Q500 755 620 650"/>
+          <path d="M440 650 Q520 645 640 540"/>
+          <path d="M460 545 Q540 540 660 435"/>
+          <path d="M490 445 Q560 440 680 340"/>
+        </g>
+        <path d="M640 254 L648 280 L674 288 L648 296 L640 322 L632 296 L606 288 L632 280 Z" fill="#fff"/>
+      </g>
+    </svg>
     <div class="grain"></div>
   </div>
 
   <div class="art" id="wordmark">
     <div class="glow"></div>
     <div class="horizon"></div>
-    <div class="words"><span>Paisa</span><span class="hl">kahan</span><span>se</span><span class="qmark">?</span></div>
+    <div class="words"><span>Unicorn</span><span class="ka">ka</span><span class="hl">Hisaab</span></div>
     <div class="grain"></div>
   </div>
 
   <div class="art" id="stacked">
     <div class="glow"></div>
     <div class="stack">
-      <div class="line">Paisa</div>
-      <div class="hl">kahan</div>
-      <div class="line">se<span class="qmark" style="margin-left:4px">?</span></div>
-      <div class="tag">Indian startups ka asli hisaab</div>
+      <div class="line">Unicorn</div>
+      <div class="line ka">ka</div>
+      <div class="hl">Hisaab</div>
+      <div class="tag">How Indian startups really make money</div>
     </div>
     <div class="grain"></div>
   </div>
