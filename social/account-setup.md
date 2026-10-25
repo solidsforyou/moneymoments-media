@@ -9,7 +9,7 @@ before deciding.
 |---|---|---|
 | Paisa Kahan Se | @paisakahanse | Hinglish, says the promise: where the money in a startup comes from. Works as the hook line of every video. |
 | Startup Gully | @startupgully | Desi and casual, broad enough for any startup story. |
-| **Unicorn Ka Hisaab** (chosen) | handle to confirm | Strong for the numbers videos, longer to type. |
+| **Unicorn Ka Hisaab** (chosen) | @unicornkahisab | Strong for the numbers videos, longer to type. |
 
 Fallbacks if the handle is taken: add `.in`, `_hq` or `daily`
 (for example `.in`), never random numbers.
@@ -40,7 +40,7 @@ Done: `brand/logo/ukh-icon.png` (glowing unicorn horn in amber rings).
 Wordmark and stacked versions sit next to it.
 
 ## 5. Highlights
-Startup Math · Decoded · Founders · Autopsy · Paisa Tips · SFY
+Startup Math · Decoded · Founders · Autopsy · Money Tips · SFY
 
 ## 6. Pinned reels (once posted)
 1. The best Startup Math video (shows what the page is).
