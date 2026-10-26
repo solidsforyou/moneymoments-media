@@ -20,8 +20,7 @@ window.EDIT = {
     {"src": "3263", "a": 27, "b": 32, "from_s": 12.0, "speed": 0.5, "mv": [[1.1, 0, 0, 0], [1.3, 0, 0, -6]], "tr": "push", "dim": true}
   ],
   "words": [
-    {"text": "Look closer.", "a": -10, "b": -6, "cls": "small center", "first": true},
-    {"text": "Every thread.", "a": -6, "b": -3, "cls": "small"},
+    {"text": "Look closer.", "a": -10, "b": -7.85, "cls": "small center", "first": true},
     {"text": "Cut.", "a": 0, "b": 2},
     {"text": "Stitched.", "a": 2, "b": 4},
     {"text": "Labelled.", "a": 6, "b": 8},
@@ -31,12 +30,18 @@ window.EDIT = {
     {"text": "Just solids.", "a": 22, "b": 24},
     {"text": "For you.", "a": 24, "b": 27, "cls": "center"}
   ],
-  "lyrics_note": "Hook 'I promise you' heard in the track at 2:20.4, 2:30.0 and 2:40.4 (times below are seconds into the 30 s cut).",
+  "lyrics_note": "addiction by LONOWN and Asenssia. Lines from Spotify's lyrics, timed by ear from 2:16.4 (times are seconds into the 30 s cut).",
   "lyrics": [
+    {"out": 4.12, "words": [
+      {"text": "You", "t": 1.38, "x": -640, "y": -230, "size": 140, "ry": 22},
+      {"text": "my", "t": 1.74, "x": -360, "y": -230, "size": 140, "ry": 18},
+      {"text": "addiction", "t": 2.06, "x": 0, "y": 0, "size": 250, "ry": -10},
+      {"text": "I", "t": 2.86, "x": 90, "y": 240, "size": 160, "ry": -18},
+      {"text": "believe", "t": 3.32, "x": 500, "y": 240, "size": 160, "ry": -22}]},
     {"out": 6.18, "words": [
-      {"text": "I", "t": 4.02, "x": -620, "y": -170, "size": 170, "ry": 18},
-      {"text": "promise", "t": 4.6, "x": -20, "y": 10, "size": 290, "ry": -8},
-      {"text": "you", "t": 5.25, "x": 560, "y": 210, "size": 210, "ry": -22}]},
+      {"text": "I", "t": 4.16, "x": -620, "y": -170, "size": 170, "ry": 18},
+      {"text": "promise", "t": 4.78, "x": -20, "y": 10, "size": 290, "ry": -8},
+      {"text": "you", "t": 5.36, "x": 560, "y": 210, "size": 210, "ry": -22}]},
     {"out": 16.0, "words": [
       {"text": "I", "t": 13.58, "x": -700, "y": -260, "size": 150, "ry": 26},
       {"text": "promise", "t": 14.3, "x": -150, "y": -20, "size": 270, "ry": 22},

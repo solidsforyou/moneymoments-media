@@ -196,7 +196,7 @@ const GROUPS = window.EDIT.lyrics.map((g, gi) => {
   el.className = "grp"; lyr.appendChild(el);
   const t0 = g.words[0].t;
   // Small outlined "promise" motes scattered through the space around each hook.
-  const motes = Array.from({ length: 9 }, (_, m) => ({ text: m % 3 === 2 ? "you" : "promise", t: t0 + 0.12 * m,
+  const motes = Array.from({ length: 9 }, (_, m) => ({ text: g.words.some((w) => w.text === "addiction") ? (m % 2 ? "addiction" : "believe") : (m % 3 === 2 ? "you" : "promise"), t: t0 + 0.12 * m,
     x: (rand() - 0.5) * 1900, y: (rand() - 0.5) * 1000, z: -300 - rand() * 900, size: 46 + rand() * 50, ry: (rand() - 0.5) * 60, mote: true }));
   const words = [...g.words, ...motes].map((w) => {
     const d = document.createElement("div");
