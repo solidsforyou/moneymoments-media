@@ -1,5 +1,5 @@
 window.EDIT = {
-  "beat": 0.6147541, "drop": 6.18, "end_beats": 31,
+  "beat": 0.6147541, "drop": 6.18, "end_beats": 32,
   "shots": [
     {"src": "2218", "a": -10, "b": -6, "from_s": 0.0, "speed": 0.5, "cy": 0.5, "mv": [[1.25, 0, 0, -4], [1.08, 0, 0, 4]], "tr": "fade"},
     {"src": "3250", "a": -6, "b": -3, "from_s": 0.0, "speed": 0.6, "mv": [[1.05, 50, 0, 6], [1.22, -40, -10, -3]], "tr": "push"},
@@ -17,19 +17,33 @@ window.EDIT = {
     {"src": "2220", "a": 20, "b": 22, "from_s": 0.6, "speed": 0.6, "cy": 0.6, "mv": [[1.25, 0, 0, -5], [1.08, 0, 0, 5]], "tr": "zoom"},
     {"src": "3273", "a": 22, "b": 24, "from_s": 10.0, "speed": 1.0, "cy": 0.55, "mv": [[1.08, 40, 0, 5], [1.26, -30, 0, -4]], "tr": "push"},
     {"src": "3271", "a": 24, "b": 27, "from_s": 1.0, "speed": 0.5, "cy": 0.52, "mv": [[1.05, 0, 0, -6], [1.35, 0, 0, 6]], "tr": "zoom"},
-    {"src": "3263", "a": 27, "b": 31, "from_s": 12.0, "speed": 0.5, "mv": [[1.1, 0, 0, 0], [1.3, 0, 0, -6]], "tr": "push", "dim": true}
+    {"src": "3263", "a": 27, "b": 32, "from_s": 12.0, "speed": 0.5, "mv": [[1.1, 0, 0, 0], [1.3, 0, 0, -6]], "tr": "push", "dim": true}
   ],
   "words": [
     {"text": "Look closer.", "a": -10, "b": -6, "cls": "small center", "first": true},
     {"text": "Every thread.", "a": -6, "b": -3, "cls": "small"},
-    {"text": "Every stitch.", "a": -3, "b": 0, "cls": "small"},
     {"text": "Cut.", "a": 0, "b": 2},
     {"text": "Stitched.", "a": 2, "b": 4},
     {"text": "Labelled.", "a": 6, "b": 8},
     {"text": "Pressed.", "a": 8, "b": 10},
-    {"text": "Threaded.", "a": 14, "b": 16},
+    {"text": "Threaded.", "a": 16, "b": 18},
     {"text": "By hand.", "a": 18, "b": 20},
     {"text": "Just solids.", "a": 22, "b": 24},
     {"text": "For you.", "a": 24, "b": 27, "cls": "center"}
+  ],
+  "lyrics_note": "Hook 'I promise you' heard in the track at 2:20.4, 2:30.0 and 2:40.4 (times below are seconds into the 30 s cut).",
+  "lyrics": [
+    {"out": 6.18, "words": [
+      {"text": "I", "t": 4.02, "x": -620, "y": -170, "size": 170, "ry": 18},
+      {"text": "promise", "t": 4.6, "x": -20, "y": 10, "size": 290, "ry": -8},
+      {"text": "you", "t": 5.25, "x": 560, "y": 210, "size": 210, "ry": -22}]},
+    {"out": 16.0, "words": [
+      {"text": "I", "t": 13.58, "x": -700, "y": -260, "size": 150, "ry": 26},
+      {"text": "promise", "t": 14.3, "x": -150, "y": -20, "size": 270, "ry": 22},
+      {"text": "you", "t": 15.1, "x": 470, "y": 250, "size": 230, "ry": 14}]},
+    {"out": 25.86, "words": [
+      {"text": "I", "t": 24.0, "x": -660, "y": 0, "size": 190, "ry": -14},
+      {"text": "promise", "t": 24.5, "x": -40, "y": 0, "size": 190, "ry": 0},
+      {"text": "you", "t": 24.95, "x": 680, "y": 0, "size": 190, "ry": 14}]}
   ]
 }

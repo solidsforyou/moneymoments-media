@@ -8,7 +8,8 @@
   html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
   body { font-family: "Inter Display", "Inter", sans-serif; color: #fff; }
   #stage { position: absolute; inset: 0; perspective: 1800px; overflow: hidden; }
-  #cam { position: absolute; inset: 0; transform-style: preserve-3d; }
+  /* #cam stays flat: each shot carries its own perspective, so blurs are never clipped by a 3D context */
+  #cam { position: absolute; inset: 0; }
   .shot { position: absolute; inset: 0; display: none; overflow: hidden; will-change: transform, opacity; }
   .shot img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
   #grade { position: absolute; inset: 0; pointer-events: none;
@@ -16,8 +17,16 @@
   #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
   .word { position: absolute; left: 120px; bottom: 120px; font-weight: 900; font-size: 210px; line-height: 0.9;
     letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; display: none;
-    text-shadow: 0 6px 40px rgba(0,0,0,0.45); }
-  .word span { display: inline-block; }
+    text-shadow: 0 2px 0 #d4d4d4, 0 4px 0 #bdbdbd, 0 6px 0 #a6a6a6, 0 8px 0 #8f8f8f, 0 10px 0 #787878, 0 22px 40px rgba(0,0,0,0.55); perspective: 900px; }
+  .word span { display: inline-block; transform-origin: 50% 100%; }
+  #lyr { position: absolute; inset: 0; perspective: 1300px; pointer-events: none; }
+  #lyr .grp { position: absolute; inset: 0; transform-style: preserve-3d; display: none; }
+  .lw { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+  .lw div { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); font-weight: 900; line-height: 1;
+    letter-spacing: -0.045em; text-transform: uppercase; white-space: nowrap; }
+  .lw .face { color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.25); }
+  .lw .ghost { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.8); }
+  .lw.mote div { font-weight: 800; }
   .word.small { font-size: 120px; font-weight: 800; letter-spacing: -0.03em; }
   .word.center { left: 0; right: 0; bottom: auto; top: 50%; text-align: center; }
   #end { position: absolute; inset: 0; display: none; background: #050505; }
@@ -34,6 +43,7 @@
 <div id="stage"><div id="cam"></div></div>
 <svg id="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
 <div id="grade"></div>
+<div id="lyr"></div>
 <div id="end">
   <div class="mark" id="mark"></div>
   <div class="rule" id="rule"></div>
@@ -114,7 +124,7 @@ function renderShot(s, t) {
   const dir = s.i % 2 ? 1 : -1;
   if (kin < 1) {
     if (s.tr === "push") { x += (1 - kin) * 1920 * dir; blur += 10 * Math.sin(Math.PI * kin); }
-    if (s.tr === "zoom") { sc *= lerp(0.82, 1, kin); }
+    if (s.tr === "zoom") { sc *= lerp(0.88, 1, kin); }
     if (s.tr === "fade" || s.tr === "flash") op = kin;
   }
   if (kout > 0) {
@@ -122,9 +132,10 @@ function renderShot(s, t) {
     if (next.tr === "zoom") { sc *= 1 + 0.45 * kout; op = 1 - kout; blur += 12 * kout; }
     if (next.tr === "fade" || next.tr === "flash") op = 1 - kout;
   }
+  sc = Math.max(sc, 1.06);   // never smaller than the frame, even mid-turn
   // A shot zooming out of frame sits on top so it dissolves forward into the next one.
   el.style.zIndex = next && next.tr === "zoom" && kout > 0 ? 3 : 2;
-  el.style.transform = `translate(${x}px, ${y}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
+  el.style.transform = `perspective(1800px) translate(${x}px, ${y}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
   el.style.opacity = op;
   const dim = s.dim ? 1 - 0.5 * tween(t, s.a + 0.6, 1.4, 0, 1, ease.inOutCubic) : 1;
   el.style.filter = `contrast(1.07) saturate(1.1) brightness(${dim})` + (blur > 0.3 ? ` blur(${blur}px)` : "");
@@ -139,7 +150,7 @@ function renderWord(w, i, t) {
   for (let j = 0; j < spans.length; j++) {
     const kk = tween(t, w.a + j * (big ? 0.025 : 0.03), big ? 0.22 : 0.36, 0, 1, ease.outCubic);
     spans[j].style.opacity = kk;
-    spans[j].style.transform = `translateY(${(1 - kk) * (big ? 80 : 40)}px)`;
+    spans[j].style.transform = `translateY(${(1 - kk) * (big ? 80 : 40)}px) rotateX(${(1 - kk) * -95}deg)`;
     spans[j].style.filter = kk < 1 ? `blur(${(1 - kk) * 10}px)` : "none";
   }
   el.style.opacity = 1 - tween(t, w.b - 0.14, 0.14, 0, 1, ease.inCubic);
@@ -176,10 +187,76 @@ function renderEnd(t) {
   $("url").style.transform = `translateY(${(1 - u) * 20}px)`;
 }
 
+// 3D lyrics: each word is an extruded block that flies up out of depth,
+// hangs in space with outline echoes behind it, then flies through the lens on the group's exit.
+const DEPTH = 11, ECHOES = 3, LIN = 0.5, LOUT = 0.32;
+const lyr = $("lyr"), rand = rng(7);
+const GROUPS = window.EDIT.lyrics.map((g, gi) => {
+  const el = document.createElement("div");
+  el.className = "grp"; lyr.appendChild(el);
+  const t0 = g.words[0].t;
+  // Small outlined "promise" motes scattered through the space around each hook.
+  const motes = Array.from({ length: 9 }, (_, m) => ({ text: m % 3 === 2 ? "you" : "promise", t: t0 + 0.12 * m,
+    x: (rand() - 0.5) * 1900, y: (rand() - 0.5) * 1000, z: -300 - rand() * 900, size: 46 + rand() * 50, ry: (rand() - 0.5) * 60, mote: true }));
+  const words = [...g.words, ...motes].map((w) => {
+    const d = document.createElement("div");
+    d.className = "lw" + (w.mote ? " mote" : "");
+    const layers = w.mote ? [`<div class="ghost" style="font-size:${w.size}px">${w.text}</div>`] : [
+      ...Array.from({ length: ECHOES }, (_, e) => `<div class="ghost" style="font-size:${w.size}px"></div>`),
+      `<div class="face" style="font-size:${w.size}px">${w.text}</div>`];
+    d.innerHTML = layers.join("");
+    if (!w.mote) d.querySelectorAll(".ghost").forEach((e) => { e.textContent = w.text; });
+    el.appendChild(d);
+    return { ...w, el: d };
+  });
+  return { ...g, el, words, t0 };
+});
+
+function renderLyrics(t) {
+  GROUPS.forEach((g) => {
+    const on = t >= g.t0 - 0.05 && t < g.out + 0.05;
+    g.el.style.display = on ? "block" : "none";
+    if (!on) return;
+    // The whole lyric space sways slowly, so the words feel placed in the scene.
+    g.el.style.transform = `rotateY(${7 * Math.sin(t * 0.7)}deg) rotateX(${4 * Math.sin(t * 0.5 + 1)}deg)`;
+    const out = ease.inCubic(clamp((t - (g.out - LOUT)) / LOUT, 0, 1));
+    g.words.forEach((w, wi) => {
+      const k = ease.outExpo(clamp((t - w.t) / (w.mote ? 0.8 : LIN), 0, 1));
+      if (t < w.t) { w.el.style.display = "none"; return; }
+      w.el.style.display = "block";
+      const z = lerp(w.mote ? w.z - 1200 : -1500, w.z || 0, k) + 70 * (t - w.t) + out * (w.mote ? 1400 : 1300 + 120 * wi);
+      const rx = lerp(w.mote ? 0 : 78, 0, k) + 3 * Math.sin(t * 1.3 + wi);
+      const ry = w.ry + (1 - k) * 45 + 5 * Math.sin(t * 0.9 + wi);
+      const y = w.y + 8 * Math.sin(t * 1.6 + wi * 2);
+      w.el.style.transform = `translate3d(${w.x}px, ${y}px, ${z}px) rotateY(${ry}deg) rotateX(${rx}deg)`;
+      // Opacity and blur go on the layers: on the word itself they would flatten its depth.
+      const op = clamp(k * 3, 0, 1) * (w.mote ? 0.45 : 1) * (1 - out * 0.9);
+      const blur = out > 0.05 ? `blur(${out * 14}px)` : "";
+      [...w.el.children].forEach((e) => {
+        if (e.className !== "face") return;
+        e.style.opacity = op; e.style.filter = blur;
+        // Extrusion drawn as stacked shadows that lean away from the way the word is turned.
+        const lean = -Math.sin(ry * Math.PI / 180) * 2.4, sh = [];
+        for (let d = 1; d <= DEPTH; d++) { const c = Math.round(205 - d * 12); sh.push(`${(lean * d).toFixed(1)}px ${(1.5 * d).toFixed(1)}px 0 rgb(${c},${c},${c + 4})`); }
+        sh.push(`${(lean * DEPTH).toFixed(1)}px ${DEPTH * 2 + 14}px 40px rgba(0,0,0,0.55)`);
+        e.style.textShadow = sh.join(", ");
+      });
+      if (w.mote) { w.el.firstChild.style.opacity = op; return; }
+      // Echo outlines trail behind the word and settle into it.
+      w.el.querySelectorAll(".ghost").forEach((e, ei) => {
+        const lag = clamp((t - w.t - 0.06 * (ei + 1)) / 0.5, 0, 1);
+        e.style.transform = `translate(-50%, -50%) translateZ(${-(ei + 1) * 120 * (1 - ease.outCubic(lag)) - 40}px)`;
+        e.style.opacity = op * 0.5 * (1 - lag * 0.6) / (ei + 1);
+      });
+    });
+  });
+}
+
 window.renderFrame = (t) => {
   pending.length = 0;
   SHOTS.forEach((s) => renderShot(s, t));
   WORDS.forEach((w, i) => renderWord(w, i, t));
+  renderLyrics(t);
   openingCam(t);
   renderEnd(t);
   // One soft flash on the drop.
