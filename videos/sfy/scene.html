@@ -12,8 +12,12 @@
   #cam { position: absolute; inset: 0; }
   .shot { position: absolute; inset: 0; display: none; overflow: hidden; will-change: transform, opacity; }
   .shot img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
-  #grade { position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%); }
+  #grade { position: absolute; inset: -20%; pointer-events: none; mix-blend-mode: screen;
+    background: radial-gradient(ellipse 40% 55% at 50% 50%, rgba(255,190,120,0.55), rgba(255,150,90,0) 70%); }
+  .shot.collage { background: #f2efe9; }
+  .panel { position: absolute; overflow: hidden; background: #fff; border: 12px solid #fff;
+    box-shadow: 0 24px 60px rgba(40,30,20,0.28); }
+  .panel img { position: absolute; left: -12.5%; top: -12.5%; width: 125%; height: 125%; }
   #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
   .word { position: absolute; left: 120px; bottom: 120px; font-weight: 900; font-size: 210px; line-height: 0.9;
     letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; display: none;
@@ -29,13 +33,13 @@
   .lw.mote div { font-weight: 800; }
   .word.small { font-size: 120px; font-weight: 800; letter-spacing: -0.03em; }
   .word.center { left: 0; right: 0; bottom: auto; top: 50%; text-align: center; }
-  #end { position: absolute; inset: 0; display: none; background: #050505; }
+  #end { position: absolute; inset: 0; display: none; background: #f2efe9; color: #111; }
   #end .mark { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-weight: 900; font-size: 190px;
     letter-spacing: -0.04em; text-transform: uppercase; }
   #end .mark span { display: inline-block; }
   #end .url { position: absolute; left: 0; right: 0; top: 640px; text-align: center; font-weight: 500; font-size: 46px;
-    letter-spacing: 0.08em; color: #d8d8dc; }
-  #end .rule { position: absolute; left: 50%; top: 610px; height: 2px; width: 600px; margin-left: -300px; background: #fff; }
+    letter-spacing: 0.08em; color: #444; }
+  #end .rule { position: absolute; left: 50%; top: 610px; height: 2px; width: 600px; margin-left: -300px; background: #111; }
   #grain { position: absolute; inset: -50%; width: 200%; height: 200%; opacity: 0.06; pointer-events: none; mix-blend-mode: overlay; }
 </style>
 </head>
@@ -71,7 +75,10 @@ const cam = $("cam");
 SHOTS.forEach((s) => {
   const d = document.createElement("div");
   d.className = "shot"; d.id = "s" + s.i;
-  d.innerHTML = "<img>";
+  if (s.collage) {
+    d.classList.add("collage");
+    d.innerHTML = s.panels.map((p) => `<div class="panel" style="left:${p.rect[0]}px;top:${p.rect[1]}px;width:${p.rect[2]}px;height:${p.rect[3]}px"><img></div>`).join("");
+  } else d.innerHTML = "<img>";
   cam.appendChild(d);
 });
 WORDS.forEach((w, i) => {
@@ -87,15 +94,15 @@ const sine = (x) => -(Math.cos(Math.PI * x) - 1) / 2;
 const pending = [];
 
 // Shows the clip frame for time t; a shot shorter than its slot holds its last frame.
-function setFrame(s, el, t) {
-  const img = el.firstChild;
+function setFrame(s, el, t, dir = s.i) {
+  const img = el.querySelector("img");
   const f = clamp(Math.floor((t - s.t0) * 30) + 1, 1, s.frames || 9999);
-  const src = `frames/${s.i}/${String(f).padStart(4, "0")}.jpg`;
+  const src = `frames/${dir}/${String(f).padStart(4, "0")}.jpg`;
   if (img.getAttribute("src") === src) return;
   img.setAttribute("src", src);
   pending.push(img.decode().catch(() => {
     s.frames = f - 1;
-    img.setAttribute("src", `frames/${s.i}/${String(f - 1).padStart(4, "0")}.jpg`);
+    img.setAttribute("src", `frames/${dir}/${String(f - 1).padStart(4, "0")}.jpg`);
     return img.decode();
   }));
 }
@@ -109,14 +116,14 @@ function renderShot(s, t) {
   const until = next ? s.t1 : END + TR / 2;
   if (t < s.t0 || t >= until) { el.style.display = "none"; return; }
   el.style.display = "block";
-  setFrame(s, el, t);
+  if (s.collage) renderPanels(s, el, t); else setFrame(s, el, t);
 
   // Camera: a slow eased move across the whole shot, plus a gentle handheld float.
   const p = sine(clamp((t - s.t0) / (s.t1 - s.t0), 0, 1));
-  let [sc, x, y, ry] = s.mv[0].map((v, j) => lerp(v, s.mv[1][j], p));
+  let [sc, x, y] = s.mv[0].map((v, j) => lerp(v, s.mv[1][j], p));
   x += 14 * Math.sin(t * 0.8 + s.i); y += 9 * Math.sin(t * 1.1 + 2 * s.i);
   const rz = 0.5 * Math.sin(t * 0.6 + s.i);
-  let op = 1, blur = 0;
+  let op = 1, blur = s.i === 0 ? 0 : 6 * (1 - ease.outCubic(clamp((t - s.a) / 0.45, 0, 1)));
   if (t >= DROP) sc *= 1 + 0.014 * Math.exp(-((t - DROP) % BEAT) * 6);
 
   const kin = s.i === 0 ? 1 : trK(t, s.a);     // cut into this shot
@@ -132,13 +139,36 @@ function renderShot(s, t) {
     if (next.tr === "zoom") { sc *= 1 + 0.45 * kout; op = 1 - kout; blur += 12 * kout; }
     if (next.tr === "fade" || next.tr === "flash") op = 1 - kout;
   }
-  sc = Math.max(sc, 1.06);   // never smaller than the frame, even mid-turn
+  if (!s.collage) sc = Math.max(sc, 1.04);   // never smaller than the frame
   // A shot zooming out of frame sits on top so it dissolves forward into the next one.
   el.style.zIndex = next && next.tr === "zoom" && kout > 0 ? 3 : 2;
-  el.style.transform = `perspective(1800px) translate(${x}px, ${y}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
+  el.style.transform = `translate(${x}px, ${y}px) rotateZ(${rz}deg) scale(${sc})`;
   el.style.opacity = op;
-  const dim = s.dim ? 1 - 0.5 * tween(t, s.a + 0.6, 1.4, 0, 1, ease.inOutCubic) : 1;
-  el.style.filter = `contrast(1.07) saturate(1.1) brightness(${dim})` + (blur > 0.3 ? ` blur(${blur}px)` : "");
+  el.style.filter = (s.collage ? "" : "brightness(1.12) contrast(0.95) saturate(1.08)") + (blur > 0.3 ? ` blur(${blur}px)` : "");
+}
+
+// Collage: panels slide in on their beats and each one slowly pushes in on its own clip.
+function renderPanels(s, el, t) {
+  [...el.children].forEach((pe, pi) => {
+    const p = s.panels[pi];
+    const at = s.a + p.at * BEAT;
+    const k = ease.outExpo(clamp((t - at + 0.05) / 0.5, 0, 1));
+    pe.style.display = t < at - 0.05 ? "none" : "block";
+    pe.style.transform = `translate(${p.from[0] * (1 - k)}px, ${p.from[1] * (1 - k)}px) rotate(${p.rz * k + 8 * (1 - k) * Math.sign(p.rz)}deg)`;
+    if (!p.state) p.state = { i: `${s.i}-${pi}`, t0: s.t0 };
+    setFrame(p.state, pe, t, p.state.i);
+    pe.firstChild.style.transform = `scale(${1 + 0.08 * clamp((t - at) / (s.b - at + 0.3), 0, 1)})`;
+    pe.firstChild.style.filter = "brightness(1.1) contrast(0.96) saturate(1.08)";
+  });
+}
+
+// Warm light leak that drifts across the frame and blooms on every cut.
+function renderLeak(t) {
+  let bloom = 0;
+  SHOTS.forEach((s) => { if (s.i > 0) bloom = Math.max(bloom, Math.exp(-Math.pow((t - s.a) / 0.18, 2))); });
+  const g = $("grade");
+  g.style.opacity = t >= END ? 0 : 0.18 + 0.5 * bloom;
+  g.style.transform = `translate(${380 * Math.sin(t * 0.35)}px, ${160 * Math.sin(t * 0.5 + 1)}px)`;
 }
 
 function renderWord(w, i, t) {
@@ -257,6 +287,7 @@ window.renderFrame = (t) => {
   SHOTS.forEach((s) => renderShot(s, t));
   WORDS.forEach((w, i) => renderWord(w, i, t));
   renderLyrics(t);
+  renderLeak(t);
   openingCam(t);
   renderEnd(t);
   // One soft flash on the drop.
