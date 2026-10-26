@@ -43,3 +43,4 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 6:00 am Shaadi.com: published 00:31 UTC, https://www.instagram.com/reel/De7qw_7gnwm/
 - 7:00 am Zepto: published 01:32 UTC, https://www.instagram.com/reel/De7sNw8j-bt/
 - 1:00 pm Zerodha (30 s): published 07:30 UTC, https://www.instagram.com/reel/De8iLZ4Dncm/
+- 2:00 pm Meesho (30 s): published 08:30 UTC, https://www.instagram.com/reel/De8jmxyDQyi/
