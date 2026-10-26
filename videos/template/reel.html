@@ -21,6 +21,8 @@
   #g2 { width: 900px; height: 900px; left: 950px; top: 320px; }
   #flash { position: absolute; inset: 0; opacity: 0; }
   #fx { position: absolute; inset: 0; }
+  #cam { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+  #stage { perspective: 1600px; }
   #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
   #tag { position: absolute; left: 60px; top: 50px; display: flex; gap: 14px; align-items: center; z-index: 5; }
@@ -48,7 +50,7 @@
   <div class="glow" id="g2"></div>
   <div id="paper"></div>
   <canvas id="fx" width="1920" height="1080"></canvas>
-  <div id="scenes"></div>
+  <div id="cam"><div id="scenes"></div></div>
   <div id="tag"><span class="tpill" id="series">STARTUP MATH</span><span class="handle" id="hdl">@unicornkahisab</span></div>
   <div id="flash"></div>
   <div id="grain"></div>
@@ -140,15 +142,48 @@ const R = rng(9);
 const STARS = Array.from({ length: 90 }, () => ({ x: R() * 1920, y: R() * 1080, r: 1 + R() * 2.5, sp: 20 + R() * 60, ph: R() * 6.28 }));
 const ctx = $("fx").getContext("2d");
 
+// Virtual camera: each scene gets its own slow move; cuts get a fast whip-pan with motion blur.
+const MOVES = [
+  { x: [60, -60], y: [0, 0], rx: [0, 0], ry: [-7, 5], s: [1.06, 1.0] },     // orbit right
+  { x: [0, 0], y: [30, -20], rx: [6, -2], ry: [0, 0], s: [1.12, 1.02] },    // tilt up, push in
+  { x: [-80, 40], y: [0, 0], rx: [0, 0], ry: [5, -4], s: [1.0, 1.08] },     // pan left to right
+  { x: [0, 0], y: [0, 0], rx: [-4, 3], ry: [4, -4], s: [1.16, 1.0] },       // pull back
+  { x: [40, -40], y: [-20, 20], rx: [3, -3], ry: [-3, 3], s: [1.02, 1.1] }, // drift and push
+];
+function camera(t) {
+  const i = Math.max(0, S.scenes.findIndex((c) => t >= c.cue[0] && t < c.cue[1]));
+  const c = S.scenes[i] || S.scenes[0];
+  const m = MOVES[i % MOVES.length];
+  const k = ease.inOutCubic(clamp((t - c.cue[0]) / c.dur, 0, 1));
+  const L = (r) => r[0] + (r[1] - r[0]) * k;
+  // Whip-pan: 0.22 s centred on each cut, alternating direction.
+  let wx = 0, blur = 0;
+  S.scenes.forEach((sc, j) => {
+    if (j === 0 || sc.type === "end") return;
+    const d = t - sc.cue[0];
+    if (d > -0.11 && d < 0.11) {
+      const u = (d + 0.11) / 0.22;                 // 0..1 through the whip
+      const dir = j % 2 ? 1 : -1;
+      wx = dir * (u < 0.5 ? -ease.inCubic(u * 2) : ease.outCubic(1 - (u - 0.5) * 2)) * 220;
+      blur = Math.sin(u * Math.PI) * 16;
+    }
+  });
+  $("cam").style.transform = `translate3d(${L(m.x) + wx}px, ${L(m.y)}px, 0) rotateX(${L(m.rx)}deg) rotateY(${L(m.ry)}deg) scale(${L(m.s)})`;
+  $("cam").style.filter = blur > 0.3 ? `blur(${blur}px)` : "none";
+  // Parallax: the background glows drift against the camera.
+  return { px: -L(m.x) * 0.6, py: -L(m.y) * 0.6 };
+}
+
 function renderFrame(t) {
   const p = pulse(t);
+  const par = camera(t);
   const cur = S.scenes.find((c) => t >= c.cue[0] && t < c.cue[1]) || S.scenes[S.scenes.length - 1];
   const light = !!cur.light;
   $("paper").style.opacity = String(light ? 1 : 0);
   $("hdl").style.color = light ? "#555" : "#bbb";
   $("g1").style.opacity = String(light ? 0.25 : 1);
-  $("g1").style.transform = `translate(${Math.sin(t * .4) * 90}px, ${Math.cos(t * .3) * 50}px) scale(${1 + 0.07 * p})`;
-  $("g2").style.transform = `translate(${Math.cos(t * .5) * 70}px, ${Math.sin(t * .35) * 60}px)`;
+  $("g1").style.transform = `translate(${Math.sin(t * .4) * 90 + par.px}px, ${Math.cos(t * .3) * 50 + par.py}px) scale(${1 + 0.07 * p})`;
+  $("g2").style.transform = `translate(${Math.cos(t * .5) * 70 + par.px * 1.6}px, ${Math.sin(t * .35) * 60 + par.py * 1.6}px)`;
   const drop = window.MOTION.drop;
   $("flash").style.opacity = String(t >= drop ? tween(t, drop, frames(14), 0.85, 0) : 0);
   const shake = t >= drop && t < drop + 0.35 ? (1 - (t - drop) / 0.35) * 12 : 0;
