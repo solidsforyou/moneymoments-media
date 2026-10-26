@@ -7,14 +7,12 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
   body { font-family: "Inter Display", "Inter", sans-serif; color: #fff; }
-  #stage { position: absolute; inset: 0; perspective: 1600px; overflow: hidden; }
+  #stage { position: absolute; inset: 0; perspective: 1800px; overflow: hidden; }
   #cam { position: absolute; inset: 0; transform-style: preserve-3d; }
-  .shot { position: absolute; inset: 0; display: none; overflow: hidden; }
-  .shot img.ph { position: absolute; left: 0; top: -180px; width: 1920px; height: 1440px; object-fit: cover; }
-  .shot .bgblur { position: absolute; inset: -60px; width: 2040px; height: 1200px; object-fit: cover; filter: blur(40px) brightness(0.45); }
-  .shot .vert { position: absolute; top: 0; left: 656px; width: 608px; height: 1080px; object-fit: cover; box-shadow: 0 0 80px rgba(0,0,0,0.6); }
+  .shot { position: absolute; inset: 0; display: none; overflow: hidden; will-change: transform, opacity; }
+  .shot img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
   #grade { position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%); }
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%); }
   #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
   .word { position: absolute; left: 120px; bottom: 120px; font-weight: 900; font-size: 210px; line-height: 0.9;
     letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; display: none;
@@ -28,8 +26,8 @@
   #end .mark span { display: inline-block; }
   #end .url { position: absolute; left: 0; right: 0; top: 640px; text-align: center; font-weight: 500; font-size: 46px;
     letter-spacing: 0.08em; color: #d8d8dc; }
-  #end .rule { position: absolute; left: 50%; top: 610px; height: 2px; width: 600px; margin-left: -300px; background: #fff; transform-origin: center; }
-  #grain { position: absolute; inset: -50%; width: 200%; height: 200%; opacity: 0.07; pointer-events: none; mix-blend-mode: overlay; }
+  #end .rule { position: absolute; left: 50%; top: 610px; height: 2px; width: 600px; margin-left: -300px; background: #fff; }
+  #grain { position: absolute; inset: -50%; width: 200%; height: 200%; opacity: 0.06; pointer-events: none; mix-blend-mode: overlay; }
 </style>
 </head>
 <body>
@@ -43,66 +41,27 @@
 </div>
 <div id="flash"></div>
 <script src="../lib/motion.js"></script>
+<script src="edit.js"></script>
 <script>
-// Real fabric shots from the SFY workshop, cut to the track from 2:16.4.
-// Kicks land at 6.18 s + n beats; the drop is the first kick.
-const BEAT = 60 / 97.6, DROP = 6.18;
+// Real SFY workshop footage cut to the track from 2:16.4. Shots and words live in edit.js,
+// timed in beats from the drop (the first kick, 6.18 s). Frames come from extract.py.
+const { beat: BEAT, drop: DROP } = window.EDIT;
 const K = (n) => DROP + n * BEAT;
 window.MOTION = { fps: 30, beat: BEAT, beat0: DROP % BEAT, drop: DROP };
 window.DURATION = 30;
-const END = K(31);
+const END = K(window.EDIT.end_beats);
+const TR = 0.36;   // every transition is centred on its cut and lasts this long
 
-// Each shot: photo, start/end, focus point (0..1), and a camera move from -> to.
-// mv: [scale, x px, y px, rotateY deg, rotateX deg] at the start and the end of the shot.
-const SHOTS = [
-  { img: "IMG_2217", a: 0, b: K(-6), f: [0.55, 0.62], from: [1.35, 0, 0, -6, 0], to: [1.1, 0, 0, 4, 0] },
-  { img: "IMG_2216", a: K(-6), b: K(-3), f: [0.5, 0.6], from: [1.1, 60, 0, 8, 0], to: [1.28, -40, -10, -4, 0] },
-  { img: "IMG_3258", a: K(-3), b: K(0), f: [0.62, 0.55], from: [1.05, 0, 30, 0, 6], to: [1.32, -30, 0, -6, -2] },
-  { img: "IMG_3249", a: K(0), b: K(2), f: [0.5, 0.6], from: [1.4, 0, 0, -10, 0], to: [1.12, 0, 0, 6, 0] },
-  { img: "IMG_3258", a: K(2), b: K(4), f: [0.66, 0.4], from: [1.9, 80, 0, 0, 0], to: [1.6, -80, 0, -8, 0] },
-  { clip: true, a: K(4), b: K(6), f: [0.5, 0.5], from: [1.0, 0, 0, 0, 0], to: [1.12, 0, 0, 6, 0] },
-  { img: "IMG_3260", a: K(6), b: K(8), f: [0.35, 0.6], from: [1.15, -60, 0, 10, 0], to: [1.35, 40, 0, -4, 0] },
-  { img: "IMG_2215", a: K(8), b: K(9), f: [0.45, 0.4], from: [1.5, 0, 0, 0, 0], to: [1.3, 0, 0, 0, 0] },
-  { img: "IMG_2217", a: K(9), b: K(10), f: [0.3, 0.7], from: [1.7, 0, 0, 0, 0], to: [1.45, 0, 0, 0, 0] },
-  { img: "IMG_3261", a: K(10), b: K(12), f: [0.5, 0.45], from: [1.1, 0, 40, 0, 8], to: [1.35, 0, -20, 0, -4] },
-  { img: "IMG_3277", a: K(12), b: K(14), f: [0.55, 0.45], from: [1.45, 70, 0, -8, 0], to: [1.15, -50, 0, 8, 0] },
-  { img: "IMG_3278", a: K(14), b: K(16), f: [0.6, 0.5], from: [1.1, 0, 0, 12, 0], to: [1.4, 0, 0, -6, 0] },
-  { img: "IMG_3276", a: K(16), b: K(18), f: [0.7, 0.35], from: [1.3, -60, 0, 0, 0], to: [1.12, 60, 0, -10, 0] },
-  { img: "IMG_2216", a: K(18), b: K(20), f: [0.45, 0.55], from: [1.25, 0, 0, -10, 0], to: [1.5, 0, 0, 6, 0] },
-  { img: "IMG_3249", a: K(20), b: K(21), f: [0.75, 0.5], from: [1.9, 0, 0, 0, 0], to: [1.6, 0, 0, 0, 0] },
-  { img: "IMG_3260", a: K(21), b: K(22), f: [0.3, 0.5], from: [1.9, 0, 0, 0, 0], to: [1.6, 0, 0, 0, 0] },
-  { img: "IMG_3277", a: K(22), b: K(23), f: [0.65, 0.4], from: [2.0, 0, 0, 0, 0], to: [1.7, 0, 0, 0, 0] },
-  { img: "IMG_2215", a: K(23), b: K(24), f: [0.35, 0.55], from: [1.9, 0, 0, 0, 0], to: [1.6, 0, 0, 0, 0] },
-  { img: "IMG_3261", a: K(24), b: K(27), f: [0.4, 0.5], from: [1.5, 0, 0, -12, 0], to: [1.1, 0, 0, 10, 0] },
-  { img: "IMG_3260", a: K(27), b: END, f: [0.4, 0.55], from: [1.1, 0, 0, 0, 0], to: [1.3, 0, 0, -8, 0], dim: true },
-];
-
-// On-screen words, each on its own beat.
-const WORDS = [
-  { text: "Look closer.", a: 0.15, b: K(-6) - 0.05, cls: "small center", first: true },
-  { text: "Every thread.", a: K(-6) + 0.1, b: K(-3) - 0.05, cls: "small" },
-  { text: "Every stitch.", a: K(-3) + 0.1, b: K(0) - 0.05, cls: "small" },
-  { text: "Cut.", a: K(0), b: K(2) },
-  { text: "Stitched.", a: K(2), b: K(4) },
-  { text: "Pressed.", a: K(4), b: K(6) },
-  { text: "Folded.", a: K(6), b: K(8) },
-  { text: "Blue.", a: K(10), b: K(12) },
-  { text: "Black.", a: K(12), b: K(14) },
-  { text: "No noise.", a: K(16), b: K(18) },
-  { text: "Just solids.", a: K(18), b: K(20) },
-  { text: "For you.", a: K(24), b: K(27), cls: "center" },
-];
+const SHOTS = window.EDIT.shots.map((s, i) => ({ ...s, a: i === 0 ? 0 : K(s.a), b: K(s.b), i }));
+const WORDS = window.EDIT.words.map((w, i) => ({ ...w, a: i === 0 ? 0.15 : K(w.a) + ((w.cls || "").includes("small") ? 0.1 : 0), b: K(w.b) - 0.05 }));
+// Frame 1 of each shot sits half a transition before its cut (shot 0 starts at 0).
+SHOTS.forEach((s) => { s.t0 = s.i === 0 ? 0 : s.a - TR / 2; s.t1 = s.b + TR / 2; });
 
 const cam = $("cam");
-const clipFrames = Array.from({ length: 27 }, (_, i) => `clip/${String(i + 1).padStart(2, "0")}.jpg`);
-SHOTS.forEach((s, i) => {
+SHOTS.forEach((s) => {
   const d = document.createElement("div");
-  d.className = "shot"; d.id = "s" + i;
-  if (s.clip) {
-    d.innerHTML = '<img class="bgblur" src="clip/14.jpg">' + clipFrames.map((f) => `<img class="vert" src="${f}" style="display:none">`).join("");
-  } else {
-    d.innerHTML = `<img class="ph" src="img/${s.img}.jpg">`;
-  }
+  d.className = "shot"; d.id = "s" + s.i;
+  d.innerHTML = "<img>";
   cam.appendChild(d);
 });
 WORDS.forEach((w, i) => {
@@ -114,36 +73,61 @@ WORDS.forEach((w, i) => {
 $("mark").innerHTML = [..."Solids for you"].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
 
 const lerp = (a, b, k) => a + (b - a) * k;
-const WHIP = 0.14;   // seconds of whip-pan on each side of a cut
+const sine = (x) => -(Math.cos(Math.PI * x) - 1) / 2;
+const pending = [];
 
-function renderShot(s, i, t) {
-  const el = $("s" + i);
-  const live = t >= s.a && t < s.b;
-  if (!live) { el.style.display = "none"; return; }
+// Shows the clip frame for time t; a shot shorter than its slot holds its last frame.
+function setFrame(s, el, t) {
+  const img = el.firstChild;
+  const f = clamp(Math.floor((t - s.t0) * 30) + 1, 1, s.frames || 9999);
+  const src = `frames/${s.i}/${String(f).padStart(4, "0")}.jpg`;
+  if (img.getAttribute("src") === src) return;
+  img.setAttribute("src", src);
+  pending.push(img.decode().catch(() => {
+    s.frames = f - 1;
+    img.setAttribute("src", `frames/${s.i}/${String(f - 1).padStart(4, "0")}.jpg`);
+    return img.decode();
+  }));
+}
+
+// Transition progress around a cut: 0 before, 1 after, smooth in between.
+const trK = (t, cut) => sine(clamp((t - (cut - TR / 2)) / TR, 0, 1));
+
+function renderShot(s, t) {
+  const el = $("s" + s.i);
+  const next = SHOTS[s.i + 1];
+  const until = next ? s.t1 : END + TR / 2;
+  if (t < s.t0 || t >= until) { el.style.display = "none"; return; }
   el.style.display = "block";
-  const p = clamp((t - s.a) / (s.b - s.a), 0, 1);
-  const k = ease.inOutCubic(p);
-  let [sc, x, y, ry, rx] = s.from.map((v, j) => lerp(v, s.to[j], k));
-  if (!s.clip) sc *= 1.1;   // headroom so 3D turns never show an edge
-  // Kick bump: a small punch-in on every kick after the drop.
-  if (t >= DROP) {
-    const since = (t - DROP) % BEAT;
-    sc *= 1 + 0.025 * Math.exp(-since * 9);
+  setFrame(s, el, t);
+
+  // Camera: a slow eased move across the whole shot, plus a gentle handheld float.
+  const p = sine(clamp((t - s.t0) / (s.t1 - s.t0), 0, 1));
+  let [sc, x, y, ry] = s.mv[0].map((v, j) => lerp(v, s.mv[1][j], p));
+  x += 14 * Math.sin(t * 0.8 + s.i); y += 9 * Math.sin(t * 1.1 + 2 * s.i);
+  const rz = 0.5 * Math.sin(t * 0.6 + s.i);
+  let op = 1, blur = 0;
+  if (t >= DROP) sc *= 1 + 0.014 * Math.exp(-((t - DROP) % BEAT) * 6);
+
+  const kin = s.i === 0 ? 1 : trK(t, s.a);     // cut into this shot
+  const kout = next ? trK(t, next.a) : 0;      // cut out of this shot
+  const dir = s.i % 2 ? 1 : -1;
+  if (kin < 1) {
+    if (s.tr === "push") { x += (1 - kin) * 1920 * dir; blur += 10 * Math.sin(Math.PI * kin); }
+    if (s.tr === "zoom") { sc *= lerp(0.82, 1, kin); }
+    if (s.tr === "fade" || s.tr === "flash") op = kin;
   }
-  // Whip-pan: leave fast at the end of the shot, arrive fast at the start.
-  const dir = i % 2 ? 1 : -1;
-  const outK = clamp((t - (s.b - WHIP)) / WHIP, 0, 1);
-  const inK = i === 0 ? 0 : 1 - clamp((t - s.a) / WHIP, 0, 1);
-  const wx = dir * (260 * ease.inCubic(outK)) - dir * 260 * ease.inCubic(inK);
-  const blur = 18 * Math.max(ease.inCubic(outK), ease.inCubic(inK));
-  el.style.transformOrigin = `${s.f[0] * 100}% ${s.f[1] * 100}%`;
-  el.style.transform = `translate(${x + wx}px, ${y}px) rotateY(${ry}deg) rotateX(${rx}deg) scale(${sc})`;
-  const dim = s.dim ? 1 - 0.55 * tween(t, s.a, 1.2, 0, 1) : 1;
-  el.style.filter = `contrast(1.08) saturate(1.12) brightness(${dim})` + (blur > 0.3 ? ` blur(${blur}px)` : "");
-  if (s.clip) {
-    const f = Math.min(26, Math.floor(p * 27));
-    el.querySelectorAll(".vert").forEach((im, j) => { im.style.display = j === f ? "block" : "none"; });
+  if (kout > 0) {
+    if (next.tr === "push") { x += kout * 1920 * dir; blur += 10 * Math.sin(Math.PI * kout); }
+    if (next.tr === "zoom") { sc *= 1 + 0.45 * kout; op = 1 - kout; blur += 12 * kout; }
+    if (next.tr === "fade" || next.tr === "flash") op = 1 - kout;
   }
+  // A shot zooming out of frame sits on top so it dissolves forward into the next one.
+  el.style.zIndex = next && next.tr === "zoom" && kout > 0 ? 3 : 2;
+  el.style.transform = `translate(${x}px, ${y}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
+  el.style.opacity = op;
+  const dim = s.dim ? 1 - 0.5 * tween(t, s.a + 0.6, 1.4, 0, 1, ease.inOutCubic) : 1;
+  el.style.filter = `contrast(1.07) saturate(1.1) brightness(${dim})` + (blur > 0.3 ? ` blur(${blur}px)` : "");
 }
 
 function renderWord(w, i, t) {
@@ -153,62 +137,55 @@ function renderWord(w, i, t) {
   const spans = el.children;
   const big = !(w.cls || "").includes("small");
   for (let j = 0; j < spans.length; j++) {
-    const st = w.a + j * (big ? 0.025 : 0.03);
-    const kk = tween(t, st, big ? 0.16 : 0.32, 0, 1, ease.outCubic);
+    const kk = tween(t, w.a + j * (big ? 0.025 : 0.03), big ? 0.22 : 0.36, 0, 1, ease.outCubic);
     spans[j].style.opacity = kk;
-    spans[j].style.transform = `translateY(${(1 - kk) * (big ? 90 : 40)}px)`;
+    spans[j].style.transform = `translateY(${(1 - kk) * (big ? 80 : 40)}px)`;
     spans[j].style.filter = kk < 1 ? `blur(${(1 - kk) * 10}px)` : "none";
   }
-  const outK = tween(t, w.b - 0.1, 0.1, 0, 1, ease.inCubic);
-  el.style.opacity = 1 - outK;
+  el.style.opacity = 1 - tween(t, w.b - 0.14, 0.14, 0, 1, ease.inCubic);
   const center = (w.cls || "").includes("center");
-  el.style.transform = (center ? "translateY(-50%) " : "") + `scale(${1 + 0.04 * (t - w.a)})`;
   el.style.transformOrigin = center ? "50% 50%" : "0% 100%";
+  if (!w.first) el.style.transform = (center ? "translateY(-50%) " : "") + `scale(${1 + 0.035 * (t - w.a)})`;
 }
 
 // Opening move: start zoomed into the first word, turn right and pull out.
 function openingCam(t) {
-  const first = WORDS[0], dur = (SHOTS[0].b - SHOTS[0].a) * 0.8;
+  const dur = (SHOTS[0].b - SHOTS[0].a) * 0.8;
   const k = ease.inOutCubic(clamp(t / dur, 0, 1));
-  const sc = lerp(3.2, 1, k), ry = lerp(0, 14, Math.sin(k * Math.PI));
-  const tf = `rotateY(${ry}deg) scale(${sc})`;
-  cam.style.transformOrigin = "50% 50%";
+  const tf = `rotateY(${14 * Math.sin(k * Math.PI)}deg) scale(${lerp(3.2, 1, k)})`;
   cam.style.transform = t < SHOTS[0].b ? tf : "none";
-  const w = $("w0");
-  w.style.transformOrigin = "50% 50%";
-  if (t < first.b) w.style.transform = `translateY(-50%) perspective(1600px) ${tf}`;
+  if (t < WORDS[0].b) $("w0").style.transform = `translateY(-50%) perspective(1600px) ${tf}`;
 }
 
 function renderEnd(t) {
   const end = $("end");
-  if (t < END) { end.style.display = "none"; return; }
+  if (t < END - TR / 2) { end.style.display = "none"; return; }
   end.style.display = "block";
+  end.style.opacity = trK(t, END) * (1 - tween(t, 29.3, 0.7, 0, 1, ease.inCubic));
   const spans = $("mark").children;
   for (let j = 0; j < spans.length; j++) {
-    const kk = tween(t, END + 0.05 + j * 0.035, 0.4, 0, 1, ease.outCubic);
+    const kk = tween(t, END + 0.05 + j * 0.035, 0.45, 0, 1, ease.outCubic);
     spans[j].style.opacity = kk;
     spans[j].style.transform = `translateY(${(1 - kk) * 60}px)`;
     spans[j].style.filter = kk < 1 ? `blur(${(1 - kk) * 12}px)` : "none";
   }
-  $("mark").style.transform = `scale(${1.06 - 0.06 * ease.outCubic(clamp((t - END) / 4, 0, 1))})`;
-  $("rule").style.transform = `scaleX(${tween(t, END + 0.6, 0.6, 0, 1, ease.outExpo)})`;
+  $("mark").style.transform = `scale(${1.06 - 0.06 * sine(clamp((t - END) / 4.5, 0, 1))})`;
+  $("rule").style.transform = `scaleX(${tween(t, END + 0.6, 0.7, 0, 1, ease.outExpo)})`;
   const u = tween(t, END + 0.9, 0.5, 0, 1);
   $("url").style.opacity = u;
   $("url").style.transform = `translateY(${(1 - u) * 20}px)`;
-  end.style.opacity = 1 - tween(t, 29.3, 0.7, 0, 1, ease.inCubic);
 }
 
 window.renderFrame = (t) => {
-  SHOTS.forEach((s, i) => renderShot(s, i, t));
+  pending.length = 0;
+  SHOTS.forEach((s) => renderShot(s, t));
   WORDS.forEach((w, i) => renderWord(w, i, t));
   openingCam(t);
   renderEnd(t);
-  // White flash on the drop, small ones through the 1-beat montage.
-  let fl = 0.9 * Math.exp(-Math.max(0, t - DROP) * 7) * (t >= DROP ? 1 : 0);
-  for (let n = 20; n <= 24; n++) if (t >= K(n)) fl = Math.max(fl, 0.35 * Math.exp(-(t - K(n)) * 10));
-  $("flash").style.opacity = fl;
+  // One soft flash on the drop.
+  $("flash").style.opacity = t >= DROP - 0.03 ? 0.75 * Math.exp(-Math.max(0, t - DROP) * 6) : 0;
   $("grain").style.transform = `translate(${(Math.floor(t * 30) * 37) % 200 - 100}px, ${(Math.floor(t * 30) * 53) % 200 - 100}px)`;
-  $("grade").style.display = t >= END ? "none" : "block";
+  return Promise.all(pending);
 };
 window.renderFrame(0);
 </script>
