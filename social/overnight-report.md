@@ -48,3 +48,6 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 7:00 pm Lenskart (30 s): NOT published. 13:43 UTC every API call (publish and plain reads) returns 400 "API access blocked" (OAuthException code 200). Meta has blocked the app or the token.
 - 8:00 pm Urban Company (30 s): NOT published. 14:30 UTC, still 400 "API access blocked".
 - 9:00 pm boAt (30 s): skipped the API post. The founder is posting the remaining reels by hand while the API is blocked, and an API post could double it.
+- 8:49 pm Lenskart (30 s): posted by hand by the founder at 15:19 UTC, https://www.instagram.com/reel/De9llQ6SMj6/ (no caption).
+- 11:55 pm boAt (30 s): published via API 18:25 UTC once the block lifted, https://www.instagram.com/reel/De8kCPXiG6X/. Went out WITHOUT a caption: the saved container had none. Paste social/captions/boat.txt in the app.
+- 12:57 am (27 Oct) Urban Company (30 s): published via API 19:27 UTC, https://www.instagram.com/reel/De8j_Q4EZTe/. Also no caption (same container batch); paste social/captions/urbancompany.txt in the app.
