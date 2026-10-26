@@ -210,10 +210,11 @@ function renderFrame(t) {
         q(".arc").setAttribute("stroke-dashoffset", String(1634 * (1 - tween(t, a, c.dur, 0, 1, ease.inCubic))));
       }
     } else if (c.type === "counter") {
-      enter(q(".row"), t, a + frames(2));
+      enter(q(".row"), t, a === 0 ? -1 : a + frames(2));   // first scene: label already on frame 0
       const n = q(".num");
-      enter(n, t, a + 0.35, { dy: 30, scaleFrom: 0.9 });
-      const v = count(t, a + 0.35, c.countDur || 2.0, c.value);
+      const st = a + (c.at != null ? c.at : 0.35);   // at: when the number starts (negative = already racing on frame 0)
+      enter(n, t, st, { dy: 30, scaleFrom: 0.9 });
+      const v = count(t, st, c.countDur || 2.0, c.value);
       n.textContent = `${c.prefix || ""}${c.format === "plain" ? v : inr(v)}${c.suffix || ""}`;
       if (t > a + 2.5) n.style.transform = `scale(${1 + 0.04 * p})`;
       if (q(".chipr")) enter(q(".chipr"), t, a + (c.chipAt || 2.3), { dy: 24 });
