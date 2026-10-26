@@ -40,3 +40,4 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 
 ## Log
 - 5:00 am Blinkit: published 23:31 UTC, https://www.instagram.com/reel/De7qpVhkchm/
+- 6:00 am Shaadi.com: published 00:31 UTC, https://www.instagram.com/reel/De7qw_7gnwm/
