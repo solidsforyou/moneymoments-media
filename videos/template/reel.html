@@ -138,6 +138,18 @@ S.scenes.forEach((c, i) => {
   $("scenes").appendChild(el);
 });
 
+// Centre of the first word (or the counter's label) in the opening scene, for the opening camera move.
+const FOCUS = (() => {
+  const el = $("sc0"); el.style.display = "block";
+  const w = el.querySelector(".lineA .w") || el.querySelector(".row");
+  if (!w) return null;
+  let r = w.getBoundingClientRect();
+  if (w.classList.contains("row")) {   // a label row spans the width: use the text itself
+    const range = document.createRange(); range.selectNodeContents(w); r = range.getBoundingClientRect();
+    return { x: r.left + Math.min(r.width, 220) / 2, y: r.top + r.height / 2 };
+  }
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+})();
 const R = rng(9);
 const STARS = Array.from({ length: 90 }, () => ({ x: R() * 1920, y: R() * 1080, r: 1 + R() * 2.5, sp: 20 + R() * 60, ph: R() * 6.28 }));
 const ctx = $("fx").getContext("2d");
@@ -155,6 +167,16 @@ function camera(t) {
   const c = S.scenes[i] || S.scenes[0];
   const m = MOVES[i % MOVES.length];
   const k = ease.inOutCubic(clamp((t - c.cue[0]) / c.dur, 0, 1));
+  if (i === 0 && FOCUS) {
+    // Opening move: start tight on the first word, then turn right and pull out as the line appears.
+    const z = ease.inOutCubic(clamp(t / (c.dur * 0.8), 0, 1));
+    const sc = 3.2 - 2.2 * z, ry = 14 * Math.sin(z * Math.PI * 0.9), tx = (960 - FOCUS.x) * (1 - z), ty = (540 - FOCUS.y) * (1 - z);
+    $("cam").style.transformOrigin = `${FOCUS.x}px ${FOCUS.y}px`;
+    $("cam").style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateY(${ry}deg) scale(${sc})`;
+    $("cam").style.filter = "none";
+    return { px: -tx * 0.2, py: -ty * 0.2 };
+  }
+  $("cam").style.transformOrigin = "50% 50%";
   const L = (r) => r[0] + (r[1] - r[0]) * k;
   // Whip-pan: 0.22 s centred on each cut, alternating direction.
   let wx = 0, blur = 0;
