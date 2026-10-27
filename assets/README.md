@@ -73,5 +73,5 @@ They look like stock images; post them only if the founder has the rights.
 - **Original SFY footage** (full-length vertical .MOV) stays in Drive; trimmed moments go in `sfy/clips/`.
 
 ## brand/
-- `sfy-logo-black.png`: Solids For You wordmark in near-black on transparent, for print and light backgrounds (from `sfy_logo.png` in Drive, trimmed).
+- `sfy-logo-black.png`: Solids For You wordmark in pure black on transparent, for print and light backgrounds (from `sfy_logo.png` in Drive, trimmed).
 - `sfy-logo-white.png`: the same wordmark in white, for dark backgrounds and reels.
