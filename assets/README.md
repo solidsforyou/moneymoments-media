@@ -10,11 +10,15 @@ unless noted.
 | Name | What it is |
 |---|---|
 | `signature/coin-rupee.png` | The amber ₹ coin, 400x400, transparent background (thumbnails, covers, stickers) |
-| `signature/end-card-coin-rises.mp4` | 2.5 s end card: the Hisab line, the coin rising, "Unicorn ka Hisab · Money, simply explained · Follow @unicornkahisab" (1080x1920) |
+| `signature/end-card-coin-rises.mp4` | 2.5 s end card: the camera settles, the coin stops upright and rises under "Unicorn ka Hisab · Money, simply explained · Follow @unicornkahisab" (1080x1920) |
+| `signature/coin-drop-and-first-roll.mp4` | 3 s opening: the coin drops onto the line over the hook photo on frame 0, lands, and starts rolling with the camera |
+| `signature/camera-follows-coin-to-next-panel.mp4` | 1 s: the coin rolls on and the camera travels right with it into the next panel (the only "transition" a reel uses) |
 
-The live, editable version of the signature (the Hisab line that morphs between scenes and
-the coin that rides it) is the code in `videos/d2c/scene.html`: copy its `SHAPES`, `lineY`,
-`COINX` and coin blocks into a new scene and change only the shapes and text.
+**The engine is `videos/lib/hisab.js`.** A reel is one horizontal world of 1080x1920 panels;
+the coin drops in on frame 0, drifts through each panel and rolls into the next while the camera
+keeps it centred, so the camera never stops and nothing cuts. A new reel gives it `CUES`,
+`SHAPES` (the line in each panel) and `.panel` elements; see `videos/inflation/scene.html` for
+the simplest example.
 
 ## moments/ — scenes from finished reels, reusable as-is or as a reference
 

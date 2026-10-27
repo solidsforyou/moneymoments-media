@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <!--
   Unicorn ka Hisab: finance tip, "raise the EMI or stretch the loan?" (27 Oct 2026, 9 PM, the
-  follow-up teased in the 7 PM inflation reel). 1080x1920, 30 s, no audio. Page signature from
-  videos/d2c/scene.html (Hisab line + ₹ coin). Same 30 s soundtrack (drop 6.0 s; whooshes at
-  3, 6, 12, 18, 24, 27.5 s).
+  follow-up teased in the 7 PM inflation reel). 1080x1920, 30 s, no audio. One continuous camera
+  move (videos/lib/hisab.js): the ₹ coin drops onto the Hisab line in the first frame and the
+  camera follows it right through seven panels without a cut. Same 30 s soundtrack.
   Worked example (computed in code, 27 Oct 2026): ₹30 lakh, 20 years, 8.50% -> 8.75% (the RBI's
   0.25% hike passed on in full). EMI ₹26,035 -> ₹26,511 (+₹477/month, ₹1.14 lakh over the loan).
   Keeping the EMI instead stretches it from 240 to about 252 months: ₹3.24 lakh more paid.
@@ -23,9 +23,10 @@
   html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
   body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
   #stage { position: absolute; inset: 0; overflow: hidden; }
+  #world { position: absolute; left: 0; top: 0; height: 1920px; will-change: transform; }
+  .panel { position: absolute; top: 0; width: 1080px; height: 1920px; }
   .abs { position: absolute; }
   .center { left: 60px; right: 60px; text-align: center; }
-  .scene { position: absolute; inset: 0; display: none; }
   #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
     filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
   #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
@@ -44,6 +45,7 @@
     letter-spacing: .1em; color: #07070a; background: var(--amber); }
   .note { font-size: 28px; color: var(--muted); }
 
+  #p0 { overflow: hidden; }
   #hookBg { position: absolute; inset: -80px; background: url("stock/house-keys-1-crop.jpg") center / cover;
     filter: blur(34px) brightness(.4); }
   #hookImg { position: absolute; left: 0; top: 560px; width: 1080px; height: 704px;
@@ -55,9 +57,10 @@
   .barv { position: absolute; width: 460px; text-align: center; font-size: 76px; font-weight: 800; letter-spacing: -3px; }
   .barl { position: absolute; width: 460px; text-align: center; font-size: 38px; font-weight: 700; color: var(--muted); }
 
-  /* the signature */
-  #lineSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #lineSvg, #fxSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #fxSvg { z-index: 5; }
   #coin { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; z-index: 5; }
+  #coinFace { position: absolute; inset: 0; }
   #coin .face { position: absolute; inset: 0; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 45%, #ff7a00 100%);
     box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
@@ -68,108 +71,87 @@
 <body>
 <div id="stage">
   <div id="glow"></div>
+  <div id="world">
 
-  <!-- S0 hook: 0-2.0 -->
-  <div class="scene" id="s0">
-    <div id="hookBg"></div>
-    <div id="hookImg"></div>
-    <div class="abs center hookTxt" id="h1" style="top:250px; font-size:100px">Your loan rate<br><span style="color:#ff6b6b">just went up.</span></div>
-    <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:96px">Did your bank<br><span class="hl">add a year?</span></div>
-    <div id="credit">Photo: advokatsmart.no, CC BY 2.0</div>
+    <div class="panel" id="p0">
+      <div id="hookBg"></div>
+      <div id="hookImg"></div>
+      <div class="abs center hookTxt" id="h1" style="top:250px; font-size:100px">Your loan rate<br><span style="color:#ff6b6b">just went up.</span></div>
+      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:96px">Did your bank<br><span class="hl">add a year?</span></div>
+      <div id="credit">Photo: advokatsmart.no, CC BY 2.0</div>
+    </div>
+
+    <div class="panel" id="p1">
+      <div class="abs center label" id="l1" style="top:270px">₹30 lakh home loan · 20 years</div>
+      <div class="abs center big" id="n1" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+0.25%</div>
+      <div class="abs center" id="c1" style="top:610px"><span class="chip">8.50% → 8.75%, after the RBI hike</span></div>
+      <div class="abs center note" id="d1" style="top:1600px">Example. Assumes the full hike is passed on.</div>
+    </div>
+
+    <div class="panel" id="p2">
+      <div class="abs center" id="k2" style="top:280px"><span class="opt">OPTION 1</span></div>
+      <div class="abs center title" id="t2" style="top:350px">Pay a higher EMI</div>
+      <div class="abs center big" id="n2" style="top:470px; font-size:170px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">+₹0</div>
+      <div class="abs center label" id="l2" style="top:650px">a month: ₹26,035 → ₹26,511</div>
+      <div class="abs center" id="c2" style="top:1520px"><span class="chip">Extra paid over the loan: <b style="color:var(--amber)">₹1.14 lakh</b></span></div>
+    </div>
+
+    <div class="panel" id="p3">
+      <div class="abs center" id="k3" style="top:280px"><span class="opt" style="background:var(--red)">OPTION 2</span></div>
+      <div class="abs center title" id="t3" style="top:350px">Keep the EMI,<br>stretch the loan</div>
+      <div class="abs center big" id="n3" style="top:540px; font-size:170px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+1 year</div>
+      <div class="abs center label" id="l3" style="top:720px">240 → about 252 months</div>
+      <div class="abs center" id="c3" style="top:1520px"><span class="chip">Extra paid: <b style="color:var(--red)">₹3.24 lakh</b></span></div>
+    </div>
+
+    <div class="panel" id="p4">
+      <div class="abs center title" id="t4" style="top:280px">Same loan.<br><span style="color:var(--amber)">About ₹2 lakh</span> apart.</div>
+      <div class="bar" id="b1" style="left:150px; background:linear-gradient(180deg,#ffd27a,#ffb02e); box-shadow:0 0 50px rgba(255,176,46,.45)"></div>
+      <div class="bar" id="b2" style="left:630px; background:linear-gradient(180deg,#ff8f8f,#ff5a5a); box-shadow:0 0 50px rgba(255,90,90,.45)"></div>
+      <div class="barv" id="v1" style="left:70px; color:var(--amber)">₹1.14L</div>
+      <div class="barv" id="v2" style="left:550px; color:#ff8f8f">₹3.24L</div>
+      <div class="barl" style="left:70px; top:1490px">Higher EMI</div>
+      <div class="barl" style="left:550px; top:1490px">Longer loan</div>
+    </div>
+
+    <div class="panel" id="p5">
+      <div class="abs center title" id="t5" style="top:330px; font-size:64px">The tip: ask your bank for<br><span class="hl" style="margin-top:12px">higher EMI, not a longer loan.</span></div>
+      <div class="abs center" id="t6" style="top:620px; font-size:46px; font-weight:700; line-height:1.3">RBI rules (Aug 2023) let you choose:<br>higher EMI, longer loan, or both.</div>
+      <div class="abs center note" id="d5" style="top:1600px">Example only. Check your lender's terms. Not financial advice.</div>
+    </div>
+
+    <div class="panel" id="p6">
+      <div class="abs center" id="e1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+      <div class="abs center" id="e2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+      <div class="abs center" id="e3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+      <div class="abs center" id="e4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
+    </div>
   </div>
 
-  <!-- S1 the setup: 2.0-6.0 -->
-  <div class="scene" id="s1">
-    <div class="abs center label" id="l1" style="top:270px">₹30 lakh home loan · 20 years</div>
-    <div class="abs center big" id="n1" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+0.25%</div>
-    <div class="abs center" id="c1" style="top:610px"><span class="chip">8.50% → 8.75%, after the RBI hike</span></div>
-    <div class="abs center note" id="d1" style="top:1600px">Example. Assumes the full hike is passed on.</div>
-  </div>
-
-  <!-- S2 option 1: 6.0-12.0 -->
-  <div class="scene" id="s2">
-    <div class="abs center" id="k2" style="top:280px"><span class="opt">OPTION 1</span></div>
-    <div class="abs center title" id="t2" style="top:350px">Pay a higher EMI</div>
-    <div class="abs center big" id="n2" style="top:470px; font-size:170px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">+₹0</div>
-    <div class="abs center label" id="l2" style="top:650px">a month: ₹26,035 → ₹26,511</div>
-    <div class="abs center" id="c2" style="top:1520px"><span class="chip">Extra paid over the loan: <b style="color:var(--amber)">₹1.14 lakh</b></span></div>
-  </div>
-
-  <!-- S3 option 2: 12.0-18.0 -->
-  <div class="scene" id="s3">
-    <div class="abs center" id="k3" style="top:280px"><span class="opt" style="background:var(--red)">OPTION 2</span></div>
-    <div class="abs center title" id="t3" style="top:350px">Keep the EMI,<br>stretch the loan</div>
-    <div class="abs center big" id="n3" style="top:540px; font-size:170px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+1 year</div>
-    <div class="abs center label" id="l3" style="top:720px">240 → about 252 months</div>
-    <div class="abs center" id="c3" style="top:1520px"><span class="chip">Extra paid: <b style="color:var(--red)">₹3.24 lakh</b></span></div>
-  </div>
-
-  <!-- S4 compare: 18.0-22.0 -->
-  <div class="scene" id="s4">
-    <div class="abs center title" id="t4" style="top:280px">Same loan.<br><span style="color:var(--amber)">About ₹2 lakh</span> apart.</div>
-    <div class="bar" id="b1" style="left:150px; background:linear-gradient(180deg,#ffd27a,#ffb02e); box-shadow:0 0 50px rgba(255,176,46,.45)"></div>
-    <div class="bar" id="b2" style="left:630px; background:linear-gradient(180deg,#ff8f8f,#ff5a5a); box-shadow:0 0 50px rgba(255,90,90,.45)"></div>
-    <div class="barv" id="v1" style="left:70px; color:var(--amber)">₹1.14L</div>
-    <div class="barv" id="v2" style="left:550px; color:#ff8f8f">₹3.24L</div>
-    <div class="barl" style="left:70px; top:1490px">Higher EMI</div>
-    <div class="barl" style="left:550px; top:1490px">Longer loan</div>
-  </div>
-
-  <!-- S5 the tip: 22.0-27.5 -->
-  <div class="scene" id="s5">
-    <div class="abs center title" id="t5" style="top:330px; font-size:64px">The tip: ask your bank for<br><span class="hl" style="margin-top:12px">higher EMI, not a longer loan.</span></div>
-    <div class="abs center" id="t6" style="top:620px; font-size:46px; font-weight:700; line-height:1.3">RBI rules (Aug 2023) let you choose:<br>higher EMI, longer loan, or both.</div>
-    <div class="abs center note" id="d5" style="top:1600px">Example only. Check your lender's terms. Not financial advice.</div>
-  </div>
-
-  <!-- S6 end: 27.5-30.0 -->
-  <div class="scene" id="s6">
-    <div class="abs center" id="e1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
-    <div class="abs center" id="e2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
-    <div class="abs center" id="e3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
-    <div class="abs center" id="e4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
-  </div>
-
-  <svg id="lineSvg" width="1080" height="1920">
-    <path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
-    <path id="ext" fill="none" stroke="#ff5a5a" stroke-width="7" stroke-linecap="round" stroke-dasharray="18 14" style="filter: drop-shadow(0 0 10px rgba(255,90,90,.8))"/>
-    <g id="ticks"></g>
+  <svg id="lineSvg" width="1080" height="1920"><path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
     <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#ff7a00"/><stop offset=".5" stop-color="#ffb02e"/><stop offset="1" stop-color="#fff1d6"/></linearGradient></defs></svg>
-  <div id="coin"><div class="face"></div><div class="rs">₹</div></div>
+  <svg id="fxSvg" width="1080" height="1920"><g id="ticks"></g>
+    <path id="ext" fill="none" stroke="#ff5a5a" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 14" style="filter: drop-shadow(0 0 10px rgba(255,90,90,.8))"/></svg>
+  <div id="coin"><div id="coinFace"><div class="face"></div><div class="rs">₹</div></div></div>
   <div id="tag"><span class="tpill">MONEY TIP</span><span class="handle">@unicornkahisab</span></div>
   <div id="grain"></div>
 </div>
 <script src="../lib/motion.js"></script>
+<script src="../lib/hisab.js"></script>
 <script>
 window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.544, drop: 6.0 };
 const DURATION = 30;
 const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 22.0], [22.0, 27.5], [27.5, 30.0]];
-
-const STEP = (u) => 1300 - 110 * (1 / (1 + Math.exp(-(u - 0.5) * 60)));   // the 7 PM reel's step, continued
 const SHAPES = [
-  (u) => 1350,                          // hook
-  STEP,                                 // the rate steps up
-  (u) => 1280 - 120 * u,                // option 1: a steeper, shorter climb
-  (u) => 1250,                          // option 2: flat line, then stretched (red dashes)
-  (u) => 1474,                          // compare: the line becomes the bars' baseline
-  (u) => 1300 - 140 * Math.pow(u, 2),   // the tip
-  (u) => 1250,                          // end
+  (u) => 1350,                                                // hook
+  (u) => 1300 - 110 / (1 + Math.exp(-(u - 0.5) * 60)),        // the 7 PM reel's step, continued
+  (u) => 1250 - 110 * u,                                      // option 1: a steeper, shorter climb
+  (u) => 1250,                                                // option 2: 20 yearly ticks + a red extra year
+  (u) => 1474,                                                // compare: the line is the bars' baseline
+  (u) => 1300 - 140 * u * u,                                  // the tip
+  (u) => 1250,                                                // end
 ];
-function lineY(u, t, cur) {
-  const a = CUES[cur][0];
-  const k = cur === 0 ? 1 : ease.inOutCubic(clamp((t - a) / 0.6, 0, 1));
-  const prev = SHAPES[Math.max(0, cur - 1)], now = SHAPES[cur];
-  return prev(u, t) * (1 - k) + now(u, t) * k;
-}
-const COINX = [
-  (t) => 0.5,
-  (t) => tween(t, 2.2, 1.6, 0.2, 0.8, ease.inOutCubic),     // hops the step
-  (t) => tween(t, 6.6, 3.0, 0.14, 0.86, ease.inOutCubic),
-  (t) => tween(t, 12.6, 4.6, 0.10, 0.96, ease.inOutCubic),  // rolls on into the extra year
-  (t) => 0.5,
-  (t) => tween(t, 22.2, 4.8, 0.14, 0.82, ease.inOutCubic),
-  (t) => tween(t, 27.5, 0.8, 0.82, 0.5, ease.outCubic),
-];
+Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - 4.0) / 0.2, 2)) });
 
 function slam(el, t, start, from = 1.2) {
   const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
@@ -179,81 +161,67 @@ function slam(el, t, start, from = 1.2) {
 
 function renderFrame(t) {
   const p = pulse(t);
-  const i = CUES.findIndex(([a, b]) => t >= a && t < b);
-  const cur = i < 0 ? CUES.length - 1 : i;
-  const [a, b] = CUES[cur];
-  CUES.forEach((_, j) => { $("s" + j).style.display = j === cur ? "block" : "none"; });
-  $("tag").style.display = cur === 0 ? "none" : "flex";
+  const { camX } = Hisab.frame(t);
+  $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));
   $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
 
-  // Option 2: the loan line shrinks to 20 ticks (years) and a red dashed 21st year grows on the end.
-  const stretch = cur === 3 ? tween(t, a + 0.3, 0.6, 0, 1, ease.inOutCubic) : 0;
-  const uEnd = 1 - 0.18 * stretch;                       // amber part ends earlier...
-  const N = 140; let d = "";
-  for (let s = 0; s <= N; s++) {
-    const u = (s / N) * uEnd, x = -20 + (s / N) * (uEnd * 1120), y = lineY(s / N, t, cur);
-    d += (s ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
-  }
-  $("line").setAttribute("d", d);
-  $("line").setAttribute("stroke-dasharray", 1680);
-  $("line").setAttribute("stroke-dashoffset", cur === 0 ? 1680 * (1 - tween(t, 0, 0.5, 0, 1, ease.outCubic)) : 0);
-  const grow = cur === 3 ? tween(t, a + 1.2, 1.4, 0, 1, ease.outCubic) : 0;   // ...and the extra year grows
-  const x0 = -20 + uEnd * 1120, y0 = lineY(1, t, cur);
-  $("ext").setAttribute("d", grow > 0 ? `M${x0} ${y0}L${x0 + 200 * grow} ${y0}` : "");
+  // P3 overlay, in screen space: 20 yearly ticks on the loan line, then a red dashed 21st year grows.
+  const P3 = 3 * 1080, y3 = 1250, x0 = P3 + 40 - camX, step = 36;   // ends at u 0.85, before the seam bend
+  const tk = tween(t, 12.3, 0.8, 0, 1);
   let ticks = "";
-  if (cur === 3) for (let k = 0; k <= 20; k++) {
-    const x = 40 + k * ((x0 - 40) / 20); ticks += `<line x1="${x}" x2="${x}" y1="${y0 - 14}" y2="${y0 + 14}" stroke="rgba(255,255,255,${0.35 * stretch})" stroke-width="3"/>`;
+  if (tk > 0) for (let k = 0; k <= 20; k++) {
+    const x = x0 + k * step; ticks += `<line x1="${x}" x2="${x}" y1="${y3 - 16}" y2="${y3 + 16}" stroke="rgba(255,255,255,${0.5 * tk})" stroke-width="3"/>`;
   }
   $("ticks").innerHTML = ticks;
+  const grow = tween(t, 13.4, 1.4, 0, 1, ease.outCubic);
+  const xe = x0 + 20 * step;
+  $("ext").setAttribute("d", grow > 0 ? `M${xe} ${y3}L${xe + 160 * grow} ${y3}` : "");
 
-  const cu = COINX[cur](t), cx = -20 + cu * 1120;
-  let cy = lineY(Math.min(cu, 1), t, cur) - 52;
-  if (cur === 0) cy -= tween(t, 0.25, 0.45, 900, 0, ease.outBack);
-  if (cur === 1) cy -= 60 * Math.exp(-Math.pow((t - 3.0) / 0.18, 2));
-  if (cur === 6) cy -= tween(t, 27.9, 0.6, 0, 120, ease.outCubic);
-  let scale = 1;
-  if (cur === 6) scale = 1 + 1.4 * tween(t, 27.9, 0.6, 0, 1, ease.outBack);
-  $("coin").style.transform = `translate(${cx}px, ${cy}px) scale(${scale * (1 + 0.05 * p)})`;
+  // P0 hook
+  $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 2.0, 0, 1)})`;
+  slam($("h1"), t, 0, 1.1);
+  slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
 
-  if (cur === 0) {
-    $("hookImg").style.transform = `scale(${1 + 0.08 * clamp(t / 2.0, 0, 1)})`;
-    slam($("h1"), t, 0, 1.1);
-    slam($("h2"), t, 0.4, 1.25); $("h2").style.opacity = 1;
-  } else if (cur === 1) {
-    $("l1").style.opacity = 1;
-    $("n1").style.transform = `scale(${t > 3.0 ? 1 + 0.05 * Math.exp(-(t - 3.0) * 6) : 1})`;
-    slam($("n1"), t, a, 1.3);
-    slam($("c1"), t, 3.3, 1.12);
-    slam($("d1"), t, 3.8, 1.0);
-  } else if (cur === 2) {
-    slam($("k2"), t, a, 1.2); slam($("t2"), t, a, 1.08);
-    $("n2").textContent = `+₹${Math.round(tween(t, a + 0.2, 0.9, 0, 477, ease.outExpo))}`;
-    slam($("l2"), t, a + 0.6, 1.05);
-    slam($("c2"), t, a + 2.2, 1.12);
-  } else if (cur === 3) {
-    slam($("k3"), t, a, 1.2); slam($("t3"), t, a, 1.08);
-    slam($("n3"), t, a + 1.2, 1.3);
-    slam($("l3"), t, a + 1.6, 1.05);
-    slam($("c3"), t, a + 2.6, 1.12);
-  } else if (cur === 4) {
-    slam($("t4"), t, a, 1.08);
-    const H = 620, base = 1470;
-    const h1 = tween(t, a + 0.3, 0.8, 0, H * 1.14 / 3.24), h2 = tween(t, a + 0.9, 1.0, 0, H);
-    $("b1").style.top = `${base - h1}px`; $("b1").style.height = `${h1}px`;
-    $("b2").style.top = `${base - h2}px`; $("b2").style.height = `${h2}px`;
-    $("v1").style.top = `${base - h1 - 100}px`; $("v1").style.opacity = tween(t, a + 0.9, frames(6), 0, 1);
-    $("v2").style.top = `${base - h2 - 100}px`; $("v2").style.opacity = tween(t, a + 1.7, frames(6), 0, 1);
-  } else if (cur === 5) {
-    slam($("t5"), t, a, 1.08);
-    slam($("t6"), t, 24.0, 1.15);
-    if (t < 24.0) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
-    slam($("d5"), t, 24.0, 1.0);
-  } else {
-    slam($("e1"), t, 27.9, 1.1);
-    slam($("e2"), t, 28.1, 1.3);
-    slam($("e3"), t, 28.6, 1.1);
-    slam($("e4"), t, 28.9, 1.1);
-  }
+  // P1 setup (coin hops the step at 4 s)
+  slam($("l1"), t, 1.7, 1.05);
+  $("n1").style.opacity = t < 1.8 ? 0 : 1;
+  $("n1").style.transform = `scale(${t < 3.0 ? 1.3 - 0.3 * tween(t, 1.8, frames(5), 0, 1) : 1 + 0.05 * Math.exp(-(t - 3.0) * 6)})`;
+  slam($("c1"), t, 3.3, 1.12);
+  slam($("d1"), t, 3.8, 1.0);
+
+  // P2 option 1
+  slam($("k2"), t, 5.7, 1.2); slam($("t2"), t, 5.7, 1.08);
+  $("n2").textContent = `+₹${Math.round(tween(t, 6.1, 0.9, 0, 477, ease.outExpo))}`;
+  $("n2").style.opacity = t < 5.9 ? 0 : 1;
+  slam($("l2"), t, 6.6, 1.05);
+  slam($("c2"), t, 8.2, 1.12);
+
+  // P3 option 2
+  slam($("k3"), t, 11.7, 1.2); slam($("t3"), t, 11.7, 1.08);
+  slam($("n3"), t, 14.6, 1.3);
+  slam($("l3"), t, 15.0, 1.05);
+  slam($("c3"), t, 15.6, 1.12);
+
+  // P4 compare
+  slam($("t4"), t, 17.7, 1.08);
+  const H = 620, base = 1470;
+  const h1 = tween(t, 18.3, 0.8, 0, H * 1.14 / 3.24), h2 = tween(t, 18.9, 1.0, 0, H);
+  $("b1").style.top = `${base - h1}px`; $("b1").style.height = `${h1}px`;
+  $("b2").style.top = `${base - h2}px`; $("b2").style.height = `${h2}px`;
+  $("v1").style.top = `${base - h1 - 100}px`; $("v1").style.opacity = tween(t, 18.9, frames(6), 0, 1);
+  $("v2").style.top = `${base - h2 - 100}px`; $("v2").style.opacity = tween(t, 19.7, frames(6), 0, 1);
+
+  // P5 the tip
+  slam($("t5"), t, 21.7, 1.08);
+  slam($("t6"), t, 24.0, 1.15);
+  if (t < 24.0) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
+  slam($("d5"), t, 24.0, 1.0);
+
+  // P6 end
+  slam($("e1"), t, 27.6, 1.1);
+  slam($("e2"), t, 27.9, 1.3);
+  slam($("e3"), t, 28.5, 1.1);
+  slam($("e4"), t, 28.8, 1.1);
 }
 window.renderFrame = renderFrame;
 window.DURATION = DURATION;
