@@ -1,0 +1,37 @@
+# Solids For You footage library
+
+Our own footage from the Solids For You workshop, ready to drop into reels without
+fetching anything from Drive. Use it for positive moments only (a new brand building
+real products), never as proof of a product claim: SFY product facts are still missing
+from `memory/memory.csv`. When a reel uses it, say so on screen ("Footage: Solids For You")
+and in the caption.
+
+## clips/ (no text on screen, no audio)
+
+| File | Shows | Size | Cut from |
+|---|---|---|---|
+| `label-closeup-solids-for-you.mp4` | The SOLIDS FOR YOU label on black joggers, slow push | 1920x1080, 0.87 s | `public/reels/sfy-fabric-30s.mp4` 12.5-13.35 s |
+| `stitching-hands-black-joggers.mp4` | Hands guiding black jogger fabric under the needle | 1920x1080, 1.0 s | same reel, 8.8-9.8 s |
+| `sewing-machine-joggers-waistband.mp4` | Sewing machine head stitching a jogger waistband | 1920x1080, 0.9 s | same reel, 23.1-24.0 s |
+| `heat-press-label-vertical.mp4` | A worker at the heat press, label going on | 720x1280 (vertical), 2.7 s at 10 fps | frames in `videos/sfy/clip/` |
+
+The clips are short because the source reel has text over most shots. Slow them down
+(`setpts=PTS/0.3`) for background use. For a vertical reel, crop the horizontal clips
+with `crop=608:1080:656:0,scale=1080:1920`.
+
+## photos/ (2400x1800 unless noted)
+
+| File | Shows |
+|---|---|
+| `blue-tee-collar-1.jpg` to `-3.jpg` | Close-ups of a royal-blue tee's collar and rib |
+| `blue-tees-on-cutting-table.jpg` | Stacks of blue tees on the cutting table |
+| `blue-tees-folded-stack.jpg` | A folded stack of blue tees |
+| `blue-tees-pile-closeup.jpg` | A loose pile of blue tees |
+| `black-joggers-drawstring-1.jpg` to `-3.jpg` | Black joggers with white drawstrings on the table |
+| `sewing-machine-with-sunglasses.jpg` | A sewing machine with sunglasses on the table |
+
+## Originals
+
+The full-length clips (vertical .MOV, 20-110 MB each, too big for git) are in the
+founder's Drive folder `1Q3kI0Qqr9yB1W7WPbjOVxVOd-n8cEe8Y`. Add more clean clips here
+when a reel needs them, named by what they show.

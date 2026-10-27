@@ -3,129 +3,151 @@
 <head>
 <meta charset="utf-8">
 <!--
-  Unicorn ka Hisab: D2C market, funding (27 Oct 2026). 1080x1920, 30 s, no audio.
-  Same soundtrack as the 30 s reels (track from 0:38.2, drop at 6.0 s, beat 60/97.6 from 0.544 s);
-  cuts and key reveals sit on its whooshes at 3, 6, 12, 18, 24 and 27.5 s.
-  Sector-level only: no brand named or shown.
+  Unicorn ka Hisab: D2C market (27 Oct 2026), v2 in the page's signature style.
+  1080x1920, 30 s, no audio. Same soundtrack as the 30 s reels (track from 0:38.2, drop at
+  6.0 s, beat 60/97.6 from 0.544 s); text changes sit on its whooshes at 3, 6, 12, 18, 24, 27.5 s.
+
+  Signature (every reel from now on): one continuous HISAB LINE and one ₹ COIN. The line is the
+  money trend and never cuts; it morphs from scene to scene. The coin is the money and rides it,
+  landing on the line at the start and rolling into the end card. Text changes; the line doesn't.
+
+  Angle (founder): booms run on outside money, which buys marketing and views; when the big
+  cheques stop, the feed fills with small-ticket sellers and new ideas stop coming. The facts are
+  sourced; the interpretation is marked OUR TAKE on screen.
   Facts (Tracxn India D2C report, Aug 2026, via TNGlobal / Entrepreneur India / Indian Retailer):
-    D2C funding peaked at $1.6B in 2022; $824M in 2024; $898M in 2025 (+9% YoY).
-    Late-stage $883M (22 rounds) in 2022 -> $271M (15 rounds) in 2025, -69%.
-    Seed + early stage: 70% of 2025 funding value, 38% in 2021.
-  Hook photo: Indian rupee notes by Monito - Money Transfer Comparison (Flickr), CC BY 2.0, via Openverse.
+    D2C funding peaked at $1.6B in 2022; $824M in 2024; $898M in 2025.
+    Late-stage $883M (2022) -> $271M (2025), -69%. Seed + early stage: 70% of 2025 funding, 38% in 2021.
+  Hook photo: supplied by the founder (videos/d2c/hook/parcels-doorbell.jpg).
+  Footage (22-27.5 s): Solids For You's own workshop, from assets/sfy/clips, cut into sfy/001-166.jpg
+  (gitignored) with:
+    ffmpeg -i assets/sfy/clips/label-closeup-solids-for-you.mp4 -i assets/sfy/clips/stitching-hands-black-joggers.mp4
+      -i assets/sfy/clips/sewing-machine-joggers-waistband.mp4 -filter_complex "[0:v]setpts=PTS/0.5[a];
+      [1:v]setpts=PTS/0.5[b];[2:v]setpts=PTS/0.5[c];[a][b][c]concat=n=3:v=1:a=0,fps=30,
+      crop=608:1080:656:0,scale=1080:1920,eq=brightness=-0.05:saturation=0.9[v]"
+      -map "[v]" -frames:v 166 -q:v 5 videos/d2c/sfy/%03d.jpg
   All motion comes from renderFrame(t).
 -->
 <style>
-  :root { --bg: #0b0709; --accent: #ff4fa3; --red: #ff5a5a; --white: #f7f4f1; --muted: rgba(247,244,241,.65); }
+  :root { --bg: #07070a; --amber: #ffb02e; --orange: #ff7a00; --red: #ff5a5a; --white: #f5f5f7;
+    --muted: rgba(245,245,247,.62); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
   body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
   #stage { position: absolute; inset: 0; overflow: hidden; }
   .abs { position: absolute; }
-  .center { left: 0; right: 0; text-align: center; }
+  .center { left: 60px; right: 60px; text-align: center; }
   .scene { position: absolute; inset: 0; display: none; }
-  .glow { position: absolute; border-radius: 50%; filter: blur(50px); }
-  #glowA { width: 1500px; height: 1500px; left: -210px; top: 200px;
-    background: radial-gradient(circle, rgba(255,79,163,.36) 0%, rgba(255,79,163,.09) 42%, transparent 68%); }
-  #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
+  #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
+    filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
-  #tag { position: absolute; left: 60px; top: 150px; display: flex; gap: 14px; align-items: center; z-index: 5; }
+  #tag { position: absolute; left: 60px; top: 150px; display: flex; gap: 14px; align-items: center; z-index: 6; }
   .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
-    border: 2px solid var(--accent); color: var(--accent); }
+    border: 2px solid var(--amber); color: var(--amber); }
   .handle { font-size: 24px; font-weight: 500; color: #bbb; }
+  .title { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
   .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
-  .label { font-size: 56px; font-weight: 600; color: var(--muted); }
-  .chip { display: inline-block; padding: 14px 30px; border-radius: 999px; font-size: 36px; font-weight: 600;
+  .label { font-size: 44px; font-weight: 600; color: var(--muted); }
+  .chip { display: inline-block; padding: 14px 28px; border-radius: 999px; font-size: 36px; font-weight: 600;
     background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
-  .hl { display: inline-block; padding: 0 22px 10px; border-radius: 18px; background: var(--accent); color: #fff; }
+  .take { display: inline-block; padding: 8px 18px; border-radius: 10px; font-size: 26px; font-weight: 800;
+    letter-spacing: .12em; color: #07070a; background: var(--amber); }
+  .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
   .note { font-size: 30px; color: var(--muted); }
 
-  #hookBg { position: absolute; inset: -80px; background: url("stock/indian-rupee-notes-5.jpg") center / cover;
-    filter: blur(34px) brightness(.45) saturate(1.2); }
-  #hookImg { position: absolute; left: 0; top: 600px; width: 1080px; height: 810px;
-    background: url("stock/indian-rupee-notes-5.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6);
-    border-top: 12px solid var(--accent); border-bottom: 12px solid var(--accent); }
-  .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.08; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
-  #credit { position: absolute; left: 0; right: 0; top: 1425px; text-align: center; font-size: 22px; color: rgba(255,255,255,.55); }
+  #hookBg { position: absolute; inset: -80px; background: url("hook/parcels-doorbell.jpg") 30% center / cover;
+    filter: blur(34px) brightness(.4); }
+  #hookImg { position: absolute; left: 0; top: 560px; width: 1080px; height: 576px;
+    background: url("hook/parcels-doorbell.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+  .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.06; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
 
-  .cat { position: absolute; padding: 16px 30px; border-radius: 20px; font-size: 34px; font-weight: 600;
-    background: rgba(30,16,24,.85); border: 2px solid rgba(255,79,163,.35); white-space: nowrap; }
-  .cat i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--accent);
-    margin-right: 14px; vertical-align: middle; }
+  #foot { position: absolute; inset: 0; display: none; }
+  #foot img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: none; }
+  #footShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,10,.7), rgba(7,7,10,.82) 45%, rgba(7,7,10,.6)); }
+  #footLbl { position: absolute; left: 0; right: 0; top: 1660px; text-align: center; font-size: 30px; font-weight: 600;
+    color: rgba(255,255,255,.8); display: none; z-index: 6; }
 
-  .coin { position: absolute; width: 56px; height: 56px; border-radius: 50%; overflow: hidden;
-    border: 3px solid rgba(255,79,163,.6); background: var(--accent); box-shadow: 0 0 18px rgba(255,79,163,.6); }
-
-  .bar { position: absolute; width: 300px; border-radius: 24px 24px 0 0; }
-  .barv { position: absolute; width: 460px; text-align: center; font-size: 84px; font-weight: 800; letter-spacing: -3px; }
-  .barl { position: absolute; width: 460px; text-align: center; font-size: 44px; font-weight: 700; color: var(--muted); }
+  /* the signature */
+  #lineSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #coin { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; z-index: 5; }
+  #coin .face { position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 45%, #ff7a00 100%);
+    box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
+  #coin .rs { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; font-weight: 800; color: #3a1d00; }
+  .mini { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; z-index: 5;
+    background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 50%, #ff7a00); box-shadow: 0 0 14px rgba(255,140,0,.6); }
+  .ptl { position: absolute; width: 240px; margin-left: -120px; text-align: center; z-index: 5; }
+  .ptl b { display: block; font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
+  .ptl span { font-size: 30px; color: var(--muted); font-weight: 600; }
 </style>
 </head>
 <body>
 <div id="stage">
-  <div class="glow" id="glowA"></div>
+  <div id="glow"></div>
+  <div id="foot"><div id="footShade"></div></div>
 
   <!-- S0 hook: 0-2.0 -->
   <div class="scene" id="s0">
     <div id="hookBg"></div>
     <div id="hookImg"></div>
-    <div class="abs center hookTxt" id="h1" style="top:250px; font-size:120px">D2C boom<br><span style="color:#ff6b6b">khatam?</span></div>
-    <div class="abs center hookTxt" id="h0" style="top:520px; font-size:48px; font-weight:700; letter-spacing:-1px">(Instagram wale brands)</div>
-    <div class="abs center hookTxt" id="h2" style="top:1450px; font-size:110px">Paisa<br><span class="hl">kahan gaya?</span></div>
-    <div id="credit">Photo: Monito, CC BY 2.0</div>
+    <div class="abs center hookTxt" id="h1" style="top:250px; font-size:104px">Is India's D2C boom<br><span style="color:#ff6b6b">dying?</span></div>
+    <div class="abs center hookTxt" id="h2" style="top:1430px; font-size:100px">Here's the <span class="hl">hisab.</span></div>
   </div>
 
-  <!-- S1 the peak, with category props: 2.0-6.0 -->
+  <!-- S1 boom: 2.0-6.0 -->
   <div class="scene" id="s1">
-    <div id="cats"></div>
-    <div class="abs center label" style="top:640px">2022 mein D2C brands ko mila</div>
-    <div class="abs center big" id="s1n" style="top:740px; font-size:240px; color:var(--accent); text-shadow:0 0 50px rgba(255,79,163,.55)">$0B</div>
-    <div class="abs center" id="s1c" style="top:1020px"><span class="chip">investors ka paisa · sabse zyada</span></div>
+    <div class="abs center title" id="t1" style="top:280px">Every boom starts with<br>outside money.</div>
+    <div class="abs center big" id="n1" style="top:520px; font-size:200px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">$0B</div>
+    <div class="abs center label" id="l1" style="top:730px">VC money into Indian D2C, 2022</div>
+    <div class="abs center" id="c1" style="top:1600px"><span class="chip">Money → Ads → Views → More brands</span></div>
   </div>
 
-  <!-- S2 then and now: 6.0-12.0 -->
+  <!-- S2 pull-back: 6.0-12.0 -->
   <div class="scene" id="s2">
-    <div class="abs center" style="top:300px; font-size:80px; font-weight:800; letter-spacing:-2px">Aur 2025 mein?</div>
-    <div class="abs" style="left:90px; right:90px; top:1380px; height:4px; background:rgba(255,255,255,.25)"></div>
-    <div class="bar" id="b1" style="left:150px; background:linear-gradient(180deg,#ff8cc4,#ff4fa3); box-shadow:0 0 50px rgba(255,79,163,.45)"></div>
-    <div class="bar" id="b2" style="left:630px; background:linear-gradient(180deg,#ff8f8f,#ff5a5a); box-shadow:0 0 50px rgba(255,90,90,.45)"></div>
-    <div class="barv" id="v1" style="left:70px">$1.6B</div>
-    <div class="barv" id="v2" style="left:550px; color:#ff8f8f">$898M</div>
-    <div class="barl" style="left:70px; top:1400px">2022</div>
-    <div class="barl" style="left:550px; top:1400px">2025</div>
-    <div class="abs center" id="s2c" style="top:1500px"><span class="chip" style="border-color:rgba(255,90,90,.7); color:#ff8f8f">44% kam · 2024 mein sirf $824M</span></div>
+    <div class="abs center title" id="t2" style="top:280px">Then the money<br><span style="color:var(--red)">pulled back.</span></div>
+    <div class="ptl" id="p22"><b>$1.6B</b><span>2022</span></div>
+    <div class="ptl" id="p24"><b>$824M</b><span>2024</span></div>
+    <div class="ptl" id="p25"><b>$898M</b><span>2025</span></div>
+    <div class="abs center" id="c2" style="top:1560px"><span class="chip" style="border-color:rgba(255,90,90,.7); color:#ff8f8f">Big late-stage cheques: −69%</span></div>
+    <div class="abs center note" id="src2" style="top:1660px">Source: Tracxn India D2C report, Aug 2026</div>
   </div>
 
-  <!-- S3 big cheques: 12.0-18.0 -->
+  <!-- S3 who's left: 12.0-18.0 -->
   <div class="scene" id="s3">
-    <div class="abs center" style="top:300px; font-size:80px; font-weight:800; letter-spacing:-2px">Bade cheques?</div>
-    <div class="abs" id="coins" style="left:160px; top:440px; width:760px; height:760px"></div>
-    <div class="abs center big" id="s3n" style="top:1250px; font-size:200px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.55)">−69%</div>
-    <div class="abs center" id="s3c" style="top:1480px"><span class="chip">late-stage funding: $883M → $271M</span></div>
+    <div class="abs center title" id="t3" style="top:280px">So who's left?</div>
+    <div class="abs center" id="c3" style="top:450px; font-size:48px; font-weight:700; line-height:1.25">70% of 2025's money went to<br><span style="color:var(--amber)">tiny, early-stage brands</span></div>
+    <div class="abs center note" id="n3" style="top:600px">(38% in 2021)</div>
+    <div class="abs center" id="k3" style="top:1480px"><span class="take">OUR TAKE</span></div>
+    <div class="abs center" id="o3" style="top:1550px; font-size:48px; font-weight:700; line-height:1.25">Feeds full of Meesho-style resellers<br>and ₹299 copies.</div>
   </div>
 
-  <!-- S4 where it went: 18.0-22.0 -->
+  <!-- S4 flatline: 18.0-22.0 -->
   <div class="scene" id="s4">
-    <div class="abs center label" style="top:560px">2025 ka</div>
-    <div class="abs center big" id="s4n" style="top:660px; font-size:260px; color:var(--accent); text-shadow:0 0 50px rgba(255,79,163,.55)">0%</div>
-    <div class="abs center" id="s4a" style="top:960px; font-size:64px; font-weight:700">paisa naye, chhote brands ko</div>
-    <div class="abs center" id="s4c" style="top:1070px"><span class="chip">2021 mein tha sirf 38%</span></div>
-    <div class="abs center" id="s4f" style="top:1200px; font-size:34px; color:var(--muted)">Source: Tracxn India D2C report, Aug 2026</div>
+    <div class="abs center" id="k4" style="top:420px"><span class="take">OUR TAKE</span></div>
+    <div class="abs center title" id="t4" style="top:500px">Small cheques fund copies,<br><span style="color:var(--red)">not new ideas.</span></div>
+    <div class="abs center label" id="l4" style="top:1330px">new ideas</div>
   </div>
 
-  <!-- S5 payoff: 22.0-27.5, second line on the 24 s whoosh -->
+  <!-- S5 the way out (SFY footage): 22.0-27.5 -->
   <div class="scene" id="s5">
-    <div class="abs center" id="p1" style="top:720px; font-size:88px; font-weight:800; letter-spacing:-4px">Paisa khatam nahi hua.</div>
-    <div class="abs center" id="p2" style="top:870px; font-size:88px; font-weight:800; letter-spacing:-4px">Bas <span class="hl">bade cheques</span> gaye.</div>
+    <div class="abs center title" id="t5" style="top:420px">The next D2C boom won't<br>come from more money.</div>
+    <div class="abs center title" id="t6" style="top:640px">It'll come from<br><span class="hl">better products.</span></div>
   </div>
 
   <!-- S6 end: 27.5-30.0 -->
   <div class="scene" id="s6">
-    <div class="abs center" id="e1" style="top:720px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
-    <div class="abs center" id="e2" style="top:880px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
-    <div class="abs center" id="e3" style="top:1130px; font-size:46px; font-weight:600">Roz ka paisa, simple hisab</div>
-    <div class="abs center" id="e4" style="top:1210px; font-size:46px; color:var(--accent); font-weight:700">Follow @unicornkahisab</div>
+    <div class="abs center" id="e1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+    <div class="abs center" id="e2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+    <div class="abs center" id="e3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+    <div class="abs center" id="e4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
   </div>
 
+  <svg id="lineSvg" width="1080" height="1920"><path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
+    <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#ff7a00"/><stop offset=".5" stop-color="#ffb02e"/><stop offset="1" stop-color="#fff1d6"/></linearGradient></defs></svg>
+  <div id="minis"></div>
+  <div id="coin"><div class="face"></div><div class="rs">₹</div></div>
+  <div id="footLbl">Footage: Solids For You, a new D2C brand building its own products</div>
   <div id="tag"><span class="tpill">D2C MARKET</span><span class="handle">@unicornkahisab</span></div>
   <div id="grain"></div>
 </div>
@@ -135,30 +157,61 @@ window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.544, drop: 6.0 };
 const DURATION = 30;
 const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 22.0], [22.0, 27.5], [27.5, 30.0]];
 
-// D2C categories (no brands) orbit the peak number.
-const CATS = ["Skincare", "Snacks", "Earbuds", "Coffee", "Activewear", "Haircare", "Pet food", "Mattresses"];
-const R = rng(11);
-const CAT_POS = CATS.map((name, i) => {
-  const el = document.createElement("div");
-  el.className = "cat";
-  el.innerHTML = `<i></i>${name}`;
-  $("cats").appendChild(el);
-  const top = i % 2 === 0;
-  return { el, x: Math.min(60 + (i >> 1) * 250 + R() * 40, 760), y: top ? 300 + R() * 180 : 1210 + R() * 200, ph: R() * 6.28, d: 0.04 * i };
-});
-
-// 10x10 coins: 69 fade out, 31 stay.
-const COINS = [];
-for (let i = 0; i < 100; i++) {
-  const c = document.createElement("div");
-  c.className = "coin";
-  c.style.left = `${(i % 10) * 76}px`;
-  c.style.top = `${Math.floor(i / 10) * 76}px`;
-  $("coins").appendChild(c);
-  COINS.push(c);
+// ---- The Hisab line: one shape function per scene, blended over 0.6 s at each change ----
+const smooth = (pts) => (u) => {   // smoothstep between [u, y] points
+  if (u <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) {
+    const [u0, y0] = pts[i - 1], [u1, y1] = pts[i];
+    if (u <= u1) { const k = (u - u0) / (u1 - u0); return y0 + (y1 - y0) * (k * k * (3 - 2 * k)); }
+  }
+  return pts[pts.length - 1][1];
+};
+const FUND = (v) => 1560 - (v / 1.6) * 700;            // $B -> y for the funding curve
+const PULL = smooth([[0, 1560], [0.14, FUND(1.6)], [0.40, FUND(0.93)], [0.62, FUND(0.824)], [0.86, FUND(0.898)], [1, FUND(0.898)]]);
+const SHAPES = [
+  (u) => 1300,                                                     // hook: flat under the photo
+  (u) => 1500 - 560 * Math.pow(u, 1.6),                            // boom: climbing
+  PULL,                                                            // pull-back: the real curve
+  (u, t) => 1300 + 34 * Math.sin(u * 46 + t * 3) * Math.sin(u * 7), // crowded: jittery small stuff
+  (u, t) => 1250 - 90 * Math.exp(-Math.pow((u - 0.5) / 0.025, 2)) * (0.6 + 0.4 * Math.sin(t * 6)), // flatline + faint blip
+  (u) => 1420 - 380 * Math.pow(u, 2),                              // the way out: rising again
+  (u) => 1250,                                                     // end: flat, coin centred
+];
+function lineY(u, t, cur) {
+  const a = CUES[cur][0];
+  const k = cur === 0 ? 1 : ease.inOutCubic(clamp((t - a) / 0.6, 0, 1));
+  const prev = SHAPES[Math.max(0, cur - 1)], now = SHAPES[cur];
+  return prev(u, t) * (1 - k) + now(u, t) * k;
 }
 
-function slam(el, t, start, from = 1.25) {
+// Coin path: x (0..1) over each scene.
+const COINX = [
+  (t) => 0.5,
+  (t) => tween(t, 2.0, 3.6, 0.12, 0.86, ease.inOutCubic),
+  (t) => t < 6.6 ? tween(t, 6.0, 0.6, 0.86, 0.14, ease.inOutCubic) : tween(t, 6.8, 3.6, 0.14, 0.86, ease.inOutCubic),
+  (t) => 0.5,
+  (t) => 0.5,
+  (t) => tween(t, 22.2, 4.8, 0.14, 0.82, ease.inOutCubic),
+  (t) => tween(t, 27.5, 0.8, 0.82, 0.5, ease.outCubic),
+];
+
+// Small coins for the crowded scene.
+const MINIS = Array.from({ length: 16 }, (_, i) => {
+  const el = document.createElement("div"); el.className = "mini"; $("minis").appendChild(el);
+  return { el, u: 0.06 + i * 0.058 + (i % 3) * 0.008 };
+});
+
+// Footage frames, preloaded.
+const FOOT = [];
+for (let i = 1; i <= 166; i++) {
+  const im = document.createElement("img");
+  im.src = `sfy/${String(i).padStart(3, "0")}.jpg`;
+  $("foot").insertBefore(im, $("footShade"));
+  FOOT.push(im);
+}
+let footShown = -1;
+
+function slam(el, t, start, from = 1.2) {
   const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
   el.style.opacity = t < start ? 0 : 1;
   el.style.transform = `scale(${from + (1 - from) * k})`;
@@ -168,63 +221,91 @@ function renderFrame(t) {
   const p = pulse(t);
   const i = CUES.findIndex(([a, b]) => t >= a && t < b);
   const cur = i < 0 ? CUES.length - 1 : i;
+  const [a, b] = CUES[cur];
   CUES.forEach((_, j) => { $("s" + j).style.display = j === cur ? "block" : "none"; });
   $("tag").style.display = cur === 0 ? "none" : "flex";
-  $("glowA").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
-  const [a, b] = CUES[cur];
+  $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
 
+  // footage behind the way-out scene
+  const onFoot = cur === 5;
+  $("foot").style.display = $("footLbl").style.display = onFoot ? "block" : "none";
+  if (onFoot) {
+    const k = clamp(Math.floor((t - 22.0) * 30), 0, FOOT.length - 1);
+    if (footShown >= 0) FOOT[footShown].style.display = "none";
+    FOOT[k].style.display = "block"; footShown = k;
+  }
+
+  // the line
+  const N = 140; let d = "";
+  for (let s = 0; s <= N; s++) {
+    const u = s / N, x = -20 + u * 1120, y = lineY(u, t, cur);
+    d += (s ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+  }
+  $("line").setAttribute("d", d);
+  const len = 1400;   // draws on during the hook
+  $("line").setAttribute("stroke-dasharray", len * 1.2);
+  $("line").setAttribute("stroke-dashoffset", cur === 0 ? len * 1.2 * (1 - tween(t, 0, 0.5, 0, 1, ease.outCubic)) : 0);
+
+  // the coin
+  const cu = COINX[cur](t), cx = -20 + cu * 1120;
+  let cy = lineY(cu, t, cur) - 52;
+  if (cur === 0) cy -= tween(t, 0.25, 0.45, 900, 0, ease.outBack);   // drops onto the line
+  if (cur === 4) cy -= 70 * Math.exp(-Math.pow((t - 19.6) / 0.15, 2)); // hops on the blip
+  if (cur === 6) cy -= tween(t, 27.9, 0.6, 0, 120, ease.outCubic);   // rises into the end card
+  let scale = 1;
+  if (cur === 3) scale = 1 - 0.75 * tween(t, a + 0.3, 0.5, 0, 1);    // splits into small coins
+  if (cur === 6) scale = 1 + 1.4 * tween(t, 27.9, 0.6, 0, 1, ease.outBack);
+  $("coin").style.transform = `translate(${cx}px, ${cy}px) scale(${scale * (1 + 0.05 * p)})`;
+  $("coin").style.opacity = cur === 3 ? 1 - 0.85 * tween(t, a + 0.3, 0.5, 0, 1) : 1;
+
+  MINIS.forEach((m, j) => {
+    const show = cur === 3 ? tween(t, a + 0.4 + j * 0.05, frames(6), 0, 1, ease.outBack) : 0;
+    m.el.style.display = show > 0 ? "block" : "none";
+    if (show > 0) {
+      const x = -20 + m.u * 1120, y = lineY(m.u, t, cur) - 18;
+      m.el.style.transform = `translate(${x}px, ${y}px) scale(${show})`;
+    }
+  });
+
+  // scene text
   if (cur === 0) {
-    $("hookImg").style.transform = `scale(${1 + 0.10 * clamp(t / 2.0, 0, 1)})`;
-    $("hookBg").style.transform = `scale(${1.15 + 0.08 * clamp(t / 2.0, 0, 1)})`;
-    slam($("h1"), t, 0, 1.12);
-    slam($("h2"), t, 0.45, 1.3);
-    $("h2").style.opacity = 1;   // visible from frame 0, punches at 0.45 s
+    $("hookImg").style.transform = `scale(${1 + 0.08 * clamp(t / 2.0, 0, 1)})`;
+    slam($("h1"), t, 0, 1.1);
+    slam($("h2"), t, 0.4, 1.25); $("h2").style.opacity = 1;
   } else if (cur === 1) {
-    // Already racing on the first frame; lands on $1.6B at 3.0 s, on the whoosh.
-    const v = tween(t, a, 1.0, 0.9, 1.6, ease.outExpo);
-    $("s1n").textContent = `$${v.toFixed(1)}B`;
-    $("s1n").style.transform = `scale(${t > 3.0 ? 1 + 0.04 * Math.exp(-(t - 3.0) * 6) : 1})`;
-    slam($("s1c"), t, a + 1.0, 1.15);
-    CAT_POS.forEach((f) => {
-      const k = tween(t, a + f.d, frames(8), 0, 1);
-      f.el.style.opacity = 0.35 + 0.65 * k;
-      f.el.style.transform = `translate(${f.x + Math.sin(t * 0.9 + f.ph) * 24}px, ${f.y + Math.cos(t * 0.7 + f.ph) * 30 - 40 * (1 - k)}px)`;
-    });
+    slam($("t1"), t, a, 1.08);
+    const v = tween(t, a, 1.0, 0.6, 1.6, ease.outExpo);
+    $("n1").textContent = `$${v.toFixed(1)}B`;
+    $("n1").style.transform = `scale(${t > 3.0 ? 1 + 0.04 * Math.exp(-(t - 3.0) * 6) : 1})`;
+    slam($("l1"), t, a + 0.5, 1.05);
+    slam($("c1"), t, 3.6, 1.12);
   } else if (cur === 2) {
-    const H = 760, base = 1380;
-    const h1 = tween(t, a + 0.1, 0.9, 0, H), h2 = tween(t, a + 1.2, 1.1, 0, H * 898 / 1600);
-    $("b1").style.top = `${base - h1}px`; $("b1").style.height = `${h1}px`;
-    $("b2").style.top = `${base - h2}px`; $("b2").style.height = `${h2}px`;
-    $("v1").style.top = `${base - h1 - 110}px`; $("v1").style.opacity = tween(t, a + 0.6, frames(6), 0, 1);
-    $("v2").style.top = `${base - h2 - 110}px`; $("v2").style.opacity = tween(t, a + 2.0, frames(6), 0, 1);
-    slam($("s2c"), t, a + 2.6, 1.15);
-  } else if (cur === 3) {
-    // All 100 lit on frame 0; 69 fade to ghost rings, from the end of the grid backwards.
-    COINS.forEach((c, j) => {
-      const goes = j >= 31;
-      const k = goes ? tween(t, a + 0.3 + (99 - j) * 0.02, frames(8), 0, 1) : 0;
-      c.style.background = goes ? `rgba(255,79,163,${1 - 0.92 * k})` : "var(--accent)";
-      c.style.boxShadow = goes ? `0 0 18px rgba(255,79,163,${0.6 * (1 - k)})` : `0 0 ${18 + 14 * p}px rgba(255,79,163,.8)`;
-      c.style.borderColor = goes ? `rgba(255,90,90,${0.6 - 0.35 * k})` : "rgba(255,79,163,.6)";
+    slam($("t2"), t, a, 1.12);
+    [["p22", 0.14, 7.0], ["p24", 0.62, 8.6], ["p25", 0.86, 9.6]].forEach(([id, u, at]) => {
+      const el = $(id); el.style.left = `${-20 + u * 1120}px`; el.style.top = `${lineY(u, t, cur) - 215}px`;
+      el.style.opacity = tween(t, at, frames(6), 0, 1);
     });
-    slam($("s3n"), t, a + 1.0, 1.4);
-    slam($("s3c"), t, a + 1.8, 1.1);
+    slam($("c2"), t, 10.4, 1.12);
+    slam($("src2"), t, 10.4, 1.0);
+  } else if (cur === 3) {
+    slam($("t3"), t, a, 1.12);
+    slam($("c3"), t, a + 1.0, 1.08);
+    slam($("n3"), t, a + 1.4, 1.0);
+    slam($("k3"), t, a + 3.0, 1.2);
+    slam($("o3"), t, a + 3.0, 1.08);
   } else if (cur === 4) {
-    const v = Math.round(tween(t, a, 0.9, 30, 70, ease.outExpo));
-    $("s4n").textContent = `${v}%`;
-    $("s4n").style.transform = `scale(${1 + 0.04 * p})`;
-    slam($("s4a"), t, a + 0.6, 1.1);
-    slam($("s4c"), t, a + 1.4, 1.15);
-    slam($("s4f"), t, a + 2.0, 1.0);
+    slam($("k4"), t, a, 1.2);
+    slam($("t4"), t, a, 1.08);
+    $("l4").style.opacity = tween(t, a + 1.2, frames(8), 0, 0.8);
   } else if (cur === 5) {
-    slam($("p1"), t, a, 1.2);
-    slam($("p2"), t, 24.0, 1.3);
-    if (t < 24.0) { $("p2").style.opacity = 0.18; $("p2").style.transform = "none"; }   // ghosted until the whoosh
+    slam($("t5"), t, a, 1.08);
+    slam($("t6"), t, 24.0, 1.25);
+    if (t < 24.0) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
   } else {
-    slam($("e1"), t, a, 1.1);
-    slam($("e2"), t, a + 0.3, 1.3);
-    slam($("e3"), t, a + 0.8, 1.1);
-    slam($("e4"), t, a + 1.1, 1.1);
+    slam($("e1"), t, 27.9, 1.1);
+    slam($("e2"), t, 28.1, 1.3);
+    slam($("e3"), t, 28.6, 1.1);
+    slam($("e4"), t, 28.9, 1.1);
   }
 }
 window.renderFrame = renderFrame;
