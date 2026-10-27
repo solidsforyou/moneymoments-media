@@ -24,6 +24,10 @@ the coin that rides it) is the code in `videos/d2c/scene.html`: copy its `SHAPES
 | `moments/d2c-funding-curve-pullback.mp4` | The line drawing a real data curve with labelled points (6 s) | D2C reel, 6-12 s |
 | `moments/coin-splits-into-small-coins.mp4` | One coin breaks into many small coins on a jittery line: fragmentation (6 s) | D2C reel, 12-18 s |
 | `moments/line-flatlines-new-ideas.mp4` | The line goes flat with a faint blip: stagnation (4 s) | D2C reel, 18-22 s |
+| `moments/line-draws-data-trend-with-points.mp4` | The line climbs a real monthly trend with labelled points; coin lands on the latest (4 s) | Inflation reel, 2-6 s |
+| `moments/line-steps-up-rate-hike.mp4` | The line takes one clean step up (before/after labels); coin hops it: a rate change (6 s) | Inflation reel, 12-18 s |
+| `moments/loan-line-stretches-extra-year.mp4` | The line becomes 20 yearly ticks and a red dashed extra year grows on the end (6 s) | EMI tip reel, 12-18 s |
+| `moments/two-bars-on-the-line-baseline.mp4` | The line drops to become the baseline of a two-bar comparison (4 s) | EMI tip reel, 18-22 s |
 
 These carry their reel's text, so for a new topic rebuild the moment from the scene code
 and use the clip as the reference.
@@ -39,6 +43,8 @@ heat press) and photos (blue tees, black joggers). Label on screen when used.
 |---|---|---|
 | `stock/biryani-copper-handi.jpg` | CC BY-SA 2.0 | Photo: "Biryani" by avlxyz on Flickr, CC BY-SA 2.0 |
 | `stock/rupee-notes-pile.jpg` | CC BY 2.0 | Photo: Indian rupee notes by Monito on Flickr, CC BY 2.0 |
+| `stock/vegetables-market-pile.jpg` | CC BY 2.0 | Photo: vegetables at an Indian market by BPPrice on Flickr, CC BY 2.0 |
+| `stock/toy-house-and-keys.jpg` | CC BY 2.0 | Photo: toy house and keys by advokatsmart.no on Flickr, CC BY 2.0 |
 
 New stock comes from Openverse with `videos/stock.py` (memory row 17); copy the keepers here.
 

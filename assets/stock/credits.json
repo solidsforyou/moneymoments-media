@@ -16,5 +16,24 @@
     "credit_required": true,
     "source": "openverse",
     "query": "indian rupee notes"
+  },
+  "vegetables-market-pile.jpg": {
+    "url": "https://live.staticflickr.com/5514/11067031794_b8bb10b0d8_b.jpg",
+    "page": "https://www.flickr.com/photos/73082817@N03/11067031794",
+    "creator": "BPPrice",
+    "license": "CC BY 2.0",
+    "credit_required": true,
+    "source": "openverse",
+    "query": "onions tomatoes market india"
+  },
+  "toy-house-and-keys.jpg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Property_Law_-_Gavel_and_Block_and_House_Keys.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=123024286",
+    "creator": "advokatsmart.no",
+    "license": "CC BY 2.0",
+    "credit_required": true,
+    "source": "openverse",
+    "query": "house keys",
+    "note": "cropped to the house and keys (no gavel)"
   }
 }

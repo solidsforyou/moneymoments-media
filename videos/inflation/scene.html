@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: Indian economy, inflation and the RBI hike (27 Oct 2026). 1080x1920, 30 s,
+  no audio. Built on the page signature from videos/d2c/scene.html: one continuous Hisab line
+  that morphs between scenes and a ₹ coin that rides it. Same 30 s soundtrack (drop at 6.0 s;
+  whooshes at 3, 6, 12, 18, 24, 27.5 s).
+  Facts:
+    MoSPI CPI release, 12 Oct 2026: retail inflation 5.54% in Sept 2026 (Aug 4.83%), food 7.74%;
+      Jan 2026 was 2.75%; highest since Oct 2024.
+    RBI raised the repo rate 25 bp to 5.50% on 7 Oct 2026, first hike since 2023 (CNBC, Bloomberg).
+    Drivers named in coverage: deficient monsoon (vegetables) and higher crude prices (The Week).
+  Hook photo: vegetables at an Indian market by BPPrice (Flickr), CC BY 2.0, via Openverse.
+  All motion comes from renderFrame(t).
+-->
+<style>
+  :root { --bg: #07070a; --amber: #ffb02e; --orange: #ff7a00; --red: #ff5a5a; --white: #f5f5f7;
+    --muted: rgba(245,245,247,.62); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .abs { position: absolute; }
+  .center { left: 60px; right: 60px; text-align: center; }
+  .scene { position: absolute; inset: 0; display: none; }
+  #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
+    filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 150px; display: flex; gap: 14px; align-items: center; z-index: 6; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
+    border: 2px solid var(--amber); color: var(--amber); }
+  .handle { font-size: 24px; font-weight: 500; color: #bbb; }
+  .title { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .label { font-size: 44px; font-weight: 600; color: var(--muted); }
+  .chip { display: inline-block; padding: 14px 28px; border-radius: 999px; font-size: 38px; font-weight: 600;
+    background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
+  .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
+  .note { font-size: 30px; color: var(--muted); }
+
+  #hookBg { position: absolute; inset: -80px; background: url("stock/onions-tomatoes-market-india-3.jpg") center / cover;
+    filter: blur(34px) brightness(.4); }
+  #hookImg { position: absolute; left: 0; top: 560px; width: 1080px; height: 718px;
+    background: url("stock/onions-tomatoes-market-india-3.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+  .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.06; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
+  #credit { position: absolute; left: 40px; top: 1292px; text-align: left; font-size: 22px; color: rgba(255,255,255,.55); }
+
+  /* the signature */
+  #lineSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #coin { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; z-index: 5; }
+  #coin .face { position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 45%, #ff7a00 100%);
+    box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
+  #coin .rs { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; font-weight: 800; color: #3a1d00; }
+  .ptl { position: absolute; width: 240px; margin-left: -120px; text-align: center; z-index: 5; }
+  .ptl b { display: block; font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
+  .ptl span { font-size: 30px; color: var(--muted); font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="glow"></div>
+
+  <!-- S0 hook: 0-2.0 -->
+  <div class="scene" id="s0">
+    <div id="hookBg"></div>
+    <div id="hookImg"></div>
+    <div class="abs center hookTxt" id="h1" style="top:250px; font-size:104px">Prices just hit a<br><span style="color:#ff6b6b">2-year high.</span></div>
+    <div class="abs center hookTxt" id="h2" style="top:1450px; font-size:104px">Your EMI <span class="hl">is next.</span></div>
+    <div id="credit">Photo: BPPrice, CC BY 2.0</div>
+  </div>
+
+  <!-- S1 the inflation curve: 2.0-6.0 -->
+  <div class="scene" id="s1">
+    <div class="abs center label" id="l1" style="top:270px">Retail inflation, September 2026</div>
+    <div class="abs center big" id="n1" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
+    <div class="abs center" id="c1" style="top:610px"><span class="chip">highest in about 2 years</span></div>
+    <div class="ptl" id="pj"><b>2.75%</b><span>Jan</span></div>
+    <div class="ptl" id="pa"><b>4.83%</b><span>Aug</span></div>
+  </div>
+
+  <!-- S2 food: 6.0-12.0 -->
+  <div class="scene" id="s2">
+    <div class="abs center title" id="t2" style="top:280px">Food is hit<br><span style="color:var(--red)">the hardest.</span></div>
+    <div class="abs center big" id="n2" style="top:530px; font-size:200px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
+    <div class="abs center label" id="l2" style="top:740px">food inflation, September</div>
+    <div class="abs center" id="c2a" style="top:1480px"><span class="chip">Weak monsoon → costly vegetables</span></div>
+    <div class="abs center" id="c2b" style="top:1580px"><span class="chip">Costly crude oil</span></div>
+  </div>
+
+  <!-- S3 RBI step: 12.0-18.0 -->
+  <div class="scene" id="s3">
+    <div class="abs center title" id="t3" style="top:280px">So the RBI<br><span class="hl">hit the brakes.</span></div>
+    <div class="abs center label" id="l3" style="top:540px">Repo rate, the rate banks borrow at</div>
+    <div class="ptl" id="r1" style="width:300px; margin-left:-150px"><b>5.25%</b><span>before</span></div>
+    <div class="ptl" id="r2" style="width:300px; margin-left:-150px"><b style="color:var(--amber)">5.50%</b><span>from 7 Oct</span></div>
+    <div class="abs center" id="c3" style="top:1520px"><span class="chip">First rate hike since 2023</span></div>
+    <div class="abs center note" id="src3" style="top:1630px">Sources: MoSPI (12 Oct 2026), RBI policy (7 Oct 2026)</div>
+  </div>
+
+  <!-- S4 what it means: 18.0-22.0 -->
+  <div class="scene" id="s4">
+    <div class="abs center title" id="t4" style="top:280px">What it means<br>for you</div>
+    <div class="abs center" id="m1" style="top:520px"><span class="chip">Floating-rate loan EMIs: <b style="color:var(--red)">up</b></span></div>
+    <div class="abs center" id="m2" style="top:630px"><span class="chip">FD rates: <b style="color:#7be08f">may rise</b></span></div>
+    <div class="abs center" id="m3" style="top:740px"><span class="chip">Groceries: <b style="color:var(--red)">still costly</b></span></div>
+  </div>
+
+  <!-- S5 payoff + teaser: 22.0-27.5 -->
+  <div class="scene" id="s5">
+    <div class="abs center title" id="t5" style="top:420px">Prices are up.<br>Money costs more.</div>
+    <div class="abs center title" id="t6" style="top:660px; font-size:60px">Tonight, 9 PM:<br><span class="hl" style="margin-top:14px">Raise EMI or stretch the loan?</span></div>
+  </div>
+
+  <!-- S6 end: 27.5-30.0 -->
+  <div class="scene" id="s6">
+    <div class="abs center" id="e1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+    <div class="abs center" id="e2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+    <div class="abs center" id="e3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+    <div class="abs center" id="e4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
+  </div>
+
+  <svg id="lineSvg" width="1080" height="1920"><path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
+    <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#ff7a00"/><stop offset=".5" stop-color="#ffb02e"/><stop offset="1" stop-color="#fff1d6"/></linearGradient></defs></svg>
+  <div id="coin"><div class="face"></div><div class="rs">₹</div></div>
+  <div id="tag"><span class="tpill">INDIAN ECONOMY</span><span class="handle">@unicornkahisab</span></div>
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script>
+window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.544, drop: 6.0 };
+const DURATION = 30;
+const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 22.0], [22.0, 27.5], [27.5, 30.0]];
+
+const smooth = (pts) => (u) => {
+  if (u <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) {
+    const [u0, y0] = pts[i - 1], [u1, y1] = pts[i];
+    if (u <= u1) { const k = (u - u0) / (u1 - u0); return y0 + (y1 - y0) * (k * k * (3 - 2 * k)); }
+  }
+  return pts[pts.length - 1][1];
+};
+const INF = (v) => 1500 - (v - 2) * 160;              // inflation % -> y
+const CURVE = smooth([[0, INF(2.75)], [0.12, INF(2.75)], [0.72, INF(4.83)], [0.86, INF(5.54)], [1, INF(5.54)]]);
+const STEP = (u) => 1300 - 140 * (1 / (1 + Math.exp(-(u - 0.5) * 60)));   // 5.25% -> 5.50%
+const SHAPES = [
+  (u) => 1360,                                                          // hook: flat under the photo
+  CURVE,                                                                // inflation Jan -> Sep
+  (u, t) => 1250 - 260 * u - 46 * Math.abs(Math.sin(u * 22 + t * 2)) * u, // food: spiky and climbing
+  STEP,                                                                 // RBI: one step up
+  (u) => 1220 - 60 * u,                                                 // what it means: calm, slightly up
+  (u) => 1300 - 120 * Math.pow(u, 2),                                   // payoff
+  (u) => 1250,                                                          // end
+];
+function lineY(u, t, cur) {
+  const a = CUES[cur][0];
+  const k = cur === 0 ? 1 : ease.inOutCubic(clamp((t - a) / 0.6, 0, 1));
+  const prev = SHAPES[Math.max(0, cur - 1)], now = SHAPES[cur];
+  return prev(u, t) * (1 - k) + now(u, t) * k;
+}
+const COINX = [
+  (t) => 0.5,
+  (t) => tween(t, 2.1, 1.0, 0.12, 0.86, ease.inOutCubic),               // reaches Sep on the 3.0 s whoosh
+  (t) => tween(t, 6.6, 4.0, 0.14, 0.86, ease.inOutCubic),
+  (t) => tween(t, 12.6, 1.8, 0.2, 0.8, ease.inOutCubic),                // hops the step around 13.5 s
+  (t) => 0.5,
+  (t) => tween(t, 22.2, 4.8, 0.14, 0.82, ease.inOutCubic),
+  (t) => tween(t, 27.5, 0.8, 0.82, 0.5, ease.outCubic),
+];
+
+function slam(el, t, start, from = 1.2) {
+  const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
+  el.style.opacity = t < start ? 0 : 1;
+  el.style.transform = `scale(${from + (1 - from) * k})`;
+}
+const place = (id, u, t, cur, dy) => { const el = $(id); el.style.left = `${-20 + u * 1120}px`; el.style.top = `${lineY(u, t, cur) - dy}px`; return el; };
+
+function renderFrame(t) {
+  const p = pulse(t);
+  const i = CUES.findIndex(([a, b]) => t >= a && t < b);
+  const cur = i < 0 ? CUES.length - 1 : i;
+  const [a, b] = CUES[cur];
+  CUES.forEach((_, j) => { $("s" + j).style.display = j === cur ? "block" : "none"; });
+  $("tag").style.display = cur === 0 ? "none" : "flex";
+  $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
+
+  const N = 140; let d = "";
+  for (let s = 0; s <= N; s++) {
+    const u = s / N, x = -20 + u * 1120, y = lineY(u, t, cur);
+    d += (s ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+  }
+  $("line").setAttribute("d", d);
+  $("line").setAttribute("stroke-dasharray", 1680);
+  $("line").setAttribute("stroke-dashoffset", cur === 0 ? 1680 * (1 - tween(t, 0, 0.5, 0, 1, ease.outCubic)) : 0);
+
+  const cu = COINX[cur](t), cx = -20 + cu * 1120;
+  let cy = lineY(cu, t, cur) - 52;
+  if (cur === 0) cy -= tween(t, 0.25, 0.45, 900, 0, ease.outBack);
+  if (cur === 3) cy -= 60 * Math.exp(-Math.pow((t - 13.5) / 0.18, 2));   // hop up the step
+  if (cur === 6) cy -= tween(t, 27.9, 0.6, 0, 120, ease.outCubic);
+  let scale = 1;
+  if (cur === 6) scale = 1 + 1.4 * tween(t, 27.9, 0.6, 0, 1, ease.outBack);
+  $("coin").style.transform = `translate(${cx}px, ${cy}px) scale(${scale * (1 + 0.05 * p)})`;
+
+  if (cur === 0) {
+    $("hookImg").style.transform = `scale(${1 + 0.08 * clamp(t / 2.0, 0, 1)})`;
+    slam($("h1"), t, 0, 1.1);
+    slam($("h2"), t, 0.4, 1.25); $("h2").style.opacity = 1;
+  } else if (cur === 1) {
+    $("l1").style.opacity = 1;
+    const v = tween(t, a, 1.0, 2.75, 5.54, ease.outExpo);
+    $("n1").textContent = `${v.toFixed(2)}%`;
+    $("n1").style.transform = `scale(${t > 3.0 ? 1 + 0.04 * Math.exp(-(t - 3.0) * 6) : 1})`;
+    slam($("c1"), t, 3.4, 1.12);
+    place("pj", 0.12, t, cur, 190).style.opacity = tween(t, 3.6, frames(6), 0, 1);
+    place("pa", 0.66, t, cur, 190).style.opacity = tween(t, 4.2, frames(6), 0, 1);
+  } else if (cur === 2) {
+    slam($("t2"), t, a, 1.12);
+    const v = tween(t, a + 0.2, 1.0, 4.0, 7.74, ease.outExpo);
+    $("n2").textContent = `${v.toFixed(2)}%`;
+    slam($("l2"), t, a + 0.4, 1.05);
+    slam($("c2a"), t, a + 2.2, 1.1);
+    slam($("c2b"), t, a + 3.2, 1.1);
+  } else if (cur === 3) {
+    slam($("t3"), t, a, 1.12);
+    slam($("l3"), t, a + 0.4, 1.05);
+    place("r1", 0.22, t, cur, 200).style.opacity = tween(t, a + 0.8, frames(6), 0, 1);
+    place("r2", 0.78, t, cur, 200).style.opacity = tween(t, 13.5, frames(6), 0, 1);
+    slam($("c3"), t, a + 2.4, 1.12);
+    slam($("src3"), t, a + 2.4, 1.0);
+  } else if (cur === 4) {
+    slam($("t4"), t, a, 1.08);
+    slam($("m1"), t, a + 0.5, 1.12);
+    slam($("m2"), t, a + 1.2, 1.12);
+    slam($("m3"), t, a + 1.9, 1.12);
+  } else if (cur === 5) {
+    slam($("t5"), t, a, 1.08);
+    slam($("t6"), t, 24.0, 1.2);
+    if (t < 24.0) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
+  } else {
+    slam($("e1"), t, 27.9, 1.1);
+    slam($("e2"), t, 28.1, 1.3);
+    slam($("e3"), t, 28.6, 1.1);
+    slam($("e4"), t, 28.9, 1.1);
+  }
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>
