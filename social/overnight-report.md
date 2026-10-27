@@ -55,3 +55,5 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 ## 27 Oct
 - 1:00 pm Swiggy (30 s vertical, new style): version 3, tied to the week's news after the harsh buyer review (share fall, Instamart vs Blinkit). Container 18123431956768761 processed 05:15 UTC with caption, scheduled for 07:30 UTC. Earlier containers 18123421381768761 and 18123422467768761 are unused.
 - 3:00 pm D2C market (30 s vertical, first reel with the Hisab line + coin signature): container 18123443554768761 processed with caption, scheduled for 09:30 UTC. Earlier D2C container 18123439582768761 unused.
+- 1:00 pm Swiggy: paused at 07:22 UTC (founder asked for ~60 s reels); rebuilt at 60 s, new slot to be agreed.
+- 3:00 pm D2C: now the 60 s visual-first version, container 18123464728768761, scheduled 09:30 UTC.
