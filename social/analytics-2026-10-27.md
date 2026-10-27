@@ -48,3 +48,31 @@ No saves and no comments on any reel.
 - **Every caption checked** before publishing (videos/publish_reel.py now refuses empty ones).
 - **Before posting:** change the display name to Unicorn Ka Hisab; add captions to boAt,
   Urban Company and Lenskart in the app.
+
+## Which frames hold viewers (frame review, 27 Oct)
+The Instagram API gives only average watch time per reel, not a second-by-second curve
+(the app's reel insights show the curve). So this compares each reel's average exit point
+with what is on screen at that moment.
+
+All six 30 s reels use the same template, with a whip cut at 3, 6, 12, 18 and 24 s that leaves
+the screen nearly empty for 0.25-0.5 s. Same frames, very different results (Zerodha 6.4 s,
+boAt 3.1 s), so the opening idea matters more than the template.
+
+Frames in the reels people watched longest (Physics Wallah 9.2 s, Blinkit 8.8 s, Zerodha 6.4 s):
+- **Number slam at frame 0**: one huge number, counting up, filling the screen, in an
+  alarm colour when it's a loss (PW ₹1,131 Cr red).
+- **Contrast pair**: a huge number then a tiny one (Blinkit ₹14,386 Cr sold, ₹37 Cr made).
+- **Visual metaphor**: 100 coins, 26 paise lit up (Blinkit). Shows the maths instead of saying it.
+- **Brand props**: the company's own world floating around the number (Blinkit grocery chips).
+- **Before/after bars**: two bars, one label (Zerodha FY24 vs FY25).
+
+Frames in the reels people left early (Urban Company 2.7 s, boAt 3.1 s, Shaadi.com 4.6 s):
+- **Typing cursor on an empty screen** (Shaadi.com 0-1 s).
+- **Abstract stat as the hook** ("103x oversubscribed"), or a number with no surprise
+  (boAt ₹60 Cr profit).
+- **Near-empty transition frames** (whip blur, white glow flash) at 3 s and 6 s, right where
+  the weak reels lose people.
+
+New template for 27 Oct: only number slam, contrast pair, visual metaphor, brand props and
+before/after bars; hard cuts with text always on screen; no typing intros, ring captions,
+glow flashes or blank whips.
