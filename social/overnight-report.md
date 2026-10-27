@@ -53,4 +53,4 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 12:57 am (27 Oct) Urban Company (30 s): published via API 19:27 UTC, https://www.instagram.com/reel/De8j_Q4EZTe/. Also no caption (same container batch); paste social/captions/urbancompany.txt in the app.
 
 ## 27 Oct
-- 1:00 pm Swiggy (30 s vertical, new style): container 18123421381768761 processed 04:27 UTC with caption; scheduled to publish 07:30 UTC.
+- 1:00 pm Swiggy (30 s vertical, new style): revised after the harsh review; container 18123422467768761 processed 04:35 UTC with caption, scheduled to publish 07:30 UTC. (First-version container 18123421381768761 is unused and expires on its own.)
