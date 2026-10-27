@@ -57,3 +57,4 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 3:00 pm D2C market (30 s vertical, first reel with the Hisab line + coin signature): container 18123443554768761 processed with caption, scheduled for 09:30 UTC. Earlier D2C container 18123439582768761 unused.
 - 1:00 pm Swiggy: paused at 07:22 UTC (founder asked for ~60 s reels); rebuilt at 60 s, new slot to be agreed.
 - 3:00 pm D2C: now the 60 s visual-first version, container 18123464728768761, scheduled 09:30 UTC.
+- Founder approved all ("schedule all"): Swiggy 5 pm (11:30 UTC), inflation 7 pm (13:30 UTC, container 18123466234768761), EMI tip 9 pm (15:30 UTC). Swiggy and EMI scheduled once their 60 s renders upload.
