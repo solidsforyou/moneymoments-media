@@ -27,9 +27,9 @@ const Hisab = (() => {
   }
 
   // Coin x in world space: a slow linear drift through each panel's centre, blended into the next.
-  const lin = (i, t) => {
+  const lin = (i, t) => {   // long panels drift slower, so text never slides more than ~90 px off centre
     const [a, b] = cfg.cues[i];
-    return i * W + W / 2 + DRIFT * (t - (a + b) / 2);
+    return i * W + W / 2 + Math.min(DRIFT, 180 / (b - a)) * (t - (a + b) / 2);
   };
   function coinX(t) {
     const cues = cfg.cues, n = cues.length;
