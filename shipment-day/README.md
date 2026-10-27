@@ -16,6 +16,8 @@ The end goal is a time-lapse of the founder showing and packing every product.
 |---|---|---|---|
 | `founder-packing-each-piece-01.mp4` | Founder at the box, holding each polybagged piece up to the camera, then packing it (phone propped, steady) | 35.8 s | IMG_3521 full |
 | `founder-packing-each-piece-02.mp4` | Same propped angle: two pairs of black joggers held up to the camera and packed | 15.2 s | IMG_3522 full |
+| `founder-packing-each-piece-03.mp4` | Same propped angle: black joggers held up and packed (the box is empty from 5 to 21 s while he fetches stock) | 45.5 s | IMG_3518 0-45.5 |
+| `founder-packing-low-angle-blue-tees.mp4` | Phone low on the table pointing up: founder picks up a bagged blue tee and packs (mostly ceiling above him) | 34 s | IMG_3509 66-100 |
 | `stacks-blue-black-white-on-table.mp4` | Finished stacks of blue tees, black and white joggers on the packing table, worker behind | 3.9 s | IMG_3506 full |
 | `packing-table-worker-joggers.mp4` | Packing table with stacks, a worker picking up black joggers | 2.6 s | IMG_3507 full |
 | `taping-master-box-shut.mp4` | A man taping a master box shut | 5.7 s | IMG_3508 full |
@@ -26,5 +28,5 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | `box-of-blue-tees-overhead.mp4` | Overhead: an open box filled with bagged blue tees | 2.0 s | IMG_3525 2.0-4.0 |
 | `folding-blue-tee-hands.mp4` | Close-up: a worker's hands folding a blue tee on the table, bagged tees in front | 10.6 s | IMG_3526 full |
 
-Not clipped: IMG_3515 (sideways and shaky). Photos IMG_3513 and IMG_3520 are HEIC, which
+Not clipped: IMG_3515 (sideways and shaky); IMG_3519 (same take as IMG_3521); the rest of IMG_3509 (lens covered by a polybag or pointing at the ceiling). Photos IMG_3513 and IMG_3520 are HEIC, which
 this machine can't open yet; export them as JPEG from the phone if they're needed.
