@@ -6,7 +6,7 @@ Originals are iPhone videos in the founder's Drive folder `1Bg4KdV6AJ0dIEcHVh8Bt
 
 - `clips/`: trimmed clips, vertical 1080x1920, 30 fps, H.264, original sound kept.
 - `sheets/`: one contact sheet per original (frames with timestamps), named after the original.
-- `cut.sh`: `./cut.sh RAW START END NAME` trims a clip the same way.
+- `cut.sh`: `./cut.sh RAW START END NAME [FILTER]` trims a clip the same way (FILTER e.g. `transpose=2` to turn a sideways shot upright).
 
 The end goal is a time-lapse of the founder showing and packing every product.
 
@@ -20,6 +20,9 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | `founder-packing-low-angle-blue-tees.mp4` | Phone low on the table pointing up: founder picks up a bagged blue tee and packs (mostly ceiling above him) | 34 s | IMG_3509 66-100 |
 | `founder-packing-white-joggers-showing.mp4` | Low angle by the box: founder holds bagged white joggers up to the camera and packs them | 72 s | IMG_3524 0-72 |
 | `founder-packing-blue-tees-showing.mp4` | Same low angle: founder checks the list, then holds bagged blue tees up and packs them | 52 s | IMG_3524 205-257 |
+| `founder-at-packing-table-intro.mp4` | Founder standing at the packing table, looking into the camera | 4.5 s | IMG_3516 0-4.5 |
+| `founder-preparing-printed-sku-cards.mp4` | At the table with the printed packing cards, holds up the Fitted Tee · Male card (filmed sideways, rotated upright, so it sits letterboxed) | 29.2 s | IMG_3516 7-36.2, rotated |
+| `assembling-master-boxes-with-team.mp4` | Founder and the team opening and folding master cartons in the store room | 44.1 s | IMG_3527 1.5-45.6 |
 | `stacks-blue-black-white-on-table.mp4` | Finished stacks of blue tees, black and white joggers on the packing table, worker behind | 3.9 s | IMG_3506 full |
 | `packing-table-worker-joggers.mp4` | Packing table with stacks, a worker picking up black joggers | 2.6 s | IMG_3507 full |
 | `taping-master-box-shut.mp4` | A man taping a master box shut | 5.7 s | IMG_3508 full |
