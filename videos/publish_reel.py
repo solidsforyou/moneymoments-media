@@ -4,6 +4,9 @@
   python3 videos/publish_reel.py VIDEO_URL CAPTION_FILE [--thumb-ms 2500] [--dry-run]
   python3 videos/publish_reel.py --publish CONTAINER_ID   (publish a container made by --dry-run)
 
+The caption is set when the container is created and cannot be added later
+through the API, so an empty caption file is refused.
+
 VIDEO_URL must be a public HTTPS link Instagram can fetch. --dry-run creates and
 processes the container but does not publish it. The token is never printed.
 """
@@ -32,8 +35,10 @@ def call(method, path, **params):
 
 def publish(cid):
     m = call("POST", f"{IG_USER}/media_publish", creation_id=cid)
-    info = call("GET", m["id"], fields="permalink,timestamp")
+    info = call("GET", m["id"], fields="permalink,timestamp,caption")
     print("published", m["id"], info.get("permalink"), info.get("timestamp"))
+    if not info.get("caption"):   # the API cannot add a caption after publishing
+        sys.exit("WARNING: published WITHOUT a caption; add it in the Instagram app")
 
 
 def main():
@@ -47,6 +52,8 @@ def main():
     if "--thumb-ms" in sys.argv:   # frame used as the cover
         extra["thumb_offset"] = sys.argv[sys.argv.index("--thumb-ms") + 1]
     caption = open(caption_file, encoding="utf-8").read().strip()
+    if not caption:   # captions can only be set here, never after publishing
+        sys.exit(f"empty caption file: {caption_file}")
     c = call("POST", f"{IG_USER}/media", media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true", **extra)
     cid = c["id"]
     print("container", cid)
