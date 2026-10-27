@@ -1,13 +1,13 @@
 # Amazon shipment 1: packed boxes and pieces taken out (27 Oct 2026, from the box labels)
 
-Sizes S/M/L. Read from the founder's photos of the box labels; see "Unclear" below.
+Sizes S/M/L. Read from the founder's photos of the box labels, confirmed by the founder.
 
 | Box | Contents | Pieces |
 |---|---|---|
 | 1 | Fitted Tee Male Blue 4/4/4; Joggers Male Black 4/4/4 | 24 |
 | 2 | Fitted Tee Female Blue 4/4/4; Joggers Female White 4/4/4 | 24 |
 | 3 | Oversized Tee Male 4/4/4; Joggers Male White 5/5/5 | 27 |
-| 4 | Oversized Tee Female 4/4/4; Joggers Female (colour not written) 4/4/4 | 24 |
+| 4 | Oversized Tee Female 4/4/4; Joggers Female Black 4/4/4 | 24 |
 | 5 | Oversized Tee Male Blue 5/5/4; Fitted Tee Male Blue 7/5/5; Joggers Male Black 1/0/2 | 34 |
 | 6 | Fitted Tee Female 6/6/6; Oversized Tee Female 3/3/3; Joggers Female Black 0/0/1; Joggers Female White 0/1/1 | 30 |
 | 7 (no number) | Female: Fitted 1/1/1, Oversized 1/1/1, Joggers White 1/1/1. Male: Oversized 1/1/1, Fitted 0/1/1, Joggers Black 1/1/1 | 17 |
@@ -39,7 +39,7 @@ Sizes S/M/L. Read from the founder's photos of the box labels; see "Unclear" bel
 | Joggers Female White | 5/6/6 = 17 | 0 | 17 |
 | **Total** | **180** | **12** | **192** |
 
-## Unclear on the labels
-- Box 1: small circled "1" marks next to each black-jogger size; counted as 4 each.
-- Box 4: joggers colour not written; counted as black (box 2 holds the white).
-- Box 7: male "Joggers (W) S=6" line is scribbled out; counted as 0. Male Fitted S is crossed out; counted as 0.
+## Confirmed by the founder (27 Oct)
+- Box 1: the circled "1" marks were a mistake; 4 each is right.
+- Box 4: the joggers are black.
+- Box 7: the scribbled-out male white joggers line and male Fitted S are 0.
