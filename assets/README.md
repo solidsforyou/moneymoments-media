@@ -71,3 +71,7 @@ They look like stock images; post them only if the founder has the rights.
 - **The reference video** for the signature (Video-20093, blue line and dot) belongs to its
   maker, so it isn't stored; memory row 22 describes what was taken from it.
 - **Original SFY footage** (full-length vertical .MOV) stays in Drive; trimmed moments go in `sfy/clips/`.
+
+## brand/
+- `sfy-logo-black.png`: Solids For You wordmark in near-black on transparent, for print and light backgrounds (from `sfy_logo.png` in Drive, trimmed).
+- `sfy-logo-white.png`: the same wordmark in white, for dark backgrounds and reels.
