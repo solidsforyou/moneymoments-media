@@ -24,6 +24,7 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | `factory-floor-wide-machines.mp4` | Wide shot over the packing table to the rows of sewing machines | 3.0 s | IMG_3512 full |
 | `printed-checklist-in-hand.mp4` | The printed packing checklist held over the floor | 1.4 s | IMG_3514 full |
 | `box-of-blue-tees-overhead.mp4` | Overhead: an open box filled with bagged blue tees | 2.0 s | IMG_3525 2.0-4.0 |
+| `folding-blue-tee-hands.mp4` | Close-up: a worker's hands folding a blue tee on the table, bagged tees in front | 10.6 s | IMG_3526 full |
 
 Not clipped: IMG_3515 (sideways and shaky). Photos IMG_3513 and IMG_3520 are HEIC, which
 this machine can't open yet; export them as JPEG from the phone if they're needed.
