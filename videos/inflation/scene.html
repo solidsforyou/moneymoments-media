@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <!--
-  Unicorn ka Hisab: Indian economy, inflation and the RBI hike (27 Oct 2026). 1080x1920, 30 s,
-  no audio. One continuous camera move (videos/lib/hisab.js): the ₹ coin drops onto the Hisab
-  line in the first frame and the camera follows it right through seven panels without a cut.
-  Same 30 s soundtrack (drop 6.0 s; whooshes at 3, 6, 12, 18, 24, 27.5 s).
+  Unicorn ka Hisab: Indian economy, inflation and the RBI hike (27 Oct 2026), about 60 s, timed so
+  every panel can be read. One continuous camera move (videos/lib/hisab.js), twelve panels.
+  Soundtrack: the 60 s mix from public/reels/2026-10-26-1300-zerodha.mp4 (drop 20.25 s); panel
+  changes sit on its whooshes at 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0, 55.9 s.
   Facts:
-    MoSPI CPI release, 12 Oct 2026: retail inflation 5.54% in Sept 2026 (Aug 4.83%), food 7.74%;
-      Jan 2026 was 2.75%; highest since Oct 2024.
+    MoSPI CPI release, 12 Oct 2026: retail inflation 5.54% in Sept 2026 (Aug 4.83%), food 7.74%,
+      rural 6.08%, urban 4.88%; Jan 2026 was 2.75%; highest since Oct 2024.
     RBI raised the repo rate 25 bp to 5.50% on 7 Oct 2026, first hike since 2023 (CNBC, Bloomberg).
+    RBI's inflation target: 4%, with a 2-6% band.
     Drivers named in coverage: deficient monsoon (vegetables) and higher crude prices (The Week).
   Hook photo: vegetables at an Indian market by BPPrice (Flickr), CC BY 2.0, via Openverse.
   All motion comes from renderFrame(t).
@@ -34,7 +35,8 @@
   .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
     border: 2px solid var(--amber); color: var(--amber); }
   .handle { font-size: 24px; font-weight: 500; color: #bbb; }
-  .title { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
+  .title { font-size: 74px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
+  .body { font-size: 46px; font-weight: 600; line-height: 1.3; color: rgba(245,245,247,.86); }
   .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
   .label { font-size: 44px; font-weight: 600; color: var(--muted); }
   .chip { display: inline-block; padding: 14px 28px; border-radius: 999px; font-size: 38px; font-weight: 600;
@@ -58,7 +60,7 @@
     box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
   #coin .rs { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-size: 54px; font-weight: 800; color: #3a1d00; }
-  .ptl { position: absolute; width: 240px; margin-left: -120px; text-align: center; z-index: 5; }
+  .ptl { position: absolute; width: 260px; margin-left: -130px; text-align: center; z-index: 5; }
   .ptl b { display: block; font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
   .ptl span { font-size: 30px; color: var(--muted); font-weight: 600; }
 </style>
@@ -77,47 +79,65 @@
     </div>
 
     <div class="panel" id="p1">
-      <div class="abs center label" id="l1" style="top:270px">Retail inflation, September 2026</div>
-      <div class="abs center big" id="n1" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
-      <div class="abs center" id="c1" style="top:610px"><span class="chip">highest in about 2 years</span></div>
+      <div class="abs center title" id="a1" style="top:300px">First, what is inflation?</div>
+      <div class="abs center body" id="a2" style="top:430px">How fast prices rise.<br>At 5%, what cost <b>₹100</b> last year<br>costs about <b style="color:var(--amber)">₹105</b> today.</div>
+    </div>
+
+    <div class="panel" id="p2">
+      <div class="abs center label" id="b1" style="top:270px">Retail inflation, September 2026</div>
+      <div class="abs center big" id="b2" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
       <div class="ptl" id="pj"><b>2.75%</b><span>Jan</span></div>
       <div class="ptl" id="pa"><b>4.83%</b><span>Aug</span></div>
     </div>
 
-    <div class="panel" id="p2">
-      <div class="abs center title" id="t2" style="top:280px">Food is hit<br><span style="color:var(--red)">the hardest.</span></div>
-      <div class="abs center big" id="n2" style="top:530px; font-size:200px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
-      <div class="abs center label" id="l2" style="top:740px">food inflation, September</div>
-      <div class="abs center" id="c2a" style="top:1480px"><span class="chip">Weak monsoon → costly vegetables</span></div>
-      <div class="abs center" id="c2b" style="top:1580px"><span class="chip">Costly crude oil</span></div>
+    <div class="panel" id="p3">
+      <div class="abs center title" id="c1" style="top:300px">The highest since<br><span style="color:var(--red)">October 2024.</span></div>
+      <div class="abs center body" id="c2" style="top:540px">It has doubled since January,<br>from 2.75% to 5.54%.</div>
     </div>
 
-    <div class="panel" id="p3">
-      <div class="abs center title" id="t3" style="top:280px">So the RBI<br><span class="hl">hit the brakes.</span></div>
-      <div class="abs center label" id="l3" style="top:540px">Repo rate, the rate banks borrow at</div>
+    <div class="panel" id="p4"><div class="abs center title" id="d1" style="top:420px">And food?</div></div>
+    <div class="panel" id="p5"><div class="abs center title" id="e1" style="top:420px; color:var(--red)">It's worse.</div></div>
+
+    <div class="panel" id="p6">
+      <div class="abs center label" id="f1" style="top:270px">Food inflation, September</div>
+      <div class="abs center big" id="f2" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
+      <div class="abs center body" id="f3" style="top:610px">Villages feel it more: <b style="color:var(--red)">6.08%</b><br>vs <b>4.88%</b> in cities.</div>
+      <div class="abs center" id="f4" style="top:1480px"><span class="chip">Weak monsoon → costly vegetables</span></div>
+      <div class="abs center" id="f5" style="top:1580px"><span class="chip">Costly crude oil</span></div>
+    </div>
+
+    <div class="panel" id="p7">
+      <div class="abs center title" id="g1" style="top:280px">So the RBI<br><span class="hl">hit the brakes.</span></div>
+      <div class="abs center body" id="g2" style="top:520px">It raised the repo rate,<br>the rate banks borrow at.</div>
       <div class="ptl" id="r1" style="width:300px; margin-left:-150px"><b>5.25%</b><span>before</span></div>
       <div class="ptl" id="r2" style="width:300px; margin-left:-150px"><b style="color:var(--amber)">5.50%</b><span>from 7 Oct</span></div>
-      <div class="abs center" id="c3" style="top:1520px"><span class="chip">First rate hike since 2023</span></div>
-      <div class="abs center note" id="src3" style="top:1630px">Sources: MoSPI (12 Oct 2026), RBI policy (7 Oct 2026)</div>
+      <div class="abs center" id="g3" style="top:1520px"><span class="chip">First rate hike since 2023</span></div>
+      <div class="abs center note" id="g4" style="top:1630px">Sources: MoSPI (12 Oct 2026), RBI policy (7 Oct 2026)</div>
     </div>
 
-    <div class="panel" id="p4">
-      <div class="abs center title" id="t4" style="top:280px">What it means<br>for you</div>
+    <div class="panel" id="p8">
+      <div class="abs center title" id="i1" style="top:280px">Why raise rates?</div>
+      <div class="abs center body" id="i2" style="top:420px">Costlier loans mean less borrowing<br>and less spending.<br>Less spending cools prices.</div>
+      <div class="abs center" id="i3" style="top:1500px"><span class="chip">RBI's target: <b style="color:var(--amber)">4%</b> inflation</span></div>
+    </div>
+
+    <div class="panel" id="p9">
+      <div class="abs center title" id="j1" style="top:280px">What it means<br>for you</div>
       <div class="abs center" id="m1" style="top:520px"><span class="chip">Floating-rate loan EMIs: <b style="color:var(--red)">up</b></span></div>
       <div class="abs center" id="m2" style="top:630px"><span class="chip">FD rates: <b style="color:#7be08f">may rise</b></span></div>
       <div class="abs center" id="m3" style="top:740px"><span class="chip">Groceries: <b style="color:var(--red)">still costly</b></span></div>
     </div>
 
-    <div class="panel" id="p5">
+    <div class="panel" id="p10">
       <div class="abs center title" id="t5" style="top:420px">Prices are up.<br>Money costs more.</div>
       <div class="abs center title" id="t6" style="top:660px; font-size:60px">Tonight, 9 PM:<br><span class="hl" style="margin-top:14px">Raise EMI or stretch the loan?</span></div>
     </div>
 
-    <div class="panel" id="p6">
-      <div class="abs center" id="e1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
-      <div class="abs center" id="e2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
-      <div class="abs center" id="e3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
-      <div class="abs center" id="e4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
+    <div class="panel" id="p11">
+      <div class="abs center" id="k1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+      <div class="abs center" id="k2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+      <div class="abs center" id="k3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+      <div class="abs center" id="k4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
     </div>
   </div>
 
@@ -130,9 +150,11 @@
 <script src="../lib/motion.js"></script>
 <script src="../lib/hisab.js"></script>
 <script>
-window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.544, drop: 6.0 };
-const DURATION = 30;
-const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 22.0], [22.0, 27.5], [27.5, 30.0]];
+window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
+const DURATION = 60;
+const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0, 55.9, 60.0];
+const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
+const at = (i, off = 0) => CUES[i][0] + off;
 
 const smooth = (pts) => (u) => {
   if (u <= pts[0][0]) return pts[0][1];
@@ -142,77 +164,84 @@ const smooth = (pts) => (u) => {
   }
   return pts[pts.length - 1][1];
 };
-const INF = (v) => 1500 - (v - 2) * 160;              // inflation % -> y
+const INF = (v) => 1500 - (v - 2) * 160;
 const SHAPES = [
-  (u) => 1360,                                                                       // hook: flat under the photo
-  smooth([[0, INF(2.75)], [0.12, INF(2.75)], [0.66, INF(4.83)], [0.86, INF(5.54)], [1, INF(5.54)]]), // Jan -> Sep
-  (u, t) => 1250 - 220 * u - 40 * Math.abs(Math.sin(u * 22 + t * 2)) * Math.min(1, u * 4), // food: spiky, climbing
-  (u) => 1300 - 140 / (1 + Math.exp(-(u - 0.5) * 60)),                               // RBI: one step up
-  (u) => 1220 - 50 * u,                                                              // what it means
-  (u) => 1300 - 120 * u * u,                                                         // payoff
-  (u) => 1250,                                                                       // end
+  (u) => 1360,                                                                         // P0 hook
+  (u) => 1300 - 60 * u,                                                                // P1 what is inflation: gently up
+  smooth([[0, INF(2.75)], [0.12, INF(2.75)], [0.66, INF(4.83)], [0.86, INF(5.54)], [1, INF(5.54)]]), // P2 Jan -> Sep
+  (u) => INF(5.54) - 40 * u,                                                           // P3 still high
+  (u) => INF(5.54) + 200 * u,                                                          // P4 and food?
+  (u) => 1150,                                                                         // P5 it's worse
+  (u, t) => 1300 - 220 * u - 40 * Math.abs(Math.sin(u * 22 + t * 2)) * Math.min(1, u * 4), // P6 food: spiky
+  (u) => 1300 - 140 / (1 + Math.exp(-(u - 0.5) * 60)),                                 // P7 the step
+  (u) => 1160 + 120 * u * u,                                                           // P8 cooling
+  (u) => 1280,                                                                         // P9 what it means
+  (u) => 1300 - 120 * u * u,                                                           // P10 payoff
+  (u) => 1250,                                                                         // P11 end
 ];
-Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - 15.0) / 0.2, 2)) });
+Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - (CUES[7][0] + CUES[7][1]) / 2) / 0.2, 2)) });
 
 function slam(el, t, start, from = 1.2) {
   const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
   el.style.opacity = t < start ? 0 : 1;
   el.style.transform = `scale(${from + (1 - from) * k})`;
 }
+const countPct = (el, t, start, from, to, dp = 2) => { el.textContent = `${tween(t, start, 1.2, from, to, ease.outExpo).toFixed(dp)}%`; el.style.opacity = t < start ? 0 : 1; };
 
 function renderFrame(t) {
   const p = pulse(t);
   Hisab.frame(t);
-  $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));   // appears as we leave the hook
+  $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));
   $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
 
-  // P0 hook
-  $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 2.0, 0, 1)})`;
+  $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 3.0, 0, 1)})`;
   slam($("h1"), t, 0, 1.1);
   slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
 
-  // P1 inflation curve
-  slam($("l1"), t, 1.7, 1.05);
-  const v = tween(t, 1.8, 1.2, 2.75, 5.54, ease.outExpo);
-  $("n1").textContent = `${v.toFixed(2)}%`;
-  $("n1").style.opacity = t < 1.8 ? 0 : 1;
-  $("n1").style.transform = `scale(${t > 3.0 ? 1 + 0.04 * Math.exp(-(t - 3.0) * 6) : 1})`;
-  slam($("c1"), t, 3.4, 1.12);
-  Hisab.place($("pj"), 1, 0.12, 190, t).style.opacity = tween(t, 3.6, frames(6), 0, 1);
-  Hisab.place($("pa"), 1, 0.66, 190, t).style.opacity = tween(t, 4.2, frames(6), 0, 1);
+  slam($("a1"), t, at(1, -0.3), 1.08);
+  slam($("a2"), t, at(1, 0.4), 1.04);
 
-  // P2 food
-  slam($("t2"), t, 5.7, 1.12);
-  $("n2").textContent = `${tween(t, 6.0, 1.0, 4.0, 7.74, ease.outExpo).toFixed(2)}%`;
-  $("n2").style.opacity = t < 5.8 ? 0 : 1;
-  slam($("l2"), t, 6.3, 1.05);
-  slam($("c2a"), t, 8.2, 1.1);
-  slam($("c2b"), t, 9.2, 1.1);
+  slam($("b1"), t, at(2, -0.3), 1.05);
+  countPct($("b2"), t, at(2, 0), 2.75, 5.54);
+  Hisab.place($("pj"), 2, 0.12, 190, t).style.opacity = tween(t, at(2, 1.4), frames(6), 0, 1);
+  Hisab.place($("pa"), 2, 0.66, 190, t).style.opacity = tween(t, at(2, 2.2), frames(6), 0, 1);
 
-  // P3 RBI step (coin hops the step as it passes the middle of the panel at 15 s)
-  slam($("t3"), t, 11.7, 1.12);
-  slam($("l3"), t, 12.3, 1.05);
-  Hisab.place($("r1"), 3, 0.22, 200, t).style.opacity = tween(t, 12.6, frames(6), 0, 1);
-  Hisab.place($("r2"), 3, 0.78, 200, t).style.opacity = tween(t, 15.0, frames(6), 0, 1);
-  slam($("c3"), t, 14.4, 1.12);
-  slam($("src3"), t, 14.4, 1.0);
+  slam($("c1"), t, at(3, -0.3), 1.08);
+  slam($("c2"), t, at(3, 1.2), 1.04);
 
-  // P4 what it means
-  slam($("t4"), t, 17.7, 1.08);
-  slam($("m1"), t, 18.4, 1.12);
-  slam($("m2"), t, 19.1, 1.12);
-  slam($("m3"), t, 19.8, 1.12);
+  slam($("d1"), t, at(4, -0.3), 1.12);
+  slam($("e1"), t, at(5, -0.3), 1.3);
 
-  // P5 payoff + teaser
-  slam($("t5"), t, 21.7, 1.08);
-  slam($("t6"), t, 24.0, 1.2);
-  if (t < 24.0) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
+  slam($("f1"), t, at(6, -0.2), 1.05);
+  countPct($("f2"), t, at(6, 0), 4.0, 7.74);
+  slam($("f3"), t, at(6, 1.6), 1.04);
+  slam($("f4"), t, at(6, 3.4), 1.1);
+  slam($("f5"), t, at(6, 4.4), 1.1);
 
-  // P6 end
-  slam($("e1"), t, 27.6, 1.1);
-  slam($("e2"), t, 27.9, 1.3);
-  slam($("e3"), t, 28.5, 1.1);
-  slam($("e4"), t, 28.8, 1.1);
+  slam($("g1"), t, at(7, -0.3), 1.12);
+  slam($("g2"), t, at(7, 1.0), 1.04);
+  Hisab.place($("r1"), 7, 0.22, 200, t).style.opacity = tween(t, at(7, 1.6), frames(6), 0, 1);
+  Hisab.place($("r2"), 7, 0.78, 200, t).style.opacity = tween(t, (CUES[7][0] + CUES[7][1]) / 2, frames(6), 0, 1);
+  slam($("g3"), t, at(7, 4.2), 1.12);
+  slam($("g4"), t, at(7, 4.2), 1.0);
+
+  slam($("i1"), t, at(8, -0.3), 1.1);
+  slam($("i2"), t, at(8, 0.8), 1.04);
+  slam($("i3"), t, at(8, 3.6), 1.12);
+
+  slam($("j1"), t, at(9, -0.3), 1.08);
+  slam($("m1"), t, at(9, 1.0), 1.12);
+  slam($("m2"), t, at(9, 2.4), 1.12);
+  slam($("m3"), t, at(9, 3.8), 1.12);
+
+  slam($("t5"), t, at(10, -0.3), 1.08);
+  slam($("t6"), t, at(10, 1.8), 1.2);
+  if (t < at(10, 1.8)) { $("t6").style.opacity = 0.15; $("t6").style.transform = "none"; }
+
+  slam($("k1"), t, at(11, 0.1), 1.1);
+  slam($("k2"), t, at(11, 0.4), 1.3);
+  slam($("k3"), t, at(11, 1.0), 1.1);
+  slam($("k4"), t, at(11, 1.3), 1.1);
 }
 window.renderFrame = renderFrame;
 window.DURATION = DURATION;
