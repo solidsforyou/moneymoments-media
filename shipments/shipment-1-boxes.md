@@ -10,8 +10,8 @@ Sizes S/M/L. Read from the founder's photos of the box labels, confirmed by the 
 | 4 | Oversized Tee Female 4/4/4; Joggers Female Black 4/4/4 | 24 |
 | 5 | Oversized Tee Male Blue 5/5/4; Fitted Tee Male Blue 7/5/5; Joggers Male Black 1/0/2 | 34 |
 | 6 | Fitted Tee Female 6/6/6; Oversized Tee Female 3/3/3; Joggers Female Black 0/0/1; Joggers Female White 0/1/1 | 30 |
-| 7 (no number) | Female: Fitted 1/1/1, Oversized 1/1/1, Joggers White 1/1/1. Male: Oversized 1/1/1, Fitted 0/1/1, Joggers Black 1/1/1 | 17 |
-| | **Total in boxes** | **180** |
+| 7 (no number) | Female: Fitted 1/1/1, Oversized 1/1/1, Joggers White 1/1/1. Male: Oversized 1/1/1, Fitted 0/1/1, Joggers Black 1/1/1, Joggers White 6 (sizes not given) | 23 |
+| | **Total in boxes** | **186** |
 
 ## Taken out (not in boxes)
 
@@ -34,12 +34,14 @@ Sizes S/M/L. Read from the founder's photos of the box labels, confirmed by the 
 | Oversized Tee Male Blue | 10/10/9 = 29 | 1/1/2 = 4 | 33 |
 | Oversized Tee Female Blue | 8/8/8 = 24 | 0 | 24 |
 | Joggers Male Black | 6/5/7 = 18 | 1/2/1 = 4 | 22 |
-| Joggers Male White | 5/5/5 = 15 | 0/0/1 = 1 | 16 |
+| Joggers Male White | 15 + 6 (box 7) = 21 | 0/0/1 = 1 | 22 |
 | Joggers Female Black | 4/4/5 = 13 | 1/0/0 = 1 | 14 |
 | Joggers Female White | 5/6/6 = 17 | 0 | 17 |
-| **Total** | **180** | **12** | **192** |
+| **Total** | **186** | **12** | **198** |
 
 ## Confirmed by the founder (27 Oct)
 - Box 1: the circled "1" marks were a mistake; 4 each is right.
 - Box 4: the joggers are black.
-- Box 7: the scribbled-out male white joggers line and male Fitted S are 0.
+- Box 7: male Fitted S is 0; the box also has 6 male white joggers (founder, 27 Oct).
+- Boxes 1-6 rechecked by the founder: OK.
+- Founder's production list (26 Oct): Men fitted 33, oversized 33, white joggers 15, black joggers 21; Women fitted 33, oversized 24, white joggers 18, black joggers 15 (total 192). Only one jogger left outside the boxes: a women's black S.
