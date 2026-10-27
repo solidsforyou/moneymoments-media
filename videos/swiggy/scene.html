@@ -5,7 +5,7 @@
 <!--
   Unicorn ka Hisab: Swiggy (Startup Math). 1080x1920, 30 s, no audio.
   Uses the Physics Wallah 30 s soundtrack (track from 0:38.2, drop at 6.0 s, beat 60/97.6 from 0.544 s),
-  so the cuts sit on its whooshes at 3, 6, 12, 18, 24 and 27.5 s.
+  so the cuts and key reveals sit on its whooshes at 3, 6, 12, 18, 24 and 27.5 s.
   New style (frame review, 27 Oct): stock-photo hook, then only number slam, brand props, coin metaphor,
   contrast bars and a two-line payoff. Hard cuts, text on screen in every frame, no flashes or whip blurs.
   Facts (Swiggy Q2 FY27, quarter Jul-Sep 2026, results Oct 2026):
@@ -44,7 +44,8 @@
   #hookBg { position: absolute; inset: -80px; background: url("stock/biryani-2.jpg") center / cover;
     filter: blur(34px) brightness(.45) saturate(1.3); }
   #hookImg { position: absolute; left: 0; top: 640px; width: 1080px; height: 723px;
-    background: url("stock/biryani-2.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+    background: url("stock/biryani-2.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6);
+    border-top: 12px solid var(--orange); border-bottom: 12px solid var(--orange); }
   .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.08; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
   #credit { position: absolute; left: 0; right: 0; top: 1380px; text-align: center; font-size: 22px; color: rgba(255,255,255,.55); }
 
@@ -73,25 +74,27 @@
     <div id="hookBg"></div>
     <div id="hookImg"></div>
     <div class="abs center hookTxt" id="h1" style="top:330px; font-size:104px">₹100 ka khana<br>order kiya…</div>
-    <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:104px">Swiggy ne<br><span class="hl">kitna kamaya?</span></div>
+    <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:104px">Swiggy ke paas<br><span class="hl">kitna bacha?</span></div>
     <div id="credit">Photo: avlxyz, CC BY-SA 2.0</div>
   </div>
 
-  <!-- S1 number slam with food props: 2.0-6.0 -->
-  <div class="scene" id="s1">
+  <!-- S2 orders with food props, then what was left: 6.0-12.0 -->
+  <div class="scene" id="s2">
     <div id="foods"></div>
     <div class="abs center label" style="top:640px">Food ordered on Swiggy</div>
-    <div class="abs center big" id="s1n" style="top:740px; font-size:200px; color:var(--orange); text-shadow:0 0 50px rgba(252,128,25,.55)">₹0 Cr</div>
+    <div class="abs center big" id="s1n" style="top:750px; font-size:180px; color:var(--orange); text-shadow:0 0 50px rgba(252,128,25,.55)">₹0 Cr</div>
     <div class="abs center" id="s1c" style="top:1000px"><span class="chip">in just 3 months · Jul–Sep 2026</span></div>
+    <div class="abs center" id="s1k" style="top:1130px; font-size:64px; font-weight:700">Bacha sirf</div>
+    <div class="abs center big" id="s1m" style="top:1215px; font-size:170px; color:#7be08f; text-shadow:0 0 50px rgba(47,191,85,.5)">₹341 Cr</div>
   </div>
 
-  <!-- S2 coins: 6.0-12.0 -->
-  <div class="scene" id="s2">
+  <!-- S1 coins, the answer at 3.0 s: 2.0-6.0 -->
+  <div class="scene" id="s1">
     <div class="abs center" style="top:330px; font-size:76px; font-weight:800; letter-spacing:-2px">Har ₹100 ke order pe</div>
     <div class="abs" id="coins" style="left:160px; top:480px; width:760px; height:760px"></div>
-    <div class="abs center" id="s2a" style="top:1290px; font-size:64px; font-weight:700">Swiggy ka munafa</div>
+    <div class="abs center" id="s2a" style="top:1290px; font-size:64px; font-weight:700">Swiggy ke paas bacha</div>
     <div class="abs center big" id="s2n" style="top:1375px; font-size:170px; color:var(--orange); text-shadow:0 0 50px rgba(252,128,25,.55)">₹3.40</div>
-    <div class="abs center note" id="s2s" style="top:1580px">food delivery operating profit (adjusted EBITDA), Jul–Sep 2026</div>
+    <div class="abs center note" id="s2s" style="top:1580px">after delivery, staff and marketing costs · food delivery adjusted EBITDA, Jul–Sep 2026</div>
   </div>
 
   <!-- S3 contrast bars: 12.0-18.0 -->
@@ -107,7 +110,7 @@
     <div class="abs center note" style="top:1640px">operating profit/loss (adjusted EBITDA), Jul–Sep 2026</div>
   </div>
 
-  <!-- S4 net loss: 18.0-24.0 -->
+  <!-- S4 net loss: 18.0-22.0 -->
   <div class="scene" id="s4">
     <div class="abs center label" style="top:620px">Swiggy ka total loss</div>
     <div class="abs center big" id="s4n" style="top:720px; font-size:230px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.55)">₹0 Cr</div>
@@ -115,7 +118,7 @@
     <div class="abs center" id="s4d" style="top:1120px"><span class="chip" style="border-color:rgba(47,191,85,.6); color:#7be08f">a year earlier: ₹1,092 Cr</span></div>
   </div>
 
-  <!-- S5 payoff: 24.0-27.5 -->
+  <!-- S5 payoff: 22.0-27.5, second line on the 24 s whoosh -->
   <div class="scene" id="s5">
     <div class="abs center" id="p1" style="top:720px; font-size:100px; font-weight:800; letter-spacing:-4px">Khana <span class="hl">kamata</span> hai.</div>
     <div class="abs center" id="p2" style="top:880px; font-size:100px; font-weight:800; letter-spacing:-4px">Instamart <span class="hl" style="background:var(--red)">khata</span> hai.</div>
@@ -136,7 +139,7 @@
 <script>
 window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.544, drop: 6.0 };
 const DURATION = 30;
-const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 24.0], [24.0, 27.5], [27.5, 30.0]];
+const CUES = [[0, 2.0], [2.0, 6.0], [6.0, 12.0], [12.0, 18.0], [18.0, 22.0], [22.0, 27.5], [27.5, 30.0]];
 
 // Food chips orbit the order number.
 const FOODS = ["Biryani", "Pizza", "Dosa", "Momos", "Burger", "Chai", "Paneer tikka", "Rolls"];
@@ -147,7 +150,7 @@ const FOOD_POS = FOODS.map((name, i) => {
   el.innerHTML = `<i></i>${name}`;
   $("foods").appendChild(el);
   const top = i % 2 === 0;
-  return { el, x: 60 + (i >> 1) * 250 + R() * 40, y: top ? 300 + R() * 180 : 1180 + R() * 260, ph: R() * 6.28, d: 0.04 * i };
+  return { el, x: Math.min(60 + (i >> 1) * 250 + R() * 40, 760), y: top ? 300 + R() * 180 : 1470 + R() * 170, ph: R() * 6.28, d: 0.04 * i };
 });
 
 // 10x10 coins; 3.4 of them light up.
@@ -191,29 +194,31 @@ function renderFrame(t) {
     slam($("h1"), t, 0, 1.12);
     slam($("h2"), t, 0.45, 1.3);
     $("h2").style.opacity = 1;   // visible from frame 0, punches at 0.45 s
-  } else if (cur === 1) {
-    // Number already racing on the first frame; lands at 3.0 s on the whoosh.
+  } else if (cur === 2) {
+    // Big number already racing on the first frame, then the tiny one: what was left.
     const n = Math.round(tween(t, a, 1.0, 6200, 10054, ease.outExpo));
     $("s1n").textContent = `₹${inr(n)} Cr`;
-    $("s1n").style.transform = `scale(${t > 3.0 ? 1 + 0.035 * Math.exp(-(t - 3.0) * 6) : 1})`;
+    $("s1n").style.transform = `scale(${1 + 0.04 * p})`;
     slam($("s1c"), t, a + 0.9, 1.15);
+    slam($("s1k"), t, a + 2.4, 1.1);
+    slam($("s1m"), t, a + 2.4, 1.4);
     FOOD_POS.forEach((f) => {
       const k = tween(t, a + f.d, frames(8), 0, 1);
       f.el.style.opacity = 0.35 + 0.65 * k;
       f.el.style.transform = `translate(${f.x + Math.sin(t * 0.9 + f.ph) * 24}px, ${f.y + Math.cos(t * 0.7 + f.ph) * 30 - 40 * (1 - k)}px)`;
     });
-  } else if (cur === 2) {
-    // All 100 coins on frame 0; on the drop the first 3.4 fill in orange, the rest dim.
+  } else if (cur === 1) {
+    // All 100 coins on frame 0; 3.4 fill in orange, the rest dim, and ₹3.40 lands at 3.0 s on the whoosh.
     COINS.forEach((c, j) => {
       const share = clamp(3.4 - j, 0, 1);
-      const fk = tween(t, a + 0.35 + j * 0.25, frames(9), 0, share, ease.outCubic);
+      const fk = tween(t, a + 0.15 + j * 0.15, frames(7), 0, share, ease.outCubic);
       c.querySelector(".fill").style.width = `${fk * 100}%`;
-      c.style.opacity = j < 4 ? 1 : 1 - 0.65 * tween(t, a + 1.2, frames(10), 0, 1);
+      c.style.opacity = j < 4 ? 1 : 1 - 0.65 * tween(t, a + 0.6, frames(8), 0, 1);
       c.style.transform = j < 4 ? `scale(${1 + 0.25 * fk + 0.08 * p})` : "none";
     });
-    slam($("s2a"), t, a + 1.5, 1.1);
-    slam($("s2n"), t, a + 1.5, 1.35);
-    slam($("s2s"), t, a + 2.2, 1.05);
+    slam($("s2a"), t, a + 1.0, 1.1);
+    slam($("s2n"), t, a + 1.0, 1.4);
+    slam($("s2s"), t, a + 1.6, 1.05);
     push($("coins"), t, a, b, 1.0, 1.04);
   } else if (cur === 3) {
     const max = 895, H = 420;
@@ -227,12 +232,12 @@ function renderFrame(t) {
     const n = Math.round(tween(t, a, 1.2, 400, 922, ease.outExpo));
     $("s4n").textContent = `₹${inr(n)} Cr`;
     $("s4n").style.transform = `scale(${1 + 0.04 * p})`;
-    slam($("s4c"), t, a + 1.0, 1.15);
-    slam($("s4d"), t, a + 2.4, 1.15);
+    slam($("s4c"), t, a + 0.8, 1.15);
+    slam($("s4d"), t, a + 1.8, 1.15);
   } else if (cur === 5) {
     slam($("p1"), t, a, 1.2);
-    slam($("p2"), t, a + 1.2, 1.3);
-    $("p2").style.opacity = t < a + 1.2 ? 0.18 : 1;   // second line ghosted until its beat
+    slam($("p2"), t, 24.0, 1.3);
+    if (t < 24.0) { $("p2").style.opacity = 0.18; $("p2").style.transform = "none"; }   // ghosted until the whoosh   // second line ghosted until its beat
   } else {
     slam($("e1"), t, a, 1.1);
     slam($("e2"), t, a + 0.3, 1.3);
