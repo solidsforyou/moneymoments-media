@@ -18,7 +18,7 @@ UA = {"User-Agent": "moneymoments-media/1.0"}
 
 
 def fetch_json(url):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=120) as r:
         return json.load(r)
 
 
