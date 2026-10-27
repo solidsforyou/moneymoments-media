@@ -23,6 +23,7 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | `founder-at-packing-table-intro.mp4` | Founder standing at the packing table, looking into the camera | 4.5 s | IMG_3516 0-4.5 |
 | `founder-preparing-printed-sku-cards.mp4` | At the table with the printed packing cards, holds up the Fitted Tee · Male card (filmed sideways, rotated upright, so it sits letterboxed) | 29.2 s | IMG_3516 7-36.2, rotated |
 | `assembling-master-boxes-with-team.mp4` | Founder and the team opening and folding master cartons in the store room | 44.1 s | IMG_3527 1.5-45.6 |
+| `founder-packing-white-joggers-shelf-angle.mp4` | Phone on the shelf by an open carton: founder holds bagged white joggers up to the camera and packs them | 105 s | IMG_3523 290-395 |
 | `stacks-blue-black-white-on-table.mp4` | Finished stacks of blue tees, black and white joggers on the packing table, worker behind | 3.9 s | IMG_3506 full |
 | `packing-table-worker-joggers.mp4` | Packing table with stacks, a worker picking up black joggers | 2.6 s | IMG_3507 full |
 | `taping-master-box-shut.mp4` | A man taping a master box shut | 5.7 s | IMG_3508 full |
@@ -33,5 +34,5 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | `box-of-blue-tees-overhead.mp4` | Overhead: an open box filled with bagged blue tees | 2.0 s | IMG_3525 2.0-4.0 |
 | `folding-blue-tee-hands.mp4` | Close-up: a worker's hands folding a blue tee on the table, bagged tees in front | 10.6 s | IMG_3526 full |
 
-Not clipped: IMG_3515 (sideways and shaky); IMG_3519 (same take as IMG_3521); IMG_3524 72-205 (empty frame while he fetches stock); the rest of IMG_3509 (lens covered by a polybag or pointing at the ceiling). Photos IMG_3513 and IMG_3520 are HEIC, which
+Not clipped: IMG_3515 (sideways and shaky); IMG_3519 (same take as IMG_3521); IMG_3523 0-290 and 395-415 (mostly an empty frame); IMG_3524 72-205 (empty frame while he fetches stock); the rest of IMG_3509 (lens covered by a polybag or pointing at the ceiling). Photos IMG_3513 and IMG_3520 are HEIC, which
 this machine can't open yet; export them as JPEG from the phone if they're needed.
