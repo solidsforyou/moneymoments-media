@@ -42,6 +42,11 @@
     background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
   .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
   .note { font-size: 28px; color: var(--muted); }
+  .row { display: flex; justify-content: center; align-items: flex-start; gap: 18px; }
+  .iv { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 44px; font-weight: 700; }
+  .iv small { font-size: 32px; color: var(--muted); font-weight: 600; }
+  .ih { display: flex; align-items: center; gap: 22px; font-size: 48px; font-weight: 700; }
+  .arr { font-size: 64px; font-weight: 800; color: var(--amber); margin-top: 60px; }
   .cat { display: inline-block; margin: 8px; padding: 14px 26px; border-radius: 18px; font-size: 36px; font-weight: 600;
     background: rgba(30,20,10,.85); border: 2px solid rgba(255,176,46,.35); }
   .coin100 { position: absolute; width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
@@ -81,20 +86,23 @@
     <div class="panel" id="p0">
       <div id="hookBg"></div>
       <div id="hookImg"></div>
-      <div class="abs center hookTxt" id="h1" style="top:250px; font-size:100px">Swiggy's share<br><span style="color:#ff6b6b">fell up to 17%.</span></div>
-      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:92px">How much does it keep<br><span class="hl">from your ₹100?</span></div>
+      <div class="abs center hookTxt" id="h1" style="top:230px; font-size:100px">Swiggy's share <span data-icon="chartDown" data-size="90" data-color="#ff6b6b" style="display:inline-block; vertical-align:middle"></span><br><span style="color:#ff6b6b">fell up to 17%.</span></div>
+      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:92px"><span data-icon="rupee" data-size="86" style="display:inline-block; vertical-align:middle"></span> What does it keep<br><span class="hl">from your ₹100?</span></div>
       <div id="credit">Photo: avlxyz, CC BY-SA 2.0</div>
     </div>
 
     <div class="panel" id="p1">
-      <div class="abs center title" id="a1" style="top:300px">First, Swiggy is<br>two businesses.</div>
-      <div class="abs center" id="a2" style="top:1460px"><span class="cat">Food delivery</span><span class="cat">Instamart groceries</span></div>
+      <div class="abs center title" id="a1" style="top:290px">Swiggy = 2 businesses</div>
+      <div class="abs center row" id="a2" style="top:430px; gap:120px">
+        <div class="iv"><span data-icon="scooter" data-size="190"></span>Food<small>delivery</small></div>
+        <div class="iv"><span data-icon="cart" data-size="190"></span>Instamart<small>groceries</small></div>
+      </div>
     </div>
 
     <div class="panel" id="p2">
-      <div class="abs center label" id="b1" style="top:270px">Food ordered on Swiggy, Jul–Sep 2026</div>
+      <div class="abs center row" id="b1" style="top:260px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="bowl" data-size="70"></span>Food ordered · Jul–Sep</div></div>
       <div class="abs center big" id="b2" style="top:350px; font-size:190px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">₹0 Cr</div>
-      <div class="abs center body" id="b3" style="top:590px">That's three months of<br>biryani, pizza and chai.</div>
+      <div class="abs center row" id="b3" style="top:580px; gap:40px"><span data-icon="bowl" data-size="120"></span><span data-icon="bowl" data-size="120"></span><span data-icon="bowl" data-size="120"></span><span data-icon="calendar" data-size="120"></span></div>
     </div>
 
     <div class="panel" id="p3">
@@ -104,11 +112,11 @@
       <div class="abs center note" id="c3" style="top:1610px">after delivery, staff and marketing costs (adjusted EBITDA)</div>
     </div>
 
-    <div class="panel" id="p4"><div class="abs center title" id="d1" style="top:420px">Food makes money.</div></div>
-    <div class="panel" id="p5"><div class="abs center title" id="e1" style="top:420px">Now, Instamart.</div></div>
+    <div class="panel" id="p4"><div class="abs center row" id="d1" style="top:330px"><div class="iv"><span data-icon="scooter" data-size="200"></span><span style="font-size:64px">Food <span style="color:#7be08f">earns ✓</span></span></div></div></div>
+    <div class="panel" id="p5"><div class="abs center row" id="e1" style="top:330px"><div class="iv"><span data-icon="cart" data-size="200"></span><span style="font-size:64px">Now, Instamart</span></div></div></div>
 
     <div class="panel" id="p6">
-      <div class="abs center title" id="f1" style="top:270px">Quick commerce,<br>same three months</div>
+      <div class="abs center row" id="f1" style="top:270px"><div class="ih" style="font-size:56px"><span data-icon="clock" data-size="100"></span>10-minute groceries</div></div>
       <div class="bar" id="bb1" style="left:150px; border-radius:24px 24px 0 0; background:linear-gradient(180deg,#ffe07a,#f8cb46); box-shadow:0 0 50px rgba(248,203,70,.5)"></div>
       <div class="bar" id="bb2" style="left:630px; border-radius:0 0 24px 24px; background:linear-gradient(180deg,#ff5a5a,#ff8f8f); box-shadow:0 0 50px rgba(255,90,90,.5)"></div>
       <div class="barv" id="v1" style="left:70px; color:#f8cb46">+₹184 Cr</div>
@@ -119,28 +127,32 @@
     </div>
 
     <div class="panel" id="p7">
-      <div class="abs center title" id="g1" style="top:280px">And Instamart's loss<br><span style="color:var(--red)">got bigger.</span></div>
+      <div class="abs center row" id="g1" style="top:280px"><div class="ih" style="font-size:60px"><span data-icon="cart" data-size="110" data-color="#ff6b6b"></span>Loss <span style="color:var(--red)">grew ↓</span></div></div>
       <div class="ptl" id="r1"><b>₹778 Cr</b><span>Apr–Jun</span></div>
       <div class="ptl" id="r2"><b style="color:var(--red)">₹895 Cr</b><span>Jul–Sep</span></div>
-      <div class="abs center body" id="g2" style="top:1480px">Swiggy says this is the peak.</div>
+      <div class="abs center row" id="g2" style="top:1480px"><div class="ih" style="font-size:44px"><span data-icon="chartUp" data-size="80" data-color="#7be08f"></span>Swiggy: "this is the peak"</div></div>
     </div>
 
     <div class="panel" id="p8">
-      <div class="abs center label" id="i0" style="top:270px">Swiggy's total loss, Jul–Sep</div>
+      <div class="abs center row" id="i0" style="top:260px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="moneybag" data-size="70" data-color="#ff6b6b"></span>Total loss · Jul–Sep</div></div>
       <div class="abs center big" id="i1" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">₹0 Cr</div>
       <div class="abs center" id="i2" style="top:610px"><span class="chip">3 months earlier: ₹791 Cr</span></div>
-      <div class="abs center" id="i3" style="top:1480px"><span class="chip" style="border-color:rgba(255,90,90,.7); color:#ff8f8f">Share fell up to 17% · 52-week low</span></div>
+      <div class="abs center row" id="i3" style="top:1470px"><div class="ih" style="font-size:44px; color:#ff8f8f"><span data-icon="chartDown" data-size="80" data-color="#ff5a5a"></span>Share fell up to 17% · 52-week low</div></div>
       <div class="abs center note" id="i4" style="top:1590px">Sources: Swiggy and Eternal Q2 FY27 results; Inc42 (23 Oct 2026)</div>
     </div>
 
     <div class="panel" id="p9">
       <div class="abs center title" id="j1" style="top:280px">Why investors worry</div>
-      <div class="abs center body" id="j2" style="top:420px">Food makes ₹341 Cr.<br>Instamart loses ₹895 Cr.<br>The rival is already in profit.</div>
+      <div class="abs center row" id="j2" style="top:420px; gap:40px">
+        <div class="iv" style="font-size:40px"><span data-icon="scooter" data-size="140"></span><span style="color:#7be08f">+₹341 Cr</span></div>
+        <div class="iv" style="font-size:40px"><span data-icon="cart" data-size="140" data-color="#ff6b6b"></span><span style="color:#ff6b6b">−₹895 Cr</span></div>
+        <div class="iv" style="font-size:40px"><span data-icon="person" data-size="140" data-color="#f8cb46"></span><span style="color:#f8cb46">Rival in profit</span></div>
+      </div>
     </div>
 
     <div class="panel" id="p10">
       <div class="abs center title" id="t5" style="top:420px; font-size:84px">Khana <span class="hl">kamata</span> hai.<br>Instamart <span class="hl" style="background:var(--red)">khata</span> hai.</div>
-      <div class="abs center body" id="t6" style="top:680px">Food earns. Instamart eats it.</div>
+      <div class="abs center row" id="t6" style="top:680px; gap:50px"><div class="ih" style="font-size:44px"><span data-icon="scooter" data-size="90"></span>Food earns</div><div class="ih" style="font-size:44px"><span data-icon="cart" data-size="90" data-color="#ff6b6b"></span>Instamart eats it</div></div>
     </div>
 
     <div class="panel" id="p11">
@@ -158,6 +170,7 @@
   <div id="grain"></div>
 </div>
 <script src="../lib/motion.js"></script>
+<script src="../lib/icons.js"></script>
 <script src="../lib/hisab.js"></script>
 <script>
 window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
@@ -166,7 +179,9 @@ const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0,
 const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
 const at = (i, off = 0) => CUES[i][0] + off;
 const mid = (i) => (CUES[i][0] + CUES[i][1]) / 2;
-const BASE6 = 1150;   // P6: the line is the bars' zero line
+const BASE6 = 1150;
+Icons.mount();
+const pop = (els, t, start, gap) => [...els].forEach((el, j) => slam(el, t, start + j * gap, 1.4));   // P6: the line is the bars' zero line
 const SHAPES = [
   (u) => 1360,                                                  // P0 hook
   (u) => 1320,                                                  // P1 two businesses
@@ -210,12 +225,12 @@ function renderFrame(t) {
   slam($("h2"), t, 0.45, 1.2); $("h2").style.opacity = 1;
 
   slam($("a1"), t, at(1, -0.3), 1.08);
-  slam($("a2"), t, at(1, 0.8), 1.06);
+  pop($("a2").children, t, at(1, 0.3), 0.6);
 
   slam($("b1"), t, at(2, -0.3), 1.05);
   $("b2").textContent = `₹${inr(Math.round(tween(t, at(2, 0), 1.2, 6000, 10054, ease.outExpo)))} Cr`;
   $("b2").style.opacity = t < at(2, 0) ? 0 : 1;
-  slam($("b3"), t, at(2, 1.8), 1.04);
+  pop($("b3").children, t, at(2, 1.6), 0.3);
 
   slam($("c1"), t, at(3, -0.3), 1.06);
   COINS.forEach((c, j) => {
@@ -255,7 +270,7 @@ function renderFrame(t) {
   slam($("i4"), t, at(8, 3.0), 1.0);
 
   slam($("j1"), t, at(9, -0.3), 1.08);
-  slam($("j2"), t, at(9, 1.0), 1.04);
+  pop($("j2").children, t, at(9, 0.6), 1.2);
 
   slam($("t5"), t, at(10, -0.3), 1.08);
   slam($("t6"), t, at(10, 1.8), 1.04);

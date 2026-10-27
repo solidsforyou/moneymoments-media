@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <!--
-  Unicorn ka Hisab: D2C market (27 Oct 2026), v4: about 60 s, timed so every panel can be read.
-  One continuous camera move (videos/lib/hisab.js): the ₹ coin drops onto the Hisab line in the
-  first frame and the camera follows it through twelve panels without a cut. 1080x1920, no audio.
-  Soundtrack: the 60 s mix from public/reels/2026-10-26-1300-zerodha.mp4 (track from 0:24, break
-  18.0-20.25 s, drop 20.25 s, beat 60/97.6 from 0.605 s); panel changes sit on its whooshes at
-  3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0 and 55.9 s.
+  Unicorn ka Hisab: D2C market (27 Oct 2026), v5: about 60 s, visual-first. Every word on screen has
+  a meaningful visual (videos/lib/icons.js); short labels instead of sentences. One continuous
+  camera move (videos/lib/hisab.js), twelve panels on the 60 s soundtrack's whooshes (mix from
+  public/reels/2026-10-26-1300-zerodha.mp4: 3.07, 6.15, 11.05, 15.35, 18.0, 20.25 drop, 28.25,
+  35.6, 43.0, 51.0, 55.9 s).
 
   Angle (founder): booms run on outside money, which buys marketing and views; when the big
   cheques stop, the feed fills with small-ticket sellers and new ideas stop coming. The facts are
@@ -17,13 +16,8 @@
     D2C funding peaked at $1.6B in 2022; $824M in 2024; $898M in 2025 (44% below the peak).
     Late-stage $883M (2022) -> $271M (2025), -69%. Seed + early stage: 70% of 2025 funding, 38% in 2021.
   Hook photo: supplied by the founder (videos/d2c/hook/parcels-doorbell.jpg).
-  Footage (panel 10): Solids For You's own workshop, from assets/sfy/clips, cut into sfy/001-166.jpg
-  (gitignored) with:
-    ffmpeg -i assets/sfy/clips/label-closeup-solids-for-you.mp4 -i assets/sfy/clips/stitching-hands-black-joggers.mp4
-      -i assets/sfy/clips/sewing-machine-joggers-waistband.mp4 -filter_complex "[0:v]setpts=PTS/0.5[a];
-      [1:v]setpts=PTS/0.5[b];[2:v]setpts=PTS/0.5[c];[a][b][c]concat=n=3:v=1:a=0,fps=30,
-      crop=608:1080:656:0,scale=1080:1920,eq=brightness=-0.05:saturation=0.9[v]"
-      -map "[v]" -frames:v 166 -q:v 5 videos/d2c/sfy/%03d.jpg
+  Footage (panel 10): Solids For You's own workshop, cut from assets/sfy/clips into sfy/001-166.jpg
+  (gitignored); the ffmpeg command is in assets/sfy/README.md and the v4 history of this file.
   All motion comes from renderFrame(t).
 -->
 <style>
@@ -36,7 +30,7 @@
   #world { position: absolute; left: 0; top: 0; height: 1920px; will-change: transform; }
   .panel { position: absolute; top: 0; width: 1080px; height: 1920px; }
   .abs { position: absolute; }
-  .center { left: 60px; right: 60px; text-align: center; }
+  .center { left: 40px; right: 40px; text-align: center; }
   #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
     filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
   #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
@@ -45,19 +39,19 @@
   .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
     border: 2px solid var(--amber); color: var(--amber); }
   .handle { font-size: 24px; font-weight: 500; color: #bbb; }
-  .title { font-size: 74px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
-  .body { font-size: 46px; font-weight: 600; line-height: 1.3; color: rgba(245,245,247,.86); }
+  .title { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
   .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
   .label { font-size: 44px; font-weight: 600; color: var(--muted); }
-  .chip { display: inline-block; padding: 14px 28px; border-radius: 999px; font-size: 36px; font-weight: 600;
-    background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
   .take { display: inline-block; padding: 8px 18px; border-radius: 10px; font-size: 26px; font-weight: 800;
     letter-spacing: .12em; color: #07070a; background: var(--amber); }
   .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
   .note { font-size: 30px; color: var(--muted); }
-  .cat { display: inline-block; margin: 8px; padding: 14px 26px; border-radius: 18px; font-size: 36px; font-weight: 600;
-    background: rgba(30,20,10,.85); border: 2px solid rgba(255,176,46,.35); }
-  .arrow { color: var(--amber); font-weight: 800; padding: 0 6px; }
+  /* icon + word: every word sits under its picture */
+  .row { display: flex; justify-content: center; align-items: flex-start; gap: 18px; }
+  .iv { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 44px; font-weight: 700; }
+  .iv.dim { opacity: .28; }
+  .arr { font-size: 64px; font-weight: 800; color: var(--amber); margin-top: 50px; }
+  .xmark { position: absolute; }
 
   #p0, #p10 { overflow: hidden; }
   #hookBg { position: absolute; inset: -80px; background: url("hook/parcels-doorbell.jpg") 30% center / cover;
@@ -91,89 +85,111 @@
   <div id="glow"></div>
   <div id="world">
 
-    <!-- P0 hook, 0-3.07 -->
+    <!-- P0 hook: the parcels are D2C; the falling chart is "dying" -->
     <div class="panel" id="p0">
       <div id="hookBg"></div>
       <div id="hookImg"></div>
-      <div class="abs center hookTxt" id="h1" style="top:250px; font-size:104px">Is India's D2C boom<br><span style="color:#ff6b6b">dying?</span></div>
+      <div class="abs center hookTxt" id="h1" style="top:230px; font-size:104px">Is India's D2C boom<br><span style="color:#ff6b6b">dying?</span> <span data-icon="chartDown" data-size="96" data-color="#ff6b6b" style="display:inline-block; vertical-align:middle"></span></div>
       <div class="abs center hookTxt" id="h2" style="top:1430px; font-size:100px">Here's the <span class="hl">hisab.</span></div>
     </div>
 
-    <!-- P1 what is D2C, 3.07-6.15 -->
+    <!-- P1 what D2C means: brand -> phone -> you, the shop crossed out -->
     <div class="panel" id="p1">
-      <div class="abs center title" id="a1" style="top:300px">First, what is D2C?</div>
-      <div class="abs center body" id="a2" style="top:430px">Brands that skip the shop<br>and sell to you directly online.</div>
-      <div class="abs center" id="a3" style="top:1440px"><span class="cat">Skincare</span><span class="cat">Snacks</span><span class="cat">Earbuds</span><br><span class="cat">Clothes</span><span class="cat">Coffee</span></div>
+      <div class="abs center title" id="a1" style="top:290px">What is D2C?</div>
+      <div class="abs center row" id="a2" style="top:470px">
+        <div class="iv"><span data-icon="factory" data-size="190"></span>Brand</div><div class="arr">→</div>
+        <div class="iv"><span data-icon="phone" data-size="190"></span>Online</div><div class="arr">→</div>
+        <div class="iv"><span data-icon="person" data-size="190"></span>You</div>
+      </div>
+      <div class="abs center row" id="a3" style="top:1440px">
+        <div class="iv" style="position:relative"><span data-icon="shop" data-size="180" data-color="#8a8a90"></span>No shop
+          <span class="xmark" style="left:0; top:0" data-icon="cross" data-size="180" data-color="#ff5a5a"></span></div>
+      </div>
     </div>
 
-    <!-- P2 how a boom works, 6.15-11.05 -->
+    <!-- P2 how a boom works -->
     <div class="panel" id="p2">
-      <div class="abs center title" id="b1" style="top:300px">Every boom starts with<br><span style="color:var(--amber)">outside money.</span></div>
-      <div class="abs center body" id="b2" style="top:540px">Investors fund brands. Brands buy ads.<br>Ads buy views. Views bring more brands.</div>
-      <div class="abs center" id="b3" style="top:1480px; font-size:40px; font-weight:700">Money <span class="arrow">→</span> Ads <span class="arrow">→</span> Views <span class="arrow">→</span> More brands</div>
+      <div class="abs center title" id="b1" style="top:290px">How a boom works</div>
+      <div class="abs center row" id="b2" style="top:460px; gap:8px">
+        <div class="iv" id="bi1"><span data-icon="moneybag" data-size="160"></span>Money</div><div class="arr" id="ba1">→</div>
+        <div class="iv" id="bi2"><span data-icon="megaphone" data-size="160"></span>Ads</div><div class="arr" id="ba2">→</div>
+        <div class="iv" id="bi3"><span data-icon="eye" data-size="160"></span>Views</div><div class="arr" id="ba3">→</div>
+        <div class="iv" id="bi4"><span data-icon="bags" data-size="160"></span>Brands</div>
+      </div>
     </div>
 
-    <!-- P3 the peak, 11.05-15.35 -->
+    <!-- P3 the peak: 16 bags = $1.6B -->
     <div class="panel" id="p3">
-      <div class="abs center label" id="c1" style="top:300px">In 2022, investors put</div>
-      <div class="abs center big" id="c2" style="top:380px; font-size:220px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">$0B</div>
-      <div class="abs center label" id="c3" style="top:620px">into Indian D2C brands. The peak.</div>
+      <div class="abs center row" id="c0" style="top:270px"><div class="iv" style="flex-direction:row; gap:14px; font-size:44px"><span data-icon="calendar" data-size="64"></span>2022</div></div>
+      <div class="abs center big" id="c2" style="top:370px; font-size:220px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">$0B</div>
+      <div class="abs center" id="c3" style="top:620px"></div>
+      <div class="abs center note" id="c4" style="top:1460px">1 bag = $100M of VC money</div>
     </div>
 
-    <!-- P4 then, 15.35-18.0 -->
+    <!-- P4 the money leaves -->
     <div class="panel" id="p4">
-      <div class="abs center title" id="d1" style="top:420px">Then the money<br><span style="color:var(--red)">pulled back.</span></div>
+      <div class="abs center row" id="d0" style="top:300px"><span data-icon="left" data-size="130" data-color="#ff5a5a"></span><span data-icon="moneybag" data-size="210" data-color="#ff5a5a"></span><span data-icon="moneybag" data-size="160" data-color="#ff5a5a" style="opacity:.6"></span><span data-icon="moneybag" data-size="110" data-color="#ff5a5a" style="opacity:.3"></span></div>
+      <div class="abs center title" id="d1" style="top:500px">Then the money<br><span style="color:var(--red)">left.</span></div>
     </div>
 
-    <!-- P5 break, 18.0-20.25 -->
+    <!-- P5 look at the line -->
     <div class="panel" id="p5">
-      <div class="abs center title" id="e1x" style="top:420px; font-size:64px">Here's what<br>the line looks like.</div>
+      <div class="abs center row" id="e0" style="top:330px"><span data-icon="chartDown" data-size="240" data-color="#ff5a5a"></span></div>
+      <div class="abs center title" id="e1" style="top:620px; font-size:64px">Look at the line.</div>
     </div>
 
-    <!-- P6 the real curve, 20.25-28.25 (drop) -->
+    <!-- P6 the real curve -->
     <div class="panel" id="p6">
-      <div class="abs center label" id="f0" style="top:270px">VC money into Indian D2C, per year</div>
+      <div class="abs center row" id="f0" style="top:270px"><div class="iv" style="flex-direction:row; gap:14px; font-size:44px"><span data-icon="moneybag" data-size="64"></span>VC money, per year</div></div>
       <div class="ptl" id="p22"><b>$1.6B</b><span>2022</span></div>
       <div class="ptl" id="p24"><b>$824M</b><span>2024</span></div>
       <div class="ptl" id="p25"><b>$898M</b><span>2025</span></div>
-      <div class="abs center" id="f1" style="top:1500px"><span class="chip" style="border-color:rgba(255,90,90,.7); color:#ff8f8f">2025 is still 44% below the peak</span></div>
-      <div class="abs center note" id="f2" style="top:1610px">Source: Tracxn India D2C report, Aug 2026</div>
+      <div class="abs center row" id="f1" style="top:1480px"><div class="iv" style="flex-direction:row; gap:14px; color:#ff8f8f; font-size:50px"><span data-icon="down" data-size="70" data-color="#ff5a5a"></span>44% below the peak</div></div>
+      <div class="abs center note" id="f2" style="top:1600px">Source: Tracxn India D2C report, Aug 2026</div>
     </div>
 
-    <!-- P7 big cheques, 28.25-35.6 -->
+    <!-- P7 the big cheque shrinks -->
     <div class="panel" id="p7">
-      <div class="abs center title" id="g1" style="top:280px">The big cheques<br>fell the most.</div>
-      <div class="abs center body" id="g2" style="top:520px">Late-stage rounds: the large amounts<br>that help brands grow up.</div>
-      <div class="abs center big" id="g3" style="top:1420px; font-size:180px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">−69%</div>
-      <div class="abs center label" id="g4" style="top:1620px">$883M in 2022 → $271M in 2025</div>
+      <div class="abs center title" id="g1" style="top:280px">Big cheques shrank most</div>
+      <div class="abs" id="g2" style="left:290px; top:430px; width:500px; height:280px; transform-origin:50% 50%"></div>
+      <div class="abs center big" id="g3" style="top:1420px; font-size:170px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">−69%</div>
+      <div class="abs center label" id="g4" style="top:1610px">$883M → $271M</div>
     </div>
 
-    <!-- P8 who's left, 35.6-43.0 -->
+    <!-- P8 seven sprouts in ten -->
     <div class="panel" id="p8">
-      <div class="abs center title" id="h1x" style="top:280px">So who's getting<br>the money now?</div>
-      <div class="abs center body" id="h2x" style="top:520px">70% of 2025's money went to<br><span style="color:var(--amber)">tiny, early-stage brands</span>.</div>
-      <div class="abs center note" id="h3x" style="top:680px">In 2021, it was 38%.</div>
-      <div class="abs center body" id="h4x" style="top:1460px">Lots of small bets.<br>Very few big ones.</div>
+      <div class="abs center title" id="h1x" style="top:280px">Now 70% goes to<br><span style="color:var(--amber)">tiny brands</span></div>
+      <div class="abs center row" id="h2x" style="top:520px; gap:4px"></div>
+      <div class="abs center note" id="h3x" style="top:680px">7 in 10 dollars · was 38% in 2021</div>
       <div id="minis"></div>
     </div>
 
-    <!-- P9 our take, 43.0-51.0 -->
+    <!-- P9 our take: copies yes, ideas no -->
     <div class="panel" id="p9">
-      <div class="abs center" id="i0" style="top:300px"><span class="take">OUR TAKE</span></div>
-      <div class="abs center title" id="i1" style="top:380px">Small cheques fund copies,<br><span style="color:var(--red)">not new ideas.</span></div>
-      <div class="abs center body" id="i2" style="top:620px">Feeds are full of Meesho-style resellers<br>and ₹299 lookalikes.<br>Same products, new logos.</div>
-      <div class="abs center label" id="i3" style="top:1330px">new ideas</div>
+      <div class="abs center" id="i0" style="top:280px"><span class="take">OUR TAKE</span></div>
+      <div class="abs center row" id="i1" style="top:360px; gap:30px">
+        <div class="iv"><span data-icon="copy" data-size="210"></span>Copies <span style="color:#7be08f">✓</span></div>
+        <div class="iv" style="position:relative"><span data-icon="bulb" data-size="210" data-color="#8a8a90"></span>New ideas <span style="color:var(--red)">✗</span>
+          <span class="xmark" style="left:0; top:0" data-icon="cross" data-size="210" data-color="#ff5a5a"></span></div>
+      </div>
+      <div class="abs center row" id="i2" style="top:1400px; gap:10px">
+        <div class="iv" style="font-size:40px"><span data-icon="tag" data-size="140"></span>₹299</div>
+        <div class="iv" style="font-size:40px"><span data-icon="tag" data-size="140"></span>₹299</div>
+        <div class="iv" style="font-size:40px"><span data-icon="tag" data-size="140"></span>₹299</div>
+        <div class="iv" style="font-size:40px"><span data-icon="tag" data-size="140"></span>₹299</div>
+      </div>
+      <div class="abs center note" id="i3" style="top:1610px">Meesho-style resellers, same products, new logos</div>
     </div>
 
-    <!-- P10 the way out (SFY footage), 51.0-55.9 -->
+    <!-- P10 the way out (SFY footage) -->
     <div class="panel" id="p10">
       <div id="foot"><div id="footShade"></div></div>
-      <div class="abs center title" id="j1" style="top:400px">The next D2C boom won't<br>come from more money.</div>
-      <div class="abs center title" id="j2" style="top:640px">It'll come from<br><span class="hl">better products.</span></div>
+      <div class="abs center row" id="j0" style="top:330px; gap:40px"><span data-icon="needle" data-size="200"></span><span data-icon="bulb" data-size="200"></span></div>
+      <div class="abs center title" id="j1" style="top:540px">Next boom:<br><span class="hl">better products.</span></div>
       <div id="footLbl">Footage: Solids For You, a new D2C brand building its own products</div>
     </div>
 
-    <!-- P11 end, 55.9-60 -->
+    <!-- P11 end -->
     <div class="panel" id="p11">
       <div class="abs center" id="k1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
       <div class="abs center" id="k2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
@@ -189,13 +205,21 @@
   <div id="grain"></div>
 </div>
 <script src="../lib/motion.js"></script>
+<script src="../lib/icons.js"></script>
 <script src="../lib/hisab.js"></script>
 <script>
 window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
 const DURATION = 60;
 const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0, 55.9, 60.0];
 const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
-const at = (i, off = 0) => CUES[i][0] + off;   // panel i's start, plus an offset
+const at = (i, off = 0) => CUES[i][0] + off;
+
+// built visuals: 16 money bags (P3), the cheque (P7), 10 sprouts (P8)
+const bagsRow = $("c3"); bagsRow.className += " row"; bagsRow.style.gap = "6px"; bagsRow.style.flexWrap = "wrap"; bagsRow.style.width = "1000px"; bagsRow.style.left = "40px";
+for (let i = 0; i < 16; i++) bagsRow.insertAdjacentHTML("beforeend", `<span class="bag16">${Icons.svg("moneybag", 112)}</span>`);
+$("g2").innerHTML = Icons.svg("cheque", 500, "#ff5a5a", "position:absolute;left:0;top:-110px");
+for (let i = 0; i < 10; i++) $("h2x").insertAdjacentHTML("beforeend", `<span class="sp">${Icons.svg("sprout", 100, i < 7 ? "#ffb02e" : "#5a5a60")}</span>`);
+Icons.mount();
 
 const smooth = (pts) => (u) => {
   if (u <= pts[0][0]) return pts[0][1];
@@ -205,20 +229,20 @@ const smooth = (pts) => (u) => {
   }
   return pts[pts.length - 1][1];
 };
-const FUND = (v) => 1500 - (v / 1.6) * 640;            // $B -> y for the funding curve
+const FUND = (v) => 1500 - (v / 1.6) * 640;
 const SHAPES = [
-  (u) => 1300,                                                     // P0 hook
-  (u) => 1300,                                                     // P1 what is D2C (calm)
-  (u) => 1380 - 280 * Math.pow(u, 1.5),                            // P2 the boom builds
-  (u) => 1100 - 160 * u,                                           // P3 the peak
-  (u) => 940 + 300 * u * u,                                        // P4 then it falls
-  (u) => 1240,                                                     // P5 break: flat, waiting
-  smooth([[0, FUND(1.0)], [0.14, FUND(1.6)], [0.40, FUND(0.93)], [0.62, FUND(0.824)], [0.86, FUND(0.898)], [1, FUND(0.898)]]), // P6 the curve
-  (u) => 1100 + 200 * u,                                           // P7 big cheques slide
-  (u, t) => 1300 + 34 * Math.sin(u * 46 + t * 3) * Math.sin(u * 7), // P8 crowded
-  (u, t) => 1250 - 90 * Math.exp(-Math.pow((u - 0.5) / 0.025, 2)) * (0.6 + 0.4 * Math.sin(t * 6)), // P9 flatline
-  (u) => 1420 - 380 * u * u,                                       // P10 rising again
-  (u) => 1250,                                                     // P11 end
+  (u) => 1300,
+  (u) => 1300,
+  (u) => 1380 - 280 * Math.pow(u, 1.5),
+  (u) => 1100 - 120 * u,
+  (u) => 980 + 260 * u * u,
+  (u) => 1240,
+  smooth([[0, FUND(1.0)], [0.14, FUND(1.6)], [0.40, FUND(0.93)], [0.62, FUND(0.824)], [0.86, FUND(0.898)], [1, FUND(0.898)]]),
+  (u) => 1100 + 200 * u,
+  (u, t) => 1300 + 34 * Math.sin(u * 46 + t * 3) * Math.sin(u * 7),
+  (u, t) => 1250 - 90 * Math.exp(-Math.pow((u - 0.5) / 0.025, 2)) * (0.6 + 0.4 * Math.sin(t * 6)),
+  (u) => 1420 - 380 * u * u,
+  (u) => 1250,
 ];
 Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - (CUES[9][0] + CUES[9][1]) / 2) / 0.15, 2)) });
 
@@ -240,6 +264,7 @@ function slam(el, t, start, from = 1.2) {
   el.style.opacity = t < start ? 0 : 1;
   el.style.transform = `scale(${from + (1 - from) * k})`;
 }
+const pop = (els, t, start, gap) => [...els].forEach((el, j) => slam(el, t, start + j * gap, 1.4));
 
 function renderFrame(t) {
   const p = pulse(t);
@@ -247,50 +272,48 @@ function renderFrame(t) {
   $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));
   $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
 
-  // P8: the coin breaks into small coins, then re-forms
+  // P8 coin split
   const split = tween(t, at(8, 0.3), 0.5, 0, 1) * (1 - tween(t, CUES[8][1] - 0.6, 0.5, 0, 1));
   $("coin").style.transform += ` scale(${1 - 0.7 * split})`;
   $("coin").style.opacity = String(1 - 0.8 * split);
   MINIS.forEach((m, j) => {
     const show = tween(t, at(8, 0.4 + j * 0.06), frames(6), 0, 1, ease.outBack) * (1 - tween(t, CUES[8][1] - 0.7, 0.4, 0, 1));
     m.el.style.display = show > 0 ? "block" : "none";
-    if (show > 0) {
-      m.el.style.left = `${m.u * 1080}px`;
-      m.el.style.top = `${Hisab.lineAt(8 * 1080 + m.u * 1080, t) - 18}px`;
-      m.el.style.transform = `scale(${show})`;
-    }
+    if (show > 0) { m.el.style.left = `${m.u * 1080}px`; m.el.style.top = `${Hisab.lineAt(8 * 1080 + m.u * 1080, t) - 18}px`; m.el.style.transform = `scale(${show})`; }
   });
-
-  // P10 footage
   const k = clamp(Math.floor((t - at(10, -0.4)) * 30), 0, FOOT.length - 1);
   if (footShown !== k) { if (footShown >= 0) FOOT[footShown].style.display = "none"; FOOT[k].style.display = "block"; footShown = k; }
 
-  // P0 hook
+  // P0
   $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 3.0, 0, 1)})`;
   slam($("h1"), t, 0, 1.1);
   slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
 
-  // P1 what is D2C
+  // P1 brand -> online -> you, then "no shop"
   slam($("a1"), t, at(1, -0.3), 1.08);
-  slam($("a2"), t, at(1, 0.5), 1.04);
-  slam($("a3"), t, at(1, 1.0), 1.06);
+  pop($("a2").children, t, at(1, 0.2), 0.25);
+  slam($("a3"), t, at(1, 1.8), 1.3);
 
-  // P2 how a boom works
+  // P2 the chain lights up one link at a time
   slam($("b1"), t, at(2, -0.3), 1.08);
-  slam($("b2"), t, at(2, 0.9), 1.04);
-  slam($("b3"), t, at(2, 2.2), 1.08);
+  pop($("b2").children, t, at(2, 0.3), 0.45);
 
-  // P3 the peak
-  slam($("c1"), t, at(3, -0.3), 1.05);
+  // P3 the number, then sixteen bags drop in
+  slam($("c0"), t, at(3, -0.3), 1.05);
   $("c2").textContent = `$${tween(t, at(3, 0), 1.2, 0.4, 1.6, ease.outExpo).toFixed(1)}B`;
   $("c2").style.opacity = t < at(3, 0) ? 0 : 1;
-  slam($("c3"), t, at(3, 1.3), 1.05);
+  $("c3").style.opacity = 1;
+  pop(document.querySelectorAll(".bag16"), t, at(3, 0.6), 0.08);
+  slam($("c4"), t, at(3, 2.2), 1.0);
 
-  // P4, P5 short beats
-  slam($("d1"), t, at(4, -0.3), 1.1);
-  slam($("e1x"), t, at(5, -0.3), 1.06);
+  // P4 the bags fly off left
+  slam($("d0"), t, at(4, -0.3), 1.1);
+  $("d0").style.transform += ` translateX(${-120 * tween(t, at(4, 0.2), 2.4, 0, 1, ease.inCubic)}px)`;
+  slam($("d1"), t, at(4, 0.3), 1.1);
+  slam($("e0"), t, at(5, -0.3), 1.2);
+  slam($("e1"), t, at(5, 0.2), 1.06);
 
-  // P6 the curve (drop)
+  // P6 the curve
   slam($("f0"), t, at(6, -0.2), 1.05);
   [["p22", 0.14, 0.4], ["p24", 0.62, 1.6], ["p25", 0.86, 2.6]].forEach(([id, u, off]) => {
     Hisab.place($(id), 6, u, 215, t).style.opacity = tween(t, at(6, off), frames(6), 0, 1);
@@ -298,28 +321,27 @@ function renderFrame(t) {
   slam($("f1"), t, at(6, 3.6), 1.1);
   slam($("f2"), t, at(6, 3.6), 1.0);
 
-  // P7 big cheques
+  // P7 the cheque shrinks to 31% of its size
   slam($("g1"), t, at(7, -0.3), 1.08);
-  slam($("g2"), t, at(7, 1.0), 1.04);
-  slam($("g3"), t, at(7, 2.8), 1.3);
-  slam($("g4"), t, at(7, 3.4), 1.05);
+  $("g2").style.opacity = t < at(7, 0.2) ? 0 : 1;
+  $("g2").style.transform = `scale(${1 - 0.69 * tween(t, at(7, 1.6), 1.4, 0, 1, ease.inOutCubic)})`;
+  slam($("g3"), t, at(7, 3.0), 1.3);
+  slam($("g4"), t, at(7, 3.6), 1.05);
 
-  // P8 who's getting the money
+  // P8 ten sprouts, seven light up
   slam($("h1x"), t, at(8, -0.3), 1.08);
-  slam($("h2x"), t, at(8, 1.2), 1.04);
-  slam($("h3x"), t, at(8, 2.4), 1.0);
-  slam($("h4x"), t, at(8, 3.6), 1.06);
+  pop(document.querySelectorAll(".sp"), t, at(8, 1.0), 0.15);
+  slam($("h3x"), t, at(8, 3.0), 1.0);
 
-  // P9 our take (the coin hops the blip mid-panel)
+  // P9 our take
   slam($("i0"), t, at(9, -0.3), 1.2);
-  slam($("i1"), t, at(9, -0.3), 1.08);
-  slam($("i2"), t, at(9, 1.6), 1.04);
-  $("i3").style.opacity = tween(t, at(9, 2.5), frames(8), 0, 0.8);
+  pop($("i1").children, t, at(9, 0.2), 1.2);
+  pop($("i2").children, t, at(9, 2.6), 0.2);
+  slam($("i3"), t, at(9, 3.8), 1.0);
 
   // P10 the way out
-  slam($("j1"), t, at(10, -0.3), 1.08);
-  slam($("j2"), t, at(10, 2.0), 1.2);
-  if (t < at(10, 2.0)) { $("j2").style.opacity = 0.15; $("j2").style.transform = "none"; }
+  slam($("j0"), t, at(10, -0.3), 1.2);
+  slam($("j1"), t, at(10, 0.4), 1.1);
 
   // P11 end
   slam($("k1"), t, at(11, 0.1), 1.1);

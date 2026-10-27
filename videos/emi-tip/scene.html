@@ -45,6 +45,12 @@
   .opt { display: inline-block; padding: 8px 18px; border-radius: 10px; font-size: 28px; font-weight: 800;
     letter-spacing: .1em; color: #07070a; background: var(--amber); }
   .note { font-size: 28px; color: var(--muted); }
+  .row { display: flex; justify-content: center; align-items: flex-start; gap: 18px; }
+  .iv { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 44px; font-weight: 700; }
+  .iv small { font-size: 32px; color: var(--muted); font-weight: 600; }
+  .ih { display: flex; align-items: center; gap: 22px; font-size: 48px; font-weight: 700; }
+  .arr { font-size: 64px; font-weight: 800; color: var(--amber); margin-top: 60px; }
+  .xmark { position: absolute; left: 0; top: 0; }
 
   #p0 { overflow: hidden; }
   #hookBg { position: absolute; inset: -80px; background: url("stock/house-keys-1-crop.jpg") center / cover;
@@ -77,53 +83,59 @@
     <div class="panel" id="p0">
       <div id="hookBg"></div>
       <div id="hookImg"></div>
-      <div class="abs center hookTxt" id="h1" style="top:250px; font-size:100px">Your loan rate<br><span style="color:#ff6b6b">just went up.</span></div>
-      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:96px">Did your bank<br><span class="hl">add a year?</span></div>
+      <div class="abs center hookTxt" id="h1" style="top:230px; font-size:100px">Your loan rate <span data-icon="up" data-size="90" data-color="#ff6b6b" style="display:inline-block; vertical-align:middle"></span><br><span style="color:#ff6b6b">just went up.</span></div>
+      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:96px">Did your bank <span data-icon="calendar" data-size="90" style="display:inline-block; vertical-align:middle"></span><br><span class="hl">add a year?</span></div>
       <div id="credit">Photo: advokatsmart.no, CC BY 2.0</div>
     </div>
 
     <div class="panel" id="p1">
-      <div class="abs center title" id="a1" style="top:300px">First, what's a<br>floating rate?</div>
-      <div class="abs center body" id="a2" style="top:520px">A loan rate that moves with<br>the RBI's repo rate.<br>When the RBI hikes, yours can rise.</div>
+      <div class="abs center title" id="a1" style="top:290px">Floating rate?</div>
+      <div class="abs center row" id="a2" style="top:440px; gap:30px">
+        <div class="iv"><span data-icon="bank" data-size="180"></span>RBI rate <span style="color:#ff6b6b">↑</span></div><div class="arr" style="margin-top:70px">→</div>
+        <div class="iv"><span data-icon="home" data-size="180"></span>Your loan <span style="color:#ff6b6b">↑</span></div>
+      </div>
     </div>
 
     <div class="panel" id="p2">
-      <div class="abs center label" id="b1" style="top:270px">Take a ₹30 lakh home loan · 20 years</div>
+      <div class="abs center row" id="b1" style="top:260px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="home" data-size="70"></span>₹30 lakh · 20 years</div></div>
       <div class="abs center big" id="b2" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+0.25%</div>
-      <div class="abs center" id="b3" style="top:610px"><span class="chip">8.50% → 8.75%, after the RBI hike</span></div>
+      <div class="abs center" id="b3" style="top:610px"><span class="chip">8.50% → 8.75%</span></div>
       <div class="abs center note" id="b4" style="top:1600px">Example. Assumes the full hike is passed on.</div>
     </div>
 
     <div class="panel" id="p3">
-      <div class="abs center title" id="c1" style="top:300px">Your bank can absorb it<br>in two ways.</div>
-      <div class="abs center body" id="c2" style="top:540px">Same loan, same rate.<br>Very different bill.</div>
+      <div class="abs center title" id="c1" style="top:290px">Two ways to pay it</div>
+      <div class="abs center row" id="c2" style="top:440px; gap:90px">
+        <div class="iv"><span data-icon="rupee" data-size="180"></span>Pay more<small>each month</small></div>
+        <div class="iv"><span data-icon="calendar" data-size="180" data-color="#ff6b6b"></span>Pay longer<small>more months</small></div>
+      </div>
     </div>
 
     <div class="panel" id="p4">
       <div class="abs center" id="d0" style="top:340px"><span class="opt">OPTION 1</span></div>
-      <div class="abs center title" id="d1" style="top:420px">Pay more each month.</div>
+      <div class="abs center row" id="d1" style="top:420px"><div class="iv"><span data-icon="rupee" data-size="200"></span><span style="font-size:64px">Pay more</span></div></div>
     </div>
 
-    <div class="panel" id="p5"><div class="abs center title" id="e1" style="top:420px; font-size:64px">How much more?</div></div>
+    <div class="panel" id="p5"><div class="abs center row" id="e1" style="top:380px"><div class="iv"><span data-icon="question" data-size="200"></span><span style="font-size:64px">How much?</span></div></div></div>
 
     <div class="panel" id="p6">
       <div class="abs center big" id="f1" style="top:330px; font-size:180px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">+₹0</div>
-      <div class="abs center label" id="f2" style="top:530px">a month: ₹26,035 → ₹26,511</div>
-      <div class="abs center body" id="f3" style="top:640px">The loan still ends in 20 years.</div>
-      <div class="abs center" id="f4" style="top:1520px"><span class="chip">Extra paid over the loan: <b style="color:var(--amber)">₹1.14 lakh</b></span></div>
+      <div class="abs center label" id="f2" style="top:530px">a month · ₹26,035 → ₹26,511</div>
+      <div class="abs center row" id="f3" style="top:630px"><div class="ih"><span data-icon="calendar" data-size="80"></span>Still 20 years <span style="color:#7be08f">✓</span></div></div>
+      <div class="abs center row" id="f4" style="top:1500px"><div class="ih"><span data-icon="moneybag" data-size="90"></span>Extra: <b style="color:var(--amber)">₹1.14 lakh</b></div></div>
     </div>
 
     <div class="panel" id="p7">
       <div class="abs center" id="g0" style="top:280px"><span class="opt" style="background:var(--red)">OPTION 2</span></div>
-      <div class="abs center title" id="g1" style="top:350px">Keep the EMI,<br>stretch the loan.</div>
+      <div class="abs center row" id="g1" style="top:350px"><div class="ih" style="font-size:60px"><span data-icon="calendar" data-size="110" data-color="#ff6b6b"></span>Pay longer</div></div>
       <div class="abs center big" id="g2" style="top:560px; font-size:170px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+1 year</div>
-      <div class="abs center label" id="g3" style="top:740px">240 → about 252 months</div>
-      <div class="abs center" id="g4" style="top:1520px"><span class="chip">Extra paid: <b style="color:var(--red)">₹3.24 lakh</b></span></div>
+      <div class="abs center label" id="g3" style="top:740px">240 → 252 months</div>
+      <div class="abs center row" id="g4" style="top:1500px"><div class="ih"><span data-icon="moneybag" data-size="90" data-color="#ff6b6b"></span>Extra: <b style="color:var(--red)">₹3.24 lakh</b></div></div>
     </div>
 
     <div class="panel" id="p8">
       <div class="abs center title" id="i1" style="top:280px">Same loan.<br><span style="color:var(--amber)">About ₹2 lakh</span> apart.</div>
-      <div class="abs center body" id="i2" style="top:520px">A longer loan means paying<br>interest for longer.</div>
+      <div class="abs center row" id="i2" style="top:520px"><div class="ih" style="font-size:44px"><span data-icon="clock" data-size="80" data-color="#ff6b6b"></span>Longer = more interest</div></div>
       <div class="bar" id="bb1" style="left:150px; background:linear-gradient(180deg,#ffd27a,#ffb02e); box-shadow:0 0 50px rgba(255,176,46,.45)"></div>
       <div class="bar" id="bb2" style="left:630px; background:linear-gradient(180deg,#ff8f8f,#ff5a5a); box-shadow:0 0 50px rgba(255,90,90,.45)"></div>
       <div class="barv" id="v1" style="left:70px; color:var(--amber)">₹1.14L</div>
@@ -133,14 +145,23 @@
     </div>
 
     <div class="panel" id="p9">
-      <div class="abs center title" id="j1" style="top:280px">If you do nothing,<br>your bank may <span style="color:var(--red)">stretch it.</span></div>
-      <div class="abs center body" id="j2" style="top:540px">RBI rules (Aug 2023) let you choose:<br>a higher EMI, a longer loan, or both.<br>Your bank must tell you about any change.</div>
+      <div class="abs center row" id="j1" style="top:280px; gap:20px">
+        <div class="iv"><span data-icon="person" data-size="150" data-color="#8a8a90"></span>Do nothing</div><div class="arr">→</div>
+        <div class="iv"><span data-icon="calendar" data-size="150" data-color="#ff6b6b"></span><span style="color:#ff6b6b">Loan stretched</span></div>
+      </div>
+      <div class="abs center row" id="j2" style="top:1440px; gap:60px">
+        <div class="iv" style="font-size:38px"><span data-icon="check" data-size="110" data-color="#7be08f"></span>You can choose<small>RBI rules, Aug 2023</small></div>
+        <div class="iv" style="font-size:38px"><span data-icon="phone" data-size="110"></span>Bank must tell you</div>
+      </div>
     </div>
 
     <div class="panel" id="p10">
-      <div class="abs center title" id="t5" style="top:360px; font-size:64px">The tip: ask your bank for<br><span class="hl" style="margin-top:12px">higher EMI, not a longer loan.</span></div>
-      <div class="abs center body" id="t6" style="top:640px">If your budget allows it.</div>
-      <div class="abs center note" id="t7" style="top:1600px">Example only. Check your lender's terms. Not financial advice.</div>
+      <div class="abs center title" id="t5" style="top:280px; font-size:64px">The tip</div>
+      <div class="abs center row" id="t6" style="top:400px; gap:90px">
+        <div class="iv"><span data-icon="rupee" data-size="170"></span>Higher EMI <span style="color:#7be08f">✓</span></div>
+        <div class="iv" style="position:relative"><span data-icon="calendar" data-size="170" data-color="#8a8a90"></span>Longer loan <span style="color:var(--red)">✗</span><span class="xmark" data-icon="cross" data-size="170" data-color="#ff5a5a"></span></div>
+      </div>
+      <div class="abs center note" id="t7" style="top:1560px">If your budget allows. Example only. Check your lender's terms. Not financial advice.</div>
     </div>
 
     <div class="panel" id="p11">
@@ -160,6 +181,7 @@
   <div id="grain"></div>
 </div>
 <script src="../lib/motion.js"></script>
+<script src="../lib/icons.js"></script>
 <script src="../lib/hisab.js"></script>
 <script>
 window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
@@ -168,6 +190,8 @@ const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0,
 const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
 const at = (i, off = 0) => CUES[i][0] + off;
 const mid = (i) => (CUES[i][0] + CUES[i][1]) / 2;
+Icons.mount();
+const pop = (els, t, start, gap) => [...els].forEach((el, j) => slam(el, t, start + j * gap, 1.4));
 const SHAPES = [
   (u) => 1350,                                                // P0 hook
   (u) => 1320 - 40 * u,                                       // P1 floating rate
@@ -213,7 +237,7 @@ function renderFrame(t) {
   slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
 
   slam($("a1"), t, at(1, -0.3), 1.08);
-  slam($("a2"), t, at(1, 0.4), 1.04);
+  pop($("a2").children, t, at(1, 0.3), 0.5);
 
   slam($("b1"), t, at(2, -0.3), 1.05);
   slam($("b2"), t, at(2, 0.2), 1.3);
@@ -221,7 +245,7 @@ function renderFrame(t) {
   slam($("b4"), t, at(2, 2.2), 1.0);
 
   slam($("c1"), t, at(3, -0.3), 1.08);
-  slam($("c2"), t, at(3, 1.4), 1.04);
+  pop($("c2").children, t, at(3, 0.6), 1.0);
 
   slam($("d0"), t, at(4, -0.3), 1.2); slam($("d1"), t, at(4, -0.3), 1.08);
   slam($("e1"), t, at(5, -0.3), 1.1);
@@ -246,11 +270,11 @@ function renderFrame(t) {
   $("v1").style.top = `${base - h1 - 100}px`; $("v1").style.opacity = tween(t, at(8, 1.2), frames(6), 0, 1);
   $("v2").style.top = `${base - h2 - 100}px`; $("v2").style.opacity = tween(t, at(8, 2.1), frames(6), 0, 1);
 
-  slam($("j1"), t, at(9, -0.3), 1.08);
-  slam($("j2"), t, at(9, 1.6), 1.04);
+  pop($("j1").children, t, at(9, -0.3), 0.6);
+  pop($("j2").children, t, at(9, 3.0), 1.0);
 
   slam($("t5"), t, at(10, -0.3), 1.08);
-  slam($("t6"), t, at(10, 1.6), 1.04);
+  pop($("t6").children, t, at(10, 0.3), 0.9);
   slam($("t7"), t, at(10, 1.6), 1.0);
 
   slam($("k1"), t, at(11, 0.1), 1.1);
