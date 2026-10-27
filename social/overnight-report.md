@@ -59,3 +59,7 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 3:00 pm D2C: now the 60 s visual-first version, container 18123464728768761, scheduled 09:30 UTC.
 - Founder approved all ("schedule all"): Swiggy 5 pm (11:30 UTC), inflation 7 pm (13:30 UTC, container 18123466234768761), EMI tip 9 pm (15:30 UTC). Swiggy and EMI scheduled once their 60 s renders upload.
 - 9:00 pm EMI tip: container 18123468157768761, scheduled 15:30 UTC.
+
+## 27 Oct: Swiggy (60 s version)
+- Rendered `public/reels/2026-10-27-1300-swiggy.mp4` (60 s), container 18123471424768761 created with caption, scheduled for 5 pm IST.
+- Old Swiggy containers (18123421381768761, 18123422467768761, 18123431956768761) are not to be published.
