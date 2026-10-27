@@ -25,3 +25,9 @@ so they also work in cloud sessions where the plugins aren't installed.
 the founder anything, run
 `python3 .claude/skills/economy-mode/scripts/memory.py --file memory/memory.csv pinned`
 (and `search "key words"` as needed). Save new decisions with its `add` command.
+
+## Assets
+
+Reusable footage, photos, the coin and line signature and finished moments live in
+`assets/` (index in `assets/README.md`), named so they can be asked for by name. Anything a
+reel produces that's worth reusing goes there with a row in that index.

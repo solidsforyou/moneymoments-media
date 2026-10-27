@@ -1,0 +1,63 @@
+# Asset library
+
+Everything reusable for Unicorn ka Hisab reels, named so it can be asked for by name
+("use sfy/stitching-hands", "end with signature/end-card-coin-rises"). When a reel makes
+something worth reusing, add it here with a row below. All video is 30 fps, no audio,
+unless noted.
+
+## signature/ — the page's look (use in every reel)
+
+| Name | What it is |
+|---|---|
+| `signature/coin-rupee.png` | The amber ₹ coin, 400x400, transparent background (thumbnails, covers, stickers) |
+| `signature/end-card-coin-rises.mp4` | 2.5 s end card: the Hisab line, the coin rising, "Unicorn ka Hisab · Money, simply explained · Follow @unicornkahisab" (1080x1920) |
+
+The live, editable version of the signature (the Hisab line that morphs between scenes and
+the coin that rides it) is the code in `videos/d2c/scene.html`: copy its `SHAPES`, `lineY`,
+`COINX` and coin blocks into a new scene and change only the shapes and text.
+
+## moments/ — scenes from finished reels, reusable as-is or as a reference
+
+| Name | Shows | From |
+|---|---|---|
+| `moments/coins-3-of-100-lit.mp4` | 100 coins, 3.4 light up: "per ₹100, X is kept" metaphor (4 s, Swiggy wording on screen) | Swiggy reel, 2-6 s |
+| `moments/d2c-funding-curve-pullback.mp4` | The line drawing a real data curve with labelled points (6 s) | D2C reel, 6-12 s |
+| `moments/coin-splits-into-small-coins.mp4` | One coin breaks into many small coins on a jittery line: fragmentation (6 s) | D2C reel, 12-18 s |
+| `moments/line-flatlines-new-ideas.mp4` | The line goes flat with a faint blip: stagnation (4 s) | D2C reel, 18-22 s |
+
+These carry their reel's text, so for a new topic rebuild the moment from the scene code
+and use the clip as the reference.
+
+## sfy/ — Solids For You's own footage (positive moments only)
+
+See `sfy/README.md`: workshop clips (label close-up, stitching hands, sewing machine,
+heat press) and photos (blue tees, black joggers). Label on screen when used.
+
+## stock/ — licensed photos already used (credits in `stock/credits.json`)
+
+| Name | Licence | Credit line |
+|---|---|---|
+| `stock/biryani-copper-handi.jpg` | CC BY-SA 2.0 | Photo: "Biryani" by avlxyz on Flickr, CC BY-SA 2.0 |
+| `stock/rupee-notes-pile.jpg` | CC BY 2.0 | Photo: Indian rupee notes by Monito on Flickr, CC BY 2.0 |
+
+New stock comes from Openverse with `videos/stock.py` (memory row 17); copy the keepers here.
+
+## founder-photos/ — photos the founder sent (licence not confirmed)
+
+| Name | Shows |
+|---|---|
+| `founder-photos/parcels-doorbell-handover.jpg` | Hands holding parcels, finger on a doorbell (1920x1024) |
+| `founder-photos/parcels-stack-carrying.jpg` | Person carrying three shipping boxes (700x438) |
+| `founder-photos/parcel-box-handover.jpg` | A box handed from one person to another (644x476) |
+
+They look like stock images; post them only if the founder has the rights.
+
+## Not stored here
+
+- **Soundtrack:** the founder's track ("addiction" by LONOWN and Asenssia) isn't committed
+  on its own in this public repo. The 30 s mix with the riser and whooshes (cuts at 3, 6, 12,
+  18, 24 and 27.5 s) can be pulled from any 30 s reel:
+  `ffmpeg -i public/reels/2026-10-26-1500-physicswallah-30s.mp4 -vn -c:a copy soundtrack-30s.m4a`.
+- **The reference video** for the signature (Video-20093, blue line and dot) belongs to its
+  maker, so it isn't stored; memory row 22 describes what was taken from it.
+- **Original SFY footage** (full-length vertical .MOV) stays in Drive; trimmed moments go in `sfy/clips/`.
