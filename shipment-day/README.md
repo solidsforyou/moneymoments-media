@@ -15,6 +15,7 @@ The end goal is a time-lapse of the founder showing and packing every product.
 | Clip | Shows | Length | From |
 |---|---|---|---|
 | `founder-packing-each-piece-01.mp4` | Founder at the box, holding each polybagged piece up to the camera, then packing it (phone propped, steady) | 35.8 s | IMG_3521 full |
+| `founder-packing-each-piece-02.mp4` | Same propped angle: two pairs of black joggers held up to the camera and packed | 15.2 s | IMG_3522 full |
 | `stacks-blue-black-white-on-table.mp4` | Finished stacks of blue tees, black and white joggers on the packing table, worker behind | 3.9 s | IMG_3506 full |
 | `packing-table-worker-joggers.mp4` | Packing table with stacks, a worker picking up black joggers | 2.6 s | IMG_3507 full |
 | `taping-master-box-shut.mp4` | A man taping a master box shut | 5.7 s | IMG_3508 full |
