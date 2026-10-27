@@ -51,3 +51,6 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 - 8:49 pm Lenskart (30 s): posted by hand by the founder at 15:19 UTC, https://www.instagram.com/reel/De9llQ6SMj6/ (no caption).
 - 11:55 pm boAt (30 s): published via API 18:25 UTC once the block lifted, https://www.instagram.com/reel/De8kCPXiG6X/. Went out WITHOUT a caption: the saved container had none. Paste social/captions/boat.txt in the app.
 - 12:57 am (27 Oct) Urban Company (30 s): published via API 19:27 UTC, https://www.instagram.com/reel/De8j_Q4EZTe/. Also no caption (same container batch); paste social/captions/urbancompany.txt in the app.
+
+## 27 Oct
+- 1:00 pm Swiggy (30 s vertical, new style): container 18123421381768761 processed 04:27 UTC with caption; scheduled to publish 07:30 UTC.
