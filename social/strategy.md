@@ -48,3 +48,11 @@ the review loop run without gaps.
 1. Hinglish vs English hook line.
 2. Blur fill vs crop framing on two-person podcasts.
 3. Which source beats the account's median views.
+
+## 9. Daily mix (founder, 27 Oct 2026)
+Four reels a day, so the page covers everything the viewer hears about money:
+1. **Startup ka Hisab**: one startup's numbers, tied to that week's news.
+2. **Indian economy**: the week's biggest India money story (inflation, rupee, RBI, GST, jobs).
+3. **International**: one world story and what it means for India.
+4. **D2C market**: the sector as a whole (funding, channels, costs), not one brand.
+Every reel is trend-led and goes through harsh-buyer-review before posting.
