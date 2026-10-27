@@ -63,3 +63,4 @@ social/captions/, with sources, the line about who runs the page and 4 hashtags.
 ## 27 Oct: Swiggy (60 s version)
 - Rendered `public/reels/2026-10-27-1300-swiggy.mp4` (60 s), container 18123471424768761 created with caption, scheduled for 5 pm IST.
 - Old Swiggy containers (18123421381768761, 18123422467768761, 18123431956768761) are not to be published.
+- 3:00 pm D2C market (60 s): published 09:30 UTC, https://www.instagram.com/reel/De_WULVCUf9/. Went out WITHOUT a caption even though container 18123464728768761 was created with one: containers made with --dry-run and published later lose their caption (same as boAt and Urban Company yesterday). Paste social/captions/d2c-funding.txt in the app. The 5, 7 and 9 pm posts now create and publish in one go instead.
