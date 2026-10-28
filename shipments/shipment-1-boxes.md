@@ -74,3 +74,4 @@ Open question: men's white joggers counted 22 (box 3: 15, box 7: 6, Teju: 1) vs 
 
 ## Box size (all 7 boxes)
 18 x 12 x 12 in = 45.7 x 30.5 x 30.5 cm. Weights still needed.
+Weights (kg): 1=10.02, 2=8.34, 3=8.80, 4=9.47, 5=9.80, 6=7.10, 7=9.28 (total 62.81)
