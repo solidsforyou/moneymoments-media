@@ -1,6 +1,7 @@
 # (app name TBD)
 
-New app, built from scratch. What it does and where it runs are not decided yet.
+New app, built from scratch: a verified social video network for everything finance, with
+crypto trading through a gateway partner, iPhone first. Full v1 brief in `brief.md`.
 
 ## SOLIDS FOR YOU Master is on
 
