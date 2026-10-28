@@ -26,14 +26,16 @@ finance content. India only. Android first (about 92% of Indian phones), iPhone 
 
 The app opens on the reels feed, and trading is one tap away: every video shows the price of
 the coin it mentions and a trade button. Feed tabs the user switches between, e.g. Following,
-Top stories (picked by editors), For you.
+Top stories (picked by editors), For you. All three tabs are in v1.
 
 ## News
 
 - Its own tab in the bottom bar (e.g. Feed, News, Trade, Post, Profile).
-- 5 to 10 stories a day as short text cards: headline, a 3 to 4 line summary in our own words,
-  the sources with links, and the coins it affects with a trade button.
-- AI drafts and checks each story; the team verifies it before posting.
+- Full articles, not short cards. The Chartroom team posts 3 to 5 a day, 400 to 800 words each:
+  AI drafts and checks, the team verifies, sources are cited with links, and the coins an
+  article affects show with a trade button. Summaries are in our own words, never copied.
+- Anyone can also write articles, like LinkedIn articles. They follow the same rules as videos
+  (topic tag, removed on report) and aren't checked before posting (assumed; founder to confirm).
 - Approved news outlets are cited, and outlets can apply to be added to that list.
 - First launch shows off all three sides (news, crypto, social) in a short onboarding.
 
@@ -41,7 +43,8 @@ Top stories (picked by editors), For you.
 
 - Topics: markets and crypto, economy and business, world and political news, personal
   finance, anything finance-related.
-- Formats: short vertical videos and long explainers. No live streams in v1.
+- Formats: short vertical videos (and articles in News). Long explainers and live streams wait
+  for later updates.
 - Any spoken language; every video has English subtitles.
 - The app interface is in English with a casual Hinglish tone in onboarding and prompts, like
   Unicorn Ka Hisab.
@@ -57,8 +60,9 @@ Top stories (picked by editors), For you.
   Reels are copied in through Instagram's official API (creator or business accounts only;
   reference client in `reference/sfy_instagram`). No YouTube import for now.
 - No paid promotions in the feed: creators can't post paid coin promotions at all.
-- Optional extras: creators can add sources to a video, and anyone can verify their ID or
-  credentials for a verified badge.
+- Optional extra: creators can add sources to a video. The verified badge waits for v1.1.
+- When someone reports a post, they're told what happened to it. No public safety numbers and
+  no strike counts on profiles: profiles show followers and the usual Instagram-style details.
 
 ## Profiles
 
@@ -74,7 +78,7 @@ Dark and light modes, dark by default.
 
 ## Social (v1)
 
-Follow, like, Approve, comment, share, DMs. Approve works like Instagram's repost: anyone can
+Follow, like, Approve, comment, share, DMs (all in v1; DMs need scam-link blocking). Approve works like Instagram's repost: anyone can
 press it, and the video goes to their followers' feeds (shown as "Approved by @name", with the
 original creator credited) and onto an Approved tab on their profile. It's a public
 endorsement, not a fact-check. Sharing sends the video outside the app (e.g. WhatsApp).
