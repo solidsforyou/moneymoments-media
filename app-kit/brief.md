@@ -75,9 +75,10 @@ Dark and light modes, dark by default.
 
 ## Social (v1)
 
-Follow, like, Approve (a viewer vouches that the video is accurate, separate from like; anyone
-can press it),
-comment, share/repost, DMs.
+Follow, like, Approve, comment, share, DMs. Approve works like Instagram's repost: anyone can
+press it, and the video goes to their followers' feeds (shown as "Approved by @name", with the
+original creator credited) and onto an Approved tab on their profile. It's a public
+endorsement, not a fact-check. Sharing sends the video outside the app (e.g. WhatsApp).
 
 ## Trading
 
