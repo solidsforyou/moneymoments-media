@@ -30,20 +30,31 @@ Top stories (picked by editors), For you. All three tabs are in v1.
 
 ## News
 
-- Its own tab in the bottom bar (e.g. Feed, News, Trade, Post, Profile).
+- Its own tab in the bottom bar.
 - Full articles, not short cards. The Chartroom team posts 3 to 5 a day, 400 to 800 words each:
   AI drafts and checks, the team verifies, sources are cited with links, and the coins an
   article affects show with a trade button. Summaries are in our own words, never copied.
-- Anyone can also write articles, like LinkedIn articles. They follow the same rules as videos
-  (topic tag, removed on report) and aren't checked before posting (assumed; founder to confirm).
 - Approved news outlets are cited, and outlets can apply to be added to that list.
 - First launch shows off all three sides (news, crypto, social) in a short onboarding.
+
+## Boring Stuff
+
+- The LinkedIn side of Chartroom: its own tab where anyone writes. Long articles (title, cover
+  image, sections), short text posts, and posts with images, charts or an image carousel.
+- Same rules as videos: finance topic tag, removed on report, not checked before posting
+  (assumed; founder to confirm).
+
+## Navigation
+
+- Bottom bar, five tabs: Feed, News, Boring Stuff, Trade, Profile. No Post tab.
+- Creating anything (video, Instagram import, article, text post) starts from a + button in the
+  top bar (Claude's choice, since the Post tab is gone; founder can change it).
 
 ## Content
 
 - Topics: markets and crypto, economy and business, world and political news, personal
   finance, anything finance-related.
-- Formats: short vertical videos (and articles in News). Long explainers and live streams wait
+- Formats: short vertical videos, plus writing in News and Boring Stuff. Long explainers and live streams wait
   for later updates.
 - Any spoken language; every video has English subtitles.
 - The app interface is in English with a casual Hinglish tone in onboarding and prompts, like
