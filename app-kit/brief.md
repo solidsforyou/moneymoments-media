@@ -34,6 +34,11 @@ Top stories (picked by editors), For you.
 - Every post is tagged with a finance topic; off-topic posts are removed.
 - Users report posts. Moderators remove misleading, scam or off-topic videos, and repeat
   offenders are banned. No fact-check before a video goes live.
+- Import (v1): a creator connects their Instagram and/or Google account once, then pastes a
+  link to one of their own videos to import it; links to anyone else's videos are rejected.
+  Instagram reels are copied in through Instagram's official API (creator or business accounts
+  only; reference client in `reference/sfy_instagram`). YouTube videos are not downloaded:
+  they play inside Chartroom in YouTube's embedded player.
 - Optional extras: creators can add sources to a video, and anyone can verify their ID or
   credentials for a verified badge.
 
