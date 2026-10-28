@@ -21,16 +21,18 @@ each part is. This skill covers two modes, and an app can use both:
   videos first; sources and the ID/credential badge are optional extras;
   labels, corrections, strikes and the law (sections 5 to 8) still apply.
 
-The "Approve" reaction (a viewer vouching for accuracy) is a signal for
-ranking and review priority, never proof that something is true.
+The "Approve" reaction is a repost-like public endorsement (brief v3),
+never proof that something is true: it can raise a video's review
+priority (more reach, more risk), and it never earns a verified label.
 
 ## 1. The trust model, written down
 
 Publish what "Verified" means, in plain words, on a page linked from every
 badge: who is checked and how (identity, credentials), what is checked
-before a video goes live (claims against sources), what isn't (opinions
-are labelled, not "verified"), what happens when something is wrong, and
-how to report a mistake. A badge nobody can explain is decoration.
+and when (before publishing in verified mode, after it in open mode),
+what isn't (opinions are labelled, not "verified"; an Approve is not a
+check), what happens when something is wrong, and how to report a
+mistake. A badge nobody can explain is decoration.
 
 ## 2. Creator verification
 
@@ -181,8 +183,11 @@ placement; conflicts declared by editors too. Log every pick.
 
 ## 10. Breaking news (the hardest trade-off)
 
-The brief requires a fact-check before going live, which slows breaking
-news. Options to put to the founder: a dedicated fast-track desk with a
+In verified mode a check before publishing slows breaking news. (For
+Chartroom's open-mode videos it doesn't, but then false breaking news
+spreads fastest, so reported and fast-rising videos about an event go to
+the front of the moderation queue.) For the verified News tab, options to
+put to the founder: a dedicated fast-track desk with a
 short target time; editor-written "What we know / what we don't" updates
 from primary sources while creator videos wait; or a "Developing" label
 with limited distribution until checked (only if the founder accepts the

@@ -81,10 +81,13 @@ Build the simplest feed that serves the brief, and say how it ranks.
   follow from topics and editor picks, never from the phone's contacts
   without asking.
 - **Reactions:** each reaction type has one clear meaning shown on first
-  use. If the brief has an "Approve" (vouching for accuracy), decide and
-  write down who can Approve (any viewer? only after watching most of the
-  video?) and whether counts are public. Prevent rapid-fire reactions from
-  one account (rate limit).
+  use. Chartroom's "Approve" works like a repost: anyone can press it,
+  the video goes to their followers' feeds as "Approved by @name" with the
+  creator credited, and onto an Approved tab on their profile; it's a
+  public endorsement, not a fact-check, and the UI must never suggest
+  otherwise. Because it spreads content, removed videos disappear from
+  every Approved copy, and Approve counts are rate-limited per account so
+  pump rings can't push a coin video by mass-approving it.
 - **Comments:** newest or top first with a toggle; creator can pin one
   and remove comments on their posts; links and @mentions pass the scam
   scanner; first-time commenters' links held for review.
