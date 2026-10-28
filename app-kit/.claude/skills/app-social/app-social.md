@@ -118,7 +118,13 @@ Build the simplest feed that serves the brief, and say how it ranks.
    plain; run the humanizer.
 2. **Prevention before posting:** the scam scanner on text (a first-pass
    heuristic: it catches common patterns, moderators catch the rest, and
-   every miss becomes a new rule and test); a
+   every miss becomes a new rule and test). To know how good it really is,
+   the auditor keeps a **held-out set** (`audit/scam-holdout.jsonl`: real
+   scams and real comments the rules were never written against) and
+   reports the catch rate and false-positive rate at each sweep; targets:
+   90% or more of scams held or blocked, under 2% of real comments held or
+   blocked. Rules tuned to the held-out set make it useless, so it is
+   refreshed with new examples each time; a
    moderation API on images and video frames; new accounts limited
    (no links, few DMs, slower posting) until they've been around a while.
 3. **Reporting:** one tap from every post, comment, message and profile;

@@ -109,3 +109,43 @@ def test_rejects_bad_inputs():
 def test_price_off_tick_is_invalid():
     r = compute(RULES, "buy", "5000000.005", qty="0.001")
     assert not r["valid"] and any("price tick" in p for p in r["problems"])
+
+
+def test_gst_on_fees():
+    # value 5000.00; fees 10.00 + 15.00 = 25.00; GST 18% of 25.00 = 4.50; buy pays 5029.50
+    r = compute(dict(RULES, fee_gst_rate="0.18"), "buy", "5000000", qty="0.001")
+    assert (r["fees"], r["gst_on_fees"], r["total"]) == ("25.00", "4.50", "5029.50")
+    # sell: 5000.00 - 25.00 - 4.50 GST - 50.00 TDS = 4920.50
+    r = compute(dict(RULES, fee_gst_rate="0.18"), "sell", "5000000", qty="0.001")
+    assert (r["gst_on_fees"], r["tax"], r["total"]) == ("4.50", "50.00", "4920.50")
+
+
+def test_tds_only_on_sells():
+    assert compute(RULES, "buy", "5000000", qty="0.001")["tax"] == "0"
+    assert compute(RULES, "sell", "5000000", qty="0.001")["tax"] == "50.00"
+
+
+def test_spend_buys_the_largest_quantity_that_fits():
+    import random
+    rng = random.Random(11)
+    for _ in range(2000):
+        step = rng.choice(["0.00000001", "0.0001", "0.01", "1"])
+        tick = rng.choice(["0.01", "1", "0.5"])
+        rules = dict(RULES, qty_step=step, price_tick=tick, min_qty="0", min_notional="0",
+                     fee_gst_rate=rng.choice(["0", "0.18"]), fee_rounding=rng.choice(["up", "down", "half_even"]))
+        price = (Decimal(rng.randint(1, 2_000_000)) * Decimal(tick))
+        spend = Decimal(rng.randint(100, 20_000_000)) / 100
+        r = compute(rules, "buy", str(price), spend=str(spend))
+        q = Decimal(r["quantity"])
+        assert Decimal(r["total"]) <= spend
+        bigger = compute(rules, "buy", str(price), qty=str(q + Decimal(step)))
+        assert Decimal(bigger["total"]) > spend, (rules, price, spend, r)
+
+
+def test_coarse_tick_rounding_down_still_finds_the_largest():
+    # From the second audit: value rounds to whole units, so 651 steps still cost 19.
+    rules = dict(RULES, qty_step="0.00000001", price_tick="1", min_qty="0", min_notional="0",
+                 partner_fee_rate="0.002", platform_fee_rate="0.01", fee_rounding="down", sell_tax_rate="0")
+    r = compute(rules, "buy", "2925200", spend="19")
+    assert Decimal(r["total"]) <= 19
+    assert Decimal(compute(rules, "buy", "2925200", qty=str(Decimal(r["quantity"]) + Decimal("0.00000001")))["total"]) > 19

@@ -103,18 +103,28 @@ def dirty(root):
     """Uncommitted changes outside audit/ (work nobody can have audited yet)."""
     p = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=root, capture_output=True, text=True)
     if p.returncode != 0:
-        return []
+        raise RuntimeError(f"git status failed: {p.stderr.strip()}")  # can't tell: the caller fails closed
     # Porcelain lines are "XY path" (or "XY old -> new"); don't strip them, the status letters can be spaces.
     files = [line[3:].split(" -> ")[-1].strip('"') for line in p.stdout.splitlines() if len(line) > 3]
     return [f for f in files if not f.startswith("audit/")]
 
 
 GIT_OPTS_WITH_VALUE = {"-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path"}
-PUSH_TOOLS = re.compile(r"^mcp__github__(?:push_files|create_or_update_file|delete_file|merge_pull_request|create_branch)$")
+PUSH_TOOLS = re.compile(r"^mcp__github__(?:push_files|create_or_update_file|delete_file|merge_pull_request|create_branch"
+                        r"|update_pull_request_branch)$")
+WRAPPERS = {"sudo", "command", "exec", "time", "env", "nohup", "nice", "stdbuf", "timeout", "xargs", "builtin", "then",
+            "else", "do", "if", "while", "until", "!", "{", "elif"}
+SHELLS = {"sh", "bash", "zsh", "dash", "ksh"}
+WRAPPER_OPTS_WITH_VALUE = {"-u", "-g", "-k", "-s", "-n", "-C", "-D", "-o", "--user", "--group", "--signal", "--kill-after", "--chdir"}
 
 
-def is_push(command: str) -> bool:
-    """True if a shell command runs `git ... push` (any git options before it), outside quotes."""
+def is_push(command: str, depth: int = 0) -> bool:
+    """True if a shell command runs `git ... push` in its common forms: git options before
+    `push`, after ; && || | ( {, behind wrappers (sudo, env, timeout N, nohup, xargs...),
+    inside if/then/do, and inside `sh -c '...'` or `eval ...`. Aliases and computed
+    commands can still hide a push: the git pre-push hook in .githooks/ catches those."""
+    if depth > 3:
+        return False
     import shlex
     try:
         lexer = shlex.shlex(command, posix=True, punctuation_chars=";&|()")
@@ -129,9 +139,18 @@ def is_push(command: str) -> bool:
             start = True
             i += 1
             continue
-        if start and (re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", tok) or tok in ("sudo", "command", "exec", "time", "env")):
-            i += 1  # VAR=value, sudo, env ... still come before the command itself
+        if start and (re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", tok) or tok in WRAPPERS
+                      or (tok.startswith("-") and i > 0 and (tokens[i - 1] in WRAPPERS or tokens[i - 1].startswith("-")))
+                      or (i > 0 and tokens[i - 1] in WRAPPER_OPTS_WITH_VALUE and i > 1 and (tokens[i - 2] in WRAPPERS or tokens[i - 2].startswith("-")))
+                      or (re.fullmatch(r"\d+[smhd]?", tok) and i > 0 and tokens[i - 1] in ("timeout", "-k"))):
+            i += 1  # VAR=value, wrappers and their options/durations still come before the command
             continue
+        if start and os.path.basename(tok) in SHELLS:
+            rest = tokens[i + 1:]
+            if "-c" in rest and rest.index("-c") + 1 < len(rest) and is_push(rest[rest.index("-c") + 1], depth + 1):
+                return True
+        if start and tok == "eval" and is_push(" ".join(tokens[i + 1:]), depth + 1):
+            return True
         if not start:
             i += 1
             continue
@@ -196,6 +215,17 @@ def cmd_init(a, root):
                      "scope": f"baseline at {ref}", "commits": sha,
                      "summary": "Ledger started; commits up to here were not audited by this ledger."})
     (root / "audit" / "reports").mkdir(parents=True, exist_ok=True)
+    hooks_dir = root / ".githooks"
+    if (hooks_dir / "pre-push").exists():
+        try:
+            current = git("config", "--get", "core.hooksPath", cwd=root)
+        except RuntimeError:
+            current = ""
+        if not current:
+            git("config", "core.hooksPath", ".githooks", cwd=root)
+            print("git pre-push hook enabled (core.hooksPath = .githooks): every push form is checked.")
+        elif current != ".githooks":
+            print(f"Note: core.hooksPath is {current!r}; add .githooks/pre-push to it to check every push.")
     print(f"Ledger started at {ledger_path(root)} (baseline {sha[:10] or 'empty repo'}).")
     return 0
 
@@ -327,31 +357,40 @@ def cmd_brief(a, root):
 
 def cmd_hook(a, root):
     try:
-        return hook_inner(a, root)
-    except Exception as e:  # fail closed: a broken auditor must not silently stop enforcing
+        data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
+    except (json.JSONDecodeError, ValueError):
+        data = {}
+    if not isinstance(data, dict):
+        data = {}
+    # Decide what's at stake before touching the ledger, so a broken ledger can't trap a session:
+    if a.event == "stop" and data.get("stop_hook_active"):
+        return 0  # already continuing because of this hook: never loop
+    if a.event == "prepush":
+        tool = str(data.get("tool_name") or "")
+        cmd = str((data.get("tool_input") or {}).get("command") or "")
+        if not (PUSH_TOOLS.match(tool) or is_push(cmd)):
+            return 0  # not a push: never block ordinary commands
+    try:
+        return hook_inner(a, root, data)
+    except Exception as e:  # fail closed, but only for a push or one stop attempt
         print(f"Auditor hook error ({type(e).__name__}: {e}). The audit can't be checked, so this is blocked; "
-              "fix .claude/skills/auditor/scripts/audit.py or ask the founder.", file=sys.stderr)
+              "tell the founder, and fix .claude/skills/auditor/scripts/audit.py or the ledger.", file=sys.stderr)
         return 2
 
 
-def hook_inner(a, root):
-    try:
-        data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
-    except json.JSONDecodeError:
-        data = {}
+def hook_inner(a, root, data):
     if root is None:
         return 0
     rows = read_rows(root)
     if rows is None:
         return 0  # ledger not started in this repo: nothing to enforce
     if a.event == "stop":
-        if data.get("stop_hook_active"):
-            return 0  # already continuing because of this hook: don't loop
         un, fails, _ = summary(root, rows)
         wip = dirty(root)
         if wip:
-            print(f"Auditor: {len(wip)} uncommitted file(s) ({', '.join(wip[:5])}). Commit finished work and audit it, "
-                  "or tell the founder it's unfinished and unaudited.", file=sys.stderr)
+            print(f"Auditor: {len(wip)} uncommitted file(s) ({', '.join(wip[:5])}) haven't been audited. Tell the founder "
+                  "what is uncommitted and whether it's finished; finished work gets committed (when the founder wants "
+                  "commits) and audited before it's called done.", file=sys.stderr)
             return 2
         if un or fails:
             print(f"Auditor: {len(un)} unaudited commit(s) and {len(fails)} open FAIL(s). Before finishing, "
@@ -361,11 +400,7 @@ def hook_inner(a, root):
                   file=sys.stderr)
             return 2
         return 0
-    if a.event == "prepush":
-        tool = data.get("tool_name") or ""
-        cmd = ((data.get("tool_input") or {}).get("command") or "")
-        if not (PUSH_TOOLS.match(tool) or is_push(cmd)):
-            return 0
+    if a.event == "prepush":  # cmd_hook already established this is a push
         un, fails, _ = summary(root, rows)
         if un or fails:
             print(f"Auditor: push blocked: {len(un)} unaudited commit(s), {len(fails)} open FAIL(s). "

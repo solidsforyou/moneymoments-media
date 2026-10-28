@@ -15,7 +15,8 @@ Market rules come from the partner's API (a JSON file per trading pair):
    "min_qty": "0.00001", "min_notional": "100",
    "partner_fee_rate": "0.002", "platform_fee_rate": "0.003",
    "fee_rounding": "up",                      # how fees round to the price tick: up / down / half_even
-   "sell_tax_rate": "0.01", "sell_tax_name": "TDS",   # optional; withheld on sells (e.g. India's 1% TDS)
+   "fee_gst_rate": "0.18",                    # optional; GST charged on fees (18% in India)
+   "sell_tax_rate": "0.01", "sell_tax_name": "TDS",   # optional; withheld from the seller (India: 1% TDS, s.194S)
    "max_quote_age_s": 10}
 
 Usage:
@@ -23,8 +24,8 @@ Usage:
   python3 order_math.py RULES.json buy  --qty 0.001  --price 5432100.55
   python3 order_math.py RULES.json sell --qty 0.001  --price 5432100.55 [--json]
 
-Buy with --spend: fees come out of the amount spent, the rest buys
-quantity rounded DOWN to the step (never more than the user pays for).
+Buy with --spend: the largest quantity on the step whose value + fees +
+GST fits inside the spend (never more than the user pays for).
 Buy with --qty: the user pays value + fees. Sell: the user receives value
 minus fees minus tax.
 
@@ -65,9 +66,9 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
         raise ValueError("price, qty_step and price_tick must be above zero")
     fee_p, fee_x = D(rules["partner_fee_rate"], "partner_fee_rate"), D(rules["platform_fee_rate"], "platform_fee_rate")
     tax_rate = D(rules.get("sell_tax_rate", "0"), "sell_tax_rate")
+    gst_rate = D(rules.get("fee_gst_rate", "0"), "fee_gst_rate")
     fee_round = ROUNDING[rules.get("fee_rounding", "up")]
-    fee_total_rate = fee_p + fee_x
-    if fee_p < 0 or fee_x < 0 or tax_rate < 0:
+    if fee_p < 0 or fee_x < 0 or tax_rate < 0 or gst_rate < 0:
         raise ValueError("fee and tax rates can't be negative")
     if spend is not None and qty is not None:
         raise ValueError("give --spend or --qty, not both")
@@ -81,14 +82,30 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
     if to_step(price, tick, ROUND_HALF_EVEN) != price:
         problems.append(f"price {price} isn't on the price tick {tick}: use the partner's quoted price")
 
+    def cost(q):
+        """value, partner fee, platform fee, GST on fees, tax and the total for quantity q."""
+        value = to_step(q * price, tick, ROUND_HALF_EVEN)
+        pf = to_step(value * fee_p, tick, fee_round)
+        xf = to_step(value * fee_x, tick, fee_round)
+        gst = to_step((pf + xf) * gst_rate, tick, fee_round)
+        tax = to_step(value * tax_rate, tick, ROUND_UP) if side == "sell" and tax_rate > 0 else Decimal(0)
+        total = value + pf + xf + gst if side == "buy" else value - pf - xf - gst - tax
+        return value, pf, xf, gst, tax, total
+
     if side == "buy" and spend is not None:
         spend = D(spend, "spend")
         if spend <= 0:
             raise ValueError("spend must be above zero")
-        # spend = value + value * fee_rate  ->  value = spend / (1 + fee_rate)
-        value_max = spend / (1 + fee_total_rate)
-        q = to_step(value_max / price, step, ROUND_DOWN)
-        value = to_step(q * price, tick, ROUND_HALF_EVEN)
+        # The total only grows with the quantity, so binary-search the largest whole number
+        # of steps whose total (value + fees + GST, each rounded as the partner does) fits.
+        lo, hi = 0, int((spend + tick) / (price * step)) + 1  # value can round down by up to half a tick
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if cost(step * mid)[5] <= spend:
+                lo = mid
+            else:
+                hi = mid - 1
+        q = (step * lo).quantize(step)
     else:
         if qty is None:
             raise ValueError("give --qty (or --spend for a buy)")
@@ -96,34 +113,11 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
         q = to_step(q_in, step, ROUND_DOWN)
         if q != q_in:
             notes.append(f"quantity rounded down to the step {step}: {q_in} -> {q}")
-        value = to_step(q * price, tick, ROUND_HALF_EVEN)
 
-    partner_fee = to_step(value * fee_p, tick, fee_round)
-    platform_fee = to_step(value * fee_x, tick, fee_round)
+    value, partner_fee, platform_fee, gst, tax, total = cost(q)
     fees = partner_fee + platform_fee
-    tax = Decimal(0)
-    if side == "sell" and tax_rate > 0:
-        tax = to_step(value * tax_rate, tick, ROUND_UP)
-
-    if side == "buy":
-        total = value + fees
-        if spend is not None:
-            # Fee and value rounding can push the total a tick over the spend. Step the
-            # quantity down until it fits; jump by about one tick's worth of quantity at a
-            # time so tiny steps (1e-8) at low prices don't take thousands of loops.
-            jump = max(Decimal(1), (tick / (price * step)).to_integral_value(rounding=ROUND_UP)) * step
-            while total > spend and q > 0:
-                q = max(Decimal(0), q - jump).quantize(step)
-                value = to_step(q * price, tick, ROUND_HALF_EVEN)
-                partner_fee = to_step(value * fee_p, tick, fee_round)
-                platform_fee = to_step(value * fee_x, tick, fee_round)
-                fees = partner_fee + platform_fee
-                total = value + fees
-            left = spend - total
-            if left > 0:
-                notes.append(f"{left} {rules['quote']} stays unspent (rounding to the step)")
-    else:
-        total = value - fees - tax
+    if side == "buy" and spend is not None and spend - total > 0:
+        notes.append(f"{spend - total} {rules['quote']} stays unspent (the next step would cost more than the spend)")
 
     if q <= 0:
         problems.append("the amount is too small to buy one step after fees")
@@ -140,11 +134,11 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
     effective = to_step(total / q, tick, ROUND_HALF_EVEN) if q > 0 else None
     return {
         "pair": rules["pair"], "side": side, "price": str(price), "quantity": format(q.normalize(), "f") if q else "0",
-        "value": str(value), "partner_fee": str(partner_fee), "platform_fee": str(platform_fee), "fees": str(fees),
+        "value": str(value), "partner_fee": str(partner_fee), "platform_fee": str(platform_fee), "fees": str(fees), "gst_on_fees": str(gst),
         "tax": str(tax), "tax_name": rules.get("sell_tax_name", "tax") if tax else None,
         "total": str(total), "total_meaning": "you pay" if side == "buy" else "you receive",
         "effective_price": str(effective) if effective is not None else None,
-        "fee_share_of_value": f"{(fees / value * 100).quantize(Decimal('0.01'))}%" if value > 0 else None,
+        "fee_share_of_value": f"{((fees + gst) / value * 100).quantize(Decimal('0.01'))}%" if value > 0 else None,
         "valid": not problems, "problems": problems, "notes": notes,
     }
 
@@ -176,6 +170,8 @@ def main():
         print(f"  value         {r['value']:>18} {q}")
         print(f"  partner fee   {r['partner_fee']:>18} {q}")
         print(f"  platform fee  {r['platform_fee']:>18} {q}")
+        if Decimal(r["gst_on_fees"]):
+            print(f"  GST on fees   {r['gst_on_fees']:>18} {q}")
         if r["tax_name"]:
             print(f"  {r['tax_name']:<13} {r['tax']:>18} {q}")
         print(f"  {r['total_meaning']:<13} {r['total']:>18} {q}   (fees {r['fee_share_of_value']} of value)")
