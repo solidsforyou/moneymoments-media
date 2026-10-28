@@ -38,7 +38,8 @@ with sources, then score each candidate on:
 
 - **Licences for each launch country**, checked on the regulator's own
   register, not the partner's website: EU: a MiCA CASP authorisation
-  (required since 1 July 2026, when the transitional period ended); India:
+  (required everywhere since 1 July 2026, the latest end of the
+  transitional periods; some countries ended them earlier); India:
   FIU-IND registration as a VDA service provider under the PMLA (a
   registration with reporting duties, not a general licence); UK: FCA
   cryptoasset registration; US: state-by-state money transmission and
@@ -63,6 +64,15 @@ with sources, then score each candidate on:
 
 Present the top 2 or 3 with the trade-offs; the founder decides. Record
 it in `docs/decisions/` and the memory sheet.
+
+**Chartroom (brief v3): India only.** The partner must be FIU-IND
+registered, take INR by UPI and bank transfer, and run KYC. The shortlist
+in the brief has no public API or white-label programme yet, so the first
+job is a conversation with each, and the partner is the critical path for
+the one-month deadline. Also ask a lawyer whether Chartroom itself must
+register with FIU-IND as a reporting entity, since it presents trading to
+users. Until a partner is signed, design against a generic one (buy,
+sell, INR wallet, KYC on their side) as the brief says.
 
 ## 3. The user journey
 
@@ -151,15 +161,37 @@ draft -> quoted (expires) -> submitted (idempotency key) -> pending
   that need it (app-security section 4a has India's ASCI wording and the
   UK FCA's rules). Store them per country in config, reviewed by the
   partner's compliance team.
-- **"Invest" prompts and ads (the brief's "stop scrolling and invest"
-  cards):** per-country switches, off by default; no incentives where
-  banned (UK); never to under-18s; frequency caps; never shown right
-  after a loss, late at night, or to users who opted out of promotions;
-  never claim or imply returns; always the risk warning; no crypto rewards
-  for tasks (Apple 3.1.5(v)).
+- **"Invest" prompts, reminders and ads:** per-country switches, off by
+  default; no incentives where banned (UK); never to under-18s; frequency
+  caps; never shown right after a loss, late at night, or to users who
+  opted out; never claim or imply returns; always the risk warning; no
+  crypto rewards for tasks (Apple 3.1.5(v)).
+- **Chartroom's habit jar (brief: no ads; reminders every 15 to 30 minutes
+  of scrolling; each tap adds ₹10 or ₹20; the jar auto-invests in the
+  user's chosen coin or basket at the partner's minimum order):**
+  - It's a standing instruction to buy: get explicit, recorded consent
+    the first time (what it buys, that it buys automatically, the risk
+    warning, how to stop), and confirm with the partner that it supports
+    recurring or threshold buys from a held INR balance under its terms.
+  - Each tap moves real money: show the amount, make it undoable for a
+    short window, rate-limit taps, and send a receipt for every automatic
+    buy (with fees and TDS from `order_math.py`).
+  - Off switch on every reminder and in settings; turning it off asks
+    whether to keep, invest or withdraw the jar's balance.
+  - Wording says "invest", never "save"; ASCI's warning on every reminder;
+    no streaks, badges or rewards that push more taps; never after a loss
+    or late at night.
+  - The jar balance is the user's money with the partner: show it, let
+    them withdraw it, and reconcile it daily like orders (section 9).
 - **Stores:** an organisation developer account (Apple 5.1.1(ix)),
   trading only where licensed (Apple 3.1.5(iii)), Play's Financial
-  Features declaration and crypto licence table (app-release).
+  Features declaration and crypto licence table (app-release). Apple's
+  3.1.5(iii) speaks of the *app* having the licensing, so a front-end-only
+  app can be asked to prove it: before submitting, get the partner's
+  registration documents and a written agreement that names the app, and
+  put both in the review notes. In India, the stores pulled unregistered
+  exchanges' apps in 2024; Google Play's crypto policy applies the same
+  logic.
 - **Records:** keep an audit trail of what each user saw (quotes,
   warnings, terms version) when they confirmed.
 

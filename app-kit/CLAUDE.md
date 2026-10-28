@@ -19,7 +19,9 @@ next to this repo's own app skills (`app-*`).
   as done, pushed or released (`.claude/skills/auditor/`, agent `.claude/agents/auditor.md`),
   and recorded in `audit/ledger.csv`. First session in the app repo: run
   `python3 .claude/skills/auditor/scripts/audit.py init`. The hooks in `.claude/settings.json`
-  block finishing and pushing while anything is unaudited; never disable them.
+  block finishing (uncommitted files, unaudited commits, open FAILs) and pushing until
+  it's clean; never disable them. Answers, designs and research that never become commits
+  are audited by rule and logged with `audit.py add --scope`.
 
 ## Working rules
 

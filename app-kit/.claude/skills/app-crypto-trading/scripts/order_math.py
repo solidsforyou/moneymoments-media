@@ -67,7 +67,19 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
     tax_rate = D(rules.get("sell_tax_rate", "0"), "sell_tax_rate")
     fee_round = ROUNDING[rules.get("fee_rounding", "up")]
     fee_total_rate = fee_p + fee_x
+    if fee_p < 0 or fee_x < 0 or tax_rate < 0:
+        raise ValueError("fee and tax rates can't be negative")
+    if spend is not None and qty is not None:
+        raise ValueError("give --spend or --qty, not both")
+    if side == "sell" and spend is not None:
+        raise ValueError("for a sell, give --qty")
+    if quote_age is not None and Decimal(str(quote_age)) < 0:
+        raise ValueError("quote age can't be negative")
+    if qty is not None and D(qty, "qty") <= 0:
+        raise ValueError("quantity must be above zero")
     problems, notes = [], []
+    if to_step(price, tick, ROUND_HALF_EVEN) != price:
+        problems.append(f"price {price} isn't on the price tick {tick}: use the partner's quoted price")
 
     if side == "buy" and spend is not None:
         spend = D(spend, "spend")
@@ -96,8 +108,12 @@ def compute(rules: dict, side: str, price, spend=None, qty=None, quote_age=None)
     if side == "buy":
         total = value + fees
         if spend is not None:
-            if total > spend:  # fee rounding pushed it over: take one step off
-                q -= step
+            # Fee and value rounding can push the total a tick over the spend. Step the
+            # quantity down until it fits; jump by about one tick's worth of quantity at a
+            # time so tiny steps (1e-8) at low prices don't take thousands of loops.
+            jump = max(Decimal(1), (tick / (price * step)).to_integral_value(rounding=ROUND_UP)) * step
+            while total > spend and q > 0:
+                q = max(Decimal(0), q - jump).quantize(step)
                 value = to_step(q * price, tick, ROUND_HALF_EVEN)
                 partner_fee = to_step(value * fee_p, tick, fee_round)
                 platform_fee = to_step(value * fee_x, tick, fee_round)

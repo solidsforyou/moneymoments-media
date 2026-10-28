@@ -236,7 +236,9 @@ def main():
 
     auditor = Path(__file__).resolve().parents[2] / "auditor" / "scripts" / "audit.py"
     if auditor.exists() and (root / "audit" / "ledger.csv").exists():
-        status, out, secs = run_step([sys.executable, str(auditor), "check"], root, a.timeout)
+        env_root = dict(os.environ, CLAUDE_PROJECT_DIR=str(root))  # check this project, not the session's
+        p = subprocess.run([sys.executable, str(auditor), "check"], cwd=root, env=env_root, capture_output=True, text=True)
+        status, out, secs = ("pass" if p.returncode == 0 else "fail"), p.stdout + p.stderr, 0
         if status == "fail":
             results.append(("audit", "fail" if a.push else "warn", out.strip().splitlines()[-1] if out.strip() else "audit needed", secs, out))
         else:
@@ -264,7 +266,7 @@ def main():
             print(f"\n--- {s}: last lines ---\n{tail(o)}")
         print()
         if failed:
-            print(f"FAILED: {', '.join(r[0] for r in failed)}. Fix these before committing.")
+            print(f"FAILED: {', '.join(r[0] for r in failed)}. Fix these before {'pushing' if a.push else 'committing'}.")
         elif missing:
             print(f"The checks that exist passed, but {', '.join(r[0] for r in missing)} "
                   "{} missing: add them (app-stack section 4).".format("is" if len(missing) == 1 else "are"))

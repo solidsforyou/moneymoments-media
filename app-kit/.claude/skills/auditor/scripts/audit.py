@@ -9,13 +9,16 @@ stop a session from ending, or a push from happening, with unaudited work.
 Commands:
   init [--from REF]          start the ledger; commits up to REF (default HEAD) count as the baseline
   add  --verdict PASS|NOTES|FAIL --kind KIND --summary TEXT
-       [--commits A..B | --commit SHA ...] [--scope TEXT] [--counts C,H,M,L]
+       (--commit SHA|A..B ... | --all-unaudited | --scope TEXT) [--counts C,H,M,L]
        [--report PATH] [--auditor agent|self] [--resolves ID]
-                             record one audit; with no commits/scope it covers all unaudited commits
+                             record one audit of exactly what was read
   status [--json]            unaudited commits, open FAILs, last audits
   check                      exit 1 if anything is unaudited or an open FAIL exists (CI, preflight)
   brief                      what to audit next: the commit range, files changed, and the agent prompt
-  hook stop|prepush          for Claude Code hooks (reads the hook's JSON on stdin; exit 2 blocks)
+  hook stop|prepush          for Claude Code hooks (reads the hook's JSON on stdin; exit 2 blocks).
+                             stop: blocks while files are uncommitted, commits unaudited or a FAIL open.
+                             prepush: blocks `git push` (any form) and GitHub write tools until audited.
+                             Any internal error blocks too (fail closed).
 
 Kinds: code, copy, design, decision, research, data, release, sweep, other.
 Run from anywhere inside the repo. Exit codes: 0 ok, 1 something to audit, 2 bad input / blocked by hook.
@@ -88,10 +91,59 @@ def covered(rows):
 
 
 def baseline(rows):
+    """The commit the ledger started at, or None (ledger started in an empty repo: audit everything)."""
     for r in rows:
         if r.get("kind") == "baseline":
-            return r["commits"].split()[0]
+            shas = (r.get("commits") or "").split()
+            return shas[0] if shas else None
     return None
+
+
+def dirty(root):
+    """Uncommitted changes outside audit/ (work nobody can have audited yet)."""
+    p = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=root, capture_output=True, text=True)
+    if p.returncode != 0:
+        return []
+    # Porcelain lines are "XY path" (or "XY old -> new"); don't strip them, the status letters can be spaces.
+    files = [line[3:].split(" -> ")[-1].strip('"') for line in p.stdout.splitlines() if len(line) > 3]
+    return [f for f in files if not f.startswith("audit/")]
+
+
+GIT_OPTS_WITH_VALUE = {"-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path"}
+PUSH_TOOLS = re.compile(r"^mcp__github__(?:push_files|create_or_update_file|delete_file|merge_pull_request|create_branch)$")
+
+
+def is_push(command: str) -> bool:
+    """True if a shell command runs `git ... push` (any git options before it), outside quotes."""
+    import shlex
+    try:
+        lexer = shlex.shlex(command, posix=True, punctuation_chars=";&|()")
+        lexer.whitespace_split = True
+        tokens = list(lexer)
+    except ValueError:
+        return bool(re.search(r"\bgit\b.*\bpush\b", command))
+    i, start = 0, True  # start: this token is where a command begins
+    while i < len(tokens):
+        tok = tokens[i]
+        if tok and all(ch in ";&|()" for ch in tok):
+            start = True
+            i += 1
+            continue
+        if start and (re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", tok) or tok in ("sudo", "command", "exec", "time", "env")):
+            i += 1  # VAR=value, sudo, env ... still come before the command itself
+            continue
+        if not start:
+            i += 1
+            continue
+        start = False
+        if os.path.basename(tok) == "git":
+            j = i + 1
+            while j < len(tokens) and tokens[j].startswith("-"):
+                j += 2 if tokens[j] in GIT_OPTS_WITH_VALUE else 1
+            if j < len(tokens) and tokens[j] == "push":
+                return True
+        i += 1
+    return False
 
 
 def unaudited(root, rows):
@@ -182,11 +234,16 @@ def cmd_add(a, root):
     except RuntimeError as e:
         print(f"Bad commit: {e}", file=sys.stderr)
         return 2
-    if not commits and not a.scope:
+    if a.all_unaudited:
         commits = unaudited(root, rows)
         if not commits:
-            print("Nothing unaudited: give --scope for non-commit work (a reply, a design, research).", file=sys.stderr)
+            print("Nothing unaudited.", file=sys.stderr)
             return 2
+    if not commits and not a.scope:
+        print("Say what was audited: --commit SHA or A..B (the commits you actually read), "
+              "--all-unaudited (only if you audited every one `brief` listed), or --scope for non-commit work.",
+              file=sys.stderr)
+        return 2
     aid = next_id(rows)
     report = a.report or ""
     if report and not (root / report).exists() and not Path(report).exists():
@@ -270,6 +327,15 @@ def cmd_brief(a, root):
 
 def cmd_hook(a, root):
     try:
+        return hook_inner(a, root)
+    except Exception as e:  # fail closed: a broken auditor must not silently stop enforcing
+        print(f"Auditor hook error ({type(e).__name__}: {e}). The audit can't be checked, so this is blocked; "
+              "fix .claude/skills/auditor/scripts/audit.py or ask the founder.", file=sys.stderr)
+        return 2
+
+
+def hook_inner(a, root):
+    try:
         data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
     except json.JSONDecodeError:
         data = {}
@@ -282,6 +348,11 @@ def cmd_hook(a, root):
         if data.get("stop_hook_active"):
             return 0  # already continuing because of this hook: don't loop
         un, fails, _ = summary(root, rows)
+        wip = dirty(root)
+        if wip:
+            print(f"Auditor: {len(wip)} uncommitted file(s) ({', '.join(wip[:5])}). Commit finished work and audit it, "
+                  "or tell the founder it's unfinished and unaudited.", file=sys.stderr)
+            return 2
         if un or fails:
             print(f"Auditor: {len(un)} unaudited commit(s) and {len(fails)} open FAIL(s). Before finishing, "
                   "run `python3 .claude/skills/auditor/scripts/audit.py brief`, have the auditor agent audit them, "
@@ -291,8 +362,9 @@ def cmd_hook(a, root):
             return 2
         return 0
     if a.event == "prepush":
+        tool = data.get("tool_name") or ""
         cmd = ((data.get("tool_input") or {}).get("command") or "")
-        if not re.search(r"\bgit\s+push\b", cmd):
+        if not (PUSH_TOOLS.match(tool) or is_push(cmd)):
             return 0
         un, fails, _ = summary(root, rows)
         if un or fails:
@@ -317,6 +389,7 @@ def main():
     p.add_argument("--report")
     p.add_argument("--auditor", default="agent", choices=["agent", "self"])
     p.add_argument("--resolves")
+    p.add_argument("--all-unaudited", action="store_true")
     p = sub.add_parser("status"); p.add_argument("--json", action="store_true")
     sub.add_parser("check")
     sub.add_parser("brief")
