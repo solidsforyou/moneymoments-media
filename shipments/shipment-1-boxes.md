@@ -42,6 +42,18 @@ Sizes S/M/L. Read from the founder's photos of the box labels, confirmed by the 
 ## Confirmed by the founder (27 Oct)
 - Box 1: the circled "1" marks were a mistake; 4 each is right.
 - Box 4: the joggers are black.
-- Box 7: male Fitted S is 0; the box also has 6 male white joggers (founder, 27 Oct).
+- Box 7: male Fitted S is 0; the box also has 6 male white joggers (founder confirmed men's, 28 Oct).
 - Boxes 1-6 rechecked by the founder: OK.
 - Founder's production list (26 Oct): Men fitted 33, oversized 33, white joggers 15, black joggers 21; Women fitted 33, oversized 24, white joggers 18, black joggers 15 (total 192). Only one jogger left outside the boxes: a women's black S.
+
+## Video check (founder's edited V1 + V2, 28 Oct)
+V2's first ~30 s repeat V1 13:32-14:00 (counted once).
+- Box 1: 12 tees + 10 black joggers on video (founder: last 2 not recorded) - OK
+- Box 2: 12 + 12 - OK
+- Box 3: 12 tees; 9 white joggers shown one by one after an uncounted bundle - open to confirm 15
+- Box 4: 12 + 12 - OK
+- Box 5: ~33 blue tees on video vs 31 on label; 3 black joggers - OK
+- Box 6: 27 tees + 1 black + 2 white - exact
+- Box 7: not recorded beyond 3 black joggers
+
+Open question: men's white joggers counted 22 (box 3: 15, box 7: 6, Teju: 1) vs 15 on the production list.
