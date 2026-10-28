@@ -41,8 +41,8 @@ Top stories (picked by editors), For you. All three tabs are in v1.
 
 - The LinkedIn side of Chartroom: its own tab where anyone writes. Long articles (title, cover
   image, sections), short text posts, and posts with images, charts or an image carousel.
-- Same rules as videos: finance topic tag, removed on report, not checked before posting
-  (assumed; founder to confirm).
+- Same rules as videos: finance topic tag, removed on report. No checking before posting at
+  launch (founder: too hard to start with).
 
 ## Navigation
 
