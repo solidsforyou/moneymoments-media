@@ -1,7 +1,7 @@
-# (app name TBD)
+# Chartroom
 
-New app, built from scratch: a verified social video network for everything finance, with
-crypto trading through a gateway partner, iPhone first. Full v1 brief in `brief.md`. The
+New app, built from scratch: a crypto trading app with a finance social network inside
+(LinkedIn-serious posts, Instagram-style reels), iPhone first. Full brief in `brief.md`. The
 app-spec skill turns `brief.md` into `docs/spec.md` before any building.
 
 ## SOLIDS FOR YOU Master is on
