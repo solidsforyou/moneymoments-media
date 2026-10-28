@@ -26,22 +26,36 @@ finance content. India only. Android first (about 92% of Indian phones), iPhone 
 
 The app opens on the reels feed, and trading is one tap away: every video shows the price of
 the coin it mentions and a trade button. Feed tabs the user switches between, e.g. Following,
-Top stories (picked by editors), For you.
+Top stories (picked by editors), For you. All three tabs are in v1.
 
 ## News
 
-- Its own tab in the bottom bar (e.g. Feed, News, Trade, Post, Profile).
-- 5 to 10 stories a day as short text cards: headline, a 3 to 4 line summary in our own words,
-  the sources with links, and the coins it affects with a trade button.
-- AI drafts and checks each story; the team verifies it before posting.
+- Its own tab in the bottom bar.
+- Full articles, not short cards. The Chartroom team posts 3 to 5 a day, 400 to 800 words each:
+  AI drafts and checks, the team verifies, sources are cited with links, and the coins an
+  article affects show with a trade button. Summaries are in our own words, never copied.
 - Approved news outlets are cited, and outlets can apply to be added to that list.
 - First launch shows off all three sides (news, crypto, social) in a short onboarding.
+
+## Boring Stuff
+
+- The LinkedIn side of Chartroom: its own tab where anyone writes. Long articles (title, cover
+  image, sections), short text posts, and posts with images, charts or an image carousel.
+- Same rules as videos: finance topic tag, removed on report. No checking before posting at
+  launch (founder: too hard to start with).
+
+## Navigation
+
+- Bottom bar, five tabs: Feed, News, Boring Stuff, Trade, Profile. No Post tab.
+- Creating anything (video, Instagram import, article, text post) starts from a + button in the
+  top bar (Claude's choice, since the Post tab is gone; founder can change it).
 
 ## Content
 
 - Topics: markets and crypto, economy and business, world and political news, personal
   finance, anything finance-related.
-- Formats: short vertical videos and long explainers. No live streams in v1.
+- Formats: short vertical videos, plus writing in News and Boring Stuff. Long explainers and live streams wait
+  for later updates.
 - Any spoken language; every video has English subtitles.
 - The app interface is in English with a casual Hinglish tone in onboarding and prompts, like
   Unicorn Ka Hisab.
@@ -52,13 +66,14 @@ Top stories (picked by editors), For you.
 - Every post is tagged with a finance topic; off-topic posts are removed.
 - Users report posts. Moderators remove misleading, scam or off-topic videos, and repeat
   offenders are banned. No fact-check before a video goes live.
-- Import (v1): a creator connects their Instagram and/or Google account once, then pastes a
-  link to one of their own videos to import it; links to anyone else's videos are rejected.
-  Instagram reels are copied in through Instagram's official API (creator or business accounts
-  only; reference client in `reference/sfy_instagram`). YouTube videos are not downloaded:
-  they play inside Chartroom in YouTube's embedded player.
-- Optional extras: creators can add sources to a video, and anyone can verify their ID or
-  credentials for a verified badge.
+- Import (v1): Instagram only. A creator connects their Instagram account once, then pastes a
+  link to one of their own reels to import it; links to anyone else's reels are rejected.
+  Reels are copied in through Instagram's official API (creator or business accounts only;
+  reference client in `reference/sfy_instagram`). No YouTube import for now.
+- No paid promotions in the feed: creators can't post paid coin promotions at all.
+- Optional extra: creators can add sources to a video. The verified badge waits for v1.1.
+- When someone reports a post, they're told what happened to it. No public safety numbers and
+  no strike counts on profiles: profiles show followers and the usual Instagram-style details.
 
 ## Profiles
 
@@ -74,26 +89,41 @@ Dark and light modes, dark by default.
 
 ## Social (v1)
 
-Follow, like, Approve (a viewer vouches that the video is accurate, separate from like),
-comment, share/repost, DMs.
+Follow, like, Approve, comment, share, DMs (all in v1; DMs need scam-link blocking). Approve works like Instagram's repost: anyone can
+press it, and the video goes to their followers' feeds (shown as "Approved by @name", with the
+original creator credited) and onto an Approved tab on their profile. It's a public
+endorsement, not a fact-check. Sharing sends the video outside the app (e.g. WhatsApp).
 
 ## Trading
 
 - Crypto only. No stocks planned yet.
 - An Indian, FIU-IND-registered crypto partner handles custody, trades and KYC for trading. The
   app is only the front end. Deposits and withdrawals in INR, by UPI and bank transfer.
-- Shortlist to contact: CoinDCX, CoinSwitch, Mudrex (all FIU-IND registered; none has a public
-  API or white-label programme that we found). Ask a lawyer whether Chartroom itself must also
-  register with FIU-IND.
+- Partner options (researched 28 Oct 2026, terms unverified until we contact them):
+  1. Mudrex "Crypto-as-a-Service": an API for brokers and fintech apps to add crypto investing,
+     with KYC, compliance and custody handled by Mudrex; FIU-IND registered; the company says
+     integration takes 2 to 4 weeks. First choice.
+  2. CoinDCX "API Broker" (listed under Business on its site; no details public).
+  3. Fallback, buy-only: an on-ramp widget (Onramp.money, or Onmeta, which says it's FIU-IND
+     registered) that sells crypto for INR via UPI into a wallet. No selling or holding in-app.
+  Ask a lawyer whether Chartroom itself must also register with FIU-IND.
+- Only coins the partner lists can be traded, which keeps most tiny pump coins out.
 - Every trade shows India's crypto tax before confirming: 1% TDS, 30% tax on gains, and losses
   can't be set off against gains (unchanged in Budget 2026).
 
 ## Money
 
 - Revenue: trading fees only. Creators aren't paid.
-- Ads: the app's own "stop scrolling and invest" cards, shown like Instagram ads but far more
-  rarely. Each crypto ad carries ASCI's risk warning ("Crypto products and NFTs are unregulated
-  and can be highly risky...").
+- No ads. Instead, habit reminders to invest a little:
+  - Shown once every 15 to 30 minutes of scrolling. Users can turn them off any time (a link on
+    every reminder and in settings).
+  - Each tap adds ₹10 or ₹20 to a habit jar (INR held in the user's wallet with the partner).
+    When the jar reaches the partner's minimum order, it's invested automatically, so fees and
+    TDS stay small relative to the order.
+  - The first time, the user picks what the jar buys (a coin such as BTC, or a basket);
+    later reminders reuse that choice.
+  - Wording says "invest", never "save" (crypto isn't savings), and every reminder carries
+    ASCI's risk warning ("Crypto products and NFTs are unregulated and can be highly risky...").
 
 ## v1 goal
 
