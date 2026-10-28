@@ -59,3 +59,15 @@ V2's first ~30 s repeat V1 13:32-14:00 (counted once).
 Open question: men's white joggers counted 22 (box 3: 15, box 7: 6, Teju: 1) vs 15 on the production list.
 - Pieces taken out confirmed by the founder: the only women's piece was Mummy's black jogger (S); the other takeouts are men's as written.
 - Recount pending: box 3 (men's white joggers), box 5 (blue tees), box 7 (all).
+
+## Target after recount (factory inventory 192 minus 12 taken out = 180 in boxes)
+| SKU | Should be in boxes | Labels now | Gap |
+|---|---|---|---|
+| Fitted Tee Men's | 31 | 31 | 0 |
+| Oversized Tee Men's | 29 | 29 | 0 |
+| Fitted Tee Women's | 33 | 33 | 0 |
+| Oversized Tee Women's | 24 | 24 | 0 |
+| Joggers Men's White | 14 | 21 | -7 |
+| Joggers Men's Black | 17 | 18 | -1 |
+| Joggers Women's White | 18 | 17 | +1 |
+| Joggers Women's Black | 14 | 13 | +1 |
