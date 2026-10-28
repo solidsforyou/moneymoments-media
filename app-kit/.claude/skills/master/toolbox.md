@@ -7,12 +7,13 @@ skill (invoke the skill if it isn't loaded).
 | Task | Head (its main sub-skills) |
 |---|---|
 | Question, quick answer | None: answer directly (careful-mode if money, legal, health or hard to undo) |
-| Other work: writing, code, docs, plans | None (careful-mode if high-stakes; economy-mode if long) |
+| Other work: writing, docs, plans, code outside the app | None (careful-mode if high-stakes; economy-mode if long) |
+| The app: idea, spec, stack, code, bugs, screens, tests, security, privacy, store release | App (app-spec, app-stack, app-build, app-ui-taste, app-testing, app-security, app-release, humanizer, ai-visuals) |
 | Competitors, market, pricing decisions, positioning, launch readiness, feedback on a product idea | Product (competitor-research, harsh-buyer-review, ecom economics) |
 | Listings, product images, store numbers, ads, returns, stock, sale events | Ecom (ecom, harsh-buyer-review, humanizer, ai-visuals) |
 | Social media, LinkedIn, content, YouTube, clipping, campaigns | Marketing (social-media, linkedin, clipper, humanizer, ai-visuals, harsh-buyer-review, transcriber) |
 | Make or edit a video, AI image or clip, product graphic, sound | Design (video workflow and its sound library, ai-visuals, motion-design-taste, audio-review, transcriber) |
-| Review or feedback on finished work: listing, ad, copy, video, audio, image, post | Review (harsh-buyer-review, motion-design-taste, audio-review, ai-visuals) |
+| Review or feedback on finished work: listing, ad, copy, video, audio, image, post | Review (harsh-buyer-review, motion-design-taste, audio-review, ai-visuals); app screens and code go to App (app-ui-taste, app-security) |
 | Other research | No head: economy-mode helpers gather; you verify and cite; careful-mode |
 
 Mixed task: each part to its head; heads hand work to each other as their

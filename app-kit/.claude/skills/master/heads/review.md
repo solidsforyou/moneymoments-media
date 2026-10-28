@@ -20,6 +20,8 @@ high-stakes work.
 | AI image or clip | ai-visuals' scorecard |
 | Social post | social-media's 100-point scorecard; + harsh-buyer-review if it sells |
 | Any writing customers read | humanizer (check, then compare: facts unchanged) |
+| App screen | app-ui-taste (+ harsh-buyer-review for onboarding and paywalls) |
+| App code, data or privacy | app-security (and app-testing's must-have tests) |
 | Anything high-stakes | careful-mode |
 
 Foundation: careful-mode on every verdict; economy-mode only for gathering,
@@ -35,8 +37,8 @@ never for judging; the memory sheet for the brand's rules.
    by what a customer would notice first. Mark each fix with the head that
    should make it.
 4. **Fixes.** Apply them only if the founder asks and the source is
-   available, through the head that made the asset (Design, Ecom or
-   Marketing), then review again.
+   available, through the head that made the asset (Design, Ecom,
+   Marketing or App), then review again.
 5. **Learn.** Taste the founder confirms goes to motion-design-taste's
    taste notes; brand rules go to the memory sheet.
 
@@ -47,6 +49,7 @@ never for judging; the memory sheet for the brand's rules.
 - Marketing head: fixes to posts and campaigns.
 - Product head: a problem with the product or offer itself, not its
   presentation.
+- App head: fixes to app screens, code and store listings.
 
 ## 5. Done when
 

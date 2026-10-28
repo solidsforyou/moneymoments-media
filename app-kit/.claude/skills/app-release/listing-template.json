@@ -1,0 +1,18 @@
+{
+  "locale": "en-IN",
+  "brand_words": ["<brand word in caps, if any>"],
+  "play": {
+    "title": "<App name, max 30>",
+    "short_description": "<What it does for whom, up to 80 characters>",
+    "full_description": "<Up to 4000 characters. First 2 lines matter most: the benefit, then proof, then features as short lines.>",
+    "release_notes": "<What's new in this version, up to 500 characters>"
+  },
+  "appstore": {
+    "name": "<App name, max 30>",
+    "subtitle": "<Benefit, max 30>",
+    "keywords": "<comma,separated,no,spaces,up,to,100,bytes>",
+    "promotional_text": "<Up to 170 characters; can change without a new version>",
+    "description": "<Up to 4000 characters>",
+    "whats_new": "<What's new in this version>"
+  }
+}
