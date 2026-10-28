@@ -1,8 +1,10 @@
-# New app brief (v2)
+# New app brief (v3)
 
 Agreed with the founder on 28 Oct 2026 before any design. Mockups and reviews start from this.
-v2 replaces v1's heavy verification with LinkedIn-style seriousness.
-Name: **Chartroom** (chosen 28 Oct 2026; domain, App Store and trademark checks still to do).
+v2 replaced v1's heavy verification with LinkedIn-style seriousness; v3 (after the harsh buyer
+review) makes it India-only and Android-first.
+Name: **Chartroom** (chosen 28 Oct 2026; domain, Play Store, App Store and trademark checks
+still to do).
 
 ## What it is
 
@@ -11,10 +13,14 @@ marketed as three things in one: a news place, a crypto place and a social place
 first. Posts are as serious as LinkedIn's, but the videos and the feel are Instagram's:
 reels, a smooth feed and a visual app.
 
+The edge over Binance Square (a global, English feed inside Binance): built for Indians, with
+Indian creators, Hindi and Hinglish videos, Indian economy news, INR and UPI, and India's crypto
+tax shown before every trade.
+
 ## Who it's for
 
 Everyone at once: first-time investors, active crypto traders and people who want serious
-finance content. Global from day one. The first users are mostly on iPhone.
+finance content. India only. Android first (about 92% of Indian phones), iPhone soon after.
 
 ## Home
 
@@ -36,7 +42,9 @@ Top stories (picked by editors), For you.
 - Topics: markets and crypto, economy and business, world and political news, personal
   finance, anything finance-related.
 - Formats: short vertical videos and long explainers. No live streams in v1.
-- Any spoken language; every video has English subtitles. The app interface is in English.
+- Any spoken language; every video has English subtitles.
+- The app interface is in English with a casual Hinglish tone in onboarding and prompts, like
+  Unicorn Ka Hisab.
 
 ## Posting and keeping it serious
 
@@ -72,37 +80,43 @@ comment, share/repost, DMs.
 ## Trading
 
 - Crypto only. No stocks planned yet.
-- A crypto gateway partner handles custody, trades, KYC for trading, licences and which
-  countries can trade. The app is only the front end. The design still shows a "not available
-  in your country" state, in case the gateway blocks a country.
+- An Indian, FIU-IND-registered crypto partner handles custody, trades and KYC for trading. The
+  app is only the front end. Deposits and withdrawals in INR, by UPI and bank transfer.
+- Shortlist to contact: CoinDCX, CoinSwitch, Mudrex (all FIU-IND registered; none has a public
+  API or white-label programme that we found). Ask a lawyer whether Chartroom itself must also
+  register with FIU-IND.
+- Every trade shows India's crypto tax before confirming: 1% TDS, 30% tax on gains, and losses
+  can't be set off against gains (unchanged in Budget 2026).
 
 ## Money
 
 - Revenue: trading fees only. Creators aren't paid.
 - Ads: the app's own "stop scrolling and invest" cards, shown like Instagram ads but far more
-  rarely. Each crypto ad carries the legal risk warning required where the user lives.
+  rarely. Each crypto ad carries ASCI's risk warning ("Crypto products and NFTs are unregulated
+  and can be highly risky...").
 
 ## v1 goal
 
-A small real launch: a few hundred users and a handful of creators, on the App Store, to prove
+A small real launch: a few hundred users and a handful of creators, on the Play Store, to prove
 people watch and trade.
 
 - Moment of value: a user watches a serious video about a coin and buys it right there in a few
   taps, without switching apps. This is v1's core flow.
-- Deadline: on the App Store within 1 month (from 28 Oct 2026).
+- Deadline: on the Play Store within 1 month (from 28 Oct 2026); iPhone soon after.
+- Seed content and first users: Unicorn Ka Hisab and the team's own videos.
 - Budget: near zero; free tiers and the cheapest options wherever possible.
-- Gateway partner: not chosen yet. Design against a generic gateway (buy, sell, wallet; KYC
+- Partner: not chosen yet. Design against a generic Indian partner (buy, sell, INR wallet; KYC
   handled by them) and swap in the real one.
 
 ## Risks to keep in view
 
 - One month is very tight for this scope. The gateway partner is the critical path: no partner
-  means no trading, and Apple only accepts crypto trading apps that run through licensed
-  exchanges. Everything not in the core flow is a candidate to cut from v1.
+  means no trading, and app stores in India pulled unregistered exchanges' apps in 2024. Everything not in the core flow is a candidate to cut from v1.
 
 - With open posting, coin-pumping and scam videos will be the main threat on a trading app.
   Reports must be quick to file and fast to act on.
 - Comments and DMs are where crypto scams spread, so they need scam-link blocking from day one.
-- Ad rules (e.g. India's advertising standards council, ASCI): crypto ads can't play down risk
+- India's crypto tax holds trading back, and fees are the only revenue.
+- Ad rules (India's advertising standards council, ASCI): crypto ads can't play down risk
   or promise returns. A trade button on every video can look like the platform is endorsing
   the coin, so it needs a clear "not advice" signal.
