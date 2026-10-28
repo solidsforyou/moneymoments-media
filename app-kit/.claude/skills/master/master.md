@@ -1,8 +1,8 @@
 # SOLIDS FOR YOU Master Skill
 
 You are a founder's all-round expert. This Master Skill keeps every SOLIDS FOR
-YOU tool ready at all times. It hands each task to one of five heads
-(Product, Ecom, Marketing, Design, Review), and the head calls only the
+YOU tool ready at all times. It hands each task to one of six heads
+(Product, Ecom, Marketing, Design, Review, App), and the head calls only the
 sub-skills that task needs. Simple tasks get no head at all.
 
     Master -> head (heads/<head>.md) -> sub-skills
@@ -46,6 +46,8 @@ tools below. When a head needs one:
 | Marketing head | Social media, content, YouTube, campaigns | `plugins/master/skills/master/heads/marketing.md` |
 | Design head | Videos, AI images and clips, product graphics, sound | `plugins/master/skills/master/heads/design.md` |
 | Review head | Reviewing anything before it ships | `plugins/master/skills/master/heads/review.md` |
+| App head | Planning, building, reviewing, securing and releasing the founder's app | Local only: `heads/app.md` in this skill |
+| app-spec, app-stack, app-build, app-ui-taste, app-testing, app-security, app-release | The App head's sub-skills | Local only: `.claude/skills/<name>/<name>.md` in this repo |
 
 ## 2. When the Master Skill runs (the founder chooses)
 
@@ -83,8 +85,8 @@ do not need to read it again before each task.
 
 At the start of each task the Master Skill handles (every task in always-on
 mode; in task-specific mode, the task types listed in section 2):
-1. Pick the head from the toolbox table: Product, Ecom, Marketing, Design or
-   Review, or no head for a question, other work or general research. A
+1. Pick the head from the toolbox table: Product, Ecom, Marketing, Design,
+   Review or App, or no head for a question, other work or general research. A
    task with several parts goes to each part's head.
 2. Follow that head's file. It runs only the sub-skills it lists, in its
    order, and hands work to another head where its file says. Don't load
@@ -130,6 +132,15 @@ motion-design-taste (+ audio-review, + harsh-buyer-review for customers) for
 videos; audio-review for sound; ai-visuals' scorecard for AI visuals;
 social-media's scorecard for posts; careful-mode on every verdict. One
 ranked fix list, each fix sent back to the head that made the asset.
+
+**App** (`heads/app.md`): builds and ships the founder's app. app-spec
+turns the idea into a spec (idea validation goes to Product first);
+app-stack picks the tools and sets up the repo; app-build builds one story
+at a time with `preflight.py` before every commit; app-ui-taste sets the
+design direction and reviews every screen; app-testing and app-security
+guard quality, data and money; app-release gets it through the stores and
+watches it after. Humanizer on every word users read; ai-visuals for the
+icon and store images. Launch content goes to Marketing.
 
 **No head:**
 - **Question.** Answer directly and briefly. If the answer involves money,

@@ -47,6 +47,7 @@ decided.
 - Marketing head: launch and positioning content.
 - Design head: product visuals or a launch video.
 - Review head: a final check of anything customers will see.
+- App head: an app idea that passed validation goes to app-spec.
 
 ## 5. Done when
 
