@@ -36,9 +36,11 @@ debugging); the memory sheet for every decision.
 
 ## 3. Workflow
 
-1. **Where are we?** No `docs/spec.md`: start at app-spec (it hands idea
-   validation to the Product head first if the idea is untested). Spec but
-   no repo: app-stack. Otherwise: the step the task asks for.
+1. **Where are we?** No `docs/spec.md`: start at app-spec from the agreed
+   `brief.md` if there is one (it hands idea validation to the Product
+   head first if the idea is untested). The founder's rule: questions
+   first, agreement before any mockups. Spec but no repo: app-stack.
+   Otherwise: the step the task asks for.
 2. **Spec:** app-spec, then founder approval. Save scope and platform to
    the memory sheet.
 3. **Stack:** app-stack: decisions recorded, repo set up, preflight
@@ -48,7 +50,9 @@ debugging); the memory sheet for every decision.
 5. **Build, story by story:** app-build's loop. Each story: tests from its
    acceptance checks (app-testing), the running app checked by hand,
    preflight passing, app-ui-taste READY for new screens, app-security's
-   focused review when it touches sign-in, payments or personal data.
+   focused review when it touches sign-in, payments or personal data,
+   and its section 4a for anything with trading, invest prompts, finance
+   content or user posts, comments and DMs.
 6. **Release:** app-security full review, app-testing release pass,
    listing through humanizer then `check_listing.py`, images through
    ai-visuals then `check_assets.py`, and app-release's checklist,
@@ -61,7 +65,9 @@ debugging); the memory sheet for every decision.
 
 - Product head: idea validation, competitors, pricing and positioning.
 - Marketing head: launch plan, posts, store listing optimisation ideas.
-- Design head: app promo videos and launch reels.
+- Design head: app promo videos, launch reels and the in-house team's
+  early videos for the app (transcriber, motion-design-taste and
+  audio-review are in the kit for them).
 - Review head: a harsh-buyer-review of the store listing and onboarding
   before launch.
 

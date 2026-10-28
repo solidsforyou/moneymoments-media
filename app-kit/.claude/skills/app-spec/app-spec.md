@@ -12,7 +12,10 @@ hurts, then check that what's left still solves the problem.
 ## 1. Interview (ask only what memory and the chat don't already say)
 
 Search the memory sheet first (`memory.py search "app idea"`, then the
-topic words). Then ask the founder, in one message, only what is missing:
+topic words). If an agreed brief exists (`brief.md` at the repo root or in
+`docs/`), it holds the founder's answers: start from it and never re-ask
+what it settles. Then ask the founder, in one message, only what is
+missing:
 
 1. **Who** is it for? One specific person, not "everyone": age, city
    type, job, phone (budget Android or iPhone), languages they read.

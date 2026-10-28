@@ -102,9 +102,10 @@ repo's CLAUDE.md says. Never push to main directly once the app has users.
   or public env variables (app-security).
 - **Lists are paginated** from the start (20 to 50 items a page).
 
-## 5. Real phones, real India
+## 5. Real phones, real networks
 
-Build and test for the users in the spec, who are most likely on:
+Build and test for the users in the spec. Mass-market users, and Indian
+users especially, are most likely on:
 
 - **Budget Android phones** (3 to 4 GB RAM, mid-range chips): keep lists
   virtualised (FlatList/FlashList), avoid re-rendering whole screens,
@@ -127,6 +128,12 @@ Build and test for the users in the spec, who are most likely on:
   +91, store in E.164 (`+91XXXXXXXXXX`).
 - **Languages:** English UI by default unless the spec says Hindi or
   Hinglish; keep the translation file ready either way.
+- **Video:** stream adaptive (HLS) renditions, never the original file;
+  preload only the next one or two videos in a feed; pause what's off
+  screen; uploads are resumable and survive the app going to the
+  background; captions on by default where the spec says so.
+- **Live prices:** show when a number was last updated, mark stale data,
+  and never let a tap act on a price older than the partner allows.
 
 ## 6. Dependencies
 

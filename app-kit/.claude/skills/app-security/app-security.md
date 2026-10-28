@@ -163,6 +163,82 @@ content (grievance officer, takedown timelines); sector rules for health
 or finance data. If the spec touches any of these, flag it to the founder
 as needing a lawyer before launch.
 
+## 4a. Regulated features: crypto, investing, finance content, user videos
+
+Run this section whenever the spec has trading, investing nudges, finance
+advice, or content users upload. Facts checked October 2026; re-check the
+sources named before launch, and get a lawyer for each launch country.
+
+**Crypto trading through a partner (gateway or exchange)**
+- The partner holds the licences, custody and KYC for trading, and
+  decides which countries can trade. The app must honour that: a
+  country-blocked state on every trade entry point, decided by the
+  partner's API, not by the app guessing from the phone's region.
+- Apple: a crypto-exchange app should be submitted by the legal entity
+  that provides the service, not an individual developer (5.1.1(ix));
+  exchange features only in countries where the app has the licences
+  (3.1.5(iii)); no crypto given for completing tasks such as posting,
+  inviting or downloading (3.1.5(v)). Plan an organisation developer
+  account and confirm the partner's licences cover how the app presents
+  trading.
+- Google Play: declare exchange or wallet features in the Financial
+  Features declaration; Play's "Cryptocurrency exchanges and software
+  wallets" policy requires a licence for many countries (a country table
+  in Play's help centre; in the EU, MiCA licences). Check the partner's
+  licence against that table.
+- Never show balances, prices or order states the app computed itself:
+  show the partner's values, with the time they were fetched; treat
+  stale quotes (older than a few seconds) as stale on screen.
+- Taxes and reporting (for example India's 30% tax and 1% TDS on crypto
+  gains and transfers) are the partner's and the user's; the app may need
+  to show them. Ask the partner what it provides.
+
+**Promotions and "invest now" nudges**
+- Any card, ad or push inviting users to buy crypto is a financial
+  promotion. Rules differ by country, so these cards are per-country,
+  switched off by default where the rules aren't checked yet:
+  - **India (ASCI, since April 2022):** every crypto ad carries the
+    disclaimer "Crypto products and NFTs are unregulated and can be highly
+    risky. There may be no regulatory recourse for any loss from such
+    transactions.", prominent, in the ad's language; no comparing crypto
+    with regulated assets; no promising returns or playing down risk.
+  - **UK (FCA, since October 2023):** a prescribed risk warning on every
+    promotion; **no incentives to invest** (no "refer a friend", joining
+    bonuses or "start with 100" rewards); a **24-hour cooling-off** period
+    before a new user sees a direct offer, with a personalised risk
+    warning; an appropriateness check before the first purchase. Usually
+    the partner's job, but the app's screens must allow it.
+  - **EU (MiCA)** and **US** (state and federal rules) have their own
+    marketing rules: check with the partner and a lawyer before enabling
+    there.
+- Never target promotions at anyone under 18, and never show them inside
+  or next to a video in a way that looks like the creator's own advice.
+
+**Finance content and creators**
+- Videos about specific coins or stocks can count as investment advice or
+  paid promotion in some countries (for example SEBI's rules for finfluencers
+  in India). Require creators to disclose holdings and paid promotions;
+  label videos "Not financial advice" where appropriate; never let a
+  video's call to action link straight to a trade of the coin it praises
+  without a disclosure.
+
+**User-generated video, comments and DMs**
+- Apple 1.2 requires, for any app where users post content: a filter for
+  objectionable material before it's posted, a way to report content
+  with timely responses, a way to block abusive users, and published
+  contact details. Google Play has matching rules.
+- Scam defence from day one: block or warn on links in comments and DMs
+  (especially wallet addresses, "DM me for signals", impersonation of
+  creators or support), rate-limit new accounts, and never let anyone
+  but the official account use names like "Support" or "Admin".
+- Moderation queue and audit log: who removed what and why; strikes as
+  the brief describes; an appeal path.
+- India's IT Rules for intermediaries: a grievance officer, published
+  contact, and takedown within the required timelines once the app has
+  Indian users.
+- Copyright: a takedown process for reported infringement; creators
+  confirm they own the rights to what they upload.
+
 ## 5. Store privacy requirements
 
 - **Privacy policy:** a public URL (not a PDF download), linked in the

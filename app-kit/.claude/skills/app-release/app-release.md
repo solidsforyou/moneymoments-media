@@ -29,7 +29,11 @@ before a first submission:
 
 An organisation account avoids Play's 12-tester rule but needs a
 registered business. The founder decides which account type; list both
-options with the trade-off.
+options with the trade-off. **Apps with crypto trading, banking or other
+financial services need organisation accounts in practice:** Apple expects
+them to be submitted by the legal entity providing the service
+(guideline 5.1.1(ix)). Start the company paperwork and D-U-N-S number
+first; it is the longest wait.
 
 ## 2. Versions and builds
 
@@ -96,7 +100,10 @@ options with the trade-off.
   - Ads declaration, content rating questionnaire, target audience and
     content (declaring under-18 audiences brings extra rules), news app
     declaration if relevant, **financial features** declaration for
-    anything money-related (Indian lending apps have extra requirements),
+    anything money-related, including **cryptocurrency exchange or
+    wallet** features, with the partner's licence for each country under
+    Play's crypto policy (app-security section 4a); Indian lending apps
+    have extra requirements,
     government app or health declarations if relevant.
   - Countries: India (and others only if the app is ready for them).
 - **Title rules:** no emoji, no ALL CAPS (unless the brand), no "best",
@@ -129,6 +136,13 @@ options with the trade-off.
   - An app that is just a website in a wrapper with nothing app-like
     (4.2).
   - Mentions of Android or other platforms in the listing (2.3.10).
+  - User-generated content (videos, comments, DMs) without filtering,
+    reporting, blocking and published contact details (1.2).
+  - Crypto: exchange features in countries without a licence (3.1.5(iii)),
+    crypto rewards for tasks like posting or inviting (3.1.5(v)), or an
+    individual developer account for a financial service (5.1.1(ix)).
+    In review notes, name the licensed partner, its licences and the
+    countries where trading is switched on.
   - Asking for permissions without a clear purpose string.
 - **When rejected:** read the cited guideline, fix what it says (or reply
   in Resolution Center with the facts if the reviewer misunderstood),

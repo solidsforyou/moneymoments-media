@@ -72,6 +72,18 @@ network, the server returning an error, and the user doing it twice.
   privacy policy says, and signs out everywhere.
 - **Upgrades:** data from the previous version still loads after an
   update (stored settings, cached data, database migrations).
+- **User content (if any):** report, block and remove work end to end;
+  a blocked user's content and messages disappear for the blocker;
+  removed content disappears everywhere (feed, search, shares, cached
+  copies); suspicious links in comments and DMs are caught.
+- **Video (if any):** upload resumes after losing network and after the
+  app goes to the background; playback on a slow network starts at a low
+  quality instead of stalling; captions show.
+- **Trading through a partner (if any):** the partner's sandbox, never
+  real money, in automated tests; stale quotes are refused; a failed or
+  pending order shows the partner's real state; the country-blocked
+  state appears when the partner says so; the same order tapped twice
+  is placed once.
 
 ## 5. End-to-end tests
 

@@ -28,7 +28,11 @@ idea -> app-spec -> app-stack -> app-ui-taste (direction) -> app-build (story by
 | app-release | Store accounts and waits (Play's 12 testers / 14 days), versions, Play and App Store forms, rollout, crash watch, rollback | `scripts/check_listing.py`, `scripts/check_assets.py`, `listing-template.json` |
 
 Store rules and dates in these skills were checked against official pages in October
-2026; app-release lists the pages to re-check before a first submission.
+2026; app-release lists the pages to re-check before a first submission. After the v1
+brief arrived, the skills gained what this app needs: crypto trading through a licensed
+partner (Apple 3.1.5 and 5.1.1(ix), Play's crypto policy), "invest" promotion rules (ASCI
+in India, the FCA in the UK), user-video moderation (Apple 1.2), video hosting and
+streaming, and checks for video feeds and trading screens.
 
 ## General skills (from SOLIDS FOR YOU, MIT)
 
@@ -42,9 +46,12 @@ Store rules and dates in these skills were checked against official pages in Oct
 | humanizer | Makes app copy, store listings, onboarding text and emails sound like the founder. |
 | social-media | Launch posts, content calendar and growth. |
 | ai-visuals | App icon, store screenshots and promo images. |
+| transcriber | Subtitles and transcripts for the in-house team's videos (every video needs English subtitles). |
+| motion-design-taste | Reviews the in-house videos and app promo reels. |
+| audio-review | Checks the sound of those videos. |
 
-Left out because they're video-specific: motion-design-taste, audio-review and transcriber.
-Copy them over from moneymoments-media `.claude/skills/` if the app ever works with video or audio.
+The three video skills were added back on 28 Oct once the brief (`brief.md`) made the app
+video-first.
 
 ## What the scripts need
 

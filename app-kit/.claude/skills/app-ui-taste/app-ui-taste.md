@@ -112,6 +112,22 @@ noticeably off. Under 5: broken for users.
     illustration, a satisfying success moment) that make it feel cared
     for.
 
+**Screen types with extra checks** (apply inside the criteria above):
+- *Vertical video feed:* the video is the screen; overlays (creator,
+  caption, actions) stay inside safe zones and readable over any frame
+  (scrim or shadow, never bare white text on video); captions legible
+  at arm's length; actions reachable by thumb; the next video starts
+  instantly; trust signals (verified badge, sources) visible without
+  covering the content.
+- *Trading and prices:* numbers in tabular figures and aligned; up and
+  down shown with sign and arrow, not only red and green (colour-blind
+  users); the amount, fee and total visible before confirming; a clear
+  review step for every order; risk warnings readable, not buried; the
+  "not available in your country" and "market closed / price stale"
+  states designed, not error text.
+- *Comments and DMs:* report and block one tap away; suspicious links
+  visibly marked.
+
 **Hard caps from the audit** (score_ui.py applies them): tap targets
 under 24 px or unlabelled fields cap `access` at 6; contrast failures cap
 `colour` at 6; sideways scroll or cut-off text cap `layout` at 6; text

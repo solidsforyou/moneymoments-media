@@ -19,11 +19,15 @@ stable version and setup guide; never trust a version number from memory.
 | Phone app (Android, iPhone) | Expo (React Native) with Expo Router | One codebase for both stores; cloud builds (EAS Build) so no Mac is needed for iPhone builds; over-the-air fixes for JavaScript changes (EAS Update) |
 | Web app | Next.js (App Router) | The most used React web framework; server rendering for pages Google should find |
 | Styling | The framework's standard (Tailwind on web, StyleSheet or NativeWind on Expo) with one token file for colours, spacing and type | One source for the look; app-ui-taste checks against it |
-| Backend, database, sign-in, file storage | Supabase (Postgres) in the Mumbai region (ap-south-1) | Real SQL database; sign-in built in; row level security puts the "who can read what" rules in the database itself; Mumbai keeps data and latency in India |
+| Backend, database, sign-in, file storage, realtime | Supabase (Postgres) in the region nearest most first users (Mumbai, ap-south-1, for India) | Real SQL database; sign-in built in; row level security puts the "who can read what" rules in the database itself; realtime channels for chat and live counts |
 | Sign-in | Google sign-in, plus phone OTP if the users expect it | No passwords to store. Phone OTP in India means an SMS provider with DLT registration (TRAI rule for business SMS): plan a week or two for it |
 | Payments (real goods, services) | Razorpay | UPI, cards, netbanking, wallets; Indian KYC and settlement |
 | Payments (digital goods inside a store app) | Google Play Billing / Apple In-App Purchase, as each store's current policy requires | Stores reject apps that sell digital content some other way; check the policy before designing pricing |
 | Push notifications | Expo Notifications (FCM on Android, APNs on iPhone) | One API for both |
+| Video upload, processing and playback (if the app is video-heavy) | A video service such as Mux or Cloudflare Stream (compare current pricing per minute stored and streamed); `expo-video` in the app | Resumable uploads, transcoding, adaptive streaming (HLS) and thumbnails; serving raw uploads from file storage is slow, expensive and breaks on weak networks |
+| Subtitles and transcripts | A speech-to-text API run on the server after upload (the kit's transcriber skill shows the Whisper approach) | Searchable transcripts, captions in every video, input for fact-checking |
+| Content moderation (if users post) | A moderation API for images, video frames and text, plus a human review queue in the backend | Stores require filtering, reporting and blocking for user content (app-security 4a) |
+| Trading, payments of regulated products | A licensed partner's API or SDK (the founder picks the partner; record its licences and countries in the decision record) | The partner holds the licences, custody and KYC; the app is the front end |
 | Crash and error reports | Sentry | Shows the exact line and device behind a crash |
 | Product analytics | PostHog (or Firebase Analytics if the app already uses Firebase) | Events, funnels and retention; measures the spec's success numbers |
 | Email | Resend (or the backend's built-in auth emails for sign-in only) | Simple API, good deliverability |
@@ -32,6 +36,9 @@ stable version and setup guide; never trust a version number from memory.
 | Lint and format | Whatever the official template ships (Vite's react-ts template uses oxlint in 2026); otherwise ESLint + Prettier, or Biome | Same style everywhere, many bugs caught early; fighting the template's choice costs time for nothing |
 | Hosting (web) | Vercel | Made by the Next.js team; preview link for every branch |
 | Code hosting and CI | GitHub + GitHub Actions | Repo, checks and reviews in one place |
+
+For a global launch, pick the backend region by where the first users
+are, and check the privacy law of each launch country (app-security).
 
 Free tiers are enough for building and early users. Before launch, check
 each service's current pricing page and estimate the monthly bill at 1,000
