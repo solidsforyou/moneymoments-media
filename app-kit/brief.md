@@ -57,6 +57,7 @@ Top stories (picked by editors), For you.
   Instagram reels are copied in through Instagram's official API (creator or business accounts
   only; reference client in `reference/sfy_instagram`). YouTube videos are not downloaded:
   they play inside Chartroom in YouTube's embedded player.
+- No paid promotions in the feed: creators can't post paid coin promotions at all.
 - Optional extras: creators can add sources to a video, and anyone can verify their ID or
   credentials for a verified badge.
 
@@ -74,7 +75,8 @@ Dark and light modes, dark by default.
 
 ## Social (v1)
 
-Follow, like, Approve (a viewer vouches that the video is accurate, separate from like),
+Follow, like, Approve (a viewer vouches that the video is accurate, separate from like; anyone
+can press it),
 comment, share/repost, DMs.
 
 ## Trading
@@ -82,9 +84,15 @@ comment, share/repost, DMs.
 - Crypto only. No stocks planned yet.
 - An Indian, FIU-IND-registered crypto partner handles custody, trades and KYC for trading. The
   app is only the front end. Deposits and withdrawals in INR, by UPI and bank transfer.
-- Shortlist to contact: CoinDCX, CoinSwitch, Mudrex (all FIU-IND registered; none has a public
-  API or white-label programme that we found). Ask a lawyer whether Chartroom itself must also
-  register with FIU-IND.
+- Partner options (researched 28 Oct 2026, terms unverified until we contact them):
+  1. Mudrex "Crypto-as-a-Service": an API for brokers and fintech apps to add crypto investing,
+     with KYC, compliance and custody handled by Mudrex; FIU-IND registered; the company says
+     integration takes 2 to 4 weeks. First choice.
+  2. CoinDCX "API Broker" (listed under Business on its site; no details public).
+  3. Fallback, buy-only: an on-ramp widget (Onramp.money, or Onmeta, which says it's FIU-IND
+     registered) that sells crypto for INR via UPI into a wallet. No selling or holding in-app.
+  Ask a lawyer whether Chartroom itself must also register with FIU-IND.
+- Only coins the partner lists can be traded, which keeps most tiny pump coins out.
 - Every trade shows India's crypto tax before confirming: 1% TDS, 30% tax on gains, and losses
   can't be set off against gains (unchanged in Budget 2026).
 
