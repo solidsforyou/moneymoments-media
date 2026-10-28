@@ -100,9 +100,16 @@ endorsement, not a fact-check. Sharing sends the video outside the app (e.g. Wha
 ## Money
 
 - Revenue: trading fees only. Creators aren't paid.
-- Ads: the app's own "stop scrolling and invest" cards, shown like Instagram ads but far more
-  rarely. Each crypto ad carries ASCI's risk warning ("Crypto products and NFTs are unregulated
-  and can be highly risky...").
+- No ads. Instead, habit reminders to invest a little:
+  - Shown once every 15 to 30 minutes of scrolling. Users can turn them off any time (a link on
+    every reminder and in settings).
+  - Each tap adds ₹10 or ₹20 to a habit jar (INR held in the user's wallet with the partner).
+    When the jar reaches the partner's minimum order, it's invested automatically, so fees and
+    TDS stay small relative to the order.
+  - The first time, the user picks what the jar buys (a coin such as BTC, or a basket);
+    later reminders reuse that choice.
+  - Wording says "invest", never "save" (crypto isn't savings), and every reminder carries
+    ASCI's risk warning ("Crypto products and NFTs are unregulated and can be highly risky...").
 
 ## v1 goal
 
