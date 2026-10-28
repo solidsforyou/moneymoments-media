@@ -15,6 +15,8 @@ Usage:
   --no-build   skip only the build step
   --base       branch to compare changes against (default: origin/main,
                then main, then the last commit)
+  --push       about to push: unaudited commits or open FAILs in the
+               auditor's ledger fail the run (otherwise they only warn)
   --json       print a JSON summary instead of the table
 
 Exit code 0 when every step passed (skipped steps don't fail the run),
@@ -167,6 +169,7 @@ def main():
     ap.add_argument("--base")
     ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--push", action="store_true")
     a = ap.parse_args()
 
     root = Path(a.project).resolve()
@@ -231,6 +234,16 @@ def main():
     else:
         results.append(("secrets", "skip", "app-security skill not found next to app-build", 0, ""))
 
+    auditor = Path(__file__).resolve().parents[2] / "auditor" / "scripts" / "audit.py"
+    if auditor.exists() and (root / "audit" / "ledger.csv").exists():
+        status, out, secs = run_step([sys.executable, str(auditor), "check"], root, a.timeout)
+        if status == "fail":
+            results.append(("audit", "fail" if a.push else "warn", out.strip().splitlines()[-1] if out.strip() else "audit needed", secs, out))
+        else:
+            results.append(("audit", "pass", "everything audited", secs, ""))
+    elif auditor.exists():
+        results.append(("audit", "warn", "no audit ledger: run auditor's audit.py init", 0, ""))
+
     failed = [r for r in results if r[1] == "fail"]
     missing = [r for r in results if r[1] == "missing"]
 
@@ -244,7 +257,7 @@ def main():
     else:
         print(f"Preflight: {root}  (package manager: {pm})\n")
         for s, st, d, t, _ in results:
-            mark = {"pass": "PASS", "fail": "FAIL", "skip": "skip", "missing": "MISSING"}[st]
+            mark = {"pass": "PASS", "fail": "FAIL", "skip": "skip", "missing": "MISSING", "warn": "WARN"}[st]
             secs = f"{t:5.1f}s" if t else "      "
             print(f"  {mark:<8}{s:<11}{secs}  {d}")
         for s, st, d, t, o in failed:
@@ -256,7 +269,8 @@ def main():
             print(f"The checks that exist passed, but {', '.join(r[0] for r in missing)} "
                   "{} missing: add them (app-stack section 4).".format("is" if len(missing) == 1 else "are"))
         else:
-            print("All checks passed.")
+            warns = [r[0] for r in results if r[1] == "warn"]
+            print("All checks passed." + (f" Warnings: {', '.join(warns)}." if warns else ""))
     return 1 if failed else 0
 
 

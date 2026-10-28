@@ -15,12 +15,17 @@ next to this repo's own app skills (`app-*`).
   (`.claude/skills/master/heads/app.md`).
 - Humanizer is always on for anything users will read (app copy, store listing, emails).
 - careful-mode for anything touching payments, user data, auth or production.
+- **The auditor is always on.** Every task's work is audited before it's delivered, committed
+  as done, pushed or released (`.claude/skills/auditor/`, agent `.claude/agents/auditor.md`),
+  and recorded in `audit/ledger.csv`. First session in the app repo: run
+  `python3 .claude/skills/auditor/scripts/audit.py init`. The hooks in `.claude/settings.json`
+  block finishing and pushing while anything is unaudited; never disable them.
 
 ## Working rules
 
 - The spec (`docs/spec.md`) is the source of truth; decisions live in `docs/decisions/`.
 - Before every commit: `python3 .claude/skills/app-build/scripts/preflight.py`. Exit 0 or
-  don't commit.
+  don't commit. Before every push: the same with `--push`.
 - Never commit secrets; server secrets never go behind `EXPO_PUBLIC_` / `NEXT_PUBLIC_`.
 - The founder approves every store upload, submission and rollout step.
 

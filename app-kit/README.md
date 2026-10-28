@@ -12,8 +12,22 @@ which runs the app skills in this order and calls the general skills where they 
 
 ```
 idea -> app-spec -> app-stack -> app-ui-taste (direction) -> app-build (story by story,
-        with app-testing, app-ui-taste, app-security) -> app-release -> watch and repeat
+        with app-testing, app-ui-taste, app-security and the domain skills app-social,
+        app-crypto-trading, app-news) -> app-release -> watch and repeat
+              ^ the auditor audits the output of every step, always ^
 ```
+
+## The auditor (always on)
+
+| Part | What it does |
+|---|---|
+| `.claude/skills/auditor/` | The method: what gets audited (everything: code, copy, designs, numbers, research, decisions, releases), three levels, the universal checklist, domain packs, verdict rules, weekly sweeps, auditing the auditor |
+| `.claude/agents/auditor.md` | The auditor as a separate agent with a fresh context, so it never grades its own work; it reports and never fixes |
+| `scripts/audit.py` | The ledger (`audit/ledger.csv` + `audit/reports/`): records every verdict, lists unaudited commits and open FAILs |
+| `.claude/settings.json` | Hooks: a session can't end, and `git push` can't run, while commits are unaudited or a FAIL is open |
+| `preflight.py --push` | Fails on unaudited work too |
+
+First session in the app repo: `python3 .claude/skills/auditor/scripts/audit.py init`.
 
 ## App-building skills (new, written for this app)
 
@@ -26,6 +40,9 @@ idea -> app-spec -> app-stack -> app-ui-taste (direction) -> app-build (story by
 | app-testing | Which tests at which level, reliability rules, must-have tests, release test pass, bug reports | `test-plan-template.md` |
 | app-security | Security checklist, DPDP Act, store privacy forms, account deletion, leaked-secret playbook | `scripts/scan_secrets.py`; `privacy-policy-outline.md` |
 | app-release | Store accounts and waits (Play's 12 testers / 14 days), versions, Play and App Store forms, rollout, crash watch, rollback | `scripts/check_listing.py`, `scripts/check_assets.py`, `listing-template.json` |
+| app-social | The social platform: core loop, cold start, data model, feeds, follows, reactions, comments, DMs, notifications, creators, trust and safety, platform law, metrics | `scripts/scan_scams.py`: scores comments and DMs for scams (fake support, seed-phrase phishing, signals groups, lookalike exchanges); the spec for the app's own filter |
+| app-crypto-trading | Trading through a licensed partner: who does what, choosing the partner, KYC, quotes, the order state machine, money security, per-country rules, where social meets trading, reconciliation | `scripts/order_math.py`: exact quantity, fees, tax and totals with the partner's rounding |
+| app-news | Verified news: creator verification, the fact-check pipeline, reviewer checklist, labels, corrections and strikes, breaking news, news law | `scripts/check_sources.py`: claim-by-claim source rules; `sources-template.json`, `editorial-standards.md` |
 
 Store rules and dates in these skills were checked against official pages in October
 2026; app-release lists the pages to re-check before a first submission. After the v1
@@ -63,7 +80,7 @@ video-first.
 Tests for the scripts (run from the repo root):
 
 ```
-python3 -m pytest -q .claude/skills/app-security/scripts .claude/skills/app-release/scripts
+python3 -m pytest -q .claude/skills/*/scripts
 ```
 
 `preflight.py`, `capture_screens.cjs` and `score_ui.py` were tried on a real Vite +
