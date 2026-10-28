@@ -6,8 +6,9 @@ Name: **Chartroom** (chosen 28 Oct 2026; domain, App Store and trademark checks 
 
 ## What it is
 
-A crypto trading platform with a finance social network inside. It's marketed as a trading
-app first. Posts are as serious as LinkedIn's, but the videos and the feel are Instagram's:
+A crypto trading platform with a finance social network and a news section inside. It's
+marketed as three things in one: a news place, a crypto place and a social place, with trading
+first. Posts are as serious as LinkedIn's, but the videos and the feel are Instagram's:
 reels, a smooth feed and a visual app.
 
 ## Who it's for
@@ -20,6 +21,15 @@ finance content. Global from day one. The first users are mostly on iPhone.
 The app opens on the reels feed, and trading is one tap away: every video shows the price of
 the coin it mentions and a trade button. Feed tabs the user switches between, e.g. Following,
 Top stories (picked by editors), For you.
+
+## News
+
+- Its own tab in the bottom bar (e.g. Feed, News, Trade, Post, Profile).
+- 5 to 10 stories a day as short text cards: headline, a 3 to 4 line summary in our own words,
+  the sources with links, and the coins it affects with a trade button.
+- AI drafts and checks each story; the team verifies it before posting.
+- Approved news outlets are cited, and outlets can apply to be added to that list.
+- First launch shows off all three sides (news, crypto, social) in a short onboarding.
 
 ## Content
 
