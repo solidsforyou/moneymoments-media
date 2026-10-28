@@ -71,3 +71,6 @@ Open question: men's white joggers counted 22 (box 3: 15, box 7: 6, Teju: 1) vs 
 | Joggers Men's Black | 17 | 18 | -1 |
 | Joggers Women's White | 18 | 17 | +1 |
 | Joggers Women's Black | 14 | 13 | +1 |
+
+## Box size (all 7 boxes)
+18 x 12 x 12 in = 45.7 x 30.5 x 30.5 cm. Weights still needed.
