@@ -27,10 +27,15 @@ live next to the others in `.claude/skills/app-*`.
 | app-release | Versions, store accounts and waits, listing and asset checks, rollout, watching, rollback |
 | humanizer | Every word users read: screens, store listing, release notes, emails, review replies |
 | ai-visuals | App icon, store screenshots' backgrounds, promo and onboarding images |
+| app-social | Feeds, follows, reactions, comments, DMs, notifications, creators, trust and safety, `scan_scams.py` |
+| app-crypto-trading | The licensed partner, KYC, quotes, orders, `order_math.py`, money security, per-country rules, social-meets-trading risks |
+| app-news | Creator verification, the fact-check pipeline, `check_sources.py`, labels, corrections, strikes, news law |
+| auditor | Audits every step's output (always on; see Foundation) |
 | competitor-research, harsh-buyer-review | Through the Product head: validating the idea; a user's verdict on the listing and onboarding |
 
-Foundation: careful-mode on the spec, every security verdict, anything
-touching payments, personal data or production, and every release;
+Foundation: the auditor on every step's output, recorded in the ledger;
+careful-mode on the spec, every security verdict, anything touching
+payments, personal data or production, and every release;
 economy-mode for bulk mechanical code work (never for review, security or
 debugging); the memory sheet for every decision.
 
@@ -52,7 +57,10 @@ debugging); the memory sheet for every decision.
    preflight passing, app-ui-taste READY for new screens, app-security's
    focused review when it touches sign-in, payments or personal data,
    and its section 4a for anything with trading, invest prompts, finance
-   content or user posts, comments and DMs.
+   content or user posts, comments and DMs. Social features follow
+   app-social, trading follows app-crypto-trading, verification and
+   fact-checking follow app-news. Then the auditor audits the story
+   (L3 for money, data, moderation and anything legal) before it's done.
 6. **Release:** app-security full review, app-testing release pass,
    listing through humanizer then `check_listing.py`, images through
    ai-visuals then `check_assets.py`, and app-release's checklist,
@@ -73,7 +81,8 @@ debugging); the memory sheet for every decision.
 
 ## 5. Done when
 
-The step's own "done when" is met (spec approved; preflight passing;
+The auditor's verdict is PASS or NOTES and recorded, the step's own
+"done when" is met (spec approved; preflight passing;
 app-ui-taste READY; no Critical or High security finding; release
 checklist complete with the founder's approval), every decision is in the
 memory sheet, and careful-mode passed on anything high-stakes.

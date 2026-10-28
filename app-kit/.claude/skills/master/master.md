@@ -47,7 +47,8 @@ tools below. When a head needs one:
 | Design head | Videos, AI images and clips, product graphics, sound | `plugins/master/skills/master/heads/design.md` |
 | Review head | Reviewing anything before it ships | `plugins/master/skills/master/heads/review.md` |
 | App head | Planning, building, reviewing, securing and releasing the founder's app | Local only: `heads/app.md` in this skill |
-| app-spec, app-stack, app-build, app-ui-taste, app-testing, app-security, app-release | The App head's sub-skills | Local only: `.claude/skills/<name>/<name>.md` in this repo |
+| app-spec, app-stack, app-build, app-ui-taste, app-testing, app-security, app-release, app-social, app-crypto-trading, app-news | The App head's sub-skills | Local only: `.claude/skills/<name>/<name>.md` in this repo |
+| auditor | Always on: audits every task's work before it counts as done; ledger and hooks | Local only: `.claude/skills/auditor/auditor.md`, agent `.claude/agents/auditor.md` |
 
 ## 2. When the Master Skill runs (the founder chooses)
 
@@ -155,6 +156,11 @@ icon and store images. Launch content goes to Marketing.
   careful-mode on the final answer.
 
 ## 5. Rules for every task (the foundation every head stands on)
+
+- **The auditor is always on** (local addition): no task's work is
+  delivered, committed as done, pushed or released until the auditor has
+  audited it and the verdict is in `audit/ledger.csv`. A FAIL is fixed and
+  re-audited, never argued away.
 
 - Maths is always done in code and checked, never in your head and never on a
   cheaper model.

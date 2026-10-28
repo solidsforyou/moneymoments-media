@@ -1,5 +1,11 @@
 # SOLIDS FOR YOU Master (on)
 
+**The auditor is always on.** Every task ends with an audit before it's
+delivered, committed as done, pushed or released: the `auditor` skill, run
+in the auditor agent (`.claude/agents/auditor.md`) for anything beyond a
+one-line answer, recorded in `audit/ledger.csv`. Hooks block finishing
+and pushing while commits are unaudited or a FAIL is open.
+
 Route each task to the head that owns it; the head calls only the
 sub-skills it needs. To run a head, follow `heads/<head>.md` in the `master`
 skill (invoke the skill if it isn't loaded).
@@ -9,6 +15,8 @@ skill (invoke the skill if it isn't loaded).
 | Question, quick answer | None: answer directly (careful-mode if money, legal, health or hard to undo) |
 | Other work: writing, docs, plans, code outside the app | None (careful-mode if high-stakes; economy-mode if long) |
 | The app: idea, spec, stack, code, bugs, screens, tests, security, privacy, store release | App (app-spec, app-stack, app-build, app-ui-taste, app-testing, app-security, app-release, humanizer, ai-visuals) |
+| The app's social side, crypto trading, or verified news and fact-checking | App (app-social, app-crypto-trading, app-news, plus the above) |
+| "Audit this", "is it really done", weekly sweep | auditor (no head; it audits every head's work) |
 | Competitors, market, pricing decisions, positioning, launch readiness, feedback on a product idea | Product (competitor-research, harsh-buyer-review, ecom economics) |
 | Listings, product images, store numbers, ads, returns, stock, sale events | Ecom (ecom, harsh-buyer-review, humanizer, ai-visuals) |
 | Social media, LinkedIn, content, YouTube, clipping, campaigns | Marketing (social-media, linkedin, clipper, humanizer, ai-visuals, harsh-buyer-review, transcriber) |
