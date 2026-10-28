@@ -1,4 +1,4 @@
-# (app name TBD)
+# Chartroom
 
 New app, built from scratch: a crypto trading app with a finance social network inside
 (LinkedIn-serious posts, Instagram-style reels), iPhone first. Full brief in `brief.md`. The

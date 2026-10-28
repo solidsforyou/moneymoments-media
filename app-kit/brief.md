@@ -2,7 +2,7 @@
 
 Agreed with the founder on 28 Oct 2026 before any design. Mockups and reviews start from this.
 v2 replaces v1's heavy verification with LinkedIn-style seriousness.
-Name: to be chosen (Claude suggests names; the name should say "everything finance, as a social network").
+Name: **Chartroom** (chosen 28 Oct 2026; domain, App Store and trademark checks still to do).
 
 ## What it is
 
