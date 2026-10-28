@@ -78,3 +78,34 @@ def test_bad_input():
 def test_amounts_keep_their_decimal_places():
     r = compute(RULES, "sell", "3000", qty="10")
     assert r["value"] == "30000.00" and r["quantity"] == "10"
+
+
+def test_spend_is_never_exceeded_property():
+    # The auditor's failing cases, then a seeded random sweep (ticks 0.01 and 1).
+    import random
+    rules = dict(RULES, partner_fee_rate="0.001", platform_fee_rate="0.01", sell_tax_rate="0")
+    assert Decimal(compute(rules, "buy", "100", spend="1000")["total"]) <= Decimal("1000")
+    assert Decimal(compute(rules, "buy", "16275.80", spend="158990.24")["total"]) <= Decimal("158990.24")
+    rng = random.Random(7)
+    for tick in ("0.01", "1"):
+        r2 = dict(rules, price_tick=tick, min_notional="0", min_qty="0")
+        for _ in range(3000):
+            price = Decimal(rng.randint(100, 9_000_000)) * Decimal(tick)
+            spend = Decimal(rng.randint(100, 50_000_000)) / 100
+            out = compute(r2, "buy", str(price), spend=str(spend))
+            assert Decimal(out["total"]) <= spend, (tick, price, spend, out)
+
+
+def test_rejects_bad_inputs():
+    for kwargs in ({"spend": "100", "qty": "1"}, {"qty": "-1"}, {"qty": "1", "quote_age": -1}):
+        with pytest.raises(ValueError):
+            compute(RULES, "buy", "5000000", **kwargs)
+    with pytest.raises(ValueError):
+        compute(RULES, "sell", "5000000", spend="100")
+    with pytest.raises(ValueError):
+        compute(dict(RULES, partner_fee_rate="-0.1"), "buy", "5000000", qty="0.001")
+
+
+def test_price_off_tick_is_invalid():
+    r = compute(RULES, "buy", "5000000.005", qty="0.001")
+    assert not r["valid"] and any("price tick" in p for p in r["problems"])

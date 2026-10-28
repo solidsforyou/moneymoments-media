@@ -4,7 +4,9 @@
 delivered, committed as done, pushed or released: the `auditor` skill, run
 in the auditor agent (`.claude/agents/auditor.md`) for anything beyond a
 one-line answer, recorded in `audit/ledger.csv`. Hooks block finishing
-and pushing while commits are unaudited or a FAIL is open.
+while files are uncommitted or commits unaudited or a FAIL is open, and
+block pushing until it's clean; work that never becomes a commit (answers,
+designs, research) is audited by rule and logged with `--scope`.
 
 Route each task to the head that owns it; the head calls only the
 sub-skills it needs. To run a head, follow `heads/<head>.md` in the `master`

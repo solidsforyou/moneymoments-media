@@ -132,15 +132,30 @@ Fix: <what the author should change>
 1. Write the report to `audit/reports/<id>.md` (the next id is in
    `audit.py status`; use the template in section 9).
 2. `audit.py add --verdict ... --kind ... --summary "..." --counts C,H,M,L
-   --report audit/reports/<id>.md` (commits are picked up automatically;
-   use `--scope` for non-commit work like a chat answer or a design).
-3. The author (not the auditor agent) commits `audit/` with the work;
-   ledger-only commits don't need an audit.
+   --report audit/reports/<id>.md` plus exactly what you audited:
+   `--commit SHA` or `--commit A..B` for the commits you read,
+   `--all-unaudited` only if you read every commit `brief` listed, or
+   `--scope "..."` for non-commit work (a chat answer, a design, research).
+3. The author (not the auditor agent) commits `audit/` in its own commit
+   after the work commits; ledger-only commits don't need an audit. Don't
+   amend the ledger into a work commit: that changes the commit's id and
+   it shows as unaudited again.
 4. In the reply to the founder, one line: `Auditor: PASS (A-0042)` or
    `Auditor: FAIL (A-0043): 1 high: <title>; fixing now`.
 
 Commits rewritten by a rebase or amend get new ids and need auditing
 again: another reason not to rewrite shared history.
+
+## 7a. What the hooks enforce, and what they can't
+
+The hooks see git, not conversations. They block a session from ending
+while files are uncommitted, commits are unaudited or a FAIL is open, and
+block `git push` (in any form) and the GitHub write tools until the
+ledger is clean. If the audit script itself breaks, they block (fail
+closed). They can't see chat answers, designs, research or advice that
+never becomes a commit: for those, recording a `--scope` audit is a rule
+the session follows, not something a hook can force. Say so honestly
+when the founder asks.
 
 ## 8. Sweeps (the auditor also audits what nobody asked about)
 

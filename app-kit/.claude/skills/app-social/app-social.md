@@ -113,14 +113,19 @@ Build the simplest feed that serves the brief, and say how it ranks.
 1. **Community guidelines** page: what's not allowed, with examples, and
    what happens (warning, removal, strike, suspension, ban). Short and
    plain; run the humanizer.
-2. **Prevention before posting:** the scam scanner on text; a
+2. **Prevention before posting:** the scam scanner on text (a first-pass
+   heuristic: it catches common patterns, moderators catch the rest, and
+   every miss becomes a new rule and test); a
    moderation API on images and video frames; new accounts limited
    (no links, few DMs, slower posting) until they've been around a while.
 3. **Reporting:** one tap from every post, comment, message and profile;
    the reporter gets an update when it's handled.
-4. **Queue with deadlines:** scams, threats, self-harm and child safety
-   first (within hours); everything else within the legal deadline
-   (section 6). Moderators see context, history and similar reports.
+4. **Queue with deadlines:** government or court orders within the legal
+   window (3 hours in India since February 2026), then scams, coin pumps,
+   threats, self-harm and child safety (within hours); everything else
+   within the legal deadline (section 6). With open posting (anyone can
+   post, no check before going live), this queue is the main defence:
+   staff it before launch. Moderators see context, history and similar reports.
 5. **Consistent actions:** a written ladder (for example 3 strikes in 90
    days = suspension), every action logged with a reason, the user told
    why (a "statement of reasons"), and an appeal path reviewed by someone
@@ -146,9 +151,12 @@ launch country.
   complaints quickly and resolve them within the deadlines the rules set
   (check the current timelines), act on lawful takedown orders; larger
   platforms ("significant social media intermediaries") have more duties.
-  Amendments on labelling AI-generated (synthetic) audio and video were
-  proposed in October 2025 and reportedly finalised in 2026: check the
-  notified text and label synthetic content.
+  The IT Amendment Rules, 2026 (notified 10 February 2026, in force 20
+  February 2026, per law-firm summaries; check the Gazette text) add
+  labels and metadata for AI-generated audio and video and cut the window
+  to act on a court or government takedown order to 3 hours (2 hours for
+  non-consensual intimate imagery). Someone must be able to act on an
+  order within that window, every day.
 - **EU (Digital Services Act):** all hosting services need a
   notice-and-action route for illegal content and must give a statement
   of reasons when they restrict content; micro and small platforms are

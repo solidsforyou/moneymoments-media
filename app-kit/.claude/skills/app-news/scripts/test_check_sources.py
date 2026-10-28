@@ -54,7 +54,7 @@ def test_numeric_claim_needs_strong_source():
 def test_high_risk_needs_two_publishers():
     one = {"id": "c1", "at": "00:01", "text": "Exchange X froze withdrawals", "risk": "high",
            "sources": [src("https://www.reuters.com/a")]}
-    assert any("two independent publishers" in e for e in run(video(one))[0]["errors"])
+    assert any("two different sites" in e for e in run(video(one))[0]["errors"])
     two = dict(one, sources=[src("https://www.reuters.com/a"), src("https://www.bloomberg.com/b")])
     assert run(video(two))[0]["errors"] == []
 
@@ -81,3 +81,29 @@ def test_evergreen_claim_not_stale():
 
 def test_no_claims_fails():
     assert run(video())[0]["errors"]
+
+
+def test_creator_labels_are_not_trusted():
+    fake = {"id": "c1", "at": "00:01", "text": "Exchange X lost 40% of reserves", "risk": "HIGH",
+            "sources": [dict(src("https://myblog.xyz/a", publisher="Reuters"), type="primary"),
+                        dict(src("https://myblog.xyz/b", publisher="Bloomberg"), type="primary")]}
+    r = run(video(fake))[0]
+    assert any("primary or tier-1" in e for e in r["errors"])
+    assert any("two different sites" in e for e in r["errors"])
+    assert any("isn't in the source tiers" in w for w in r["warnings"])
+
+
+def test_two_pages_of_one_site_count_once():
+    c = {"id": "c1", "at": "00:01", "text": "Exchange X froze withdrawals", "risk": "high",
+         "sources": [src("https://www.reuters.com/a"), src("https://www.reuters.com/b")]}
+    assert any("two different sites" in e for e in run(video(c))[0]["errors"])
+
+
+def test_bad_input_exits_2(tmp_path):
+    import subprocess
+    script = Path(__file__).with_name("check_sources.py")
+    for content in ("not json", '{"claims": "x"}', '{"published": "soon", "claims": []}'):
+        f = tmp_path / "v.json"
+        f.write_text(content)
+        p = subprocess.run([sys.executable, str(script), str(f)], capture_output=True, text=True)
+        assert p.returncode == 2 and "Traceback" not in p.stderr, (content, p.stderr)

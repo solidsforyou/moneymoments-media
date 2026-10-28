@@ -12,8 +12,10 @@ Input: one JSON file per video (see sources-template.json next to the skill):
 
 Checks:
   - every claim has a source; high-risk claims and claims with numbers need
-    a primary or tier-1 source; high-risk claims need two independent
-    publishers
+    a primary or tier-1 source; high-risk claims need strong sources from
+    two different sites
+  - tiers come only from the editors' tiers file and the built-in list; a
+    creator's own "type" label is never trusted
   - URLs are https and complete; no link shorteners
   - sources dated, not after the video's publish date, not stale for news
     (older than --max-age-days, default 30, unless "evergreen": true)
@@ -79,6 +81,16 @@ def tier_of(domain: str, tiers: dict) -> str:
     return "unknown"
 
 
+def site_of(domain: str) -> str:
+    """The registrable site, so two pages of one site count once (roughly: last two labels,
+    or three for two-part suffixes like co.in, gov.in, co.uk)."""
+    parts = domain.lower().removeprefix("www.").split(".")
+    two_part = {"co", "gov", "nic", "ac", "org", "net", "com", "edu", "res"}
+    if len(parts) >= 3 and parts[-2] in two_part and len(parts[-1]) == 2:
+        return ".".join(parts[-3:])
+    return ".".join(parts[-2:])
+
+
 def parse_date(s):
     try:
         return date.fromisoformat(str(s)[:10])
@@ -97,7 +109,7 @@ def check(video: dict, tiers: dict, max_age_days: int):
         errs, warns = [], []
         cid = c.get("id", "?")
         text = c.get("text", "")
-        risk = c.get("risk", "normal")
+        risk = str(c.get("risk", "normal")).strip().lower()
         sources = c.get("sources") or []
         if not text.strip():
             errs.append("claim text missing")
@@ -121,12 +133,15 @@ def check(video: dict, tiers: dict, max_age_days: int):
                 warns.append(f"same source listed twice: {url}")
                 continue
             seen.add(key)
-            t = s.get("type") if s.get("type") in ("primary", "tier1", "tier2") else tier_of(domain, tiers)
-            if tier_of(domain, tiers) == "not_alone":
-                t = "not_alone"
+            # The tier comes only from the editors' tiers file and the built-in list,
+            # never from the creator's own "type" label, and independence is counted
+            # by site, not by the publisher name the creator typed.
+            t = tier_of(domain, tiers)
+            if s.get("type") and s.get("type") != t and t != "unknown":
+                warns.append(f"{domain} labelled {s['type']!r} by the creator, tiers say {t!r}")
             if t in STRONG:
                 strong += 1
-            publishers.add((s.get("publisher") or domain.removeprefix("www.")).strip().lower())
+                publishers.add(site_of(domain))
             d = parse_date(s.get("date"))
             if not d:
                 warns.append(f"no date for {domain}")
@@ -149,7 +164,7 @@ def check(video: dict, tiers: dict, max_age_days: int):
         if (risk == "high" or HAS_NUMBER.search(text)) and sources and strong == 0:
             errs.append("high-risk or numeric claim needs a primary or tier-1 source")
         if risk == "high" and len(publishers) < 2:
-            errs.append("high-risk claim needs two independent publishers")
+            errs.append("high-risk claim needs strong sources from two different sites")
         out.append({"claim": cid, "text": text[:80], "errors": errs, "warnings": warns})
     return out
 
@@ -163,10 +178,15 @@ def main():
     a = ap.parse_args()
     try:
         video = json.load(open(a.video, encoding="utf-8"))
+        if not isinstance(video, dict) or not isinstance(video.get("claims", []), list) or not all(
+                isinstance(c, dict) and isinstance(c.get("sources", []), list) for c in video.get("claims", [])):
+            raise ValueError("expected {\"claims\": [{\"text\": ..., \"sources\": [...]}]}")
+        if video.get("published") and not parse_date(video["published"]):
+            raise ValueError(f"published date {video['published']!r} isn't YYYY-MM-DD")
         tiers = dict(DEFAULT_TIERS)
         if a.tiers:
             tiers.update({k.lower(): v for k, v in json.load(open(a.tiers, encoding="utf-8")).items()})
-    except (OSError, json.JSONDecodeError) as e:
+    except (OSError, json.JSONDecodeError, ValueError) as e:
         print(f"Bad input: {e}", file=sys.stderr)
         return 2
     res = check(video, tiers, a.max_age_days)

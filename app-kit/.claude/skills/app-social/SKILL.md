@@ -20,6 +20,8 @@ loaded from. Below, `SKILL_DIR` means that folder.
    ```
 
    Verdicts: allow, warn, hold (human review before anyone sees it), block.
+   It's a first-pass heuristic, not a guarantee: every scam a moderator
+   finds that it missed becomes a rule and a must-catch test.
 3. Works with app-build (code), app-security section 4a (rules for user
    content), app-news (verification) and app-crypto-trading (where social
    meets money).

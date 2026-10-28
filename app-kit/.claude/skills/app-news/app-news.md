@@ -5,12 +5,24 @@ whole promise is "every video here is checked". One viral false video
 undoes that promise for everyone. Your job is to make verification real,
 visible, consistent and fast enough that creators still want to publish.
 
-Read `docs/spec.md` and `brief.md` first. The brief for this app: approved
-creators only; verified means creator ID (KYC) + credentials + a
-fact-check before going live + sources for claims; AI checks first, then
-people; approved creators get a fast track; a video found wrong after
-going live is taken down and the creator gets a strike; an "Approve"
-reaction lets viewers vouch for accuracy.
+Read `docs/spec.md` and `brief.md` first; the brief decides how strict
+each part is. This skill covers two modes, and an app can use both:
+
+- **Verified mode** (full pipeline, sections 3 and 4): every item is checked
+  before it goes live. Chartroom's brief v3 uses it for the **News tab**:
+  5 to 10 text cards a day, AI-drafted and AI-checked, verified by the team
+  before posting, citing approved outlets (outlets can apply to join the
+  list).
+- **Open mode** (post first, moderate after): Chartroom's brief v3 uses it
+  for **videos**: anyone can post after a quick check, every post is tagged
+  with a finance topic, there's no fact-check before going live, and
+  reports plus moderators remove misleading, scam or off-topic videos.
+  Here the pipeline runs *after* publishing, on reported and high-reach
+  videos first; sources and the ID/credential badge are optional extras;
+  labels, corrections, strikes and the law (sections 5 to 8) still apply.
+
+The "Approve" reaction (a viewer vouching for accuracy) is a signal for
+ranking and review priority, never proof that something is true.
 
 ## 1. The trust model, written down
 
@@ -59,6 +71,10 @@ published -> correction issued | taken down (reason, strike)
   claims list; banned-content and copyright checks.
 - **Human fact-check** (section 4) on everything the AI passed; the AI
   never publishes on its own.
+- **Open mode:** the same checks run after publishing, triggered by
+  reports, sudden reach (a video taking off), coin mentions (pump risk)
+  and creators with past strikes; pump-style videos about a coin go to the
+  front of the queue (app-crypto-trading section 8).
 - **Fast track for approved creators:** a smaller human check (high-risk
   claims only, a sample of the rest) within a short target time, with
   stricter consequences if something slips. Write the rule down.
@@ -133,10 +149,18 @@ Measure reviewer agreement on a sample each week; retrain where it's low.
   check the current text), and a three-tier redress structure. The
   in-house team's videos likely make the company a publisher; creator
   videos also bring intermediary duties (app-social section 6).
-- **AI-generated or altered media:** India proposed mandatory labels for
-  synthetic audio and video in October 2025 (reportedly finalised in
-  2026: check the notified text); the EU AI Act has transparency duties
-  for deepfakes. Label it, and keep the label when content is shared.
+- **India, court challenges:** in 2021 the Bombay High Court stayed Rules
+  9(1) and 9(3) of Part III (the duty to follow the code of ethics and the
+  oversight mechanism); check whether that stay still holds before relying
+  on Part III's details.
+- **AI-generated or altered media:** India's IT (Intermediary Guidelines)
+  Amendment Rules, 2026 (notified 10 February 2026, in force 20 February
+  2026, per law-firm summaries; read the Gazette text before relying on
+  details) require visible labels and provenance metadata on synthetic
+  audio and video, user declarations on larger platforms, and takedown
+  within 3 hours of a court or government order (2 hours for
+  non-consensual intimate imagery). Label it, keep the label when content
+  is shared, and staff the queue for those deadlines.
 - **Defamation:** strongest where a video damages a named person or
   company. Strong sources, a right of reply where fair, fast takedown on
   a credible complaint while it's reviewed.
