@@ -72,7 +72,18 @@ comment, share/repost, DMs.
 A small real launch: a few hundred users and a handful of creators, on the App Store, to prove
 people watch and trade.
 
+- Moment of value: a user watches a serious video about a coin and buys it right there in a few
+  taps, without switching apps. This is v1's core flow.
+- Deadline: on the App Store within 1 month (from 28 Oct 2026).
+- Budget: near zero; free tiers and the cheapest options wherever possible.
+- Gateway partner: not chosen yet. Design against a generic gateway (buy, sell, wallet; KYC
+  handled by them) and swap in the real one.
+
 ## Risks to keep in view
+
+- One month is very tight for this scope. The gateway partner is the critical path: no partner
+  means no trading, and Apple only accepts crypto trading apps that run through licensed
+  exchanges. Everything not in the core flow is a candidate to cut from v1.
 
 - With open posting, coin-pumping and scam videos will be the main threat on a trading app.
   Reports must be quick to file and fast to act on.
