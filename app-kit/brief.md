@@ -41,8 +41,13 @@ Top stories (picked by editors), For you.
 
 - Quick to create: name, username, photo, a one-line headline (e.g. "Crypto trader") and
   1 to 3 topics they talk about.
-- Highly customisable after that, in a LinkedIn style (e.g. experience, company, links). Every
-  optional field shows on the profile only if it's filled in.
+- Optional extras: LinkedIn-style work history (jobs, company, education, certifications) and
+  links to other socials (X, YouTube, Instagram, LinkedIn, website). Every optional field shows
+  on the profile only if it's filled in. No holdings or track record on profiles.
+
+## Look
+
+Dark and light modes, dark by default.
 
 ## Social (v1)
 
