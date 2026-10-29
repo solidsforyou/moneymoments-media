@@ -65,12 +65,17 @@ ban "nagging").
 
 ## Money (open: founder decision needed)
 
-Zerodha shares no brokerage with apps on its API. The only route found is registering as a
-Zerodha Authorised Person for 10% of brokerage from referred clients, and long-term investing
-(equity delivery, direct mutual funds) costs Rs 0 brokerage at Zerodha. Options to decide:
-ask Zerodha (they say the API is free for startups building mass-retail products), become an
-Authorised Person, use another broker with a revenue share, or a small paid plan. A future
-e-commerce idea is parked.
+Zerodha's referral program came back on 1 June 2026 (Z-Connect, 10 June 2026): a referrer
+earns 10% of the brokerage their referrals generate, plus 300 reward points per account
+(points, not cash). Old referrals keep paying only if the referrer adds three new ones every
+12 months. The catch for GoodHabits: equity delivery and direct mutual funds cost Rs 0
+brokerage at Zerodha, so long-term investors, the users this app wants, earn us nothing. Only
+intraday and F&O pay (at most Rs 2 an order to us). The post describes customers referring
+friends. NSE's August 2024 circular says anyone referring clients must be an Authorised Person,
+and the post doesn't say how a company or app fits. Ask Zerodha in writing before relying on
+it. Other options: become an Authorised Person, use another broker with a revenue share, or a
+small paid plan. Kite Connect (the API) is separate and pays nothing. A future e-commerce idea
+is parked.
 
 ## Risks to keep in view
 
