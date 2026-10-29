@@ -242,6 +242,15 @@ textarea.input{padding:12px 14px;min-height:90px;resize:none;line-height:1.45}
 .who-pick{display:flex;flex-wrap:wrap;gap:8px}
 
 /* dms */
+.gg{border-radius:22px;padding:16px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.gg .who{display:flex;align-items:center;gap:10px}
+.ggmark{width:40px;height:40px;border-radius:12px;background:var(--accent-wash);color:var(--accent);display:grid;place-items:center;flex:none}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg .src{display:block;margin-top:6px;font-size:12px;color:var(--muted);font-weight:700}
+.prow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--hair)}
+.prow .btn{min-width:64px}
+.clock{font-family:var(--mono);font-weight:700}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);width:0}
 .msg{max-width:80%;padding:10px 12px;border-radius:16px;font-size:15px;line-height:1.45}
 .msg.them{background:var(--surface);border:1px solid var(--line);align-self:flex-start}
 .msg.me{background:var(--accent);color:var(--accent-ink);align-self:flex-end;font-weight:600}
@@ -335,7 +344,7 @@ const state = {
   reminders:{on:false, every:'15 scrolls'}, scrolled:0, nudgeShown:false, snoozeUntil:0,
   liked:new Set(), approved:[], filter:'All', zerodha:false,
   posts:[], ratings:{}, reviews:{}, news:{q:'', loading:false, results:null},
-  moneyTab:'Stocks', profileTab:'Flexes',
+  moneyTab:'Stocks', profileTab:'Flexes', ggPlus:false,
   hissab:null,
 };
 
@@ -540,6 +549,9 @@ render.money = () => {
         <div class="from"><span>About to buy</span><span class="strike">Sneakers · ₹6,499</span></div>
         <h2 style="color:inherit">Put ₹6,499 into your future instead?</h2>
         <button class="btn" data-act="swap">Invest ₹6,499</button></div>
+      <div class="gg"><div class="who"><span class="ggmark">${ico('bolt',22)}</span><span><h3>Practise with GoodGuy</h3><p class="small muted">Pretend ₹1 lakh. Yesterday's market, replayed.</p></span></div>
+        <p class="small soft" style="line-height:1.5">Trade without risking a rupee. GoodGuy watches how you trade and coaches your habits.</p>
+        <button class="btn ghost sm" data-act="practice">Open practice account</button></div>
       ${holdings}
       <div class="seg" role="tablist">${['Stocks','Mutual funds','FDs'].map(x=>`<button role="tab" data-act="mtab" data-t="${x}" aria-selected="${t===x}">${x}</button>`).join('')}</div>
       <div>${list}</div>
@@ -555,6 +567,7 @@ function stockSheet(sym, presetPaise){
     const c = calc();
     sheet(`<div class="spread"><div><h2>${esc(s.name)}</h2><p class="small muted mono">${s.sym} · NSE</p></div><div style="text-align:right"><div class="num" style="font-weight:800;font-size:18px">${inr(s.price)}</div><div class="small num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}% today</div></div></div>
       <svg viewBox="0 0 300 80" width="100%" height="80" aria-hidden="true"><path d="M0 60 C40 55 60 66 90 50 S150 30 180 38 S240 20 300 14" fill="none" stroke="var(--accent)" stroke-width="3"/></svg>
+      <button class="btn ghost sm block" data-act="gg-ask" data-sym="${s.sym}">${ico('bolt',18)} Ask GoodGuy why it moved</button>
       <div class="field"><label>How much do you want to invest?</label><div class="amounts" style="grid-template-columns:repeat(4,minmax(0,1fr))">${amounts.map(a=>`<button class="amt" data-act="amt" data-a="${a}" aria-pressed="${a===amt}">${inr(a)}</button>`).join('')}</div></div>
       <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
         <div class="spread"><span class="soft">Shares you get</span><span class="num" style="font-weight:800">${c.qty}</span></div>
@@ -750,6 +763,16 @@ document.addEventListener('click', e => {
     case 'star': { const src = b.dataset.src, v = +b.dataset.v; rateState.stars = v; drawRate(src); break; }
     case 'rate-save': { state.ratings[b.dataset.src] = {stars:rateState.stars, review:$('#rv').value.trim()}; closeLayer(); render.news(); toast('Thanks. Your rating is public and counts now.'); break; }
     case 'mtab': state.moneyTab = b.dataset.t; render.money(); break;
+    case 'gg-ask': needPlus(() => openGoodGuy(b.dataset.sym)); break;
+    case 'gg-q': ggAnswer(b.dataset.q); break;
+    case 'practice': needPlus(openPractice); break;
+    case 'plus-start': state.ggPlus = true; { const next = plusNext; plusNext = null; closeLayer(); toast('GoodGuy trial started (preview, nothing charged)'); next && next(); } break;
+    case 'pr-mode': PR.mode = b.dataset.m; prReset(); drawPractice(); break;
+    case 'pr-play': prToggle(); break;
+    case 'pr-buy': prBuy(b.dataset.sym); break;
+    case 'pr-sell': prSell(b.dataset.sym); break;
+    case 'pr-stop': prStop(b.dataset.sym); break;
+    case 'pr-again': prReset(); drawPractice(); break;
     case 'stock': stockSheet(b.dataset.sym); break;
     case 'amt': stockSheetState.set(+b.dataset.a); break;
     case 'connect': sheet(`<h2>Connect Zerodha</h2><p class="soft" style="line-height:1.55">You'll log in on Kite, Zerodha's own page. We never see your password. Zerodha asks you to log in again each morning; that's their safety rule, not ours.</p>
@@ -865,6 +888,142 @@ function friendSheet(k){
   sheet(`<div class="row">${av(k)}<span><h2>${esc(H.friends[k])}</h2><p class="small muted mono">${esc(people[k].id)}</p></span></div>
     <p class="soft" style="font-size:16px">${v === 0 ? 'You\'re all settled up.' : v > 0 ? `${esc(H.friends[k].split(' ')[0])} owes you <b class="num up">${inr(v)}</b>` : `You owe ${esc(H.friends[k].split(' ')[0])} <b class="num down">${inr(-v)}</b>`}</p>
     ${v !== 0 ? `<button class="btn block" data-act="settle" data-k="${k}">Mark as settled</button><p class="note">Paid outside the app? Mark it settled. UPI settle-up inside GoodHabits comes later.</p>` : ''}`, H.friends[k]);
+}
+
+/* ---------- GOODGUY ---------- */
+let plusNext = null;
+function needPlus(fn){
+  if (state.ggPlus) return fn();
+  plusNext = fn;
+  sheet(`<div class="who row"><span class="ggmark">${ico('bolt',22)}</span><h2>GoodGuy</h2></div>
+    <p class="soft" style="line-height:1.55">An AI teacher on every company page and in your practice account.</p>
+    <div class="stack" style="gap:8px">${['Why a stock moved, in plain words, with every source linked','A practice account: yesterday\'s market replayed, plus classic days like the 2020 crash','Coaching on how you trade: position size, stop-losses, panic selling','An end-of-day review with one habit for tomorrow'].map(t=>`<div class="row" style="align-items:flex-start;gap:10px"><span style="color:var(--up)">${ico('check',18,3)}</span><span class="small">${t}</span></div>`).join('')}</div>
+    <div class="spread card" style="padding:12px 14px"><span><b>GoodGuy</b><span class="small muted" style="display:block">7 days free, cancel anytime</span></span><span class="num" style="font-weight:800;font-size:18px">₹500<span class="small muted">/month</span></span></div>
+    <button class="btn block" data-act="plus-start">Start 7-day free trial</button>
+    <p class="note">Education only. GoodGuy never tells you what to buy or sell in your real account, and never predicts prices. Preview: nothing is charged.</p>`, 'GoodGuy');
+}
+const GG_WHY = {
+  NIFTYBEES:['The Nifty 50 rose 0.4% today, so this ETF did too: it simply holds those 50 companies.','Banks and IT led the gains after better-than-expected quarterly results from two large IT firms.'],
+  HDFCBANK:['HDFC Bank slipped 0.3% after its quarterly results showed loan growth slower than last quarter.','Deposit growth was strong, which is why the fall stayed small.'],
+  ITC:['ITC rose 0.9% after its results showed cigarette volumes holding steady and hotel revenue growing.','The FMCG business grew slower than last year, which some reports flagged.'],
+  INFY:['Infosys rose 1.1% after it raised its revenue forecast for the year in its quarterly results.','Large deal wins were the other reason reports gave.'],
+  GOLDBEES:['Gold ETFs rose 0.15% as global gold prices edged up overnight.','A weaker dollar usually makes gold a little dearer in rupees.'],
+};
+let ggSym = null;
+function openGoodGuy(sym){
+  ggSym = sym; const s = STOCKS.find(x => x.sym === sym), w = GG_WHY[sym];
+  full(header('GoodGuy') + `<div class="body"><div class="pad"><div class="row small" style="gap:8px"><span class="tick" style="width:36px;height:36px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-weight:800">${s.short}</span><b>${esc(s.name)}</b><span class="num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}% today</span></div>
+    <div class="chat" id="ggchat"><div class="msg them"><b>Why it moved</b><br>${esc(w[0])} ${esc(w[1])}<span class="src">Sources: NSE filing · Mint · Reuters</span></div></div>
+    <div class="row" style="flex-wrap:wrap;gap:8px">${['What is a quarterly result?','Should I buy it?','Will it go up tomorrow?','Practise trading it'].map(q=>`<button class="chip" data-act="gg-q" data-q="${q}">${q}</button>`).join('')}</div>
+    <p class="disclaimer">Sample explanation for the preview. In the app every line links to its source. GoodGuy explains what already happened; it doesn't predict prices or tell you what to buy. Not investment advice.</p></div></div>`, 'GoodGuy');
+}
+function ggAnswer(q){
+  const c = $('#ggchat'); if (!c) return;
+  const A = {
+    'What is a quarterly result?':'Every three months, listed companies publish how much they sold, spent and earned. Prices often jump or drop that day because people compare the numbers with what they expected, not with last year.',
+    'Should I buy it?':'I won\'t tell you that, for your real money or anyone\'s. What I can do is show you how people judge a stock: what it earns, how much debt it has, and how much of your money you\'d be putting in one place. Want that lesson?',
+    'Will it go up tomorrow?':'Nobody knows, and anyone who says they do is guessing or selling something. I only explain what already happened. Try it in your practice account instead: you\'ll learn more from yesterday\'s market than from a prediction.',
+  };
+  if (q === 'Practise trading it') { openPractice(); return; }
+  c.insertAdjacentHTML('beforeend', `<div class="msg me">${esc(q)}</div><div class="msg them">${esc(A[q])}</div>`);
+  c.lastElementChild.scrollIntoView({block:'nearest'});
+}
+
+/* practice account: yesterday replayed (75 five-minute bars, 9:15 to 3:30), or a classic day */
+const PR = {mode:'yesterday'};
+function seeded(n){ let x = n; return () => { x = (x * 9301 + 49297) % 233280; return x / 233280 - .5; }; }
+function pathFor(open, shape, seed){ const rnd = seeded(seed), out = []; for (let t = 0; t <= 75; t++) out.push(Math.round(open * (1 + shape(t / 75) + rnd() * 0.002))); return out; }
+const PR_SETS = {
+  yesterday:{label:"Yesterday's market", note:"Replays yesterday's full session, sped up. In this preview the prices are samples.", stocks:[
+    {sym:'NIFTYBEES', short:'N50', name:'Nifty 50 ETF', path:pathFor(28030, f => .004 * f, 3)},
+    {sym:'ITC', short:'ITC', name:'ITC', path:pathFor(45930, f => .009 * Math.sin(f * 2.4), 5)},
+    {sym:'INFY', short:'INFY', name:'Infosys', path:pathFor(157160, f => f < .35 ? -.07 * f : -.0245 + .035 * (f - .35), 11)},
+  ]},
+  classic:{label:'Classic: 2020 crash day', note:'A replay shaped like a crash day in March 2020 (sample prices). Old data, so GoodGuy can walk you through it step by step.', stocks:[
+    {sym:'NIFTYBEES', short:'N50', name:'Nifty 50 ETF', path:pathFor(9120, f => -.08 - .05 * f, 7)},
+    {sym:'GOLDBEES', short:'GOLD', name:'Gold ETF', path:pathFor(3900, f => .012 * f, 9)},
+    {sym:'HDFCBANK', short:'HDFC', name:'HDFC Bank', path:pathFor(88000, f => -.09 - .04 * f, 13)},
+  ]},
+};
+const CLASSIC_SCRIPT = {0:'Prices opened far down. Rule one on a day like this: don\'t sell everything in the first hour. Big falls make big swings.', 12:'Notice gold is up while shares fall. That\'s why people keep a small part of their money in gold.', 30:'Try this: buy ₹10,000 of the Nifty ETF now, then again later. Buying in parts on a falling day means you don\'t need to guess the bottom.', 60:'Almost at close. Whatever you did today, look at how much of your ₹1 lakh you still have in cash. Keeping some is what lets you buy on days like this.'};
+function prReset(){
+  stopTimers();
+  const set = PR_SETS[PR.mode];
+  Object.assign(PR, {t:0, playing:false, cash:10000000, hold:{}, avg:{}, stop:{}, trades:0, coached:new Set(), events:[], set});
+}
+function prPrice(sym){ return PR.set.stocks.find(x => x.sym === sym).path[PR.t]; }
+function prValue(){ return PR.cash + Object.entries(PR.hold).reduce((a,[k,q]) => a + q * prPrice(k), 0); }
+function prClock(){ const m = 9 * 60 + 15 + PR.t * 5; return `${Math.floor(m / 60) > 12 ? Math.floor(m / 60) - 12 : Math.floor(m / 60)}:${String(m % 60).padStart(2,'0')} ${m >= 720 ? 'pm' : 'am'}`; }
+function coach(key, text){ if (key && PR.coached.has(key)) return; key && PR.coached.add(key); const c = $('#prchat'); if (!c) return; const html = `<div class="msg them" style="max-width:100%"><b>GoodGuy</b> · <span class="clock small">${prClock()}</span><br>${text}</div>`;
+  // newest note stays pinned above the stocks so the trade buttons never scroll away
+  $('#pr-latest').innerHTML = html; c.insertAdjacentHTML('afterbegin', html); $('#pr-count').textContent = c.children.length; }
+function openPractice(){ prReset(); drawPractice(); }
+function drawPractice(){
+  const set = PR.set;
+  full(header('Practice account', `<span class="badge">Pretend money</span>`) + `<div class="body"><div class="pad">
+    <div class="seg" role="tablist">${[['yesterday','Yesterday'],['classic','Classic day']].map(([m,l])=>`<button role="tab" data-act="pr-mode" data-m="${m}" aria-selected="${PR.mode===m}">${l}</button>`).join('')}</div>
+    <p class="small muted">${set.note}</p>
+    <div class="statgrid"><div class="stat"><div class="small muted">Account value</div><div class="v num" id="pr-val" style="font-size:18px"></div></div><div class="stat"><div class="small muted">Cash</div><div class="v num" id="pr-cash" style="font-size:18px"></div></div></div>
+    <div class="spread"><span class="clock" id="pr-clock"></span><button class="btn sm" data-act="pr-play" id="pr-play">${ico('play',14)} Start the day</button></div>
+    <div class="bar" aria-hidden="true"><i id="pr-bar"></i></div>
+    <div id="pr-latest" class="chat" aria-live="polite"></div>
+    <div id="pr-rows"></div>
+    <h3>GoodGuy's notes (<span id="pr-count">0</span>)</h3>
+    <div class="chat" id="prchat"></div>
+    <p class="disclaimer">Practice only: pretend money, no prizes, prices at least a day old. Coaching is about your habits, not what to buy in your real account. Not investment advice.</p>
+  </div></div>`, 'Practice account');
+  prDraw();
+  coach('hello', PR.mode === 'classic' ? 'This is an old crash day. I\'ll walk you through it as it happens. ' + CLASSIC_SCRIPT[0] : 'You have ₹1 lakh of pretend money. Trade the way you really would; I\'ll point out habits as I see them.');
+}
+function prDraw(){
+  if (!$('#pr-rows')) return;
+  $('#pr-val').textContent = inr(prValue()); $('#pr-cash').textContent = inr(PR.cash);
+  $('#pr-clock').textContent = PR.t >= 75 ? 'Market closed' : prClock();
+  $('#pr-bar').style.width = (PR.t / 75 * 100) + '%';
+  $('#pr-rows').innerHTML = PR.set.stocks.map(s => { const p = s.path[PR.t], chg = (p / s.path[0] - 1) * 100, q = PR.hold[s.sym] || 0, done = PR.t >= 75;
+    return `<div class="prow"><span class="tick" style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none">${s.short}</span>
+      <span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(s.name)}</span><span class="small num ${chg>=0?'up':'down'}">${inr(p)} · ${chg>=0?'+':''}${chg.toFixed(2)}%</span>${q?`<span class="small muted" style="display:block">You own ${q}${PR.stop[s.sym]?` · stop at ${inr(PR.stop[s.sym])}`:''}</span>`:''}</span>
+      <button class="btn sm" data-act="pr-buy" data-sym="${s.sym}" ${done?'disabled':''} aria-label="Buy ₹10,000 of ${esc(s.name)}">+₹10k</button>
+      ${q ? `<button class="btn ghost sm" data-act="pr-sell" data-sym="${s.sym}" ${done?'disabled':''} aria-label="Sell all ${esc(s.name)}">Sell</button>` : ''}</div>`; }).join('');
+  const pb = $('#pr-play'); if (pb) { pb.innerHTML = PR.t >= 75 ? 'Try again' : PR.playing ? 'Pause' : `${ico('play',14)} ${PR.t ? 'Resume' : 'Start the day'}`; pb.dataset.act = PR.t >= 75 ? 'pr-again' : 'pr-play'; }
+}
+function prToggle(){
+  if (PR.playing) { PR.playing = false; stopTimers(); prDraw(); return; }
+  PR.playing = true; prDraw();
+  timers.push(setInterval(prTick, 650));
+}
+function prTick(){
+  if (!$('#pr-rows')) { stopTimers(); return; }
+  PR.t++;
+  for (const [k, stop] of Object.entries(PR.stop)) if (PR.hold[k] && prPrice(k) <= stop) { const q = PR.hold[k]; prSell(k, true); coach(null, `Your stop-loss sold ${q} ${esc(k)} at ${inr(prPrice(k))}. That's the stop doing its job: a small, planned loss instead of a big surprise.`); }
+  if (PR.mode === 'classic' && CLASSIC_SCRIPT[PR.t]) coach('c' + PR.t, CLASSIC_SCRIPT[PR.t]);
+  for (const e of PR.events) { const now = prPrice(e.sym); if (!e.told && PR.t - e.t >= 10 && now > e.price * 1.005) { e.told = true; coach(null, `Remember selling ${esc(PR.set.stocks.find(x => x.sym === e.sym).name)} at ${inr(e.price)} after a dip? It's ${inr(now)} now. Short dips are normal; selling in fear locks the loss in.`); } }
+  if (PR.t >= 75) { PR.playing = false; stopTimers(); prDraw(); prReview(); return; }
+  prDraw();
+}
+function prBuy(sym){
+  const p = prPrice(sym), q = Math.floor(Math.min(1000000, PR.cash) / p);
+  if (!q) { coach('nocash', 'You\'re out of cash. On a real account that means you can\'t act when a chance comes. Keeping some cash is a habit too.'); return; }
+  const old = PR.hold[sym] || 0; PR.avg[sym] = Math.round(((PR.avg[sym] || 0) * old + p * q) / (old + q));
+  PR.hold[sym] = old + q; PR.cash -= q * p; PR.trades++;
+  const s = PR.set.stocks.find(x => x.sym === sym), dayUp = p / s.path[0] - 1;
+  prDraw();
+  if (PR.hold[sym] * p / prValue() > .5) coach('conc' + sym, `More than half your account is now in ${esc(s.name)}. If it falls 10%, your whole account falls 5%. Most careful investors keep any one stock well under a quarter.`);
+  else if (!PR.stop[sym]) coach('stop' + sym, `You bought ${q} ${esc(s.name)} with no stop-loss. A stop-loss sells automatically if the price falls to a level you pick. <button class="btn ghost sm" style="margin-top:8px" data-act="pr-stop" data-sym="${sym}">Set one 3% below</button>`);
+  if (dayUp > .015 && PR.mode === 'yesterday') coach('chase' + sym, `${esc(s.name)} is already up ${(dayUp*100).toFixed(1)}% today. Buying after a big run-up is called chasing. Ask yourself: would I buy this at yesterday's price?`);
+  if (PR.trades === 8) coach('many', 'Eight trades already. Every real trade has charges and taxes, and more trades usually means more mistakes. Investing is mostly waiting.');
+}
+function prSell(sym, auto){
+  const q = PR.hold[sym]; if (!q) return; const p = prPrice(sym), s = PR.set.stocks.find(x => x.sym === sym);
+  PR.cash += q * p; delete PR.hold[sym]; delete PR.stop[sym]; PR.trades++;
+  const recentHigh = Math.max(...s.path.slice(Math.max(0, PR.t - 6), PR.t + 1));
+  if (!auto && p < PR.avg[sym] * .99 && p < recentHigh) { PR.events.push({sym, price:p, t:PR.t}); coach('panic' + sym, `You sold ${esc(s.name)} right after a quick drop, at a loss. That's a panic sell. Before selling, ask: has anything changed about the company, or just the price?`); }
+  delete PR.avg[sym]; prDraw();
+}
+function prStop(sym){ if (!PR.hold[sym]) return; PR.stop[sym] = Math.round(prPrice(sym) * .97); prDraw(); coach(null, `Stop-loss set at ${inr(PR.stop[sym])}. Now a bad hour can't turn into a bad month.`); }
+function prReview(){
+  const v = prValue(), pl = v - 10000000, habit = PR.coached.has('panicINFY') || [...PR.coached].some(k => k.startsWith('panic')) ? 'Tomorrow, wait 15 minutes before selling anything that just dropped.' : [...PR.coached].some(k => k.startsWith('conc')) ? 'Tomorrow, keep any one stock under a quarter of your account.' : PR.trades === 0 ? 'Tomorrow, try one small trade with a stop-loss, just to feel how it works.' : 'Tomorrow, set a stop-loss the moment you buy.';
+  coach(null, `<b>End of day review</b><br>You made ${PR.trades} trade${PR.trades===1?'':'s'} and ended ${pl>=0?'up':'down'} <b class="num ${pl>=0?'up':'down'}">${inr(Math.abs(pl))}</b> on pretend money.<br><br>${PR.coached.size > 1 ? 'Habits I noticed are in the notes above.' : 'No bad habits spotted today.'}<br><b>One habit for tomorrow:</b> ${habit}`);
 }
 
 /* ---------- stage controls ---------- */
