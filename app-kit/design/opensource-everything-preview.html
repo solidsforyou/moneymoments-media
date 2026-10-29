@@ -291,6 +291,13 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .openbtn,.pinbtn{min-height:40px;padding:0 14px;border-radius:999px;font-weight:700;font-size:14px;border:1px solid var(--steel);background:#fff;color:#111}
 .openbtn{background:#111;color:#fff;border-color:#111}
 .pinbtn[aria-pressed="true"]{background:#E8F5EC;border-color:#0B7A3B;color:#0B7A3B}
+.phonelib{background:linear-gradient(160deg,#2B2F3A,#14161C);border-radius:26px;padding:16px 14px 18px;margin:4px 0 2px}
+.pl-h{display:block;color:#fff;font-weight:700;font-size:13px;opacity:.8;margin-bottom:10px}
+.pl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px}
+.pl-app{display:flex;flex-direction:column;align-items:center;gap:5px}
+.pl-app b{color:#fff;font-size:11.5px;font-weight:600;text-align:center;line-height:1.2}
+.pl-app.ghost{opacity:.45}
+.pl-app .art{display:grid;place-items:center;overflow:hidden}
 .listing-acts{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:12px}
 .land-hero .pinbtn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
 .land-hero .pinbtn[aria-pressed="true"]{background:#fff;color:#0B7A3B;border-color:#fff}
@@ -644,7 +651,7 @@ function vHome(){
   <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,7vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1">Free, open apps<br>for learning and money.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch">One account for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
   <section class="plain"><div class="sect-h"><h2>My apps</h2><span>${S.pins.length ? 'tap to open' : 'nothing pinned yet'}</span></div>${myApps()}
     <div class="forrow" role="group" aria-label="Open straight into" style="margin-top:14px"><b>Open straight into</b>${startOpts.map(([k,l]) => `<button data-act="startapp" data-k="${k}" aria-pressed="${(S.start||'')===k}">${l}</button>`).join('')}</div>
-    <p class="hint" style="margin-top:6px">Next time you open OpenSource Everything, it goes straight to this.</p></section>
+    <p class="hint" style="margin-top:6px">Next time you open OpenSource Everything, it goes straight to this.</p>${S.pins.length ? '<button class="openbtn" data-act="pwaapp" data-k="pins" style="margin-top:12px">Add my apps to my phone</button><p class="hint" style="margin-top:6px">Each one gets its own icon in your phone\'s app library.</p>' : ''}</section>
   <section class="plain"><div class="sect-h"><h2>All apps</h2><span>everything we make, in one place</span></div>
     <div class="applist">${APPS.map(a => `<div class="approw"><button class="appmeta" ${a.soon ? 'data-act="locked" data-why="AccountingUnlocked"' : `data-act="nav" data-r="${a.page}"`}>${appArt(a,56)}<span style="flex:1;min-width:0"><b>${a.n}${a.soon ? '<span class="soon">Soon</span>' : ''}</b><span>${a.d}</span></span></button>${a.soon ? '' : `<span class="appbtns"><button class="openbtn" data-act="nav" data-r="${a.open}">Open</button>${pinBtn(a)}</span>`}</div>`).join('')}</div></section>
   ${siteFoot()}
@@ -864,7 +871,7 @@ function vCat(){
     <div class="land-art">${goodguy('happy','#3FA9FF')}</div>
     <div class="wrap inner"><div class="tagrow"><span>CAT 2027</span><span>Free</span><span>No ads</span></div>
       <h1>Free CAT prep. No ads.</h1><p class="lede">${PLANS.free.short} Pay only if you want all the video, more mocks or the AI mentor.</p>
-      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="nav" data-r="prep">Open OpenPrep</button></div><div class="listing-acts">${pinBtn(appOf('prep'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="prep">Put OpenPrep on my home screen</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
+      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="nav" data-r="prep">Open OpenPrep</button></div><div class="listing-acts">${pinBtn(appOf('prep'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="prep">Add OpenPrep to my phone</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
   <main class="wrap">
     <section class="sect"><div class="sect-h"><h2>Free, forever</h2><span>the part that costs us almost nothing</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
@@ -898,7 +905,7 @@ function vHabitAbout(){
       <div style="display:flex;justify-content:space-between;padding:6px 0"><span>Invested (practice)</span><span style="color:#FFB21A">1,806</span></div></div>
     <div class="wrap inner"><div class="tagrow"><span>Beta</span><span>Money game free with your account</span><span>No bank link needed</span></div>
       <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, share reels that teach, and play the investing game that builds the habit before you risk a rupee.</p>
-      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#17181A" data-act="nav" data-r="practice">Open GoodHabit</button></div><div class="listing-acts">${pinBtn(appOf('habit'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="habit">Put GoodHabit on my home screen</button></div></div></section>
+      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#17181A" data-act="nav" data-r="practice">Open GoodHabit</button></div><div class="listing-acts">${pinBtn(appOf('habit'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="habit">Add GoodHabit to my phone</button></div></div></section>
   <main class="wrap">
     <section class="sect"><div class="sect-h"><h2>What's inside</h2><span>a finance app, made friendly</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
@@ -1239,7 +1246,13 @@ document.addEventListener('click', e => {
     case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:#5B6270">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="home" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
     case 'pinapp': { const k = b.dataset.k; S.pins = S.pins.includes(k) ? S.pins.filter(x => x !== k) : [...S.pins, k]; try { localStorage.setItem('ose-pins', JSON.stringify(S.pins)); } catch (e) {} toast(S.pins.includes(k) ? `${appOf(k).n} added to My apps` : `${appOf(k).n} removed from My apps`); render(); break; }
     case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on All apps'); render(); break;
-    case 'pwaapp': { const a = appOf(b.dataset.k); sheet(`<h2>Put ${a.n} on your home screen</h2><p>It installs as its own app called ${a.n}, with its own icon, and opens straight into ${a.n}. OpenPrep and GoodHabit can sit side by side on your phone like two separate apps. Same account in both.</p><p><b>Android (Chrome):</b> open ${a.n}, then ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> open ${a.n}, then Share → Add to Home Screen.</p>`); break; }
+    case 'pwaapp': { const ks = b.dataset.k === 'pins' ? (S.pins.length ? S.pins : ['prep','habit']) : [b.dataset.k], list = ks.map(appOf).filter(a => a && !a.soon), one = list.length === 1 ? list[0] : null;
+      const phone = ['prep','habit','skills'].map(appOf).filter(a => !ks.includes(a.k) && S.pins.includes(a.k)).concat(list);
+      sheet(`<h2>${one ? `Add ${one.n} to your phone` : 'Add your apps to your phone'}</h2><p style="color:#5B6270">${one ? `${one.n} gets its own icon in your phone's app library and opens straight into ${one.n}.` : 'Each one gets its own icon in your phone\'s app library, like separate apps.'} Same account in all of them. No app store, no big download.</p>
+      <div class="phonelib" aria-label="Your phone's app library, preview"><span class="pl-h">App library</span><div class="pl-grid">${phone.map(a => `<span class="pl-app">${appArt(a,52)}<b>${a.n}</b></span>`).join('')}<span class="pl-app ghost"><span class="art" style="width:52px;height:52px;border-radius:15px;background:#D9DCE3"></span><b>Camera</b></span><span class="pl-app ghost"><span class="art" style="width:52px;height:52px;border-radius:15px;background:#D9DCE3"></span><b>Photos</b></span></div></div>
+      <button class="p-btn blue" data-act="installnow" data-k="${ks.join(',')}">${one ? `Install ${one.n}` : 'Install all'} · Android, one tap</button>
+      <p style="font-size:13.5px;color:#5B6270"><b>iPhone:</b> open ${one ? one.n : 'each app'} in Safari, tap Share, then Add to Home Screen. It shows up in your App Library too.</p>`); break; }
+    case 'installnow': toast(`Installed ${b.dataset.k.split(',').map(k => appOf(k).n).join(' and ')} (preview). Look for ${b.dataset.k.includes(',') ? 'them' : 'it'} in your app library.`); closeSheet(); break;
     case 'pwa': sheet(`<h2>Put it on your home screen</h2><p>It opens full-screen like an app. No app store, no download, no ads.</p><p><b>Android (Chrome):</b> ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> Share → Add to Home Screen.</p>`); break;
     /* OpenPrep */
     case 'plans': sheet(`<h2>What's free, what's paid</h2><p style="color:#5B6270">Learning stays free. You pay only for what costs us money to run.</p>
