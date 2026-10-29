@@ -322,7 +322,57 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .kvs b{font-size:16px;font-variant-numeric:tabular-nums}
 .simchart svg{width:100%;height:130px}
 .simfoot{color:var(--g-mute);font-size:12.5px;line-height:1.5}
-body.home #app{padding-bottom:84px}
+body.home #app{padding-bottom:70px}
+body.home{background:#fff}
+.igbtn{position:relative;flex:none;width:44px;height:44px;border:0;background:none;color:#111;display:grid;place-items:center}
+.igbtn .dot{position:absolute;top:9px;right:8px;width:8px;height:8px;border-radius:50%;background:#FF3040}
+.igbar{background:#fff}
+.igbar .in{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.igbar button{min-height:48px;color:#111;background:none!important}
+.igbar button svg{width:26px;height:26px}
+.igbar button[aria-current="page"] svg{stroke-width:2.8}
+.meav{width:28px;height:28px;border-radius:50%;background:#2448FF;color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+.igbar button[aria-current="page"] .meav{box-shadow:0 0 0 2px #fff,0 0 0 4px #111}
+.ring{background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5)}
+.ring.mine{background:none;position:relative}
+.ring.mine>span{background:#E8EAF0;border-color:#fff;color:#111}
+.ring.mine i{position:absolute;right:0;bottom:0;width:22px;height:22px;border-radius:50%;background:#0095F6;color:#fff;border:2px solid #fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:15px}
+.ring.chal>span{background:#FFF6DB}
+.stb small{color:#111;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stories{border-bottom:1px solid #EFEFEF;padding-bottom:10px}
+.minring{padding:2px;border-radius:50%;background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);display:inline-grid}
+.minring>.av{border:2px solid #fff}
+.minring.done{background:#DBDBDB}
+.post{border:0!important;border-radius:0!important;background:#fff}
+.post header{padding:8px 12px}
+.phead b{font-size:14px}
+.media.short{aspect-ratio:1/1}
+.pacts{padding:4px 6px 0}
+.pacts button{color:#111}
+.pacts button.liked{color:#FF3040}
+.likes{padding:0 14px;font-size:14px;color:#111}
+.cap{padding:2px 14px 2px}
+.morec{border:0;background:none;color:#737373;font-size:14px;padding:2px 14px;min-height:32px;text-align:left}
+.ago{padding:0 14px 14px;color:#737373;font-size:12px}
+.openin{margin:2px 14px 6px}
+.ftabnote{padding:8px 16px;font-size:14px;color:#111}
+.sv{position:fixed;inset:0;z-index:90;color:#fff;display:flex;flex-direction:column}
+.svbars{display:flex;gap:4px;padding:10px 10px 0}
+.svbars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+.svbars i.full{background:#fff}
+.svbars i.run::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:svrun 5s linear forwards}
+@keyframes svrun{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.svbars i.run::after{animation:none;transform:scaleX(1)}}
+.svhead{display:flex;align-items:center;gap:8px;padding:10px 12px;position:relative;z-index:2}
+.svhead span:not(.av){opacity:.8;font-size:13px}
+.svhead button{margin-left:auto;border:0;background:none;color:#fff;font-size:22px;min-width:44px;min-height:44px}
+.svprev,.svnext{position:absolute;top:70px;bottom:80px;width:35%;border:0;background:transparent;z-index:1}
+.svprev{left:0}.svnext{right:0;width:65%}
+.svtext{margin:auto 24px;font-family:var(--hudf);font-size:clamp(26px,7vw,38px);line-height:1.15;letter-spacing:-.02em;text-align:center;position:relative}
+.svreply{display:flex;gap:8px;padding:12px;position:relative;z-index:2}
+.svreply input{flex:1;min-height:46px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);background:transparent;color:#fff;padding:0 16px;font:inherit}
+.svreply input::placeholder{color:rgba(255,255,255,.8)}
+.svreply button{border:0;background:none;color:#fff;min-width:44px}
 .welcome{margin:0 12px;background:#fff;border:1px solid var(--steel);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;color:#111}
 .welcome>b{font-family:var(--hudf);font-size:22px;letter-spacing:-.02em}
 .welcome p{color:#4A5060;font-size:15px;line-height:1.45}
@@ -656,14 +706,14 @@ function bar(world){
       <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span>GoodHabit${world==='money'?' · practice':''}</span></button>${appsBtn()}</div></header>`;
   }
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span></button>
-    <button class="chipbtn" data-act="newpost" aria-label="New post" style="font-size:20px;min-width:44px">＋</button>${signedChip()}</div></header>`;
+    <button class="logo" data-act="${world === 'home' ? 'feedmenu' : 'nav'}" data-r="home" aria-label="${world === 'home' ? 'OpenSource Everything, choose what to show' : 'OpenSource Everything home'}"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span>${world === 'home' ? '<span aria-hidden="true" style="font-size:12px;margin-left:2px">▾</span>' : ''}</button>
+    <button class="igbtn" data-act="activity" aria-label="Activity">${igIcon('heart')}<i class="dot"></i></button><button class="igbtn" data-act="nav" data-r="chats" aria-label="Messages">${igIcon('msg')}<i class="dot"></i></button></div></header>`;
 }
 function icon(n){ const P = {home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
-  if (OSE.includes(world)) { if (world === 'chats' && S.chatWith) return ''; const cur = ['home','challenges','apps','chats','profile'].includes(world) ? world : 'apps';
-    const o = [['home','home','Home'],['challenges','trophy','Challenges'],['apps','grid','Apps'],['chats','chat','Messages'],['profile','user','Profile']];
-    return `<nav class="tabbar" aria-label="OpenSource Everything"><div class="in">${o.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''}>${icon(i)}${l}</button>`).join('')}</div></nav>`; }
+  if (OSE.includes(world)) { if (world === 'chats' && S.chatWith) return ''; const cur = ['home','challenges','apps','profile'].includes(world) ? world : world === 'chats' ? '' : 'apps';
+    const o = [['home','home','Home'],['challenges','trophy','Challenges'],['+','plus','New post'],['apps','grid','Apps'],['profile','user','Profile']];
+    return `<nav class="tabbar igbar" aria-label="OpenSource Everything"><div class="in">${o.map(([r,i,l]) => r === '+' ? `<button data-act="newpost" aria-label="${l}">${igIcon('plus')}</button>` : r === 'profile' ? `<button data-act="nav" data-r="profile" aria-label="${l}" ${r===cur?'aria-current="page"':''}><span class="meav">${S.me ? esc(S.me.name[0].toUpperCase()) : ''}</span></button>` : `<button data-act="nav" data-r="${r}" aria-label="${l}" ${r===cur?'aria-current="page"':''}>${icon(i)}</button>`).join('')}</div></nav>`; }
   if (!HABITW.includes(world) || world === 'money') return '';
   const t = [['practice','target','Play'],['habit','wallet','Hissab'],['markets','chart','Markets']];
   return `<nav class="tabbar" aria-label="GoodHabit"><div class="in" style="grid-template-columns:repeat(3,minmax(0,1fr))">${t.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===(world==='sim'?'practice':world)?'aria-current="page"':''}>${icon(i)}${l}</button>`).join('')}</div></nav>`;
@@ -1224,13 +1274,6 @@ const FEED = [
 const APPAV = {OpenPrep:['#1B4DFF','OP','for CAT aspirants'], GoodHabit:['#17181A','GH','for your money']};
 function who(p){ if (p.by === 'you') return {name:S.me ? S.me.name : 'You', handle:S.me ? S.me.handle : 'you', bg:'#2448FF', ini:(S.me ? S.me.name : 'Y')[0].toUpperCase()}; if (APPAV[p.by]) return {name:p.by, bg:APPAV[p.by][0], ini:APPAV[p.by][1], app:APPAV[p.by][2]}; const P = PEOPLE[p.by]; return {name:P.name, handle:p.by, bg:P.bg, ini:P.name.split(' ').map(w => w[0]).join('').slice(0,2), id:p.by}; }
 function avatar(w, size = 38){ return `<span class="av" style="width:${size}px;height:${size}px;background:${w.bg};font-size:${Math.round(size*.36)}px">${esc(w.ini)}</span>`; }
-function postHtml(p){
-  const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length;
-  return `<article class="post"><header>${w.id ? `<button class="phead" data-act="viewprof" data-k="${w.id}">` : '<span class="phead">'}${avatar(w)}<span style="min-width:0"><b>${esc(w.name)}</b><small>${w.app ? `From the ${esc(w.name)} app · ${w.app}` : '@' + esc(w.handle)}</small></span>${w.id ? '</button>' : '</span>'}<button class="dots" data-act="postmore" data-k="${p.k}" aria-label="More options">⋯</button></header>
-    <div class="media${p.type === 'reel' ? '' : ' short'}" style="background:${p.bg}">${p.type === 'reel' ? '<span class="play" aria-hidden="true">▶</span>' : ''}<h3>${esc(p.h)}</h3>${p.sub ? `<p>${esc(p.sub)}</p>` : ''}</div>
-    <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="Like">${liked ? '♥' : '♡'}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">💬${n ? ' ' + n : ''}</button><button data-act="share" data-k="${p.k}" aria-label="Share">↗</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${saved ? '★' : '☆'}</button></div>
-    <p class="cap"><b>${esc(w.name)}</b> ${esc(p.cap)}</p>${p.open ? `<button class="linkbtn openin" data-act="nav" data-r="${p.open}">${esc(p.openL)} →</button>` : ''}</article>`;
-}
 /* people first; at most one app post in every five */
 function feedList(){
   const tab = S.ftab || 'foryou', I = S.interests, mine = S.posts;
@@ -1247,17 +1290,6 @@ function welcomeCard(){
   return `<div class="welcome"><b>Welcome to OpenSource Everything</b><p>A free, ad-free place to learn, build and grow your money, with your friends. Daily challenges, real people, and apps for exams, money and more.</p>
     <span class="wlbl">I'm into</span><div class="chipsrow">${TOPICS.map(([k, l]) => `<button data-act="interest" data-k="${k}" aria-pressed="${S.interests.includes(k)}">${l}</button>`).join('')}</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">${S.me ? '<button class="gbtn" data-act="findfriends">Find friends from contacts</button><button class="gbtn ghost" data-act="welcomedone">Done</button>' : '<button class="gbtn" data-act="signin">Sign up free</button><button class="gbtn ghost" data-act="findfriends">Find friends from contacts</button>'}</div></div>`;
-}
-function vFeed(){
-  const c = S.ch, tab = S.ftab || 'foryou', shown = Object.entries(CHAL).filter(([k, x]) => !x.topic || S.interests.includes(x.topic));
-  const ring = ([k, x]) => `<button class="stb" data-act="nav" data-r="challenges"><span class="ring ${c.done[k] ? 'done' : ''}" style="--c:${x.col}"><span>${{daily:'?', cat:'CAT', money:'₹', learn:'✦'}[k]}</span></span><small>${{daily:'Daily quiz', cat:'CAT Q', money:'Money quiz', learn:'Learn'}[k]}</small></button>`;
-  const L = feedList();
-  return `<main class="feed">
-    <div class="stories" aria-label="Today's challenges">${shown.map(ring).join('')}${c.streak ? `<button class="stb" data-act="nav" data-r="challenges"><span class="ring streak"><span>🔥${c.streak}</span></span><small>Streak</small></button>` : ''}</div>
-    ${welcomeCard()}
-    <div class="chipsrow ftabs" role="group" aria-label="Feed">${[['foryou','For you'],['following','Following'],...TOPICS.map(([k, l]) => [k, l.split(' ')[0]])].map(([k, l]) => `<button data-act="ftab" data-k="${k}" aria-pressed="${tab === k}">${l}</button>`).join('')}</div>
-    ${L.map(postHtml).join('') || `<p class="muted" style="padding:20px 16px;text-align:center">${tab === 'following' ? 'Follow people to see their posts here. Tap a name anywhere to follow.' : 'Nothing here yet.'}</p>`}
-    <p class="simfoot" style="text-align:center;padding:10px 16px 30px">You're all caught up. Sample people and posts in this preview.</p></main>`;
 }
 function vChallenges(){
   const c = S.ch, lb = S.lb || 'league', now = Date.now(); S.chStart = S.chStart || {};
@@ -1282,6 +1314,55 @@ function vChallenges(){
     ${lb === 'league' ? '<p class="muted" style="font-size:13.5px">30 people at your level, new each week. Small enough that you can actually win.</p>' : ''}${board}
     <p class="simfoot">Ranked by challenge points this week: +10 for a right answer or a finished challenge, +2 for trying. Trading returns never count. Sample names and points until launch.</p></main>`;
 }
+/* Instagram-style home: friends' stories, posts, story viewer */
+const STORIES = {
+  kabir:[{bg:'linear-gradient(160deg,#FFC93C,#FF5A1F)', t:'Mock done. Verbal still hurts 😅', ago:'2h'}, {bg:'linear-gradient(160deg,#1B4DFF,#06115A)', t:'Day 12 of the daily CAT question 🔥', ago:'1h'}],
+  riya:[{bg:'linear-gradient(160deg,#17181A,#3A3D44)', t:'Replaying Jan 2008 in the simulator. Not selling this time.', ago:'3h'}],
+  arjun:[{bg:'linear-gradient(160deg,#F7D7B9,#D99A66)', t:'Interview tomorrow. Wish me luck 🤞', ago:'5h'}],
+  zoya:[{bg:'linear-gradient(160deg,#14B8A6,#0E6B63)', t:'New project going open tonight 👀', ago:'6h'}],
+  sana:[{bg:'linear-gradient(160deg,#B9C3F7,#5B25D9)', t:'Budget month 2: still on track', ago:'8h'}],
+  dev:[{bg:'linear-gradient(160deg,#2D3748,#111827)', t:'Who wants to test my word app?', ago:'9h'}],
+};
+const AGO = {f2:'2h', f7:'4h', f4:'5h', f5:'7h', f1:'8h', f8:'9h', f9:'11h', f3:'12h', f6:'1d'};
+const LIKER = {f2:'riya', f7:'sana', f4:'kabir', f5:'dev', f8:'arjun', f9:'zoya', f1:'kabir', f3:'riya', f6:'zoya'};
+function storyRow(){
+  const seen = S.seen || {}, me = S.me;
+  const mine = `<button class="stb" data-act="mystory"><span class="ring mine"><span>${me ? esc(me.name[0].toUpperCase()) : '+'}</span><i>+</i></span><small>Your story</small></button>`;
+  const chal = `<button class="stb" data-act="nav" data-r="challenges"><span class="ring chal ${Object.values(S.ch.done).filter(Boolean).length >= 2 ? 'done' : ''}"><span>🏆</span></span><small>Today</small></button>`;
+  const fr = Object.keys(STORIES).sort((a, b) => (seen[a] ? 1 : 0) - (seen[b] ? 1 : 0)).map(k => `<button class="stb" data-act="story" data-k="${k}"><span class="ring ${seen[k] ? 'done' : ''}"><span style="background:${PEOPLE[k].bg};color:#fff">${esc(PEOPLE[k].name.split(' ').map(w => w[0]).join('').slice(0,2))}</span></span><small>${esc(k)}</small></button>`).join('');
+  return `<div class="stories" aria-label="Stories">${mine}${chal}${fr}</div>`;
+}
+function igIcon(n, on){ const P = {heart:'<path d="M12 20.5s-7.5-4.6-9.6-9.1C.9 8 3 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.6 0 5.7 3.5 4.2 6.9-2.1 4.5-9.6 9.1-9.6 9.1z"/>', comment:'<path d="M20.5 11.5a8.5 8.5 0 1 1-3.6-6.9 8.5 8.5 0 0 1 3.6 6.9z"/><path d="M20.5 20.5l-2.6-3.3"/>', send:'<path d="M21.5 2.5L10 13.5"/><path d="M21.5 2.5l-7 19-4.5-8-8-4.5z"/>', save:'<path d="M5.5 3h13v18l-6.5-5-6.5 5z"/>', msg:'<path d="M12 2.8c-5.2 0-9.2 3.8-9.2 8.9 0 2.7 1.1 5 3 6.6v3.1l2.9-1.6c1 .3 2.1.4 3.3.4 5.2 0 9.2-3.8 9.2-8.5S17.2 2.8 12 2.8z"/><path d="M6.5 14l3.6-4 2.6 2.4 4.3-3.4-3.6 4-2.6-2.4z"/>', plus:'<rect x="3" y="3" width="18" height="18" rx="5.5"/><path d="M12 7.5v9M7.5 12h9"/>'}; return `<svg viewBox="0 0 24 24" width="26" height="26" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
+function postHtml(p){
+  const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length, lk = LIKER[p.k];
+  return `<article class="post"><header>${w.id ? `<button class="phead" data-act="viewprof" data-k="${w.id}">` : '<span class="phead">'}${w.id && STORIES[w.id] ? `<span class="minring ${S.seen && S.seen[w.id] ? 'done' : ''}">${avatar(w, 32)}</span>` : avatar(w, 32)}<span style="min-width:0"><b>${esc(w.handle || w.name)}</b>${w.app ? `<small>From the ${esc(w.name)} app · ${w.app}</small>` : ''}</span>${w.id ? '</button>' : '</span>'}<button class="dots" data-act="postmore" data-k="${p.k}" aria-label="More options">⋯</button></header>
+    <div class="media${p.type === 'reel' ? '' : ' short'}" style="background:${p.bg}" data-act="dbllike" data-k="${p.k}">${p.type === 'reel' ? '<span class="play" aria-hidden="true">▶</span>' : ''}<h3>${esc(p.h)}</h3>${p.sub ? `<p>${esc(p.sub)}</p>` : ''}</div>
+    <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="Like" class="${liked ? 'liked' : ''}">${igIcon('heart', liked)}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">${igIcon('comment')}</button><button data-act="share" data-k="${p.k}" aria-label="Share">${igIcon('send')}</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${igIcon('save', saved)}</button></div>
+    ${liked ? `<p class="likes">Liked by <b>you</b>${lk ? ` and <b>${lk}</b>` : ''}</p>` : lk ? `<p class="likes">Liked by <b>${lk}</b> and others</p>` : ''}
+    <p class="cap"><b>${esc(w.handle || w.name)}</b> ${esc(p.cap)}</p>${n ? `<button class="morec" data-act="comment" data-k="${p.k}">View all ${n} comment${n > 1 ? 's' : ''}</button>` : ''}${p.open ? `<button class="linkbtn openin" data-act="nav" data-r="${p.open}">${esc(p.openL)} →</button>` : ''}<p class="ago">${p.by === 'you' ? 'Just now' : AGO[p.k] || ''}</p></article>`;
+}
+function vFeed(){
+  const L = feedList(), tab = S.ftab || 'foryou';
+  return `<main class="feed">${storyRow()}${welcomeCard()}${tab !== 'foryou' ? `<div class="ftabnote">Showing: <b>${{following:'Following', exams:'Exams', money:'Money', careers:'Careers', building:'Building'}[tab]}</b> <button class="linkbtn" data-act="ftab" data-k="foryou">Back to For you</button></div>` : ''}
+    ${L.map(postHtml).join('') || `<p class="muted" style="padding:20px 16px;text-align:center">${tab === 'following' ? 'Follow people to see their posts here. Tap a name anywhere to follow.' : 'Nothing here yet.'}</p>`}
+    <p class="simfoot" style="text-align:center;padding:10px 16px 30px">You're all caught up. Sample people and posts in this preview.</p></main>`;
+}
+function storyOpen(k, i = 0){
+  const L = STORIES[k]; if (!L) return; if (i >= L.length) { const ks = Object.keys(STORIES), nx = ks[ks.indexOf(k) + 1]; (S.seen = S.seen || {})[k] = true; if (nx && !S.seen[nx]) return storyOpen(nx, 0); closeSheet(); render(); return; }
+  if (i < 0) i = 0; (S.seen = S.seen || {})[k] = true; S.sv = {k, i};
+  const f = L[i], P = PEOPLE[k];
+  layer.innerHTML = `<div class="sv" role="dialog" aria-label="${esc(P.name)}'s story" style="background:${f.bg}"><div class="svbars">${L.map((_, j) => `<i class="${j < i ? 'full' : j === i ? 'run' : ''}"></i>`).join('')}</div>
+    <div class="svhead"><span class="av" style="width:32px;height:32px;background:${P.bg};font-size:12px">${esc(P.name.split(' ').map(w => w[0]).join('').slice(0,2))}</span><b>${esc(k)}</b><span>${f.ago}</span><button data-act="svclose" aria-label="Close">✕</button></div>
+    <button class="svprev" data-act="svprev" aria-label="Previous"></button><button class="svnext" data-act="svnext" aria-label="Next"></button>
+    <p class="svtext">${esc(f.t)}</p>
+    <form class="svreply" id="svform"><input id="svin" placeholder="Reply to ${esc(P.name.split(' ')[0])}…" autocomplete="off" aria-label="Reply"><button type="submit" aria-label="Send">${igIcon('send')}</button></form></div>`;
+  clearTimers(); timers.push(setTimeout(() => { if (S.sv && S.sv.k === k && S.sv.i === i && document.activeElement !== $('#svin')) storyOpen(k, i + 1); }, 5000));
+}
+function activitySheet(){
+  sheet(`<h2>Activity</h2>${[['🏆','Today\'s challenges are ready. Keep your streak going.','challenges'],['💬','kabir replied to your story','chats'],['❤️','riya liked your post','profile'],['₹','kabir: Hissab · Cab ₹900, you owe ₹450','chats']].map(([i, t, r]) => `<button class="person" data-act="nav" data-r="${r}"><span class="av" style="background:#EEF0F8;color:#111">${i}</span><span style="flex:1;text-align:left">${esc(t)}</span></button>`).join('')}<p style="color:#5B6270;font-size:13px">Sample activity in this preview.</p>`);
+}
+function feedMenu(){ sheet(`<h2>Show me</h2>${[['foryou','For you'],['following','Following'],['exams','Exams and CAT'],['money','Money'],['careers','Careers and skills'],['building','Building things']].map(([k, l]) => `<button class="opt" data-act="ftab" data-k="${k}" style="width:100%;text-align:left${(S.ftab || 'foryou') === k ? ';font-weight:800' : ''}">${(S.ftab || 'foryou') === k ? '✓ ' : ''}${l}</button>`).join('')}`); }
+
 function grid(seed, todayLvl){ let x = seed || 0, out = ''; for (let k = 0; k < 140; k++) { let l = 0; if (seed) { x = (x * 9301 + 49297) % 233280; const r = x / 233280; l = r < .25 ? 0 : r < .5 ? 1 : r < .75 ? 2 : r < .92 ? 3 : 4; } if (k === 139) l = todayLvl; out += `<i class="l${l}"></i>`; } return `<div class="grid" aria-label="Daily activity, last 20 weeks">${out}</div>`; }
 function vProfile(){
   const id = S.viewProf, P = id && PEOPLE[id], c = S.ch, done = Object.values(c.done).filter(Boolean).length;
@@ -1670,15 +1751,23 @@ document.addEventListener('click', e => {
     case 'copysim': try { navigator.clipboard.writeText(b.dataset.l).catch(() => {}); } catch (e) {} toast('Link copied (preview).'); break;
     case 'newpost': newPostSheet(); break;
     case 'newmsg': peopleSheet(); break;
+    case 'story': storyOpen(b.dataset.k, 0); break;
+    case 'svnext': storyOpen(S.sv.k, S.sv.i + 1); break;
+    case 'svprev': storyOpen(S.sv.k, S.sv.i - 1); break;
+    case 'svclose': S.sv = null; clearTimers(); closeSheet(); render(); break;
+    case 'mystory': if (!S.me) signupSheet(); else toast('Your story: add a photo, a lesson you finished or a result (preview).'); break;
+    case 'activity': activitySheet(); break;
+    case 'feedmenu': feedMenu(); break;
+    case 'dbllike': { const now = Date.now(), k = b.dataset.k; if (S.lastTap && S.lastTap.k === k && now - S.lastTap.t < 350) { S.likes = S.likes || {}; S.likes[k] = true; render(); } S.lastTap = {k, t:now}; break; }
     case 'interest': { const k = b.dataset.k; S.interests = S.interests.includes(k) ? S.interests.filter(x => x !== k) : [...S.interests, k]; chSave(); render(); break; }
-    case 'ftab': S.ftab = b.dataset.k; render(); break;
+    case 'ftab': S.ftab = b.dataset.k; closeSheet(); render(); break;
     case 'findfriends': toast('In the app: with your OK, we show which of your contacts are here. Nothing is uploaded without asking.'); break;
     case 'welcomedone': S.welcomeDone = true; render(); break;
     case 'ptopic': S.pdraft = ($('#pt') || {}).value || ''; S.ptopic = b.dataset.k; newPostSheet(); break;
     case 'pbg': S.pdraft = ($('#pt') || {}).value || ''; S.pbg = b.dataset.b; newPostSheet(); break;
     case 'postsave': { const t = ($('#pt') || {}).value.trim(); if (!t) { toast('Write something first.'); break; } S.posts.unshift({k:'u' + Date.now(), by:'you', topic:S.ptopic || S.interests[0] || 'building', type:'text', bg:S.pbg || 'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:t.length > 90 ? t.slice(0, 88) + '…' : t, cap:t}); S.pdraft = ''; S.ftab = 'foryou'; const fresh = chDone('learn', 10); chSave(); closeSheet(); go('home'); render(); toast(fresh ? 'Posted. Learn-or-make challenge done: +10' : 'Posted.'); break; }
-    case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; b.setAttribute('aria-pressed', S.likes[b.dataset.k]); b.textContent = S.likes[b.dataset.k] ? '♥' : '♡'; break;
-    case 'savepost': S.saves = S.saves || {}; S.saves[b.dataset.k] = !S.saves[b.dataset.k]; b.setAttribute('aria-pressed', S.saves[b.dataset.k]); b.textContent = S.saves[b.dataset.k] ? '★' : '☆'; toast(S.saves[b.dataset.k] ? 'Saved to your profile' : 'Removed from saved'); break;
+    case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; render(); break;
+    case 'savepost': S.saves = S.saves || {}; S.saves[b.dataset.k] = !S.saves[b.dataset.k]; render(); toast(S.saves[b.dataset.k] ? 'Saved to your profile' : 'Removed from saved'); break;
     case 'comment': { const k = b.dataset.k, L = (S.comments = S.comments || {})[k] || []; S.cK = k; sheet(`<h2>Comments</h2>${L.map(t => `<p><b>You</b> ${esc(t)}</p>`).join('') || '<p style="color:#5B6270">No comments yet. Be kind, be useful.</p>'}<form id="cmform" style="display:flex;gap:8px"><input class="inp" id="cmin" placeholder="Add a comment" style="flex:1" autocomplete="off"><button class="p-btn blue" type="submit">Post</button></form>`); break; }
     case 'share': sheet(`<h2>Send to</h2>${Object.keys(S.hissab).map(k => `<button class="person" data-act="sendpost" data-k="${k}">${hav(k)}<b style="flex:1;text-align:left">${esc(S.hissab[k].name)}</b><span>Send</span></button>`).join('')}<button class="gbtn ghost" data-act="copypost">Copy link</button>`); break;
     case 'sendpost': S.hissab[b.dataset.k].msgs.push(['me', 'Shared a post with you']); closeSheet(); toast(`Sent to ${S.hissab[b.dataset.k].name.split(' ')[0]}`); break;
@@ -1805,6 +1894,7 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('submit', e => {
   e.preventDefault();
+  if (e.target.id === 'svform') { const v = $('#svin').value.trim(), k = S.sv && S.sv.k; if (!v || !k) return; ensureChat(k); S.hissab[k].msgs.push(['me', 'Replied to your story: ' + v]); toast(`Sent to ${PEOPLE[k].name.split(' ')[0]}`); storyOpen(k, S.sv.i + 1); return; }
   if (e.target.id === 'cmform') { const v = $('#cmin').value.trim(); if (!v) return; (S.comments[S.cK] = S.comments[S.cK] || []).push(v); closeSheet(); render(); toast('Comment posted'); return; }
   if (e.target.id === 'cform') { const v = $('#cin').value.trim(); if (!v) return; S.hissab[S.chatWith].msgs.push(['me', v]); render(); $('#cin') && $('#cin').focus(); }
   if (e.target.id === 'libform') { S.libQ = $('#libq').value.trim(); render(); }
