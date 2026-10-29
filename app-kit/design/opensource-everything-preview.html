@@ -424,6 +424,65 @@ body::before{background:var(--ink)}
 .mockq{background:#fff;color:#0E1116;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px;border:1px solid #E6E8EE}
 .sharecard{border-radius:22px;padding:20px;background:linear-gradient(135deg,#121633,#0B7A3B);color:#fff;display:flex;gap:14px;align-items:center}
 .sharecard b{font-family:var(--gh-d);font-size:24px;line-height:1.1;display:block}
+
+/* design pass 2: one brand font, calmer home, game-like setup */
+:root{--gh-b:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif}
+.narrow-only{display:none}
+@media (max-width:520px){.narrow-only{display:inline}.logo .wide-only{display:none}}
+@media (max-width:560px){.sect-h{flex-direction:column;align-items:flex-start;gap:2px}}
+.p-h1,.prep h2,.world h3,.quant h1,.reason h1,.mockq + *,.habit h1{font-family:var(--hudf)!important;letter-spacing:-.02em}
+.hero{padding-block:26px 8px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:16px;color:var(--ash);font-size:14.5px;font-weight:600}
+.facts span{display:inline-flex;align-items:center;gap:6px}
+.facts span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
+.forrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+.forrow b{font-size:14px;color:var(--ash);font-weight:600}
+.forrow button{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--steel);background:#fff;font-weight:700;font-size:14px;color:var(--bone)}
+.forrow button[aria-pressed="true"]{background:var(--bone);color:#fff;border-color:var(--bone)}
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 18px}
+.mitem{display:flex;gap:14px;align-items:center;min-height:76px;padding:10px 4px;border:0;border-bottom:1px solid var(--steel);background:transparent;text-align:left;color:var(--bone)}
+.mitem .art{width:56px;height:56px;border-radius:16px;flex:none;display:grid;place-items:center;overflow:hidden}
+.mitem b{display:block;font-family:var(--hudf);font-size:18px;font-weight:800;letter-spacing:-.01em;color:#111}
+.mitem span{font-size:13.5px;color:var(--ash)}
+.mitem .soon{font-size:12px;font-weight:700;color:var(--ash);border:1px solid var(--steel);border-radius:999px;padding:2px 8px;margin-left:6px}
+.sitefoot{border-top:1px solid var(--steel);margin-top:34px;padding-block:22px 50px;display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--ash);font-size:14px}
+.sitefoot button{border:0;background:none;padding:0;color:var(--bone);font-weight:600;min-height:36px;text-decoration:underline;text-underline-offset:3px}
+.plain{padding-block:22px}
+.plain p{color:var(--ash);max-width:62ch}
+.tile .cover svg.art{position:absolute;right:5%;bottom:0;height:88%;width:auto;max-width:55%}
+.skill b{color:var(--bone)!important}
+.skill .ic svg{width:24px;height:24px}
+.skill .ic{background:#F1EFEA}
+.getbtn{min-height:44px;padding:0 14px;border-radius:999px;border:0;background:var(--bone);color:#fff;font-weight:700;font-size:14px;white-space:nowrap}
+.getbtn.paid{background:#FFC93C;color:#15161A}
+.today div span{font-size:12.5px}
+.today b{font-size:24px}
+.quiet{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:14px;color:var(--p-mute)}
+.quiet button{border:0;background:none;padding:0;color:var(--p-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:36px}
+.trial{background:var(--g-ink)!important;color:#F4F3EE}
+.trial b{color:#7FE0A6}
+.chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.charc{border:2px solid var(--g-line);border-radius:18px;background:#fff;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;color:var(--g-ink)}
+.charc[aria-pressed="true"]{border-color:var(--g-ink);box-shadow:0 0 0 2px var(--g-ink) inset}
+.charc .face{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px}
+.charc b{font-family:var(--hudf);font-size:17px}
+.charc small{font-size:12px;color:var(--g-mute);line-height:1.3}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding-top:8px}
+.timeline::before{content:"";position:absolute;left:16%;right:16%;top:21px;height:3px;background:var(--g-line)}
+.tnode{position:relative;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--g-ink);padding:0 4px}
+.tnode i{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--g-line);display:block}
+.tnode[aria-pressed="true"] i{background:var(--g-up);border-color:var(--g-up);box-shadow:0 0 0 4px #DDF1E4}
+.tnode b{font-family:var(--hudf);font-size:16px}
+.tnode small{font-size:11.5px;color:var(--g-mute);text-align:center;line-height:1.3}
+.diff{display:flex;flex-direction:column;gap:4px}
+.diff input{width:100%;accent-color:var(--g-ink);height:30px}
+.diff .lab{display:flex;justify-content:space-between;font-size:13px;color:var(--g-mute);font-weight:600}
+.playbtn{min-height:56px;border:0;border-radius:16px;background:var(--g-up);color:#fff;font-family:var(--hudf);font-size:20px;font-weight:800;width:100%}
+.demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.demo{border:0;border-radius:16px;padding:12px 10px;text-align:left;color:#fff;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px}
+.demo b{font-family:var(--hudf);font-size:16px;line-height:1.1}
+.demo small{font-size:12px;opacity:.85}
+@media (max-width:380px){.chars,.demos{grid-template-columns:1fr}}
 </style>
 
 <div id="app"></div>
@@ -471,7 +530,7 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const OSE = ['home','cat','prep-about','habit-about','skills','library','community'], PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
+const OSE = ['home','about','cat','prep-about','habit-about','skills','library','community'], PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
 const ROUTES = [...OSE, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
@@ -492,7 +551,7 @@ function bar(world){
   }
   const crumbs = [['home','Library'],['prep-about','OpenPrep'],['habit-about','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community']];
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">OpenSource Everything</span></button>
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="wide-only" style="white-space:nowrap">OpenSource Everything</span><span class="narrow-only">OSE</span></button>
     <button class="chipbtn" data-act="pwa" aria-label="Add to home screen">＋<span class="wide-only"> Home screen</span></button>${signedChip()}</div>
     <div class="wrap"><nav class="crumbs" aria-label="Products">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
 }
@@ -507,7 +566,7 @@ function render(){
   let r = location.hash.slice(1); if (!ROUTES.includes(r)) r = 'home';
   document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vHome,cat:vCat,mock:vMock,'prep-about':vPrepAbout,'habit-about':vHabitAbout,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  const html = ({home:vHome,about:vAbout,cat:vCat,mock:vMock,'prep-about':vPrepAbout,'habit-about':vHabitAbout,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
   window.scrollTo(0,0);
   if (r === 'reason') startSky(); else stopSky();
@@ -526,84 +585,72 @@ function cover(kind){
   }[kind];
   return C;
 }
+const ART = {
+  habit:`<svg class="art" viewBox="0 0 160 140" aria-hidden="true"><rect x="62" y="18" width="84" height="104" rx="12" fill="#F4F3EE"/><rect x="74" y="32" width="44" height="6" rx="3" fill="#17181A"/><rect x="74" y="50" width="60" height="4" rx="2" fill="#BFC2C7"/><rect x="74" y="62" width="40" height="4" rx="2" fill="#BFC2C7"/><rect x="118" y="60" width="18" height="8" rx="2" fill="#0B7A3B"/><rect x="74" y="78" width="52" height="4" rx="2" fill="#BFC2C7"/><rect x="118" y="76" width="18" height="8" rx="2" fill="#B3261E"/><polyline points="76,108 90,100 102,104 116,92 134,96" fill="none" stroke="#0B7A3B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="96" r="26" fill="#FFC93C"/><circle cx="46" cy="96" r="19" fill="none" stroke="#C99400" stroke-width="3"/><text x="46" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="22" fill="#7A5A00">₹</text></svg>`,
+  skills:`<svg class="art" viewBox="0 0 160 140" aria-hidden="true"><rect x="22" y="56" width="120" height="70" rx="12" fill="#15161A"/><rect x="58" y="40" width="48" height="22" rx="8" fill="none" stroke="#15161A" stroke-width="8"/><rect x="22" y="76" width="120" height="8" fill="#FFC93C"/><rect x="72" y="70" width="20" height="20" rx="4" fill="#fff"/><path d="M118 20 l10 10 -30 30 -12 2 2 -12 z" fill="#fff"/><circle cx="38" cy="26" r="12" fill="#fff"/><circle cx="38" cy="26" r="5" fill="#FF8A3D"/></svg>`,
+  library:`<svg class="art" viewBox="0 0 160 140" aria-hidden="true"><rect x="18" y="116" width="128" height="8" rx="3" fill="#FFE7A3"/><rect x="26" y="40" width="18" height="76" rx="3" fill="#FFC93C"/><rect x="48" y="52" width="16" height="64" rx="3" fill="#fff"/><rect x="68" y="34" width="20" height="82" rx="3" fill="#FF8A3D"/><rect x="92" y="58" width="14" height="58" rx="3" fill="#fff"/><g transform="rotate(-14 124 86)"><rect x="112" y="46" width="18" height="70" rx="3" fill="#FFE7A3"/></g><path d="M76 20 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#fff"/></svg>`,
+  community:`<svg class="art" viewBox="0 0 160 140" aria-hidden="true"><rect x="20" y="26" width="76" height="46" rx="14" fill="#fff"/><path d="M40 72 l-6 16 20 -16z" fill="#fff"/><rect x="32" y="40" width="44" height="6" rx="3" fill="#0E6B63"/><rect x="32" y="52" width="30" height="6" rx="3" fill="#9BD8CF"/><rect x="66" y="66" width="76" height="46" rx="14" fill="#15161A"/><path d="M122 112 l6 16 -20 -16z" fill="#15161A"/><rect x="78" y="80" width="44" height="6" rx="3" fill="#fff"/><rect x="78" y="92" width="26" height="6" rx="3" fill="#7FE0D0"/></svg>`,
+  acct:`<svg class="art" viewBox="0 0 160 140" aria-hidden="true"><rect x="26" y="30" width="112" height="72" rx="8" fill="#15161A"/><rect x="34" y="38" width="96" height="56" rx="4" fill="#F4F3EE"/><rect x="42" y="48" width="40" height="5" rx="2" fill="#15161A"/><rect x="42" y="60" width="64" height="4" rx="2" fill="#BFC2C7"/><rect x="42" y="70" width="52" height="4" rx="2" fill="#BFC2C7"/><rect x="42" y="80" width="58" height="4" rx="2" fill="#BFC2C7"/><rect x="14" y="104" width="136" height="8" rx="4" fill="#5E6370"/></svg>`,
+  prep:'',
+};
 function tile(kind, title, tag, name, desc, opts={}){
   return `<button class="tile ${opts.big?'big':''}" ${opts.locked?'aria-disabled="true"':''} data-act="${opts.locked?'locked':'nav'}" data-r="${opts.r||''}" data-why="${esc(opts.why||'')}">
     <div class="cover" style="${cover(kind)}">${opts.art||''}<span class="tag ${tag==='FREE'?'free':''}">${tag}</span><span class="cover-title" ${opts.locked?'style="color:#15161A;text-shadow:none;opacity:.35"':''}>${title}</span>${opts.locked?`<span class="lock">🔒 ${esc(opts.locked)}</span>`:''}</div>
     <div class="meta"><b>${name}</b><span>${desc}</span></div></button>`;
 }
 function vHome(){
-  const guyArt = `<div style="position:absolute;right:6%;bottom:-6%;width:30%;max-width:150px">${goodguy('happy','#2F6BFF')}</div>`;
-  const reelArt = `<div style="position:absolute;right:8%;top:14%;width:26%;aspect-ratio:9/16;border-radius:10px;background:linear-gradient(160deg,#FFD36A,#FF5FB8);transform:rotate(6deg);box-shadow:0 10px 30px rgba(0,0,0,.4)"></div>`;
+  const guyArt = `<div style="position:absolute;right:5%;bottom:-6%;width:34%;max-width:170px">${goodguy('happy','#2F6BFF')}</div><svg aria-hidden="true" viewBox="0 0 60 44" style="position:absolute;right:36%;bottom:16%;width:15%;max-width:72px"><path d="M2 8 q14 -8 28 0 v32 q-14 -8 -28 0z" fill="#fff"/><path d="M58 8 q-14 -8 -28 0 v32 q14 -8 28 0z" fill="#E5ECFF"/></svg>`;
   const HERO = {
-    none:{h:'Learn something.<br>Build something.<br><em>Grow your money.</em>', l:'One free, ad-free place for the next generation: learn for exams and careers, keep your money in order, practise investing, and share what you make. Add it to your home screen and it works like an app.', a:['prep-about','Start learning free'], b:['habit-about','Play the money game']},
-    cat:{h:'Free CAT prep.<br><em>No ads.</em>', l:'Lessons, unlimited practice and a free full mock for CAT 2027. Taught by GoodGuy, checked by 99-percentilers. Plus a smarter way to handle your money.', a:['cat','See the CAT plan'], b:['habit-about','Play the money game']},
-    money:{h:'Your money,<br><em>sorted.</em>', l:'Split with friends inside your chats, keep your own books on your phone, watch the market, and practise investing through real crashes with pretend money.', a:['habit-about','Open GoodHabit'], b:['prep-about','Learn for exams']},
-    build:{h:'Build in<br><em>the open.</em>', l:'Show your work, publish it in one tap even if you\'ve never used GitHub, and give your AI skills built for India.', a:['community','Open Community'], b:['skills','Browse AI skills']},
+    none:{h:'Learn something.<br>Build something.<br><em>Grow your money.</em>', l:'Free, ad-free help for exams, careers and money. Add it to your home screen and it works like an app.', a:['prep-about','Start learning free'], b:['habit-about','Play the money game']},
+    cat:{h:'Free CAT prep.<br><em>No ads.</em>', l:'Lessons, unlimited practice and a free full mock for CAT 2027, checked by 99-percentilers.', a:['cat','See the CAT plan'], b:['prep-about','About OpenPrep']},
+    money:{h:'Your money,<br><em>sorted.</em>', l:'Split with friends in your chats, keep your own books on your phone, and practise investing through real crashes.', a:['habit-about','Open GoodHabit'], b:['prep-about','Learn for exams']},
+    build:{h:'Build in<br><em>the open.</em>', l:'Publish your work in one tap, even if you\'ve never used GitHub, and give your AI skills built for India.', a:['community','Open Community'], b:['skills','Browse AI skills']},
   }, H = HERO[S.intent || 'none'];
-  const apps = [tile('prep','OpenPrep','Live · free to start','Learn','Free CAT prep, unlimited practice and a free full mock, plus ₹99 career courses. No ads.',{big:true,r:'prep-about',art:guyArt}), tile('habit','GoodHabit','Beta','Money','The money game, Hissab with friends and your own books, and a market watchlist.',{big:true,r:'habit-about',art:reelArt})];
+  const apps = [tile('prep','OpenPrep','Live · free to start','Learn','Free CAT prep, unlimited practice and a free full mock, plus ₹99 career courses.',{big:true,r:'prep-about',art:guyArt}), tile('habit','GoodHabit','Beta','Money','The money game, Hissab with friends and your own books, and a market watchlist.',{big:true,r:'habit-about',art:ART.habit})];
   if (S.intent === 'money') apps.reverse();
+  const more = [['skills','The Good Stuff','AI skills · 90 free, 10 paid','linear-gradient(135deg,#FFC93C,#FF8A3D)',ART.skills],['library','AI Discovery Library','Trusted sources, rated in the open','linear-gradient(135deg,#7C5CFF,#3B1FA6)',ART.library],['community','Community','Prep boards, publish your work, donations','linear-gradient(135deg,#14B8A6,#0E6B63)',ART.community],['','Accounting Unlocked','Offline books for Windows and Mac','linear-gradient(135deg,#C9CCD3,#8D929C)',ART.acct]];
   return `<main class="wrap">
-  <div class="intent" role="group" aria-label="What brings you here?"><b>What brings you here?</b><div class="intent-row">${[['cat','CAT prep'],['money','My money'],['build','Building things']].map(([k,l]) => `<button data-act="intent" data-k="${k}" aria-pressed="${S.intent===k}">${l}</button>`).join('')}</div></div>
-  <section class="hero">
+  <section class="hero" style="grid-template-columns:1fr">
     <div>
       <h1>${H.h}</h1>
       <p class="lede">${H.l}</p>
+      <div class="forrow" role="group" aria-label="I'm here for"><b>I'm here for</b>${[['cat','CAT prep'],['money','My money'],['build','Building things']].map(([k,l]) => `<button data-act="intent" data-k="${k}" aria-pressed="${S.intent===k}">${l}</button>`).join('')}</div>
       <div class="ctas"><button class="btn-hud" data-act="nav" data-r="${H.a[0]}">${H.a[1]}</button><button class="btn-line" data-act="nav" data-r="${H.b[0]}">${H.b[1]}</button></div>
-    </div>
-    <div class="stats" aria-label="What you get at launch">
-      <div class="stat"><div class="v num">0</div><div class="l">ads, ever</div></div>
-      <div class="stat"><div class="v num">15</div><div class="l">Quant chapters, all ready</div></div>
-      <div class="stat"><div class="v num">1</div><div class="l">free full CAT mock</div></div>
-      <div class="stat"><div class="v num">₹0</div><div class="l">to start anything</div></div>
+      <div class="facts"><span>No ads, ever</span><span>15 Quant chapters ready</span><span>1 free full mock</span><span>₹0 to start</span></div>
     </div>
   </section>
-
-  <section class="sect"><div class="sect-h"><h2>Your apps</h2><span>tap one to open</span></div>
-    <div class="lib">${apps.join('')}</div></section>
+  <section class="sect"><div class="lib">${apps.join('')}</div></section>
   <section class="sect"><div class="sect-h"><h2>More from us</h2><span>for builders and the curious</span></div>
-    <div class="lib">
-      ${tile('skills','The Good Stuff','90 free · 10 paid','AI skills','Skills for Claude, ChatGPT and more. Paste into your AI in one tap.',{r:'skills'})}
-      ${tile('library','AI Discovery','Free','Library','Trusted sources, rated in the open. Built for AIs to search; people can too.',{r:'library'})}
-      ${tile('community','Community','Beta','Build','Prep boards, publish your work without knowing GitHub, donations.',{r:'community'})}
-      ${tile('acct','Accounting Unlocked','Soon','Windows · macOS','Offline accounting like Tally, open source, with a Claude Code skill.',{locked:'Unlocks when OpenPrep is earning',why:'AccountingUnlocked'})}
-    </div></section>
-
-  <section class="sect"><div class="sect-h"><h2>Built in public</h2><span>by a real person</span></div>
-    <div class="idcard"><div style="width:96px;height:96px;border-radius:50%;background:#EDEBE3;display:grid;place-items:center;color:#8A8F99;font-size:13px;text-align:center;padding:10px">Founder photo here</div>
-      <div><h3 style="font-family:var(--hudf);font-size:24px;font-weight:800">From the founder of SOLIDS FOR YOU</h3><p style="color:var(--ash);font-size:15px;margin-top:4px">Weekly build updates on Instagram, our real numbers below, and all our code in the open. Ask me anything; I answer.</p></div></div></section>
-
-  <section class="sect"><div class="sect-h"><h2>Why we built this</h2><span>in four lines</span></div>
+    <div class="more">${more.map(([r,n,d,bg,art]) => `<button class="mitem" ${r?`data-act="nav" data-r="${r}"`:'data-act="locked" data-why="AccountingUnlocked"'}><span class="art" style="background:${bg}">${art.replace('class="art"','width="52" height="46"')}</span><span style="flex:1;min-width:0"><b>${n}${r?'':'<span class="soon">Soon</span>'}</b><span>${d}</span></span></button>`).join('')}</div></section>
+  <footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><button data-act="nav" data-r="about">One ID for everything</button><span>Clickable preview with sample data.</span></footer>
+  </main>`;
+}
+function vAbout(){
+  return `<main class="wrap">
+  <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-.03em">About us</h1><p style="margin-top:8px;font-size:17px">OpenSource Everything is a free, ad-free place for the next generation to learn, build and grow their money, made in the open.</p></section>
+  <section class="plain"><div class="sect-h"><h2>Built in public</h2><span>by a real person</span></div>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div style="width:84px;height:84px;border-radius:50%;background:#EDEBE3;display:grid;place-items:center;color:#8A8F99;font-size:12.5px;text-align:center;padding:8px">Founder photo here</div><p>From the founder of SOLIDS FOR YOU. Weekly build updates on Instagram, our real numbers below, and all our code in the open.</p></div></section>
+  <section class="plain"><div class="sect-h"><h2>Why we built this</h2><span>in four lines</span></div>
     <div class="why">
-      <div class="whycard"><span class="k">No ads</span><h3>Your attention isn't for sale</h3><p>Every product here is ad-free. Scroll as much as you like, as long as it's teaching you something, not selling you something.</p></div>
-      <div class="whycard"><span class="k">Open</span><h3>Everything safe to open, is</h3><p>Code, lessons, our numbers and our trust ratings are public. Building used to be locked behind developers; now anyone can create and share.</p></div>
-      <div class="whycard"><span class="k">Lean</span><h3>Complex features, tiny costs</h3><p>We build cheaply and smartly, so we can give away what others charge for. Splitting money with friends is just smarter messages, not a bank.</p></div>
-      <div class="whycard"><span class="k">Good habits</span><h3>The next gen, with good habits</h3><p>Learn daily, practise investing before risking a rupee, settle money with friends cleanly, and prove what you've done.</p></div>
-    </div>
-  </section>
-
-  <section class="sect"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
-    <div class="idcard"><div style="width:96px">${goodguy('happy','#FFB21A')}</div>
-      <div><p style="color:var(--brand);font-size:13.5px;font-weight:700">Your OpenID</p><h3 style="font-family:var(--hudf);font-size:28px;font-weight:800">good/riya</h3>
-      <p style="color:var(--ash);font-size:14.5px;margin-top:4px">Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
-      <div class="idbadges"><span class="vb v">✓ OpenPrep Quant · 92nd percentile</span><span class="vb v">✓ 3 GitHub projects</span><span class="vb v">✓ 120-day investing habit</span><span class="vb">Self-declared · Design lead at a startup</span></div></div></div>
-  </section>
-  <section class="sect"><div class="sect-h"><h2>Open numbers</h2><span>synced from our Google Sheet · sample</span></div>
-    <div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
-      <div class="stat"><div class="v num">2,418</div><div class="l">students this week</div></div>
-      <div class="stat"><div class="v num">96</div><div class="l">paying users</div></div>
-      <div class="stat"><div class="v num">₹21,340</div><div class="l">revenue this month</div></div>
-      <div class="stat"><div class="v num">3</div><div class="l">corrections published</div></div>
-      <div class="stat"><div class="v num">0</div><div class="l">ads served</div></div>
-    </div><p style="color:var(--ash);font-size:13.5px;margin-top:10px">Everything we track lands in one sheet, and the public parts show here. Building in public, in numbers.</p></section>
-  <p class="foot">Clickable preview with sample data. Nothing here is real money, real advice or a real account. · opensourceeverything.com</p>
+      <div><h3 style="font-family:var(--hudf);font-size:20px">No ads</h3><p>Your attention isn't for sale. Scroll as much as you like, as long as it's teaching you something.</p></div>
+      <div><h3 style="font-family:var(--hudf);font-size:20px">Open</h3><p>Code, lessons, our numbers and our trust ratings are public.</p></div>
+      <div><h3 style="font-family:var(--hudf);font-size:20px">Lean</h3><p>We build cheaply and smartly, so we can give away what others charge for.</p></div>
+      <div><h3 style="font-family:var(--hudf);font-size:20px">Good habits</h3><p>Learn daily, practise investing before risking a rupee, settle money cleanly.</p></div>
+    </div></section>
+  <section class="plain" id="numbers"><div class="sect-h"><h2>Open numbers</h2><span>synced from our Google Sheet · sample</span></div>
+    <div class="facts" style="font-size:16px"><span>2,418 students this week</span><span>96 paying users</span><span>₹21,340 revenue this month</span><span>3 corrections published</span><span>0 ads served</span></div></section>
+  <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
+    <p>One sign-in across every app. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
+    <div class="idbadges" style="margin-top:10px"><span class="vb v">✓ OpenPrep Quant · 92nd percentile</span><span class="vb v">✓ 3 GitHub projects</span><span class="vb v">✓ 120-day investing habit</span><span class="vb">Self-declared · Design lead at a startup</span></div></section>
+  <footer class="sitefoot"><button data-act="nav" data-r="home">← Back to the apps</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
 
 /* ---------------- OPENPREP ---------------- */
-function freeLine(){ return `<div class="today" aria-label="Free for you"><div><b>∞</b><span>practice questions, free</span></div><div><b class="num">${S.free.long}</b><span>chapter of video left today</span></div><div><b class="num">${S.free.mentor}</b><span>free AI-mentor minutes</span></div></div><p class="p-note" style="margin-top:8px">Every lesson is free to read, always.</p>`; }
+function freeLine(){ return `<div class="today" aria-label="Free for you"><div><b>∞</b><span>Practice, free</span></div><div><b class="num">${S.free.long}</b><span>Video chapter today</span></div><div><b class="num">${S.free.mentor}</b><span>AI-mentor min</span></div></div><p class="p-note" style="margin-top:8px">Every lesson is free to read, always.</p>`; }
 function vPrep(){
   return `<main class="col" style="padding-block:22px 60px">
-    <p class="p-note">PrepID · ${esc(S.user || 'guest')}</p>
+    <p class="p-note">${S.user ? 'Signed in as ' + esc(S.user) : 'Learning as a guest'}</p>
     <h1 class="p-h1" style="margin-top:4px">What do you want to learn today?</h1>
     <p class="p-sub">CAT 2027, one small lesson at a time. No ads, ever.</p>
     ${freeLine()}
@@ -620,7 +667,8 @@ function vPrep(){
     </div>
     <h2 style="font-size:19px;font-weight:800;margin-top:22px">Current affairs for GD/PI</h2>
     <div class="p-card" style="margin-top:10px"><b>RBI holds the repo rate: what it means for loans</b><span>Reserve Bank of India · Government · reader trust 4.8 (rated in GoodHabit)</span></div>
-    <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap"><button class="p-btn blue" data-act="plans">See plans · from ₹99</button><button class="p-btn ghost" data-act="lang">Hinglish · English · ₹100 language packs</button><button class="p-btn ghost" data-act="corrections">Corrections (3)</button></div>
+    <button class="p-btn blue" data-act="plans" style="margin-top:22px;width:100%">See plans · from ₹99</button>
+    <div class="quiet"><button data-act="lang">Languages</button><button data-act="corrections">Corrections (3)</button><span>Hinglish now · English next · regional packs ₹100</span></div>
   </main>`;
 }
 
@@ -991,18 +1039,20 @@ function practiceHome(){
   if (g && g.view !== 'setup') return storyView();
   const d = (g && g.diff) || 'hard', era = (g && g.era) || '2000s', who = (g && g.who) || 'ramesh';
   S.game = {view:'setup', diff:d, era, who};
-  return `<div class="trial"><b style="font-family:var(--gh-d);font-size:22px">3 days free</b><span style="font-size:14.5px">The full practice account: role-play stories, your real money profile, stocks, F&amp;O basics and options, all with pretend money.</span></div>
-  <div class="gcard" style="margin-top:12px"><b style="font-size:17px">How do you want to play?</b>
-    <div class="seg2" role="group" aria-label="Mode"><button data-act="pmode" data-m="story" aria-pressed="true">Story mode</button><button data-act="pmode" data-m="profile" aria-pressed="false">My real money profile</button></div>
-    <b style="font-size:14px;color:var(--g-mute)">Character</b>
-    <div class="seg2" role="group">${[['ramesh','Ramesh · ₹40k/month'],['amit','Amit · ₹1L/month'],['rich','Rich guy · sandbox']].map(([k,l]) => `<button data-act="pwho" data-k="${k}" aria-pressed="${who===k}">${l}</button>`).join('')}</div>
-    <b style="font-size:14px;color:var(--g-mute)">Difficulty</b>
-    <div class="seg2" role="group">${['easy','medium','hard'].map(k => `<button data-act="pdiff" data-k="${k}" aria-pressed="${d===k}">${k[0].toUpperCase()+k.slice(1)}</button>`).join('')}</div>
-    <b style="font-size:14px;color:var(--g-mute)">Era</b>
-    <div class="seg2" role="group">${[['90s','The \'90s'],['2000s','The 2000s'],['2010s','The 2010s']].map(([k,l]) => `<button data-act="pera" data-k="${k}" aria-pressed="${era===k}">${l}</button>`).join('')}</div>
-    <button class="gbtn" data-act="pstart" style="min-height:52px">Start the story</button></div>
-  <div class="gcard" style="margin-top:12px"><b>Crash demos</b><p style="color:var(--g-mute);font-size:14px">Live through famous crashes and see what holding, or panicking, does.</p><div class="seg2"><button data-act="demo" data-k="dotcom" aria-pressed="false">Dot-com crash, 2000</button><button data-act="demo" data-k="2000s" aria-pressed="false">2008 crisis</button><button data-act="demo" data-k="covid" aria-pressed="false">Covid crash, 2020</button></div></div>
-  <p style="color:var(--g-mute);font-size:12.5px;margin-top:12px">Pretend money only. Historical events are real; prices are rounded and illustrative, shaped like the index at the time. Not investment advice.</p>`;
+  const CH = [['ramesh','Ramesh','28 · ₹40k a month · wants to retire early','#0B7A3B'],['amit','Amit','38 · ₹1L a month · saving for his daughter','#B5134F'],['rich','Rich guy','₹5 crore sandbox · break things','#4A3F8F']];
+  const ER = [['90s','The \'90s','Liberalisation, a stock scam'],['2000s','The 2000s','A boom, then 2008'],['2010s','The 2010s','Demonetisation, records']];
+  const DI = ['easy','medium','hard'], di = DI.indexOf(d);
+  return `<div class="trial"><b style="font-family:var(--gh-d);font-size:22px">The money game · 3 days free</b><span style="font-size:14.5px;opacity:.85">Stories, your own money profile, stocks, F&amp;O basics and options. Pretend money only.</span></div>
+  <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:18px">Pick who you play</h2>
+  <div class="chars" role="group" aria-label="Character" style="margin-top:8px">${CH.map(([k,n,dsc,c]) => `<button class="charc" data-act="pwho" data-k="${k}" aria-pressed="${who===k}"><span class="face" style="background:${c}">${n.split(' ').map(w=>w[0]).join('')}</span><b>${n}</b><small>${dsc}</small></button>`).join('')}</div>
+  <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:18px">Pick your era</h2>
+  <div class="timeline" role="group" aria-label="Era">${ER.map(([k,n,dsc]) => `<button class="tnode" data-act="pera" data-k="${k}" aria-pressed="${era===k}"><i></i><b>${n}</b><small>${dsc}</small></button>`).join('')}</div>
+  <div class="diff" style="margin-top:16px"><label class="lbl" for="pdiff">Difficulty: ${d[0].toUpperCase()+d.slice(1)}</label><input id="pdiff" type="range" min="0" max="2" step="1" value="${di}"><span class="lab"><span>Easy · hints</span><span>Medium</span><span>Hard · no hints</span></span></div>
+  <button class="playbtn" data-act="pstart" style="margin-top:14px">Play</button>
+  <button class="gbtn ghost" data-act="pmode" data-m="profile" style="width:100%;margin-top:8px">Or play with my real money profile</button>
+  <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:22px">Crash demos</h2>
+  <div class="demos" style="margin-top:8px"><button class="demo" style="background:linear-gradient(160deg,#3B1FA6,#120A3A)" data-act="demo" data-k="dotcom"><b>Dot-com crash</b><small>2000</small></button><button class="demo" style="background:linear-gradient(160deg,#B3261E,#3A0B08)" data-act="demo" data-k="2000s"><b>The 2008 crisis</b><small>2007–09</small></button><button class="demo" style="background:linear-gradient(160deg,#0E6B63,#062A26)" data-act="demo" data-k="covid"><b>Covid crash</b><small>2020</small></button></div>
+  <p style="color:var(--g-mute);font-size:12.5px;margin-top:12px">Historical events are real; prices are rounded and illustrative, shaped like the index at the time. Not investment advice.</p>`;
 }
 function newGame(eraKey){
   const g = S.game || {}; const start = {ramesh:1000000, amit:5000000, rich:5000000000}[g.who||'ramesh'];
@@ -1104,6 +1154,8 @@ const SKILLS = [
   ['MFG','Manufacturing Pack','Costing, vendor follow-ups, quality checks and orders for small factories.','paid'],
   ['ECM','Ecom Seller Pack','Listings, pricing and returns for Amazon, Flipkart and Meesho sellers.','paid'],
 ];
+const SICON = {GST:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>', WA:'<path d="M4 20l1.5-4A8 8 0 1 1 9 19z"/>', ADS:'<path d="M3 10v4l11 5V5z"/><path d="M14 9a4 4 0 0 1 0 6"/>', XL:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/>', CAP:'<path d="M12 3v10a4 4 0 1 1-4-4"/>', SMB:'<path d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>', MFG:'<path d="M3 20V10l6 4V10l6 4V6h6v14z"/>', ECM:'<circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h11l2-8H6"/>'};
+function sicon(k){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SICON[k]}</svg>`; }
 function vSkills(){
   const f = S.skillFilter || 'all';
   const list = SKILLS.filter(s => f === 'all' || s[3] === f);
@@ -1111,7 +1163,7 @@ function vSkills(){
     <div class="sect-h" style="margin:0"><h2>The Good Stuff</h2><span>made by the Good Guys</span></div>
     <p style="color:var(--ash);max-width:62ch">Skills that make your AI useful for real work. 90 free, 10 paid. Every paid pack plugs into the free ones automatically, like a local expert with a full toolbox. Works with Claude, ChatGPT and more.</p>
     <div class="crumbs" style="padding:0">${[['all','All 100'],['free','Free · 90'],['paid','Paid · 10']].map(([k,l]) => `<button data-act="sfilter" data-f="${k}" ${f===k?'aria-current="page"':''}>${l}</button>`).join('')}</div>
-    <div style="display:grid;gap:10px">${list.map(([ic,n,d,t]) => `<div class="skill"><span class="ic">${ic}</span><span style="flex:1;min-width:0"><b>${n}</b><span>${d}</span></span><span style="display:flex;flex-direction:column;gap:6px;align-items:flex-end"><span class="badge ${t}">${t==='free'?'Free':'₹100'}</span><button class="chipbtn hot" data-act="import" data-n="${n}" data-t="${t}">Import</button></span></div>`).join('')}</div>
+    <div style="display:grid;gap:10px">${list.map(([ic,n,d,t]) => `<div class="skill"><span class="ic">${sicon(ic)}</span><span style="flex:1;min-width:0"><b>${n}</b><span>${d}</span></span><button class="getbtn ${t}" data-act="import" data-n="${n}" data-t="${t}" aria-label="${t==='free'?'Import '+n+', free':'Get '+n+' for ₹100'}">${t==='free'?'Import · free':'₹100'}</button></div>`).join('')}</div>
     <p class="foot" style="padding:0">Showing 8 of 100 in this preview.</p>
   </main>`;
 }
@@ -1196,6 +1248,7 @@ document.addEventListener('click', e => {
     case 'exit': S.chatWith = null; go('home'); break;
     case 'enter': { const rr = b.dataset.r, rect = b.getBoundingClientRect(); if (matchMedia('(prefers-reduced-motion: reduce)').matches) { go(rr); break; } const pt = document.createElement('div'); pt.className = 'portal'; pt.style.background = b.dataset.c; pt.style.setProperty('--px', (rect.left + rect.width/2) + 'px'); pt.style.setProperty('--py', (rect.top + rect.height/2) + 'px'); pt.textContent = 'Entering ' + b.dataset.n; document.body.appendChild(pt); setTimeout(() => { go(rr); setTimeout(() => pt.remove(), 250); }, 700); break; }
     case 'hview': S.hView = b.dataset.v; render(); break;
+    case 'aboutnum': go('about'); setTimeout(() => { const n = document.getElementById('numbers'); n && n.scrollIntoView(); }, 60); break;
     case 'intent': S.intent = S.intent === b.dataset.k ? null : b.dataset.k; try { localStorage.setItem('ose-intent', S.intent || ''); } catch (e) {} render(); break;
     case 'syllabus': sylSheet(b.dataset.s); break;
     case 'sylopen': { const k = b.dataset.k, i = +b.dataset.i; if (b.dataset.st !== 'ok') { toast('Coming on the date shown. We\'ll tell you when it\'s live.'); break; } closeSheet(); if (k === 'quant' && i === 0) { S.prep.chap = 0; S.prep.step = 0; go('quant'); render(); } else toast('Plays the same way at launch. This preview has a few sample chapters.'); break; }
@@ -1283,6 +1336,9 @@ function togglePlay(){
     drawLesson(); timers.push(setInterval(tick, 3200));
   } else drawLesson();
 }
+document.addEventListener('input', e => {
+  if (e.target.id === 'pdiff') { S.game.diff = ['easy','medium','hard'][+e.target.value]; const l = document.querySelector('label[for=pdiff]'); if (l) l.textContent = 'Difficulty: ' + S.game.diff[0].toUpperCase() + S.game.diff.slice(1); }
+});
 document.addEventListener('submit', e => {
   e.preventDefault();
   if (e.target.id === 'cform') { const v = $('#cin').value.trim(); if (!v) return; S.hissab[S.chatWith].msgs.push(['me', v]); render(); $('#cin') && $('#cin').focus(); }
