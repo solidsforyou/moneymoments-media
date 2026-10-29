@@ -692,7 +692,7 @@ main h3{font-family:var(--sys)!important;font-weight:600!important;letter-spacin
 .grow2 small{display:block;font-size:13px;color:var(--label2)}
 .chev{color:var(--label3);font-size:22px;font-weight:400;line-height:1}
 .widget{display:flex;align-items:center;gap:12px;margin:12px 16px;padding:14px 16px!important;text-align:left;width:calc(100% - 32px)}
-.widget .wi{width:40px;height:40px;border-radius:10px;background:#FF9500;display:grid;place-items:center;font-size:20px;flex:none}
+.widget .wi{width:40px;height:40px;border-radius:10px;background:var(--blue);display:grid;place-items:center;font-size:20px;flex:none}
 .widget b{display:block;font-size:17px;font-weight:600}
 .widget small{display:block;font-size:13px;color:var(--label2);margin-top:2px}
 .bar2{display:block;height:4px;border-radius:2px;background:var(--fill);margin-top:8px;overflow:hidden}
@@ -838,6 +838,29 @@ button:active .pi{transform:scale(1.12)}
 @keyframes heartpop{0%{transform:scale(1)}25%{transform:scale(.7)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
 @keyframes heartburst{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
 @media (prefers-reduced-motion:reduce){.heartbtn.pop svg,.heartbtn.pop::after{animation:none}.gbtn,.p-btn,.btn-hud,.playbtn,.pi{transition:none!important}}
+/* review round 4 */
+.trial b{color:var(--label)!important}
+.world h3,.w-verbal h3{font-family:var(--sys)!important}
+.backlink{flex:none;order:-1;border:0;background:none;color:var(--blue);font-size:17px;min-height:44px;padding:0 4px 0 0}
+.bar .col{gap:6px!important}
+.tcard{flex-direction:column;align-items:stretch!important;gap:0}
+.tchead{display:flex;align-items:center;gap:12px;border:0;background:none;padding:0;text-align:left;color:var(--label)}
+.tchead b{display:block;font-size:17px;font-weight:600}.tchead small{display:block;font-size:13px;color:var(--label2);margin-top:2px}
+.tq{font-weight:600;font-size:17px;margin:4px 0 10px}
+.topts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.topts .qopt{min-height:46px;text-align:center;padding:0 8px}
+.tbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.tbtns .gbtn{min-height:40px!important;padding-inline:16px!important;font-size:15px!important}
+.welcome>b{font-size:20px!important}
+.ring.mine>span svg{width:28px;height:28px;color:var(--label2)}
+.igbtn .dot{background:var(--red)!important;top:8px;right:9px}
+.badge2{position:absolute;top:2px;left:calc(50% + 4px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.tabbar button{position:relative}
+.switch{width:51px;height:31px;border-radius:16px;background:var(--fill);position:relative;flex:none;transition:background .2s}
+.switch i{position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.15);transition:transform .2s}
+.switch.on{background:var(--green)}.switch.on i{transform:translateX(20px)}
+.faq{background:var(--card);padding:12px 16px;border-bottom:.5px solid var(--sep)}
+.faq summary{font-weight:600;cursor:pointer}.faq p{color:var(--label2);margin-top:6px}
 </style>
 
 <div id="app"></div>
@@ -891,7 +914,7 @@ function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
 
 function signedChip(){ return S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign up</button>`; }
-function appsBtn(){ return `<button class="exitbtn" data-act="apps" aria-label="Your apps"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Apps</button>`; }
+function appsBtn(){ return `<button class="backlink" data-act="nav" data-r="home" aria-label="Back to OpenSource Everything">‹ Today</button>`; }
 function bar(world){
   if (PREPW.includes(world)) {
     return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
@@ -903,11 +926,11 @@ function bar(world){
   }
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
     <button class="logo" data-act="${world === 'home' ? 'feedmenu' : 'nav'}" data-r="home" aria-label="${world === 'home' ? 'OpenSource Everything, choose what to show' : 'OpenSource Everything home'}"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span>${world === 'home' ? '<span aria-hidden="true" style="font-size:12px;margin-left:2px">▾</span>' : ''}</button>
-    ${world === 'chats' ? '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>' : `<button class="igbtn" data-act="newpost" aria-label="New post">${igIcon('plus')}</button><button class="igbtn heartbtn ${S.actSeen ? '' : 'liked'}" data-act="activity" aria-label="${S.actSeen ? 'Activity' : 'Activity, new'}">${igIcon('heart', !S.actSeen)}</button>`}</div></header>`;
+    ${world === 'chats' ? '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>' : `<button class="igbtn" data-act="newpost" aria-label="New post">${igIcon('plus')}</button><button class="igbtn" data-act="activity" aria-label="${S.actSeen ? 'Activity' : 'Activity, something new'}">${igIcon('bell')}${S.actSeen ? '' : '<i class="dot"></i>'}</button>`}</div></header>`;
 }
 function icon(n){ const P = {today:'<rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.3 2.2 4.7-4.7"/>', sigma:'<path d="M18 4.5H6.5l6 7.5-6 7.5H18"/>', book:'<path d="M12 6.5C10 5 7.5 4.5 3.5 4.5v14c4 0 6.5.5 8.5 2 2-1.5 4.5-2 8.5-2v-14c-4 0-6.5.5-8.5 2z"/><path d="M12 6.5v14"/>', puzzle:'<path d="M10 3.5h4v2.2a1.8 1.8 0 1 0 3.6 0V3.5h2.9v6.4h-2.2a1.8 1.8 0 1 0 0 3.6h2.2v7H3.5v-7h2.2a1.8 1.8 0 1 0 0-3.6H3.5V3.5H10"/>', clip:'<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>', home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
-  const tb = (o, cur, label) => `<nav class="tabbar" aria-label="${label}"><div class="in" style="grid-template-columns:repeat(${o.length},minmax(0,1fr))">${o.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''}>${icon(i)}<span>${l}</span></button>`).join('')}</div></nav>`;
+  const tb = (o, cur, label) => `<nav class="tabbar" aria-label="${label}"><div class="in" style="grid-template-columns:repeat(${o.length},minmax(0,1fr))">${o.map(([r,i,l]) => { const n = r === 'chats' ? Object.keys(S.hissab).filter(unreadChat).length : 0; return `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''} aria-label="${l}${n ? ', ' + n + ' unread' : ''}">${icon(i)}${n ? `<b class="badge2">${n}</b>` : ''}<span>${l}</span></button>`; }).join('')}</div></nav>`;
   if (OSE.includes(world)) { if (world === 'chats' && S.chatWith) return ''; const cur = ['home','apps','chats','profile'].includes(world) ? world : world === 'challenges' ? 'home' : 'apps';
     return tb([['home','today','Today'],['apps','grid','Apps'],['chats','chat','Messages'],['profile','user','Me']], cur, 'OpenSource Everything'); }
   if (PREPW.includes(world)) return tb([['prep','home','Home'],['quant','sigma','Quant'],['verbal','book','Verbal'],['reason','puzzle','Reasoning'],['mock','clip','Mock']], world, 'OpenPrep');
@@ -964,7 +987,7 @@ const appOf = k => APPS.find(a => a.k === k);
 function appArt(a, size){ const inner = a.k === 'prep' ? `<span style="width:78%;display:block">${goodguy('happy','#3FA9FF')}</span>` : (ART[a.k] || ART.acct).replace('class="art"', `width="${Math.round(size*.9)}" height="${Math.round(size*.8)}"`); return `<span class="art" style="width:${size}px;height:${size}px;border-radius:${Math.round(size*.28)}px;background:${a.bg}">${inner}</span>`; }
 function myApps(){
   const pins = S.pins.map(appOf).filter(Boolean);
-  if (!pins.length) return `<p class="hint">Pin the apps you use. Each one then opens on its own, like a separate app on your phone.</p>`;
+  if (!pins.length) return `<p class="hint">Open an app's page and tap ＋ My apps to pin it here. Each one then opens on its own, like a separate app on your phone.</p>`;
   return `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,64)}<b>${a.n}</b></button>`).join('')}</div>`;
 }
 function pinBtn(a){ const on = S.pins.includes(a.k); return `<button class="pinbtn" data-act="pinapp" data-k="${a.k}" aria-pressed="${on}">${on ? '✓ In my apps' : '＋ My apps'}</button>`; }
@@ -974,10 +997,9 @@ function vHome(){
   return `<main class="wrap" style="padding-block:22px 0">
   <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,7vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1">Free, open apps<br>for learning and money.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch">One account for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
   <section class="plain"><div class="sect-h"><h2>My apps</h2><span>${S.pins.length ? 'tap to open' : 'nothing pinned yet'}</span></div>${myApps()}
-    <div class="forrow" role="group" aria-label="Open straight into" style="margin-top:14px"><b>Open straight into</b>${startOpts.map(([k,l]) => `<button data-act="startapp" data-k="${k}" aria-pressed="${(S.start||'')===k}">${l}</button>`).join('')}</div>
-    <p class="hint" style="margin-top:6px">Next time you open OpenSource Everything, it goes straight to this.</p>${S.pins.length ? '<button class="openbtn" data-act="pwaapp" data-k="pins" style="margin-top:12px">Add my apps to my phone</button><p class="hint" style="margin-top:6px">Each one gets its own icon in your phone\'s app library.</p>' : ''}</section>
+${S.pins.length ? '<button class="openbtn" data-act="pwaapp" data-k="pins" style="margin-top:12px">Add my apps to my phone</button><p class="hint" style="margin-top:6px">Each one gets its own icon in your phone\'s app library.</p>' : ''}</section>
   <section class="plain"><div class="sect-h"><h2>All apps</h2><span>each one made for its own people</span></div><button class="linkbtn" data-act="plans" style="margin-bottom:6px">Plans and prices</button>
-    <div class="applist">${APPS.map(a => `<div class="approw"><button class="appmeta" ${a.soon ? 'data-act="locked" data-why="AccountingUnlocked"' : `data-act="nav" data-r="${a.page}"`}>${appArt(a,56)}<span style="flex:1;min-width:0"><b>${a.n}${a.soon ? '<span class="soon">Soon</span>' : ''}${a.topic && S.interests.includes(a.topic) ? '<span class="soon" style="color:#0B7A3B;border-color:#0B7A3B">For you</span>' : ''}</b><span>${a.d}</span></span></button>${a.soon ? '' : `<span class="appbtns"><button class="openbtn" data-act="nav" data-r="${a.open}">Open</button>${pinBtn(a)}</span>`}</div>`).join('')}</div></section>
+    <div class="applist">${APPS.map(a => `<div class="approw"><button class="appmeta" ${a.soon ? 'data-act="locked" data-why="AccountingUnlocked"' : `data-act="nav" data-r="${a.page}"`}>${appArt(a,56)}<span style="flex:1;min-width:0"><b>${a.n}${a.soon ? '<span class="soon">Soon</span>' : ''}${a.topic && S.interests.includes(a.topic) ? '<span class="soon" style="color:#0B7A3B;border-color:#0B7A3B">For you</span>' : ''}</b><span>${a.d}</span></span></button>${a.soon ? '' : `<span class="appbtns"><button class="openbtn" data-act="nav" data-r="${a.open}">Open</button></span>`}</div>`).join('')}</div></section>
   ${siteFoot()}
   </main>`;
 }
@@ -1484,9 +1506,16 @@ function feedList(){
 }
 function welcomeCard(){
   if (S.me && S.welcomeDone) return '';
-  return `<div class="welcome"><b>Welcome to OpenSource Everything</b><p>A free, ad-free place to learn, build and grow your money, with your friends. Daily challenges, real people, and apps for exams, money and more.</p>
-    <span class="wlbl">I'm into</span><div class="chipsrow">${TOPICS.map(([k, l]) => `<button data-act="interest" data-k="${k}" aria-pressed="${S.interests.includes(k)}">${l}</button>`).join('')}</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">${S.me ? '<button class="gbtn" data-act="findfriends">Find friends from contacts</button><button class="gbtn ghost" data-act="welcomedone">Done</button>' : '<button class="gbtn" data-act="signin">Sign up free</button><button class="gbtn ghost" data-act="findfriends">Find friends from contacts</button>'}</div></div>`;
+  return `<div class="welcome"><b>New here?</b><p>Pick what you're into and your challenges, feed and apps follow it.</p><div class="chipsrow">${TOPICS.map(([k, l]) => `<button data-act="interest" data-k="${k}" aria-pressed="${S.interests.includes(k)}">${l}</button>`).join('')}</div><div style="display:flex;gap:8px;flex-wrap:wrap">${S.me ? '<button class="gbtn" data-act="welcomedone">Done</button>' : '<button class="gbtn" data-act="signin">Sign up free</button>'}<button class="gbtn ghost" data-act="findfriends">Find friends</button></div></div>`;
+}
+function todayCard(nCh, dn){
+  const c = S.ch, k = nCh.find(x => !c.done[x]); S.chStart = S.chStart || {};
+  const head = `<button class="tchead" data-act="nav" data-r="challenges"><span class="wi">🏆</span><span style="flex:1;min-width:0"><b>Today's challenges</b><small>${dn} of ${nCh.length} done${c.streak ? ' · 🔥 ' + c.streak + '-day streak' : ''}</small></span><span class="chev">›</span></button><span class="bar2"><i style="width:${Math.round(dn / nCh.length * 100)}%"></i></span>`;
+  if (!k) return `<div class="widget tcard">${head}<p class="muted" style="margin-top:8px">All done for today. See you tomorrow.</p></div>`;
+  const x = CHAL[k]; if (!S.chStart[k]) S.chStart[k] = Date.now();
+  const body = k === 'learn' ? `<p>${x.q}</p><div class="tbtns"><button class="gbtn ghost" data-act="nav" data-r="quant">A lesson</button><button class="gbtn ghost" data-act="nav" data-r="sim">Simulator</button><button class="gbtn ghost" data-act="newpost">Post</button></div>`
+    : `<p class="tq">${esc(x.q)}</p><div class="topts">${x.o.map((o, i) => `<button class="qopt" data-act="chans" data-c="${k}" data-i="${i}">${esc(o)}</button>`).join('')}</div>`;
+  return `<div class="widget tcard">${head}<span class="chal-k" style="--c:var(--blue);margin-top:10px">${esc(x.title)} · ${esc(x.app)}</span>${body}</div>`;
 }
 function vChallenges(){
   const c = S.ch, lb = S.lb || 'league', now = Date.now(); S.chStart = S.chStart || {};
@@ -1524,18 +1553,18 @@ const AGO = {f2:'2h', f7:'4h', f4:'5h', f5:'7h', f1:'8h', f8:'9h', f9:'11h', f3:
 const LIKER = {f2:'riya', f7:'sana', f4:'kabir', f5:'dev', f8:'arjun', f9:'zoya', f1:'kabir', f3:'riya', f6:'zoya'};
 function storyRow(){
   const seen = S.seen || {}, me = S.me;
-  const mine = `<button class="stb" data-act="mystory"><span class="ring mine"><span>${me ? esc(me.name[0].toUpperCase()) : '+'}</span><i>+</i></span><small>Your story</small></button>`;
+  const mine = `<button class="stb" data-act="mystory"><span class="ring mine"><span>${me ? esc(me.name[0].toUpperCase()) : icon('user')}</span><i>+</i></span><small>Your story</small></button>`;
   const chal = `<button class="stb" data-act="nav" data-r="challenges"><span class="ring chal ${Object.values(S.ch.done).filter(Boolean).length >= 2 ? 'done' : ''}"><span>🏆</span></span><small>Today</small></button>`;
   const fr = Object.keys(STORIES).sort((a, b) => (seen[a] ? 1 : 0) - (seen[b] ? 1 : 0)).map(k => `<button class="stb" data-act="story" data-k="${k}"><span class="ring ${seen[k] ? 'done' : ''}"><span style="background:${PEOPLE[k].bg};color:#fff">${esc(PEOPLE[k].name.split(' ').map(w => w[0]).join('').slice(0,2))}</span></span><small>${esc(k)}</small></button>`).join('');
   return `<div class="stories" aria-label="Stories">${mine}${chal}${fr}</div>`;
 }
-function igIcon(n, on){ const P = {heart:'<path d="M12 20.5s-7.5-4.6-9.6-9.1C.9 8 3 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.6 0 5.7 3.5 4.2 6.9-2.1 4.5-9.6 9.1-9.6 9.1z"/>', comment:'<path d="M20.5 11.5a8.5 8.5 0 1 1-3.6-6.9 8.5 8.5 0 0 1 3.6 6.9z"/><path d="M20.5 20.5l-2.6-3.3"/>', send:'<path d="M21.5 2.5L10 13.5"/><path d="M21.5 2.5l-7 19-4.5-8-8-4.5z"/>', save:'<path d="M5.5 3h13v18l-6.5-5-6.5 5z"/>', msg:'<path d="M12 2.8c-5.2 0-9.2 3.8-9.2 8.9 0 2.7 1.1 5 3 6.6v3.1l2.9-1.6c1 .3 2.1.4 3.3.4 5.2 0 9.2-3.8 9.2-8.5S17.2 2.8 12 2.8z"/><path d="M6.5 14l3.6-4 2.6 2.4 4.3-3.4-3.6 4-2.6-2.4z"/>', plus:'<rect x="3" y="3" width="18" height="18" rx="5.5"/><path d="M12 7.5v9M7.5 12h9"/>'}; return `<svg viewBox="0 0 24 24" width="26" height="26" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
+function igIcon(n, on){ const P = {heart:'<path d="M12 20.5s-7.5-4.6-9.6-9.1C.9 8 3 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.6 0 5.7 3.5 4.2 6.9-2.1 4.5-9.6 9.1-9.6 9.1z"/>', comment:'<path d="M20.5 11.5a8.5 8.5 0 1 1-3.6-6.9 8.5 8.5 0 0 1 3.6 6.9z"/><path d="M20.5 20.5l-2.6-3.3"/>', bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>', send:'<path d="M21.5 2.5L10 13.5"/><path d="M21.5 2.5l-7 19-4.5-8-8-4.5z"/>', save:'<path d="M5.5 3h13v18l-6.5-5-6.5 5z"/>', msg:'<path d="M12 2.8c-5.2 0-9.2 3.8-9.2 8.9 0 2.7 1.1 5 3 6.6v3.1l2.9-1.6c1 .3 2.1.4 3.3.4 5.2 0 9.2-3.8 9.2-8.5S17.2 2.8 12 2.8z"/><path d="M6.5 14l3.6-4 2.6 2.4 4.3-3.4-3.6 4-2.6-2.4z"/>', plus:'<rect x="3" y="3" width="18" height="18" rx="5.5"/><path d="M12 7.5v9M7.5 12h9"/>'}; return `<svg viewBox="0 0 24 24" width="26" height="26" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function postHtml(p){
-  const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length, lk = LIKER[p.k];
+  const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length;
   return `<article class="post"><header>${w.id ? `<button class="phead" data-act="viewprof" data-k="${w.id}">` : '<span class="phead">'}${w.id && STORIES[w.id] ? `<span class="minring ${S.seen && S.seen[w.id] ? 'done' : ''}">${avatar(w, 32)}</span>` : avatar(w, 32)}<span style="min-width:0"><b>${esc(w.handle || w.name)}</b>${w.app ? `<small>From the ${esc(w.name)} app · ${w.app}</small>` : ''}</span>${w.id ? '</button>' : '</span>'}<button class="dots" data-act="postmore" data-k="${p.k}" aria-label="More options">⋯</button></header>
     <div class="media${p.type === 'reel' ? '' : ' short'}" style="background:${p.bg}" data-act="dbllike" data-k="${p.k}">${p.type === 'reel' ? '<span class="play" aria-hidden="true">▶</span>' : ''}<h3>${esc(p.h)}</h3>${p.sub ? `<p>${esc(p.sub)}</p>` : ''}</div>
     <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="${liked ? 'Unlike' : 'Like'}" class="heartbtn ${liked ? 'liked' : ''} ${S.justLiked === p.k ? 'pop' : ''}">${igIcon('heart', liked)}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">${igIcon('comment')}</button><button data-act="share" data-k="${p.k}" aria-label="Share">${igIcon('send')}</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${igIcon('save', saved)}</button></div>
-    ${liked ? `<p class="likes">Liked by <b>you</b>${lk ? ` and <b>${lk}</b>` : ''}</p>` : lk ? `<p class="likes">Liked by <b>${lk}</b> and others</p>` : ''}
+    ${liked ? '<p class="likes">Liked by <b>you</b></p>' : ''}
     <p class="cap"><b>${esc(w.handle || w.name)}</b> ${esc(p.cap)}</p>${n ? `<button class="morec" data-act="comment" data-k="${p.k}">View all ${n} comment${n > 1 ? 's' : ''}</button>` : ''}${p.open ? `<button class="linkbtn openin" data-act="nav" data-r="${p.open}">${esc(p.openL)} →</button>` : ''}<p class="ago">${p.by === 'you' ? 'Just now' : AGO[p.k] || ''}</p></article>`;
 }
 function vFeed(){
@@ -1543,9 +1572,10 @@ function vFeed(){
   const c = S.ch, nCh = ['daily','cat','money','learn'].filter(k => !CHAL[k].topic || S.interests.includes(CHAL[k].topic)), dn = nCh.filter(k => c.done[k]).length;
   const myA = (S.pins.length ? S.pins : ['prep','habit']).map(appOf).filter(a => a && !a.soon);
   const dlab = new Date().toLocaleDateString('en-IN', {weekday:'long', day:'numeric', month:'long'});
-  return `<main class="feed"><div class="lt"><small>${esc(dlab)}</small><h1>Today</h1></div>${storyRow()}${welcomeCard()}
-    <button class="widget" data-act="nav" data-r="challenges"><span class="wi">🏆</span><span style="flex:1;min-width:0"><b>Today's challenges</b><small>${dn} of ${nCh.length} done${c.streak ? ' · 🔥 ' + c.streak + '-day streak' : ''}</small><span class="bar2"><i style="width:${Math.round(dn / nCh.length * 100)}%"></i></span></span><span class="chev">›</span></button>
-    <div class="glist"><span class="ghead">Your apps</span>${myA.map(a => `<button class="grow2" data-act="nav" data-r="${a.open}">${appArt(a, 32)}<span style="flex:1;min-width:0"><b>${esc(a.n)}</b><small>${esc(a.d.split(':')[0])}</small></span><span class="chev">›</span></button>`).join('')}<button class="grow2" data-act="nav" data-r="apps"><span class="art" style="width:32px;height:32px;border-radius:9px;background:var(--fill);display:grid;place-items:center;color:var(--blue);font-size:18px">＋</span><span style="flex:1"><b style="color:var(--blue)">All apps</b></span><span class="chev">›</span></button></div>
+  return `<main class="feed"><div class="lt"><small>${esc(dlab)}</small><h1>Today</h1></div>${storyRow()}
+    ${todayCard(nCh, dn)}
+    ${welcomeCard()}
+    <div class="glist"><span class="ghead">Your apps</span>${myA.map(a => `<button class="grow2" data-act="nav" data-r="${a.open}">${appArt(a, 32)}<span style="flex:1;min-width:0"><b>${esc(a.n)}</b><small>${esc(a.d.split(':')[0])}</small></span><span class="chev">›</span></button>`).join('')}</div>
     <div class="sechead"><h2>From friends</h2><div class="seg2" role="group" aria-label="Show"><button data-act="ftab" data-k="foryou" aria-pressed="${tab !== 'following'}">For you</button><button data-act="ftab" data-k="following" aria-pressed="${tab === 'following'}">Following</button></div></div>${!['foryou','following'].includes(tab) ? `<div class="ftabnote">Showing: <b>${{following:'Following', exams:'Exams', money:'Money', careers:'Careers', building:'Building'}[tab]}</b> <button class="linkbtn" data-act="ftab" data-k="foryou">Back to For you</button></div>` : ''}
     ${L.map(postHtml).join('') || `<p class="muted" style="padding:20px 16px;text-align:center">${tab === 'following' ? 'Follow people to see their posts here. Tap a name anywhere to follow.' : 'Nothing here yet.'}</p>`}
     <p class="simfoot" style="text-align:center;padding:10px 16px 30px">You're all caught up. Sample people and posts in this preview.</p></main>`;
@@ -1562,7 +1592,10 @@ function storyOpen(k, i = 0){
   clearTimers(); timers.push(setTimeout(() => { if (S.sv && S.sv.k === k && S.sv.i === i && document.activeElement !== $('#svin')) storyOpen(k, i + 1); }, 5000));
 }
 function activitySheet(){
-  sheet(`<h2>Activity</h2>${[['🏆','Today\'s challenges are ready. Keep your streak going.','challenges'],['💬','kabir replied to your story','chats'],['❤️','riya liked your post','profile'],['₹','kabir: Hissab · Cab ₹900, you owe ₹450','chats']].map(([i, t, r]) => `<button class="person" data-act="nav" data-r="${r}"><span class="av" style="background:#EEF0F8;color:var(--label)">${i}</span><span style="flex:1;text-align:left">${esc(t)}</span></button>`).join('')}<p style="color:var(--label2);font-size:13px">Sample activity in this preview.</p>`);
+  const c = S.ch, items = [], left = ['daily','cat','money','learn'].filter(k => (!CHAL[k].topic || S.interests.includes(CHAL[k].topic)) && !c.done[k]).length;
+  if (left) items.push(['🏆', `${left} challenge${left > 1 ? 's' : ''} left today. Keep your streak going.`, 'challenges']);
+  Object.keys(S.hissab).filter(k => unreadChat(k)).forEach(k => items.push(['💬', `New message from ${S.hissab[k].name.split(' ')[0]}`, 'chats']));
+  sheet(`<h2>Activity</h2>${items.map(([i, t, r]) => `<button class="person" data-act="nav" data-r="${r}"><span class="av" style="background:var(--fill);color:var(--label)">${i}</span><span style="flex:1;text-align:left">${esc(t)}</span></button>`).join('')}<p style="color:var(--label2)">${items.length ? '' : 'Nothing yet. '}Likes and comments on your posts will show up here.</p>`);
 }
 function feedMenu(){ sheet(`<h2>Show me</h2>${[['foryou','For you'],['following','Following'],['exams','Exams and CAT'],['money','Money'],['careers','Careers and skills'],['building','Building things']].map(([k, l]) => `<button class="opt" data-act="ftab" data-k="${k}" style="width:100%;text-align:left${(S.ftab || 'foryou') === k ? ';font-weight:800' : ''}">${(S.ftab || 'foryou') === k ? '✓ ' : ''}${l}</button>`).join('')}`); }
 
@@ -1578,7 +1611,7 @@ function vProfile(){
     <div class="profhead">${avatar(w, 84)}<div class="pstats"><div><b>${posts.length}</b><small>posts</small></div><div><b>${P ? '—' : 0}</b><small>followers</small></div><div><b>${P ? '—' : Object.values(S.follows || {}).filter(Boolean).length}</b><small>following</small></div></div></div>
     <div><b style="font-size:18px">${esc(w.name)}</b> <span class="muted">${handle ? '· GitID @' + esc(handle) : '· not signed up yet'}</span><p>${P ? esc(P.bio) : S.me && S.me.college ? esc(S.me.college) : 'Add a bio: what you\'re learning or building.'}</p>${P ? `<p class="muted">${esc(P.college)} · sample profile</p>` : ''}</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">${P ? `<button class="gbtn" data-act="follow" data-k="${id}">${S.follows && S.follows[id] ? 'Following' : 'Follow'}</button><button class="gbtn ghost" data-act="openchat" data-k="${id}">Message</button>` : `${S.me ? '<button class="gbtn ghost" data-act="signin">Edit profile</button><button class="gbtn ghost" data-act="shareprof">Share profile</button>' : '<button class="gbtn" data-act="signin">Sign up free</button>'}`}</div>
-    ${P ? '' : `<div class="glist">${[['apps','My apps','grid'],['plans','Plans and prices','clip'],['lang','Language','book'],['privacy','Privacy','user'],['help','Help','today']].map(([k, l, ic]) => `<button class="grow2" ${k === 'apps' ? 'data-act="nav" data-r="apps"' : `data-act="${k === 'plans' ? 'plans' : 'mepref'}" data-k="${k}"`}><span class="art" style="width:30px;height:30px;border-radius:8px;background:${{apps:'#007AFF', plans:'#34C759', lang:'#FF9500', privacy:'#5856D6', help:'#8E8E93'}[k]};color:#fff;display:grid;place-items:center">${icon(ic)}</span><span style="flex:1"><b>${l}</b></span><span class="chev">›</span></button>`).join('')}</div>`}
+    ${P ? '' : `<div class="glist">${[['apps','My apps','grid'],['start','Start screen','home'],['plans','Plans and prices','clip'],['lang','Language','book'],['privacy','Privacy','user'],['help','Help','today']].map(([k, l, ic]) => `<button class="grow2" ${k === 'apps' ? 'data-act="nav" data-r="apps"' : `data-act="${k === 'plans' ? 'plans' : 'mepref'}" data-k="${k}"`}><span class="art" style="width:30px;height:30px;border-radius:8px;background:${{apps:'#007AFF', start:'#5AC8FA', plans:'#34C759', lang:'#FF9500', privacy:'#5856D6', help:'#8E8E93'}[k]};color:#fff;display:grid;place-items:center">${icon(ic)}</span><span style="flex:1"><b>${l}</b></span><span class="chev">›</span></button>`).join('')}</div>`}
     <div class="gcard"><b>Activity</b>${grid(P ? P.seed : 0, P ? 3 : Math.min(4, done))}<span class="muted" style="font-size:13px">${P ? 'Every square is a day: challenges, lessons, simulator games and projects. Sample history.' : 'Each square is a day. They fill in as you do challenges, lessons, simulator games and projects.'}</span></div>
     <div class="gcard"><b>Verified by the apps</b>${badges.length ? `<div class="idbadges">${badges.map(b => `<span class="vb v">✓ ${esc(b)}</span>`).join('')}</div>` : '<span class="muted">Badges show up here as you use OpenPrep, GoodHabit and the rest. Apps add them; you can\'t type them in.</span>'}</div>
     <div class="gcard"><b>Projects</b><span class="muted">${P ? 'No public projects yet.' : 'Projects you open-source here show up on your profile.'}</span>${P ? '' : '<button class="gbtn ghost" data-act="nav" data-r="community">Open-source a project</button>'}</div>
@@ -1603,6 +1636,14 @@ function signupSheet(){
     <button class="p-btn blue" data-act="signupok">${S.me ? 'Save' : 'Create my GitID'}</button><p style="font-size:12.5px;color:var(--label2)">Posting is for 18 and over. Under-18s can watch, like, comment and do challenges. Preview: nothing leaves this browser.</p>`);
 }
 function peopleSheet(){ sheet(`<h2>New message</h2>${Object.keys(PEOPLE).map(k => `<button class="person" data-act="openchat" data-k="${k}"><span class="av" style="background:${PEOPLE[k].bg}">${esc(PEOPLE[k].name.split(' ').map(w => w[0]).join('').slice(0,2))}</span><span style="flex:1;text-align:left"><b style="display:block">${esc(PEOPLE[k].name)}</b><small class="muted">@${k}</small></span></button>`).join('')}<p style="color:var(--label2);font-size:13px">Sample people in this preview. In the app you'd see the people you follow and your contacts.</p>`); }
+function prefSheet(k){
+  const P = S.prefs = S.prefs || {}, seg = (key, opts, page) => `<div class="seg2" role="group">${opts.map(([v, l]) => `<button data-act="setpref" data-p="${page}" data-k="${key}" data-v="${v}" aria-pressed="${(P[key] || opts[0][0]) === v}">${l}</button>`).join('')}</div>`, tog = (key, l, page) => `<button class="grow2 togrow" data-act="setpref" data-p="${page}" data-k="${key}" data-v="toggle" role="switch" aria-checked="${!!P[key]}"><span style="flex:1"><b>${l}</b></span><span class="switch ${P[key] ? 'on' : ''}"><i></i></span></button>`;
+  if (k === 'start') { const opts = [['','Today'],['prep','OpenPrep'],['habit','GoodHabit']]; sheet(`<h2>Start screen</h2><p>When you open OpenSource Everything, go straight to:</p><div class="seg2" role="group">${opts.map(([v, l]) => `<button data-act="startapp" data-k="${v}" aria-pressed="${(S.start || '') === v}">${l}</button>`).join('')}</div>`); return; }
+  if (k === 'lang') sheet(`<h2>Language</h2><p>Menus and buttons</p>${seg('lang', [['en','English'],['hinglish','Hinglish']], 'lang')}<p class="muted" style="font-size:13px">OpenPrep videos come in Hinglish first, then English. Regional packs are ₹100 each.</p>`);
+  if (k === 'privacy') sheet(`<h2>Privacy</h2><p>Who can see your profile and posts</p>${seg('who', [['all','Everyone'],['followers','Followers'],['me','Only me']], 'privacy')}<div class="glist" style="margin:8px 0 0">${tog('hidegrid', 'Hide my activity grid', 'privacy')}${tog('nophone', 'Don\'t let people find me by phone number', 'privacy')}</div><p class="muted" style="font-size:13px">Your Hissab books never leave your phone. Messages are only between the people in them.</p>`);
+  if (k === 'help') sheet(`<h2>Help</h2><div class="glist" style="margin:0">${[['How do challenges work?','A new set every morning. +10 for a right answer or a finished challenge, +2 for trying. Streaks count days with at least one done. No prizes.'],['Is my Hissab private?','Your own books stay on your phone. Shared Hissabs are seen only by the two of you.'],['How do I report a post or a person?','Tap ⋯ on any post. A person reviews every report.'],['Is anything here investment advice?','No. GoodHabit uses pretend money and past prices, and GoodGuy never tells you what to buy.']].map(([q, a]) => `<details class="faq"><summary>${q}</summary><p>${a}</p></details>`).join('')}</div><button class="gbtn ghost" data-act="reportbug">Report a problem</button>`);
+}
+function unreadChat(k){ const h = S.hissab[k], m = h && h.msgs[h.msgs.length - 1]; return !!(m && m[0] === 'them' && !(S.read && S.read[k])); }
 function ensureChat(k){ if (!S.hissab[k] && PEOPLE[k]) S.hissab[k] = {name:PEOPLE[k].name, id:'@' + k, bg:PEOPLE[k].bg, state:'chat', bal:0, msgs:[]}; }
 
 
@@ -1650,7 +1691,8 @@ const sdate = (i, o = {day:'numeric', month:'short', year:'numeric'}) => new Dat
 const sidx = iso => { const t = Date.parse(iso + 'T00:00:00Z'); let lo = 0, hi = SIM.N - 1; while (lo < hi) { const m = (lo + hi) >> 1; if (SIM.days[m] < t) lo = m + 1; else hi = m; } return lo; };
 const spx = (sym, i) => SIM.by[sym].px[i];
 const smove = (sym, i) => { const p = SIM.by[sym].px; return i > 0 && p[i] && p[i-1] ? p[i] / p[i-1] - 1 : 0; };
-const pct = (x, d = 1) => (x >= 0 ? '+' : '−') + Math.abs(x * 100).toFixed(d) + '%';
+const pct = (x, d = 1) => (Math.abs(x * 100) < .5 * Math.pow(10, -d) ? '' : x > 0 ? '+' : '−') + Math.abs(x * 100).toFixed(d) + '%';
+const pcls = (x, d = 1) => Math.abs(x * 100) < .5 * Math.pow(10, -d) ? 'mute' : x > 0 ? 'up' : 'down';
 const rs = n => (n < 0 ? '−' : '') + '₹' + Math.abs(n).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
 const SLAST = SIM.N - 1;
 function simLoad(){ try { const v = JSON.parse(localStorage.getItem(SKEY)); if (v && v.hold && v.vals) S.sim = v; } catch (e) {} }
@@ -1679,7 +1721,7 @@ function vSim(){
   const s = S.sim, i = s.i, V = simValue(i), nifty = spx('NIFTY 50', i) / spx('NIFTY 50', s.i0) - 1;
   const evs = []; for (let k = s.prev + 1; k <= i; k++) if (SIMEV[siso(k)]) evs.push(k);
   const nm = smove('NIFTY 50', i), atEnd = i >= SLAST;
-  const banner = evs.length || Math.abs(nm) >= .03 ? `<div class="simev"><b style="font-size:13px;opacity:.75">${evs.length && evs[evs.length - 1] !== i ? 'While you skipped ahead' : 'What happened today'}</b>${evs.slice(-3).map(k => `<span><b>${sdate(k, {day:'numeric', month:'short'})}:</b> ${esc(SIMEV[siso(k)])} <span class="pill ${smove('NIFTY 50', k) >= 0 ? 'up' : 'down'}">Nifty ${pct(smove('NIFTY 50', k))}</span></span>`).join('')}${!evs.includes(i) && Math.abs(nm) >= .03 ? `<span>A big day: the Nifty moved ${pct(nm)}.</span>` : ''}</div>` : '';
+  const banner = evs.length || Math.abs(nm) >= .03 ? `<div class="simev"><b style="font-size:13px;opacity:.75">${evs.length && evs[evs.length - 1] !== i ? 'While you skipped ahead' : 'What happened today'}</b>${evs.slice(-3).map(k => `<span><b>${sdate(k, {day:'numeric', month:'short'})}:</b> ${esc(SIMEV[siso(k)])} <span class="pill ${pcls(smove('NIFTY 50', k))}">Nifty ${pct(smove('NIFTY 50', k))}</span></span>`).join('')}${!evs.includes(i) && Math.abs(nm) >= .03 ? `<span>A big day: the Nifty moved ${pct(nm)}.</span>` : ''}</div>` : '';
   const vals = s.vals, step = Math.max(1, Math.floor(vals.length / 160)), P = [], Q = [];
   for (let k = 0; k < vals.length; k += step) { P.push(vals[k]); Q.push(s.base * spx('NIFTY 50', s.i0 + k) / spx('NIFTY 50', s.i0)); }
   P.push(vals[vals.length - 1]); Q.push(s.base * (1 + nifty));
@@ -1687,13 +1729,13 @@ function vSim(){
   const held = Object.entries(s.hold);
   return `<main class="col" style="padding-block:14px 110px;display:flex;flex-direction:column;gap:12px">${playModes('sim')}
     <div class="gcard"><span class="muted">${sdate(i, {weekday:'short', day:'numeric', month:'short', year:'numeric'})} · day ${i - s.i0 + 1}</span><b class="simbig num">${rs(V)}</b>
-      <span><span class="pill ${V >= s.base ? 'up' : 'down'}">${pct(V / s.base - 1)} since you started</span> <span class="muted">Nifty: ${pct(nifty)}</span></span><span class="muted">Cash ${rs(s.cash)}</span></div>
+      <span><span class="pill ${pcls(V / s.base - 1)}">${pct(V / s.base - 1)} since you started</span> <span class="muted">Nifty: ${pct(nifty)}</span></span><span class="muted">Cash ${rs(s.cash)}</span></div>
     ${banner}
     <div class="simctl"><button data-act="simstep" data-n="1" ${atEnd ? 'disabled' : ''}>+1 day</button><button data-act="simstep" data-n="5" ${atEnd ? 'disabled' : ''}>+1 week</button><button data-act="simstep" data-n="21" ${atEnd ? 'disabled' : ''}>+1 month</button><button class="go" data-act="simbig" ${atEnd ? 'disabled' : ''}>Next big day →</button></div>
     ${atEnd ? `<p class="muted">You've reached the latest prices we use (${sdate(SLAST)}).</p>` : ''}
     ${vals.length > 1 ? `<div class="gcard"><b>Your money vs just holding the Nifty</b><svg viewBox="0 0 320 136" width="100%" height="150" preserveAspectRatio="none" role="img" aria-label="Your portfolio value against the Nifty since you started"><polyline points="${line(Q)}" fill="none" stroke="#9AA0AA" stroke-width="2" stroke-dasharray="5 4"/><polyline points="${line(P)}" fill="none" stroke="#17181A" stroke-width="2.5"/></svg><span class="muted"><b style="color:#17181A">━ You</b> &nbsp; <b style="color:#9AA0AA">┅ Nifty, if you'd bought it on day 1</b></span></div>` : ''}
-    ${held.length ? `<div class="gcard"><b>Your holdings</b>${held.map(([k, h]) => { const v = h.q * spx(k, i), pl = v - h.cost; return `<button class="srow" data-act="simopen" data-s="${esc(k)}"><span style="min-width:0"><b>${esc(k)}</b><small>${h.q} shares · cost ${rs(h.cost)}</small></span><span></span><span style="text-align:right"><span class="px" style="display:block">${rs(v)}</span><span class="pill ${pl >= 0 ? 'up' : 'down'}">${pct(pl / h.cost)}</span></span></button>`; }).join('')}</div>` : `<div class="gcard"><b>You haven't bought anything yet</b><span class="muted">Tap any share or ETF below to buy. Tip from GoodGuy: many people start with NIFTYBEES, which follows the whole Nifty 50.</span></div>`}
-    <div class="gcard"><b>Market on ${sdate(i, {day:'numeric', month:'short', year:'numeric'})}</b>${SIM.inst.map(x => { const p = x.px[i], m = smove(x.sym, i); if (p == null) return `<div class="srow off"><span style="min-width:0"><b>${esc(x.sym)}</b><small>${esc(x.name)}</small></span><span></span><span class="muted" style="text-align:right;font-size:12.5px">No price data<br>before ${sdate(x.first, {month:'short', year:'numeric'})}</span></div>`; return `<button class="srow" data-act="simopen" data-s="${esc(x.sym)}"><span style="min-width:0"><b>${esc(x.sym)}${x.kind === 'idx' ? ' <span class="pill mute">index</span>' : x.kind === 'etf' ? ' <span class="pill mute">ETF</span>' : ''}</b><small>${esc(x.name)}</small></span><span>${sline(x.sym, i - 60, i, 64, 28, m >= 0 ? '#0B7A3B' : '#B3261E')}</span><span style="text-align:right"><span class="px" style="display:block">${p.toLocaleString('en-IN', {maximumFractionDigits:2})}</span><span class="pill ${m >= 0 ? 'up' : 'down'}">${pct(m, 2)}</span></span></button>`; }).join('')}</div>
+    ${held.length ? `<div class="gcard"><b>Your holdings</b>${held.map(([k, h]) => { const v = h.q * spx(k, i), pl = v - h.cost; return `<button class="srow" data-act="simopen" data-s="${esc(k)}"><span style="min-width:0"><b>${esc(k)}</b><small>${h.q} shares · cost ${rs(h.cost)}</small></span><span></span><span style="text-align:right"><span class="px" style="display:block">${rs(v)}</span><span class="pill ${pcls(pl / h.cost)}">${pct(pl / h.cost)}</span></span></button>`; }).join('')}</div>` : `<div class="gcard"><b>You haven't bought anything yet</b><span class="muted">Tap any share or ETF below to buy. Tip from GoodGuy: many people start with NIFTYBEES, which follows the whole Nifty 50.</span></div>`}
+    <div class="gcard"><b>Market on ${sdate(i, {day:'numeric', month:'short', year:'numeric'})}</b>${SIM.inst.map(x => { const p = x.px[i], m = smove(x.sym, i); if (p == null) return `<div class="srow off"><span style="min-width:0"><b>${esc(x.sym)}</b><small>${esc(x.name)}</small></span><span></span><span class="muted" style="text-align:right;font-size:12.5px">No price data<br>before ${sdate(x.first, {month:'short', year:'numeric'})}</span></div>`; return `<button class="srow" data-act="simopen" data-s="${esc(x.sym)}"><span style="min-width:0"><b>${esc(x.sym)}${x.kind === 'idx' ? ' <span class="pill mute">index</span>' : x.kind === 'etf' ? ' <span class="pill mute">ETF</span>' : ''}</b><small>${esc(x.name)}</small></span><span>${sline(x.sym, i - 60, i, 64, 28, m >= 0 ? '#0B7A3B' : '#B3261E')}</span><span style="text-align:right"><span class="px" style="display:block">${p.toLocaleString('en-IN', {maximumFractionDigits:2})}</span><span class="pill ${pcls(m, 2)}">${pct(m, 2)}</span></span></button>`; }).join('')}</div>
     <button class="playbtn" data-act="simfinish">Finish and see my report card</button><button class="gbtn ghost" data-act="simreset">Start over with a different date</button>
     ${SIMNOTE}</main>`;
 }
@@ -1722,7 +1764,7 @@ function tradeSheet(){
     <button class="playbtn" data-act="simconfirm" style="background:${T.side === 'buy' ? 'var(--g-up)' : 'var(--g-down)'}">${T.side === 'buy' ? 'Buy' : 'Sell'} at ₹${p.toLocaleString('en-IN', {maximumFractionDigits:2})}</button>
     <p style="font-size:12.5px;color:var(--label2)">Orders fill at this day's closing price.</p>`;
   sheet(`<h2>${esc(x.sym)}</h2><p style="color:var(--label2);margin-top:-6px">${esc(x.name)} · ${sdate(i)}</p>
-    <div style="display:flex;align-items:baseline;gap:10px"><b style="font-size:26px" class="num">₹${p.toLocaleString('en-IN', {maximumFractionDigits:2})}</b><span class="pill ${m >= 0 ? 'up' : 'down'}">${pct(m, 2)} today</span></div>
+    <div style="display:flex;align-items:baseline;gap:10px"><b style="font-size:26px" class="num">₹${p.toLocaleString('en-IN', {maximumFractionDigits:2})}</b><span class="pill ${pcls(m, 2)}">${pct(m, 2)} today</span></div>
     <div class="seg2" role="group" aria-label="Chart range">${['1M', '6M', '1Y', '5Y'].map(r => `<button data-act="simrange" data-r="${r}" aria-pressed="${r === rg}" style="min-height:36px">${r}</button>`).join('')}</div>
     <div class="simchart">${sline(x.sym, from, i, 320, 120, chg >= 0 ? '#0B7A3B' : '#B3261E')}</div>
     <p style="font-size:13px;color:var(--label2)">${pct(chg)} over ${from === x.first && i - x.first < back ? 'the data we have' : 'the last ' + rg.replace('M', ' month').replace('Y', ' year') + (rg === '6M' || rg === '5Y' ? 's' : '')}. The chart only shows the past, up to today in the game.</p>${body}`);
@@ -1775,7 +1817,7 @@ function simReport(){
   }
   return `<main class="col" style="padding-block:14px 110px;display:flex;flex-direction:column;gap:12px">${playModes('sim')}
     <h1 style="font-family:var(--gh-d);font-size:30px">Your report card</h1><p class="muted">${sdate(s.i0)} to ${sdate(i)} · ${yrs >= 1 ? yrs.toFixed(1) + ' years' : Math.round(yrs * 12) + ' months'}</p>
-    <div class="gcard"><span class="muted">You ended with</span><b class="simbig num">${rs(V)}</b><span><span class="pill ${ret >= 0 ? 'up' : 'down'}">${pct(ret)}</span> <span class="muted">from ${rs(s.base)}</span></span></div>
+    <div class="gcard"><span class="muted">You ended with</span><b class="simbig num">${rs(V)}</b><span><span class="pill ${pcls(ret)}">${pct(ret)}</span> <span class="muted">from ${rs(s.base)}</span></span></div>
     <div class="kvs"><div><small>Just holding the Nifty</small><b>${pct(nifty)}</b></div><div><small>Per year</small><b>${cagr == null ? 'under a year' : pct(cagr)}</b></div><div><small>Worst fall along the way</small><b>${pct(dd)}</b></div><div><small>Trades · charges</small><b>${s.trades.length} · ${rs(s.charges)}</b></div>${sells.length === 1 ? `<div style="grid-column:1/-1"><small>Your sale</small><b>${esc(sells[0].sym)} ${rs(sells[0].real)}</b></div>` : ''}${sells.length > 1 ? `<div style="grid-column:1/-1"><small>Best sale · worst sale</small><b>${esc(sells[0].sym)} ${rs(sells[0].real)} · ${esc(sells[sells.length - 1].sym)} ${rs(sells[sells.length - 1].real)}</b></div>` : ''}</div>
     <div class="gcard"><b>GoodGuy's notes</b>${notes.map(t => `<p style="color:var(--g-ink)">• ${t}</p>`).join('')}<p class="muted" style="font-size:13px">GoodGuy reviews how you played, never which share to buy.</p></div>
     <div class="gcard"><b>Play the same dates with friends</b><span class="muted">Send this period to a friend. Their result shows up here once they play it. No prizes, no public rankings.</span><button class="gbtn" data-act="simsend">Send to a friend</button></div>
@@ -1926,7 +1968,7 @@ document.addEventListener('click', e => {
     case 'me': S.viewProf = null; go('profile'); break;
     case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:var(--label2)">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="apps" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
     case 'pinapp': { const k = b.dataset.k; S.pins = S.pins.includes(k) ? S.pins.filter(x => x !== k) : [...S.pins, k]; try { localStorage.setItem('ose-pins', JSON.stringify(S.pins)); } catch (e) {} toast(S.pins.includes(k) ? `${appOf(k).n} added to My apps` : `${appOf(k).n} removed from My apps`); render(); break; }
-    case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on your home feed'); render(); break;
+    case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on Today'); if (layer.innerHTML) prefSheet('start'); else render(); break;
     case 'pwaapp': { const ks = b.dataset.k === 'pins' ? (S.pins.length ? S.pins : ['prep','habit']) : [b.dataset.k], list = ks.map(appOf).filter(a => a && !a.soon), one = list.length === 1 ? list[0] : null;
       const phone = ['prep','habit','skills'].map(appOf).filter(a => !ks.includes(a.k) && S.pins.includes(a.k)).concat(list);
       sheet(`<h2>${one ? `Add ${one.n} to your phone` : 'Add your apps to your phone'}</h2><p style="color:var(--label2)">${one ? `${one.n} gets its own icon in your phone's app library and opens straight into ${one.n}.` : 'Each one gets its own icon in your phone\'s app library, like separate apps.'} Same account in all of them. No app store, no big download.</p>
@@ -1955,13 +1997,15 @@ document.addEventListener('click', e => {
     case 'copysim': try { navigator.clipboard.writeText(b.dataset.l).catch(() => {}); } catch (e) {} toast('Link copied (preview).'); break;
     case 'newpost': newPostSheet(); break;
     case 'newmsg': peopleSheet(); break;
-    case 'mepref': toast({lang:'Language: English or Hinglish (preview).', privacy:'Privacy: who sees your profile, posts and activity (preview).', help:'Help: guides and how to report a problem (preview).'}[b.dataset.k]); break;
+    case 'mepref': prefSheet(b.dataset.k); break;
+    case 'reportbug': closeSheet(); toast('Thanks. Your report goes straight to the team.'); break;
+    case 'setpref': { S.prefs = S.prefs || {}; S.prefs[b.dataset.k] = b.dataset.v === 'toggle' ? !S.prefs[b.dataset.k] : b.dataset.v; prefSheet(b.dataset.p); break; }
     case 'story': storyOpen(b.dataset.k, 0); break;
     case 'svnext': storyOpen(S.sv.k, S.sv.i + 1); break;
     case 'svprev': storyOpen(S.sv.k, S.sv.i - 1); break;
     case 'svclose': S.sv = null; clearTimers(); closeSheet(); render(); break;
     case 'mystory': if (!S.me) signupSheet(); else toast('Your story: add a photo, a lesson you finished or a result (preview).'); break;
-    case 'activity': S.actSeen = true; activitySheet(); { const h = $('.igbtn.heartbtn'); if (h) { h.classList.remove('liked'); h.innerHTML = igIcon('heart'); h.setAttribute('aria-label', 'Activity'); } } break;
+    case 'activity': S.actSeen = true; activitySheet(); { const d = $('.igbtn[data-act=activity] .dot'); if (d) d.remove(); } break;
     case 'feedmenu': feedMenu(); break;
     case 'dbllike': { const now = Date.now(), k = b.dataset.k; if (S.lastTap && S.lastTap.k === k && now - S.lastTap.t < 350) { S.likes = S.likes || {}; S.likes[k] = true; S.justLiked = k; render(); S.justLiked = null; } S.lastTap = {k, t:now}; break; }
     case 'interest': { const k = b.dataset.k; S.interests = S.interests.includes(k) ? S.interests.filter(x => x !== k) : [...S.interests, k]; chSave(); render(); break; }
@@ -1980,7 +2024,7 @@ document.addEventListener('click', e => {
     case 'postmore': sheet(`<h2>Report this post</h2><p style="color:var(--label2)">Why are you reporting it? A person reviews every report.</p>${['Spam','Scam or fraud','False information','Hurtful or harassment','Something else'].map(r => `<button class="opt" data-act="reportpost" style="width:100%;text-align:left">${r}</button>`).join('')}<button class="gbtn ghost" data-act="notinterested">Not interested</button>`); break;
     case 'reportpost': closeSheet(); toast('Thanks. A person will review it, and it comes down if it breaks the rules.'); break;
     case 'notinterested': closeSheet(); toast('You\'ll see fewer posts like this.'); break;
-    case 'chans': { const k = b.dataset.c, x = CHAL[k], i = +b.dataset.i; S.ch.ans[k] = i; S.ch.secs[k] = Math.max(1, Math.round((Date.now() - ((S.chStart || {})[k] || Date.now())) / 1000)); chDone(k, i === x.r ? 10 : 2); render(); break; }
+    case 'chans': { const k = b.dataset.c, x = CHAL[k], i = +b.dataset.i; S.ch.ans[k] = i; S.ch.secs[k] = Math.max(1, Math.round((Date.now() - ((S.chStart || {})[k] || Date.now())) / 1000)); chDone(k, i === x.r ? 10 : 2); const onToday = location.hash.slice(1) === 'home' || !location.hash; render(); if (onToday) toast(i === x.r ? `Right · +10. ${x.why}` : `Not quite · +2. ${x.why}`); break; }
     case 'lb': S.lb = b.dataset.k; render(); break;
     case 'viewprof': S.viewProf = b.dataset.k || null; if (location.hash.slice(1) !== 'profile') go('profile'); else render(); break;
     case 'follow': S.follows = S.follows || {}; S.follows[b.dataset.k] = !S.follows[b.dataset.k]; render(); break;
@@ -2044,7 +2088,7 @@ document.addEventListener('click', e => {
     case 'share': sheet(`<h2>Share with a friend</h2><p style="color:#5D6488">They can watch it free, even past their daily limit.</p>${Object.keys(S.hissab).map(k => `<button class="opt" data-act="sendreel" data-k="${k}" data-i="${b.dataset.i}">${hav(k)} ${esc(S.hissab[k].name)}</button>`).join('')}`); break;
     case 'sendreel': { const h = S.hissab[b.dataset.k]; h.msgs.push(['me', `Watch this: "${REELS[+b.dataset.i].h}"`]); closeSheet(); toast(`Sent to ${h.name.split(' ')[0]} in Chats`); break; }
     case 'like': toast('Liked'); break;
-    case 'openchat': ensureChat(b.dataset.k); S.chatWith = b.dataset.k; if (location.hash.slice(1) !== 'chats') go('chats'); else render(); break;
+    case 'openchat': ensureChat(b.dataset.k); (S.read = S.read || {})[b.dataset.k] = true; S.chatWith = b.dataset.k; if (location.hash.slice(1) !== 'chats') go('chats'); else render(); break;
     case 'backchats': S.chatWith = null; render(); break;
     case 'accept': { const h = S.hissab[b.dataset.k]; h.state = 'connected'; h.msgs.push(['hissab', 'Hissab connected. Shared expenses will show here.']); render(); toast('Hissab connected'); break; }
     case 'decline': { const h = S.hissab[b.dataset.k]; h.state = 'chat'; render(); toast('Invite declined. They won\'t be told why.'); break; }
