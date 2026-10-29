@@ -1,8 +1,9 @@
-# Chartroom
+# GoodHabits
 
-New app, built from scratch: a crypto trading app with a finance social network inside
-(LinkedIn-serious posts, Instagram-style reels), India only, Android first. Full brief in `brief.md`. The
-app-spec skill turns `brief.md` into `docs/spec.md` before any building.
+New app, built from scratch: a calm, ad-free social app (feed, AI news search, Zerodha
+investing, profile with Flexes, Hissab money splitting), India only, Android first. It replaces
+Chartroom. Full brief in `brief.md`; the app-spec skill turns it into `docs/spec.md` before any
+building.
 
 ## SOLIDS FOR YOU Master is on
 
