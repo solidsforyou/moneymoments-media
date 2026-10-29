@@ -272,7 +272,10 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .gate p{color:var(--ash);max-width:52ch}
 .gate .btn-hud{min-height:58px;font-size:18px;padding:0 28px}
 .exitbtn{flex:none;min-height:40px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid currentColor;background:transparent;opacity:.85}
-.wtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 0 10px}
+.wtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 28px 10px 0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+@media(min-width:760px){.wtabs{-webkit-mask-image:none;mask-image:none;padding-right:0}}
+.subs{position:static!important;margin-top:8px;font-size:14px!important;line-height:1.45}
+@media(max-width:560px){.stage{aspect-ratio:4/3!important}.tv{width:70%!important;top:8%!important}.guy{width:30%!important}}
 .wtabs button{flex:none;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--p-line);background:#fff;color:var(--p-mute);font-weight:700;font-size:14px}
 .wtabs button[aria-current="page"]{background:var(--p-ink);color:#fff;border-color:var(--p-ink)}
 .quant .wtabs button,.reason .wtabs button{background:transparent;border-color:rgba(255,255,255,.3);color:#E0E8FF}
@@ -522,7 +525,7 @@ const S = {
   free:{reels:10, long:1, mentor:10},
   hissab:{
     kabir:{name:'Kabir Shah', id:'good/kabir', bg:'#06683F', state:'connected', bal:45000, msgs:[['them','Goa photos are up!'],['hissab','Hissab · Dinner at Thalassa ₹1,800 · you paid · split 2 ways → Kabir owes you ₹900'],['me','Sending the cab money tonight?'],['hissab','Hissab · Cab ₹900 · Kabir paid · split 2 ways → you owe Kabir ₹450']]},
-    ananya:{name:'Ananya Rao', id:'good/ananya', bg:'#B5134F', state:'invite-in', bal:0, msgs:[['them','Started a Hissab with you for the Jaipur trip?']]},
+    ananya:{name:'Riya Mehta', id:'good/riya', bg:'#B5134F', state:'invite-in', bal:0, msgs:[['them','Started a Hissab with you for the Jaipur trip?']]},
     zoya:{name:'Zoya Khan', id:'good/zoya', bg:'#0E6B63', state:'chat', bal:0, msgs:[['them','That percentages reel was so good, sending to my sister']]},
   },
   chatWith:null, habitTab:'reels',
@@ -531,30 +534,19 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const OSE = ['home','about','cat','prep-about','habit-about','skills','library','community'], PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
+const OSE = ['home','about','more','skills','library','community'], ALIAS = {cat:'home','prep-about':'home','habit-about':'practice'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
 const ROUTES = [...OSE, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
 
 function signedChip(){ return S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign in<span class="wide-only"> · OpenID</span></button>`; }
 function bar(world){
-  if (PREPW.includes(world)) {
-    const tabs = [['prep','Home'],['quant','Quant'],['verbal','Verbal'],['reason','Reasoning'],['mock','Free mock']];
-    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
-      <button class="logo" data-act="nav" data-r="prep" aria-label="OpenPrep home" style="font-family:var(--inter);letter-spacing:-.02em"><span>OpenPrep</span></button>
-      <button class="exitbtn" data-act="exit" aria-label="Exit OpenPrep to OpenSource Everything">⏏ Exit</button></div>
-      <div class="col"><nav class="wtabs" aria-label="OpenPrep">${tabs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
-  }
-  if (HABITW.includes(world)) {
-    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
-      <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span>GoodHabit${world==='money'?' · practice':''}</span></button>
-      <button class="exitbtn" data-act="exit" aria-label="Exit GoodHabit to OpenSource Everything">⏏ Exit</button></div></header>`;
-  }
-  const crumbs = [['home','Library'],['prep-about','OpenPrep'],['habit-about','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community']];
+  const tabs = [['home','Home'],['quant','Quant'],['verbal','Verbal'],['reason','Reasoning'],['mock','Free mock'],['practice','Money'],['more','More']];
+  const cur = HABITW.includes(world) ? 'practice' : ['about','skills','library','community'].includes(world) ? 'more' : world === 'prep' ? 'home' : world;
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="wide-only" style="white-space:nowrap">OpenSource Everything</span><span class="narrow-only">OSE</span></button>
-    <button class="chipbtn" data-act="pwa" aria-label="Add to home screen">＋<span class="wide-only"> Home screen</span></button>${signedChip()}</div>
-    <div class="wrap"><nav class="crumbs" aria-label="Products">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenPrep home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span>OpenPrep</span></button>
+    ${signedChip()}</div>
+    <div class="wrap"><nav class="wtabs" aria-label="Sections">${tabs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
 }
 function icon(n){ const P = {wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
@@ -564,10 +556,10 @@ function tabbar(world){
 }
 function render(){
   clearTimers(); closeSheet();
-  let r = location.hash.slice(1); if (!ROUTES.includes(r)) r = 'home';
+  let r = location.hash.slice(1); if (ALIAS[r]) { history.replaceState(null, '', '#' + ALIAS[r]); r = ALIAS[r]; } if (!ROUTES.includes(r)) r = 'home';
   document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vHome,about:vAbout,cat:vCat,mock:vMock,'prep-about':vPrepAbout,'habit-about':vHabitAbout,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  const html = ({home:vCat,about:vAbout,more:vMore,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
   window.scrollTo(0,0);
   if (r === 'reason') startSky(); else stopSky();
@@ -599,31 +591,12 @@ function tile(kind, title, tag, name, desc, opts={}){
     <div class="cover" style="${cover(kind)}">${opts.art||''}<span class="tag ${tag==='FREE'?'free':''}">${tag}</span><span class="cover-title" ${opts.locked?'style="color:#15161A;text-shadow:none;opacity:.35"':''}>${title}</span>${opts.locked?`<span class="lock">🔒 ${esc(opts.locked)}</span>`:''}</div>
     <div class="meta"><b>${name}</b><span>${desc}</span></div></button>`;
 }
-function vHome(){
-  const guyArt = `<div style="position:absolute;right:5%;bottom:-6%;width:34%;max-width:170px">${goodguy('happy','#2F6BFF')}</div><svg aria-hidden="true" viewBox="0 0 60 44" style="position:absolute;right:36%;bottom:16%;width:15%;max-width:72px"><path d="M2 8 q14 -8 28 0 v32 q-14 -8 -28 0z" fill="#fff"/><path d="M58 8 q-14 -8 -28 0 v32 q14 -8 28 0z" fill="#E5ECFF"/></svg>`;
-  const HERO = {
-    none:{h:'Free CAT prep.<br>Smarter money.<br><em>No ads, ever.</em>', l:'OpenPrep: lessons, unlimited practice and a free full mock for CAT 2027. GoodHabit: split money with friends and practise investing with pretend money.', a:['cat','Start CAT prep free'], b:['habit-about','Play the money game']},
-    cat:{h:'Free CAT prep.<br><em>No ads.</em>', l:'Lessons, unlimited practice and a free full mock for CAT 2027, every lesson signed by the 99-percentiler who checked it.', a:['cat','See the CAT plan'], b:['prep-about','About OpenPrep']},
-    money:{h:'Your money,<br><em>sorted.</em>', l:'Split with friends in your chats, keep your own books on your phone, and practise investing through real crashes.', a:['habit-about','Open GoodHabit'], b:['prep-about','Learn for exams']},
-    build:{h:'Build in<br><em>the open.</em>', l:'Publish your work in one tap, even if you\'ve never used GitHub, and give your AI skills built for India.', a:['community','Open Community'], b:['skills','Browse AI skills']},
-  }, H = HERO[S.intent || 'none'];
-  const apps = [tile('prep','OpenPrep','Live · free to start','Learn','Free CAT prep, unlimited practice and a free full mock, plus ₹99 career courses.',{big:true,r:'prep-about',art:guyArt}), tile('habit','GoodHabit','Beta','Money','The money game, Hissab with friends and your own books, and a market watchlist.',{big:true,r:'habit-about',art:ART.habit})];
-  if (S.intent === 'money') apps.reverse();
-  const more = [['skills','The Good Stuff','AI skills · 90 free, 10 paid','linear-gradient(135deg,#FFC93C,#FF8A3D)',ART.skills],['library','AI Discovery Library','Trusted sources, rated in the open','linear-gradient(135deg,#7C5CFF,#3B1FA6)',ART.library],['community','Community','Prep boards, publish your work, donations','linear-gradient(135deg,#14B8A6,#0E6B63)',ART.community],['','Accounting Unlocked','Offline books for Windows and Mac','linear-gradient(135deg,#C9CCD3,#8D929C)',ART.acct]];
-  return `<main class="wrap">
-  <section class="hero" style="grid-template-columns:1fr">
-    <div>
-      <h1>${H.h}</h1>
-      <p class="lede">${H.l}</p>
-      <div class="forrow" role="group" aria-label="I'm here for"><b>I'm here for</b>${[['cat','CAT prep'],['money','My money'],['build','Building things']].map(([k,l]) => `<button data-act="intent" data-k="${k}" aria-pressed="${S.intent===k}">${l}</button>`).join('')}</div>
-      <div class="ctas"><button class="btn-hud" data-act="nav" data-r="${H.a[0]}">${H.a[1]}</button><button class="btn-line" data-act="nav" data-r="${H.b[0]}">${H.b[1]}</button></div>
-      <div class="facts"><span>No ads, ever</span><span>15 Quant chapters ready</span><span>1 free full mock</span><span>₹0 to start</span></div>
-    </div>
-  </section>
-  <section class="sect"><div class="lib">${apps.join('')}</div></section>
-  <section class="sect"><div class="sect-h"><h2>More from us</h2><span>for builders and the curious</span></div>
-    <div class="more">${more.map(([r,n,d,bg,art]) => `<button class="mitem" ${r?`data-act="nav" data-r="${r}"`:'data-act="locked" data-why="AccountingUnlocked"'}><span class="art" style="background:${bg}">${art.replace('class="art"','width="52" height="46"')}</span><span style="flex:1;min-width:0"><b>${n}${r?'':'<span class="soon">Soon</span>'}</b><span>${d}</span></span></button>`).join('')}</div></section>
-  <footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><button data-act="nav" data-r="about">One ID for everything</button><span>Clickable preview with sample data.</span></footer>
+function vMore(){
+  const more = [['practice','GoodHabit','The money game, free with your account, plus Hissab with friends','linear-gradient(135deg,#2448FF,#121633)',ART.habit],['skills','The Good Stuff','AI skills · 90 free, 10 paid','linear-gradient(135deg,#FFC93C,#FF8A3D)',ART.skills],['library','AI Discovery Library','Trusted sources for people and AIs','linear-gradient(135deg,#7C5CFF,#3B1FA6)',ART.library],['community','Community','Boards, publishing your work, donations · 18+','linear-gradient(135deg,#14B8A6,#0E6B63)',ART.community],['','Accounting Unlocked','Offline books for Windows and Mac','linear-gradient(135deg,#C9CCD3,#8D929C)',ART.acct]];
+  return `<main class="wrap" style="padding-block:22px 0">
+  <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(32px,6vw,52px);font-weight:800;letter-spacing:-.03em">More from us</h1><p style="margin-top:8px;font-size:17px">OpenPrep is made by OpenSource Everything. Here's everything else we're building, in the open.</p></section>
+  <div class="more">${more.map(([r,n,d,bg,art]) => `<button class="mitem" ${r?`data-act="nav" data-r="${r}"`:'data-act="locked" data-why="AccountingUnlocked"'}><span class="art" style="background:${bg}">${art.replace('class="art"','width="52" height="46"')}</span><span style="flex:1;min-width:0"><b>${n}${r?'':'<span class="soon">Soon</span>'}</b><span>${d}</span></span></button>`).join('')}</div>
+  <footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
 function vAbout(){
@@ -643,13 +616,18 @@ function vAbout(){
     <div class="facts" style="font-size:16px"><span>Students this week: —</span><span>Paying users: —</span><span>Revenue this month: —</span><span>Corrections published: —</span><span>Ads served: 0</span></div></section>
   <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
     <p>One sign-in across every app. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
-    <div class="idbadges" style="margin-top:10px"><span class="vb v">✓ OpenPrep Quant · 92nd percentile</span><span class="vb v">✓ 3 GitHub projects</span><span class="vb v">✓ 120-day investing habit</span><span class="vb">Self-declared · Design lead at a startup</span></div></section>
-  <footer class="sitefoot"><button data-act="nav" data-r="home">← Back to the apps</button><span>Clickable preview with sample data.</span></footer>
+    <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ GitHub projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
+  <footer class="sitefoot"><button data-act="nav" data-r="home">← Back to CAT prep</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
 
 /* ---------------- OPENPREP ---------------- */
-function freeLine(){ return `<div class="today" aria-label="Free for you"><div><b>∞</b><span>Practice, free</span></div><div><b class="num">${S.free.long}</b><span>Video chapter today</span></div><div><b class="num">${S.free.mentor}</b><span>AI-mentor min</span></div></div><p class="p-note" style="margin-top:8px">Every lesson is free to read, always. After your 10 free AI-mentor minutes: Open Credits, ₹100 for 10.</p>`; }
+const PLANS = {
+  free:{short:'Every lesson free to read, unlimited practice, a full mock every month and one video chapter a day.',
+    rows:[['Free, forever','Every lesson as text, unlimited practice with worked answers, 1 full mock a month, 1 video chapter a day, 10 AI-mentor minutes','₹0']]},
+  paid:[['OpenPrep Pass','All the video, every mock with deep analysis, and the AI mentor','₹199/mo'],['Deep analysis for one mock','Every question explained, weak topics, time per question, a two-week plan','₹20'],['Career course','A full 50-video course, yours for good','₹99'],['Language pack','Every video in Tamil, Telugu, Bengali, Marathi or Kannada','₹100']],
+};
+function freeLine(){ return `<div class="today" aria-label="Free for you"><div><b>∞</b><span>Practice, free</span></div><div><b class="num">${S.free.long}</b><span>Video chapter today</span></div><div><b class="num">${S.free.mentor}</b><span>AI-mentor min</span></div></div><p class="p-note" style="margin-top:8px">Every lesson is free to read, always. More AI-mentor time comes with the Pass, ₹199 a month.</p>`; }
 function vPrep(){
   return `<main class="col" style="padding-block:22px 60px">
     <p class="p-note">${S.user ? 'Signed in as ' + esc(S.user) : 'Learning as a guest'}</p>
@@ -660,7 +638,7 @@ function vPrep(){
       <button class="world w-quant" data-act="nav" data-r="quant"><span style="position:absolute;right:16px;top:12px;width:84px">${goodguy('happy','#3FA9FF')}</span><h3>Quant</h3><p>All 15 chapters ready.</p></button>
       <button class="world w-verbal" data-act="nav" data-r="verbal"><h3>Verbal</h3><p style="color:#55534D">5 of 10 chapters ready · case studies to read or watch.</p></button>
       <button class="world w-reason" data-act="nav" data-r="reason"><h3 style="position:relative;z-index:1">Reasoning</h3><p style="position:relative;z-index:1">6 of 12 sets ready · watch puzzles build themselves.</p></button>
-      <button class="world" style="background:#0E1116;color:#fff;min-height:112px" data-act="nav" data-r="mock"><h3>Free full mock</h3><p>CAT-style, 3 sections. Your score and percentile among OpenPrep students.</p></button>
+      <button class="world" style="background:#0E1116;color:#fff;min-height:112px" data-act="nav" data-r="mock"><h3>Free full mock</h3><p>CAT-style, 3 sections. Free every month, with your score and section scores.</p></button>
     </div>
     <h2 style="font-size:19px;font-weight:800;margin-top:26px">Careers and skills</h2>
     <div class="p-row">
@@ -668,9 +646,9 @@ function vPrep(){
       <button class="p-card" data-act="course" data-c="Excel for your first job"><b>Excel for your first job</b><span>50 videos · first video free</span><span class="price">₹99 full course</span></button>
     </div>
     <h2 style="font-size:19px;font-weight:800;margin-top:22px">Current affairs for GD/PI</h2>
-    <div class="p-card" style="margin-top:10px"><b>RBI holds the repo rate: what it means for loans</b><span>Reserve Bank of India · Government · reader trust 4.8 (rated in GoodHabit)</span></div>
+    <div class="p-card" style="margin-top:10px"><b>RBI holds the repo rate: what it means for loans</b><span>Source: Reserve Bank of India · Government</span></div>
     <button class="p-btn blue" data-act="plans" style="margin-top:22px;width:100%">CAT stays free · see paid extras</button>
-    <div class="quiet"><button data-act="lang">Languages</button><button data-act="corrections">Corrections (3)</button><span>Hinglish now · English next · regional packs ₹100</span></div>
+    <div class="quiet"><button data-act="lang">Languages</button><button data-act="corrections">Corrections (0)</button><span>Hinglish now · English next · regional packs ₹100</span></div>
   </main>`;
 }
 
@@ -700,22 +678,22 @@ const MOCK = [
 function vMock(){
   const M = S.mock || (S.mock = {i:-1, ans:[]});
   if (M.i < 0) return `<main class="col" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px"><h1 class="p-h1">Free full mock</h1><p class="p-sub">CAT-style: Quant, Reasoning and Verbal, 40 minutes each. +3 for a right answer, −1 for a wrong one, 0 if you skip.</p>
-    <div class="p-card"><b>Free with every mock</b><span>Your score, section scores, and your percentile among OpenPrep students this week.</span></div>
-    <div class="p-card"><b>Deep analysis · 2 credits</b><span>Every question explained, your weak topics, time per question, and a two-week study plan from the AI mentor.</span></div>
+    <div class="p-card"><b>Free with every mock</b><span>Your score and section scores. A percentile among OpenPrep students appears once enough students have taken this mock.</span></div>
+    <div class="p-card"><b>Deep analysis · ₹20, or free with the Pass</b><span>Every question explained, your weak topics, time per question, and a two-week study plan from the AI mentor.</span></div>
     <p class="p-note">This preview has 6 sample questions; the real mock is full length.</p><button class="p-btn blue" data-act="mockstart">Start the mock</button></main>`;
   if (M.i < MOCK.length) { const Q = MOCK[M.i];
     return `<main class="col" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;justify-content:space-between;align-items:center"><b>${Q.sec} · question ${M.i+1} of ${MOCK.length}</b><span class="p-note num">38:${String(59 - M.i*7).padStart(2,'0')} left</span></div>
     <div class="mockq"><p style="font-size:18px;font-weight:700;line-height:1.45">${esc(Q.q)}</p>${Q.o.map((o,i) => `<button class="qopt" data-act="mockans" data-i="${i}">${esc(o)}</button>`).join('')}<button class="p-btn ghost" data-act="mockans" data-i="-1">Skip</button></div></main>`; }
   const right = M.ans.filter((a,i) => a === MOCK[i].r).length, wrong = M.ans.filter((a,i) => a >= 0 && a !== MOCK[i].r).length, score = right*3 - wrong;
-  const pct = Math.max(5, Math.min(99.4, 28 + score * 4.1)).toFixed(1);
-  const bySec = ['Quant','Reasoning','Verbal'].map(sec => { const idx = MOCK.map((q,i) => q.sec===sec ? i : -1).filter(i => i>=0); const r2 = idx.filter(i => M.ans[i] === MOCK[i].r).length, w2 = idx.filter(i => M.ans[i] >= 0 && M.ans[i] !== MOCK[i].r).length; return [sec, r2*3 - w2, idx.length*3]; });
+    const bySec = ['Quant','Reasoning','Verbal'].map(sec => { const idx = MOCK.map((q,i) => q.sec===sec ? i : -1).filter(i => i>=0); const r2 = idx.filter(i => M.ans[i] === MOCK[i].r).length, w2 = idx.filter(i => M.ans[i] >= 0 && M.ans[i] !== MOCK[i].r).length; return [sec, r2*3 - w2, idx.length*3]; });
   return `<main class="col" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px"><h1 class="p-h1">Your mock result</h1>
     <div class="today" style="margin-top:0"><div><b class="num">${score}/${MOCK.length*3}</b><span>score</span></div><div><b class="num">${right}</b><span>right</span></div><div><b class="num">${wrong}</b><span>wrong (−1 each)</span></div></div>
-    <div class="p-card"><b>${pct} percentile</b><span>Among 2,418 OpenPrep students who took this mock this week (sample). Not a CAT percentile; it gets more meaningful as more students take it.</span></div>
+    <div class="p-card"><b>Percentile: coming soon</b><span>We'll show where you stand among OpenPrep students once enough of them have taken this mock. We won't show a made-up one.</span></div>
     ${bySec.map(([sec,sc,mx]) => `<div class="p-card" style="flex-direction:row;justify-content:space-between"><b>${sec}</b><span class="num">${sc} / ${mx}</span></div>`).join('')}
-    <button class="p-btn blue" data-act="deepanalysis">Deep analysis · 2 credits</button><button class="p-btn ghost" data-act="mockreset">Take it again later</button></main>`;
+    <button class="p-btn blue" data-act="deepanalysis">Deep analysis · ₹20</button><button class="p-btn ghost" data-act="mockreset">Take it again later</button>
+    <button class="p-card" data-act="nav" data-r="practice" style="text-align:left;border:1px solid #E6E8EE;background:#F6F7FC"><b>Nice work. Want to practise money too?</b><span>The money game is free with your account: play Ramesh through the 2008 crash with pretend money. →</span></button></main>`;
 }
-function checkedBy(col){ return `<p class="checked" style="color:${col}"><span>✓ Checked by Ananya R. (sample), 99.2 percentile · 12 Jan 2027</span><button class="linkbtn" data-act="report">Report a mistake</button><button class="linkbtn" data-act="corrections">Corrections (3)</button></p>`; }
+function checkedBy(col){ return `<p class="checked" style="color:${col}"><span>✓ Checked by Meera S. (sample name), 99.2 percentile in CAT 2025 · 28 Oct 2026</span><button class="linkbtn" data-act="report">Report a mistake</button><button class="linkbtn" data-act="corrections">Corrections (0)</button></p>`; }
 const SYL = {
   quant:{name:'Quant', items:['Percentages','Profit and loss','Ratios and proportion','Averages and mixtures','Time, speed and distance','Time and work','Simple and compound interest','Number system','Algebra basics','Linear and quadratic equations','Logs and surds','Geometry','Mensuration','Permutations and combinations','Probability'].map(n => [n,'ok'])},
   verbal:{name:'Verbal', items:[['Reading comprehension: business','ok'],['Reading comprehension: science','ok'],['Reading comprehension: society','ok'],['Para summary','ok'],['Para jumbles','ok'],['Odd sentence out','soon','19 Jan'],['Inference questions','soon','22 Jan'],['Tone and author\'s purpose','soon','26 Jan'],['Critical reasoning','soon','29 Jan'],['Mixed RC drills','soon','2 Feb']]},
@@ -731,14 +709,14 @@ function vQuant(){
     <div class="stage ${S.prep.board?'board':''}" aria-label="Lesson video"><div class="cam ${b.cam}" id="cam">
       <div class="floor"></div><div class="guy" id="guy">${goodguy(S.prep.playing?'talk':'happy','#3FA9FF')}</div>
       <div class="tv"><div class="screen" id="screen"></div></div></div>
-      <div class="subs" id="subs">${esc(b.say)}</div></div>
-    <div class="player-ctl"><button class="qbtn on" data-act="play" id="playbtn">${S.prep.playing?'Pause':'▶ Play lesson'}</button><button class="qbtn" data-act="beat" data-d="-1">← Back</button><button class="qbtn" data-act="beat" data-d="1">Next →</button><button class="qbtn" data-act="board">${S.prep.board?'GoodGuy mode':'Board mode'}</button><button class="qbtn" data-act="speed">${S.prep.speed||1}×</button><span style="font-size:13px;color:#CFE0FF">Beat ${S.prep.step+1}/${L.beats.length} · camera: ${b.cam.replace('-',' ')}</span></div>
+      </div><div class="subs" id="subs">${esc(b.say)}</div>
+    <div class="player-ctl"><button class="qbtn on" data-act="play" id="playbtn">${S.prep.playing?'Pause':'▶ Play lesson'}</button><button class="qbtn" data-act="beat" data-d="-1">← Back</button><button class="qbtn" data-act="beat" data-d="1">Next →</button><button class="qbtn" data-act="board">${S.prep.board?'GoodGuy mode':'Board mode'}</button><button class="qbtn" data-act="speed">${S.prep.speed||1}×</button><span style="font-size:13px;color:#CFE0FF">Step ${S.prep.step+1} of ${L.beats.length}</span></div>
     ${checkedBy('#CFE0FF')}
     <p style="font-size:12.5px;color:#CFE0FF">GoodGuy mode zooms into the TV for working and out to GoodGuy for tips. Board mode shows only the screen. In the app it's a real video in Hinglish or English.</p>
     ${quizCard()}
     <div class="mentor"><div style="display:flex;justify-content:space-between;align-items:center"><b>Ask GoodGuy</b><span style="font-size:12.5px;color:#CFE0FF">${S.free.mentor} free minutes left</span></div>
       <div id="mlog" style="display:flex;flex-direction:column;gap:8px">${S.prep.mentor.map(([w,t]) => `<div class="bub ${w}">${esc(t)}</div>`).join('') || '<div class="bub gg">Stuck anywhere? Ask me. I\'ll explain it differently, not just repeat the video.</div>'}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">${['Explain step 2 again','Give me a harder one','Why not 35%?'].map(q => `<button class="chap" data-act="ask" data-q="${q}">${q}</button>`).join('')}</div></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${[S.prep.step >= 1 ? 'Explain step 2 again' : 'Explain this step again','Give me a harder one','Why not 35%?'].map(q => `<button class="chap" data-act="ask" data-q="${q}">${q}</button>`).join('')}</div></div>
   </main>`;
 }
 function drawLesson(){
@@ -827,22 +805,22 @@ function stopSky(){ cancelAnimationFrame(skyRaf); }
 const REELS = [
   {src:'OpenPrep · Quant', h:'25% off then 10% off is not 35% off', sub:'GoodGuy explains successive discounts in 40 seconds', bg:'linear-gradient(160deg,#1B4DFF,#06115A)'},
   {src:'GoodHabit · Money', h:'Your ₹180 coffee is a ₹65,000 year', sub:'What small daily spends add up to', bg:'linear-gradient(160deg,#C8155E,#2A0A3A)'},
-  {src:'Creator clip · @finwithneha', h:'SIP vs lump sum, in plain Hindi', sub:'Clipped from a creator video, with credit', bg:'linear-gradient(160deg,#06683F,#0E2A22)'},
+  {src:'Creator clip · @creator (sample)', h:'SIP vs lump sum, in plain Hindi', sub:'Clipped from a creator video, with credit', bg:'linear-gradient(160deg,#06683F,#0E2A22)'},
 ];
 function vCat(){
   return `<section class="land-hero" style="background:linear-gradient(135deg,#1B4DFF 0%,#0A1F99 55%,#06115A 100%)">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:30px 30px"></div>
     <div class="land-art">${goodguy('happy','#3FA9FF')}</div>
     <div class="wrap inner"><div class="tagrow"><span>CAT 2027</span><span>Free</span><span>No ads</span></div>
-      <h1>Free CAT prep. No ads.</h1><p class="lede">Every lesson free to read, unlimited practice, a free full mock, and one chapter of video every day. Pay only if you want more video or deep mock analysis.</p>
-      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="enter" data-r="prep" data-c="#1B4DFF" data-n="OpenPrep">Start chapter 1</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
+      <h1>Free CAT prep. No ads.</h1><p class="lede">${PLANS.free.short} Pay only if you want all the video, more mocks or the AI mentor.</p>
+      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="nav" data-r="prep">Start learning</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
   <main class="wrap">
     <section class="sect"><div class="sect-h"><h2>Free, forever</h2><span>the part that costs us almost nothing</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
         <div class="whycard"><span class="k">Read</span><h3>Every lesson, as text</h3><p>All chapters, all subjects, always free.</p></div>
         <div class="whycard"><span class="k">Practise</span><h3>Unlimited questions</h3><p>With worked answers. No daily cap.</p></div>
         <div class="whycard"><span class="k">Watch</span><h3>A chapter a day</h3><p>One full chapter of video every day, free.</p></div>
-        <div class="whycard"><span class="k">Test</span><h3>A free full mock</h3><p>CAT-style, with your score and percentile among OpenPrep students.</p></div>
+        <div class="whycard"><span class="k">Test</span><h3>A free full mock every month</h3><p>CAT-style, with your score and section scores.</p></div>
       </div></section>
     <section class="sect"><div class="sect-h"><h2>What's ready at launch</h2><span>dates for the rest</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
@@ -852,59 +830,14 @@ function vCat(){
       </div></section>
     <section class="sect"><div class="sect-h"><h2>Why trust it</h2><span>we show our work</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-        <div class="whycard"><span class="k">Checked</span><h3>By named 99-percentilers</h3><p>Every lesson carries the checker's name, CAT percentile and date. For example: Ananya R., 99.2 · Karan M., 99.6 (sample names until launch).</p></div>
+        <div class="whycard"><span class="k">Checked</span><h3>By named 99-percentilers</h3><p>Lessons are written with AI and checked by people. Every lesson carries the checker's name, CAT percentile and date (sample names until launch).</p></div>
         <div class="whycard"><span class="k">Open</span><h3>Public corrections</h3><p>Every mistake we fix is listed, with the date.</p></div>
-        <div class="whycard"><span class="k">Bounty</span><h3>Find an error, get ₹100</h3><p>The first person to spot a real mistake gets ₹100 in credits.</p></div>
+        <div class="whycard"><span class="k">Bounty</span><h3>Find a mistake, get ₹100 by UPI</h3><p>Real money, not credits. The first person to spot each real mistake gets paid, up to 50 payouts a month.</p></div>
       </div></section>
-    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Ready? Enter OpenPrep</h2><p>Paid coaching costs ₹45,000 to ₹60,000. Start here for free, and decide later.</p><button class="btn-hud" data-act="enter" data-r="prep" data-c="#1B4DFF" data-n="OpenPrep">Enter OpenPrep</button></section>
+    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Start free, decide later</h2><p>A full coaching course can cost ₹45,000 or more. Everything above is free; the Pass is ₹199 a month if you want more.</p><button class="btn-hud" data-act="nav" data-r="prep">Start learning</button><button class="linkbtn" data-act="plans" style="margin-top:10px">See what's free and what's paid</button></section>
+  <footer class="sitefoot"><span>OpenPrep by OpenSource Everything · ad-free, open</span><button data-act="nav" data-r="about">About us</button><button data-act="nav" data-r="more">More from us</button><button data-act="aboutnum">Open numbers</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
-function vPrepAbout(){
-  return `<section class="land-hero" style="background:linear-gradient(135deg,#1B4DFF 0%,#0A1F99 55%,#06115A 100%)">
-    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:30px 30px"></div>
-    <div class="land-art">${goodguy('happy','#3FA9FF')}</div>
-    <div class="wrap inner"><div class="tagrow"><span>Live</span><span>Free to start</span><span>Web, no app needed</span></div>
-      <h1>OpenPrep</h1><p class="lede">The open-source Duolingo for India's entrance exams. CAT first: Quant, Verbal and Reasoning, plus career courses. Taught by GoodGuy, in Hinglish and English. No ads, ever.</p>
-      <span class="scrollcue">Scroll to enter the world ↓</span></div></section>
-  <main class="wrap">
-    <section class="sect"><div class="sect-h"><h2>Three worlds</h2><span>each subject looks and feels different</span></div>
-      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-        <div class="whycard" style="background:#0A2CB8;border-color:#3FA9FF"><span class="k" style="color:#9CC8FF">Quant</span><h3>Electric blue, graph paper</h3><p style="color:#D6E4FF">GoodGuy beside a TV; the camera zooms into the working and out for the traps.</p></div>
-        <div class="whycard" style="background:#FAFAF7;border-color:#E7E5DE"><span class="k" style="color:#8A6A1A">Verbal</span><h3 style="color:#16171A">A quiet page to read</h3><p style="color:#55534D">Case studies. Read, or watch first and read what the video said.</p></div>
-        <div class="whycard" style="background:radial-gradient(120% 120% at 80% 0%,#3A1E9E,#140B3A 60%);border-color:#7C5CFF"><span class="k" style="color:#FFD36A">Reasoning</span><h3>Imagine it happening</h3><p style="color:#D9CCFF">Puzzles that build themselves in front of you, clue by clue.</p></div>
-      </div></section>
-    <section class="sect"><div class="sect-h"><h2>Free vs paid</h2><span>pay only for what costs us money</span></div>
-      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-        <div class="whycard"><span class="k">Free, every day</span><p>10 reels, 1 long video, 3 practice questions, 10 minutes of AI mentoring.</p></div>
-        <div class="whycard"><span class="k">₹99</span><p>A full 50-video career course, yours for good.</p></div>
-        <div class="whycard"><span class="k">₹199 a month</span><p>OpenPrep Pass: unlimited, plus free share links for friends.</p></div>
-        <div class="whycard"><span class="k">₹299 a month</span><p>OpenPlan: everything paid across OpenSource Everything.</p></div>
-      </div></section>
-    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Enter the world of OpenPrep</h2><p>A separate app with its own look, made only for learning. Exit any time to come back to the library.</p><button class="btn-hud" data-act="enter" data-r="prep" data-c="#1B4DFF" data-n="OpenPrep">Enter OpenPrep</button></section>
-  </main>`;
-}
-function vHabitAbout(){
-  return `<section class="land-hero" style="background:radial-gradient(70% 90% at 85% 15%,rgba(11,122,59,.55),transparent 60%),linear-gradient(135deg,#17181A,#0B0D0C)">
-    <div class="land-ledger" style="display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:clamp(11px,1.8vw,14px);color:#E8E6DE;opacity:.9" aria-hidden="true">
-      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Salary</span><span style="color:#5CD08A">+40,000</span></div>
-      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Raju (milkman)</span><span style="color:#FF8A80">−1,240</span></div>
-      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Kabir owes you</span><span style="color:#5CD08A">450</span></div>
-      <div style="display:flex;justify-content:space-between;padding:6px 0"><span>Invested (practice)</span><span style="color:#FFB21A">1,806</span></div></div>
-    <div class="wrap inner"><div class="tagrow"><span>Beta</span><span>3-day free practice</span><span>No bank link needed</span></div>
-      <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, share reels that teach, and play the investing game that builds the habit before you risk a rupee.</p>
-      <span class="scrollcue">Scroll to enter the world ↓</span></div></section>
-  <main class="wrap">
-    <section class="sect"><div class="sect-h"><h2>What's inside</h2><span>a finance app, made friendly</span></div>
-      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-        <div class="whycard"><span class="k">Hissab · yours</span><h3>Your own books</h3><p>Write any entry yourself: names, amounts, cash, bank or UPI. Keep a personal account of everything. Nothing linked, nothing shared.</p></div>
-        <div class="whycard"><span class="k">Hissab · friends</span><h3>Inside your chats</h3><p>Send a Hissab invite to a Good ID. Once they accept, shared expenses and who owes whom live right in the chat.</p></div>
-        <div class="whycard"><span class="k">Reels</span><h3>Scroll useful things</h3><p>OpenPrep lessons and credited creator clips. Share with a friend in one tap.</p></div>
-        <div class="whycard"><span class="k">Practice</span><h3>The money game</h3><p>Ramesh, Amit or the Rich guy, easy to hard, the '90s to the 2010s, real crashes. Invest on a real-looking platform with pretend money.</p></div>
-      </div></section>
-    <section class="gate"><span style="width:110px">${goodguy('happy','#0B7A3B')}</span><h2>Enter the world of GoodHabit</h2><p>A separate app built like a real money app. Exit any time to come back to the library.</p><button class="btn-hud" data-act="enter" data-r="practice" data-c="#17181A" data-n="GoodHabit">Enter GoodHabit</button></section>
-  </main>`;
-}
-
 /* GoodHabit world: personal Hissab ledger (manual entries, kept on this device) */
 const LKEY = 'ose-hissab-v1';
 const SEED = {accounts:[{n:'Cash',open:200000},{n:'Bank (manual)',open:3000000},{n:'UPI wallet',open:150000}], entries:[
@@ -951,7 +884,7 @@ function entrySheet(dir){
 
 /* Markets: watch only, like a stocks app. Sample prices. */
 const MK = [
-  ['NIFTY 50','Nifty 50 index',24850,0.62,'idx'],['SENSEX','BSE Sensex',81420,0.55,'idx'],['GOLD','Gold · per 10g',76300,-0.18,'cmd'],
+  ['NIFTY 50','Nifty 50 index',24850,0.62,'idx'],['SENSEX','BSE Sensex',81420,0.55,'idx'],['GOLD','Gold · per 10g',168500,-0.18,'cmd'],
   ['RELIANCE','Reliance Industries',2915,1.12,'stk'],['TCS','Tata Consultancy Services',4120,-0.74,'stk'],['HDFCBANK','HDFC Bank',1702,0.31,'stk'],
   ['INFY','Infosys',1880,-1.06,'stk'],['ITC','ITC',472,0.85,'stk'],
 ];
@@ -976,7 +909,7 @@ function vMarkets(){
         <button class="gbtn" style="background:#fff;color:#000" data-act="nav" data-r="practice">Practise with this in the money game</button></div></main>`;
   }
   return `<main class="col" style="padding-block:14px 110px"><h1 style="font-family:var(--gh-d);font-size:34px">Markets</h1><p style="color:var(--g-mute);font-size:14.5px">Watch the market like you'd check the weather. No buying here, no tips, no noise.</p>
-    <div class="mk"><div style="display:flex;justify-content:space-between;align-items:baseline"><span><h2>Watchlist</h2><span class="sub">Sample prices · delayed</span></span><button class="gbtn" style="background:#1C1C1E;min-height:40px" data-act="madd">Edit</button></div>
+    <div class="mk"><div style="display:flex;justify-content:space-between;align-items:baseline"><span><h2>Watchlist</h2><span class="sub">Sample prices, not today's</span></span><button class="gbtn" style="background:#1C1C1E;min-height:40px" data-act="madd">Edit</button></div>
     ${MK.filter(m => w.includes(m[0])).map(m => { const up = m[3] >= 0; return `<button class="mrow" data-act="msel" data-s="${m[0]}"><span style="min-width:0"><b>${esc(m[0])}</b><small>${esc(m[1])}</small></span><span>${spark(m[0], up)}</span><span style="text-align:right"><span class="px" style="display:block">${fmt(m[2])}</span><span class="chg ${up?'up':'down'}">${up?'+':''}${m[3].toFixed(2)}%</span></span></button>`; }).join('')}</div></main>`;
 }
 function vChats(){ return `<main class="col" style="padding-block:6px 110px">${S.chatWith ? chatView(S.chatWith) : chatList()}</main>${S.chatWith ? composer() : ''}`; }
@@ -1039,12 +972,12 @@ const ERAS = {
 function practiceHome(){
   const g = S.game;
   if (g && g.view !== 'setup') return storyView();
-  const d = (g && g.diff) || 'hard', era = (g && g.era) || '2000s', who = (g && g.who) || 'ramesh';
+  const d = (g && g.diff) || 'easy', era = (g && g.era) || '2000s', who = (g && g.who) || 'ramesh';
   S.game = {view:'setup', diff:d, era, who};
   const CH = [['ramesh','Ramesh','28 · ₹40k a month · wants to retire early','#0B7A3B'],['amit','Amit','38 · ₹1L a month · saving for his daughter','#B5134F'],['rich','Rich guy','₹5 crore sandbox · break things','#4A3F8F']];
   const ER = [['90s','The \'90s','Liberalisation, a stock scam'],['2000s','The 2000s','A boom, then 2008'],['2010s','The 2010s','Demonetisation, records']];
   const DI = ['easy','medium','hard'], di = DI.indexOf(d);
-  return `<div class="trial"><b style="font-family:var(--gh-d);font-size:22px">The money game · 3 days free</b><span style="font-size:14.5px;opacity:.85">Then ₹299 a month with OpenPlan, or keep playing the 3 crash demos free. No card needed to start.</span><span style="font-size:14.5px;opacity:.85">Play real Indian money stories with pretend money: how stocks, SIPs and crashes work. Nothing here is real trading.</span></div>
+  return `<div class="trial"><b style="font-family:var(--gh-d);font-size:22px">The money game · free with your account</b><span style="font-size:14.5px;opacity:.85">Crash demos are free for everyone, no sign-in.</span><span style="font-size:14.5px;opacity:.85">Play real Indian money stories with pretend money: how stocks, SIPs and crashes work. Nothing here is real trading.</span></div>
   <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:18px">Pick who you play</h2>
   <div class="chars" role="group" aria-label="Character" style="margin-top:8px">${CH.map(([k,n,dsc,c]) => `<button class="charc" data-act="pwho" data-k="${k}" aria-pressed="${who===k}"><span class="face" style="background:${c}">${n.split(' ').map(w=>w[0]).join('')}</span><b>${n}</b><small>${dsc}</small></button>`).join('')}</div>
   <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:18px">Pick your era</h2>
@@ -1058,7 +991,7 @@ function practiceHome(){
 }
 function newGame(eraKey){
   const g = S.game || {}; const start = {ramesh:1000000, amit:5000000, rich:5000000000}[g.who||'ramesh'];
-  S.game = {view:'story', era:eraKey, who:g.who||'ramesh', diff:g.diff||'hard', i:0, cash:start, start, hold:{idx:0, gold:0, fd:[]}, invested:0, spentOnly:0, log:[], pending:0};
+  S.game = {view:'story', era:eraKey, who:g.who||'ramesh', diff:g.diff||'easy', i:0, cash:start, start, hold:{idx:0, gold:0, fd:[]}, invested:0, spentOnly:0, log:[], pending:0};
 }
 function stepNow(){ const g = S.game; return ERAS[g.era].steps[g.i]; }
 const MON = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
@@ -1198,10 +1131,10 @@ function vLibrary(){
   const list = SOURCES.filter(s => !q || s.join(' ').toLowerCase().includes(q));
   return `<main class="wrap" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px">
     <div class="sect-h" style="margin:0"><h2>AI Discovery Library</h2><span>trusted sources, rated in the open</span></div>
-    <p style="color:var(--ash);max-width:64ch">A search engine for trusted sources, built mainly for AIs and open to people. Every rating shows how it was made. AI crawlers are welcome here.</p>
+    <p style="color:var(--ash);max-width:64ch">A search engine for trusted sources, built mainly for AIs and open to people. Ratings open at launch, and every one will show how it was made. AI crawlers are welcome here.</p>
     <form class="search" id="libform" role="search"><label for="libq" class="sr">Search sources</label><input id="libq" placeholder="Search a source: RBI, markets, science" value="${esc(S.libQ||'')}" autocomplete="off"><button class="btn-hud" type="submit">Search</button></form>
-    <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">${list.map(([n,t,r,d]) => `<div class="src-row"><b style="font-family:var(--hudf);font-size:17px">${n}</b><span style="font-family:var(--mono);font-size:12px;color:var(--ash)">${d} · ${t}</span><span><span class="stars" aria-hidden="true">${'★'.repeat(Math.round(r))}${'☆'.repeat(5-Math.round(r))}</span> <b class="num">${r.toFixed(1)}</b> <span style="color:var(--ash);font-size:13px">reader trust</span></span><span class="badge free" style="align-self:flex-start">Readable by AI</span></div>`).join('') || '<p style="color:var(--ash)">No sources match yet.</p>'}</div>
-    <div class="whycard"><span class="k">Made for AI too</span><p style="color:var(--bone)">AI assistants are welcome to read every page. How we rate sources and every correction we make are public.</p><p>No hidden instructions for AI, ever. Just honest pages.</p></div>
+    <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">${list.map(([n,t,r,d]) => `<div class="src-row"><b style="font-family:var(--hudf);font-size:17px">${n}</b><span style="font-family:var(--mono);font-size:12px;color:var(--ash)">${d} · ${t}</span><span style="color:var(--ash);font-size:13px">Trust rating: opens at launch, once real readers rate it</span><span class="badge free" style="align-self:flex-start">Readable by AI</span></div>`).join('') || '<p style="color:var(--ash)">No sources match yet.</p>'}</div>
+    <div class="whycard"><span class="k">Made for AI too</span><p style="color:var(--bone)">AI assistants are welcome to read every page. How we rate sources and every correction we make are public.</p></div>
   </main>`;
 }
 
@@ -1230,8 +1163,8 @@ document.addEventListener('click', e => {
     case 'me': toast(`${S.user} · same ID in every product`); break;
     case 'pwa': sheet(`<h2>Put it on your home screen</h2><p>It opens full-screen like an app. No app store, no download, no ads.</p><p><b>Android (Chrome):</b> ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> Share → Add to Home Screen.</p>`); break;
     /* OpenPrep */
-    case 'plans': sheet(`<h2>Plans</h2><p style="color:#5B6270">Learning stays free. Pay only for what costs us money to run.</p>
-      ${[['Free','Every lesson as text, unlimited practice, 1 free full mock, 10 reels + 1 video chapter a day, 10 AI-mentor minutes','₹0'],['₹99 course','A full 50-video career course, yours for good','₹99'],['Open Credits','10 credits: extra mocks with deep analysis, or more AI-mentor time after your free 10 minutes','₹100'],['OpenPrep Pass','Unlimited reels and videos, free share links for friends, AI mentor','₹199/mo'],['OpenPlan','Everything paid across OpenSource Everything + GoodGuy coaching + 10 credits','₹299/mo']].map(([n,d,p]) => `<div class="opt" style="justify-content:space-between"><span><b style="display:block">${n}</b><span style="font-weight:500;font-size:13.5px;color:#5B6270">${d}</span></span><b style="color:#1B4DFF;white-space:nowrap">${p}</b></div>`).join('')}<p style="font-size:12.5px;color:#5B6270">Preview: nothing is charged.</p>`); break;
+    case 'plans': sheet(`<h2>What's free, what's paid</h2><p style="color:#5B6270">Learning stays free. You pay only for what costs us money to run.</p>
+      ${[...PLANS.free.rows, ...PLANS.paid].map(([n,d,p]) => `<div class="opt" style="justify-content:space-between"><span><b style="display:block">${n}</b><span style="font-weight:500;font-size:13.5px;color:#5B6270">${d}</span></span><b style="color:#1B4DFF;white-space:nowrap">${p}</b></div>`).join('')}<p style="font-size:12.5px;color:#5B6270">The money game is free with your account. Preview: nothing is charged.</p>`); break;
     case 'lang': sheet(`<h2>Learn in your language</h2><p>Every video is made in Hinglish first, then English. Regional packs translate all videos, voice and on-screen text.</p>${['Tamil','Telugu','Bengali','Marathi','Kannada'].map(l => `<div class="opt" style="justify-content:space-between"><span>${l}</span><b style="color:#1B4DFF">₹100</b></div>`).join('')}`); break;
     case 'course': { const n = b.dataset.c, vids = n.startsWith('Digital') ? ['What digital marketing really is','Your first Instagram content plan','Hooks that stop the scroll','Writing captions people read','Meta ads: the basics','Budgets and your first ₹500 test','Reading the numbers','Building a simple funnel'] : ['Excel in 10 minutes','Formulas you\'ll use daily','SUM, AVERAGE, COUNT','IF and nested IF','VLOOKUP and XLOOKUP','Pivot tables','Charts that make sense','A monthly report from scratch']; sheet(`<h2>${esc(n)}</h2><p style="color:#5B6270">50 videos · Hinglish · checked by a working professional (sample)</p>${vids.map((v,i) => `<div class="opt" style="justify-content:space-between"><span>${i+1}. ${v}</span>${i===0?'<button class="p-btn blue" style="min-height:40px" data-act="freevid">Watch free</button>':'<span style="color:#8A8F99">🔒</span>'}</div>`).join('')}<p style="color:#5B6270">+ 42 more videos</p><button class="p-btn">Get all 50 videos · ₹99 (preview)</button>`); break; }
     case 'freevid': toast('Video 1 is playing (preview). The rest unlock for ₹99.'); break;
@@ -1240,30 +1173,28 @@ document.addEventListener('click', e => {
     case 'beat': { const L = LESSONS[S.prep.chap]; S.prep.step = Math.max(0, Math.min(L.beats.length-1, S.prep.step + +b.dataset.d)); drawLesson(); updateBeatLabel(); break; }
     case 'play': togglePlay(); break;
     case 'answer': S.prep.answered = +b.dataset.i; render(); break;
-    case 'ask': { const q = b.dataset.q, A = {'Explain step 2 again':'The second discount is on ₹900, not ₹1,200. 10% of 900 is 90, so you pay 810. The base keeps changing.','Give me a harder one':'Try: a price rises 25% and you want it back to the original. What % cut do you need? (Answer: 20%, because 125 × 0.8 = 100.)','Why not 35%?':'Because 10% is taken from a smaller number (900). 25% of 1,200 is 300; 10% of 900 is 90. 300 + 90 = 390, which is 32.5% of 1,200.'}; if (S.free.mentor <= 0) { toast('Free mentor minutes used. Open Credits from ₹100.'); break; } S.free.mentor = Math.max(0, S.free.mentor - 1); S.prep.mentor.push(['me', q], ['gg', A[q]]); render(); document.querySelector('#mlog').lastElementChild.scrollIntoView({block:'nearest'}); break; }
+    case 'ask': { const q = b.dataset.q, A = {'Explain this step again':'Start with the full price, ₹1,200. 25% of 1,200 is 300, so after the first discount the shirt costs ₹900. The next 10% comes off ₹900, not ₹1,200.','Explain step 2 again':'The second discount is on ₹900, not ₹1,200. 10% of 900 is 90, so you pay 810. The base keeps changing.','Give me a harder one':'Try: a price rises 25% and you want it back to the original. What % cut do you need? (Answer: 20%, because 125 × 0.8 = 100.)','Why not 35%?':'Because 10% is taken from a smaller number (900). 25% of 1,200 is 300; 10% of 900 is 90. 300 + 90 = 390, which is 32.5% of 1,200.'}; if (S.free.mentor <= 0) { toast('Free mentor minutes used. The Pass (₹199/mo) includes the AI mentor.'); break; } S.free.mentor = Math.max(0, S.free.mentor - 1); S.prep.mentor.push(['me', q], ['gg', A[q]]); render(); document.querySelector('#mlog').lastElementChild.scrollIntoView({block:'nearest'}); break; }
     case 'vmode': { const m = b.dataset.m; if (m === 'watch' && S.prep.mode !== 'watch') { if (S.free.long <= 0) { toast('Today\'s free long video is used. Read it instead, or get the Pass.'); break; } S.free.long--; } S.prep.mode = m; render(); break; }
     case 'vans': S.prep.vAns = +b.dataset.i; render(); break;
     case 'rstep': S.prep.rstep = Math.max(0, Math.min(CLUES.length-1, S.prep.rstep + +b.dataset.d)); S.prep.rAnswer = null; render(); break;
     case 'rans': S.prep.rAnswer = +b.dataset.i; render(); break;
     /* GoodHabit */
     case 'htab': S.chatWith = null; go(b.dataset.t); break;
-    case 'exit': S.chatWith = null; go('home'); break;
-    case 'enter': { const rr = b.dataset.r, rect = b.getBoundingClientRect(); if (matchMedia('(prefers-reduced-motion: reduce)').matches) { go(rr); break; } const pt = document.createElement('div'); pt.className = 'portal'; pt.style.background = b.dataset.c; pt.style.setProperty('--px', (rect.left + rect.width/2) + 'px'); pt.style.setProperty('--py', (rect.top + rect.height/2) + 'px'); pt.textContent = 'Entering ' + b.dataset.n; document.body.appendChild(pt); setTimeout(() => { go(rr); setTimeout(() => pt.remove(), 250); }, 700); break; }
+    case 'enter': go(b.dataset.r); break;
     case 'hview': S.hView = b.dataset.v; render(); break;
     case 'aboutnum': go('about'); setTimeout(() => { const n = document.getElementById('numbers'); n && n.scrollIntoView(); }, 60); break;
-    case 'intent': S.intent = S.intent === b.dataset.k ? null : b.dataset.k; try { localStorage.setItem('ose-intent', S.intent || ''); } catch (e) {} render(); break;
     case 'syllabus': sylSheet(b.dataset.s); break;
     case 'sylopen': { const k = b.dataset.k, i = +b.dataset.i; if (b.dataset.st !== 'ok') { toast('Coming on the date shown. We\'ll tell you when it\'s live.'); break; } closeSheet(); if (k === 'quant' && i === 0) { S.prep.chap = 0; S.prep.step = 0; go('quant'); render(); } else toast('Plays the same way at launch. This preview has a few sample chapters.'); break; }
     case 'board': S.prep.board = !S.prep.board; S.prep.playing = false; clearTimers(); render(); break;
     case 'speed': { const sp = [1,1.25,1.5]; S.prep.speed = sp[(sp.indexOf(S.prep.speed||1)+1) % sp.length]; const was = S.prep.playing; render(); if (was) togglePlay(); break; }
     case 'nextq': S.prep.qi = (S.prep.qi || 0) + 1; S.prep.answered = null; render(); break;
-    case 'report': sheet(`<h2>Report a mistake</h2><p style="color:#5B6270">Wrong answer, typo, or something unclear? Tell us. The first person to find a real error gets ₹100 in credits.</p><div><label class="lbl" for="rp">What's wrong?</label><textarea class="inp" id="rp" style="min-height:96px;padding:10px" placeholder="Step 2 says 900 × 0.9 = 820"></textarea></div><button class="p-btn blue" data-act="reportsend">Send</button>`); break;
+    case 'report': sheet(`<h2>Report a mistake</h2><p style="color:#5B6270">Wrong answer, typo, or something unclear? Tell us. The first person to find each real mistake gets ₹100 by UPI.</p><div><label class="lbl" for="rp">What's wrong?</label><textarea class="inp" id="rp" style="min-height:96px;padding:10px" placeholder="Step 2 says 900 × 0.9 = 820"></textarea></div><button class="p-btn blue" data-act="reportsend">Send</button>`); break;
     case 'reportsend': closeSheet(); toast('Thanks. A reviewer checks it within a day. If it\'s real, it goes on the corrections page with your name.'); break;
-    case 'corrections': sheet(`<h2>Corrections (3)</h2><p style="color:#5B6270">Every mistake we've fixed, in public. Sample entries.</p>${[['14 Jan 2027','Percentages, reel 4','Said 30% instead of 32.5%. Fixed. Found by @kavya.prep (₹100 credits)'],['11 Jan 2027','Time and work, practice Q12','Option B and C were swapped. Fixed.'],['9 Jan 2027','RC: business, passage 2','Typo in the passage. Fixed.']].map(([d,w,t]) => `<div class="opt" style="flex-direction:column;align-items:flex-start;gap:2px"><b>${w}</b><span style="font-weight:500;font-size:13.5px;color:#5B6270">${d} · ${t}</span></div>`).join('')}`); break;
+    case 'corrections': sheet(`<h2>Corrections</h2><p style="color:#5B6270">None yet: we haven't launched. Every mistake we fix will be listed here, with the date, what changed and who found it.</p>`); break;
     case 'mockstart': S.mock = {i:0, ans:[]}; render(); break;
     case 'mockans': S.mock.ans.push(+b.dataset.i); S.mock.i++; render(); break;
     case 'mockreset': S.mock = null; go('prep'); break;
-    case 'deepanalysis': sheet(`<h2>Deep analysis · 2 credits</h2><p>Every question explained, your weak topics, time per question, and a two-week plan from the AI mentor.</p><p style="color:#5B6270">You have 0 credits. Open Credits: 10 for ₹100.</p><button class="p-btn blue">Get 10 credits · ₹100 (preview)</button>`); break;
+    case 'deepanalysis': sheet(`<h2>Deep analysis · ₹20</h2><p>Every question explained, your weak topics, time per question, and a two-week plan from the AI mentor.</p><p style="color:#5B6270">Or get it on every mock with the OpenPrep Pass, ₹199 a month.</p><button class="p-btn blue">Pay ₹20 by UPI (preview)</button>`); break;
     case 'autosplit': { const g = S.game, tot = g.pending, idx = Math.round(tot*0.6/10000)*10000, gold = Math.round(tot*0.2/10000)*10000; g.alloc = {idx, gold, fd: tot - idx - gold}; render(); break; }
     case 'sharegame': { const g = S.game, st = stepNow(), inv = worth(st), gain = g.invested ? Math.round((inv - g.invested) / g.invested * 100) : 0, line = `I played ${ERAS[g.era].label} on GoodHabit and finished ${gain>=0?'+':''}${gain}% on my investments.`; S.shareLine = line; sheet(`<div class="sharecard"><span style="width:64px;flex:none">${goodguy('happy','#30D158')}</span><span><b>${gain>=0?'+':''}${gain}%</b><span style="opacity:.85">${esc(ERAS[g.era].label)} · GoodHabit money game</span></span></div><p>${esc(line)}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="gbtn" style="background:#0B7A3B" data-act="copyshare">Share to WhatsApp</button><button class="gbtn ghost" data-act="copyshare">Copy text</button></div><p style="font-size:12.5px;color:#5E6166">Pretend money. Your result card, ready for Instagram stories and WhatsApp.</p>`); break; }
     case 'copyshare': { const t = S.shareLine + ' Play free: opensourceeverything.com'; try { navigator.clipboard.writeText(t).then(() => toast('Copied. Paste it in WhatsApp or your story.'), () => toast('Copy this: ' + t)); } catch (e) { toast('Copy this: ' + t); } break; }
@@ -1324,11 +1255,11 @@ document.addEventListener('click', e => {
     case 'buyskill': closeSheet(); toast(`${$('#ss') ? '' : ''}Pack ready for your market (preview, nothing charged)`); break;
     case 'github': S.gh = !S.gh; render(); toast(S.gh ? 'GitHub connected (preview)' : 'Disconnected'); break;
     case 'board': sheet(`<h2>CAT Quant board</h2><p style="color:var(--ash)">1,240 members (sample) · moderated · 18+</p>${['Shortcut for successive % changes?','DILR set 4 from yesterday: my approach','Daily 3-question streak thread'].map(t => `<div class="opt">${t}</div>`).join('')}`, true); break;
-    case 'donate': sheet(`<h2>Support @finwithneha</h2><p style="color:var(--ash)">Straight to the creator. We take ₹0.</p><div class="opt" style="justify-content:space-between"><span>₹100 by UPI</span><span>creator gets ₹97.64</span></div><div class="opt" style="justify-content:space-between"><span>Cover the fees</span><span>you pay ₹102.36</span></div><div class="opt">Solana · wallet verified · straight to the creator</div><p style="font-size:12.5px;color:var(--ash)">Payment fee about 2% plus GST on the fee passes through. Donations may be taxable for the creator.</p>`, true); break;
+    case 'donate': sheet(`<h2>Support @creator (sample)</h2><p style="color:var(--ash)">Straight to the creator. We take ₹0.</p><div class="opt" style="justify-content:space-between"><span>₹100 by UPI</span><span>creator gets ₹97.64</span></div><div class="opt" style="justify-content:space-between"><span>Cover the fees</span><span>you pay ₹102.36</span></div><div class="opt">Solana · wallet verified · straight to the creator</div><p style="font-size:12.5px;color:var(--ash)">Payment fee about 2% plus GST on the fee passes through. Donations may be taxable for the creator.</p>`, true); break;
   }
 });
 function selectPaste(){ const el = $('#paste'); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
-function updateBeatLabel(){ const L = LESSONS[S.prep.chap], b = L.beats[S.prep.step], s = document.querySelector('.player-ctl span'); if (s) s.textContent = `Beat ${S.prep.step+1}/${L.beats.length} · camera: ${b.cam.replace('-',' ')}`; }
+function updateBeatLabel(){ const L = LESSONS[S.prep.chap], b = L.beats[S.prep.step], s = document.querySelector('.player-ctl span'); if (s) s.textContent = `Step ${S.prep.step+1} of ${L.beats.length}`; }
 function togglePlay(){
   S.prep.playing = !S.prep.playing; $('#playbtn').textContent = S.prep.playing ? 'Pause' : '▶ Play lesson';
   clearTimers();
@@ -1348,7 +1279,7 @@ document.addEventListener('submit', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && layer.innerHTML) closeSheet(); });
 
-try { S.intent = localStorage.getItem('ose-intent') || null; } catch (e) {}
+
 render();
 })();
 </script>
