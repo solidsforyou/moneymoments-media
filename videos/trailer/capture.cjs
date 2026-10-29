@@ -69,8 +69,8 @@ const path = require('path'), fs = require('fs');
   // Hissab with Kabir, Markets
   await setId('good'); await go('habit-inbox');
   await p.click('[data-act=openchat][data-k=kabir]'); await W(500);
-  await shot('hissab', { bal: { text: '^You owe ₹|owes you ₹' }, last: { sel: '.chat .msg', i: 3 } });
-  await go('markets'); await shot('markets', { first: { sel: 'main svg' } });
+  await shot('hissab', { bal: { text: '^You owe ₹|owes you ₹' }, last: { sel: '.chat .msg', i: 3 }, m0: { sel: '.chat > *', i: 0 }, m1: { sel: '.chat > *', i: 1 }, m2: { sel: '.chat > *', i: 2 }, m3: { sel: '.chat > *', i: 3 } });
+  await go('markets'); await shot('markets', { first: { sel: 'main svg' }, r0: { text: '^NIFTY 50Nifty' }, r1: { text: '^SENSEXBSE' }, r2: { text: '^GOLDGold' }, r3: { text: '^RELIANCEReliance' } });
   // one inbox with a live card
   await go('prep-inbox'); await p.click('[data-act=backchats]').catch(() => {}); await W(300); await p.click('[data-act=openchat][data-k=meera]'); await W(400);
   await shot('chat0', { card: '.acard' });
