@@ -1,0 +1,205 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Telegram bridge demo</title>
+<style>
+:root{--bg:#F2F2F7;--card:#fff;--label:#0B0B0F;--label2:rgba(60,60,67,.62);--sep:rgba(60,60,67,.18);--fill:rgba(120,120,128,.12);--blue:#007AFF;--green:#34C759;--red:#FF3B30;
+  --tg-bg:#DCE6EF;--tg-bar:#F7F9FB;--tg-in:#fff;--tg-out:#E3F4D7;--tg-accent:#3A8CC8;--phone:#111214}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-family:"Inter",sans-serif;color:var(--label);-webkit-font-smoothing:antialiased}
+#cap{position:absolute;left:0;right:0;top:54px;text-align:center}
+#cap h1{font-family:"Inter Display","Inter",sans-serif;font-size:58px;font-weight:800;letter-spacing:-.02em;line-height:1.08}
+#cap p{font-size:26px;color:var(--label2);margin-top:12px;font-weight:500}
+.lab{position:absolute;top:222px;width:400px;text-align:center;font-size:17px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--label2)}
+.phone{position:absolute;top:258px;width:400px;height:760px;border-radius:52px;background:var(--phone);padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.22)}
+.screen{width:100%;height:100%;border-radius:41px;overflow:hidden;position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.notch{height:34px;flex:none;display:flex;justify-content:center;align-items:center;background:inherit}
+.notch::after{content:"";width:110px;height:28px;border-radius:15px;background:var(--phone)}
+.bar{display:flex;align-items:center;gap:12px;padding:8px 18px 12px;border-bottom:1px solid var(--sep)}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:16px;flex:none}
+.bar b{display:block;font-size:19px}.bar span{display:block;font-size:14px;color:var(--label2)}
+.body{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;justify-content:flex-end;overflow:hidden}
+.m{max-width:84%;padding:10px 13px;border-radius:16px;font-size:18px;line-height:1.35;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.m small{display:block;font-size:13px;font-weight:700;margin-bottom:2px}
+.tg .m{background:var(--tg-in);align-self:flex-start}.tg .m small{color:var(--tg-accent)}
+.tg .m.out{background:var(--tg-out);align-self:flex-end}
+.tg .m.flag{background:#FFE9E7;box-shadow:inset 0 0 0 2px var(--red)}
+.tg .m.sys{align-self:center;background:rgba(0,0,0,.2);color:#fff;font-size:14px;border-radius:999px;padding:6px 14px}
+.us .m{background:var(--card);align-self:flex-start}.us .m small{color:var(--label2)}
+.us .m.me{background:var(--blue);color:#fff;align-self:flex-end}.us .m.me small{color:rgba(255,255,255,.8)}
+.lnk{color:var(--tg-accent);text-decoration:underline;font-weight:600}
+.via{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:#E3EEF8;color:#2A6FA8;margin-left:6px;vertical-align:1px}
+.card{background:var(--card);border-radius:16px;overflow:hidden;align-self:flex-start;width:82%;box-shadow:0 0 0 1px var(--sep)}
+.card .art{height:86px;background:linear-gradient(135deg,#FF9500,#FF2D55);color:#fff;font-weight:800;font-size:22px;display:flex;align-items:flex-end;padding:10px 14px}
+.card .t{padding:10px 14px;font-size:16px}.card .t b{display:block;font-size:17px}
+.card .go{border-top:1px solid var(--sep);text-align:center;color:var(--blue);font-weight:700;padding:11px;font-size:16px}
+.comp{display:flex;gap:8px;align-items:center;padding:10px 12px;border-top:1px solid var(--sep);background:var(--card);min-height:64px}
+.comp .in{flex:1;min-height:42px;border-radius:21px;background:var(--bg);padding:10px 14px;font-size:17px;color:var(--label);white-space:nowrap;overflow:hidden}
+.comp .in.ph{color:var(--label2)}
+.comp .snd{width:42px;height:42px;border-radius:50%;background:var(--blue);flex:none}
+.tg .comp{background:var(--tg-bar)}.tg .comp .in{background:var(--tg-bg)}.tg .comp .snd{background:var(--tg-accent)}
+.caret{display:inline-block;width:2px;height:20px;background:var(--blue);vertical-align:-3px;margin-left:1px}
+.tg .screen{background:var(--tg-bg)}.tg .bar{background:var(--tg-bar)}
+.pbtn{border-radius:999px;background:var(--blue);color:#fff;font-weight:800;font-size:19px;text-align:center;padding:15px}
+.pbtn.tgb{background:var(--tg-accent)}.pbtn.ghost{background:transparent;color:var(--label);box-shadow:inset 0 0 0 2px rgba(60,60,67,.3)}
+.big{font-family:"Inter Display","Inter",sans-serif;font-size:31px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.muted{color:var(--label2);font-size:16px;line-height:1.4}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:22px 22px 0 0;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.row{display:flex;gap:10px;align-items:center;font-size:17px}
+.ok,.no{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.ok{background:rgba(52,199,89,.18);color:#248A3D}.no{background:rgba(255,59,48,.14);color:#D70015}
+.pad{padding:20px;display:flex;flex-direction:column;gap:14px;flex:1}
+#wire{position:absolute;left:760px;width:400px;top:640px;height:4px;background:repeating-linear-gradient(90deg,#B8C2CF 0 14px,transparent 14px 24px)}
+#bot{position:absolute;left:880px;top:574px;width:160px;height:132px;border-radius:28px;background:var(--card);box-shadow:0 12px 30px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#bot .face{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#007AFF,#5856D6);display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px}
+#bot b{font-size:16px}#bot span{font-size:13px;color:var(--label2)}
+#bot.shield .face{background:linear-gradient(135deg,#FF3B30,#FF9500)}
+.pkt{position:absolute;top:628px;width:28px;height:28px;border-radius:50%;margin-left:-14px;box-shadow:0 0 0 6px rgba(0,122,255,.18)}
+#finger{position:absolute;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(20,20,30,.28);border:3px solid rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none}
+#end{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center}
+#end h1{font-family:"Inter Display","Inter",sans-serif;font-size:92px;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+#end p{font-size:28px;color:var(--label2)}
+#end .pbtn{font-size:30px;padding:22px 46px}
+#foot{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:15px;color:var(--label2)}
+.stage{position:absolute;inset:0}
+</style></head>
+<body>
+<div class="stage" id="stage">
+  <div id="cap"><h1 id="h"></h1><p id="sub"></p></div>
+  <div class="lab" id="labl" style="left:360px">Telegram (generic look)</div>
+  <div class="lab" id="labr" style="left:1160px">T · our app</div>
+  <div class="phone tg" id="pl" style="left:360px"><div class="screen" id="sl"></div></div>
+  <div id="wire"></div>
+  <div id="bot"><div class="face">bot</div><b>our bot</b><span>passes messages</span></div>
+  <div id="pkts"></div>
+  <div class="phone us" id="pr" style="left:1160px"><div class="screen" id="sr"></div></div>
+  <div id="finger" hidden></div>
+  <div id="foot">Sample people · OpenSource Everything works with Telegram and is not affiliated with it · the social app's name is still to be chosen ("T")</div>
+</div>
+<div id="end" hidden><h1>Works with Telegram.<br>Built in the open.</h1><p>Two apps, one conversation. Your Telegram stays yours.</p><div class="pbtn">Add to my phone</div></div>
+<script>
+const DURATION = 53; window.DURATION = DURATION;
+const $ = s => document.getElementById(s);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const typed = (txt, t, t0, t1) => t < t0 ? '' : txt.slice(0, Math.round(clamp((t - t0) / (t1 - t0)) * txt.length));
+const appear = (t, t0) => { const k = ease((t - t0) / .35); return `opacity:${k};transform:translateY(${(1 - k) * 14}px) scale(${.96 + .04 * k})`; };
+const L = 560, R = 1360, PX = {l:560, r:1360};
+
+/* captions: [from, title, sub] */
+const CAPS = [[0,'Two apps, one conversation','How OpenSource Everything works with Telegram'],
+  [4,'Log in with Telegram','One tap. We get a name and photo, never the phone number or chats.'],
+  [12.5,'Two chats, one conversation','Messages cross over through our bot in a second.'],
+  [24,'Live cards become links','In Telegram, a T card is a link. One tap brings them into our app.'],
+  [32,'One-to-one, too','A Telegram user can message someone in our app through our bot.'],
+  [40,'Tips and scams never cross','Our bot holds anything that looks like a stock tip or a scam.']];
+/* message crossings: [time leaving, direction, colour] */
+const PK = [[14.8,'lr','#3A8CC8'],[18.9,'rl','#007AFF'],[21.9,'lr','#3A8CC8'],[25.0,'rl','#FF2D55'],[35.6,'lr','#3A8CC8'],[38.0,'rl','#007AFF'],[42.6,'lr','#FF3B30']];
+/* finger taps: [time, side, x, y] in phone coordinates */
+const TAPS = [[6.0,'sr','.pbtn.tgb'],[8.9,'sl','.pbtn.tgb'],[27.4,'sl','.lnk']];
+
+function capFor(t){ let c = CAPS[0]; for (const x of CAPS) if (t >= x[0]) c = x; return c; }
+function left(t){
+  if (t < 12.5) { // Telegram asks the user to confirm the login
+    const confirm = t >= 7.4;
+    return `<div class="notch"></div><div class="bar"><span class="av" style="background:#3A8CC8">TG</span><span><b>Telegram</b><span>service notifications</span></span></div>
+      <div class="body">${t >= 6.6 ? `<div class="m" style="${appear(t, 6.6)}"><small>Login request</small>OpenSource Everything wants to log you in with your Telegram account. It will get your name, username and photo.</div>` : ''}
+      ${t >= 7.4 ? `<div style="${appear(t, 7.4)};display:flex;flex-direction:column;gap:8px"><div class="pbtn tgb" style="${t >= 8.9 && t < 9.3 ? 'transform:scale(.95)' : ''}">${t >= 9.0 ? '✓ Confirmed' : 'Confirm'}</div><div class="pbtn ghost">Decline</div></div>` : ''}</div>
+      <div class="comp"><div class="in ph">Message</div><div class="snd"></div></div>`;
+  }
+  if (t < 32) {
+    const msgs = [`<div class="m sys">Driven in Pune is bridged with T</div>`];
+    if (t >= 14.7) msgs.push(`<div class="m out" style="${appear(t, 14.7)}"><small>You</small>Day 12 of my CAT streak 🔥</div>`);
+    if (t >= 19.7) msgs.push(`<div class="m" style="${appear(t, 19.7)}"><small>OSE bot</small><b>Riya</b><span class="via">from T</span><br>Nice! I just finished Percentages.</div>`);
+    if (t >= 21.8) msgs.push(`<div class="m" style="${appear(t, 21.8)}"><small>Meena</small>What's the hardest chapter for you two?</div>`);
+    if (t >= 25.8) msgs.push(`<div class="m" style="${appear(t, 25.8)}"><small>OSE bot</small><b>Kabir</b><span class="via">from T</span><br>🔥 shared a 12-day streak<br><span class="lnk">Open in T →</span></div>`);
+    const draft = t < 14.7 ? typed('Day 12 of my CAT streak 🔥', t, 13.2, 14.4) : '';
+    const body = `<div class="notch"></div><div class="bar"><span class="av" style="background:#FF2D55">DP</span><span><b>Driven in Pune</b><span>128 members · bridged with T</span></span></div><div class="body">${msgs.join('')}</div>
+      <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
+    if (t < 27.7) return body;
+    // the link opens our app in the Telegram user's browser
+    const k = ease((t - 27.7) / .5);
+    return `<div class="notch" style="background:var(--bg)"></div><div style="flex:1;display:flex;flex-direction:column;background:var(--bg);opacity:${k};transform:translateY(${(1 - k) * 30}px)">
+      <div class="bar" style="background:var(--card)"><span class="av" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">T</span><span><b>Kabir's streak</b><span>in T</span></span></div>
+      <div class="pad"><div class="card" style="width:100%"><div class="art">🔥 12-day streak</div><div class="t"><b>Daily CAT question</b>Kabir hasn't missed a day.</div></div>
+      <div class="muted">${t >= 29.2 ? '✓ Logged in with Telegram' : 'Join him: log in with Telegram, one tap.'}</div>
+      <div class="pbtn" style="${t >= 29.8 ? '' : 'opacity:.55'}">Start my streak</div><div class="pbtn ghost">Add T to my phone</div></div></div>`;
+  }
+  if (t < 40) {
+    const msgs = [`<div class="m out" style="${appear(t, 32.6)}">/start</div>`];
+    if (t >= 33.4) msgs.push(`<div class="m" style="${appear(t, 33.4)}"><small>OSE bot</small>You're connected. Messages you send here reach Riya's inbox in T.</div>`);
+    if (t >= 35.5) msgs.push(`<div class="m out" style="${appear(t, 35.5)}">Hey Riya, can you share your Percentages notes?</div>`);
+    if (t >= 38.8) msgs.push(`<div class="m" style="${appear(t, 38.8)}"><small>OSE bot</small><b>Riya</b><span class="via">from T</span><br>Sure, sending them now 📒</div>`);
+    const draft = t < 35.5 ? typed('Hey Riya, can you share your Percentages notes?', t, 34.1, 35.3) : '';
+    return `<div class="notch"></div><div class="bar"><span class="av" style="background:#5856D6">OS</span><span><b>OSE bot</b><span>bot</span></span></div><div class="body">${t >= 32.6 ? msgs.join('') : ''}</div>
+      <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
+  }
+  const msgs = [`<div class="m sys">Pinned: learning only. No stock tips, no paid calls.</div>`, `<div class="m"><small>Sana</small>Anyone doing one SIP before spending each month?</div>`];
+  if (t >= 42.5) msgs.push(`<div class="m ${t >= 43.6 ? 'flag' : ''}" style="${appear(t, 42.5)}"><small>Unknown user</small>Guaranteed 300% returns 🚀 DM me for VIP calls</div>`);
+  if (t >= 43.8) msgs.push(`<div class="m" style="${appear(t, 43.8)}"><small>OSE bot</small>Held for review: this looks like a paid tip or a scam, so it wasn't posted to T.</div>`);
+  return `<div class="notch"></div><div class="bar"><span class="av" style="background:#3A3D44">ML</span><span><b>Money learners</b><span>412 members · bridged with GoodHabit</span></span></div><div class="body">${msgs.join('')}</div><div class="comp"><div class="in ph">Message</div><div class="snd"></div></div>`;
+}
+function right(t){
+  if (t < 12.5) {
+    let inner = `<div class="pad"><div class="big">Built in the open, like the internet should be.</div><div class="muted">Free tools, open code, no ads. Works with your Telegram.</div><div style="flex:1"></div>
+      <div class="pbtn tgb" style="${t >= 5.9 && t < 6.3 ? 'transform:scale(.95)' : ''}">Log in with Telegram</div><div class="pbtn ghost">Use phone number</div></div>`;
+    if (t >= 6.3 && t < 10.2) { const k = ease((t - 6.3) / .4);
+      inner += `<div class="scrim" style="opacity:${k}"></div><div class="sheet" style="transform:translateY(${(1 - k) * 100}%)"><b style="font-size:21px">Log in to OpenSource Everything</b><div class="muted">Confirm in Telegram. This site will get:</div>
+        <div class="row"><span class="ok">✓</span>Your name and username</div><div class="row"><span class="ok">✓</span>Your profile photo</div><div class="row"><span class="no">✕</span>Your phone number</div><div class="row"><span class="no">✕</span>Your chats or contacts</div>
+        <div class="muted" style="text-align:center">${t >= 9.0 ? '✓ Confirmed in Telegram' : 'Waiting for you in Telegram…'}</div></div>`; }
+    if (t >= 10.2) { const k = ease((t - 10.2) / .4);
+      inner = `<div class="pad" style="opacity:${k}"><div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--card);border-radius:18px;padding:22px"><span class="av" style="width:76px;height:76px;font-size:26px;background:#5856D6">KS</span><b style="font-size:23px">Kabir Shah</b><span class="muted">OpenID ready · linked to Telegram</span></div><div style="flex:1"></div><div class="pbtn">Add T to my phone</div><div class="pbtn ghost">Add OpenPrep to my phone</div></div>`; }
+    return `<div class="notch"></div><div class="bar"><span class="av" style="background:#007AFF">OS</span><span><b>OpenSource Everything</b><span>opensourceeverything.com</span></span></div>${inner}`;
+  }
+  if (t < 32) {
+    const msgs = [];
+    if (t >= 15.6) msgs.push(`<div class="m" style="${appear(t, 15.6)}"><small>Kabir<span class="via">via Telegram</span></small>Day 12 of my CAT streak 🔥</div>`);
+    if (t >= 18.8) msgs.push(`<div class="m me" style="${appear(t, 18.8)}"><small>You · Riya</small>Nice! I just finished Percentages.</div>`);
+    if (t >= 22.7) msgs.push(`<div class="m" style="${appear(t, 22.7)}"><small>Meena<span class="via">via Telegram</span></small>What's the hardest chapter for you two?</div>`);
+    if (t >= 24.9) msgs.push(`<div class="card" style="${appear(t, 24.9)}"><div class="art">🔥 12-day streak</div><div class="t"><b>Kabir shared his streak</b>Daily CAT question</div><div class="go">Open</div></div>`);
+    const draft = t < 18.8 ? typed('Nice! I just finished Percentages.', t, 17.3, 18.6) : '';
+    return `<div class="notch"></div><div class="bar"><span class="av" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">DP</span><span><b>Driven in Pune</b><span>group · 3 people on Telegram</span></span></div><div class="body">${msgs.join('')}</div>
+      <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
+  }
+  if (t < 40) {
+    const msgs = [];
+    if (t >= 36.4) msgs.push(`<div class="m" style="${appear(t, 36.4)}"><small>Arjun<span class="via">via Telegram</span></small>Hey Riya, can you share your Percentages notes?</div>`);
+    if (t >= 37.9) msgs.push(`<div class="m me" style="${appear(t, 37.9)}"><small>You · Riya</small>Sure, sending them now 📒</div>`);
+    const draft = t >= 36.6 && t < 37.9 ? typed('Sure, sending them now 📒', t, 36.8, 37.7) : '';
+    return `<div class="notch"></div><div class="bar"><span class="av" style="background:#8A5A00">AM</span><span><b>Arjun Mehta</b><span>on Telegram · messages via our bot</span></span></div><div class="body">${msgs.join('')}</div>
+      <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
+  }
+  return `<div class="notch"></div><div class="bar"><span class="av" style="background:#17181A">ML</span><span><b>Money learners</b><span>GoodHabit group · bridged</span></span></div><div class="body">
+    <div class="m"><small>Sana<span class="via">via Telegram</span></small>Anyone doing one SIP before spending each month?</div>
+    ${t >= 43.8 ? `<div class="m" style="${appear(t, 43.8)};align-self:center;background:var(--fill);font-size:15px;color:var(--label2)">1 message held by our bot. Nothing reached you.</div>` : ''}</div><div class="comp"><div class="in ph">Message</div><div class="snd"></div></div>`;
+}
+function renderFrame(t){
+  const end = t >= 47;
+  $('end').hidden = !end; $('stage').style.opacity = end ? 0 : 1;
+  if (end) { const k = ease((t - 47) / .7); $('end').style.opacity = k; $('end').style.transform = `scale(${.97 + .03 * k})`; return; }
+  const c = capFor(t), ck = ease((t - c[0]) / .45);
+  $('h').textContent = c[1]; $('sub').textContent = c[2];
+  $('cap').style.opacity = ck; $('cap').style.transform = `translateY(${(1 - ck) * 16}px)`;
+  const intro = ease(t / 1.2);
+  ['pl', 'pr'].forEach((id, i) => { $(id).style.opacity = intro; $(id).style.transform = `translateY(${(1 - intro) * 60}px)`; });
+  $('bot').style.opacity = ease((t - .8) / .8); $('wire').style.opacity = ease((t - .8) / .8);
+  $('bot').className = t >= 42.6 && t < 47 ? 'shield' : '';
+  $('bot').querySelector('span').textContent = t >= 42.6 && t < 47 ? 'held a scam' : 'passes messages';
+  $('labl').textContent = t >= 27.7 && t < 32 ? 'Their phone · our app opened' : t >= 32 && t < 40 ? 'Telegram · Arjun' : 'Telegram (generic look)';
+  $('labr').textContent = t < 12.5 ? 'Our website' : t < 32 ? 'T · our app' : t < 40 ? 'T · Riya\'s inbox' : 'GoodHabit · our app';
+  $('sl').innerHTML = left(t); $('sr').innerHTML = right(t);
+  // packets crossing the bridge
+  $('pkts').innerHTML = PK.map(([t0, dir, col]) => { const p = (t - t0) / .8; if (p < 0 || p > 1) return '';
+    const held = col === '#FF3B30'; const q = held ? Math.min(ease(p) , .5) : ease(p);
+    const x = dir === 'lr' ? 760 + 400 * q : 1160 - 400 * q; return `<div class="pkt" style="left:${x}px;background:${col};opacity:${held && p > .7 ? 1 - (p - .7) / .3 : 1}"></div>`; }).join('');
+  // finger
+  const f = $('finger'); let shown = false;
+  for (const [t0, scr, sel] of TAPS) { const d = t - t0; if (d > -.7 && d < .45) { const el = $(scr).querySelectorAll(sel); const tgt = el[el.length - 1]; if (!tgt) continue; shown = true; const rc = tgt.getBoundingClientRect(), x = rc.left + rc.width / 2, y = rc.top + rc.height / 2;
+      const mv = ease((d + .7) / .55); f.style.left = (x + (1 - mv) * 80) + 'px'; f.style.top = (y + (1 - mv) * 120) + 'px';
+      f.style.opacity = d > .25 ? 1 - (d - .25) / .2 : mv; f.style.transform = `scale(${d >= 0 && d < .2 ? .82 : 1})`; } }
+  f.hidden = !shown;
+}
+window.renderFrame = renderFrame;
+renderFrame(0);
+</script></body></html>
