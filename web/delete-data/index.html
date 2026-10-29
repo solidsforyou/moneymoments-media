@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete my data</title><meta name="description" content="How to delete your OpenSource Everything account and data.">
+<link rel="stylesheet" href="/src/shared/base.css"><link rel="icon" href="/icons/olly.svg"></head>
+<body><main class="wrap stack" style="padding-block:48px;max-width:720px">
+<a href="/">← All apps</a>
+<h1>Delete my data</h1>
+<p>You can delete your account and everything linked to it yourself, in any of our apps:</p>
+<ol><li>Log in.</li><li>Open your profile (Me in OpenSource Everything, You in Tomorrow).</li><li>Tap <b>Delete my account</b> and confirm.</li></ol>
+<p>This removes your account, your IDs and your Telegram link straight away. Can't log in? Email privacy@opensourceeverything.in from the address or Telegram account you used, and we delete it for you.</p>
+<p><button class="btn" id="del" hidden>Delete my account now</button></p>
+</main>
+<script type="module">
+import { api, me } from '/src/shared/ui.js';
+const { user } = await me(); const b = document.getElementById('del');
+if (user) { b.hidden = false; b.textContent = `Delete @${user.handle} now`; b.onclick = async () => { if (!confirm('Delete your account and everything in it? This can\'t be undone.')) return; await api('/api/auth/delete', { method: 'POST' }); location.href = '/'; }; }
+</script></body></html>

@@ -1,0 +1,17 @@
+{
+ "name": "GoodHabit",
+ "short_name": "GoodHabit",
+ "start_url": "/goodhabit/",
+ "scope": "/goodhabit/",
+ "display": "standalone",
+ "background_color": "#F2F2F7",
+ "theme_color": "#0B7A3B",
+ "icons": [
+  {
+   "src": "/icons/goodguy.svg",
+   "sizes": "any",
+   "type": "image/svg+xml",
+   "purpose": "any"
+  }
+ ]
+}
