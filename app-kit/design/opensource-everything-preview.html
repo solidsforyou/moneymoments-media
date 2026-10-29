@@ -812,6 +812,32 @@ main h3{font-family:var(--sys)!important;font-weight:600!important;letter-spacin
 .charc[aria-pressed="true"],.simstarts button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--blue)!important}
 .tnode b,.charc b,.simstarts b{color:var(--label)!important}
 .tnode small,.charc small,.simstarts small{color:var(--label2)!important}
+/* ===== Spotify-style buttons, in our own colours: full pills that pop when pressed ===== */
+.gbtn,.p-btn,.btn-hud,.p-btn.blue,.playbtn,.openbtn,.btn-line,.qbtn,.chipbtn,.simctl button,.pinbtn{border-radius:999px!important;transition:transform .15s cubic-bezier(.3,.7,.4,1.4),background-color .15s,filter .15s,border-color .15s!important;will-change:transform}
+.gbtn,.p-btn,.btn-hud,.playbtn{font-weight:700!important;letter-spacing:0!important;min-height:52px!important;padding-inline:26px!important}
+@media (hover:hover){.gbtn:hover,.p-btn:hover,.btn-hud:hover,.playbtn:hover,.openbtn:hover,.simctl button:hover{transform:scale(1.04);filter:brightness(1.08)}}
+.gbtn:active,.p-btn:active,.btn-hud:active,.playbtn:active,.openbtn:active,.btn-line:active,.qbtn:active,.chipbtn:active,.simctl button:active,.pinbtn:active,.seg2 button:active,.chipsrow button:active{transform:scale(.96)!important;filter:brightness(.92)}
+/* secondary: outline pill (fills in softly when pressed) */
+.gbtn.ghost,.btn-line,.p-btn.ghost{background:transparent!important;color:var(--label)!important;box-shadow:inset 0 0 0 1.5px var(--label3)!important}
+@media (hover:hover){.gbtn.ghost:hover,.btn-line:hover,.p-btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--label)!important;filter:none}}
+.gbtn.ghost:active,.btn-line:active,.p-btn.ghost:active{background:var(--fill)!important}
+/* the round play badge on start actions */
+.pi{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--blue);margin:-4px 10px -4px -12px;vertical-align:middle;transition:transform .15s cubic-bezier(.3,.7,.4,1.4)}
+.pi svg{margin-left:2px}
+button:active .pi{transform:scale(1.12)}
+[data-act="pstart"] .pi{color:var(--green)}
+/* small icon buttons bounce */
+.pacts button,.igbtn,.dots{transition:transform .15s cubic-bezier(.3,.7,.4,1.4)}
+.pacts button:active,.igbtn:active,.dots:active{transform:scale(.85)}
+/* the old-style heart: outline, then a green fill that pops with a small burst */
+.heartbtn{position:relative}
+.heartbtn.liked,.pacts .heartbtn.liked{color:var(--green)!important}
+.heartbtn.liked svg{stroke:var(--green)}
+.heartbtn.pop svg{animation:heartpop .45s cubic-bezier(.3,.7,.4,1.4)}
+.heartbtn.pop::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;box-shadow:0 -16px 0 -2px var(--green),14px -8px 0 -2px var(--green),14px 8px 0 -2px var(--green),0 16px 0 -2px var(--green),-14px 8px 0 -2px var(--green),-14px -8px 0 -2px var(--green);animation:heartburst .5s ease-out forwards;pointer-events:none}
+@keyframes heartpop{0%{transform:scale(1)}25%{transform:scale(.7)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+@keyframes heartburst{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
+@media (prefers-reduced-motion:reduce){.heartbtn.pop svg,.heartbtn.pop::after{animation:none}.gbtn,.p-btn,.btn-hud,.playbtn,.pi{transition:none!important}}
 </style>
 
 <div id="app"></div>
@@ -877,7 +903,7 @@ function bar(world){
   }
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
     <button class="logo" data-act="${world === 'home' ? 'feedmenu' : 'nav'}" data-r="home" aria-label="${world === 'home' ? 'OpenSource Everything, choose what to show' : 'OpenSource Everything home'}"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span>${world === 'home' ? '<span aria-hidden="true" style="font-size:12px;margin-left:2px">▾</span>' : ''}</button>
-    ${world === 'chats' ? '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>' : `<button class="igbtn" data-act="newpost" aria-label="New post">${igIcon('plus')}</button><button class="igbtn" data-act="activity" aria-label="Activity">${igIcon('heart')}<i class="dot"></i></button>`}</div></header>`;
+    ${world === 'chats' ? '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>' : `<button class="igbtn" data-act="newpost" aria-label="New post">${igIcon('plus')}</button><button class="igbtn heartbtn ${S.actSeen ? '' : 'liked'}" data-act="activity" aria-label="${S.actSeen ? 'Activity' : 'Activity, new'}">${igIcon('heart', !S.actSeen)}</button>`}</div></header>`;
 }
 function icon(n){ const P = {today:'<rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.3 2.2 4.7-4.7"/>', sigma:'<path d="M18 4.5H6.5l6 7.5-6 7.5H18"/>', book:'<path d="M12 6.5C10 5 7.5 4.5 3.5 4.5v14c4 0 6.5.5 8.5 2 2-1.5 4.5-2 8.5-2v-14c-4 0-6.5.5-8.5 2z"/><path d="M12 6.5v14"/>', puzzle:'<path d="M10 3.5h4v2.2a1.8 1.8 0 1 0 3.6 0V3.5h2.9v6.4h-2.2a1.8 1.8 0 1 0 0 3.6h2.2v7H3.5v-7h2.2a1.8 1.8 0 1 0 0-3.6H3.5V3.5H10"/>', clip:'<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>', home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
@@ -896,7 +922,7 @@ function render(){
   $('#sky').hidden = r !== 'reason';
   const html = ({home:vFeed,apps:vHome,challenges:vChallenges,profile:vProfile,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,practice:vPractice,sim:vSim,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
-  window.scrollTo(0,0);
+  if (S._lastR !== r) window.scrollTo(0,0); S._lastR = r;
   if (r === 'reason') startSky(); else stopSky();
   if (r === 'quant') drawLesson();
 }
@@ -1036,7 +1062,7 @@ function vMock(){
   if (M.i < 0) return `<main class="col" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px"><h1 class="p-h1">Free full mock</h1><p class="p-sub">CAT-style: Quant, Reasoning and Verbal, 40 minutes each. +3 for a right answer, −1 for a wrong one, 0 if you skip.</p>
     <div class="p-card"><b>Free with every mock</b><span>Your score and section scores. A percentile among OpenPrep students appears once enough students have taken this mock.</span></div>
     <div class="p-card"><b>Deep analysis · ₹20, or free with the Pass</b><span>Every question explained, your weak topics, time per question, and a two-week study plan from the AI mentor.</span></div>
-    <p class="p-note">This preview has 6 sample questions; the real mock is full length.</p><button class="p-btn blue" data-act="mockstart">Start the mock</button></main>`;
+    <p class="p-note">This preview has 6 sample questions; the real mock is full length.</p><button class="p-btn blue" data-act="mockstart"><span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>Start the mock</button></main>`;
   if (M.i < MOCK.length) { const Q = MOCK[M.i];
     return `<main class="col" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;justify-content:space-between;align-items:center"><b>${Q.sec} · question ${M.i+1} of ${MOCK.length}</b><span class="p-note num">38:${String(59 - M.i*7).padStart(2,'0')} left</span></div>
     <div class="mockq"><p style="font-size:18px;font-weight:700;line-height:1.45">${esc(Q.q)}</p>${Q.o.map((o,i) => `<button class="qopt" data-act="mockans" data-i="${i}">${esc(o)}</button>`).join('')}<button class="p-btn ghost" data-act="mockans" data-i="-1">Skip</button></div></main>`; }
@@ -1363,7 +1389,7 @@ function practiceHome(){
   <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:18px">Pick your era</h2>
   <div class="timeline" role="group" aria-label="Era">${ER.map(([k,n,dsc]) => `<button class="tnode" data-act="pera" data-k="${k}" aria-pressed="${era===k}"><i></i><b>${n}</b><small>${dsc}</small></button>`).join('')}</div>
   <div class="diff" style="margin-top:16px"><label class="lbl" for="pdiff">Difficulty: ${d[0].toUpperCase()+d.slice(1)}</label><input id="pdiff" type="range" min="0" max="2" step="1" value="${di}"><span class="lab"><span>Easy · hints</span><span>Medium</span><span>Hard · no hints</span></span></div>
-  <button class="playbtn" data-act="pstart" style="margin-top:14px">Play</button>
+  <button class="playbtn" data-act="pstart" style="margin-top:14px"><span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>Play</button>
   <button class="gbtn ghost" data-act="pmode" data-m="profile" style="width:100%;margin-top:8px">Or play with my own numbers</button><p style="color:var(--g-mute);font-size:12.5px;margin-top:6px;text-align:center">You type your income and spending. Nothing connects to your bank, and it stays on this phone.</p>
   <h2 style="font-family:var(--gh-d);font-size:22px;margin-top:22px">Crash demos</h2>
   <div class="demos" style="margin-top:8px"><button class="demo" style="background:linear-gradient(160deg,#3B1FA6,#120A3A)" data-act="demo" data-k="dotcom"><b>Dot-com crash</b><small>2000</small></button><button class="demo" style="background:linear-gradient(160deg,#B3261E,#3A0B08)" data-act="demo" data-k="2000s"><b>The 2008 crisis</b><small>2007–09</small></button><button class="demo" style="background:linear-gradient(160deg,#0E6B63,#062A26)" data-act="demo" data-k="covid"><b>Covid crash</b><small>2020</small></button></div>
@@ -1508,7 +1534,7 @@ function postHtml(p){
   const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length, lk = LIKER[p.k];
   return `<article class="post"><header>${w.id ? `<button class="phead" data-act="viewprof" data-k="${w.id}">` : '<span class="phead">'}${w.id && STORIES[w.id] ? `<span class="minring ${S.seen && S.seen[w.id] ? 'done' : ''}">${avatar(w, 32)}</span>` : avatar(w, 32)}<span style="min-width:0"><b>${esc(w.handle || w.name)}</b>${w.app ? `<small>From the ${esc(w.name)} app · ${w.app}</small>` : ''}</span>${w.id ? '</button>' : '</span>'}<button class="dots" data-act="postmore" data-k="${p.k}" aria-label="More options">⋯</button></header>
     <div class="media${p.type === 'reel' ? '' : ' short'}" style="background:${p.bg}" data-act="dbllike" data-k="${p.k}">${p.type === 'reel' ? '<span class="play" aria-hidden="true">▶</span>' : ''}<h3>${esc(p.h)}</h3>${p.sub ? `<p>${esc(p.sub)}</p>` : ''}</div>
-    <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="Like" class="${liked ? 'liked' : ''}">${igIcon('heart', liked)}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">${igIcon('comment')}</button><button data-act="share" data-k="${p.k}" aria-label="Share">${igIcon('send')}</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${igIcon('save', saved)}</button></div>
+    <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="${liked ? 'Unlike' : 'Like'}" class="heartbtn ${liked ? 'liked' : ''} ${S.justLiked === p.k ? 'pop' : ''}">${igIcon('heart', liked)}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">${igIcon('comment')}</button><button data-act="share" data-k="${p.k}" aria-label="Share">${igIcon('send')}</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${igIcon('save', saved)}</button></div>
     ${liked ? `<p class="likes">Liked by <b>you</b>${lk ? ` and <b>${lk}</b>` : ''}</p>` : lk ? `<p class="likes">Liked by <b>${lk}</b> and others</p>` : ''}
     <p class="cap"><b>${esc(w.handle || w.name)}</b> ${esc(p.cap)}</p>${n ? `<button class="morec" data-act="comment" data-k="${p.k}">View all ${n} comment${n > 1 ? 's' : ''}</button>` : ''}${p.open ? `<button class="linkbtn openin" data-act="nav" data-r="${p.open}">${esc(p.openL)} →</button>` : ''}<p class="ago">${p.by === 'you' ? 'Just now' : AGO[p.k] || ''}</p></article>`;
 }
@@ -1682,7 +1708,7 @@ function simSetup(){
     <div><label class="lbl" for="simdate">Or pick any date</label><input class="inp" type="date" id="simdate" min="${siso(0)}" max="${siso(SLAST - 21)}" value="${P.some(p => p[0] === pick) ? '' : pick}"></div>
     <h2 style="font-family:var(--gh-d);font-size:20px">Starting money</h2>
     <div class="seg2" role="group" aria-label="Starting money">${[[10000, '₹10,000'], [100000, '₹1,00,000'], [1000000, '₹10,00,000']].map(([v, l]) => `<button data-act="simcash" data-v="${v}" aria-pressed="${cash === v}">${l}</button>`).join('')}</div>
-    <button class="playbtn" data-act="simstart">Start trading</button>${SIMNOTE}</main>`;
+    <button class="playbtn" data-act="simstart"><span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>Start trading</button>${SIMNOTE}</main>`;
 }
 function tradeSheet(){
   const T = S.simT, x = SIM.by[T.sym], s = S.sim, i = s.i, p = x.px[i], m = smove(x.sym, i), rg = T.rg || '1Y', back = {'1M':21, '6M':126, '1Y':252, '5Y':1260}[rg], h = s.hold[x.sym];
@@ -1935,9 +1961,9 @@ document.addEventListener('click', e => {
     case 'svprev': storyOpen(S.sv.k, S.sv.i - 1); break;
     case 'svclose': S.sv = null; clearTimers(); closeSheet(); render(); break;
     case 'mystory': if (!S.me) signupSheet(); else toast('Your story: add a photo, a lesson you finished or a result (preview).'); break;
-    case 'activity': activitySheet(); break;
+    case 'activity': S.actSeen = true; activitySheet(); { const h = $('.igbtn.heartbtn'); if (h) { h.classList.remove('liked'); h.innerHTML = igIcon('heart'); h.setAttribute('aria-label', 'Activity'); } } break;
     case 'feedmenu': feedMenu(); break;
-    case 'dbllike': { const now = Date.now(), k = b.dataset.k; if (S.lastTap && S.lastTap.k === k && now - S.lastTap.t < 350) { S.likes = S.likes || {}; S.likes[k] = true; render(); } S.lastTap = {k, t:now}; break; }
+    case 'dbllike': { const now = Date.now(), k = b.dataset.k; if (S.lastTap && S.lastTap.k === k && now - S.lastTap.t < 350) { S.likes = S.likes || {}; S.likes[k] = true; S.justLiked = k; render(); S.justLiked = null; } S.lastTap = {k, t:now}; break; }
     case 'interest': { const k = b.dataset.k; S.interests = S.interests.includes(k) ? S.interests.filter(x => x !== k) : [...S.interests, k]; chSave(); render(); break; }
     case 'ftab': S.ftab = b.dataset.k; closeSheet(); render(); break;
     case 'findfriends': toast('In the app: with your OK, we show which of your contacts are here. Nothing is uploaded without asking.'); break;
@@ -1945,7 +1971,7 @@ document.addEventListener('click', e => {
     case 'ptopic': S.pdraft = ($('#pt') || {}).value || ''; S.ptopic = b.dataset.k; newPostSheet(); break;
     case 'pbg': S.pdraft = ($('#pt') || {}).value || ''; S.pbg = b.dataset.b; newPostSheet(); break;
     case 'postsave': { const t = ($('#pt') || {}).value.trim(); if (!t) { toast('Write something first.'); break; } S.posts.unshift({k:'u' + Date.now(), by:'you', topic:S.ptopic || S.interests[0] || 'building', type:'text', bg:S.pbg || 'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:t.length > 90 ? t.slice(0, 88) + '…' : t, cap:t}); S.pdraft = ''; S.ftab = 'foryou'; const fresh = chDone('learn', 10); chSave(); closeSheet(); go('home'); render(); toast(fresh ? 'Posted. Learn-or-make challenge done: +10' : 'Posted.'); break; }
-    case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; render(); break;
+    case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; S.justLiked = S.likes[b.dataset.k] ? b.dataset.k : null; render(); S.justLiked = null; break;
     case 'savepost': S.saves = S.saves || {}; S.saves[b.dataset.k] = !S.saves[b.dataset.k]; render(); toast(S.saves[b.dataset.k] ? 'Saved to your profile' : 'Removed from saved'); break;
     case 'comment': { const k = b.dataset.k, L = (S.comments = S.comments || {})[k] || []; S.cK = k; sheet(`<h2>Comments</h2>${L.map(t => `<p><b>You</b> ${esc(t)}</p>`).join('') || '<p style="color:var(--label2)">No comments yet. Be kind, be useful.</p>'}<form id="cmform" style="display:flex;gap:8px"><input class="inp" id="cmin" placeholder="Add a comment" style="flex:1" autocomplete="off"><button class="p-btn blue" type="submit">Post</button></form>`); break; }
     case 'share': sheet(`<h2>Send to</h2>${Object.keys(S.hissab).map(k => `<button class="person" data-act="sendpost" data-k="${k}">${hav(k)}<b style="flex:1;text-align:left">${esc(S.hissab[k].name)}</b><span>Send</span></button>`).join('')}<button class="gbtn ghost" data-act="copypost">Copy link</button>`); break;
