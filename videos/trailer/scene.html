@@ -1,0 +1,147 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+#bg{position:absolute;inset:0}
+#ph{position:absolute;left:0;top:0;width:390px;height:844px;transform-origin:0 0;border-radius:44px;box-shadow:0 0 0 12px #111214,0 40px 120px rgba(0,0,0,.28);overflow:hidden;background:#fff}
+#ph img{position:absolute;left:0;top:0;width:390px;height:844px}
+#fx{position:absolute;inset:0;pointer-events:none}
+#finger{position:absolute;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(20,20,30,.25);border:3px solid rgba(255,255,255,.95);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#ring{position:absolute;border-radius:50%;border:6px solid #1ED760}
+#words{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px}
+#words b{display:block;font-weight:800;letter-spacing:-.045em;line-height:.98}
+#cap{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:640px}
+#cap small{display:block;font:700 22px "Inter";letter-spacing:.12em;text-transform:uppercase;color:#007AFF;margin-bottom:14px}
+#cap b{display:block;font-weight:800;font-size:76px;letter-spacing:-.04em;line-height:1.02;color:#0B0B0F}
+#label{position:absolute;left:64px;bottom:56px;padding:14px 22px;border-radius:999px;background:rgba(11,11,15,.82);color:#fff;font:600 26px "Inter";backdrop-filter:blur(10px)}
+#crew{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:70px}
+#crew .m{width:230px;text-align:center}
+#crew .m span{display:block;width:230px;height:230px}
+#crew .m svg{width:100%;height:100%}
+#crew b{display:block;font-size:44px;font-weight:800;letter-spacing:-.03em;margin-top:10px}
+#crew small{display:block;font:500 22px "Inter";color:#6E6E73;margin-top:4px}
+#crewtitle{position:absolute;left:0;right:0;top:120px;text-align:center;font-weight:800;font-size:64px;letter-spacing:-.04em}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center}
+#end .row{display:flex;gap:34px}#end .row span{width:150px;height:150px;display:block}#end svg{width:100%;height:100%}
+#end h1{font-size:120px;font-weight:800;letter-spacing:-.05em;color:#0B0B0F}
+#end p{font:500 32px "Inter";color:#6E6E73}
+#end .url{font-weight:800;font-size:46px;color:#007AFF;letter-spacing:-.02em}
+#flash{position:absolute;inset:0}
+</style></head><body>
+<div id="bg"></div>
+<div id="ph"><img id="img0"><img id="img1"></div>
+<div id="cap"><small></small><b></b></div>
+<div id="fx"><div id="ring"></div><div id="finger"></div></div>
+<div id="label"></div>
+<div id="words"></div>
+<div id="crewtitle"></div><div id="crew"></div>
+<div id="end"></div>
+<div id="flash"></div>
+<script src="cap/data.js"></script>
+<script>
+// Song: "Welcome To Miami (Slowed)", used from 36.695 s (a downbeat) to its end; 110 BPM.
+const BEAT = 60 / 110, NB = 80;
+window.DURATION = NB * BEAT + 0.4;
+const $ = id => document.getElementById(id);
+const IMGS = ['signup','signup2','feed','feed2','story','lesson','lesson2','question','answer','sim0','sim3','sim2chart','markets','hissab','chat0','chat1','mock','build0','build','privacy0','privacy1','me'];
+const pre = {}; window.READY = Promise.all(IMGS.map(n => new Promise(r => { const i = new Image(); i.onload = r; i.onerror = r; i.src = `cap/${n}.png`; pre[n] = i; })));
+const crewOf = n => (window.CREW.find(c => c[0] === n) || ['', '', ''])[2];
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const eout = x => 1 - Math.pow(1 - clamp(x), 3);
+const lerp = (a, b, k) => a + (b - a) * k;
+const B = (box, name) => { const v = BOXES[name] && BOXES[name][box]; if (!v) throw new Error('box ' + name + '.' + box); return v; };
+const grow = (b, dx, dy = dx) => [b[0] - dx, b[1] - dy, b[2] + 2 * dx, b[3] + 2 * dy];
+const ctr = b => [b[0] + b[2] / 2, b[1] + b[3] / 2];
+// a camera key: where the phone sits and how big. 'wide' shows the whole phone.
+const WIDE = (sx = 960) => ({ cx: 195, cy: 422, s: 1.0, sx, sy: 540 });
+const ON = (box, fill = .72, sx = 960, sy = 540, max = 4.6) => { const [cx, cy] = ctr(box); return { cx, cy, s: Math.min(max, 1920 * fill / box[2], 1080 * fill / box[3]), sx, sy }; };
+function camAt(keys, b) {
+  let i = 0; while (i < keys.length - 1 && b >= keys[i + 1][0]) i++;
+  const [b0, k0] = keys[i], nx = keys[i + 1]; if (!nx || b <= b0) return k0;
+  const [b1, k1, how] = nx, e = how === 'cut' ? (b >= b1 ? 1 : 0) : how === 'out' ? eout((b - b0) / (b1 - b0)) : ease((b - b0) / (b1 - b0));
+  return { cx: lerp(k0.cx, k1.cx, e), cy: lerp(k0.cy, k1.cy, e), s: Math.exp(lerp(Math.log(k0.s), Math.log(k1.s), e)), sx: lerp(k0.sx, k1.sx, e), sy: lerp(k0.sy, k1.sy, e) };
+}
+
+// ---------------- the shots, in beats ----------------
+const LIGHT = '#F2F2F7', DARK = '#0B0B0F';
+const S = [
+  { a: 0, z: 4, words: [[0, 'Free.'], [1, 'Open.'], [2, 'Ad-free.'], [3, 'Yours.']], bg: DARK, color: '#fff', size: 230 },
+  { a: 4, z: 8, crew: true },
+  { a: 8, z: 12, img: [[8, 'signup'], [10, 'signup2']], cap: ['One OpenID', 'Sign up once.'], cam: [[8, WIDE(1260)], [9.6, ON(grow(B('tg', 'signup'), 20, 40), .62, 1260)], [10.2, ON(grow(B('tg', 'signup'), 20, 40), .62, 1260)], [11.4, ON(grow([18, 490, 354, 124], 10), .7, 1200)]], tap: [[10, 'tg', 'signup']], label: [[9, 'Log in with Telegram'], [10.4, 'Your name and photo. Never your number or chats.']] },
+  { a: 12, z: 14, words: [[12, 'One OpenID.'], [13, 'Every app.']], stack: true, bg: '#007AFF', color: '#fff', size: 150 },
+  { a: 14, z: 18, img: [[14, 'feed'], [16, 'feed2']], cam: [[14, ON(B('post', 'feed'), .8)], [15.6, ON(grow(B('heart', 'feed'), 30), .55)], [16, ON(grow(B('heart', 'feed'), 30), .55)], [16.25, ON(grow(B('heart', 'feed'), 10), .62)], [18, ON(grow(B('heart', 'feed'), 40), .55)]], tap: [[16, 'heart', 'feed']], heart: 16, label: [[14.2, 'Tomorrow · the social app for driven people'], [16.2, 'Likes are hidden. Only you see yours.']] },
+  { a: 18, z: 20, img: [[18, 'story']], cam: [[18, WIDE()], [20, ON(grow(B('text', 'story'), 30), .72)]], label: [[18.1, 'Stories from friends']] },
+  { a: 20, z: 22, words: [[20, 'No ads.'], [21, 'No fake numbers.']], stack: true, bg: 'linear-gradient(135deg,#FFC24A,#FF4F6D)', color: '#fff', size: 140 },
+  { a: 22, z: 25, img: [[22, 'lesson'], [23.5, 'lesson2']], cam: [[22, ON(B('cam', 'lesson'), .78)], [25, ON(grow(B('tv', 'lesson'), 10), .8)]], label: [[22.1, 'OpenPrep · Buddy teaches CAT, one small lesson at a time']] },
+  { a: 25, z: 30, img: [[25, 'question'], [27, 'answer']], cam: [[25, ON(grow(B('q', 'question'), 20), .75)], [26.6, ON(grow([34, 397, 322, 240], 10), .78)], [27.2, ON(grow(B('right', 'answer'), 20), .6)], [28.4, ON(grow(B('right', 'answer'), 20), .6)], [30, ON(grow(B('why', 'answer'), 16, 24), .75)]], tap: [[27, 'right', 'answer']], label: [[25.1, 'Unlimited practice, free'], [28.5, 'Every answer explained']] },
+  { a: 30, z: 32, words: [[30, 'Free CAT prep.'], [31, 'No ads.']], stack: true, bg: '#1B4DFF', color: '#fff', size: 140 },
+  // the breakdown: slow push, the quiet before the crash
+  { a: 32, z: 38, img: [[32, 'sim0']], cap: ['GoodHabit', 'Real market history. Pretend money.'], cam: [[32, WIDE(1260)], [38, ON(grow(B('worth', 'sim0'), 20, 30), .5, 1260, 540, 3.2)]], label: [[33, '1 Jan 2020 · ₹1,00,000 to play with']] },
+  { a: 38, z: 40, words: [[38, 'Then'], [39, 'March 2020.']], stack: true, bg: DARK, color: '#fff', size: 170 },
+  // the drop
+  { a: 40, z: 42, img: [[40, 'sim3']], cam: [[40, ON([210, 376, 96, 30], .55, 960, 540, 6)], [41, ON([32, 352, 326, 52], .9)], [42, ON(grow([32, 332, 326, 75], 10), .9)]], shake: 40, flash: 40, label: [[40.2, '12 Mar 2020 · the real Nifty fell 8.3% that day']] },
+  { a: 42, z: 46, img: [[42, 'sim2chart']], cam: [[42, ON([32, 440, 120, 170], .8)], [45, ON([238, 440, 120, 170], .8)], [46, ON([32, 410, 326, 210], .8)]], label: [[42.1, 'Your money vs just holding the Nifty']] },
+  { a: 46, z: 48, words: [[46, 'Practise money'], [47, 'before it\'s real.']], stack: true, bg: '#0B7A3B', color: '#fff', size: 130 },
+  { a: 48, z: 50, img: [[48, 'markets']], cam: [[48, ON([16, 140, 358, 230], .85)], [50, ON([16, 380, 358, 230], .85)]], label: [[48.1, 'Markets, explained. Never tips.']] },
+  { a: 50, z: 52, img: [[50, 'hissab']], cam: [[50, ON(grow(B('bal', 'hissab'), 10), .5)], [52, ON([16, 260, 358, 280], .85)]], label: [[50.1, 'Hissab · split bills with friends']] },
+  { a: 52, z: 58, img: [[52, 'chat0'], [54, 'chat1'], [57, 'mock']], cap: ['One inbox', 'Talk to anyone, from any app.'], cam: [[52, WIDE(1260)], [53.6, ON(grow([16, 300, 358, 340], 10), .85, 1260)], [54, ON(grow(B('sent', 'chat1'), 20), .62, 1260, 640)], [54.8, ON(grow(B('sent', 'chat1'), 20), .62, 1260)], [56.6, ON(grow(B('open', 'chat1'), 20), .5, 1260)], [57, ON(grow(B('open', 'chat1'), 20), .5, 1260)], [58, ON(grow(B('title', 'mock'), 10, 30), .6, 1260)]], tap: [[56.5, 'open', 'chat1']], label: [[54.1, 'Cards from every app, live in your chats'], [57.1, 'Tap one. It opens in its app.']] },
+  { a: 58, z: 60, words: [[58, 'One inbox.'], [59, 'Every app.']], stack: true, bg: '#34C759', color: '#fff', size: 150 },
+  { a: 60, z: 66, img: [[60, 'build0'], [63, 'build']], cap: ['Build', 'Everything we make is open.'], cam: [[60, ON(B('list', 'build0'), .8, 1260)], [62.6, ON([16, 211, 358, 140], .8, 1260)], [63, ON(grow(B('code', 'build'), 10), .78, 1260)], [66, ON([32, 341, 200, 110], .8, 1260)]], label: [[60.1, 'Code public at launch · AGPL licence'], [63.1, 'Build your own app on OpenID']] },
+  { a: 66, z: 70, img: [[66, 'privacy0'], [68, 'privacy1']], cam: [[66, ON([18, 520, 354, 260], .8)], [68, ON(grow(B('toggles', 'privacy0'), 10), .78)], [70, ON(grow(B('toggles', 'privacy0'), 10), .74)]], tap: [[67.6, 'toggles', 'privacy0', [354 - 60, 15]]], label: [[66.1, 'You decide who sees what']] },
+  { a: 70, z: 72, words: [[70, 'Learn.'], [70.5, 'Build.'], [71, 'Grow your money.']], stack: true, bg: DARK, color: '#fff', size: 120 },
+  { a: 72, z: 80.8, end: true },
+];
+
+// ---------------- drawing ----------------
+function words(sh, b) {
+  const W = $('words'); W.style.background = sh.bg; W.style.color = sh.color;
+  const shown = sh.words.filter(w => b >= w[0]);
+  W.innerHTML = (sh.stack ? shown : shown.slice(-1)).map((w, i, arr) => { const k = eout((b - w[0]) / .35), last = i === arr.length - 1; return `<b style="font-size:${sh.size}px;opacity:${last ? k : .55};transform:translateY(${(1 - k) * 40}px) scale(${lerp(1.06, 1, k)})">${w[1]}</b>`; }).join('');
+}
+function renderFrame(t) {
+  const b = t / BEAT, sh = S.find(s => b >= s.a && b < s.z) || S[S.length - 1];
+  for (const id of ['words', 'crew', 'crewtitle', 'end', 'cap', 'label', 'ph', 'fx']) $(id).style.display = 'none';
+  $('flash').style.background = 'transparent'; $('bg').style.background = LIGHT;
+  if (sh.words) { $('words').style.display = 'flex'; words(sh, b); return; }
+  if (sh.crew) {
+    $('crew').style.display = 'flex'; $('crewtitle').style.display = 'block'; $('bg').style.background = '#fff';
+    $('crewtitle').textContent = 'One app each. One crew.';
+    $('crew').innerHTML = [['Olly', 'OpenSource Everything'], ['Sunny', 'Tomorrow'], ['Buddy', 'OpenPrep'], ['GoodGuy', 'GoodHabit']].map(([n, app], i) => { const k = eout((b - sh.a - i) / .45), bob = Math.sin((b - sh.a - i) * Math.PI) * 6 * (b > sh.a + i ? 1 : 0); return `<div class="m" style="opacity:${k};transform:translateY(${(1 - k) * 60 - bob}px) scale(${lerp(.6, 1, k)})"><span>${crewOf(n)}</span><b>${n}</b><small>${app}</small></div>`; }).join('');
+    return;
+  }
+  if (sh.end) {
+    const E = $('end'); E.style.display = 'flex'; $('bg').style.background = LIGHT;
+    const k1 = eout((b - 72) / .5), k2 = eout((b - 74) / .5), k3 = eout((b - 76) / .5), fade = 1 - clamp((t - (80.8 * BEAT - 0.9)) / 0.9);
+    E.style.opacity = fade;
+    E.innerHTML = `<div class="row">${['Olly', 'Sunny', 'Buddy', 'GoodGuy'].map((n, i) => { const k = eout((b - 72 - i * .5) / .4); return `<span style="opacity:${k};transform:translateY(${(1 - k) * 40}px)">${crewOf(n)}</span>`; }).join('')}</div>
+      <h1 style="opacity:${k1};transform:scale(${lerp(1.08, 1, k1)})">Built in the open.</h1>
+      <p style="opacity:${k2}">OpenPrep · GoodHabit · The Good Stuff · Tomorrow</p><span class="url" style="opacity:${k3}">opensourceeverything.in</span>`;
+    return;
+  }
+  // a camera shot over the phone
+  const ph = $('ph'); ph.style.display = 'block'; $('fx').style.display = 'block';
+  let name = sh.img[0][1]; for (const [bb, n] of sh.img) if (b >= bb) name = n;
+  const im = $('img0'); if (im.dataset.n !== name) { im.src = pre[name].src; im.dataset.n = name; }
+  let c = camAt(sh.cam, b);
+  if (sh.shake != null && b >= sh.shake) { const d = Math.exp(-(b - sh.shake) * 3.2) * 22; c = { ...c, sx: c.sx + Math.sin(t * 91) * d, sy: c.sy + Math.cos(t * 73) * d }; }
+  if (sh.heart != null) { const d = b - sh.heart; if (d >= 0 && d < .6) c = { ...c, s: c.s * (1 + Math.sin(d / .6 * Math.PI) * .12) }; }
+  const X = c.sx - c.s * c.cx, Y = c.sy - c.s * c.cy;
+  ph.style.transform = `translate(${X}px,${Y}px) scale(${c.s})`;
+  // dim the bezel when we're deep in, so the screen fills the frame
+  ph.style.boxShadow = c.s > 2 ? 'none' : '0 0 0 12px #111214,0 40px 120px rgba(0,0,0,.28)';
+  ph.style.borderRadius = c.s > 2 ? '0' : '44px';
+  const P = (x, y) => [X + c.s * x, Y + c.s * y];
+  // finger tap
+  const F = $('finger'); F.style.opacity = 0; $('ring').style.opacity = 0;
+  for (const [tb, box, nm, off] of sh.tap || []) {
+    const bx = B(box, nm), [x, y] = off ? [bx[0] + off[0], bx[1] + off[1]] : ctr(bx), [px, py] = P(x, y), d = b - tb;
+    if (d > -1.2 && d < .7) { F.style.opacity = d < -.9 ? (d + 1.2) / .3 : d > .4 ? 1 - (d - .4) / .3 : 1; F.style.left = px + 'px'; F.style.top = py + 'px'; F.style.transform = `scale(${Math.abs(d) < .12 ? .78 : 1})`; }
+  }
+  if (sh.heart != null) { const d = b - sh.heart; if (d >= 0 && d < 1.2) { const bx = B('heart', 'feed'), [x, y] = P(...ctr(bx)), r = c.s * (16 + d * 60), R = $('ring'); R.style.opacity = 1 - d / 1.2; R.style.left = x - r + 'px'; R.style.top = y - r + 'px'; R.style.width = R.style.height = 2 * r + 'px'; R.style.borderWidth = Math.max(1, 10 * (1 - d / 1.2)) + 'px'; } }
+  if (sh.flash != null) { const d = (b - sh.flash) * BEAT; if (d >= 0 && d < .35) $('flash').style.background = `rgba(255,59,48,${.55 * (1 - d / .35)})`; }
+  if (sh.cap) { const k = clamp((c.s - 1.6) / .6), C = $('cap'); C.style.display = 'block'; C.style.opacity = 1 - k; C.querySelector('small').textContent = sh.cap[0]; C.querySelector('b').textContent = sh.cap[1]; }
+  if (sh.label) { let lab = null, lb = 0; for (const [bb, l] of sh.label) if (b >= bb) { lab = l; lb = bb; } if (lab) { const L = $('label'), k = eout((b - lb) / .3); L.style.display = 'block'; L.textContent = lab; L.style.opacity = k; L.style.transform = `translateY(${(1 - k) * 16}px)`; } }
+}
+window.renderFrame = renderFrame;
+</script></body></html>

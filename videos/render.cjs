@@ -17,6 +17,7 @@ const fps = Number(opt("fps", 30)), width = Number(opt("width", 1080)), height =
   const [file, query] = page.split("?");   // keep ?story=... out of the path
   await tab.goto("file://" + path.resolve(file) + (query ? "?" + query : ""));
   await tab.evaluate(() => document.fonts.ready);
+  await tab.evaluate(() => window.READY || null);   // scenes with images can expose a load promise
   const duration = Number(opt("to", await tab.evaluate(() => window.DURATION)));
   const from = Number(opt("from", 0));
   const n = Math.round((duration - from) * fps);
