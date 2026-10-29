@@ -59,6 +59,8 @@ New stock comes from Openverse with `videos/stock.py` (memory row 17); copy the 
 | `founder-photos/parcels-doorbell-handover.jpg` | Hands holding parcels, finger on a doorbell (1920x1024) |
 | `founder-photos/parcels-stack-carrying.jpg` | Person carrying three shipping boxes (700x438) |
 | `founder-photos/parcel-box-handover.jpg` | A box handed from one person to another (644x476) |
+| `founder-photos/founder-mirror-selfie-black-suit.jpg` | The founder: mirror selfie, black double-breasted suit, thumbs up (2000x1500) |
+| `founder-photos/founder-avatar.jpg` | Square face crop of the selfie above, for About pages and profiles (320x320) |
 
 They look like stock images; post them only if the founder has the rights.
 
