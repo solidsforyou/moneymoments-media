@@ -292,3 +292,34 @@ def test_init_restores_a_lost_exec_bit_and_check_warns_when_inactive(tmp_path):
     sh("git", "config", "--unset", "core.hooksPath", cwd=work)
     code, out = audit(work, "check")
     assert code == 0 and "pre-push hook is not active" in out
+
+
+def test_force_push_over_an_unfetched_remote_commit(tmp_path):
+    work = kit_repo(tmp_path)
+    audit(work, "init")
+    sh("git", "push", "-q", "--no-verify", "origin", "main", cwd=work)
+    # someone else pushes a commit we never fetch
+    other = tmp_path / "other"
+    sh("git", "clone", "-q", "-b", "main", str(tmp_path / "remote.git"), str(other), cwd=tmp_path)
+    commit(other, "theirs.txt")
+    sh("git", "push", "-q", "--no-verify", "origin", "main", cwd=other)
+    mine = commit(work, "mine.txt")
+    audit(work, "add", "--verdict", "PASS", "--kind", "code", "--summary", "mine ok", "--commit", mine)
+    p = subprocess.run(["git", "push", "-q", "--force", "origin", "main"], cwd=work, capture_output=True, text=True)
+    assert p.returncode == 0 and "Traceback" not in p.stderr, p.stderr
+
+
+def test_mode_only_hook_commit_needs_no_audit_and_warning_shows_when_unaudited(tmp_path):
+    work = kit_repo(tmp_path)
+    hook = work / ".githooks" / "pre-push"
+    hook.chmod(0o644)
+    sh("git", "add", "-A", cwd=work)
+    sh("git", "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "lost bit", cwd=work)
+    audit(work, "init")  # restores the bit
+    sh("git", "add", "-A", ".githooks", cwd=work)
+    sh("git", "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "exec bit", cwd=work)
+    assert audit(work, "check")[0] == 0
+    commit(work, "x.txt")
+    sh("git", "config", "--unset", "core.hooksPath", cwd=work)
+    code, out = audit(work, "check")
+    assert code == 1 and "pre-push hook is not active" in out

@@ -20,11 +20,11 @@ loaded from. Below, `SKILL_DIR` means that folder.
    ```
 
    Verdicts: allow, warn, hold (human review before anyone sees it), block.
-   It's a cheap **first pass**, not the defence: on scams it had never seen
-   it caught 19% (third audit), then 47% after general signals were added
-   (measured on a partly seen set), with 0% of real comments held. The
-   real defence is three layers (app-social.md section 5): this script, a
-   language-model classifier on risky messages, and human moderators.
+   It's a cheap **first pass**, not the defence: on a clean set of scams it
+   had never seen it held or blocked 34%, with 0% of real comments flagged
+   (fourth audit). The real defence is three layers (app-social.md section
+   5): this script, a language-model classifier on every DM and on risky
+   comments (not built or measured yet), and human moderators.
 3. Works with app-build (code), app-security section 4a (rules for user
    content), app-news (verification) and app-crypto-trading (where social
    meets money).

@@ -218,3 +218,10 @@ def test_otp_and_pin_requests():
     for text in ["enter your UPI pin here to receive the refund", "Share the OTP you received to complete verification",
                  "OTP bhejo jaldi, account verify karna hai"]:
         assert scan(text)["verdict"] == "block", (text, scan(text))
+
+
+def test_safety_advice_about_remote_apps_and_upi_passes():
+    for text in ["Remote access apps like AnyDesk are how scammers empty accounts, never install them",
+                 "My UPI id got blocked after a P2P trade, be careful"]:
+        assert scan(text)["verdict"] == "allow", (text, scan(text))
+    assert scan("Install AnyDesk so our support engineer can fix your wallet")["verdict"] in ("hold", "block")

@@ -184,6 +184,7 @@ SIG_SENSITIVE = re.compile(r"\b(?:seed|recovery|mnemonic|secret)\s*(?:phrase|wor
 SIG_REQUEST = re.compile(r"\b(?:share|send|give|confirm|enter|reply|tell|provide|submit|upload|forward|screenshot|type|read\s+out"
                          r"|de\s+do|dedo|do\b|bhej\w*|batao|bata\s+do|dijiye|chahiye|need)\b", re.I)
 SIG_SAFE = re.compile(r"\b(?:never|don'?t|do\s+not|kabhi|mat|storage|method|offline|on\s+paper|steel|safely|restoring|manager|reset\s+link)\b", re.I)
+SIG_ADVICE = re.compile(r"\b(?:never|don'?t|do\s+not|avoid|beware|be\s+careful|careful|scammers?|scams?|fraud\w*|warning|got\s+blocked)\b", re.I)
 SIG_REMOTE = re.compile(r"\b(?:any\s*desk|team\s*viewer|quick\s*support|rust\s*desk|airdroid|screen\s*shar\w*|remote\s+access)\b", re.I)
 SIG_AUTHORITY = re.compile(r"\b(?:admin|support|security|helpdesk|customer\s+care|engineer|officer|department|compliance|official|team|moderator"
                            r"|staff|agent|income\s+tax|it\s+department|police|cyber\s*cell|rbi|sebi|government|bank)\b", re.I)
@@ -212,7 +213,7 @@ def signal_hits(t: str):
     for sent in sentences:
         if SIG_SENSITIVE.search(sent) and SIG_REQUEST.search(sent) and not SIG_SAFE.search(sent):
             found.add(("asks for credentials or a code", 10, SIG_SENSITIVE.search(sent).group(0)))
-        if SIG_REMOTE.search(sent):
+        if SIG_REMOTE.search(sent) and not SIG_ADVICE.search(sent):
             found.add(("remote-access app", 8, SIG_REMOTE.search(sent).group(0)))
         m = SIG_SELF.search(sent)
         if m:
@@ -228,7 +229,7 @@ def signal_hits(t: str):
             found.add(("pay or send to receive or release", 6, SIG_PAY_TO_GET.search(sent).group(0)[:50]))
         if SIG_GIVEAWAY.search(sent):
             found.add(("giveaway or free crypto", 2, SIG_GIVEAWAY.search(sent).group(0)))
-        if SIG_UPI.search(sent):
+        if SIG_UPI.search(sent) and not SIG_ADVICE.search(sent):
             found.add(("payment ID (UPI) to send money to", 4, SIG_UPI.search(sent).group(0)))
         mi = SIG_INCOME.search(sent)
         if mi and not NEGATION.search(sent[max(0, mi.start() - 30):mi.start()]) and not NOT_A_PROMISE.search(sent):

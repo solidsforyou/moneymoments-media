@@ -179,12 +179,23 @@ def unaudited(root, rows):
 
 
 def only_audit_files(root, sha):
-    """Commits that only record audits (audit/...) don't need an audit themselves."""
+    """Commits that only record audits (audit/...), or only change .githooks/ file modes
+    (init restoring the exec bit), don't need an audit themselves."""
     try:
-        files = git("diff-tree", "--no-commit-id", "--name-only", "-r", "--root", sha, cwd=root).split()
+        raw = git("diff-tree", "--no-commit-id", "-r", "--root", sha, cwd=root).splitlines()
     except RuntimeError:
         return False
-    return bool(files) and all(f.startswith("audit/") for f in files)
+    if not raw:
+        return False
+    for line in raw:  # ":oldmode newmode oldblob newblob status\tpath"
+        meta, _, path = line.partition("\t")
+        parts = meta.split()
+        if path.startswith("audit/"):
+            continue
+        if path.startswith(".githooks/") and len(parts) >= 4 and parts[2] == parts[3]:
+            continue  # same content, only the mode changed
+        return False
+    return True
 
 
 def open_fails(rows):
@@ -333,8 +344,9 @@ def pushed_commits(root, rows, remote, stdin_text):
             continue  # malformed, or a branch deletion: nothing is sent
         local_sha, remote_sha = parts[1], parts[3]
         args = ["rev-list", "--no-merges", local_sha, "--not", f"--remotes={remote}"]
-        if remote_sha != zero:
-            args.append(remote_sha)
+        if remote_sha != zero and subprocess.run(["git", "cat-file", "-e", remote_sha + "^{commit}"], cwd=root,
+                                                 capture_output=True).returncode == 0:
+            args.append(remote_sha)  # a force push over a commit never fetched: --remotes still bounds the range
         base = baseline(rows)
         if base:
             args.append(base)
@@ -359,9 +371,15 @@ def cmd_check(a, root):
         return 0
     un, fails, _ = summary(root, rows)
     if un or fails:
+        hook_warning(root)
         print(f"Audit needed: {len(un)} unaudited commit(s), {len(fails)} open FAIL(s). Run audit.py brief.")
         return 1
+    hook_warning(root)
     print("Everything is audited.")
+    return 0
+
+
+def hook_warning(root):
     hook = root / ".githooks" / "pre-push"
     if hook.exists():
         try:
@@ -371,7 +389,6 @@ def cmd_check(a, root):
         if path != ".githooks" or not os.access(hook, os.X_OK):
             print("Warning: git's pre-push hook is not active (run audit.py init, or set core.hooksPath to .githooks "
                   "and make .githooks/pre-push executable).")
-    return 0
 
 
 def cmd_brief(a, root):
