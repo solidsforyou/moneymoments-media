@@ -97,31 +97,38 @@ endorsement, not a fact-check. Sharing sends the video outside the app (e.g. Wha
 ## Trading
 
 - Crypto only. No stocks planned yet.
-- An Indian, FIU-IND-registered crypto partner handles custody, trades and KYC for trading. The
-  app is only the front end. Deposits and withdrawals in INR, by UPI and bank transfer.
-- Partner options (researched 28 Oct 2026, terms unverified until we contact them):
-  1. Mudrex "Crypto-as-a-Service": an API for brokers and fintech apps to add crypto investing,
-     with KYC, compliance and custody handled by Mudrex; FIU-IND registered; the company says
-     integration takes 2 to 4 weeks. First choice.
-  2. CoinDCX "API Broker" (listed under Business on its site; no details public).
-  3. Fallback, buy-only: an on-ramp widget (Onramp.money, or Onmeta, which says it's FIU-IND
-     registered) that sells crypto for INR via UPI into a wallet. No selling or holding in-app.
-  Ask a lawyer whether Chartroom itself must also register with FIU-IND.
-- Only coins the partner lists can be traded, which keeps most tiny pump coins out.
-- Every trade shows India's crypto tax before confirming: 1% TDS, 30% tax on gains, and losses
-  can't be set off against gains (unchanged in Budget 2026).
+- **v1: affiliate links.** Every video and article shows the price of the coins it mentions and a
+  "Trade on <exchange>" button that opens that coin in the exchange's own app. The user picks
+  their exchange once from several: Mudrex, CoinDCX, CoinSwitch (Binance maybe; its India
+  terms are unconfirmed). Trading, KYC, deposits, holdings and withdrawals all happen in the
+  exchange's app.
+- Affiliate commissions (exchanges' own pages, 28 Oct 2026; recheck at sign-up): Mudrex 50% of
+  referred users' fees in year one, then 30%; CoinDCX up to 30% on buy/sell; CoinSwitch 30% on
+  spot; Binance 20 to 50% by volume (global terms).
+- The Trade tab in v1: prices, coin pages with related videos and articles, and the trade
+  buttons. No in-app wallet yet.
+- **Later: API partner (Mudrex Crypto-as-a-Service first, CoinDCX API Broker second).** Brings a
+  full in-app wallet: buy and sell, portfolio, INR deposit and withdrawal by UPI, sending crypto
+  to outside wallets, and the habit jar. KYC happens at the first trade, not at sign-up.
+  Revenue is a share of the partner's fee, nothing added on top for users. Ask a lawyer whether
+  Chartroom must register with FIU-IND at that stage.
+- Every trade (in-app, once the API is live) shows India's crypto tax before confirming: 1% TDS,
+  30% tax on gains, and losses can't be set off against gains (unchanged in Budget 2026).
+- Only coins the exchange lists can be traded, which keeps most tiny pump coins out.
 
 ## Money
 
-- Revenue: trading fees only. Creators aren't paid.
-- No ads. Instead, habit reminders to invest a little:
+- Revenue: affiliate commissions in v1, then a revenue share from the API partner. Creators
+  aren't paid. No ads.
+- How Chartroom earns is explained once, on a page in settings/about.
+- Invest-habit reminders instead of ads:
   - Shown once every 15 to 30 minutes of scrolling. Users can turn them off any time (a link on
     every reminder and in settings).
-  - Each tap adds ₹10 or ₹20 to a habit jar (INR held in the user's wallet with the partner).
-    When the jar reaches the partner's minimum order, it's invested automatically, so fees and
-    TDS stay small relative to the order.
-  - The first time, the user picks what the jar buys (a coin such as BTC, or a basket);
-    later reminders reuse that choice.
+  - v1 (affiliate): the reminder suggests investing ₹10 to ₹20 and links to the user's chosen
+    coin or basket on their exchange (its SIP, where it has one).
+  - With the API: each tap adds ₹10 or ₹20 to a habit jar (INR in the user's wallet with the
+    partner), invested automatically once it reaches the partner's minimum order.
+  - The first time, the user picks what to invest in (a coin such as BTC, or a basket).
   - Wording says "invest", never "save" (crypto isn't savings), and every reminder carries
     ASCI's risk warning ("Crypto products and NFTs are unregulated and can be highly risky...").
 
@@ -135,13 +142,15 @@ people watch and trade.
 - Deadline: on the Play Store within 1 month (from 28 Oct 2026); iPhone soon after.
 - Seed content and first users: Unicorn Ka Hisab and the team's own videos.
 - Budget: near zero; free tiers and the cheapest options wherever possible.
-- Partner: not chosen yet. Design against a generic Indian partner (buy, sell, INR wallet; KYC
-  handled by them) and swap in the real one.
+- Partner: affiliate links in v1 (sign up to Mudrex, CoinDCX and CoinSwitch affiliate
+  programmes); API partner after launch.
 
 ## Risks to keep in view
 
-- One month is very tight for this scope. The gateway partner is the critical path: no partner
-  means no trading, and app stores in India pulled unregistered exchanges' apps in 2024. Everything not in the core flow is a candidate to cut from v1.
+- One month is very tight for this scope. Affiliate links take the exchange off the critical
+  path for v1.
+- Affiliate disclosure is only on a settings/about page (founder's choice). ASCI's rules may
+  want a disclosure next to the promotion itself; check before launch. Everything not in the core flow is a candidate to cut from v1.
 
 - With open posting, coin-pumping and scam videos will be the main threat on a trading app.
   Reports must be quick to file and fast to act on.
