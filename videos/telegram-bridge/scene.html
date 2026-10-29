@@ -67,14 +67,14 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-f
 <div class="stage" id="stage">
   <div id="cap"><h1 id="h"></h1><p id="sub"></p></div>
   <div class="lab" id="labl" style="left:360px">Telegram (generic look)</div>
-  <div class="lab" id="labr" style="left:1160px">T · our app</div>
+  <div class="lab" id="labr" style="left:1160px">Tomorrow · our app</div>
   <div class="phone tg" id="pl" style="left:360px"><div class="screen" id="sl"></div></div>
   <div id="wire"></div>
   <div id="bot"><div class="face">bot</div><b>our bot</b><span>passes messages</span></div>
   <div id="pkts"></div>
   <div class="phone us" id="pr" style="left:1160px"><div class="screen" id="sr"></div></div>
   <div id="finger" hidden></div>
-  <div id="foot">Sample people · OpenSource Everything works with Telegram and is not affiliated with it · the social app's name is still to be chosen ("T")</div>
+  <div id="foot">Sample people · OpenSource Everything works with Telegram and is not affiliated with it · Tomorrow is our social app</div>
 </div>
 <div id="end" hidden><h1>Works with Telegram.<br>Built in the open.</h1><p>Two apps, one conversation. Your Telegram stays yours.</p><div class="pbtn">Add to my phone</div></div>
 <script>
@@ -91,7 +91,7 @@ const L = 560, R = 1360, PX = {l:560, r:1360};
 const CAPS = [[0,'Two apps, one conversation','How OpenSource Everything works with Telegram'],
   [4,'Log in with Telegram','One tap. We get a name and photo, never the phone number or chats.'],
   [12.5,'Two chats, one conversation','Messages cross over through our bot in a second.'],
-  [24,'Live cards become links','In Telegram, a T card is a link. One tap brings them into our app.'],
+  [24,'Live cards become links','In Telegram, a Tomorrow card is a link. One tap brings them into our app.'],
   [32,'One-to-one, too','A Telegram user can message someone in our app through our bot.'],
   [40,'Tips and scams never cross','Our bot holds anything that looks like a stock tip or a scam.']];
 /* message crossings: [time leaving, direction, colour] */
@@ -109,35 +109,35 @@ function left(t){
       <div class="comp"><div class="in ph">Message</div><div class="snd"></div></div>`;
   }
   if (t < 32) {
-    const msgs = [`<div class="m sys">Driven in Pune is bridged with T</div>`];
+    const msgs = [`<div class="m sys">Driven in Pune is bridged with Tomorrow</div>`];
     if (t >= 14.7) msgs.push(`<div class="m out" style="${appear(t, 14.7)}"><small>You</small>Day 12 of my CAT streak 🔥</div>`);
-    if (t >= 19.7) msgs.push(`<div class="m" style="${appear(t, 19.7)}"><small>OSE bot</small><b>Riya</b><span class="via">from T</span><br>Nice! I just finished Percentages.</div>`);
+    if (t >= 19.7) msgs.push(`<div class="m" style="${appear(t, 19.7)}"><small>OSE bot</small><b>Riya</b><span class="via">from Tomorrow</span><br>Nice! I just finished Percentages.</div>`);
     if (t >= 21.8) msgs.push(`<div class="m" style="${appear(t, 21.8)}"><small>Meena</small>What's the hardest chapter for you two?</div>`);
-    if (t >= 25.8) msgs.push(`<div class="m" style="${appear(t, 25.8)}"><small>OSE bot</small><b>Kabir</b><span class="via">from T</span><br>🔥 shared a 12-day streak<br><span class="lnk">Open in T →</span></div>`);
+    if (t >= 25.8) msgs.push(`<div class="m" style="${appear(t, 25.8)}"><small>OSE bot</small><b>Kabir</b><span class="via">from Tomorrow</span><br>🔥 shared a 12-day streak<br><span class="lnk">Open in Tomorrow →</span></div>`);
     const draft = t < 14.7 ? typed('Day 12 of my CAT streak 🔥', t, 13.2, 14.4) : '';
-    const body = `<div class="notch"></div><div class="bar"><span class="av" style="background:#FF2D55">DP</span><span><b>Driven in Pune</b><span>128 members · bridged with T</span></span></div><div class="body">${msgs.join('')}</div>
+    const body = `<div class="notch"></div><div class="bar"><span class="av" style="background:#FF2D55">DP</span><span><b>Driven in Pune</b><span>128 members · bridged with Tomorrow</span></span></div><div class="body">${msgs.join('')}</div>
       <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
     if (t < 27.7) return body;
     // the link opens our app in the Telegram user's browser
     const k = ease((t - 27.7) / .5);
     return `<div class="notch" style="background:var(--bg)"></div><div style="flex:1;display:flex;flex-direction:column;background:var(--bg);opacity:${k};transform:translateY(${(1 - k) * 30}px)">
-      <div class="bar" style="background:var(--card)"><span class="av" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">T</span><span><b>Kabir's streak</b><span>in T</span></span></div>
+      <div class="bar" style="background:var(--card)"><span class="av" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">To</span><span><b>Kabir's streak</b><span>in Tomorrow</span></span></div>
       <div class="pad"><div class="card" style="width:100%"><div class="art">🔥 12-day streak</div><div class="t"><b>Daily CAT question</b>Kabir hasn't missed a day.</div></div>
       <div class="muted">${t >= 29.2 ? '✓ Logged in with Telegram' : 'Join him: log in with Telegram, one tap.'}</div>
-      <div class="pbtn" style="${t >= 29.8 ? '' : 'opacity:.55'}">Start my streak</div><div class="pbtn ghost">Add T to my phone</div></div></div>`;
+      <div class="pbtn" style="${t >= 29.8 ? '' : 'opacity:.55'}">Start my streak</div><div class="pbtn ghost">Add Tomorrow to my phone</div></div></div>`;
   }
   if (t < 40) {
     const msgs = [`<div class="m out" style="${appear(t, 32.6)}">/start</div>`];
-    if (t >= 33.4) msgs.push(`<div class="m" style="${appear(t, 33.4)}"><small>OSE bot</small>You're connected. Messages you send here reach Riya's inbox in T.</div>`);
+    if (t >= 33.4) msgs.push(`<div class="m" style="${appear(t, 33.4)}"><small>OSE bot</small>You're connected. Messages you send here reach Riya's inbox on Tomorrow.</div>`);
     if (t >= 35.5) msgs.push(`<div class="m out" style="${appear(t, 35.5)}">Hey Riya, can you share your Percentages notes?</div>`);
-    if (t >= 38.8) msgs.push(`<div class="m" style="${appear(t, 38.8)}"><small>OSE bot</small><b>Riya</b><span class="via">from T</span><br>Sure, sending them now 📒</div>`);
+    if (t >= 38.8) msgs.push(`<div class="m" style="${appear(t, 38.8)}"><small>OSE bot</small><b>Riya</b><span class="via">from Tomorrow</span><br>Sure, sending them now 📒</div>`);
     const draft = t < 35.5 ? typed('Hey Riya, can you share your Percentages notes?', t, 34.1, 35.3) : '';
     return `<div class="notch"></div><div class="bar"><span class="av" style="background:#5856D6">OS</span><span><b>OSE bot</b><span>bot</span></span></div><div class="body">${t >= 32.6 ? msgs.join('') : ''}</div>
       <div class="comp"><div class="in ${draft ? '' : 'ph'}">${draft ? esc(draft) + '<span class="caret"></span>' : 'Message'}</div><div class="snd"></div></div>`;
   }
   const msgs = [`<div class="m sys">Pinned: learning only. No stock tips, no paid calls.</div>`, `<div class="m"><small>Sana</small>Anyone doing one SIP before spending each month?</div>`];
   if (t >= 42.5) msgs.push(`<div class="m ${t >= 43.6 ? 'flag' : ''}" style="${appear(t, 42.5)}"><small>Unknown user</small>Guaranteed 300% returns 🚀 DM me for VIP calls</div>`);
-  if (t >= 43.8) msgs.push(`<div class="m" style="${appear(t, 43.8)}"><small>OSE bot</small>Held for review: this looks like a paid tip or a scam, so it wasn't posted to T.</div>`);
+  if (t >= 43.8) msgs.push(`<div class="m" style="${appear(t, 43.8)}"><small>OSE bot</small>Held for review: this looks like a paid tip or a scam, so it never reached Tomorrow.</div>`);
   return `<div class="notch"></div><div class="bar"><span class="av" style="background:#3A3D44">ML</span><span><b>Money learners</b><span>412 members · bridged with GoodHabit</span></span></div><div class="body">${msgs.join('')}</div><div class="comp"><div class="in ph">Message</div><div class="snd"></div></div>`;
 }
 function right(t){
@@ -149,7 +149,7 @@ function right(t){
         <div class="row"><span class="ok">✓</span>Your name and username</div><div class="row"><span class="ok">✓</span>Your profile photo</div><div class="row"><span class="no">✕</span>Your phone number</div><div class="row"><span class="no">✕</span>Your chats or contacts</div>
         <div class="muted" style="text-align:center">${t >= 9.0 ? '✓ Confirmed in Telegram' : 'Waiting for you in Telegram…'}</div></div>`; }
     if (t >= 10.2) { const k = ease((t - 10.2) / .4);
-      inner = `<div class="pad" style="opacity:${k}"><div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--card);border-radius:18px;padding:22px"><span class="av" style="width:76px;height:76px;font-size:26px;background:#5856D6">KS</span><b style="font-size:23px">Kabir Shah</b><span class="muted">OpenID ready · linked to Telegram</span></div><div style="flex:1"></div><div class="pbtn">Add T to my phone</div><div class="pbtn ghost">Add OpenPrep to my phone</div></div>`; }
+      inner = `<div class="pad" style="opacity:${k}"><div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--card);border-radius:18px;padding:22px"><span class="av" style="width:76px;height:76px;font-size:26px;background:#5856D6">KS</span><b style="font-size:23px">Kabir Shah</b><span class="muted">OpenID ready · linked to Telegram</span></div><div style="flex:1"></div><div class="pbtn">Add Tomorrow to my phone</div><div class="pbtn ghost">Add OpenPrep to my phone</div></div>`; }
     return `<div class="notch"></div><div class="bar"><span class="av" style="background:#007AFF">OS</span><span><b>OpenSource Everything</b><span>opensourceeverything.com</span></span></div>${inner}`;
   }
   if (t < 32) {
@@ -187,7 +187,7 @@ function renderFrame(t){
   $('bot').className = t >= 42.6 && t < 47 ? 'shield' : '';
   $('bot').querySelector('span').textContent = t >= 42.6 && t < 47 ? 'held a scam' : 'passes messages';
   $('labl').textContent = t >= 27.7 && t < 32 ? 'Their phone · our app opened' : t >= 32 && t < 40 ? 'Telegram · Arjun' : 'Telegram (generic look)';
-  $('labr').textContent = t < 12.5 ? 'Our website' : t < 32 ? 'T · our app' : t < 40 ? 'T · Riya\'s inbox' : 'GoodHabit · our app';
+  $('labr').textContent = t < 12.5 ? 'Our website' : t < 32 ? 'Tomorrow · our app' : t < 40 ? 'Tomorrow · Riya\'s inbox' : 'GoodHabit · our app';
   $('sl').innerHTML = left(t); $('sr').innerHTML = right(t);
   // packets crossing the bridge
   $('pkts').innerHTML = PK.map(([t0, dir, col]) => { const p = (t - t0) / .8; if (p < 0 || p > 1) return '';

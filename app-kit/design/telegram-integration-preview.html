@@ -144,7 +144,7 @@ footer.wrap{padding-block:0 40px;color:var(--label2);font-size:13px}
   <nav class="tabs" id="tabs" aria-label="Apps"></nav>
 </div></header>
 <main class="wrap" id="main"></main>
-<footer class="wrap">Telegram is a trademark of its owner. OpenSource Everything works with Telegram and is not affiliated with it. The Telegram side here is drawn as a generic chat on purpose. The social app's name starts with T and isn't chosen yet, so it's called "T" here.</footer>
+<footer class="wrap">Telegram is a trademark of its owner. OpenSource Everything works with Telegram and is not affiliated with it. The Telegram side here is drawn as a generic chat on purpose. Tomorrow is our social app.</footer>
 <div id="toastslot" aria-live="polite"></div>
 
 <script>
@@ -152,7 +152,7 @@ footer.wrap{padding-block:0 40px;color:var(--label2);font-size:13px}
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let toastT; function toast(m){ $('#toastslot').innerHTML = `<div class="toast" role="status">${esc(m)}</div>`; clearTimeout(toastT); toastT = setTimeout(() => $('#toastslot').innerHTML = '', 3200); }
-const TABS = [['ose','OSE · sign in'],['t','T · social'],['prep','OpenPrep'],['habit','GoodHabit'],['stuff','The Good Stuff'],['safety','Safety and privacy']];
+const TABS = [['ose','OSE · sign in'],['t','Tomorrow'],['prep','OpenPrep'],['habit','GoodHabit'],['stuff','The Good Stuff'],['safety','Safety and privacy']];
 const S = {ose:0, tlog:[['tg','Kabir','Day 12 of the daily CAT question 🔥'],['us','Riya','Nice! I just finished Percentages.']], prep:{step:0, ans:null, mini:false, mans:null}, habit:{log:[], hissab:'pending', mini:false}, stuff:false};
 const phone = (label, inner) => `<div class="phonebox"><small>${label}</small><div class="phone"><div class="screen"><div class="notch"></div>${inner}</div></div></div>`;
 const tgHead = (name, sub, col, ini) => `<div class="tgbar"><span class="av" style="background:${col}">${ini}</span><span><b>${esc(name)}</b><span>${esc(sub)}</span></span></div>`;
@@ -181,20 +181,20 @@ function vOse(){
   <div class="phones">${phone('Our site, on their phone', scr)}</div></div>`;
 }
 
-/* ---------- T: a bridged group ---------- */
+/* ---------- Tomorrow: a bridged group ---------- */
 function vT(){
-  const ourMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="lcard"><div class="lc-art" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">${esc(card)}</div><div class="lc-top"><b>${esc(who)} shared a streak</b><span class="muted">${esc(txt)}</span></div><button data-a="toast" data-m="Opens Kabir's streak in T (preview).">Open in T</button></div>` : `<div class="m ${side === 'us' && who === 'You' ? 'me' : 'them'}"><small>${esc(who)}${side === 'tg' ? ' · via Telegram' : ''}</small>${esc(txt)}</div>`).join('');
-  const tgMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="tm"><small>${esc(who)} · from T</small>🔥 ${esc(card)}: ${esc(txt)}<br><button class="lnk" data-a="toast" data-m="Opens the streak page in T, with 'Log in with Telegram' (preview).">Open in T →</button></div>` : `<div class="tm ${side === 'tg' && who === 'You' ? 'out' : ''}"><small>${esc(who)}${side === 'us' ? ' · from T' : ''}</small>${esc(txt)}</div>`).join('');
-  const ours = `<div class="app"><div class="appbar"><span class="dot" style="background:linear-gradient(135deg,#FF9500,#FF2D55)"></span>T · Driven in Pune</div><div class="appbody"><div class="msgs">${ourMsgs}</div></div>
-    <form class="composer" data-f="t-us"><input id="t-us" placeholder="Message as you, in T" autocomplete="off" aria-label="Message in T"><button aria-label="Send">↑</button></form></div>`;
-  const tg = `<div class="tg">${tgHead('Driven in Pune', '128 members · bridged with T', '#FF2D55', 'DP')}<div class="tgbody">${tgMsgs}</div>
+  const ourMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="lcard"><div class="lc-art" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">${esc(card)}</div><div class="lc-top"><b>${esc(who)} shared a streak</b><span class="muted">${esc(txt)}</span></div><button data-a="toast" data-m="Opens Kabir's streak in Tomorrow (preview).">Open in Tomorrow</button></div>` : `<div class="m ${side === 'us' && who === 'You' ? 'me' : 'them'}"><small>${esc(who)}${side === 'tg' ? ' · via Telegram' : ''}</small>${esc(txt)}</div>`).join('');
+  const tgMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="tm"><small>${esc(who)} · from Tomorrow</small>🔥 ${esc(card)}: ${esc(txt)}<br><button class="lnk" data-a="toast" data-m="Opens the streak page in Tomorrow, with 'Log in with Telegram' (preview).">Open in Tomorrow →</button></div>` : `<div class="tm ${side === 'tg' && who === 'You' ? 'out' : ''}"><small>${esc(who)}${side === 'us' ? ' · from Tomorrow' : ''}</small>${esc(txt)}</div>`).join('');
+  const ours = `<div class="app"><div class="appbar"><span class="dot" style="background:linear-gradient(135deg,#FF9500,#FF2D55)"></span>Tomorrow · Driven in Pune</div><div class="appbody"><div class="msgs">${ourMsgs}</div></div>
+    <form class="composer" data-f="t-us"><input id="t-us" placeholder="Message as you, in Tomorrow" autocomplete="off" aria-label="Message in Tomorrow"><button aria-label="Send">↑</button></form></div>`;
+  const tg = `<div class="tg">${tgHead('Driven in Pune', '128 members · bridged with Tomorrow', '#FF2D55', 'DP')}<div class="tgbody">${tgMsgs}</div>
     <form class="tgcomp" data-f="t-tg"><input id="t-tg" placeholder="Message as you, in Telegram" autocomplete="off" aria-label="Message in Telegram"><button aria-label="Send">↑</button></form></div>`;
-  return `<h1>T: groups bridged with Telegram</h1><p class="lede">A group in T and a Telegram group become one conversation. Telegram people stay in Telegram; T people stay in T. Live T cards show up in Telegram as tap-to-open links, which is how Telegram users find their way into T.</p>
+  return `<h1>Tomorrow: groups bridged with Telegram</h1><p class="lede">A group on Tomorrow and a Telegram group become one conversation. Telegram people stay in Telegram; people on Tomorrow stay on Tomorrow. Live Tomorrow cards show up in Telegram as tap-to-open links, which is how Telegram users find their way onto Tomorrow.</p>
   <div class="ctrl"><button class="btn" data-a="t-card">Kabir shares his streak card</button><button class="btn ghost" data-a="t-reset">Reset</button></div>
-  <div class="grid"><div class="side">${note('Try it', ['Type in either phone. The message appears in both.', 'Share the streak card: a full card in T, a link in Telegram.'])}
+  <div class="grid"><div class="side">${note('Try it', ['Type in either phone. The message appears in both.', 'Share the streak card: a full card in Tomorrow, a link in Telegram.'])}
     ${note('How it works', ['A bot from us sits in the Telegram group and passes messages both ways.', 'For a bot to see every message, the group admins either make it an admin or switch off its privacy mode. Admins choose to add it.', 'No one hands us their Telegram login.'])}
     <p class="src">Source: bot privacy mode and admin bots, as described in <a href="https://docs.openclaw.ai/channels/telegram" target="_blank" rel="noopener">OpenClaw's Telegram channel docs</a>. We'd confirm against Telegram's Bot API docs before building.</p></div>
-  <div class="phones">${phone('T (our app)', ours)}${phone('Telegram (generic look)', tg)}</div></div>`;
+  <div class="phones">${phone('Tomorrow (our app)', ours)}${phone('Telegram (generic look)', tg)}</div></div>`;
 }
 
 /* ---------- OpenPrep: bot + Mini App ---------- */
@@ -212,7 +212,7 @@ function vPrep(){
   return `<h1>OpenPrep in Telegram</h1><p class="lede">CAT students already live on Telegram. The OpenPrep bot sends the daily question there, they answer with one tap, and the Mini App opens OpenPrep inside Telegram. Every step ends with "add OpenPrep to my phone".</p>
   <div class="ctrl"><button class="btn ghost" data-a="prep-reset">Reset</button></div>
   <div class="grid"><div class="side">${steps([['Start the bot','From a link on our page, a reel, or a friend.'],['Answer today\'s question in chat','Buttons under the message. Explanation and streak right away.'],['Open the Mini App','OpenPrep runs inside Telegram. No install.'],['Add OpenPrep to the phone','The real app, with the mock, lessons and progress.']], P.mini ? 3 : P.ans != null ? 2 : P.step)}
-    ${note('Also in OpenPrep', ['A "CAT Quant board" in T can be bridged with a Telegram study group, exactly like the T tab.', 'The bot only messages people who started it, once a day, and /stop always works.'])}
+    ${note('Also in OpenPrep', ['A "CAT Quant board" on Tomorrow can be bridged with a Telegram study group, exactly like the Tomorrow tab.', 'The bot only messages people who started it, once a day, and /stop always works.'])}
     <p class="src">Mini Apps receive signed data that our server checks with the bot's key before trusting it. Sources: <a href="https://docs.telegram-mini-apps.com/platform/init-data" target="_blank" rel="noopener">Telegram Mini Apps docs (init data)</a>, <a href="https://docs.telegram-mini-apps.com/packages/tma-js-init-data-node/validating" target="_blank" rel="noopener">validating init data</a>.</p></div>
   <div class="phones">${phone('Telegram (generic look)', tg)}</div></div>`;
 }
