@@ -1,0 +1,563 @@
+<title>GoodHabit Launch Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column with a sticky section bar; calculators sit inline where the numbers are discussed. Same palette and faces as the GoodHabit app preview. */
+:root{
+  --bg:#F6F7FC; --surface:#FFFFFF; --surface-2:#EEF0F8; --line:#DFE3EF; --hair:#EBEEF6;
+  --fg:#121633; --soft:#383E62; --muted:#5D6488;
+  --accent:#2448FF; --accent-hi:#1534D9; --accent-ink:#FFFFFF; --accent-wash:#E5EAFF;
+  --up:#06774A; --up-wash:#DDF3E8; --down:#C02634; --down-wash:#FCE3E5; --warn:#8A5A00; --warn-wash:#FFF1D6;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1024; --surface:#151A33; --surface-2:#1C2242; --line:#2B3259; --hair:#222846;
+  --fg:#F2F4FF; --soft:#C9CEEB; --muted:#A1A8CC;
+  --accent:#7F95FF; --accent-hi:#9AABFF; --accent-ink:#0B0E22; --accent-wash:#18205A;
+  --up:#3CD69A; --up-wash:#0F2E24; --down:#FF7F89; --down-wash:#3A1520; --warn:#FFC864; --warn-wash:#33270C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1024; --surface:#151A33; --surface-2:#1C2242; --line:#2B3259; --hair:#222846;
+  --fg:#F2F4FF; --soft:#C9CEEB; --muted:#A1A8CC;
+  --accent:#7F95FF; --accent-hi:#9AABFF; --accent-ink:#0B0E22; --accent-wash:#18205A;
+  --up:#3CD69A; --up-wash:#0F2E24; --down:#FF7F89; --down-wash:#3A1520; --warn:#FFC864; --warn-wash:#33270C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(34px,6vw,56px);font-weight:800}
+h2{font-size:clamp(26px,4vw,34px);font-weight:800}
+h3{font-size:19px;font-weight:700;font-family:var(--body)}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.num,td.n,.mono{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:.92em}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)} .soft{color:var(--soft)} .small{font-size:14px} .tiny{font-size:12.5px}
+.prose{max-width:68ch;display:flex;flex-direction:column;gap:12px}
+
+/* header */
+header.hero{padding-block:40px 28px;display:flex;flex-direction:column;gap:18px}
+.hero .lede{font-size:19px;color:var(--soft);max-width:62ch}
+.byline{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:14px;color:var(--muted)}
+.keyrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.key{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.key .v{font-family:var(--display);font-weight:800;font-size:26px}
+.key .l{font-size:13.5px;color:var(--muted);line-height:1.35}
+@media (max-width:760px){.keyrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* section nav */
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.toc a{flex:none;text-decoration:none;color:var(--soft);font-weight:700;font-size:14px;padding:8px 12px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+nav.toc a:hover{background:var(--surface-2);color:var(--fg)}
+
+section.block{padding-block:44px 8px;display:flex;flex-direction:column;gap:18px;scroll-margin-top:70px}
+.sechead{display:flex;flex-direction:column;gap:6px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel.flat{background:transparent;border-style:dashed}
+.panel h3{display:flex;align-items:center;gap:8px}
+ul.clean{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+ul.clean li::marker{color:var(--accent)}
+
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap;background:var(--surface-2);color:var(--soft)}
+.tag.est{background:var(--warn-wash);color:var(--warn)}
+.tag.ok{background:var(--up-wash);color:var(--up)}
+.tag.risk{background:var(--down-wash);color:var(--down)}
+.tag.acc{background:var(--accent-wash);color:var(--accent)}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;white-space:nowrap}
+tfoot td{font-weight:800;background:var(--surface-2)}
+
+/* flywheel */
+.fly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.fly .node{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.fly .node.me{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.fly .node.me .muted{color:inherit;opacity:.85}
+@media (max-width:760px){.fly{grid-template-columns:1fr}}
+
+/* phases */
+.phases{display:flex;flex-direction:column;gap:0;border-left:3px solid var(--line);margin-left:10px}
+.phase{position:relative;padding:0 0 22px 24px;display:flex;flex-direction:column;gap:6px}
+.phase::before{content:"";position:absolute;left:-10px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+.phase.later::before{border-color:var(--line)}
+.phase .when{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700}
+
+/* calculators */
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){.calc{grid-template-columns:1fr}}
+.ctrls{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ctrl{display:flex;flex-direction:column;gap:6px}
+.ctrl .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctrl label{font-weight:700;font-size:14.5px}
+.ctrl .val{font-family:var(--mono);font-weight:700;font-size:14px;white-space:nowrap}
+.ctrl .help{font-size:12.5px;color:var(--muted);line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+select{font:inherit;font-weight:700;background:var(--surface-2);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:44px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px}
+.seg button{font:inherit;font-weight:800;font-size:14px;min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--soft);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.out{background:var(--surface-2);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.out .big{font-family:var(--display);font-weight:800;font-size:38px;line-height:1}
+.out .line{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.out .line:last-child{border-bottom:0;padding-bottom:0}
+.out .line b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.status{font-weight:800;font-size:14px;padding:8px 12px;border-radius:10px}
+.status.good{background:var(--up-wash);color:var(--up)} .status.bad{background:var(--down-wash);color:var(--down)}
+.stack{height:22px;border-radius:999px;overflow:hidden;display:flex;background:var(--line)}
+.stack i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--soft)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.btn{font:inherit;font-weight:800;font-size:14px;min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+
+/* checklist */
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--hair)}
+.check:last-child{border-bottom:0}
+.check input{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);flex:none}
+.check label{display:flex;flex-direction:column;gap:2px;cursor:pointer}
+.check.done label b{text-decoration:line-through;color:var(--muted)}
+
+.callout{border-radius:16px;padding:14px 16px;background:var(--accent-wash);color:var(--fg);display:flex;flex-direction:column;gap:6px}
+.callout.warn{background:var(--warn-wash)}
+.callout.risk{background:var(--down-wash)}
+
+ol.src{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--soft)}
+ol.src li{overflow-wrap:anywhere}
+footer{padding-block:40px 60px;color:var(--muted);font-size:13.5px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">OpenSource Everything · plan v1 · 29 Oct 2026</span>
+  <h1>GoodHabit launch plan</h1>
+  <p class="lede">A calm, ad-free, open-source app for young Indians: learn something, practise investing with pretend money, split bills, and turn impulse buys into investments. Here is what it is, what it costs, how ₹5 lakh gets it to real users in six months, and what is still undecided.</p>
+  <div class="byline"><span>Founder: you, building in public</span><span>·</span><span>Company: OpenSource Everything</span><span>·</span><span>India, Android first</span><span>·</span><a href="https://claude.ai/artifact/KRxp2ejd7E1RWozmQrEajB" target="_blank" rel="noopener">Open the clickable preview</a></div>
+  <div class="keyrow">
+    <div class="key"><span class="v num">₹5,00,000</span><span class="l">Budget for the first 6 months, all of it for GoodHabit</span></div>
+    <div class="key"><span class="v num">₹1.65L</span><span class="l">Setup plus 6 months of running costs; the rest goes to users</span></div>
+    <div class="key"><span class="v num" id="k-break">~260</span><span class="l">Paying users to break even at ₹299 and ₹50k a month in costs</span></div>
+    <div class="key"><span class="v">Month 2</span><span class="l">Open beta on the Play Store: Hissab and practice stories</span></div>
+  </div>
+  <p class="tiny muted">Figures marked <span class="tag est">Estimate</span> are my judgement or ranges from third-party sites; those marked <span class="tag ok">Checked</span> were looked up on 29 Oct 2026 and link to a source at the bottom. Rupee conversions use ₹88 to the dollar.</p>
+</header>
+</div>
+
+<nav class="toc" aria-label="Sections"><div class="wrap">
+  <a href="#idea">The idea</a><a href="#product">Product</a><a href="#order">Launch order</a><a href="#budget">₹5L budget</a><a href="#costs">Costs</a><a href="#money">Money</a><a href="#rivals">Competitors</a><a href="#legal">Legal and risks</a><a href="#zerodha">Zerodha</a><a href="#timeline">6 months</a><a href="#decide">Decisions</a><a href="#sources">Sources</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section class="block" id="idea">
+  <div class="sechead"><span class="eyebrow">1 · The idea</span><h2>One founder, one company, two products</h2></div>
+  <div class="fly">
+    <div class="node me"><h3>You</h3><p class="small muted">The face. Building in public: code, users, money and mistakes, shared weekly. "Open source everything" is already how you work.</p></div>
+    <div class="node"><span class="tag acc" style="align-self:flex-start">Company</span><h3>OpenSource Everything</h3><p class="small soft">The umbrella and the learning website. Every guide shows how GoodHabit is built, with real code and real costs.</p></div>
+    <div class="node"><span class="tag acc" style="align-self:flex-start">Products</span><h3>SOLIDS FOR YOU + GoodHabit</h3><p class="small soft">SOLIDS FOR YOU brings builders, contributors and investors, and pays your own way: your income comes from the traction GoodHabit sends to it. GoodHabit brings everyday users and revenue.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>What we promise</h3>
+      <ul class="clean small">
+        <li><b>Open code.</b> GoodHabit under AGPL: anyone can read it, and anyone who runs a changed copy must share their changes. SOLIDS FOR YOU stays MIT because spreading it is the point.</li>
+        <li><b>No ads, no promotions.</b> Brands can post their journey, never "buy now".</li>
+        <li><b>Almost no data.</b> No tracking of what you watch, no profile of you, nothing sold. Hissab and the practice account live on your phone.</li>
+        <li><b>No algorithm.</b> The feed is people you follow, newest first, plus an optional "Surprise me" with random posts from your topics. Spam and scams are filtered out; nothing is ranked.</li>
+      </ul></div>
+    <div class="panel"><h3>What we keep private, and why</h3>
+      <ul class="clean small">
+        <li><b>Users' data.</b> India's data protection law requires it. We publish exactly what we store.</li>
+        <li><b>Keys and secrets.</b> Zerodha and server keys never go in the repo.</li>
+        <li><b>Scam-filter word lists.</b> We explain how the filter works, but scammers would write around published rules.</li>
+        <li><b>Security problems until fixed.</b> Fix first, then publish what happened.</li>
+        <li><b>Contract terms</b> with Zerodha or investors, when a contract says so. That a deal exists stays public.</li>
+      </ul>
+      <p class="tiny muted">Put this list on the website on day one: "everything that's safe to open, is open."</p></div>
+  </div>
+  <div class="callout warn"><b>Names to check before spending on the brand</b><p class="small">"GoodHabit" is two everyday words and close to existing habit-tracker apps. Search IP India's register (software and finance classes) before the logo, domain and handle. Pick singular "GoodHabit" everywhere: app, domain, Instagram, Play Store. Register the company as "OpenSource Everything Private Limited" with two backup names ready for the government's name check.</p></div>
+</section>
+
+<!-- 2 -->
+<section class="block" id="product">
+  <div class="sechead"><span class="eyebrow">2 · Product</span><h2>Five tabs, GoodGuy and the practice account</h2>
+  <p class="soft prose">Everything below is clickable in the preview with sample data. Nothing in it is connected to real money yet.</p></div>
+  <div class="grid3">
+    <div class="panel"><h3>Feed</h3><p class="small soft">Posts and reels from people you follow, stories, DMs with a scam flag, Approve (repost as "good advice"). Labelled house accounts seed it. Ends with "You're all caught up".</p></div>
+    <div class="panel"><h3>News</h3><p class="small soft">Plain search, AI picks credible articles from approved sources. Every source shows its type and a public 1 to 5 trust rating; readers review articles.</p></div>
+    <div class="panel"><h3>Money Machine</h3><p class="small soft">Impulse swap ("put ₹6,499 into your future instead?"), stocks and ETFs through Zerodha, mutual funds via Zerodha Coin, and the GoodGuy practice account.</p></div>
+    <div class="panel"><h3>Profile</h3><p class="small soft">Posts, Reels, Flexes (work and things you're proud of, taken on trust), Tagged, and Approved: a library of advice you vouched for. A good-habits graph instead of a job title.</p></div>
+    <div class="panel"><h3>Hissab</h3><p class="small soft">Splitwise-style splitting by Good ID or phone, groups, "Just me" spends and your own spending total. No daily cap. Exact to the paisa. UPI settle-up later.</p></div>
+    <div class="panel" style="border-color:var(--accent)"><h3>GoodGuy <span class="tag acc">paid</span></h3><p class="small soft">An AI teacher. Explains why a stock moved, with sources, never predicting or advising. Coaches how you trade in the practice account.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Practice account</h3>
+      <ul class="clean small">
+        <li><b>Yesterday:</b> yesterday's session replayed at speed with pretend ₹1 lakh. GoodGuy coaches habits: one stock too big, no stop-loss, panic selling, chasing, too many trades, then an end-of-day review.</li>
+        <li><b>Classic day:</b> an old crash day (data over three months old), so GoodGuy can say exactly what a disciplined investor would do.</li>
+      </ul></div>
+    <div class="panel"><h3>Stories (role-play a year)</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Who</th><th class="n">Starts with</th><th class="n">Earns a month</th><th>Goal</th></tr></thead>
+        <tbody>
+          <tr><td>Ramesh</td><td class="n">₹10,000</td><td class="n">₹40,000</td><td>Early retirement</td></tr>
+          <tr><td>Amit</td><td class="n">₹50,000</td><td class="n">₹1,00,000</td><td>Kid's college</td></tr>
+          <tr><td>Rich guy</td><td class="n">₹5 crore</td><td class="n">₹10,00,000</td><td>Sandbox: crash or boom the market</td></tr>
+        </tbody></table></div>
+      <p class="tiny muted">Each month brings a salary, a surprise (a scam, school fees, a tip, a bonus) and a choice. A sample crash in month 5 tests whether you sell.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="block" id="order">
+  <div class="sechead"><span class="eyebrow">3 · Launch order</span><h2>Launch what needs no permission first</h2>
+  <p class="soft prose">Hissab and the practice stories need no broker, no licensed live data and no SEBI opinion, because the stories use historical or sample prices. That gets real users in months instead of after a year of paperwork.</p></div>
+  <div class="phases">
+    <div class="phase"><span class="when">Phase 1 · month 1–2</span><h3>Hissab and practice stories</h3><p class="small soft">Waitlist site, public repo, weekly build-in-public posts. Open beta on the Play Store in month 2.</p></div>
+    <div class="phase"><span class="when">Phase 2 · month 3–4</span><h3>GoodGuy coaching, paid trial</h3><p class="small soft">Practice coaching and replays of old crash days. Price test: ₹199 against ₹299. The "why it moved" explainer waits for the legal opinion.</p></div>
+    <div class="phase"><span class="when">Phase 3 · month 5–6</span><h3>Text and photo feed</h3><p class="small soft">Follows, Approve, Flexes, News search with source ratings. Zerodha connect if API access and the legal opinion are cleared.</p></div>
+    <div class="phase later"><span class="when">Later</span><h3>Reels, UPI settle-up, yesterday's replay</h3><p class="small soft">Reels only when the money can carry the video bill (see Costs). Yesterday's replay needs licensed previous-day data and the lawyer's sign-off.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="block" id="budget">
+  <div class="sechead"><span class="eyebrow">4 · ₹5 lakh budget</span><h2>Most of the money goes to getting users</h2>
+  <p class="soft prose">Move the sliders to try a different split. The total has to stay at ₹5,00,000; the bar turns red when you're over.</p></div>
+  <div class="calc">
+    <div class="ctrls" id="bud-ctrls"></div>
+    <div class="out">
+      <span class="small muted">Planned spend</span>
+      <span class="big num" id="bud-total">₹5,00,000</span>
+      <div class="stack" id="bud-bar" aria-hidden="true"></div>
+      <div class="legend" id="bud-legend"></div>
+      <div id="bud-status" class="status good">Exactly on budget</div>
+      <button class="btn" id="bud-reset" type="button">Reset to the recommended split</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Setup, ₹75,000 <span class="tag est">Estimate</span></h3>
+      <div class="tbl"><table><tbody>
+        <tr><td>Register the company</td><td class="n">₹15,000</td></tr>
+        <tr><td>Trademark, 3 classes at ₹4,500 <span class="tag ok">Checked</span></td><td class="n">₹13,500</td></tr>
+        <tr><td>Google Play developer account ($25) <span class="tag est">Estimate</span></td><td class="n">₹2,200</td></tr>
+        <tr><td>Domain, first year</td><td class="n">₹3,000</td></tr>
+        <tr><td>Lawyer consult, phase 1 only</td><td class="n">₹40,000</td></tr>
+        <tr><td>Spare</td><td class="n">₹1,300</td></tr>
+      </tbody></table></div></div>
+    <div class="panel"><h3>Traction, ₹2,50,000, spent in waves</h3>
+      <div class="tbl"><table><tbody>
+        <tr><td>Hinglish finance creators, #ad reels. Pay for 3 first, measure cost per install, then fund only what worked</td><td class="n">₹1,50,000</td></tr>
+        <tr><td>Campus workshops: play Ramesh's year live with students</td><td class="n">₹40,000</td></tr>
+        <tr><td>Small Instagram ads to the waitlist (ads outside the app are fine)</td><td class="n">₹30,000</td></tr>
+        <tr><td>Launch rewards: free GoodGuy months for inviting friends</td><td class="n">₹30,000</td></tr>
+        <tr><td>Your own reels on Unicorn ka Hisab and building in public</td><td class="n">₹0</td></tr>
+      </tbody></table></div></div>
+  </div>
+  <div class="callout"><b>Your income is separate</b><p class="small">You earn from SOLIDS FOR YOU, fed by the attention building GoodHabit in public brings. So the whole ₹5 lakh goes to GoodHabit. Track it apart: if SOLIDS income runs low, cut the creator waves first, never the buffer.</p></div>
+  <div class="callout risk"><b>Three rules for the money</b><p class="small">Spend in waves and never the whole creator budget before you know your cost per install. Never buy fake installs or followers: for an OpenSource Everything brand, being caught would end it. Only put in money you can afford to lose; most startups fail, even good ones.</p></div>
+</section>
+
+<!-- 5 -->
+<section class="block" id="costs">
+  <div class="sechead"><span class="eyebrow">5 · Costs</span><h2>What the app costs to run each month</h2>
+  <p class="soft prose">Set how many people use it and whether reels are on. Video is the cost to watch: streaming is billed per minute watched, so it grows with every user. Everything else is small.</p></div>
+  <div class="calc">
+    <div class="ctrls">
+      <div class="ctrl"><div class="row"><label for="c-users">Daily users</label><span class="val" id="c-users-v"></span></div><input type="range" id="c-users" min="100" max="100000" step="100" value="10000"><span class="help">People who open the app on a typical day.</span></div>
+      <div class="ctrl"><div class="row"><label>Reels</label></div><div class="seg" id="c-reels"><button type="button" data-v="0" aria-pressed="true">Off (text and photos)</button><button type="button" data-v="1" aria-pressed="false">On</button></div></div>
+      <div class="ctrl" id="c-min-wrap"><div class="row"><label for="c-min">Reel minutes watched per user per day</label><span class="val" id="c-min-v"></span></div><input type="range" id="c-min" min="1" max="40" step="1" value="10"><span class="help">The "you're all caught up" design keeps this low on purpose.</span></div>
+      <div class="ctrl"><div class="row"><label for="c-pay">Share of users paying for GoodGuy</label><span class="val" id="c-pay-v"></span></div><input type="range" id="c-pay" min="0" max="10" step="0.5" value="3"><span class="help">Sets the AI bill below.</span></div>
+      <div class="ctrl"><div class="row"><label for="c-mod">Moderation</label></div><select id="c-mod"><option value="0">You do it yourself</option><option value="25000" selected>Part-time moderator, ₹25k</option><option value="60000">Two moderators, ₹60k</option></select></div>
+    </div>
+    <div class="out">
+      <span class="small muted">Monthly cost</span>
+      <span class="big num" id="c-total"></span>
+      <div id="c-lines" style="display:flex;flex-direction:column;gap:8px"></div>
+      <span class="tiny muted">Rates: streaming $1 per 1,000 minutes watched; database $25 a month plus growth; search $5 per 1,000 searches; AI at Claude Haiku 5.5 and Sonnet 5.5 prices. Ranges are in the Sources.</span>
+    </div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Price</th><th>Status</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Video streaming (Cloudflare Stream)</td><td>$1 per 1,000 minutes watched, $5 per 1,000 minutes stored</td><td><span class="tag ok">Checked</span></td><td>Encoding and bandwidth included. The biggest cost once reels are on.</td></tr>
+      <tr><td>Database and sign-in (Supabase Pro)</td><td>$25 a month (~₹2,200)</td><td><span class="tag ok">Checked</span></td><td>Includes 100K monthly users, 8 GB database, 100 GB storage. Extra compute costs more.</td></tr>
+      <tr><td>Kite Connect (Zerodha API)</td><td>Personal: free, no market data. Connect: ₹500 a month per key</td><td><span class="tag ok">Checked</span></td><td>Zerodha says it's free for startups building mass-retail products. Order APIs need a fixed IP address.</td></tr>
+      <tr><td>Small server with a fixed IP</td><td>₹500–1,000 a month</td><td><span class="tag est">Estimate</span></td><td>For placing orders through Kite Connect.</td></tr>
+      <tr><td>News search (Brave Search API)</td><td>$5 per 1,000 searches</td><td><span class="tag ok">Checked</span></td><td>Cache results per topic per hour so many users share one search.</td></tr>
+      <tr><td>AI for GoodGuy</td><td>Haiku 5.5: $0.10 / $0.50 per million tokens in / out. Sonnet 5.5: $2 / $10</td><td><span class="tag ok">Checked</span></td><td>Coaching notes on Haiku: about ₹2 a user a month. "Why it moved" on Sonnet, written once per stock per day and shared by everyone.</td></tr>
+      <tr><td>Sign-in codes by SMS (MSG91)</td><td>₹0.15–0.25 per SMS plus GST</td><td><span class="tag ok">Checked</span></td><td>Needs DLT sender registration.</td></tr>
+      <tr><td>AI voices for house accounts (ElevenLabs Creator)</td><td>$22 a month (~₹1,940)</td><td><span class="tag ok">Checked</span></td><td>Only while house accounts seed the feed.</td></tr>
+      <tr><td>Licensed historical market data</td><td>₹2,000–10,000 a month</td><td><span class="tag est">Estimate</span></td><td>Needed for yesterday's replay. Not priced yet.</td></tr>
+      <tr><td>Accountant for GST</td><td>₹2,000–5,000 a month</td><td><span class="tag est">Estimate</span></td><td></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 6 -->
+<section class="block" id="money">
+  <div class="sechead"><span class="eyebrow">6 · Money</span><h2>GoodGuy pays the bills; referrals are a bonus</h2>
+  <p class="soft prose">Zerodha's referral share pays 10% of the brokerage your users generate. Investing for the long term costs ₹0 brokerage at Zerodha, so the users GoodHabit wants earn nothing that way. The subscription is the money you control.</p></div>
+  <div class="calc">
+    <div class="ctrls">
+      <div class="ctrl"><div class="row"><label>GoodGuy price a month</label></div><div class="seg" id="m-price"><button type="button" data-v="199" aria-pressed="false">₹199</button><button type="button" data-v="299" aria-pressed="true">₹299</button><button type="button" data-v="500" aria-pressed="false">₹500</button></div><span class="help">Competitors: Tickertape Pro ₹399; StockGro paid plans shown at ₹200–550; a practice-only app ₹125; Varsity free.</span></div>
+      <div class="ctrl"><div class="row"><label for="m-ai">AI cost per paying user a month</label><span class="val" id="m-ai-v"></span></div><input type="range" id="m-ai" min="0" max="100" step="5" value="20"><span class="help">₹20 leaves room above the ~₹2 Haiku estimate for heavy users and the shared Sonnet explanations.</span></div>
+      <div class="ctrl"><div class="row"><label for="m-cost">Running costs a month</label><span class="val" id="m-cost-v"></span></div><input type="range" id="m-cost" min="10000" max="300000" step="5000" value="50000"><span class="help">Stage 2 without reels is about ₹40k–80k.</span></div>
+      <div class="ctrl"><div class="row"><label for="m-users">Monthly users</label><span class="val" id="m-users-v"></span></div><input type="range" id="m-users" min="1000" max="200000" step="1000" value="10000"></div>
+      <div class="ctrl"><div class="row"><label for="m-conv">Share who pay</label><span class="val" id="m-conv-v"></span></div><input type="range" id="m-conv" min="0.5" max="10" step="0.5" value="3"></div>
+    </div>
+    <div class="out">
+      <span class="small muted">Paying users needed to break even</span>
+      <span class="big num" id="m-break"></span>
+      <div class="line"><span>Price</span><b id="m-l-price"></b></div>
+      <div class="line"><span>Less 18% GST</span><b id="m-l-gst"></b></div>
+      <div class="line"><span>Less Google Play's 15% on subscriptions</span><b id="m-l-play"></b></div>
+      <div class="line"><span>Less AI cost</span><b id="m-l-ai"></b></div>
+      <div class="line"><span>You keep per paying user</span><b id="m-l-keep"></b></div>
+      <div class="line"><span>Paying users at your numbers</span><b id="m-l-payers"></b></div>
+      <div class="line"><span>Profit or loss a month</span><b id="m-l-pl"></b></div>
+      <div id="m-status" class="status"></div>
+      <span class="tiny muted">Play's 15% subscription fee is from memory; check the current terms. Tax treatment needs your accountant.</span>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Zerodha referral share <span class="tag ok">Checked</span></h3>
+      <ul class="clean small">
+        <li>Back since 1 June 2026: 10% of the brokerage referred users generate, plus 300 reward points (not cash) per account.</li>
+        <li>Brokerage is ₹0 on delivery and direct mutual funds; intraday and F&amp;O pay at most ₹20 an order, so at most ₹2 to us.</li>
+        <li>Referrals from before June keep paying only if the referrer adds 3 new ones every 12 months.</li>
+        <li>The post describes customers referring friends. NSE's August 2024 circular says anyone referring clients must be an Authorised Person. Ask Zerodha in writing whether an app can take part.</li>
+      </ul></div>
+    <div class="panel"><h3>Pricing plan</h3>
+      <ul class="clean small">
+        <li>Lead with coaching, the job no competitor covers.</li>
+        <li>Test ₹199 and ₹299 against ₹500 before fixing the price.</li>
+        <li>Decide a free tier: rivals give some AI for free (StockGro: 50K tokens a week).</li>
+        <li>Never charge for advice. GoodGuy explains and coaches; it never says what to buy in a real account.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="block" id="rivals">
+  <div class="sechead"><span class="eyebrow">7 · Competitors</span><h2>Nobody coaches people on their own trading</h2>
+  <p class="soft prose">Checked 29 Oct 2026 from public pages. Play would only show 3 reviews per app, so complaints are thin. Full report: <span class="mono">app-kit/research/goodguy-2026-10-29/report.md</span>.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>App</th><th>Price a month</th><th class="n">Play rating</th><th>What it has</th><th>What GoodGuy has that it doesn't</th></tr></thead>
+    <tbody>
+      <tr><td><b>StockGro</b></td><td>Free tier; paid ₹200–550 shown (₹499–999 listed)</td><td class="n">not shown</td><td>SEBI-registered advisory, Stoxo AI that answers "should I buy"</td><td>Explains without advising; coaching; replays. Its own site says it is not a paper-trading platform</td></tr>
+      <tr><td><b>Zerodha Varsity</b></td><td>Free</td><td class="n">4.43 (12,193)</td><td>Free lessons, no ads</td><td>Per-company explanations and practice</td></tr>
+      <tr><td><b>Sensibull</b></td><td>Free for Zerodha users</td><td class="n">4.72 (47,304)</td><td>Options tools, "Mindful Trading" pause before a trade</td><td>Equities and a review of how you traded. <span class="tag risk">Biggest threat</span></td></tr>
+      <tr><td><b>Tickertape Pro</b></td><td>₹399</td><td class="n">4.44 (70,144)</td><td>Screeners, forecasts, news, earnings-call sentiment</td><td>Coaching and practice</td></tr>
+      <tr><td><b>Virtual Trading 2.0</b></td><td>₹125 (free with ads)</td><td class="n">4.18 (45,956)</td><td>Paper trading, stop-loss auto-exit</td><td>No ads, coaching, stories</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 8 -->
+<section class="block" id="legal">
+  <div class="sechead"><span class="eyebrow">8 · Legal and risks</span><h2>What could stop us, and what we do about it</h2>
+  <p class="soft prose">This is a summary for planning, not legal advice. A securities lawyer's written opinion settles the open rows before the features that depend on them launch.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Risk</th><th>Rule</th><th>Our answer</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td>GoodGuy turning into advice</td><td>Buy or sell calls are research-analyst work, which needs SEBI registration. SEBI (Jan 2025) bars unregistered educators from naming a stock with the last 3 months of prices in a way that points to its future price</td><td>Explain only what already happened, with sources. Turn down "should I buy" with a lesson. Test hundreds of such prompts in English, Hindi and Hinglish before launch</td><td><span class="tag est">Lawyer</span></td></tr>
+      <tr><td>Practice prices too fresh</td><td>SEBI (May 2024): price data for investor education only with a one-day lag and no prizes</td><td>Yesterday's replay at the earliest; never one hour behind. Classic replays use data over 3 months old. No prizes</td><td><span class="tag est">Lawyer</span></td></tr>
+      <tr><td>Referral payments</td><td>NSE (Aug 2024): anyone referring clients must be an Authorised Person</td><td>Ask Zerodha in writing before using the referral program in the app</td><td><span class="tag risk">Open</span></td></tr>
+      <tr><td>Zerodha access</td><td>Kite login every morning; fixed IP for orders; mutual fund orders and new SIPs not placeable by API</td><td>Say so on the connect screen; send mutual funds to Coin</td><td><span class="tag ok">Handled</span></td></tr>
+      <tr><td>User data</td><td>DPDP Act; IT Rules may require keeping some account details after deletion</td><td>Keep the minimum, publish what we keep, data on the phone where possible</td><td><span class="tag est">Lawyer</span></td></tr>
+      <tr><td>Scams in DMs</td><td>A money app attracts fake "support" accounts</td><td>Three-layer scam filter, message requests from strangers, block and report</td><td><span class="tag ok">Designed</span></td></tr>
+      <tr><td>Public ratings of news sources</td><td>Brigading and defamation complaints</td><td>One rating per account, rate limits, moderated reviews</td><td><span class="tag ok">Designed</span></td></tr>
+      <tr><td>Name</td><td>"GoodHabit" may clash with existing marks</td><td>Trademark search before branding</td><td><span class="tag risk">Open</span></td></tr>
+      <tr><td>Open code on a money app</td><td>Read closely by good and bad people</td><td>Security review before the repo goes public; secrets never in the repo</td><td><span class="tag risk">Open</span></td></tr>
+      <tr><td>News search engine</td><td>Google's Custom Search API is closed to new customers and shuts on 1 Jan 2027</td><td>Brave Search API, or Vertex AI Search over approved sources</td><td><span class="tag ok">Planned</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 9 -->
+<section class="block" id="zerodha">
+  <div class="sechead"><span class="eyebrow">9 · Zerodha and investors</span><h2>Let traction bring them to us</h2>
+  <p class="soft prose">The plan is open source, then traction, then investors come to us. Zerodha is the natural partner: no ads, wary of over-trading and finfluencers, and its investment arm Rainmatter has put about ₹1,500 crore into 160+ startups.</p></div>
+  <div class="grid2">
+    <div class="panel"><h3>Ask Zerodha for, in this order</h3>
+      <ul class="clean small">
+        <li>The free Kite Connect plan for startups building mass-retail products.</li>
+        <li>A written answer on whether an app can use the referral program.</li>
+        <li>An introduction to Rainmatter, once there are real users.</li>
+      </ul>
+      <p class="tiny muted">No public Rainmatter application page was found; it usually comes through an introduction. Keep the preview private until you present it, since it uses Zerodha's name.</p></div>
+    <div class="panel"><h3>What they'll ask</h3>
+      <ul class="clean small">
+        <li><b>How do you make money?</b> GoodGuy subscription first, referrals second.</li>
+        <li><b>Will it push people into F&amp;O?</b> No: practice before real money, coaching, no tips.</li>
+        <li><b>Is it legal?</b> The lawyer's one-page opinion.</li>
+        <li><b>Why would users come?</b> Waitlist, beta users, retention.</li>
+        <li><b>Who is building it?</b> You, in public, with the code open.</li>
+      </ul></div>
+  </div>
+  <div class="callout"><b>What investors look at</b><p class="small">Not GitHub stars. Weekly active users, the share still using it after 30 days, connected Zerodha accounts and the share who pay. Count these in aggregate, without tracking individuals, and publish them openly; that fits building in public.</p></div>
+</section>
+
+<!-- 10 -->
+<section class="block" id="timeline">
+  <div class="sechead"><span class="eyebrow">10 · Six months</span><h2>Month by month</h2>
+  <p class="soft prose">Targets to aim for, not promises.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Month</th><th>Build</th><th>Grow</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Company, trademark search, waitlist site, public repo, Hissab and stories beta</td><td>Weekly build-in-public posts; Ramesh and Amit reels</td><td>2,000 on the waitlist</td></tr>
+      <tr><td class="mono">2</td><td>Open beta on the Play Store; security review</td><td>Creator wave 1 (3 reels), measure cost per install</td><td>2,000 installs</td></tr>
+      <tr><td class="mono">3</td><td>GoodGuy practice coaching, paid trial; classic crash replays</td><td>Campus workshops; creator wave 2 for what worked</td><td>Price test running</td></tr>
+      <tr><td class="mono">4</td><td>Fixes from beta users; lawyer's opinion for phase 3</td><td>Launch rewards for invites</td><td>First 100 paying users</td></tr>
+      <tr><td class="mono">5</td><td>Text and photo feed, News search with ratings</td><td>Creator wave 3; first OpenSource Everything guides</td><td>5,000 installs</td></tr>
+      <tr><td class="mono">6</td><td>Zerodha connect if cleared</td><td>Present to Zerodha with real numbers</td><td>~10,000 installs, a few hundred paying</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 11 -->
+<section class="block" id="decide">
+  <div class="sechead"><span class="eyebrow">11 · Decisions</span><h2>Still waiting on you</h2>
+  <p class="soft prose">Tick them off as you decide. Ticks are saved in this browser only.</p></div>
+  <div class="tbl" id="checklist">
+        <div class="check"><input type="checkbox" id="d2"><label for="d2"><b>GoodHabit, singular, everywhere?</b><span class="small muted">App, domain, Instagram handle, Play Store.</span></label></div>
+    <div class="check"><input type="checkbox" id="d3"><label for="d3"><b>Trademark search done?</b><span class="small muted">Before logo, domain and handle.</span></label></div>
+    <div class="check"><input type="checkbox" id="d4"><label for="d4"><b>Launch price for GoodGuy</b><span class="small muted">Test ₹199 vs ₹299 vs ₹500, and decide what stays free.</span></label></div>
+    <div class="check"><input type="checkbox" id="d5"><label for="d5"><b>Feed randomness</b><span class="small muted">Only people you follow, or also a "Surprise me" section from your topics?</span></label></div>
+    <div class="check"><input type="checkbox" id="d6"><label for="d6"><b>Your face or the brand</b><span class="small muted">Recommended: your own face, the company behind you.</span></label></div>
+    <div class="check"><input type="checkbox" id="d7"><label for="d7"><b>Lawyer chosen</b><span class="small muted">Phase-1 consult now; the full SEBI opinion before "why it moved" and Zerodha connect.</span></label></div>
+    <div class="check"><input type="checkbox" id="d8"><label for="d8"><b>Write to Zerodha</b><span class="small muted">Kite Connect startup plan, and whether an app can use referrals.</span></label></div>
+    <div class="check"><input type="checkbox" id="d9"><label for="d9"><b>Release the app-building skills as the next SOLIDS FOR YOU</b><span class="small muted">"The exact tools I used to build GoodHabit."</span></label></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="block" id="sources">
+  <div class="sechead"><span class="eyebrow">12 · Sources</span><h2>Where the checked numbers come from</h2>
+  <p class="soft prose">Looked up 29 Oct 2026. Several are third-party summaries; check the provider's own page before paying.</p></div>
+  <ol class="src">
+    <li>Zerodha charges (₹0 delivery and direct MF; ₹20 or 0.03% intraday and F&amp;O): <a href="https://zerodha.com/charges/" target="_blank" rel="noopener">zerodha.com/charges</a></li>
+    <li>Zerodha referral program is back (10 Jun 2026): <a href="https://zerodha.com/z-connect/business-updates/zerodhas-referral-program-is-back" target="_blank" rel="noopener">zerodha.com/z-connect</a></li>
+    <li>NSE referral circular coverage (Aug 2024): <a href="https://www.business-standard.com/markets/capital-market-news/nse-circular-curbs-referral-programs-brokerages-discontinue-incentives-124082300532_1.html" target="_blank" rel="noopener">Business Standard</a></li>
+    <li>Kite Connect charges and startup note: <a href="https://support.zerodha.com/category/trading-and-markets/kite-api/articles/what-are-the-charges-for-kite-apis" target="_blank" rel="noopener">support.zerodha.com</a></li>
+    <li>SEBI real-time price data circular (24 May 2024): <a href="https://nsdl.co.in/downloadables/pdf/2024-0067-Policy-SEBI_Circular_on_Norms_for_sharing_of_real_time_price_data_to_third_parties.pdf" target="_blank" rel="noopener">NSDL copy</a>, <a href="https://www.mondaq.com/india/securities/1482538/securities-and-exchange-board-of-india-issues-norms-for-sharing-of-real-time-price-data-to-third-parties" target="_blank" rel="noopener">Mondaq</a></li>
+    <li>SEBI educators and live data (Jan 2025): <a href="https://www.business-standard.com/markets/news/sebi-finfluencer-circular-live-stock-data-market-education-rules-125013000571_1.html" target="_blank" rel="noopener">Business Standard</a></li>
+    <li>Cloudflare Stream pricing: <a href="https://developers.cloudflare.com/stream/pricing" target="_blank" rel="noopener">developers.cloudflare.com</a></li>
+    <li>Supabase pricing: <a href="https://toolradar.com/blog/supabase-pricing-2026" target="_blank" rel="noopener">toolradar</a>, <a href="https://axonbuild.com/blog/supabase-pricing/" target="_blank" rel="noopener">axonbuild</a></li>
+    <li>Brave Search API pricing: <a href="https://costbench.com/software/ai-search-apis/brave-search-api/" target="_blank" rel="noopener">costbench</a></li>
+    <li>MSG91 OTP rates: <a href="https://www.authgear.com/post/best-otp-service-providers/" target="_blank" rel="noopener">Authgear</a></li>
+    <li>ElevenLabs pricing: <a href="https://eesel.ai/blog/elevenlabs-pricing" target="_blank" rel="noopener">eesel</a></li>
+    <li>Claude model prices (Haiku 5.5, Sonnet 5.5): Anthropic's current model table</li>
+    <li>Trademark fees: <a href="https://www.intepat.com/blog/trademark/trademark-registration-cost-india/" target="_blank" rel="noopener">Intepat</a></li>
+    <li>Company registration cost: <a href="https://www.agileregulatory.com/blogs/private-limited-company-registration-fees-in-india-in-2026" target="_blank" rel="noopener">Agile Regulatory</a></li>
+    <li>Creator rates (10K–100K followers, ₹6k–35k a reel; finance 30–50% more): <a href="https://upgrowth.in/influencer-marketing-pricing-india-2026/" target="_blank" rel="noopener">upGrowth</a></li>
+    <li>Rainmatter investments: <a href="https://www.businesstoday.in/technology/story/zerodhas-rainmatter-has-invested-rs-1500-crore-in-over-160-startups-says-nithin-kamath-525093-2026-04-10" target="_blank" rel="noopener">Business Today</a></li>
+    <li>Competitors (StockGro, Varsity, Sensibull, Tickertape, Virtual Trading 2.0): research folder in the repo, each fact with its URL in <span class="mono">ledger.csv</span></li>
+  </ol>
+</section>
+</main>
+
+<footer><div class="wrap">GoodHabit by OpenSource Everything · plan v1, 29 Oct 2026 · Not financial, legal or tax advice.</div></footer>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+  const USD = 88;
+  const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
+
+  /* budget allocator */
+  const BUCKETS = [
+    {k:'setup', label:'Setup', v:75000, c:'var(--muted)'},
+    {k:'run', label:'Running costs, 6 months', v:90000, c:'var(--accent-hi)'},
+    {k:'creators', label:'Creators', v:150000, c:'var(--accent)'},
+    {k:'campus', label:'Campus workshops', v:40000, c:'var(--up)'},
+    {k:'ads', label:'Instagram ads', v:30000, c:'var(--warn)'},
+    {k:'rewards', label:'Launch rewards', v:30000, c:'var(--down)'},
+    {k:'buffer', label:'Buffer', v:85000, c:'var(--line)'},
+  ];
+  const DEFAULTS = BUCKETS.map(b => b.v);
+  function drawBudget(){
+    const total = BUCKETS.reduce((a,b) => a + b.v, 0), over = total - 500000;
+    $('#bud-total').textContent = inr(total);
+    $('#bud-bar').innerHTML = BUCKETS.map(b => `<i style="width:${b.v / Math.max(total,500000) * 100}%;background:${b.c}"></i>`).join('');
+    $('#bud-legend').innerHTML = BUCKETS.map(b => `<span><i style="background:${b.c}"></i>${b.label}</span>`).join('');
+    const st = $('#bud-status');
+    st.className = 'status ' + (over > 0 ? 'bad' : 'good');
+    st.textContent = over > 0 ? `${inr(over)} over budget` : over < 0 ? `${inr(-over)} not yet planned` : 'Exactly on budget';
+    BUCKETS.forEach(b => { $('#bv-' + b.k).textContent = inr(b.v) + ` · ${Math.round(b.v / 5000)}%`; });
+  }
+  $('#bud-ctrls').innerHTML = BUCKETS.map(b => `<div class="ctrl"><div class="row"><label for="b-${b.k}">${b.label}</label><span class="val" id="bv-${b.k}"></span></div><input type="range" id="b-${b.k}" min="0" max="300000" step="5000" value="${b.v}"></div>`).join('');
+  BUCKETS.forEach(b => $('#b-' + b.k).addEventListener('input', e => { b.v = +e.target.value; drawBudget(); }));
+  $('#bud-reset').addEventListener('click', () => { BUCKETS.forEach((b,i) => { b.v = DEFAULTS[i]; $('#b-' + b.k).value = b.v; }); drawBudget(); });
+  drawBudget();
+
+  /* segmented buttons */
+  function seg(id, fn){ const el = $(id); el.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; el.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); fn(+b.dataset.v); }); return () => +el.querySelector('[aria-pressed="true"]').dataset.v; }
+
+  /* monthly cost calculator */
+  let reels = 0;
+  const getReels = seg('#c-reels', v => { reels = v; costs(); });
+  function costs(){
+    const users = +$('#c-users').value, min = +$('#c-min').value, pay = +$('#c-pay').value / 100, mod = +$('#c-mod').value;
+    $('#c-users-v').textContent = users.toLocaleString('en-IN');
+    $('#c-min-v').textContent = min + ' min';
+    $('#c-pay-v').textContent = (pay * 100).toFixed(1) + '%';
+    $('#c-min-wrap').hidden = !reels;
+    const monthlyActive = users * 2.5; // rough: monthly users ≈ 2.5× daily users
+    const video = reels ? users * min * 30 / 1000 * 1 * USD + 2000 / 1000 * 5 * USD : 0;
+    const db = 25 * USD + Math.max(0, monthlyActive - 100000) / 1000 * 0.00325 * 1000 * USD + (users > 20000 ? 50 * USD : 0);
+    const search = Math.min(users * 0.2, 60000) / 1000 * 5 * USD;
+    const ai = monthlyActive * pay * 20;
+    const sms = monthlyActive * 0.1 * 0.25 * 1.18;
+    const fixed = 1000 + 500 + 3500 + 22 * USD; // fixed-IP server, Kite Connect, accountant, ElevenLabs
+    const lines = [['Video streaming', video], ['Database and sign-in', db], ['News search (cached)', search], ['AI for GoodGuy', ai], ['SMS sign-in codes', sms], ['Server, Kite Connect, accountant, AI voices', fixed], ['Moderation', mod]];
+    const total = lines.reduce((a,l) => a + l[1], 0);
+    $('#c-total').textContent = inr(total);
+    $('#c-lines').innerHTML = lines.map(([l,v]) => `<div class="line"><span>${l}</span><b>${inr(v)}</b></div>`).join('') + `<div class="line"><span>Per daily user</span><b>${inr(total / users)}</b></div>`;
+  }
+  ['#c-users','#c-min','#c-pay','#c-mod'].forEach(id => $(id).addEventListener('input', costs));
+  costs();
+
+  /* unit economics */
+  let price = 299;
+  seg('#m-price', v => { price = v; money(); });
+  function money(){
+    const ai = +$('#m-ai').value, cost = +$('#m-cost').value, users = +$('#m-users').value, conv = +$('#m-conv').value / 100;
+    $('#m-ai-v').textContent = inr(ai); $('#m-cost-v').textContent = inr(cost); $('#m-users-v').textContent = users.toLocaleString('en-IN'); $('#m-conv-v').textContent = (conv * 100).toFixed(1) + '%';
+    const exGst = price / 1.18, gst = price - exGst, play = exGst * 0.15, keep = exGst - play - ai;
+    const breakEven = keep > 0 ? Math.ceil(cost / keep) : Infinity, payers = Math.round(users * conv), pl = payers * keep - cost;
+    $('#m-break').textContent = isFinite(breakEven) ? breakEven.toLocaleString('en-IN') : 'never';
+    $('#m-l-price').textContent = inr(price); $('#m-l-gst').textContent = '−' + inr(gst); $('#m-l-play').textContent = '−' + inr(play); $('#m-l-ai').textContent = '−' + inr(ai);
+    $('#m-l-keep').textContent = inr(keep); $('#m-l-payers').textContent = payers.toLocaleString('en-IN');
+    $('#m-l-pl').textContent = (pl < 0 ? '−' : '+') + inr(Math.abs(pl));
+    const st = $('#m-status'); st.className = 'status ' + (pl >= 0 ? 'good' : 'bad');
+    st.textContent = pl >= 0 ? 'Covers its costs at these numbers' : `Short by ${Math.max(0, breakEven - payers).toLocaleString('en-IN')} paying users`;
+  }
+  ['#m-ai','#m-cost','#m-users','#m-conv'].forEach(id => $(id).addEventListener('input', money));
+  money();
+  // header figure follows the default case (₹299, ₹20 AI, ₹50k costs)
+  $('#k-break').textContent = '~' + Math.ceil(50000 / (299 / 1.18 * 0.85 - 20)).toLocaleString('en-IN');
+
+  /* checklist */
+  document.querySelectorAll('#checklist input').forEach(cb => {
+    cb.checked = store.get('gh-plan-' + cb.id) === '1';
+    cb.closest('.check').classList.toggle('done', cb.checked);
+    cb.addEventListener('change', () => { store.set('gh-plan-' + cb.id, cb.checked ? '1' : '0'); cb.closest('.check').classList.toggle('done', cb.checked); });
+  });
+})();
+</script>
