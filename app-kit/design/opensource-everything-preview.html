@@ -739,7 +739,7 @@ function vAbout(){
     <div class="facts" style="font-size:16px"><span>Students this week: —</span><span>Paying users: —</span><span>Revenue this month: —</span><span>Corrections published: —</span><span>Ads served: 0</span></div></section>
   <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
     <p>One sign-in across every app. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
-    <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ GitHub projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
+    <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ Open-source projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
   <footer class="sitefoot"><button data-act="nav" data-r="apps">← All apps</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
@@ -1242,7 +1242,7 @@ function vProfile(){
     <div style="display:flex;gap:8px">${P ? `<button class="gbtn" data-act="follow" data-k="${id}">${S.follows && S.follows[id] ? 'Following' : 'Follow'}</button><button class="gbtn ghost" data-act="openchat" data-k="${id}">Message</button>` : '<button class="gbtn ghost" data-act="editprof">Edit profile</button><button class="gbtn ghost" data-act="shareprof">Share profile</button>'}</div>
     <div class="gcard"><b>Activity</b>${grid(P ? P.seed : 0, P ? 3 : Math.min(4, done + (S.posts.length ? 1 : 0)))}<span class="muted" style="font-size:13px">${P ? 'Every square is a day: challenges, lessons, simulator games and projects. Sample history.' : 'Each square is a day. They fill in as you do challenges, lessons, simulator games and projects.'}</span></div>
     <div class="gcard"><b>Verified by the apps</b>${badges.length ? `<div class="idbadges">${badges.map(b => `<span class="vb v">✓ ${esc(b)}</span>`).join('')}</div>` : '<span class="muted">Badges show up here as you use OpenPrep, GoodHabit and the rest. Apps add them; you can\'t type them in.</span>'}</div>
-    <div class="gcard"><b>Projects</b><span class="muted">${P ? 'No public projects yet.' : 'Show your GitHub repos here, or publish a project from OSE in one tap.'}</span>${P ? '' : '<button class="gbtn ghost" data-act="nav" data-r="community">Connect GitHub</button>'}</div>
+    <div class="gcard"><b>Projects</b><span class="muted">${P ? 'No public projects yet.' : 'Projects you open-source here show up on your profile.'}</span>${P ? '' : '<button class="gbtn ghost" data-act="nav" data-r="community">Open-source a project</button>'}</div>
     <div class="pgrid">${posts.map(p => `<div class="pcell" style="background:${p.bg}"><span>${esc(p.h)}</span></div>`).join('') || '<p class="muted">No posts yet.</p>'}</div></main>`;
 }
 function newPostSheet(){
@@ -1552,7 +1552,7 @@ function vCommunity(){
   return `<main class="wrap" style="padding-block:22px 60px;display:flex;flex-direction:column;gap:14px">
     <div class="sect-h" style="margin:0"><h2>Community</h2><span>beta · 18+</span></div>
     <div class="why" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
-      <div class="whycard"><span class="k">Build</span><h3>Connect GitHub</h3><p>Show your repos on your OpenID with a verified badge, or let us create one for you: just sign in, we handle the backend.</p><button class="btn-line" data-act="github">${S.gh?'✓ Connected (preview)':'Connect GitHub'}</button></div>
+      <div class="whycard"><span class="k">Build</span><h3>Open-source your work</h3><p>Publish a project in the open in one tap. We set up the code hosting on GitHub for you, or you can link your own GitHub account. It shows up on your profile.</p><button class="btn-line" data-act="github">${S.gh?'✓ Published (preview)':'Open-source a project'}</button></div>
       <div class="whycard"><span class="k">Boards</span><h3>Prep boards</h3><p>CAT Quant · DILR puzzles · Verbal case club · Career switchers. Moderated, no spam, no ads.</p><button class="btn-line" data-act="board">Open CAT Quant board</button></div>
       <div class="whycard"><span class="k">Support</span><h3>Donations</h3><p>Back the people who open their work: UPI, GitHub Sponsors or Solana, straight to them. We take ₹0; only the payment fee passes through.</p><button class="btn-line" data-act="donate">Donate to a creator</button></div>
     </div></main>`;
@@ -1709,7 +1709,7 @@ document.addEventListener('click', e => {
     case 'pickai': b.parentElement.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); $('#paste').textContent = pasteText(S.importName, b.dataset.a); break;
     case 'copypaste': { const t = $('#paste').textContent; const done = () => toast('Copied. Paste it into your AI.'); try { navigator.clipboard.writeText(t).then(done, () => { selectPaste(); toast('Select and copy the message above'); }); } catch (err) { selectPaste(); toast('Select and copy the message above'); } break; }
     case 'buyskill': closeSheet(); toast(`${$('#ss') ? '' : ''}Pack ready for your market (preview, nothing charged)`); break;
-    case 'github': S.gh = !S.gh; render(); toast(S.gh ? 'GitHub connected (preview)' : 'Disconnected'); break;
+    case 'github': S.gh = !S.gh; render(); toast(S.gh ? 'Project published in the open (preview)' : 'Unpublished'); break;
     case 'board': sheet(`<h2>CAT Quant board</h2><p style="color:var(--ash)">1,240 members (sample) · moderated · 18+</p>${['Shortcut for successive % changes?','DILR set 4 from yesterday: my approach','Daily 3-question streak thread'].map(t => `<div class="opt">${t}</div>`).join('')}`, true); break;
     case 'donate': sheet(`<h2>Support @creator (sample)</h2><p style="color:var(--ash)">Straight to the creator. We take ₹0.</p><div class="opt" style="justify-content:space-between"><span>₹100 by UPI</span><span>creator gets ₹97.64</span></div><div class="opt" style="justify-content:space-between"><span>Cover the fees</span><span>you pay ₹102.36</span></div><div class="opt">Solana · wallet verified · straight to the creator</div><p style="font-size:12.5px;color:var(--ash)">Payment fee about 2% plus GST on the fee passes through. Donations may be taxable for the creator.</p>`, true); break;
   }
