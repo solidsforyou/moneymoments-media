@@ -1,0 +1,71 @@
+Help & FAQs
+Welcome
+LOGIN  SIGN UP
+Home
+Solutions
+ New Support Ticket
+ Check Ticket Status
+Solution home Frequently Asked Questions Plans and Charges
+What are the charges of Sensibull?
+ Print
+
+Modified on: Thu, 23 Jul, 2026 at 9:31 AM
+
+Sensibull is 100% free for Zerodha users.
+
+
+
+
+For all other Brokers:
+
+
+
+
+Sensibull has two levels of plans. The free plan and the Pro Plan. The plan charges, and the features included with the plan can be seen on the profile page here https://web.sensibull.com/profile?tab=sensibull_plans. 
+
+
+
+
+The Free Plan is free for all :) and the free plan has these features: 
+
+
+
+
+Basic Option Chain + Verified P&L + Daily Market Analysis + Learn Options Trading + Stock Results and Events Calendar + Stock Data + Watchlist + Positions Page + FII DII Data + Expiry Trades.
+
+
+And the Pro Plan has all our features such as: 
+
+
+
+
+Pro Plan =  Easy Options + Draft Portfolios + Strategies Wizard + Options Screener + Technical Signals  + Positions (Grouping) + Strategy Builder + Live Options Charts + Multi Straddle-Strangle Charts + Open Interest Analysis+ Multi Strike OI + Analyse Widget on Option Chain + Analyse Widget on Positions Page + IV Chart. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Did you find it helpful? Yes No
+
+Related Articles
+What is Sensibull?
+What is Verified by Sensibull?
+Why should I trust Sensibull? How safe is Sensibull?
+Are there any other charges at all for using Sensibull with Zerodha login?
+Can I trade currency and commodity options in Sensibull?
+How to search for a specific underlying on Sensibull?
+How do I enable OI Profile on TradingView by Sensibull?
+Can I get a trial? Is there a free version?
+Will Easy Options auto-exit my positions/ is there a feature to auto-execute trades on Sensibull?
+What is the Analyse feature?
+Home Solutions
+Cookie policy
+Help Desk Software by Freshdesk

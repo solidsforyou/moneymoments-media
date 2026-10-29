@@ -1,0 +1,36 @@
+{
+  "url": "https://sensibull.com/pricing",
+  "fetched_at": "2026-10-29T06:31:52.484Z",
+  "status": 404,
+  "final_url": "https://sensibull.com/pricing",
+  "blocked": false,
+  "title": "Page Not Found - Sensibull",
+  "canonical": "https://sensibull.com/",
+  "meta": {
+    "description": "The page you're looking for doesn't exist on Sensibull.",
+    "twitter:title": "Page Not Found - Sensibull",
+    "twitter:description": "The page you're looking for doesn't exist on Sensibull.",
+    "og:title": "Page Not Found - Sensibull",
+    "og:type": "article",
+    "og:url": "https://sensibull.com/",
+    "og:locale": "en_IN",
+    "og:image": "https://sensibull.com/images/ogp-content-image.jpg",
+    "og:image:type": "image/jpeg",
+    "og:image:secure_url": "https://sensibull.com/images/ogp-content-image.jpg",
+    "og:image:alt": "Page Not Found - Sensibull",
+    "og:description": "The page you're looking for doesn't exist on Sensibull."
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 4,
+  "text_chars": 566
+}

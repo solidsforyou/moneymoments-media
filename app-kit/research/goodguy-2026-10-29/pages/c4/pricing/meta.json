@@ -1,0 +1,44 @@
+{
+  "url": "https://www.tickertape.in/pricing",
+  "fetched_at": "2026-10-29T06:31:32.972Z",
+  "status": 200,
+  "final_url": "https://www.tickertape.in/pricing",
+  "blocked": false,
+  "title": "Pricing for Tickertape Pro",
+  "canonical": "https://www.tickertape.in/pricing",
+  "meta": {
+    "description": "Tickertape Pro gives you exclusive data to find the right stocks to invest in. Access all 130 filters, save unlimited screens and unlock more features by becoming a premium member.",
+    "twitter:title": "Pricing for Tickertape Pro",
+    "twitter:description": "Tickertape Pro gives you exclusive data to find the right stocks to invest in. Access all 130 filters, save unlimited screens and unlock more features by becoming a premium member.",
+    "og:title": "Pricing for Tickertape Pro",
+    "og:type": "website",
+    "og:url": "https://www.tickertape.in/pricing",
+    "og:image:alt": "Pricing for Tickertape Pro",
+    "og:image": "https://assets.tickertape.in/og/Pricing.png",
+    "og:description": "Tickertape Pro gives you exclusive data to find the right stocks to invest in. Access all 130 filters, save unlimited screens and unlock more features by becoming a premium member."
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "₹399",
+      "₹300",
+      "₹899",
+      "₹250",
+      "₹200",
+      "₹2399.2",
+      "₹199.93",
+      "₹599.8"
+    ],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": [
+      "20% off"
+    ]
+  },
+  "image_tags": 70,
+  "text_chars": 4067
+}

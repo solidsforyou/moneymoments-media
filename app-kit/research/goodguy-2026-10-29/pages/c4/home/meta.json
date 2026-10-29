@@ -1,0 +1,53 @@
+{
+  "url": "https://www.tickertape.in/",
+  "fetched_at": "2026-10-29T06:31:26.572Z",
+  "status": 200,
+  "final_url": "https://www.tickertape.in/",
+  "blocked": false,
+  "title": "Research & Invest in Indian & US Stocks, ETFs & MFs | Tickertape",
+  "canonical": "https://www.tickertape.in/",
+  "meta": {
+    "description": "Invest in Indian & US stocks, ETFs and MFs with Tickertape. Research with Stock Screener and Market Mood Index. Track and analyse your portfolio.",
+    "twitter:title": "Research & Invest in Indian & US Stocks, ETFs & MFs | Tickertape",
+    "twitter:description": "Invest in Indian & US stocks, ETFs and MFs with Tickertape. Research with Stock Screener and Market Mood Index. Track and analyse your portfolio.",
+    "og:title": "Research & Invest in Indian & US Stocks, ETFs & MFs | Tickertape",
+    "og:type": "website",
+    "og:url": "https://www.tickertape.in/",
+    "og:image:alt": "Research & Invest in Indian & US Stocks, ETFs & MFs | Tickertape",
+    "og:image": "https://assets.tickertape.in/og/Landing.png",
+    "og:description": "Invest in Indian & US stocks, ETFs and MFs with Tickertape. Research with Stock Screener and Market Mood Index. Track and analyse your portfolio."
+  },
+  "products": [
+    {
+      "name": "Tickertape Pro",
+      "brand": "Tickertape",
+      "sku": null,
+      "price": "399",
+      "currency": "INR",
+      "availability": null,
+      "rating": null,
+      "rating_count": null
+    }
+  ],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "INR\n95.63",
+      "₹1,849.80",
+      "₹261.15",
+      "₹2,564.00",
+      "₹1,926.70",
+      "₹1,334.60",
+      "Rs 512.1",
+      "Rs 151.6"
+    ],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 127,
+  "text_chars": 4003
+}

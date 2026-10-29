@@ -1,0 +1,25 @@
+{
+  "url": "https://sensibull.com/app.html",
+  "fetched_at": "2026-10-29T06:32:24.040Z",
+  "status": 200,
+  "final_url": "https://web.staging.sensibull.com/home",
+  "blocked": false,
+  "title": "India’s Largest Options Trading Platform - Sensibull",
+  "canonical": "https://web.staging.sensibull.com/home",
+  "meta": {
+    "description": "Trade Options like a Pro with Sensibull: Strategy Builder, Draft Portfolios, Option Chain, OI, FII DII Data & more analysis tools. Take a Free Trial!"
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 0,
+  "text_chars": 55
+}
