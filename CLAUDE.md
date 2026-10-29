@@ -18,6 +18,14 @@ so they also work in cloud sessions where the plugins aren't installed.
   linkedin, ecom. If a head needs one of those, follow its prompt from the
   SOLIDS FOR YOU repo as `master.md` section 1 describes.
 - To update the copies, re-copy `plugins/<tool>/skills/<tool>/` from that repo.
+- Hallmark (`.claude/skills/hallmark`, MIT, from github.com/Nutlope/hallmark via
+  shikharjaiswal-in/aitools) is the design pass for every web page; run its `sloplint` before
+  shipping. See its `SOURCE.md`.
+
+## Web app
+
+`web/` is the deployable site (OSE, Tomorrow, OpenPrep, GoodHabit) for Netlify; `web/README.md`
+lists what to plug in. The content machine plan and planner live in `content/ocm/`.
 
 ## Memory
 
