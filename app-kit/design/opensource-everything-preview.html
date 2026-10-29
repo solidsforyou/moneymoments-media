@@ -14,8 +14,8 @@
   --ink:#0B0D0C; --ink-2:#121614; --ink-3:#1A1F1C; --steel:#2A312D; --hud:#FFB21A; --hud-dim:#8A6A22; --bone:#ECE9DF; --ash:#A7A99F; --ok:#5CD08A; --warn:#FF6A3D;
   /* OpenPrep */
   --p-bg:#FFFFFF; --p-ink:#0E1116; --p-mute:#5B6270; --p-line:#E6E8EE; --q-blue:#1B4DFF; --q-electric:#3FA9FF; --q-wash:#EEF4FF; --r-deep:#140B3A; --r-violet:#7C5CFF; --r-pink:#FF5FB8; --r-gold:#FFD36A;
-  /* GoodHabit */
-  --g-bg:#F6F7FC; --g-surface:#FFFFFF; --g-ink:#121633; --g-mute:#5D6488; --g-line:#DFE3EF; --g-accent:#2448FF; --g-wash:#E5EAFF; --g-up:#06774A; --g-down:#C02634; --g-pink:#C8155E;
+  /* GoodHabit: a finance world, ledger paper and ink */
+  --g-bg:#F4F3EE; --g-surface:#FFFFFF; --g-ink:#17181A; --g-mute:#5E6166; --g-line:#DEDCD3; --g-accent:#17181A; --g-wash:#ECEAE2; --g-up:#0B7A3B; --g-down:#B3261E; --g-pink:#0B7A3B;
   /* India Money (boring on purpose) */
   --m-bg:#EDEDED; --m-panel:#FFFFFF; --m-ink:#1D1D1D; --m-mute:#666; --m-line:#CFCFCF; --m-up:#0B7A3B; --m-down:#B3261E;
   --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -252,6 +252,48 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .story .choice{min-height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;text-align:left;padding:10px 14px;font-weight:700}
 .story .choice.pri{background:#fff;color:#121633;border-color:#fff}
 
+/* worlds: portal, landing pages, world bars */
+.portal{position:fixed;inset:0;z-index:95;display:grid;place-items:center;font-family:var(--hudf);font-weight:700;font-size:clamp(22px,5vw,40px);letter-spacing:.12em;text-transform:uppercase;color:#fff;clip-path:circle(0% at var(--px,50%) var(--py,50%));animation:portal .65s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes portal{to{clip-path:circle(150% at var(--px,50%) var(--py,50%))}}
+@media (prefers-reduced-motion:reduce){.portal{animation:none;clip-path:none}}
+.land-hero{position:relative;min-height:min(78vh,640px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--steel)}
+.land-hero .inner{position:relative;z-index:1;padding-block:40px 34px;display:flex;flex-direction:column;gap:12px;width:100%}
+.land-hero h1{font-family:var(--hudf);font-weight:700;font-size:clamp(48px,11vw,110px);line-height:.9;text-transform:uppercase;color:#fff}
+.land-hero .lede{color:#E8E6DE;font-size:18px;max-width:58ch}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px}
+.tagrow span{font-family:var(--mono);font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:3px;background:rgba(0,0,0,.55);color:var(--hud);letter-spacing:.06em}
+.land-art{position:absolute;right:4%;bottom:6%;width:min(34vw,260px)}
+.land-ledger{position:absolute;right:5%;top:12%;width:min(38vw,300px)}
+@media (max-width:700px){.land-art{bottom:auto;top:6%;width:30vw}.land-ledger{top:5%;width:62vw;opacity:.55!important}}
+.scrollcue{font-family:var(--mono);font-size:12.5px;color:#E8E6DE;opacity:.85}
+.gate{margin-block:34px 70px;border:1px solid var(--hud-dim);border-radius:6px;padding:clamp(22px,5vw,46px);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;background:radial-gradient(70% 120% at 50% 0%,rgba(255,178,26,.14),transparent 70%),var(--ink-2)}
+.gate h2{font-family:var(--hudf);font-weight:700;font-size:clamp(26px,5vw,44px);text-transform:uppercase;letter-spacing:.04em}
+.gate p{color:var(--ash);max-width:52ch}
+.gate .btn-hud{min-height:58px;font-size:18px;padding:0 28px}
+.exitbtn{flex:none;min-height:40px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid currentColor;background:transparent;opacity:.85}
+.wtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 0 10px}
+.wtabs button{flex:none;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--p-line);background:#fff;color:var(--p-mute);font-weight:700;font-size:14px}
+.wtabs button[aria-current="page"]{background:var(--p-ink);color:#fff;border-color:var(--p-ink)}
+.quant .wtabs button,.reason .wtabs button{background:transparent;border-color:rgba(255,255,255,.3);color:#E0E8FF}
+.quant .wtabs button[aria-current="page"],.reason .wtabs button[aria-current="page"]{background:#fff;color:#0A2CB8;border-color:#fff}
+.verbal .wtabs button{border-color:#E7E5DE;background:#fff;color:#6A6A6A}
+.verbal .wtabs button[aria-current="page"]{background:#16171A;color:#fff;border-color:#16171A}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--g-line);padding:6px max(8px,env(safe-area-inset-left,0px)) calc(6px + env(safe-area-inset-bottom,0px))}
+.tabbar .in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.tabbar button{min-height:52px;border:0;border-radius:12px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:800;font-size:12.5px;color:var(--g-mute)}
+.tabbar button .i{font-size:18px;line-height:1}
+.tabbar button[aria-current="page"]{color:var(--g-ink);background:var(--g-wash)}
+.amt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:700}
+.ledger-sum{background:var(--g-ink);color:#F4F3EE;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.ledger-sum .big{font-family:var(--mono);font-size:32px;font-weight:700}
+.accts{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.acct{flex:none;min-width:130px;border:1px solid var(--g-line);background:#fff;border-radius:14px;padding:10px 12px;text-align:left;display:flex;flex-direction:column;gap:2px;color:var(--g-ink)}
+.acct span{font-size:12.5px;color:var(--g-mute)}
+.entry{display:flex;gap:10px;align-items:center;width:100%;min-height:62px;padding:8px 2px;border:0;border-bottom:1px solid var(--g-line);background:transparent;text-align:left;color:var(--g-ink)}
+.entry .dot{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.entry .dot.in{background:#DDF1E4;color:var(--g-up)} .entry .dot.out{background:#F7E1DF;color:var(--g-down)}
+.daylabel{font-family:var(--mono);font-size:12px;color:var(--g-mute);letter-spacing:.06em;margin-top:14px}
+
 /* India Money: boring on purpose */
 .money{background:var(--m-bg);color:var(--m-ink);font-family:var(--mono);font-size:13.5px;min-height:100vh}
 .money .bar{background:#DADADA;border-bottom-color:var(--m-line)}
@@ -326,27 +368,43 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const ROUTES = ['home','prep','quant','verbal','reason','habit','practice','money','skills','library','community'];
+const OSE = ['home','prep-about','habit-about','skills','library','community'], PREPW = ['prep','quant','verbal','reason'], HABITW = ['habit','chats','reels','practice','money'];
+const ROUTES = [...OSE, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
 
+function signedChip(){ return S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign in<span class="wide-only"> · OpenID</span></button>`; }
 function bar(world){
-  const signed = S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign in<span class="wide-only"> · OpenID</span></button>`;
-  const name = {prep:'open<b>prep</b>', quant:'open<b>prep</b> / quant', verbal:'open<b>prep</b> / verbal', reason:'open<b>prep</b> / reasoning', habit:'Good<b>Habit</b>', practice:'Good<b>Habit</b> / practice', money:'india<b>money</b> (practice)'}[world] || 'opensource://<b>everything</b>';
-  const crumbs = [['home','Library'],['prep','OpenPrep'],['habit','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community']];
-  return `<header class="bar"><div class="${['home','skills','library','community'].includes(world)?'wrap':'col'}" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span style="overflow:hidden;text-overflow:ellipsis">${name}</span><span class="cur" aria-hidden="true"></span></button>
-    <button class="chipbtn" data-act="pwa" aria-label="Add to home screen">＋<span class="wide-only"> Home screen</span></button>${signed}</div>
-    <div class="${['home','skills','library','community'].includes(world)?'wrap':'col'}"><nav class="crumbs" aria-label="Products">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${(r===world || (r==='prep'&&['quant','verbal','reason'].includes(world)) || (r==='habit'&&['practice','money'].includes(world)))?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+  if (PREPW.includes(world)) {
+    const tabs = [['prep','Home'],['quant','Quant'],['verbal','Verbal'],['reason','Reasoning']];
+    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="prep" aria-label="OpenPrep home"><span>open<b>prep</b></span><span class="cur" aria-hidden="true"></span></button>
+      <button class="exitbtn" data-act="exit" aria-label="Exit OpenPrep to OpenSource Everything">⏏ Exit</button></div>
+      <div class="col"><nav class="wtabs" aria-label="OpenPrep">${tabs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+  }
+  if (HABITW.includes(world)) {
+    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="habit" aria-label="GoodHabit home"><span>Good<b>Habit</b>${world==='money'?' · India Money':''}</span></button>
+      <button class="exitbtn" data-act="exit" aria-label="Exit GoodHabit to OpenSource Everything">⏏ Exit</button></div></header>`;
+  }
+  const crumbs = [['home','Library'],['prep-about','OpenPrep'],['habit-about','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community']];
+  return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span style="overflow:hidden;text-overflow:ellipsis">opensource://<b>everything</b></span><span class="cur" aria-hidden="true"></span></button>
+    <button class="chipbtn" data-act="pwa" aria-label="Add to home screen">＋<span class="wide-only"> Home screen</span></button>${signedChip()}</div>
+    <div class="wrap"><nav class="crumbs" aria-label="Products">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
 }
-
+function tabbar(world){
+  if (!HABITW.includes(world) || world === 'money' || (world === 'chats' && S.chatWith)) return '';
+  const t = [['habit','₹','Hissab'],['chats','✉','Chats'],['reels','▶','Reels'],['practice','↗','Practice']];
+  return `<nav class="tabbar" aria-label="GoodHabit"><div class="in">${t.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}><span class="i" aria-hidden="true">${i}</span>${l}</button>`).join('')}</div></nav>`;
+}
 function render(){
-  clearTimers();
+  clearTimers(); closeSheet();
   let r = location.hash.slice(1); if (!ROUTES.includes(r)) r = 'home';
-  document.body.className = {home:'home',skills:'home',library:'home',community:'home',prep:'prep',quant:'quant',verbal:'verbal',reason:'reason',habit:'habit',practice:'habit',money:'money'}[r];
+  document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vHome,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHabit,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
-  app.innerHTML = bar(r) + html;
+  const html = ({home:vHome,'prep-about':vPrepAbout,'habit-about':vHabitAbout,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  app.innerHTML = bar(r) + html + tabbar(r);
   window.scrollTo(0,0);
   if (r === 'reason') startSky(); else stopSky();
   if (r === 'quant') drawLesson();
@@ -378,7 +436,7 @@ function vHome(){
       <p class="term" aria-hidden="true"><span class="dim">$</span> boot opensource-everything<br><span class="dim">›</span> ads_loaded: <b>0</b> · trackers: <b>0</b> · slop: <b>0</b><br><span class="dim">›</span> status: <b>ready for the next gen</b></p>
       <h1 style="margin-top:14px">Learn. Build.<br>Grow money.<br><em>Prove it.</em></h1>
       <p class="lede">The success engine of the new age. One ad-free web app for learning, creating, investing and your future, where everything that's safe to open is open. Bookmark it once; it works like an app on any phone.</p>
-      <div class="ctas"><button class="btn-hud" data-act="nav" data-r="prep">Start learning free</button><button class="btn-line" data-act="nav" data-r="practice">Play the money game</button></div>
+      <div class="ctas"><button class="btn-hud" data-act="nav" data-r="prep-about">Start learning free</button><button class="btn-line" data-act="nav" data-r="habit-about">Play the money game</button></div>
     </div>
     <div class="stats" aria-label="Preview numbers (sample)">
       <div class="stat"><div class="v num">0</div><div class="l">ads, ever</div></div>
@@ -390,8 +448,8 @@ function vHome(){
 
   <section class="sect"><div class="sect-h"><h2>Your library</h2><span>tap a game to play</span></div>
     <div class="lib">
-      ${tile('prep','OpenPrep','LIVE · FREE TO START','Learn','CAT Quant, Verbal and Reasoning, plus career courses. Taught by GoodGuy. The Duolingo of India.',{big:true,r:'prep',art:guyArt})}
-      ${tile('habit','GoodHabit','BETA','Money','Hissab with friends, reels that teach, and an investing game that builds the habit.',{big:true,r:'habit',art:reelArt})}
+      ${tile('prep','OpenPrep','LIVE · FREE TO START','Learn','CAT Quant, Verbal and Reasoning, plus career courses. Taught by GoodGuy. The Duolingo of India.',{big:true,r:'prep-about',art:guyArt})}
+      ${tile('habit','GoodHabit','BETA','Money','Hissab with friends, reels that teach, and an investing game that builds the habit.',{big:true,r:'habit-about',art:reelArt})}
       ${tile('skills','The Good Stuff','90 FREE · 10 PAID','AI skills','Skills for Claude, ChatGPT and more. Paste into your AI in one tap.',{r:'skills'})}
       ${tile('library','AI Discovery','FREE','Library','Trusted sources, rated in the open. Built for AIs to search; people can too.',{r:'library'})}
       ${tile('community','Community','BETA','Build','Connect GitHub, publish your work, join prep boards, get donations.',{r:'community'})}
@@ -416,6 +474,14 @@ function vHome(){
       <p style="color:var(--ash);font-size:14.5px;margin-top:4px">Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
       <div class="idbadges"><span class="vb v">✓ OpenPrep Quant · 92nd percentile</span><span class="vb v">✓ 3 GitHub projects</span><span class="vb v">✓ 120-day investing habit</span><span class="vb">Self-declared · Design lead at a startup</span></div></div></div>
   </section>
+  <section class="sect"><div class="sect-h"><h2>Open numbers</h2><span>synced from our Google Sheet · sample</span></div>
+    <div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      <div class="stat"><div class="v num">2,418</div><div class="l">students this week</div></div>
+      <div class="stat"><div class="v num">96</div><div class="l">paying users</div></div>
+      <div class="stat"><div class="v num">₹21,340</div><div class="l">revenue this month</div></div>
+      <div class="stat"><div class="v num">3</div><div class="l">corrections published</div></div>
+      <div class="stat"><div class="v num">0</div><div class="l">ads served</div></div>
+    </div><p style="color:var(--ash);font-size:13.5px;margin-top:10px">Everything we track lands in one sheet, and the public parts show here. Building in public, in numbers.</p></section>
   <p class="foot">Clickable preview with sample data. Nothing here is real money, real advice or a real account. · opensourceeverything.com</p>
   </main>`;
 }
@@ -555,17 +621,96 @@ const REELS = [
   {src:'GoodHabit · Money', h:'Your ₹180 coffee is a ₹65,000 year', sub:'What small daily spends add up to', bg:'linear-gradient(160deg,#C8155E,#2A0A3A)'},
   {src:'Creator clip · @finwithneha', h:'SIP vs lump sum, in plain Hindi', sub:'Clipped from a creator video, with credit', bg:'linear-gradient(160deg,#06683F,#0E2A22)'},
 ];
-function vHabit(){
-  const t = S.habitTab;
-  let body = '';
-  if (t === 'reels') body = `<div style="display:flex;flex-direction:column;gap:14px">${REELS.map((r,i) => `<div class="reel" style="background:${r.bg}"><span class="src">${esc(r.src)}</span><div class="acts"><button data-act="share" data-i="${i}" aria-label="Share with a friend">Share</button><button data-act="like" aria-label="Like">♥</button></div><h3>${esc(r.h)}</h3><p style="opacity:.9">${esc(r.sub)}</p></div>`).join('')}<p style="text-align:center;color:var(--g-mute);font-size:14px">You're all caught up on useful stuff. Want more? OpenPrep has 6 chapters waiting.</p></div>`;
-  if (t === 'chats' && !S.chatWith) body = chatList();
-  if (t === 'chats' && S.chatWith) body = chatView(S.chatWith);
-  if (t === 'practice') body = practiceHome();
-  return `<main class="col" style="padding-block:6px 40px">
-    <div class="htabs" role="tablist">${[['reels','Reels'],['chats','Chats + Hissab'],['practice','Practice']].map(([k,l]) => `<button role="tab" data-act="htab" data-t="${k}" ${t===k?'aria-current="page"':''}>${l}</button>`).join('')}</div>${body}</main>
-    ${t==='chats' && S.chatWith ? composer() : ''}`;
+function vPrepAbout(){
+  return `<section class="land-hero" style="background:linear-gradient(135deg,#1B4DFF 0%,#0A1F99 55%,#06115A 100%)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:30px 30px"></div>
+    <div class="land-art">${goodguy('happy','#3FA9FF')}</div>
+    <div class="wrap inner"><div class="tagrow"><span>LIVE</span><span>FREE TO START</span><span>WEB · NO APP NEEDED</span></div>
+      <h1>OpenPrep</h1><p class="lede">The open-source Duolingo for India's entrance exams. CAT first: Quant, Verbal and Reasoning, plus career courses. Taught by GoodGuy, in Hinglish and English. No ads, ever.</p>
+      <span class="scrollcue">Scroll to enter the world ↓</span></div></section>
+  <main class="wrap">
+    <section class="sect"><div class="sect-h"><h2>Three worlds</h2><span>each subject looks and feels different</span></div>
+      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="whycard" style="background:#0A2CB8;border-color:#3FA9FF"><span class="k" style="color:#9CC8FF">QUANT</span><h3>Electric blue, graph paper</h3><p style="color:#D6E4FF">GoodGuy beside a TV; the camera zooms into the working and out for the traps.</p></div>
+        <div class="whycard" style="background:#FAFAF7;border-color:#E7E5DE"><span class="k" style="color:#8A6A1A">VERBAL</span><h3 style="color:#16171A">A quiet page to read</h3><p style="color:#55534D">Case studies. Read, or watch first and read what the video said.</p></div>
+        <div class="whycard" style="background:radial-gradient(120% 120% at 80% 0%,#3A1E9E,#140B3A 60%);border-color:#7C5CFF"><span class="k" style="color:#FFD36A">REASONING</span><h3>Imagine it happening</h3><p style="color:#D9CCFF">Puzzles that build themselves in front of you, clue by clue.</p></div>
+      </div></section>
+    <section class="sect"><div class="sect-h"><h2>Free vs paid</h2><span>pay only for what costs us money</span></div>
+      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="whycard"><span class="k">FREE, EVERY DAY</span><p>10 reels, 1 long video, 3 practice questions, 10 minutes of AI mentoring.</p></div>
+        <div class="whycard"><span class="k">₹99</span><p>A full 50-video career course, yours for good.</p></div>
+        <div class="whycard"><span class="k">₹199 / MONTH</span><p>OpenPrep Pass: unlimited, plus free share links for friends.</p></div>
+        <div class="whycard"><span class="k">₹299 / MONTH</span><p>OpenPlan: everything paid across OpenSource Everything.</p></div>
+      </div></section>
+    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Enter the world of OpenPrep</h2><p>A separate app with its own look, made only for learning. Exit any time to come back to the library.</p><button class="btn-hud" data-act="enter" data-r="prep" data-c="#1B4DFF" data-n="OpenPrep">Enter OpenPrep</button></section>
+  </main>`;
 }
+function vHabitAbout(){
+  return `<section class="land-hero" style="background:radial-gradient(70% 90% at 85% 15%,rgba(11,122,59,.55),transparent 60%),linear-gradient(135deg,#17181A,#0B0D0C)">
+    <div class="land-ledger" style="display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:clamp(11px,1.8vw,14px);color:#E8E6DE;opacity:.9" aria-hidden="true">
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Salary</span><span style="color:#5CD08A">+40,000</span></div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Raju (milkman)</span><span style="color:#FF8A80">−1,240</span></div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Kabir owes you</span><span style="color:#5CD08A">450</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0"><span>Invested (practice)</span><span style="color:#FFB21A">1,806</span></div></div>
+    <div class="wrap inner"><div class="tagrow"><span>BETA</span><span>3-DAY FREE PRACTICE</span><span>NO BANK LINK NEEDED</span></div>
+      <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, share reels that teach, and play the investing game that builds the habit before you risk a rupee.</p>
+      <span class="scrollcue">Scroll to enter the world ↓</span></div></section>
+  <main class="wrap">
+    <section class="sect"><div class="sect-h"><h2>What's inside</h2><span>a finance app, made friendly</span></div>
+      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="whycard"><span class="k">HISSAB · MINE</span><h3>Your own books</h3><p>Write any entry yourself: names, amounts, cash, bank or UPI. Keep a personal account of everything. Nothing linked, nothing shared.</p></div>
+        <div class="whycard"><span class="k">HISSAB · FRIENDS</span><h3>Inside your chats</h3><p>Send a Hissab invite to a Good ID. Once they accept, shared expenses and who owes whom live right in the chat.</p></div>
+        <div class="whycard"><span class="k">REELS</span><h3>Scroll useful things</h3><p>OpenPrep lessons and credited creator clips. Share with a friend in one tap.</p></div>
+        <div class="whycard"><span class="k">PRACTICE</span><h3>The money game</h3><p>Ramesh, Amit or the Rich guy, easy to hard, the '90s to the 2010s, real crashes. Invest on a real-looking platform with pretend money.</p></div>
+      </div></section>
+    <section class="gate"><span style="width:110px">${goodguy('happy','#0B7A3B')}</span><h2>Enter the world of GoodHabit</h2><p>A separate app built like a real money app. Exit any time to come back to the library.</p><button class="btn-hud" data-act="enter" data-r="habit" data-c="#17181A" data-n="GoodHabit">Enter GoodHabit</button></section>
+  </main>`;
+}
+
+/* GoodHabit world: personal Hissab ledger (manual entries, kept on this device) */
+const LKEY = 'ose-hissab-v1';
+const SEED = {accounts:[{n:'Cash',open:200000},{n:'Bank (manual)',open:3000000},{n:'UPI wallet',open:150000}], entries:[
+  {id:1, d:'2026-10-29', who:'Employer', amt:4000000, dir:'in', acct:'Bank (manual)', cat:'Salary', note:'October salary'},
+  {id:2, d:'2026-10-28', who:'Raju (milkman)', amt:124000, dir:'out', acct:'Cash', cat:'Groceries', note:'October milk'},
+  {id:3, d:'2026-10-27', who:'Mr. Sharma (landlord)', amt:1200000, dir:'out', acct:'Bank (manual)', cat:'Rent', note:''},
+  {id:4, d:'2026-10-26', who:'Chai with team', amt:18000, dir:'out', acct:'Cash', cat:'Food', note:''},
+  {id:5, d:'2026-10-25', who:'OLX buyer', amt:650000, dir:'in', acct:'UPI wallet', cat:'Other', note:'Sold old phone'},
+]};
+function loadL(){ try { const v = JSON.parse(localStorage.getItem(LKEY)); if (v && v.entries) return v; } catch (e) {} return JSON.parse(JSON.stringify(SEED)); }
+function saveL(){ try { localStorage.setItem(LKEY, JSON.stringify(S.ledger)); } catch (e) {} }
+const CATS = ['Food','Groceries','Rent','Salary','Travel','Bills','Business','Friends','Other'];
+function acctBal(n){ const a = S.ledger.accounts.find(x => x.n === n); return (a ? a.open : 0) + S.ledger.entries.filter(e => e.acct === n).reduce((t,e) => t + (e.dir === 'in' ? e.amt : -e.amt), 0); }
+function vHissab(){
+  if (!S.ledger) S.ledger = loadL();
+  const view = S.hView || 'mine';
+  const tabs = `<div class="seg2" role="group" aria-label="Whose Hissab" style="margin-top:12px"><button data-act="hview" data-v="mine" aria-pressed="${view==='mine'}">My Hissab</button><button data-act="hview" data-v="friends" aria-pressed="${view==='friends'}">With friends</button></div>`;
+  let body;
+  if (view === 'friends') body = chatList();
+  else {
+    const L = S.ledger, total = L.accounts.reduce((t,a) => t + acctBal(a.n), 0), month = L.entries.filter(e => e.d.startsWith('2026-10'));
+    const inM = month.filter(e => e.dir==='in').reduce((t,e) => t+e.amt, 0), outM = month.filter(e => e.dir==='out').reduce((t,e) => t+e.amt, 0);
+    const days = [...new Set(L.entries.map(e => e.d))].sort().reverse();
+    body = `<div class="ledger-sum" style="margin-top:12px"><span style="font-size:13px;opacity:.8">Total across your accounts</span><span class="big num">${inr(total/100)}</span><span style="font-size:13.5px;opacity:.85">October: <span style="color:#7FE0A6">in ${inr(inM/100)}</span> · <span style="color:#FFA39A">out ${inr(outM/100)}</span></span></div>
+      <div class="accts" style="margin-top:10px">${L.accounts.map(a => `<div class="acct"><span>${esc(a.n)}</span><b class="amt">${inr(acctBal(a.n)/100)}</b></div>`).join('')}<button class="acct" data-act="addacct" style="justify-content:center;align-items:center;color:var(--g-mute)">＋ Account</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><button class="gbtn" data-act="entry" data-dir="in" style="background:var(--g-up)">＋ Money in</button><button class="gbtn" data-act="entry" data-dir="out" style="background:var(--g-down)">− Money out</button></div>
+      ${days.map(d => `<p class="daylabel">${new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}).toUpperCase()}</p>${L.entries.filter(e => e.d===d).map(e => `<button class="entry" data-act="showentry" data-id="${e.id}"><span class="dot ${e.dir}" aria-hidden="true">${e.dir==='in'?'+':'−'}</span><span style="flex:1;min-width:0"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(e.who)}</b><span style="font-size:13px;color:var(--g-mute)">${esc(e.cat)} · ${esc(e.acct)}${e.note?' · '+esc(e.note):''}</span></span><span class="amt" style="color:${e.dir==='in'?'var(--g-up)':'var(--g-down)'}">${e.dir==='in'?'+':'−'}${inr(e.amt/100)}</span></button>`).join('')}`).join('')}
+      <p style="color:var(--g-mute);font-size:13px;margin-top:14px">Manual entries only. Not linked to any bank, nothing shared. In this preview they stay in this browser.</p>`;
+  }
+  return `<main class="col" style="padding-block:14px 110px"><p style="font-size:13px;color:var(--g-mute)">GoodID · ${esc(S.user || 'guest')}</p><h1 style="font-family:var(--gh-d);font-size:34px">Hissab</h1>${tabs}${body}</main>`;
+}
+function entrySheet(dir){
+  const L = S.ledger, names = [...new Set(L.entries.map(e => e.who))];
+  sheet(`<h2>${dir==='in'?'Money in':'Money out'}</h2>
+    <div><label class="lbl" for="ea">Amount (₹)</label><input class="inp" id="ea" inputmode="decimal" placeholder="1,200"></div>
+    <div><label class="lbl" for="ew">Name or party · write anything</label><input class="inp" id="ew" list="enames" placeholder="Raju (milkman), Salary, Mom…"><datalist id="enames">${names.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div><label class="lbl" for="ec">Account</label><select id="ec">${L.accounts.map(a => `<option>${esc(a.n)}</option>`).join('')}</select></div><div><label class="lbl" for="et">Category</label><select id="et">${CATS.map(c => `<option>${c}</option>`).join('')}</select></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div><label class="lbl" for="ed">Date</label><input class="inp" id="ed" type="date" value="2026-10-29"></div><div><label class="lbl" for="en">Note (optional)</label><input class="inp" id="en" placeholder="anything"></div></div>
+    <p class="err" id="eerr" hidden style="color:#B3261E;font-weight:700;font-size:14px">Add an amount like 1,200 and a name.</p>
+    <button class="gbtn" data-act="saveentry" data-dir="${dir}" style="min-height:50px">Save entry</button>`);
+}
+
+function vChats(){ return `<main class="col" style="padding-block:6px 110px">${S.chatWith ? chatView(S.chatWith) : chatList()}</main>${S.chatWith ? composer() : ''}`; }
+function vReels(){ return `<main class="col" style="padding-block:14px 110px"><div style="display:flex;flex-direction:column;gap:14px">${REELS.map((r,i) => `<div class="reel" style="background:${r.bg}"><span class="src">${esc(r.src)}</span><div class="acts"><button data-act="share" data-i="${i}" aria-label="Share with a friend">Share</button><button data-act="like" aria-label="Like">♥</button></div><h3>${esc(r.h)}</h3><p style="opacity:.9">${esc(r.sub)}</p></div>`).join('')}<p style="text-align:center;color:var(--g-mute);font-size:14px">You're all caught up on useful stuff. Want more? Enter OpenPrep from the library.</p></div></main>`; }
 function hav(k){ const h = S.hissab[k]; return `<span class="av" style="background:${h.bg}" aria-hidden="true">${h.name.split(' ').map(w=>w[0]).join('')}</span>`; }
 function balPill(h){ if (h.state !== 'connected') return h.state === 'invite-in' ? '<span class="pill acc">Hissab invite</span>' : h.state === 'invite-out' ? '<span class="pill mute">Invite sent</span>' : ''; return h.bal === 0 ? '<span class="pill mute">Settled</span>' : h.bal > 0 ? `<span class="pill up">owes you ${inr(h.bal/100)}</span>` : `<span class="pill down">you owe ${inr(-h.bal/100)}</span>`; }
 function chatList(){
@@ -667,11 +812,11 @@ function endView(){
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="choice pri" data-act="quitgame">Play another era</button><button class="choice" data-act="nav" data-r="prep">Learn why in OpenPrep</button></div></div>
     <div class="gcard" style="margin-top:12px"><b>Your story</b>${g.log.map(l => `<p style="font-size:14px;color:var(--g-mute)">${esc(l)}</p>`).join('')}</div>`;
 }
-function vPractice(){ S.habitTab = 'practice'; return vHabit(); }
+function vPractice(){ return `<main class="col" style="padding-block:14px 110px">${practiceHome()}</main>`; }
 
 /* India Money: the plain, real-looking platform where you place the investment */
 function vMoney(){
-  const g = S.game; if (!g || !g.pending) { setTimeout(() => go('habit'), 0); return ''; }
+  const g = S.game; if (!g || !g.pending) { setTimeout(() => go('practice'), 0); return ''; }
   const st = stepNow(), a = g.alloc || {idx:0, gold:0, fd:0}, left = g.pending - a.idx - a.gold - a.fd;
   const guide = g.diff === 'hard' ? 'You decide. I\'ll only speak up if something looks risky.' : g.diff === 'medium' ? 'Most long-term investors spread money across shares, gold and safe deposits.' : 'Try splitting it: most in the index fund, a little in gold, a little in an FD. You can\'t lose it all at once that way.';
   const rows = [['idx','INDEX FUND (TOP 30 COS)', st.p.idx.toLocaleString('en-IN'), 'per unit'], ['gold','GOLD', (st.p.gold).toLocaleString('en-IN'), 'per 10g'], ['fd','FIXED DEPOSIT', st.p.fd + '%', 'a year']];
@@ -819,11 +964,20 @@ document.addEventListener('click', e => {
     case 'rstep': S.prep.rstep = Math.max(0, Math.min(CLUES.length-1, S.prep.rstep + +b.dataset.d)); S.prep.rAnswer = null; render(); break;
     case 'rans': S.prep.rAnswer = +b.dataset.i; render(); break;
     /* GoodHabit */
-    case 'htab': S.habitTab = b.dataset.t; S.chatWith = null; if (location.hash.slice(1) !== 'habit') go('habit'); else render(); break;
+    case 'htab': S.chatWith = null; go(b.dataset.t); break;
+    case 'exit': S.chatWith = null; go('home'); break;
+    case 'enter': { const rr = b.dataset.r, rect = b.getBoundingClientRect(); if (matchMedia('(prefers-reduced-motion: reduce)').matches) { go(rr); break; } const pt = document.createElement('div'); pt.className = 'portal'; pt.style.background = b.dataset.c; pt.style.setProperty('--px', (rect.left + rect.width/2) + 'px'); pt.style.setProperty('--py', (rect.top + rect.height/2) + 'px'); pt.textContent = 'Entering ' + b.dataset.n; document.body.appendChild(pt); setTimeout(() => { go(rr); setTimeout(() => pt.remove(), 250); }, 700); break; }
+    case 'hview': S.hView = b.dataset.v; render(); break;
+    case 'entry': entrySheet(b.dataset.dir); break;
+    case 'saveentry': { const amt = Math.round(parseFloat(String($('#ea').value).replace(/[,\s₹]/g,'')) * 100), who = $('#ew').value.trim(); if (!(amt > 0) || !who) { $('#eerr').hidden = false; break; } S.ledger.entries.push({id:Date.now(), d:$('#ed').value || '2026-10-29', who, amt, dir:b.dataset.dir, acct:$('#ec').value, cat:$('#et').value, note:$('#en').value.trim()}); saveL(); closeSheet(); render(); toast('Entry saved'); break; }
+    case 'showentry': { const e = S.ledger.entries.find(x => x.id == b.dataset.id); sheet(`<h2>${esc(e.who)}</h2><p class="amt" style="font-size:28px;color:${e.dir==='in'?'#0B7A3B':'#B3261E'}">${e.dir==='in'?'+':'−'}${inr(e.amt/100)}</p><p>${esc(e.cat)} · ${esc(e.acct)} · ${esc(e.d)}</p>${e.note?`<p>${esc(e.note)}</p>`:''}<button class="gbtn" style="background:#B3261E;min-height:48px" data-act="delentry" data-id="${e.id}">Delete entry</button>`); break; }
+    case 'delentry': S.ledger.entries = S.ledger.entries.filter(x => x.id != b.dataset.id); saveL(); closeSheet(); render(); toast('Entry deleted'); break;
+    case 'addacct': sheet(`<h2>Add an account</h2><p style="color:#5E6166">Any pot of money you want to track by hand: a second bank, a business till, savings jar.</p><div><label class="lbl" for="an">Name</label><input class="inp" id="an" placeholder="Shop till"></div><div><label class="lbl" for="ao">Opening balance (₹)</label><input class="inp" id="ao" inputmode="decimal" placeholder="0"></div><button class="gbtn" data-act="saveacct" style="min-height:50px">Add account</button>`); break;
+    case 'saveacct': { const n = $('#an').value.trim(); if (!n) { toast('Give the account a name'); break; } const o = Math.round((parseFloat(String($('#ao').value).replace(/[,\s₹]/g,'')) || 0) * 100); S.ledger.accounts.push({n, open:o}); saveL(); closeSheet(); render(); toast('Account added'); break; }
     case 'share': sheet(`<h2>Share with a friend</h2><p style="color:#5D6488">They can watch it free, even past their daily limit.</p>${Object.keys(S.hissab).map(k => `<button class="opt" data-act="sendreel" data-k="${k}" data-i="${b.dataset.i}">${hav(k)} ${esc(S.hissab[k].name)}</button>`).join('')}`); break;
     case 'sendreel': { const h = S.hissab[b.dataset.k]; h.msgs.push(['me', `Watch this: "${REELS[+b.dataset.i].h}"`]); closeSheet(); toast(`Sent to ${h.name.split(' ')[0]} in Chats`); break; }
     case 'like': toast('Liked'); break;
-    case 'openchat': S.chatWith = b.dataset.k; render(); break;
+    case 'openchat': S.chatWith = b.dataset.k; if (location.hash.slice(1) !== 'chats') go('chats'); else render(); break;
     case 'backchats': S.chatWith = null; render(); break;
     case 'accept': { const h = S.hissab[b.dataset.k]; h.state = 'connected'; h.msgs.push(['hissab', 'Hissab connected. Shared expenses will show here.']); render(); toast('Hissab connected'); break; }
     case 'decline': { const h = S.hissab[b.dataset.k]; h.state = 'chat'; render(); toast('Invite declined. They won\'t be told why.'); break; }
@@ -841,9 +995,9 @@ document.addEventListener('click', e => {
     case 'pdiff': S.game.diff = b.dataset.k; render(); break;
     case 'pera': S.game.era = b.dataset.k; render(); break;
     case 'pstart': newGame(S.game.era); render(); break;
-    case 'demo': S.game = S.game || {}; newGame(b.dataset.k); S.habitTab = 'practice'; if (location.hash.slice(1) !== 'practice') go('practice'); else render(); break;
+    case 'demo': S.game = S.game || {}; newGame(b.dataset.k); if (location.hash.slice(1) !== 'practice') go('practice'); else render(); break;
     case 'ch': choose(b.dataset.c); break;
-    case 'quitgame': S.game = null; S.habitTab = 'practice'; if (location.hash.slice(1) !== 'practice') go('practice'); else render(); break;
+    case 'quitgame': S.game = null; if (location.hash.slice(1) !== 'practice') go('practice'); else render(); break;
     case 'alloc': { const g = S.game, k = b.dataset.k, d = +b.dataset.d, left = g.pending - g.alloc.idx - g.alloc.gold - g.alloc.fd; if (d > 0 && left < d) { toast('Nothing left to place'); break; } g.alloc[k] = Math.max(0, g.alloc[k] + d); render(); break; }
     case 'placeorder': placeOrder(); break;
     /* skills, library, community */
