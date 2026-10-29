@@ -15,7 +15,7 @@ page, its content feed and its app ID), plus privacy, data-deletion, build and a
 cd web
 npm install
 npm run dev        # builds, then serves http://localhost:8888
-npm test           # 9 end-to-end API tests
+npm test           # 12 end-to-end API tests
 ```
 
 ## Put it on Netlify (what the founder plugs in)
@@ -29,7 +29,9 @@ npm test           # 9 end-to-end API tests
    | `SESSION_SECRET` | 32+ random characters; signs login cookies. `openssl rand -base64 48` | Yes |
    | `ADMIN_TOKEN` | 24+ random characters; lets `/admin/` and the content machine publish | Yes, to publish |
    | `TELEGRAM_BOT_TOKEN` | From @BotFather. Switches on "Log in with Telegram" and Telegram notifications | For Telegram |
-   | `MAX_FILE_MB` | Biggest file Tomorrow accepts (default 5) | No |
+   | `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | Push notifications. Make a pair once with `npx web-push generate-vapid-keys` | For push |
+   | `VAPID_SUBJECT` | Contact for push services, e.g. `mailto:hello@opensourceeverything.in` | No |
+   | `MAX_FILE_MB` | Biggest file Tomorrow accepts (default 100) | No |
 
 3. **Telegram**: in @BotFather run `/setdomain` for the bot and give it
    `opensourceeverything.in` (or the Netlify URL while testing). The login button only
@@ -41,22 +43,35 @@ That's all; there are no other keys or services. Nothing here sends email yet.
 
 ## What works today
 
-- **Accounts.** Sign up with an ID and password, or log in with Telegram. One OpenID; a
-  Tomorrow ID, PrepID or GoodID made only when needed. Delete your account yourself.
+- **Accounts.** Sign up with an ID and password, or log in with Telegram (and link Telegram
+  to an existing account). One OpenID; a Tomorrow ID, PrepID or GoodID made only when needed.
+  A recovery code at sign-up resets a forgotten password without email. Delete your account
+  yourself.
 - **Tomorrow.**
-  - **Chats:** one-to-one, refreshed every few seconds.
-  - **My devices:** a chat with yourself that every device you're logged in on shares, each
+  - **Chats:** one-to-one, refreshed every few seconds; every screen has its own address, so
+    Back works.
+  - **My devices:** a chat with yourself shared by every device you're logged in on, each
     message tagged with the device it came from.
-  - **Send:** drop or pick files, then choose your devices or a person; a progress bar shows
-    the upload.
+  - **Send:** drop or pick files, up to 100 MB each, sent in 4 MB pieces with a progress bar.
+    Photos and videos get a preview made on your device; tap to open full size.
+  - **Finding people:** search by ID as you type, and an invite link (WhatsApp share or copy)
+    that drops a new friend straight into a chat with you.
+  - **Notifications:** web push on this device (Android, desktop, and iPhone once Tomorrow is
+    on the Home Screen), plus Telegram for people who log in with it.
   - **Feed:** posts for 18+ with a Tomorrow ID, likes only the poster sees, follows.
   - **Watch:** published videos.
-  - **Notifications:** in Tomorrow, or on Telegram for people who log in with it.
-  - **OSE link:** connecting to OpenSource Everything is optional.
-- **OpenPrep and GoodHabit pages.** Each has its promise, a content feed by pillar (Lesson /
-  CAT tip / Career option; Market case study / Knowledge / Indian current affairs / Personal
-  finance) and its app ID. The full interactive preview, with lessons and the trading
-  simulator, is at `/play/`.
+- **OpenPrep.**
+  - Six Quant lessons with practice questions (`/openprep/learn/`).
+  - **Free Mock 1** (`/openprep/mock/`): the CAT pattern, 68 original questions, 40 minutes a
+    section, +3/−1 marking, section lock, mark for review, resume after a refresh, results by
+    section and every answer explained. Percentiles appear only once 200 people have taken it.
+  - A content feed by pillar (Lesson / CAT tip / Career option) and the PrepID.
+- **GoodHabit.**
+  - The trading simulator (`/goodhabit/sim/`): real daily prices since 2007 for the Nifty 50
+    and 17 shares and ETFs, pretend money, approximate charges, big-day notes, and a report
+    card against just holding the Nifty.
+  - A content feed by pillar and the GoodID.
+- **`/play/`** is the old design demo, clearly labelled as made-up people and data.
 - **Content.** `/admin/` (with the admin token) publishes to any app's feed. The content
   machine can do the same with
   `POST /api/content/<app>` and `Authorization: Bearer <ADMIN_TOKEN>`.
@@ -64,17 +79,14 @@ That's all; there are no other keys or services. Nothing here sends email yet.
 
 ## Not built yet (honest list)
 
-- **Files over ~5 MB.** Netlify Functions take request bodies up to about 6 MB. Bigger files
-  need direct uploads to storage (signed URLs); next step.
-- **Peer-to-peer transfer and end-to-end encryption.** Files go through our storage today,
-  readable only by the sender and the people they were sent to, but not end-to-end
-  encrypted. Device-to-device (WebRTC) with E2E is the next Tomorrow milestone. The UI makes
-  no E2E claim.
+- **Files over 100 MB, and true device-to-device transfer** (WebRTC) with end-to-end
+  encryption. Files go through our storage today, readable only by the sender and the people
+  they were sent to, but not end-to-end encrypted; the app makes no E2E claim.
 - **Real-time.** Chats refresh every 3 seconds. Fine for launch; a socket service later.
 - **Rate limits and spam checks** on sign-up and messages, before opening to the public.
-- **Password reset.** Needs email; until then, Telegram login is the recovery path.
-- **OpenPrep lessons and the simulator** run in the `/play/` preview with sample data; they
-  move into proper pages next.
+- **Email or phone recovery.** The recovery code and Telegram cover it for now.
+- **More mocks and lessons.** Free Mock 1 and six Quant lessons are live; Verbal and
+  Reasoning lessons are next.
 - **Native desktop app** (Windows/Mac) with AirDrop-style transfer: the website installs as
   an app today; native comes later (founder idea, 29 Oct).
 
@@ -82,9 +94,14 @@ That's all; there are no other keys or services. Nothing here sends email yet.
 
 House design (the founder's Apple-inspired direction), held to Hallmark's floor
 (`.claude/skills/hallmark`). Check:
-`node ../.claude/skills/hallmark/scripts/sloplint.mjs src/shared/base.css src/tomorrow.css --scope app --url http://localhost:8888/ --render`
-Last run: 0 FAIL on `/`, `/tomorrow/` and `/goodhabit/`. The 6 WARNs are dismissed: they
+`node ../.claude/skills/hallmark/scripts/sloplint.mjs src/shared/base.css src/tomorrow.css src/mock.css --scope app --url http://localhost:8888/ --render`
+Last run: 0 FAIL on `/`, `/tomorrow/`, `/goodhabit/`, `/openprep/mock/` and `/goodhabit/sim/`. The 6 WARNs are dismissed: they
 compare button text to the page background, but that text only sits on the accent button.
+
+## Rebuilding generated files
+
+- `public/data/sim.json`: `node scripts/extract-sim.mjs ../app-kit/design/opensource-everything-preview.html`
+- `public/play/`: `python3 scripts/make-play.py ../app-kit/design/opensource-everything-preview.html`
 
 ## Splitting into repos (for the new GitHub account)
 

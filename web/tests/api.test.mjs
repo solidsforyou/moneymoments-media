@@ -76,6 +76,51 @@ test('files: only the owner and the people it was sent to can download', async (
   assert.equal((await kabir.req(`/api/chats/${cid}/send`, { method: 'POST', body: { file: fid } })).status, 400);
 });
 
+test('big files go up and down in pieces, with a preview image', async () => {
+  const size = 6 * 1024 * 1024 + 123, buf = Buffer.alloc(size); for (let i = 0; i < size; i++) buf[i] = i % 251;
+  const init = await asha.req('/api/files', { method: 'POST', body: { name: 'trip.mp4', type: 'video/mp4', size } });
+  assert.equal(init.status, 200); assert.equal(init.data.chunks, 2);
+  assert.equal((await asha.req(`/api/files/${init.data.id}/done`, { method: 'POST' })).status, 400);   // pieces missing
+  for (let i = 0; i < init.data.chunks; i++) { const part = buf.subarray(i * init.data.chunkSize, (i + 1) * init.data.chunkSize); assert.equal((await asha.req(`/api/files/${init.data.id}/chunk/${i}`, { method: 'PUT', raw: part, headers: { 'content-type': 'application/octet-stream' } })).status, 200); }
+  assert.equal((await kabir.req(`/api/files/${init.data.id}/chunk/0`, { method: 'PUT', raw: Buffer.alloc(10), headers: { 'content-type': 'application/octet-stream' } })).status, 404);
+  assert.equal((await asha.req(`/api/files/${init.data.id}/done`, { method: 'POST' })).status, 200);
+  const thumb = (await asha.req('/api/files', { method: 'POST', raw: Buffer.from('jpegbytes'), headers: { 'x-file-name': 'preview.jpg', 'content-type': 'image/jpeg' } })).data.file.id;
+  const cid = (await asha.req('/api/chats/start', { method: 'POST', body: { handle: 'kabir' } })).data.id;
+  const sent = await asha.req(`/api/chats/${cid}/send`, { method: 'POST', body: { file: init.data.id, thumb } });
+  assert.equal(sent.data.message.file.thumb, thumb);
+  assert.equal((await kabir.req(`/api/files/${thumb}?view=1`)).status, 200);
+  assert.equal((await kabir.req(`/api/files/${init.data.id}`)).status, 409);   // too big for one response
+  const meta = (await kabir.req(`/api/files/${init.data.id}/meta`)).data; assert.equal(meta.size, size);
+  const parts = []; for (let i = 0; i < meta.chunks; i++) parts.push((await kabir.req(`/api/files/${init.data.id}/chunk/${i}`)).data);
+  assert.ok(Buffer.concat(parts).equals(buf));
+  assert.equal((await zoya.req(`/api/files/${init.data.id}/meta`)).status, 404);
+  assert.equal((await asha.req('/api/files', { method: 'POST', body: { name: 'huge', size: 101 * 1024 * 1024 } })).status, 413);
+});
+
+test('recovery code resets a password; people search; push key', async () => {
+  const x = new Agent(), s = await x.req('/api/auth/signup', { method: 'POST', body: { name: 'Dev', handle: 'devr', age: 25, password: 'firstpass1' } });
+  const code = s.data.recoveryCode; assert.match(code, /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/);
+  assert.equal((await new Agent().req('/api/auth/recover', { method: 'POST', body: { handle: 'devr', code: 'AAAA-BBBB-CCCC', password: 'newpass123' } })).status, 401);
+  const r = await new Agent().req('/api/auth/recover', { method: 'POST', body: { handle: 'devr', code: code.toLowerCase(), password: 'newpass123' } });
+  assert.equal(r.status, 200); assert.notEqual(r.data.recoveryCode, code);
+  assert.equal((await new Agent().req('/api/auth/recover', { method: 'POST', body: { handle: 'devr', code, password: 'again12345' } })).status, 401);   // old code is spent
+  assert.equal((await new Agent().req('/api/auth/login', { method: 'POST', body: { handle: 'devr', password: 'newpass123' } })).status, 200);
+  const found = await asha.req('/api/users/search?q=ka'); assert.deepEqual(found.data.people.map(p => p.handle), ['kabir']);
+  assert.equal((await asha.req('/api/users/search?q=as')).data.people.length, 0);   // never yourself
+  assert.equal((await new Agent().req('/api/users/search?q=ka')).status, 401);
+  assert.equal((await asha.req('/api/push/key')).data.key, null);
+  assert.equal((await asha.req('/api/push/subscribe', { method: 'POST', body: { subscription: { endpoint: 'http://not-https' } } })).status, 400);
+});
+
+test('mock results: saved per person, no percentile until 200 takers', async () => {
+  const r = await asha.req('/api/mocks/free-mock-1/result', { method: 'POST', body: { score: 96, sections: { VARC: 30, DILR: 30, QA: 36 } } });
+  assert.equal(r.status, 200); assert.equal(r.data.takers, 1); assert.equal(r.data.percentile, undefined);
+  await asha.req('/api/mocks/free-mock-1/result', { method: 'POST', body: { score: 120 } });
+  assert.equal((await new Agent().req('/api/mocks/free-mock-1/stats')).data.takers, 1);   // only first attempts count
+  assert.equal((await asha.req('/api/mocks/free-mock-1/result', { method: 'POST', body: { score: 999 } })).status, 400);
+  assert.equal((await new Agent().req('/api/mocks/free-mock-1/result', { method: 'POST', body: { score: 10 } })).status, 401);
+});
+
 test('posts need a Tomorrow ID and 18+, likes are private', async () => {
   assert.equal((await asha.req('/api/posts', { method: 'POST', body: { text: 'first' } })).status, 403);
   assert.equal((await zoya.req('/api/posts', { method: 'POST', body: { text: 'hey' } })).status, 403);
@@ -99,7 +144,7 @@ test('content: public to read, admin token to publish', async () => {
 });
 
 test('pages are served', async () => {
-  for (const p of ['/', '/tomorrow/', '/openprep/', '/goodhabit/', '/privacy/', '/delete-data/', '/build/', '/admin/', '/play/']) { const r = await fetch(BASE + p); assert.equal(r.status, 200, p); }
+  for (const p of ['/', '/tomorrow/', '/openprep/', '/openprep/learn/', '/openprep/mock/', '/goodhabit/', '/goodhabit/sim/', '/privacy/', '/delete-data/', '/build/', '/admin/', '/play/', '/sw.js', '/data/sim.json']) { const r = await fetch(BASE + p); assert.equal(r.status, 200, p); }
   assert.equal((await fetch(BASE + '/nope')).status, 404);
 });
 

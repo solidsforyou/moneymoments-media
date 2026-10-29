@@ -2,9 +2,10 @@
 // log in on shares, so anything you drop there shows up on your other devices.
 import { getJSON, setJSON } from '../lib/store.mjs';
 import { json, fail, body, handled, requireUser, clean, id, publicUser } from '../lib/http.mjs';
-import { notifyTelegram } from '../lib/notify.mjs';
+import { notify } from '../lib/notify.mjs';
 
-const chatId = (a, b) => a === b ? `self_${a}` : [a, b].sort().join('_');
+// user ids are base64url (letters, digits, - and _), so '.' can never appear in one
+const chatId = (a, b) => a === b ? `self.${a}` : [a, b].sort().join('.');
 async function inbox(uid) { return (await getJSON('chats', `inbox/${uid}`)) || {}; }
 async function touch(uid, cid, other, preview) { const ib = await inbox(uid); ib[cid] = { other, preview, at: Date.now(), unread: (ib[cid]?.unread || 0) + (other === uid ? 0 : 1) }; await setJSON('chats', `inbox/${uid}`, ib); }
 
@@ -22,7 +23,8 @@ export default handled(async (req, ctx) => {
     return json({ id: chatId(u.id, ref.id) });
   }
   if (!cid) return fail(404, 'Not found.');
-  const parts = cid.startsWith('self_') ? [cid.slice(5), cid.slice(5)] : cid.split('_');
+  const parts = cid.startsWith('self.') ? [cid.slice(5), cid.slice(5)] : cid.split('.');
+  if (parts.length !== 2) return fail(404, 'Not found.');
   if (!parts.includes(u.id)) return fail(403, 'Not your chat.');
   const other = parts[0] === u.id ? parts[1] : parts[0];
   const log = (await getJSON('chats', `log/${cid}`)) || [];
@@ -35,9 +37,10 @@ export default handled(async (req, ctx) => {
   if (sub === 'send' && m === 'POST') {
     const b = await body(req), msg = { id: id(8), from: u.id, at: Date.now(), device: clean(b.device, 40) || null };
     if (b.file) {
-      const f = await getJSON('files', `meta/${b.file}`); if (!f || f.owner !== u.id) return fail(400, 'That file isn\'t yours to send.');
+      const f = await getJSON('files', `meta/${b.file}`); if (!f || f.owner !== u.id || !f.done) return fail(400, 'That file isn\'t yours to send.');
       f.allowed = [...new Set([...(f.allowed || []), other])]; await setJSON('files', `meta/${b.file}`, f);
       msg.file = { id: b.file, name: f.name, size: f.size, type: f.type };
+      if (b.thumb) { const t = await getJSON('files', `meta/${b.thumb}`); if (t && t.owner === u.id && t.done && t.size <= 400000) { t.allowed = [...new Set([...(t.allowed || []), other])]; await setJSON('files', `meta/${b.thumb}`, t); msg.file.thumb = b.thumb; } }
     }
     if (b.text) msg.text = clean(b.text, 4000);
     if (b.card) msg.card = { app: clean(b.card.app, 20), title: clean(b.card.title, 80), sub: clean(b.card.sub, 120), url: clean(b.card.url, 300) };
@@ -45,7 +48,9 @@ export default handled(async (req, ctx) => {
     log.push(msg); if (log.length > 2000) log.splice(0, log.length - 2000);
     await setJSON('chats', `log/${cid}`, log);
     const preview = msg.text ? msg.text.slice(0, 80) : msg.file ? `📎 ${msg.file.name}` : `Card: ${msg.card.title}`;
-    await touch(u.id, cid, other, preview); if (other !== u.id) { await touch(other, cid, u.id, preview); await notifyTelegram(await getJSON('users', `id/${other}`), `${u.name} on Tomorrow: ${preview}`); }
+    await touch(u.id, cid, other, preview);
+    if (other !== u.id) { await touch(other, cid, u.id, preview); await notify(await getJSON('users', `id/${other}`), { title: u.name, body: preview, url: `/tomorrow/#/chat/${cid}` }); }
+    else if (msg.device) await notify(u, { title: `From your ${msg.device}`, body: preview, url: `/tomorrow/#/chat/${cid}` }, msg.device);
     return json({ message: msg });
   }
   return fail(404, 'Not found.');

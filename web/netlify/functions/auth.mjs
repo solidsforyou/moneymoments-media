@@ -8,6 +8,7 @@ const APPS = { prep: 'PrepID', good: 'GoodID', tm: 'Tomorrow ID' };
 
 async function saveUser(u) { await setJSON('users', `id/${u.id}`, u); await setJSON('users', `handle/${u.handle}`, { id: u.id }); }
 async function byHandle(h) { const r = await getJSON('users', `handle/${h}`); return r && getJSON('users', `id/${r.id}`); }
+const newCode = () => id(9).replace(/[-_]/g, 'x').slice(0, 12).toUpperCase().replace(/(.{4})(?=.)/g, '$1-');
 const ok = (u, extra = {}) => json({ user: publicUser(u), ...extra }, 200, { 'set-cookie': sessionCookie(u.id) });
 
 // Telegram Login Widget check: https://core.telegram.org/widgets/login#checking-authorization
@@ -31,7 +32,8 @@ export default handled(async (req, ctx) => {
     if (await byHandle(handle)) return fail(409, 'That ID is taken. Try another.');
     const salt = id(16), u = { id: id(), name, handle, age, created: Date.now(), ids: {}, salt, pw: await scrypt(String(b.password), salt), oseLinked: b.app !== 'tm', notify: 'app' };
     if (b.app === 'tm') u.ids.tm = handle;
-    await saveUser(u); return ok(u);
+    const code = newCode(); u.rc = await scrypt(code.replace(/-/g, ''), salt);
+    await saveUser(u); return ok(u, { recoveryCode: code });
   }
   if (action === 'login' && m === 'POST') {
     const b = await body(req), u = await byHandle(clean(b.handle, 24).toLowerCase().replace(/^@/, ''));
@@ -42,8 +44,9 @@ export default handled(async (req, ctx) => {
     const d = await body(req);
     if (!process.env.TELEGRAM_BOT_TOKEN) return fail(503, 'Telegram login isn\'t switched on yet.');
     if (!telegramValid(d)) return fail(401, 'Telegram couldn\'t confirm this login. Try again.');
-    const link = await getJSON('users', `tg/${d.id}`);
-    let u = link && await getJSON('users', `id/${link.id}`);
+    const link = await getJSON('users', `tg/${d.id}`), signedIn = await currentUser(req);
+    if (signedIn && link && link.id !== signedIn.id) return fail(409, 'That Telegram account is already linked to another ID.');
+    let u = signedIn || (link && await getJSON('users', `id/${link.id}`));
     if (!u) {
       let handle = clean(d.username || `tg${d.id}`, 24).toLowerCase().replace(/[^a-z0-9._]/g, '_');
       if (!HANDLE.test(handle) || await byHandle(handle)) handle = `tg${d.id}`.slice(0, 24);
@@ -53,6 +56,15 @@ export default handled(async (req, ctx) => {
     await saveUser(u); await setJSON('users', `tg/${d.id}`, { id: u.id });
     return ok(u);
   }
+  if (action === 'recover' && m === 'POST') {   // reset a password with the recovery code shown at sign-up
+    const b = await body(req), u = await byHandle(clean(b.handle, 24).toLowerCase().replace(/^@/, ''));
+    const code = String(b.code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (!u || !u.rc || (await scrypt(code, u.salt)) !== u.rc) return fail(401, 'That ID and recovery code don\'t match.');
+    if (String(b.password || '').length < 8) return fail(400, 'Use a password of 8 characters or more.');
+    u.salt = id(16); u.pw = await scrypt(String(b.password), u.salt); const next = newCode(); u.rc = await scrypt(next.replace(/-/g, ''), u.salt);
+    await saveUser(u); return ok(u, { recoveryCode: next });
+  }
+  if (action === 'newcode' && m === 'POST') { const u = await requireUser(req); if (!u.salt) u.salt = id(16); const c = newCode(); u.rc = await scrypt(c.replace(/-/g, ''), u.salt); await saveUser(u); return json({ recoveryCode: c }); }
   if (action === 'logout' && m === 'POST') return json({ ok: true }, 200, { 'set-cookie': clearCookie() });
   if (action === 'appid' && m === 'POST') {
     const u = await requireUser(req), b = await body(req), app = b.app, h = clean(b.handle || u.handle, 24).toLowerCase().replace(/^@/, '');
