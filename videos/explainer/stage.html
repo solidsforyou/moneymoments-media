@@ -14,6 +14,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F2F2F7;font-fam
 #masc .n{display:flex;flex-direction:column;gap:2px;padding-bottom:14px}
 #masc b{font-size:26px}#masc small{font-size:19px;color:rgba(60,60,67,.65)}
 .fade{transition:opacity .45s ease,transform .45s ease}
+#left.pop{animation:capin .32s cubic-bezier(.2,.8,.2,1)}@keyframes capin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .out{opacity:0;transform:translateY(14px)}
 #phone{position:absolute;left:1180px;top:94px;width:414px;height:868px;border-radius:56px;background:#111214;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
 #phone iframe{width:390px;height:844px;border:0;border-radius:44px;background:#F2F2F7;display:block}
@@ -31,11 +32,21 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F2F2F7;font-fam
 <div id="phone"><iframe id="app" title="OpenSource Everything preview"></iframe></div>
 <div id="finger"></div>
 <div id="foot">Clickable preview · sample people · not live yet</div>
-<div id="end"><div class="crew" id="endcrew"></div><h1>Built in the open.</h1><p>Tomorrow, OpenPrep, GoodHabit and more. One OpenID. One inbox.</p><span class="url">opensourceeverything.in</span></div>
+<div id="end"><div class="crew" id="endcrew"></div><h1>Built in the open.</h1><p id="endline">Tomorrow, OpenPrep, GoodHabit and more. One OpenID. One inbox.</p><span class="url">opensourceeverything.in</span></div>
 <script>
 window.setCap = (chap, title, sub, mascHtml) => {
   const L = document.getElementById('left'); L.classList.add('out');
   setTimeout(() => { document.getElementById('chap').textContent = chap; document.getElementById('title').innerHTML = title; document.getElementById('sub').textContent = sub; document.getElementById('masc').innerHTML = mascHtml || ''; L.classList.remove('out'); }, 450);
+};
+window.setCapNow = (chap, title, sub, mascHtml) => {
+  const L = document.getElementById('left'); document.getElementById('chap').textContent = chap; document.getElementById('title').innerHTML = title; document.getElementById('sub').textContent = sub; document.getElementById('masc').innerHTML = mascHtml || '';
+  L.classList.remove('out', 'pop'); void L.offsetWidth; L.classList.add('pop');
+};
+// beat clock: after `dropAt` seconds of song time, the phone bumps on every beat
+window.beatClock = (t0, phase, period, dropAt) => {
+  const ph = document.getElementById('phone');
+  const tick = () => { const t = (Date.now() - t0) / 1000; if (t >= dropAt) { const k = Math.round((t - phase) / period), d = t - (phase + k * period); if (Math.abs(d) < 0.02 && ph.dataset.k != k) { ph.dataset.k = k; ph.animate([{ transform: 'scale(1.025)' }, { transform: 'scale(1)' }], { duration: 260, easing: 'ease-out' }); } } requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
 };
 window.finger = (x, y, show) => { const f = document.getElementById('finger'); f.style.left = x + 'px'; f.style.top = y + 'px'; f.style.opacity = show ? 1 : 0; };
 window.press = on => { document.getElementById('finger').style.transform = on ? 'scale(.8)' : 'scale(1)'; };

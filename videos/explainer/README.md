@@ -30,3 +30,22 @@ ffmpeg -ss 1.3 -i /tmp/exp/*.webm -i bed.wav -filter_complex "[1:a]loudnorm=I=-1
 `stage.html` holds the captions, phone frame, finger and end card. `record.cjs` taps the
 real buttons, so if the preview's buttons change, update its selectors. Audio is a synth
 bed at -16 LUFS with a chime per chapter; no voiceover yet.
+
+## Beat-cut version (to "Welcome To Miami (Slowed)", 80.8 s)
+
+`record-beat.cjs` times the whole walk-through to the song: 110 BPM, every chapter starts on
+a downbeat, every tap lands on a beat, the simulator's Covid crash day hits on the drop
+(58.5 s), and the phone bumps on each beat after it. `names.py` makes the recording copy
+match the latest decisions (Olly, Sunny, Buddy, GoodGuy; no challenges on Tomorrow).
+
+- `out/ose-explainer-beat-for-posting-silent.mp4`: post this, then add the song from
+  Instagram's own music library, starting at the song's beginning, so the cuts line up and
+  the audio is licensed.
+- The copy with the song mixed in is a preview only and is not committed (the song is
+  copyrighted; it came from a phone screen recording of Spotify).
+
+```
+python3 videos/explainer/names.py <wrapped-preview.html> ose-video.html
+node videos/explainer/record-beat.cjs ose-video.html <dir>      # prints the song offset
+ffmpeg -ss <offset> -t 80.79 -i <dir>/*.webm -i song.wav ...    # see the commit for the full line
+```
