@@ -104,7 +104,11 @@ def test_bad_input_exits_2(tmp_path):
     script = Path(__file__).with_name("check_sources.py")
     for content in ("not json", '{"claims": "x"}', '{"published": "soon", "claims": []}',
                     '{"claims": [{"text": null, "sources": []}]}', '{"claims": [{"text": "x", "sources": [5]}]}',
-                    '{"claims": [{"text": "x", "sources": [{"url": 7}]}]}'):
+                    '{"claims": [{"text": "x", "sources": [{"url": 7}]}]}',
+                    '{"claims": [{"text": "x", "evergreen": "no", "sources": []}]}',
+                    '{"claims": [{"text": "x", "at": 1, "sources": []}]}',
+                    '{"claims": [{"text": "x", "risk": "extreme", "sources": []}]}',
+                    '{"claims": [{"text": "x", "sources": [{"url": "https://a.com", "type": 7}]}]}'):
         f = tmp_path / "v.json"
         f.write_text(content)
         p = subprocess.run([sys.executable, str(script), str(f)], capture_output=True, text=True)

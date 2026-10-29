@@ -252,3 +252,43 @@ def test_git_pre_push_hook_blocks_real_pushes(tmp_path):
     audit(work, "add", "--verdict", "PASS", "--kind", "code", "--summary", "ok", "--all-unaudited")
     p = subprocess.run(["git", "push", "-q", "origin", "main"], cwd=work, capture_output=True, text=True)
     assert p.returncode == 0, p.stderr
+
+
+def kit_repo(tmp_path):
+    import shutil
+    kit = SCRIPT.parents[3].parent  # app-kit/
+    remote, work = tmp_path / "remote.git", tmp_path / "work"
+    sh("git", "init", "-q", "--bare", str(remote), cwd=tmp_path)
+    work.mkdir()
+    repo(work)
+    shutil.copytree(kit / ".claude", work / ".claude")
+    shutil.copytree(kit / ".githooks", work / ".githooks")
+    sh("git", "add", "-A", cwd=work)
+    sh("git", "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "kit", cwd=work)
+    sh("git", "remote", "add", "origin", str(remote), cwd=work)
+    return work
+
+
+def test_pushing_another_branch_is_checked(tmp_path):
+    work = kit_repo(tmp_path)
+    audit(work, "init")
+    sh("git", "checkout", "-qb", "feat", cwd=work)
+    feat = commit(work, "feat.txt")
+    sh("git", "checkout", "-q", "main", cwd=work)
+    for target in ("feat", "feat:refs/heads/feat2"):
+        p = subprocess.run(["git", "push", "-q", "origin", target], cwd=work, capture_output=True, text=True)
+        assert p.returncode != 0 and "blocked by the auditor" in p.stderr, (target, p.stderr)
+    audit(work, "add", "--verdict", "PASS", "--kind", "code", "--summary", "feat ok", "--commit", feat)
+    p = subprocess.run(["git", "push", "-q", "origin", "feat"], cwd=work, capture_output=True, text=True)
+    assert p.returncode == 0, p.stderr
+
+
+def test_init_restores_a_lost_exec_bit_and_check_warns_when_inactive(tmp_path):
+    work = kit_repo(tmp_path)
+    hook = work / ".githooks" / "pre-push"
+    hook.chmod(0o644)
+    code, out = audit(work, "init")
+    assert "Made .githooks/pre-push executable" in out and os.access(hook, os.X_OK)
+    sh("git", "config", "--unset", "core.hooksPath", cwd=work)
+    code, out = audit(work, "check")
+    assert code == 0 and "pre-push hook is not active" in out

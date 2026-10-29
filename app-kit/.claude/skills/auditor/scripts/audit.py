@@ -218,6 +218,10 @@ def cmd_init(a, root):
     (root / "audit" / "reports").mkdir(parents=True, exist_ok=True)
     hooks_dir = root / ".githooks"
     if (hooks_dir / "pre-push").exists():
+        hook = hooks_dir / "pre-push"
+        if not os.access(hook, os.X_OK):
+            hook.chmod(hook.stat().st_mode | 0o111)  # copies via zip or upload can drop the bit; git ignores it then
+            print("Made .githooks/pre-push executable.")
         try:
             current = git("config", "--get", "core.hooksPath", cwd=root)
         except RuntimeError:
@@ -319,16 +323,54 @@ def cmd_status(a, root):
     return 1 if un or fails else 0
 
 
+def pushed_commits(root, rows, remote, stdin_text):
+    """Non-merge commits a push would send (from git's pre-push stdin), newer than the baseline."""
+    zero = "0" * 40
+    shas = []
+    for line in stdin_text.splitlines():
+        parts = line.split()
+        if len(parts) != 4 or parts[1] == zero:
+            continue  # malformed, or a branch deletion: nothing is sent
+        local_sha, remote_sha = parts[1], parts[3]
+        args = ["rev-list", "--no-merges", local_sha, "--not", f"--remotes={remote}"]
+        if remote_sha != zero:
+            args.append(remote_sha)
+        base = baseline(rows)
+        if base:
+            args.append(base)
+        shas += git(*args, cwd=root).split()
+    done = covered(rows)
+    return [x for x in dict.fromkeys(shas) if x not in done and not only_audit_files(root, x)]
+
+
 def cmd_check(a, root):
     rows = read_rows(root)
     if rows is None:
         print("No audit ledger: run `audit.py init`.")
         return 1
+    if a.pushing_to:
+        un = pushed_commits(root, rows, a.pushing_to, sys.stdin.read())
+        fails = open_fails(rows)
+        if un or fails:
+            print(f"Audit needed before this push: {len(un)} unaudited commit(s) being pushed "
+                  f"({', '.join(x[:10] for x in un[:5])}), {len(fails)} open FAIL(s). Run audit.py brief.")
+            return 1
+        print("Everything being pushed is audited.")
+        return 0
     un, fails, _ = summary(root, rows)
     if un or fails:
         print(f"Audit needed: {len(un)} unaudited commit(s), {len(fails)} open FAIL(s). Run audit.py brief.")
         return 1
     print("Everything is audited.")
+    hook = root / ".githooks" / "pre-push"
+    if hook.exists():
+        try:
+            path = git("config", "--get", "core.hooksPath", cwd=root)
+        except RuntimeError:
+            path = ""
+        if path != ".githooks" or not os.access(hook, os.X_OK):
+            print("Warning: git's pre-push hook is not active (run audit.py init, or set core.hooksPath to .githooks "
+                  "and make .githooks/pre-push executable).")
     return 0
 
 
@@ -427,7 +469,8 @@ def main():
     p.add_argument("--resolves")
     p.add_argument("--all-unaudited", action="store_true")
     p = sub.add_parser("status"); p.add_argument("--json", action="store_true")
-    sub.add_parser("check")
+    p = sub.add_parser("check")
+    p.add_argument("--pushing-to", metavar="REMOTE", help="git pre-push mode: read the pushed refs from stdin")
     sub.add_parser("brief")
     p = sub.add_parser("hook"); p.add_argument("event", choices=["stop", "prepush"])
     a = ap.parse_args()

@@ -143,15 +143,37 @@ Build the simplest feed that serves the brief, and say how it ranks.
 1. **Community guidelines** page: what's not allowed, with examples, and
    what happens (warning, removal, strike, suspension, ban). Short and
    plain; run the humanizer.
-2. **Prevention before posting:** the scam scanner on text (a first-pass
-   heuristic: it catches common patterns, moderators catch the rest, and
-   every miss becomes a new rule and test). To know how good it really is,
+2. **Prevention before posting, in three layers:**
+   - **Layer 1, `scan_scams.py` ported into the app:** instant and free.
+     It blocks the obvious (seed-phrase and OTP requests, look-alike
+     links, pay-to-release) and holds clear patterns. Measured on scams it
+     wasn't written against, it catches only a minority (19% at the third
+     audit, 47% after general signals were added, on a partly seen set),
+     so it must never be described as "the scam filter".
+   - **Layer 2, a language-model classifier** on the messages that matter:
+     anything with a link, a phone number, a payment ID or a wallet
+     address; DMs from accounts under 30 days old or with no mutual
+     follows; and everything layer 1 warns on. A small, cheap model (for
+     example Claude Haiku) gets the message, the sender's account age and a
+     short rubric of scam types (impersonation, credential or code
+     requests, pay-to-receive, promised returns, romance and "lend me"
+     scams, fake jobs, fake recovery, fake presales and airdrops, remote
+     access) and returns allow, warn or hold with a reason. Hold means a
+     moderator sees it before the recipient does. Cost and latency stay
+     small because only this slice is sent. Its own held-out catch rate is
+     measured the same way as layer 1's.
+   - **Layer 3, people:** the moderation queue (point 4) is the main
+     defence. Every scam a moderator finds becomes a held-out example for
+     both layers.
+   To know how good layers 1 and 2 really are, To know how good it really is,
    the auditor keeps a **held-out set** (`audit/scam-holdout.jsonl`: real
-   scams and real comments the rules were never written against) and
-   reports the catch rate and false-positive rate at each sweep; targets:
-   90% or more of scams held or blocked, under 2% of real comments held or
-   blocked. Rules tuned to the held-out set make it useless, so it is
-   refreshed with new examples each time; a
+   scams moderators found and real comments, never shown to whoever
+   writes the rules or the prompt) and reports each layer's catch rate and
+   false-positive rate at every sweep. Targets for layers 1 and 2
+   together: 90% or more of scams held or blocked, under 2% of real
+   comments held or blocked; CI fails if a change lowers the measured
+   rates. Rules tuned to the held-out set make it useless, so it is
+   refreshed with new examples each time; and a
    moderation API on images and video frames; new accounts limited
    (no links, few DMs, slower posting) until they've been around a while.
 3. **Reporting:** one tap from every post, comment, message and profile;

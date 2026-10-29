@@ -182,8 +182,12 @@ def main():
                 isinstance(c, dict) and isinstance(c.get("text", ""), str) and isinstance(c.get("sources", []), list)
                 and all(isinstance(x, dict) and all(isinstance(x.get(k, ""), str) for k in ("url", "publisher", "date", "archived_url"))
                         for x in c.get("sources", []))
+                and isinstance(c.get("evergreen", False), bool) and isinstance(c.get("at", ""), str)
+                and c.get("risk", "normal") in ("normal", "high", "Normal", "High", "NORMAL", "HIGH")
+                and all(x.get("type") in (None, "primary", "tier1", "tier2", "not_alone") for x in c.get("sources", []) if isinstance(x, dict))
                 for c in video.get("claims", [])):
-            raise ValueError("expected {\"claims\": [{\"text\": ..., \"sources\": [...]}]}")
+            raise ValueError("expected {\"claims\": [{\"text\": str, \"at\": \"mm:ss\", \"risk\": \"normal\"|\"high\", "
+                             "\"evergreen\": true|false, \"sources\": [{\"url\": str, ...}]}]}")
         if video.get("published") and not parse_date(video["published"]):
             raise ValueError(f"published date {video['published']!r} isn't YYYY-MM-DD")
         tiers = dict(DEFAULT_TIERS)

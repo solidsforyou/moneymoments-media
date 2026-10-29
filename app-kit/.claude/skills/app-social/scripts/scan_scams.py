@@ -8,8 +8,11 @@ giveaways, wallet addresses and lookalike exchange links. English and common
 Hinglish phrasing; lookalike letters (Cyrillic, accents), invisible
 characters and s.p.a.c.e.d letters are folded before matching.
 
-It is a heuristic, not a guarantee: it catches the common patterns cheaply so
-moderators see the rest. Every miss a moderator finds becomes a new rule and
+It is layer 1 of 3, not the defence: phrase rules plus general signals
+(credential requests, pay-to-receive, staff claims, account threats,
+payment IDs, promised income) catch the common patterns instantly, but on
+scams it wasn't written against it catches only a minority (see
+app-social.md). A language-model classifier and human moderators do the rest. Every miss a moderator finds becomes a new rule and
 a must-catch test. The app's own filter (TypeScript or SQL) is ported from
 these rules and must pass the same tests, so this file is also the spec.
 
@@ -171,6 +174,89 @@ def domain_problem(raw_domain: str):
     return None
 
 
+
+# --- General signals (scored per sentence, then combined) -------------------------------
+# Phrase rules above only catch what someone thought to write down. These score the
+# ingredients almost every scam needs, so new wordings still add up.
+SIG_SENSITIVE = re.compile(r"\b(?:seed|recovery|mnemonic|secret)\s*(?:phrase|words?|key)|private\s*keys?|keystore|passwords?|passcode"
+                           r"|\botp\b|\bpin\b(?!\s+code)|\d\s*-?\s*digit\s+(?:code|otp|pin)|verification\s+code|2fa|login\s+(?:details|id)"
+                           r"|credentials|card\s+(?:number|details)|cvv|(?:wallet|seed)\s+(?:backup|key|phrase)", re.I)
+SIG_REQUEST = re.compile(r"\b(?:share|send|give|confirm|enter|reply|tell|provide|submit|upload|forward|screenshot|type|read\s+out"
+                         r"|de\s+do|dedo|do\b|bhej\w*|batao|bata\s+do|dijiye|chahiye|need)\b", re.I)
+SIG_SAFE = re.compile(r"\b(?:never|don'?t|do\s+not|kabhi|mat|storage|method|offline|on\s+paper|steel|safely|restoring|manager|reset\s+link)\b", re.I)
+SIG_REMOTE = re.compile(r"\b(?:any\s*desk|team\s*viewer|quick\s*support|rust\s*desk|airdroid|screen\s*shar\w*|remote\s+access)\b", re.I)
+SIG_AUTHORITY = re.compile(r"\b(?:admin|support|security|helpdesk|customer\s+care|engineer|officer|department|compliance|official|team|moderator"
+                           r"|staff|agent|income\s+tax|it\s+department|police|cyber\s*cell|rbi|sebi|government|bank)\b", re.I)
+SIG_SELF = re.compile(r"\b(?:i\s*am|i'm|we\s+are|we're|calling\s+from|on\s+behalf\s+of|this\s+is\s+\w+\s+from|my\s+name\s+is\s+\w+\s+from)\b", re.I)
+SIG_THREAT = re.compile(r"\b(?:your|ur|aapka|aapki)\s+(?:\w+\s+)?(?:account|kyc|wallet|funds?|pan|aadhaar|card|profile|id)\b.{0,50}?"
+                        r"\b(?:expire[sd]?|blocked?|suspend\w*|frozen|freez\w*|locked|deleted?|deactivat\w*|closed|penalt\w*|flagged|on\s+hold|band)\b"
+                        r"|\blegal\s+action\b|\barrest\b|\bwarrant\b", re.I)
+SIG_PAY_TO_GET = re.compile(r"\b(?:pay|send|deposit|transfer|bhejo)\b.{0,60}?\b(?:to\s+)?(?:release|unlock|receive|claim|activate|refund|get\b.{0,25}?\bback)\b"
+                            r"|\b(?:fee|charge|penalty|tax)\s+(?:to|for|before)\s+(?:release|unlock|receive|claim|withdraw\w*|activat\w*)"
+                            r"|\b(?:clearance|processing|release|unlock|verification|activation)\s+(?:charge|fee)", re.I)
+SIG_GIVEAWAY = re.compile(r"\bgiv(?:ing|e)\s*away\b|\bgiveaway\b|\bairdrop\b|\bfree\s+(?:btc|eth|usdt|crypto|tokens?|coins?)\b", re.I)
+SIG_OFF = re.compile(r"\b(?:whats\s?app|telegram|tg|signal|dm\s+me|inbox\s+me|text\s+me|call\s+me|click|link\s+in\s+bio)\b", re.I)
+SIG_UPI = re.compile(r"\b[\w.\-]{2,}@(?:ok\w+|ybl|paytm|upi|ibl|axl|apl|pty\w+|icici|sbi|hdfcbank|axisbank|kotak|airtel|freecharge|jio)\b"
+                     r"|\bupi\s+id\b", re.I)
+SIG_INCOME = re.compile(r"(?:\b(?:earn|make|kamao|kamaye|profit|income|payout)\w*\b.{0,40}?(?:₹|rs\.?|inr|\$|usdt|\d)[\d,.]*\s*(?:k|%)?\s*"
+                        r"(?:daily|per\s+day|a\s+day|every\s+day|weekly|per\s+week|monthly|per\s+month|roz|har\s+din)\b)"
+                        r"|\b(?:task[\s-]*based|part[\s-]*time)\s+(?:job|work|income)\b|\bwork\s+from\s+home\b.{0,40}\bearn", re.I)
+SIG_BADGE = re.compile(r"\b(?:verified|blue\s+tick|badge|verification)\b.{0,40}?(?:₹|rs\.?|inr|\bpay\b|\bfee\b|\$)\s*\d*", re.I)
+
+
+def signal_hits(t: str):
+    """General scam signals per sentence; returns (name, points, match) like the rules."""
+    hits = []
+    sentences = [x for x in re.split(r"(?<=[.!?])\s+|\n+|;\s*", t) if x.strip()]
+    found = set()
+    for sent in sentences:
+        if SIG_SENSITIVE.search(sent) and SIG_REQUEST.search(sent) and not SIG_SAFE.search(sent):
+            found.add(("asks for credentials or a code", 10, SIG_SENSITIVE.search(sent).group(0)))
+        if SIG_REMOTE.search(sent):
+            found.add(("remote-access app", 8, SIG_REMOTE.search(sent).group(0)))
+        m = SIG_SELF.search(sent)
+        if m:
+            after = sent[m.end():m.end() + 50]
+            brand = any(b in after.lower() for b in KNOWN_BRANDS)
+            if SIG_AUTHORITY.search(after) or brand:
+                found.add(("claims to be staff, a brand or an authority", 2, sent[m.start():m.end() + 30][:50]))
+        if re.search(r"\b(?:" + "|".join(KNOWN_BRANDS) + r"|admin|support|security)\s+(?:team\s+|support\s+|security\s+|staff\s+)?(?:here|this\s+side)\b", sent, re.I):
+            found.add(("claims to be staff, a brand or an authority", 2, sent[:50]))
+        if SIG_THREAT.search(sent):
+            found.add(("threat about the user's account", 4, SIG_THREAT.search(sent).group(0)[:50]))
+        if SIG_PAY_TO_GET.search(sent):
+            found.add(("pay or send to receive or release", 6, SIG_PAY_TO_GET.search(sent).group(0)[:50]))
+        if SIG_GIVEAWAY.search(sent):
+            found.add(("giveaway or free crypto", 2, SIG_GIVEAWAY.search(sent).group(0)))
+        if SIG_UPI.search(sent):
+            found.add(("payment ID (UPI) to send money to", 4, SIG_UPI.search(sent).group(0)))
+        mi = SIG_INCOME.search(sent)
+        if mi and not NEGATION.search(sent[max(0, mi.start() - 30):mi.start()]) and not NOT_A_PROMISE.search(sent):
+            found.add(("income promised per period or task job", 5, mi.group(0)[:50]))
+        if SIG_BADGE.search(sent) and re.search(r"\b(?:pay|dm|₹|rs\.?|inr|\$|fee|buy|get)\b", sent, re.I):
+            found.add(("sells verification or a badge", 6, SIG_BADGE.search(sent).group(0)[:50]))
+        if SIG_OFF.search(sent):
+            found.add(("moves the conversation elsewhere", 1, SIG_OFF.search(sent).group(0)))
+    names = {f[0] for f in found}
+    # one entry per signal name (highest points)
+    best = {}
+    for n, pts, mt in found:
+        if n not in best or pts > best[n][1]:
+            best[n] = (n, pts, mt)
+    hits = list(best.values())
+    risky = names & {"asks for credentials or a code", "remote-access app", "threat about the user's account",
+                     "pay or send to receive or release", "payment ID (UPI) to send money to", "moves the conversation elsewhere",
+                     "sells verification or a badge", "income promised per period or task job"}
+    if "claims to be staff, a brand or an authority" in names and risky:
+        hits.append(("staff or authority claim combined with a risky ask", 4, ""))
+    if "threat about the user's account" in names and (names & {"pay or send to receive or release", "moves the conversation elsewhere",
+                                                                 "payment ID (UPI) to send money to"}):
+        hits.append(("account threat combined with a payment or contact push", 3, ""))
+    if "giveaway or free crypto" in names and (names & {"pay or send to receive or release", "moves the conversation elsewhere"}):
+        hits.append(("giveaway combined with a send or contact push", 6, ""))
+    return hits
+
+
 def scan(text: str, new_account: bool = False):
     t = fold(text)
     hits = []
@@ -218,6 +304,17 @@ def scan(text: str, new_account: bool = False):
         hits.append(("shouting (mostly capitals)", 1, ""))
     if re.search(r"(.)\1{7,}", t) or len(re.findall(r"[\U0001F300-\U0001FAFF]", t)) >= 8:
         hits.append(("spam pattern (repeats or emoji flood)", 1, ""))
+
+    rule_names = {h[0] for h in hits}
+    for h in signal_hits(t):
+        # don't count the same ingredient twice when a phrase rule already caught it
+        if h[0] == "asks for credentials or a code" and rule_names & {"asks for a seed phrase, private key or keystore", "asks for an OTP, PIN or password"}:
+            continue
+        hits.append(h)
+    # a link problem plus an account threat or authority claim is the classic phishing message
+    if any(h[1] == 8 and ("look-alike" in h[0] or "domain" in h[0] or "@" in h[0]) for h in hits) and \
+            any(h[0] in ("threat about the user's account", "claims to be staff, a brand or an authority") for h in hits):
+        hits.append(("phishing link with a threat or staff claim", 4, ""))
 
     score = sum(h[1] for h in hits)
     verdict = "block" if score >= 10 else "hold" if score >= 6 else "warn" if score >= 3 else "allow"

@@ -31,10 +31,18 @@ build and regulate, but still:
 - **Deep links:** open the coin in the exchange app if installed, else its
   Play Store page or website; test each exchange's link format on real
   phones; the referral code rides in the link, with no personal data.
-- **Disclose the commission** where the button is ("Chartroom may earn a
-  commission"), plus the settings/about page the brief describes. A paid
-  link presented as neutral advice is a disguised advertisement under
-  India's dark-pattern guidelines and ASCI's rules.
+- **"Not advice" on every trade button and price chip:** a short label
+  or one-tap info ("Prices for information, not investment advice") next
+  to every "Trade on <exchange>" button, coin price chip and invest
+  reminder. The brief's own risks section asks for it: in v1 every video
+  and article carries a paid trade link.
+- **Commission disclosure:** the brief and the founder's decision (memory
+  sheet) say earnings are explained once, on a page in settings/about.
+  Recommend to the founder, as their call, also a short notice at the
+  button ("Chartroom may earn a commission"): a paid link without one can
+  read as a disguised advertisement under India's dark-pattern guidelines
+  (CCPA, 2023) and ASCI's disclosure rules. Don't build it into the design
+  until they decide; record the decision in the memory sheet either way.
 - **Neutral choice:** the user picks their exchange once, from a list
   whose order doesn't depend on who pays more (or the order rule is
   disclosed). Never switch a user's exchange for a higher commission.
@@ -225,6 +233,12 @@ draft -> quoted (expires) -> submitted (idempotency key) -> pending
     confirm how TDS and GST appear on its contract notes.)
   - Off switch on every reminder and in settings; turning it off asks
     whether to keep, invest or withdraw the jar's balance.
+  - **Amounts must be real:** in affiliate mode the reminder opens the
+    exchange's own order or SIP screen, which has its own minimum (check
+    each exchange's current minimum; many are well above ₹10). Show the
+    exchange's real minimum in the reminder, or don't name an amount at
+    all: suggesting ₹10 and landing on a ₹100 minimum is close to the
+    "bait and switch" pattern in the same guidelines.
   - Wording says "invest", never "save"; ASCI's warning on every reminder;
     ASCI's crypto guidelines also bar calling crypto "currency",
     "securities", "custodian" or "depositories" in promotions; no streaks,

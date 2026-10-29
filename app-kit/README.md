@@ -25,7 +25,7 @@ idea -> app-spec -> app-stack -> app-ui-taste (direction) -> app-build (story by
 | `.claude/agents/auditor.md` | The auditor as a separate agent with a fresh context, so it never grades its own work; it reports and never fixes |
 | `scripts/audit.py` | The ledger (`audit/ledger.csv` + `audit/reports/`): records every verdict, lists unaudited commits and open FAILs |
 | `.claude/settings.json` | Hooks: a session can't end while files are uncommitted, commits are unaudited or a FAIL is open; common forms of `git push` and the GitHub write tools are blocked until it's clean; if the audit script breaks, pushes are blocked. Answers, designs and research that never become commits are audited by rule, not by hook |
-| `.githooks/pre-push` | git's own pre-push hook (switched on by `audit.py init`): refuses every push while anything is unaudited, however the command was typed |
+| `.githooks/pre-push` | git's own pre-push hook (switched on by `audit.py init`): refuses any push that would send an unaudited commit (checking exactly the commits being pushed, on any branch), however the command was typed |
 | `preflight.py --push` | Fails on unaudited work too |
 
 First session in the app repo: `python3 .claude/skills/auditor/scripts/audit.py init`.
