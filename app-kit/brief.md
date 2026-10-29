@@ -73,7 +73,7 @@ brokerage at Zerodha, so long-term investors, the users this app wants, earn us 
 intraday and F&O pay (at most Rs 2 an order to us). The post describes customers referring
 friends. NSE's August 2024 circular says anyone referring clients must be an Authorised Person,
 and the post doesn't say how a company or app fits. Ask Zerodha in writing before relying on
-it. Other options: become an Authorised Person, use another broker with a revenue share, or a
+it. Founder's idea (29 Oct 2026, under review): keep Zerodha connect free and sell an AI stock teacher at Rs 500 a month with a demo account on delayed or historical prices; it must stay education, not advice (SEBI Jan 2025 rule for unregistered educators: no price data from the last three months naming a stock). Other options: become an Authorised Person, use another broker with a revenue share, or a
 small paid plan. Kite Connect (the API) is separate and pays nothing. A future e-commerce idea
 is parked.
 
