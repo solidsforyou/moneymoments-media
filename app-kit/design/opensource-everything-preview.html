@@ -861,6 +861,31 @@ button:active .pi{transform:scale(1.12)}
 .switch.on{background:var(--green)}.switch.on i{transform:translateX(20px)}
 .faq{background:var(--card);padding:12px 16px;border-bottom:.5px solid var(--sep)}
 .faq summary{font-weight:600;cursor:pointer}.faq p{color:var(--label2);margin-top:6px}
+/* ecosystem rebuild */
+.crewcard{background:var(--card);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.crewcard>b{font-size:17px}
+.crew{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media(max-width:420px){.crew{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.crewm{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.crewm .cm{width:72px;height:72px;display:block}
+.crewm .cm svg{width:100%;height:100%}
+.crewm b{font-size:15px}.crewm small{font-size:12px;color:var(--label2);line-height:1.3}
+.logo .mark svg{width:26px;height:26px;display:block}
+.tmname{font-weight:700!important;letter-spacing:-.01em;background:linear-gradient(90deg,#FF9500,#FF2D55);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chip2{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--fill);color:var(--label2)}
+.chip2.ok{background:rgba(52,199,89,.15);color:var(--greenT)}
+.votebtn{min-height:32px;border:0;border-radius:999px;padding:0 14px;background:var(--fill);color:var(--blue);font-weight:700;font-size:14px;transition:transform .15s cubic-bezier(.3,.7,.4,1.4)}
+.votebtn[aria-pressed="true"]{background:var(--blue);color:#fff}
+.votebtn:active{transform:scale(.94)}
+pre.code{background:var(--bg);border-radius:10px;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.5;overflow-x:auto;color:var(--label);margin:0}
+.acard{background:var(--card);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:3px;max-width:80%;align-self:flex-start;box-shadow:inset 0 0 0 .5px var(--sep)}
+.acard.me{align-self:flex-end}
+.acard .ak{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue)}
+.acard b{font-size:16px}.acard span:not(.ak){font-size:13.5px;color:var(--label2)}
+.acard button{margin-top:6px;min-height:36px;border:0;border-radius:999px;background:var(--fill);color:var(--blue);font-weight:700}
+.apptag{font-size:11px;font-weight:600;color:var(--label2);background:var(--fill);border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+.badge3{position:absolute;top:4px;right:2px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center}
+.p-btn.tgb{background:#3A8CC8!important}
 </style>
 
 <div id="app"></div>
@@ -900,7 +925,9 @@ const S = {
   hissab:{
     kabir:{name:'Kabir Shah', id:'@kabir', bg:'#06683F', state:'connected', bal:-45000, msgs:[['them','Goa photos are up!'],['hissab','Hissab · Dinner at Thalassa ₹1,800 · you paid · split 2 ways → Kabir owes you ₹900'],['me','Sending the cab money tonight?'],['hissab','Hissab · Cab ₹900 · Kabir paid · split 2 ways → you owe Kabir ₹450']]},
     riya:{name:'Riya Mehta', id:'@riya', bg:'#B5134F', state:'invite-in', bal:0, msgs:[['them','Started a Hissab with you for the Jaipur trip?']]},
-    zoya:{name:'Zoya Khan', id:'@zoya', bg:'#0E6B63', state:'chat', bal:0, msgs:[['them','That percentages reel was so good, sending to my sister']]},
+    zoya:{name:'Zoya Khan', id:'@zoya', bg:'#0E6B63', state:'chat', app:'tm', bal:0, msgs:[['card',{app:'tm',title:'Zoya posted on Tomorrow',sub:'Shipped my first portfolio site',btn:'Open in Tomorrow',r:'tm'}],['them','That percentages reel was so good, sending to my sister']]},
+    meera:{name:'Meera S.', id:'@meera', bg:'#1B4DFF', state:'chat', app:'prep', bal:0, msgs:[['them','Did the free mock today'],['card',{app:'prep',title:'Meera\'s mock result',sub:'11/18 · free full mock',btn:'Take the same mock',r:'mock'}]]},
+    arjun:{name:'Arjun Mehta', id:'@arjun', bg:'#8A5A00', state:'chat', app:'ose', bal:0, msgs:[['card',{app:'ose',title:'GST Basics for shops',sub:'The Good Stuff · free AI skill',btn:'Import',r:'skills'}],['them','This helped my dad\'s shop a lot']]},
   },
   chatWith:null, habitTab:'reels',
   prep:{chap:0, step:0, playing:false, cam:'wide', answered:null, mentor:[], mode:'read', rstep:0, rAnswer:null},
@@ -908,31 +935,34 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const OSE = ['home','challenges','apps','chats','profile','about','prep-about','habit-about','skills','library','community'], ALIAS = {cat:'prep-about', more:'apps', reels:'home'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','practice','money','sim'];
-const ROUTES = [...OSE, ...PREPW, ...HABITW];
+const OSE = ['home','build','me','about','prep-about','habit-about','tm-about','skills','library','community','ose-inbox'], TMW = ['tm','challenges','chats','profile'], ALIAS = {cat:'prep-about', more:'home', apps:'home', reels:'tm'}, PREPW = ['prep','quant','verbal','reason','mock','prep-inbox'], HABITW = ['habit','markets','practice','money','sim','habit-inbox'];
+const ROUTES = [...OSE, ...TMW, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
 
 function signedChip(){ return S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign up</button>`; }
-function appsBtn(){ return `<button class="backlink" data-act="nav" data-r="home" aria-label="Back to OpenSource Everything">‹ Today</button>`; }
+function appsBtn(){ return `<button class="backlink" data-act="nav" data-r="home" aria-label="Back to OpenSource Everything">‹ OSE</button>`; }
+function inboxBtn(app){ const n = Object.keys(S.hissab).filter(unreadChat).length; return `<button class="igbtn" data-act="nav" data-r="${INBOX[app]}" aria-label="Inbox${n ? ', ' + n + ' unread' : ''}">${igIcon('msg')}${n ? `<b class="badge3">${n}</b>` : ''}</button>`; }
+const newMsgBtn = '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>';
 function bar(world){
-  if (PREPW.includes(world)) {
-    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
-      <button class="logo" data-act="nav" data-r="prep" aria-label="OpenPrep home"><span class="mark" aria-hidden="true">${goodguy('happy','#3FA9FF')}</span><span>OpenPrep</span></button>${appsBtn()}</div></header>`;
-  }
-  if (HABITW.includes(world)) {
-    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
-      <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span>GoodHabit${world==='money'?' · practice':''}</span></button>${appsBtn()}</div></header>`;
-  }
-  return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="${world === 'home' ? 'feedmenu' : 'nav'}" data-r="home" aria-label="${world === 'home' ? 'OpenSource Everything, choose what to show' : 'OpenSource Everything home'}"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span>${world === 'home' ? '<span aria-hidden="true" style="font-size:12px;margin-left:2px">▾</span>' : ''}</button>
-    ${world === 'chats' ? '<button class="igbtn" data-act="newmsg" aria-label="New message"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4z"/></svg></button>' : `<button class="igbtn" data-act="newpost" aria-label="New post">${igIcon('plus')}</button><button class="igbtn" data-act="activity" aria-label="${S.actSeen ? 'Activity' : 'Activity, something new'}">${igIcon('bell')}${S.actSeen ? '' : '<i class="dot"></i>'}</button>`}</div></header>`;
+  const inInbox = world.endsWith('inbox') || world === 'chats';
+  if (PREPW.includes(world)) return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="prep" aria-label="OpenPrep home"><span class="mark" aria-hidden="true">${goodguy('happy','#3FA9FF')}</span><span>OpenPrep</span></button>${inInbox ? newMsgBtn : inboxBtn('prep')}${appsBtn()}</div></header>`;
+  if (HABITW.includes(world)) return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span class="mark" aria-hidden="true">${sikka()}</span><span>GoodHabit${world==='money'?' · practice':''}</span></button>${inInbox ? newMsgBtn : inboxBtn('habit')}${appsBtn()}</div></header>`;
+  if (TMW.includes(world)) return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:6px;min-height:58px">
+      <button class="logo" data-act="${world === 'tm' ? 'feedmenu' : 'nav'}" data-r="tm" aria-label="Tomorrow home"><span class="mark" aria-hidden="true">${kal()}</span><span class="tmname">Tomorrow</span>${world === 'tm' ? '<span aria-hidden="true" style="font-size:12px;margin-left:2px">▾</span>' : ''}</button>
+      ${inInbox ? newMsgBtn : `<button class="igbtn" data-act="activity" aria-label="${S.actSeen ? 'Activity' : 'Activity, something new'}">${igIcon('bell')}${S.actSeen ? '' : '<i class="dot"></i>'}</button>`}${appsBtn()}</div></header>`;
+  return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:6px;min-height:58px">
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${khula()}</span><span class="osename">OpenSource Everything</span></button>
+    ${inInbox ? newMsgBtn : inboxBtn('ose')}</div></header>`;
 }
-function icon(n){ const P = {today:'<rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.3 2.2 4.7-4.7"/>', sigma:'<path d="M18 4.5H6.5l6 7.5-6 7.5H18"/>', book:'<path d="M12 6.5C10 5 7.5 4.5 3.5 4.5v14c4 0 6.5.5 8.5 2 2-1.5 4.5-2 8.5-2v-14c-4 0-6.5.5-8.5 2z"/><path d="M12 6.5v14"/>', puzzle:'<path d="M10 3.5h4v2.2a1.8 1.8 0 1 0 3.6 0V3.5h2.9v6.4h-2.2a1.8 1.8 0 1 0 0 3.6h2.2v7H3.5v-7h2.2a1.8 1.8 0 1 0 0-3.6H3.5V3.5H10"/>', clip:'<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>', home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
+function icon(n){ const P = {plus:'<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M12 8v8M8 12h8"/>', spark:'<path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>', code:'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>', today:'<rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.3 2.2 4.7-4.7"/>', sigma:'<path d="M18 4.5H6.5l6 7.5-6 7.5H18"/>', book:'<path d="M12 6.5C10 5 7.5 4.5 3.5 4.5v14c4 0 6.5.5 8.5 2 2-1.5 4.5-2 8.5-2v-14c-4 0-6.5.5-8.5 2z"/><path d="M12 6.5v14"/>', puzzle:'<path d="M10 3.5h4v2.2a1.8 1.8 0 1 0 3.6 0V3.5h2.9v6.4h-2.2a1.8 1.8 0 1 0 0 3.6h2.2v7H3.5v-7h2.2a1.8 1.8 0 1 0 0-3.6H3.5V3.5H10"/>', clip:'<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>', home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
-  const tb = (o, cur, label) => `<nav class="tabbar" aria-label="${label}"><div class="in" style="grid-template-columns:repeat(${o.length},minmax(0,1fr))">${o.map(([r,i,l]) => { const n = r === 'chats' ? Object.keys(S.hissab).filter(unreadChat).length : 0; return `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''} aria-label="${l}${n ? ', ' + n + ' unread' : ''}">${icon(i)}${n ? `<b class="badge2">${n}</b>` : ''}<span>${l}</span></button>`; }).join('')}</div></nav>`;
-  if (OSE.includes(world)) { if (world === 'chats' && S.chatWith) return ''; const cur = ['home','apps','chats','profile'].includes(world) ? world : world === 'challenges' ? 'home' : 'apps';
-    return tb([['home','today','Today'],['apps','grid','Apps'],['chats','chat','Messages'],['profile','user','Me']], cur, 'OpenSource Everything'); }
+  const tb = (o, cur, label) => `<nav class="tabbar" aria-label="${label}"><div class="in" style="grid-template-columns:repeat(${o.length},minmax(0,1fr))">${o.map(([r,i,l]) => { if (r === '+new') return `<button data-act="newpost" aria-label="${l}">${icon(i)}<span>${l}</span></button>`; const n = r === 'chats' ? Object.keys(S.hissab).filter(unreadChat).length : 0; return `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''} aria-label="${l}${n ? ', ' + n + ' unread' : ''}">${icon(i)}${n ? `<b class="badge2">${n}</b>` : ''}<span>${l}</span></button>`; }).join('')}</div></nav>`;
+  if ((world.endsWith('inbox') || world === 'chats') && S.chatWith) return '';
+  if (OSE.includes(world)) return tb([['home','grid','Apps'],['skills','spark','Good Stuff'],['build','code','Build'],['me','user','Me']], ['home','skills','build','me'].includes(world) ? world : '', 'OpenSource Everything');
+  if (TMW.includes(world)) return tb([['tm','home','Home'],['challenges','trophy','Challenges'],['+new','plus','Post'],['chats','chat','Inbox'],['profile','user','Profile']], world, 'Tomorrow');
   if (PREPW.includes(world)) return tb([['prep','home','Home'],['quant','sigma','Quant'],['verbal','book','Verbal'],['reason','puzzle','Reasoning'],['mock','clip','Mock']], world, 'OpenPrep');
   if (!HABITW.includes(world) || world === 'money') return '';
   const t = [['practice','target','Play'],['habit','wallet','Hissab'],['markets','chart','Markets']];
@@ -941,9 +971,9 @@ function tabbar(world){
 function render(){
   clearTimers(); closeSheet();
   let r = location.hash.slice(1); if (ALIAS[r]) { history.replaceState(null, '', '#' + ALIAS[r]); r = ALIAS[r]; } if (!ROUTES.includes(r)) r = 'home';
-  document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
+  document.body.className = OSE.includes(r) ? 'home' : TMW.includes(r) ? 'home tmw' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vFeed,apps:vHome,challenges:vChallenges,profile:vProfile,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,practice:vPractice,sim:vSim,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  const html = ({home:vHome,tm:vFeed,build:vBuild,me:vMe,'tm-about':vTmAbout,'ose-inbox':vChats,'prep-inbox':vChats,'habit-inbox':vChats,challenges:vChallenges,profile:vProfile,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,practice:vPractice,sim:vSim,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
   if (S._lastR !== r) window.scrollTo(0,0); S._lastR = r;
   if (r === 'reason') startSky(); else stopSky();
@@ -976,15 +1006,16 @@ function tile(kind, title, tag, name, desc, opts={}){
     <div class="meta"><b>${name}</b><span>${desc}</span></div></button>`;
 }
 const APPS = [
+  {k:'tm', n:'Tomorrow', d:'For driven people: post what you did today, daily challenges and streaks with friends', open:'tm', page:'tm-about', bg:'linear-gradient(135deg,#FFE1B0,#FFC2CC)'},
   {k:'prep', topic:'exams', n:'OpenPrep', d:'For CAT aspirants: free lessons, unlimited practice, a full mock every month', open:'prep', page:'prep-about', bg:'linear-gradient(135deg,#1B4DFF,#06115A)'},
-  {k:'habit', topic:'money', n:'GoodHabit', d:'For anyone managing money: the money game, the trading simulator, Hissab and your own books', open:'practice', page:'habit-about', bg:'linear-gradient(135deg,#2448FF,#121633)'},
+  {k:'habit', topic:'money', n:'GoodHabit', d:'For anyone managing money: the money game, the trading simulator, Hissab and your own books', open:'practice', page:'habit-about', bg:'linear-gradient(135deg,#1E3A2B,#0B7A3B)'},
   {k:'skills', topic:'careers', n:'The Good Stuff', d:'For small businesses and makers: AI skills, 90 free and 10 paid', open:'skills', page:'skills', bg:'linear-gradient(135deg,#FFC93C,#FF8A3D)'},
   {k:'library', n:'AI Discovery Library', d:'For the curious: trusted sources, for people and AIs', open:'library', page:'library', bg:'linear-gradient(135deg,#7C5CFF,#3B1FA6)'},
   {k:'community', topic:'building', n:'Community', d:'For builders, 18+: boards, open-sourcing your work, donations', open:'community', page:'community', bg:'linear-gradient(135deg,#14B8A6,#0E6B63)'},
   {k:'acct', n:'Accounting Unlocked', d:'For shops and small firms: offline books for Windows and Mac', soon:true, bg:'linear-gradient(135deg,#C9CCD3,#8D929C)'},
 ];
 const appOf = k => APPS.find(a => a.k === k);
-function appArt(a, size){ const inner = a.k === 'prep' ? `<span style="width:78%;display:block">${goodguy('happy','#3FA9FF')}</span>` : (ART[a.k] || ART.acct).replace('class="art"', `width="${Math.round(size*.9)}" height="${Math.round(size*.8)}"`); return `<span class="art" style="width:${size}px;height:${size}px;border-radius:${Math.round(size*.28)}px;background:${a.bg}">${inner}</span>`; }
+function appArt(a, size){ const inner = a.k === 'prep' ? `<span style="width:78%;display:block">${goodguy('happy','#3FA9FF')}</span>` : a.k === 'tm' ? `<span style="width:80%;display:block">${kal()}</span>` : a.k === 'habit' ? `<span style="width:72%;display:block">${sikka()}</span>` : (ART[a.k] || ART.acct).replace('class="art"', `width="${Math.round(size*.9)}" height="${Math.round(size*.8)}"`); return `<span class="art" style="width:${size}px;height:${size}px;border-radius:${Math.round(size*.28)}px;background:${a.bg}">${inner}</span>`; }
 function myApps(){
   const pins = S.pins.map(appOf).filter(Boolean);
   if (!pins.length) return `<p class="hint">Open an app's page and tap ＋ My apps to pin it here. Each one then opens on its own, like a separate app on your phone.</p>`;
@@ -995,7 +1026,8 @@ function siteFoot(){ return `<footer class="sitefoot"><span>OpenSource Everythin
 function vHome(){
   const startOpts = [['','Home feed'],['prep','OpenPrep'],['habit','GoodHabit']];
   return `<main class="wrap" style="padding-block:22px 0">
-  <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,7vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1">Free, open apps<br>for learning and money.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch">One account for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
+  <section class="plain"><h1>Free, open apps for learning, money and building.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch;color:var(--label2)">One OpenID for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
+  <section class="crewcard"><b>We're here to help you show up tomorrow.</b>${crew()}</section>
   <section class="plain"><div class="sect-h"><h2>My apps</h2><span>${S.pins.length ? 'tap to open' : 'nothing pinned yet'}</span></div>${myApps()}
 ${S.pins.length ? '<button class="openbtn" data-act="pwaapp" data-k="pins" style="margin-top:12px">Add my apps to my phone</button><p class="hint" style="margin-top:6px">Each one gets its own icon in your phone\'s app library.</p>' : ''}</section>
   <section class="plain"><div class="sect-h"><h2>All apps</h2><span>each one made for its own people</span></div><button class="linkbtn" data-act="plans" style="margin-bottom:6px">Plans and prices</button>
@@ -1018,8 +1050,8 @@ function vAbout(){
   <section class="plain" id="numbers"><div class="sect-h"><h2>Open numbers</h2><span>real numbers only, from launch day</span></div>
     <p>We publish these every Monday, straight from our books. Before launch there's nothing to show, so we show nothing.</p>
     <div class="facts" style="font-size:16px"><span>Students this week: —</span><span>Paying users: —</span><span>Revenue this month: —</span><span>Corrections published: —</span><span>Ads served: 0</span></div></section>
-  <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>your GitID</span></div>
-    <p>One GitID across OpenSource Everything and every app in it. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
+  <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>your OpenID</span></div>
+    <p>One OpenID across OpenSource Everything and every app in it, plus an app ID (PrepID, GoodID, Tomorrow ID) only where you post or follow people. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
     <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ Open-source projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
   <footer class="sitefoot"><button data-act="nav" data-r="apps">← All apps</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
@@ -1044,6 +1076,7 @@ function vPrep(){
       <button class="world w-reason" data-act="nav" data-r="reason"><h3 style="position:relative;z-index:1">Reasoning</h3><p style="position:relative;z-index:1">6 of 12 sets ready · watch puzzles build themselves.</p></button>
       <button class="world" style="background:#0E1116;color:#fff;min-height:112px" data-act="nav" data-r="mock"><h3>Free full mock</h3><p>CAT-style, 3 sections. Free every month, with your score and section scores.</p></button>
     </div>
+    <div class="gcard" style="margin-top:22px"><b>Your study circle</b><span class="muted">${S.ids.prep ? `@${esc(S.ids.prep)} · Meera and Kabir are in your circle.` : 'Follow classmates, share mock results and see who is on a streak. Needs a PrepID.'}</span><button class="gbtn ghost" data-act="circle">${S.ids.prep ? 'Open study circle inbox' : 'Create my PrepID'}</button></div>
     <h2 style="font-size:19px;font-weight:800;margin-top:26px">Careers and skills</h2>
     <div class="p-row">
       <button class="p-card" data-act="course" data-c="Digital marketing from zero"><b>Digital marketing from zero</b><span>50 videos · first video free</span><span class="price">₹99 full course</span></button>
@@ -1260,7 +1293,7 @@ function vHabitAbout(){
         
         <div class="whycard"><span class="k">Practice</span><h3>The money game</h3><p>Free with your account. Ramesh, Amit or the Rich guy, easy to hard, the '90s to the 2010s, real crashes. Invest on a real-looking platform with pretend money.</p></div>
       </div></section>
-    <section class="gate"><span style="width:110px">${goodguy('happy','#0B7A3B')}</span><h2>Open GoodHabit</h2><p>Its own app, with its own look. Tap Apps any time to switch to OpenPrep or see everything else.</p><button class="btn-hud" data-act="nav" data-r="practice">Open GoodHabit</button></section>
+    <section class="gate"><span style="width:110px">${sikka()}</span><h2>Open GoodHabit</h2><p>Its own app, with its own look. Tap ‹ OSE any time to switch apps. Your inbox works here too.</p><button class="btn-hud" data-act="nav" data-r="practice">Open GoodHabit</button></section>
   ${siteFoot()}
   </main>`;
 }
@@ -1297,7 +1330,7 @@ function vHissab(){
       ${days.map(d => `<p class="daylabel">${new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}).toUpperCase()}</p>${L.entries.filter(e => e.d===d).map(e => `<button class="entry" data-act="showentry" data-id="${e.id}"><span class="dot ${e.dir}" aria-hidden="true">${e.dir==='in'?'+':'−'}</span><span style="flex:1;min-width:0"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(e.who)}</b><span style="font-size:13px;color:var(--g-mute)">${esc(e.cat)} · ${esc(e.acct)}${e.note?' · '+esc(e.note):''}</span></span><span class="amt" style="color:${e.dir==='in'?'var(--g-up)':'var(--g-down)'}">${e.dir==='in'?'+':'−'}${inr(e.amt/100)}</span></button>`).join('')}`).join('')}
       <p style="color:var(--g-mute);font-size:13px;margin-top:14px">You write every entry yourself. Nothing is linked to a bank or shared with anyone. In this preview, entries stay in this browser.</p>`;
   }
-  return `<main class="col" style="padding-block:14px 110px"><p style="font-size:13px;color:var(--g-mute)">GitID · ${esc(S.user || 'guest')}</p><h1 style="font-family:var(--gh-d);font-size:34px">Hissab</h1>${tabs}${body}</main>`;
+  return `<main class="col" style="padding-block:14px 110px"><p style="font-size:13px;color:var(--g-mute)">${S.ids && S.ids.good ? 'GoodID @' + esc(S.ids.good) : 'GoodID · not created yet'}</p><h1 style="font-family:var(--gh-d);font-size:34px">Hissab</h1>${tabs}${body}</main>`;
 }
 function entrySheet(dir){
   const L = S.ledger, names = [...new Set(L.entries.map(e => e.who))];
@@ -1340,14 +1373,20 @@ function vMarkets(){
     <div class="mk"><div style="display:flex;justify-content:space-between;align-items:baseline"><span><h2>Watchlist</h2><span class="sub">Sample prices, not today's</span></span><button class="gbtn" style="background:#1C1C1E;min-height:40px" data-act="madd">Edit</button></div>
     ${MK.filter(m => w.includes(m[0])).map(m => { const up = m[3] >= 0; return `<button class="mrow" data-act="msel" data-s="${m[0]}"><span style="min-width:0"><b>${esc(m[0])}</b><small>${esc(m[1])}</small></span><span>${spark(m[0], up)}</span><span style="text-align:right"><span class="px" style="display:block">${fmt(m[2])}</span><span class="chg ${up?'up':'down'}">${up?'+':''}${m[3].toFixed(2)}%</span></span></button>`; }).join('')}</div></main>`;
 }
-function vChats(){ return `<main class="col" style="padding-block:6px 110px">${S.chatWith ? chatView(S.chatWith) : '<h1 style="font-family:var(--hudf);font-size:30px;margin:12px 0 8px">Messages</h1>' + chatList()}</main>${S.chatWith ? composer() : ''}`; }
+function vChats(){
+  const r = location.hash.slice(1) || 'chats', app = appOfRoute(r), f = S.inboxF || 'all', main = S.mainInbox || 'tm';
+  if (S.chatWith) return `<main class="col" style="padding-block:6px 110px">${chatView(S.chatWith)}</main>${composer()}`;
+  return `<main class="col" style="padding-block:6px 110px"><h1 style="margin:12px 0 2px">Inbox</h1><p class="muted" style="font-size:13px">One inbox in every app. ${app === main ? 'This is your main inbox.' : `Your main inbox is ${APPN[main]}. Change it in OSE → Me.`}</p>
+    <div class="seg2" role="group" aria-label="Show" style="margin:10px 0">${[['all','All'],['tm','Tomorrow'],['prep','OpenPrep'],['habit','GoodHabit'],['ose','OSE']].map(([k, l]) => `<button data-act="inboxf" data-k="${k}" aria-pressed="${f === k}">${l}</button>`).join('')}</div>
+    ${crossStrip(app)}${chatList()}</main>`;
+}
 function vReels(){ return `<main class="col" style="padding-block:14px 110px"><div style="display:flex;flex-direction:column;gap:14px">${REELS.map((r,i) => `<div class="reel" style="background:${r.bg}"><span class="src">${esc(r.src)}</span><div class="acts"><button data-act="share" data-i="${i}" aria-label="Share with a friend">Share</button><button data-act="like" aria-label="Like">♥</button></div><h3>${esc(r.h)}</h3><p style="opacity:.9">${esc(r.sub)}</p></div>`).join('')}<p style="text-align:center;color:var(--g-mute);font-size:14px">You're all caught up on useful stuff. Want more? Enter OpenPrep from the library.</p></div></main>`; }
 function hav(k){ const h = S.hissab[k]; return `<span class="av" style="background:${h.bg}" aria-hidden="true">${h.name.split(' ').map(w=>w[0]).join('')}</span>`; }
 function balPill(h){ if (h.state !== 'connected') return h.state === 'invite-in' ? '<span class="pill acc">Hissab invite</span>' : h.state === 'invite-out' ? '<span class="pill mute">Invite sent</span>' : ''; return h.bal === 0 ? '<span class="pill mute">Settled</span>' : h.bal > 0 ? `<span class="pill up">${esc(h.name.split(' ')[0])} owes you ${inr(h.bal/100)}</span>` : `<span class="pill down">You owe ${inr(-h.bal/100)}</span>`; }
 function chatList(){
   const net = Object.values(S.hissab).filter(h => h.state==='connected').reduce((a,h) => a + h.bal, 0);
   return `<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pinbtn" data-act="newmsg">New message</button><button class="pinbtn" data-act="newhissab">Start a Hissab</button></div>${net ? `<p style="margin-top:10px;font-weight:700;color:${net < 0 ? 'var(--g-down)' : 'var(--g-up)'}">Hissab overall: ${net < 0 ? 'you owe ' + inr(-net/100) : 'you\'re owed ' + inr(net/100)}</p>` : ''}
-  <div style="margin-top:8px">${Object.keys(S.hissab).map(k => { const h = S.hissab[k], last = h.msgs[h.msgs.length-1]; return `<button class="person" data-act="openchat" data-k="${k}">${hav(k)}<span style="flex:1;min-width:0"><b style="display:block">${esc(h.name)}</b><span style="color:var(--g-mute);font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(last?last[1]:'')}</span></span>${balPill(h)}</button>`; }).join('')}</div>
+  <div style="margin-top:8px">${Object.keys(S.hissab).filter(k => (S.inboxF || 'all') === 'all' || threadApp(k) === S.inboxF).map(k => { const h = S.hissab[k], last = h.msgs[h.msgs.length-1]; return `<button class="person" data-act="openchat" data-k="${k}">${hav(k)}<span style="flex:1;min-width:0"><b style="display:block">${esc(h.name)} <span class="apptag">${APPN[threadApp(k)].replace('OpenSource Everything','OSE')}</span></b><span style="color:var(--g-mute);font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(last ? (typeof last[1] === 'string' ? last[1] : '📎 ' + last[1].title) : '')}</span></span>${balPill(h)}</button>`; }).join('')}</div>
   <p style="color:var(--g-mute);font-size:13.5px;margin-top:12px">Messages for every app live here. Hissab only works between people who both said yes; nobody can add you without your OK.</p>`;
 }
 function chatView(k){
@@ -1357,11 +1396,11 @@ function chatView(k){
   if (h.state === 'invite-in') top = `<div class="gcard" style="margin-top:10px"><b>${esc(h.name)} wants to start a Hissab with you</b><p style="color:var(--g-mute);font-size:14px">You'll both see shared expenses and who owes whom, right here in the chat.</p><div style="display:flex;gap:8px"><button class="gbtn" data-act="accept" data-k="${k}">Accept</button><button class="gbtn ghost" data-act="decline" data-k="${k}">Decline</button></div></div>`;
   if (h.state === 'chat') top = `<div class="gcard" style="margin-top:10px;flex-direction:row;align-items:center;justify-content:space-between"><span style="font-size:14.5px">No Hissab with ${esc(h.name.split(' ')[0])} yet</span><button class="gbtn" data-act="invite" data-k="${k}">Send Hissab invite</button></div>`;
   if (h.state === 'invite-out') top = `<div class="gcard" style="margin-top:10px"><span style="font-size:14.5px">Hissab invite sent. Waiting for ${esc(h.name.split(' ')[0])} to accept.</span></div>`;
-  return `<button class="gbtn ghost" data-act="backchats" style="margin-top:4px">← Messages</button>
+  return `<button class="gbtn ghost" data-act="backchats" style="margin-top:4px">← Inbox</button>
     <div style="display:flex;align-items:center;gap:10px;margin-top:10px">${hav(k)}<span><b style="display:block">${esc(h.name)}</b><span style="color:var(--g-mute);font-size:13px" class="num">${esc(h.id)}</span></span></div>
-    ${top}<div class="chat" id="chatlog">${h.msgs.map(([w,t]) => `<div class="msg ${w}">${esc(t)}</div>`).join('')}</div>`;
+    ${top}<div class="chat" id="chatlog">${h.msgs.map(([w,t]) => w === 'card' || w === 'mecard' ? cardHtml(t, w === 'mecard') : `<div class="msg ${w}">${esc(t)}</div>`).join('')}</div>`;
 }
-function composer(){ const h = S.hissab[S.chatWith]; return `<form class="composer" id="cform"><div class="in">${h.state==='connected'?'<button type="button" class="gbtn pink" data-act="addhissab" aria-label="Add to Hissab">＋ ₹</button>':''}<label for="cin" class="sr">Message</label><input id="cin" placeholder="Message" autocomplete="off"><button class="gbtn" type="submit">Send</button></div></form>`; }
+function composer(){ const h = S.hissab[S.chatWith]; return `<form class="composer" id="cform"><div class="in"><button type="button" class="gbtn ghost" data-act="cardsheet" aria-label="Send a card from an app" style="min-width:46px;padding:0!important">＋</button>${h.state==='connected'?'<button type="button" class="gbtn pink" data-act="addhissab" aria-label="Add to Hissab">＋ ₹</button>':''}<label for="cin" class="sr">Message</label><input id="cin" placeholder="Message" autocomplete="off"><button class="gbtn" type="submit">Send</button></div></form>`; }
 
 /* ---------------- PRACTICE: the money game ---------------- */
 const ERAS = {
@@ -1449,7 +1488,7 @@ function endView(){
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="choice pri" data-act="sharegame">Share my result</button><button class="choice" data-act="quitgame">Play another era</button><button class="choice" data-act="nav" data-r="prep">Learn why in OpenPrep</button></div></div>
     <div class="gcard" style="margin-top:12px"><b>Your story</b>${g.log.map(l => `<p style="font-size:14px;color:var(--g-mute)">${esc(l)}</p>`).join('')}</div>`;
 }
-/* ---------------- OpenSource Everything: the social home for anyone (feed, challenges, GitID profiles) ---------------- */
+/* ---------------- OpenSource Everything: the social home for anyone (Tomorrow: feed, challenges, profiles) ---------------- */
 const todayISO = (off = 0) => { const d = new Date(Date.now() + off * 864e5); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
 function chLoad(){
   let c = null; try { c = JSON.parse(localStorage.getItem('ose-ch')); } catch (e) {}
@@ -1458,10 +1497,11 @@ function chLoad(){
   c.secs = c.secs || {}; S.ch = c;
   try { S.posts = JSON.parse(localStorage.getItem('ose-posts')) || []; } catch (e) { S.posts = []; }
   try { S.me = JSON.parse(localStorage.getItem('ose-me')) || null; } catch (e) { S.me = null; }
+  try { S.ids = JSON.parse(localStorage.getItem('ose-ids')) || {}; S.mainInbox = localStorage.getItem('ose-maininbox') || 'tm'; S.tgLinked = localStorage.getItem('ose-tg') === '1'; } catch (e) { S.ids = {}; S.mainInbox = 'tm'; }
   try { S.interests = JSON.parse(localStorage.getItem('ose-interests')) || []; } catch (e) { S.interests = []; }
   if (S.me) S.user = '@' + S.me.handle;
 }
-function chSave(){ try { localStorage.setItem('ose-ch', JSON.stringify(S.ch)); localStorage.setItem('ose-posts', JSON.stringify(S.posts)); localStorage.setItem('ose-me', JSON.stringify(S.me)); localStorage.setItem('ose-interests', JSON.stringify(S.interests)); } catch (e) {} }
+function chSave(){ try { localStorage.setItem('ose-ids', JSON.stringify(S.ids || {})); localStorage.setItem('ose-maininbox', S.mainInbox || 'tm'); localStorage.setItem('ose-tg', S.tgLinked ? '1' : '0'); localStorage.setItem('ose-ch', JSON.stringify(S.ch)); localStorage.setItem('ose-posts', JSON.stringify(S.posts)); localStorage.setItem('ose-me', JSON.stringify(S.me)); localStorage.setItem('ose-interests', JSON.stringify(S.interests)); } catch (e) {} }
 function chDone(k, pts){ const c = S.ch; if (!c || c.done[k]) return false; c.done[k] = true; c.pts += pts; if (c.last !== c.day) { c.streak += 1; c.last = c.day; } chSave(); return true; }
 function learnDone(what){ if (chDone('learn', 10)) toast(`Learn-or-make challenge done (${what}): +10`); }
 const TOPICS = [['exams','Exams and CAT'],['money','Money'],['careers','Careers and skills'],['building','Building things']];
@@ -1609,9 +1649,9 @@ function vProfile(){
   return `<main class="col" style="padding-block:18px 110px;display:flex;flex-direction:column;gap:14px">
     ${P ? '<button class="gbtn ghost" data-act="viewprof" data-k="" style="align-self:flex-start">← My profile</button>' : ''}
     <div class="profhead">${avatar(w, 84)}<div class="pstats"><div><b>${posts.length}</b><small>posts</small></div><div><b>${P ? '—' : 0}</b><small>followers</small></div><div><b>${P ? '—' : Object.values(S.follows || {}).filter(Boolean).length}</b><small>following</small></div></div></div>
-    <div><b style="font-size:18px">${esc(w.name)}</b> <span class="muted">${handle ? '· GitID @' + esc(handle) : '· not signed up yet'}</span><p>${P ? esc(P.bio) : S.me && S.me.college ? esc(S.me.college) : 'Add a bio: what you\'re learning or building.'}</p>${P ? `<p class="muted">${esc(P.college)} · sample profile</p>` : ''}</div>
+    <div><b style="font-size:18px">${esc(w.name)}</b> <span class="muted">${handle ? '· @' + esc(handle) + ' on Tomorrow' : '· not signed up yet'}</span><p>${P ? esc(P.bio) : S.me && S.me.college ? esc(S.me.college) : 'Add a bio: what you\'re learning or building.'}</p>${P ? `<p class="muted">${esc(P.college)} · sample profile</p>` : ''}</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">${P ? `<button class="gbtn" data-act="follow" data-k="${id}">${S.follows && S.follows[id] ? 'Following' : 'Follow'}</button><button class="gbtn ghost" data-act="openchat" data-k="${id}">Message</button>` : `${S.me ? '<button class="gbtn ghost" data-act="signin">Edit profile</button><button class="gbtn ghost" data-act="shareprof">Share profile</button>' : '<button class="gbtn" data-act="signin">Sign up free</button>'}`}</div>
-    ${P ? '' : `<div class="glist">${[['apps','My apps','grid'],['start','Start screen','home'],['plans','Plans and prices','clip'],['lang','Language','book'],['privacy','Privacy','user'],['help','Help','today']].map(([k, l, ic]) => `<button class="grow2" ${k === 'apps' ? 'data-act="nav" data-r="apps"' : `data-act="${k === 'plans' ? 'plans' : 'mepref'}" data-k="${k}"`}><span class="art" style="width:30px;height:30px;border-radius:8px;background:${{apps:'#007AFF', start:'#5AC8FA', plans:'#34C759', lang:'#FF9500', privacy:'#5856D6', help:'#8E8E93'}[k]};color:#fff;display:grid;place-items:center">${icon(ic)}</span><span style="flex:1"><b>${l}</b></span><span class="chev">›</span></button>`).join('')}</div>`}
+    ${P ? '' : `<div class="glist"><button class="grow2" data-act="nav" data-r="me"><span style="flex:1"><b>OpenID, app IDs and settings</b><small>In OpenSource Everything → Me</small></span><span class="chev">›</span></button></div>`}
     <div class="gcard"><b>Activity</b>${grid(P ? P.seed : 0, P ? 3 : Math.min(4, done))}<span class="muted" style="font-size:13px">${P ? 'Every square is a day: challenges, lessons, simulator games and projects. Sample history.' : 'Each square is a day. They fill in as you do challenges, lessons, simulator games and projects.'}</span></div>
     <div class="gcard"><b>Verified by the apps</b>${badges.length ? `<div class="idbadges">${badges.map(b => `<span class="vb v">✓ ${esc(b)}</span>`).join('')}</div>` : '<span class="muted">Badges show up here as you use OpenPrep, GoodHabit and the rest. Apps add them; you can\'t type them in.</span>'}</div>
     <div class="gcard"><b>Projects</b><span class="muted">${P ? 'No public projects yet.' : 'Projects you open-source here show up on your profile.'}</span>${P ? '' : '<button class="gbtn ghost" data-act="nav" data-r="community">Open-source a project</button>'}</div>
@@ -1619,6 +1659,7 @@ function vProfile(){
 }
 function newPostSheet(){
   if (!S.me) { toast('Sign up first to post.'); signupSheet(); return; }
+  if (S.me.age >= 18 && !S.ids.tm) { S.afterId = 'newpost'; idSheet('tm'); return; }
   if (S.me.age < 18) { toast('Posting is for 18 and over. You can still like, comment and do challenges.'); return; }
   const bgs = ['linear-gradient(135deg,#FFC93C,#FF8A3D)', 'linear-gradient(135deg,#2448FF,#121633)', 'linear-gradient(135deg,#14B8A6,#0E6B63)', 'linear-gradient(135deg,#17181A,#3A3D44)'], cur = S.pbg || bgs[0], tp = S.ptopic || (S.interests[0] || 'building');
   sheet(`<h2>New post</h2>
@@ -1629,23 +1670,101 @@ function newPostSheet(){
 }
 function signupSheet(){
   const m = S.me || {};
-  sheet(`<h2>${S.me ? 'Your profile' : 'Sign up free'}</h2><p style="color:var(--label2)">One GitID for OpenSource Everything and every app in it.</p>
+  sheet(`<h2>${S.me ? 'Your OpenID' : 'Sign up free'}</h2><p style="color:var(--label2)">One OpenID for OpenSource Everything and every app in it.</p>${S.me ? '' : '<button class="p-btn tgb" data-act="tglogin">Log in with Telegram</button><p class="muted" style="font-size:13px;text-align:center">We get your name, username and photo. Never your phone number or chats.</p>'}
     <div><label class="lbl" for="sn">Your name</label><input class="inp" id="sn" value="${esc(m.name || '')}" autocomplete="name"></div>
-    <div><label class="lbl" for="sh">GitID</label><div style="display:flex;align-items:center;gap:6px"><b>@</b><input class="inp" id="sh" value="${esc(m.handle || '')}" autocapitalize="off" placeholder="yourname" style="flex:1"></div></div>
+    <div><label class="lbl" for="sh">OpenID</label><div style="display:flex;align-items:center;gap:6px"><b>@</b><input class="inp" id="sh" value="${esc(m.handle || '')}" autocapitalize="off" placeholder="yourname" style="flex:1"></div></div>
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px"><div><label class="lbl" for="sa">Age</label><input class="inp" id="sa" inputmode="numeric" value="${esc(m.age || '')}"></div><div><label class="lbl" for="sc">College (optional)</label><input class="inp" id="sc" value="${esc(m.college || '')}"></div></div>
-    <button class="p-btn blue" data-act="signupok">${S.me ? 'Save' : 'Create my GitID'}</button><p style="font-size:12.5px;color:var(--label2)">Posting is for 18 and over. Under-18s can watch, like, comment and do challenges. Preview: nothing leaves this browser.</p>`);
+    <button class="p-btn blue" data-act="signupok">${S.me ? 'Save' : 'Create my OpenID'}</button><p style="font-size:12.5px;color:var(--label2)">Posting is for 18 and over. Under-18s can watch, like, comment and do challenges. Preview: nothing leaves this browser.</p>`);
 }
 function peopleSheet(){ sheet(`<h2>New message</h2>${Object.keys(PEOPLE).map(k => `<button class="person" data-act="openchat" data-k="${k}"><span class="av" style="background:${PEOPLE[k].bg}">${esc(PEOPLE[k].name.split(' ').map(w => w[0]).join('').slice(0,2))}</span><span style="flex:1;text-align:left"><b style="display:block">${esc(PEOPLE[k].name)}</b><small class="muted">@${k}</small></span></button>`).join('')}<p style="color:var(--label2);font-size:13px">Sample people in this preview. In the app you'd see the people you follow and your contacts.</p>`); }
 function prefSheet(k){
   const P = S.prefs = S.prefs || {}, seg = (key, opts, page) => `<div class="seg2" role="group">${opts.map(([v, l]) => `<button data-act="setpref" data-p="${page}" data-k="${key}" data-v="${v}" aria-pressed="${(P[key] || opts[0][0]) === v}">${l}</button>`).join('')}</div>`, tog = (key, l, page) => `<button class="grow2 togrow" data-act="setpref" data-p="${page}" data-k="${key}" data-v="toggle" role="switch" aria-checked="${!!P[key]}"><span style="flex:1"><b>${l}</b></span><span class="switch ${P[key] ? 'on' : ''}"><i></i></span></button>`;
-  if (k === 'start') { const opts = [['','Today'],['prep','OpenPrep'],['habit','GoodHabit']]; sheet(`<h2>Start screen</h2><p>When you open OpenSource Everything, go straight to:</p><div class="seg2" role="group">${opts.map(([v, l]) => `<button data-act="startapp" data-k="${v}" aria-pressed="${(S.start || '') === v}">${l}</button>`).join('')}</div>`); return; }
+  if (k === 'inbox') { sheet(`<h2>Main inbox</h2><p>One inbox works in every app. Your main one gets the notifications.</p><div class="seg2" role="group">${[['tm','Tomorrow'],['prep','OpenPrep'],['habit','GoodHabit'],['ose','OSE']].map(([v, l]) => `<button data-act="maininbox" data-k="${v}" aria-pressed="${(S.mainInbox || 'tm') === v}">${l}</button>`).join('')}</div>`); return; }
+  if (k === 'start') { const opts = [['','OSE store'],['tm','Tomorrow'],['prep','OpenPrep'],['habit','GoodHabit']]; sheet(`<h2>Start screen</h2><p>When you open OpenSource Everything, go straight to:</p><div class="seg2" role="group">${opts.map(([v, l]) => `<button data-act="startapp" data-k="${v}" aria-pressed="${(S.start || '') === v}">${l}</button>`).join('')}</div>`); return; }
   if (k === 'lang') sheet(`<h2>Language</h2><p>Menus and buttons</p>${seg('lang', [['en','English'],['hinglish','Hinglish']], 'lang')}<p class="muted" style="font-size:13px">OpenPrep videos come in Hinglish first, then English. Regional packs are ₹100 each.</p>`);
-  if (k === 'privacy') sheet(`<h2>Privacy</h2><p>Who can see your profile and posts</p>${seg('who', [['all','Everyone'],['followers','Followers'],['me','Only me']], 'privacy')}<div class="glist" style="margin:8px 0 0">${tog('hidegrid', 'Hide my activity grid', 'privacy')}${tog('nophone', 'Don\'t let people find me by phone number', 'privacy')}</div><p class="muted" style="font-size:13px">Your Hissab books never leave your phone. Messages are only between the people in them.</p>`);
+  if (k === 'privacy') sheet(`<h2>Privacy</h2><p>Who can see your profile and posts</p>${seg('who', [['all','Everyone'],['followers','Followers'],['me','Only me']], 'privacy')}<div class="glist" style="margin:8px 0 0">${tog('hidegrid', 'Hide my activity grid', 'privacy')}${tog('nophone', 'Don\'t let people find me by phone number', 'privacy')}${tog('nocross', 'Hide my activity from my other apps\' inboxes', 'privacy')}</div><p class="muted" style="font-size:13px">Your Hissab books never leave your phone. Messages are only between the people in them.</p>`);
   if (k === 'help') sheet(`<h2>Help</h2><div class="glist" style="margin:0">${[['How do challenges work?','A new set every morning. +10 for a right answer or a finished challenge, +2 for trying. Streaks count days with at least one done. No prizes.'],['Is my Hissab private?','Your own books stay on your phone. Shared Hissabs are seen only by the two of you.'],['How do I report a post or a person?','Tap ⋯ on any post. A person reviews every report.'],['Is anything here investment advice?','No. GoodHabit uses pretend money and past prices, and GoodGuy never tells you what to buy.']].map(([q, a]) => `<details class="faq"><summary>${q}</summary><p>${a}</p></details>`).join('')}</div><button class="gbtn ghost" data-act="reportbug">Report a problem</button>`);
 }
 function unreadChat(k){ const h = S.hissab[k], m = h && h.msgs[h.msgs.length - 1]; return !!(m && m[0] === 'them' && !(S.read && S.read[k])); }
 function ensureChat(k){ if (!S.hissab[k] && PEOPLE[k]) S.hissab[k] = {name:PEOPLE[k].name, id:'@' + k, bg:PEOPLE[k].bg, state:'chat', bal:0, msgs:[]}; }
 
+
+/* ---------------- the mascot crew: one per app ---------------- */
+let mascotN = 0;
+function kal(){ const id = 'kal' + (++mascotN); return `<svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC24A"/><stop offset="1" stop-color="#FF4F6D"/></linearGradient></defs><g stroke="#FFB020" stroke-width="6" stroke-linecap="round"><path d="M60 10v12M24 26l8 9M96 26l-8 9M10 60h12M98 60h12"/></g><path d="M16 94a44 44 0 0 1 88 0z" fill="url(#${id})"/><ellipse cx="47" cy="68" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="68" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="69" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="69" r="3.4" fill="#1A1A1A"/><path d="M51 81q9 7 18 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="38" cy="80" r="4" fill="#FF8FA3" opacity=".7"/><circle cx="82" cy="80" r="4" fill="#FF8FA3" opacity=".7"/><rect x="8" y="94" width="104" height="8" rx="4" fill="#3A3D44"/></svg>`; }
+function sikka(){ return `<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M48 96l-6 14M72 96l6 14" stroke="#B7791F" stroke-width="6" stroke-linecap="round"/><path d="M34 112h14M72 112h14" stroke="#7A5210" stroke-width="7" stroke-linecap="round"/><path d="M22 58q-14 4-12 18M98 58q14-6 12-20" stroke="#B7791F" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="60" cy="56" r="42" fill="#E8A317"/><circle cx="60" cy="56" r="34" fill="#FFCF4D"/><path d="M50 22h20M50 28h20M58 22q10 0 10 6t-12 6l14 10" stroke="#E8A317" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".55"/><ellipse cx="47" cy="58" rx="6" ry="7" fill="#fff"/><ellipse cx="73" cy="58" rx="6" ry="7" fill="#fff"/><circle cx="48" cy="59" r="3.3" fill="#1A1A1A"/><circle cx="74" cy="59" r="3.3" fill="#1A1A1A"/><path d="M50 72q10 8 20 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`; }
+function khula(){ return `<svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="26" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="20" font-weight="700" fill="#5B6CFF">&lt;/&gt;</text><path d="M24 52l-12-16h44l12 16z" fill="#8E9BFF"/><path d="M96 52l12-16H64l-12 16z" fill="#7C8BFF"/><path d="M24 52h72v46a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8z" fill="#5B6CFF"/><ellipse cx="47" cy="74" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="74" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="75" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="75" r="3.4" fill="#1A1A1A"/><path d="M51 88q9 7 18 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`; }
+const CREW = [['khula','Khula','OpenSource Everything','opens everything up'],['kal','Kal','Tomorrow','cheers on your streak'],['guy','GoodGuy','OpenPrep','teaches, never lectures'],['sikka','Sikka','GoodHabit','minds the money']];
+function mascot(k){ return k === 'kal' ? kal() : k === 'sikka' ? sikka() : k === 'khula' ? khula() : goodguy('happy', '#3FA9FF'); }
+function crew(){ return `<div class="crew">${CREW.map(([k, n, app, line]) => `<div class="crewm"><span class="cm">${mascot(k)}</span><b>${n}</b><small>${app} · ${line}</small></div>`).join('')}</div>`; }
+
+/* ---------------- identity: one OpenID, app IDs on demand ---------------- */
+const IDNAME = {tm:'Tomorrow ID', prep:'PrepID', good:'GoodID'};
+const IDWHY = {tm:'Your name on Tomorrow, for posting and following people.', prep:'Your name in OpenPrep, for following classmates and sharing results in your study circle.', good:'Your name in GoodHabit, for Hissabs with friends and playing the simulator together.'};
+function needId(app, then){ if (!S.me) { toast('First, your OpenID. It takes a minute.'); signupSheet(); return false; } if (!S.ids[app]) { S.afterId = then || null; idSheet(app); return false; } return true; }
+function idSheet(app){ sheet(`<h2>Create your ${IDNAME[app]}</h2><p>${IDWHY[app]} Your OpenID (@${esc(S.me.handle)}) stays the same everywhere.</p><div><label class="lbl" for="idh">${IDNAME[app]}</label><div style="display:flex;align-items:center;gap:6px"><b>@</b><input class="inp" id="idh" value="${esc(S.me.handle)}" autocapitalize="off" style="flex:1"></div></div><button class="p-btn blue" data-act="createid" data-k="${app}">Create ${IDNAME[app]}</button><p class="muted" style="font-size:13px">Just browsing or learning? You don't need one.</p>`); }
+
+/* ---------------- OSE: the store, Build and Me ---------------- */
+function vBuild(){
+  const ROAD = [['r1','Tomorrow: reels up to 60 seconds'],['r2','OpenPrep: Verbal chapters 6 to 10'],['r3','GoodHabit: mutual funds in the simulator'],['r4','Accounting Unlocked: first beta for Windows']];
+  const v = S.votes || {};
+  return `<main class="wrap" style="padding-block:18px 110px;display:flex;flex-direction:column;gap:14px">
+    <h1>Build</h1><p class="muted" style="font-size:17px">Everything we make is open. Read the code, vote on what's next, or build your own app on OSE.</p>
+    <div class="glist" style="margin:0"><span class="ghead">Every app, in the open</span>${APPS.filter(a => !a.soon).map(a => `<div class="grow2">${appArt(a, 32)}<span style="flex:1;min-width:0"><b>${a.n}</b><small>Code public at launch · AGPL licence</small></span></div>`).join('')}</div>
+    <div class="glist" style="margin:0"><span class="ghead">Roadmap · vote for what's next</span>${ROAD.map(([k, t]) => `<div class="grow2"><span style="flex:1"><b>${t}</b></span><button class="votebtn" data-act="vote" data-k="${k}" aria-pressed="${!!v[k]}">▲ ${v[k] ? 'Voted' : 'Vote'}</button></div>`).join('')}</div>
+    <div class="gcard"><b>Build on OSE</b><span class="muted">Your app can use "Log in with OpenID" and send live cards into everyone's inbox. A card is a few lines:</span>
+      <pre class="code">{
+  "app": "your-app",
+  "title": "Riya's mock result",
+  "subtitle": "11/18 · free full mock",
+  "button": { "label": "Take the same mock",
+              "opens": "openprep://mock" }
+}</pre><span class="muted">Cards from every app look the same and open back in the app that sent them.</span><button class="gbtn ghost" data-act="toast2" data-m="Developer docs open at launch on opensourceeverything.in/build (preview).">Read the card format</button></div>
+    <div class="glist" style="margin:0"><span class="ghead">In the open</span><button class="grow2" data-act="aboutnum"><span style="flex:1"><b>Open numbers</b><small>Users, revenue and costs, every Monday</small></span><span class="chev">›</span></button><button class="grow2" data-act="nav" data-r="skills"><span style="flex:1"><b>The Good Stuff</b><small>AI skills: 90 free, 10 paid</small></span><span class="chev">›</span></button><button class="grow2" data-act="nav" data-r="community"><span style="flex:1"><b>Open-source your own work</b><small>Publish a project in one tap</small></span><span class="chev">›</span></button></div>
+  </main>`;
+}
+function vMe(){
+  const m = S.me, P = S.prefs || {};
+  return `<main class="wrap" style="padding-block:18px 110px;display:flex;flex-direction:column;gap:14px">
+    <h1>Me</h1>
+    <div class="gcard" style="flex-direction:row;align-items:center;gap:14px">${avatar({bg:'#2448FF', ini:m ? m.name[0].toUpperCase() : '?'}, 60)}<span style="flex:1;min-width:0"><b style="font-size:19px;display:block">${m ? esc(m.name) : 'No OpenID yet'}</b><span class="muted">${m ? `OpenID @${esc(m.handle)}${S.tgLinked ? ' · linked to Telegram' : ''}` : 'One account for every app'}</span></span>${m ? '' : '<button class="gbtn" data-act="signin">Sign up</button>'}</div>
+    <div class="glist" style="margin:0"><span class="ghead">Your app IDs · made only when you need them</span>${['tm','prep','good'].map(k => `<div class="grow2"><span style="flex:1;min-width:0"><b>${IDNAME[k]}</b><small>${S.ids[k] ? '@' + esc(S.ids[k]) : IDWHY[k]}</small></span>${S.ids[k] ? '<span class="chip2 ok">✓</span>' : `<button class="votebtn" data-act="mkid" data-k="${k}">Create</button>`}</div>`).join('')}</div>
+    <div class="glist" style="margin:0"><span class="ghead">Settings</span>${[['inbox','Main inbox','chat','#34C759'],['start','Start screen','home','#5AC8FA'],['plans','Plans and prices','clip','#007AFF'],['lang','Language','book','#FF9500'],['privacy','Privacy','user','#5856D6'],['help','Help','today','#8E8E93']].map(([k, l, ic, col]) => `<button class="grow2" data-act="${k === 'plans' ? 'plans' : 'mepref'}" data-k="${k}"><span class="art" style="width:30px;height:30px;border-radius:8px;background:${col};color:#fff;display:grid;place-items:center">${icon(ic)}</span><span style="flex:1"><b>${l}</b>${k === 'inbox' ? `<small>${APPN[S.mainInbox || 'tm']}</small>` : ''}</span><span class="chev">›</span></button>`).join('')}</div>
+    ${siteFoot()}</main>`;
+}
+function vTmAbout(){
+  return `<section class="land-hero"><div class="land-art">${kal()}</div><div class="wrap inner"><div class="tagrow"><span>Free</span><span>No ads</span><span>Open source</span></div>
+      <h1>Tomorrow.</h1><p class="lede">The social app for driven people. Post what you did today. Become who you are tomorrow.</p>
+      <div class="ctas"><button class="btn-hud" data-act="nav" data-r="tm">Open Tomorrow</button></div><div class="listing-acts">${pinBtn(appOf('tm'))}<button class="linkbtn" data-act="pwaapp" data-k="tm">Add Tomorrow to my phone</button></div></div></section>
+    <main class="wrap"><section class="sect"><div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div class="whycard"><span class="k">Show your work</span><h3>Not your highlights</h3><p>A feed of people getting better at things: lessons done, projects shipped, streaks kept.</p></div>
+      <div class="whycard"><span class="k">Daily challenges</span><h3>Streaks with friends</h3><p>A quiz, a CAT question, a money question. Leagues of 30, never prizes.</p></div>
+      <div class="whycard"><span class="k">No ads</span><h3>Likes are hidden</h3><p>So nobody's posting for numbers.</p></div>
+      <div class="whycard"><span class="k">Works with Telegram</span><h3>Bring your groups</h3><p>Log in with Telegram and bridge a group. Your Telegram stays yours.</p></div>
+    </div></section>${siteFoot()}</main>`;
+}
+
+/* ---------------- one inbox, in every app ---------------- */
+const APPN = {tm:'Tomorrow', prep:'OpenPrep', habit:'GoodHabit', ose:'OpenSource Everything'};
+const INBOX = {tm:'chats', prep:'prep-inbox', habit:'habit-inbox', ose:'ose-inbox'};
+function appOfRoute(r){ return TMW.includes(r) ? 'tm' : PREPW.includes(r) ? 'prep' : HABITW.includes(r) ? 'habit' : 'ose'; }
+function threadApp(k){ const h = S.hissab[k]; return h.state === 'connected' || h.state === 'invite-in' || h.state === 'invite-out' ? 'habit' : h.app || 'tm'; }
+function cardHtml(c, mine){ return `<div class="acard ${mine ? 'me' : ''}"><span class="ak">${esc(APPN[c.app] || c.app)}</span><b>${esc(c.title)}</b><span>${esc(c.sub)}</span>${c.r ? `<button data-act="nav" data-r="${c.r}">${esc(c.btn)}</button>` : ''}</div>`; }
+function crossStrip(app){
+  const items = [], hide = (S.prefs || {}).nocross;
+  if (!hide && app !== 'habit' && S.ids.good) { const h = S.hissab.kabir; if (h && h.state === 'connected' && h.bal) items.push(['GoodHabit', `Hissab with Kabir: ${h.bal < 0 ? 'you owe ' + inr(-h.bal / 100) : 'he owes you ' + inr(h.bal / 100)}`, 'habit-inbox', 'You both have GoodIDs']); }
+  if (!hide && app !== 'prep' && S.ids.prep) items.push(['OpenPrep', 'Meera finished the free mock: 11/18', 'mock', 'In your study circle']);
+  if (!hide && app !== 'tm' && S.ids.tm) items.push(['Tomorrow', `Kabir is on a ${PEOPLE.kabir.streak}-day streak`, 'challenges', 'People you follow']);
+  if (hide) return `<p class="muted" style="font-size:13px;margin:6px 0">You've hidden activity from your other apps. Change it in OSE → Me → Privacy.</p>`;
+  if (!items.length) return `<p class="muted" style="font-size:13px;margin:6px 0">Activity from your other apps shows here once you have their IDs, like a GoodID for Hissabs.</p>`;
+  return `<div class="glist" style="margin:8px 0"><span class="ghead">From your other apps</span>${items.map(([a, t, r, why]) => `<button class="grow2" data-act="nav" data-r="${r}"><span style="flex:1;min-width:0"><b>${t}</b><small>${a} · ${why}</small></span><span class="chev">›</span></button>`).join('')}</div>`;
+}
+function cardSheet(){
+  const k = S.chatWith, first = S.hissab[k].name.split(' ')[0];
+  const C = [['tm',`My ${S.ch.streak || 1}-day streak`,'Daily challenges on Tomorrow','Join my streak','challenges'],['prep','Take the free mock with me','OpenPrep · CAT-style, 3 sections','Take the mock','mock'],['habit','Play Jan 2020 with me','GoodHabit · trading simulator, pretend money','Play','sim'],['ose','GST Basics for shops','The Good Stuff · free AI skill','Import','skills']];
+  sheet(`<h2>Send ${esc(first)} a card</h2><p class="muted">Cards open in the app they came from.</p>${C.map(([a, t, s, b, r], i) => `<button class="person" data-act="sendcard" data-i="${i}"><span class="av" style="background:var(--fill);color:var(--label);font-size:11px">${APPN[a].slice(0, 2)}</span><span style="flex:1;text-align:left"><b style="display:block">${t}</b><small class="muted">${s}</small></span></button>`).join('')}`);
+  S.cardOpts = C;
+}
 
 function vPractice(){ return `<main class="col" style="padding-block:14px 110px">${playModes('stories')}${practiceHome()}</main>`; }
 
@@ -1921,7 +2040,7 @@ function importSheet(n, t){
     <button class="btn-hud" data-act="copypaste">Click me, then paste into your AI</button>
     <p style="font-size:12.5px;color:var(--ash)">In Claude Code or Codex, your AI can install it for good. In chat apps it works for that conversation; add it in your AI's settings to keep it.</p>`, true);
 }
-function pasteText(n, ai){ const slug = n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); return `Read the skill at https://opensourceeverything.com/skills/${slug} and use it to help me. (${ai})`; }
+function pasteText(n, ai){ const slug = n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); return `Read the skill at https://opensourceeverything.in/skills/${slug} and use it to help me. (${ai})`; }
 
 /* ---------------- AI DISCOVERY LIBRARY ---------------- */
 const SOURCES = [
@@ -1958,14 +2077,14 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-act]'); if (!b || b.dataset.act === 'scrim') return;
   const a = b.dataset.act;
   switch (a) {
-    case 'nav': closeSheet(); if (b.dataset.r === 'profile' && b.closest('.tabbar')) S.viewProf = null; if (b.dataset.r === 'chats' && b.closest('.tabbar')) S.chatWith = null; if (location.hash.slice(1) === b.dataset.r) render(); else go(b.dataset.r); break;
+    case 'nav': closeSheet(); if (b.dataset.r === 'profile' && b.closest('.tabbar')) S.viewProf = null; if ((b.dataset.r === 'chats' || b.dataset.r.endsWith('inbox')) && (b.closest('.tabbar') || b.closest('.bar'))) S.chatWith = null; if (location.hash.slice(1) === b.dataset.r) render(); else go(b.dataset.r); break;
     case 'close': closeSheet(); break;
     case 'locked': toast(`${b.dataset.why || 'This'} is coming after launch.`); break;
     case 'signin': signupSheet(); break;
     case 'signupok': { const n = $('#sn').value.trim(), h = $('#sh').value.trim().toLowerCase().replace(/^@/, ''), a = parseInt($('#sa').value, 10), col = $('#sc').value.trim();
-      if (!n) { toast('Add your name.'); break; } if (!/^[a-z0-9._]{2,20}$/.test(h)) { toast('GitID: 2 to 20 letters, numbers, dots or underscores.'); break; } if (!(a >= 13 && a <= 100)) { toast('You need to be 13 or older to join.'); break; }
-      S.me = {name:n, handle:h, age:a, college:col}; S.user = '@' + h; chSave(); closeSheet(); render(); toast(`Welcome, ${n.split(' ')[0]}. Your GitID is @${h}.`); break; }
-    case 'me': S.viewProf = null; go('profile'); break;
+      if (!n) { toast('Add your name.'); break; } if (!/^[a-z0-9._]{2,20}$/.test(h)) { toast('OpenID: 2 to 20 letters, numbers, dots or underscores.'); break; } if (!(a >= 13 && a <= 100)) { toast('You need to be 13 or older to join.'); break; }
+      S.me = {name:n, handle:h, age:a, college:col}; S.user = '@' + h; chSave(); closeSheet(); render(); toast(`Welcome, ${n.split(' ')[0]}. Your OpenID is @${h}.`); break; }
+    case 'me': go('me'); break;
     case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:var(--label2)">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="apps" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
     case 'pinapp': { const k = b.dataset.k; S.pins = S.pins.includes(k) ? S.pins.filter(x => x !== k) : [...S.pins, k]; try { localStorage.setItem('ose-pins', JSON.stringify(S.pins)); } catch (e) {} toast(S.pins.includes(k) ? `${appOf(k).n} added to My apps` : `${appOf(k).n} removed from My apps`); render(); break; }
     case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on Today'); if (layer.innerHTML) prefSheet('start'); else render(); break;
@@ -1993,10 +2112,20 @@ document.addEventListener('click', e => {
     case 'simkeep': S.sim.done = false; simSave(); render(); break;
     case 'simagain': simNew(S.sim.i0, S.sim.base); render(); break;
     case 'simreset': S.sim = null; try { localStorage.removeItem(SKEY); } catch (e) {} render(); break;
-    case 'simsend': { const link = `https://opensourceeverything.com/habit/sim?start=${siso(S.sim.i0)}&money=${S.sim.base}`; sheet(`<h2>Play the same dates with a friend</h2><p style="color:var(--label2)">They start on ${sdate(S.sim.i0)} with ${rs(S.sim.base)}, same as you. Once they finish, you'll both see each other's result. No prizes.</p><div class="inp" style="padding:10px;word-break:break-all;font-size:13px">${esc(link)}</div><button class="gbtn" data-act="copysim" data-l="${esc(link)}">Copy link</button><button class="gbtn ghost" data-act="nav" data-r="chats">Send in Chats</button>`); break; }
+    case 'simsend': { const link = `https://opensourceeverything.in/habit/sim?start=${siso(S.sim.i0)}&money=${S.sim.base}`; sheet(`<h2>Play the same dates with a friend</h2><p style="color:var(--label2)">They start on ${sdate(S.sim.i0)} with ${rs(S.sim.base)}, same as you. Once they finish, you'll both see each other's result. No prizes.</p><div class="inp" style="padding:10px;word-break:break-all;font-size:13px">${esc(link)}</div><button class="gbtn" data-act="copysim" data-l="${esc(link)}">Copy link</button><button class="gbtn ghost" data-act="nav" data-r="chats">Send in Chats</button>`); break; }
     case 'copysim': try { navigator.clipboard.writeText(b.dataset.l).catch(() => {}); } catch (e) {} toast('Link copied (preview).'); break;
     case 'newpost': newPostSheet(); break;
     case 'newmsg': peopleSheet(); break;
+    case 'tglogin': { const n = $('#sn'), h = $('#sh'); if (n && !n.value) n.value = 'Asha Rao'; if (h && !h.value) h.value = 'asha_rao'; S.tgLinked = true; toast('Telegram shared your name, username and photo. Add your age to finish.'); const a = $('#sa'); if (a) a.focus(); break; }
+    case 'createid': { const k = b.dataset.k, v = ($('#idh').value || '').trim().toLowerCase().replace(/^@/, ''); if (!/^[a-z0-9._]{2,20}$/.test(v)) { toast('Use 2 to 20 letters, numbers, dots or underscores.'); break; } S.ids[k] = v; chSave(); closeSheet(); toast(`${IDNAME[k]} @${v} created. Your OpenID stays the same.`); const then = S.afterId; S.afterId = null; render(); if (then === 'newpost') newPostSheet(); break; }
+    case 'mkid': needId(b.dataset.k); break;
+    case 'vote': S.votes = S.votes || {}; S.votes[b.dataset.k] = !S.votes[b.dataset.k]; render(); break;
+    case 'toast2': toast(b.dataset.m); break;
+    case 'inboxf': S.inboxF = b.dataset.k; render(); break;
+    case 'maininbox': S.mainInbox = b.dataset.k; chSave(); prefSheet('inbox'); toast(`Main inbox: ${APPN[S.mainInbox]}`); break;
+    case 'cardsheet': cardSheet(); break;
+    case 'sendcard': { const [a, t, sb, btn, r] = S.cardOpts[+b.dataset.i]; S.hissab[S.chatWith].msgs.push(['mecard', {app:a, title:t, sub:sb, btn, r}]); closeSheet(); render(); toast('Card sent'); break; }
+    case 'circle': if (!needId('prep')) break; go('prep-inbox'); break;
     case 'mepref': prefSheet(b.dataset.k); break;
     case 'reportbug': closeSheet(); toast('Thanks. Your report goes straight to the team.'); break;
     case 'setpref': { S.prefs = S.prefs || {}; S.prefs[b.dataset.k] = b.dataset.v === 'toggle' ? !S.prefs[b.dataset.k] : b.dataset.v; prefSheet(b.dataset.p); break; }
@@ -2014,7 +2143,7 @@ document.addEventListener('click', e => {
     case 'welcomedone': S.welcomeDone = true; render(); break;
     case 'ptopic': S.pdraft = ($('#pt') || {}).value || ''; S.ptopic = b.dataset.k; newPostSheet(); break;
     case 'pbg': S.pdraft = ($('#pt') || {}).value || ''; S.pbg = b.dataset.b; newPostSheet(); break;
-    case 'postsave': { const t = ($('#pt') || {}).value.trim(); if (!t) { toast('Write something first.'); break; } S.posts.unshift({k:'u' + Date.now(), by:'you', topic:S.ptopic || S.interests[0] || 'building', type:'text', bg:S.pbg || 'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:t.length > 90 ? t.slice(0, 88) + '…' : t, cap:t}); S.pdraft = ''; S.ftab = 'foryou'; const fresh = chDone('learn', 10); chSave(); closeSheet(); go('home'); render(); toast(fresh ? 'Posted. Learn-or-make challenge done: +10' : 'Posted.'); break; }
+    case 'postsave': { const t = ($('#pt') || {}).value.trim(); if (!t) { toast('Write something first.'); break; } S.posts.unshift({k:'u' + Date.now(), by:'you', topic:S.ptopic || S.interests[0] || 'building', type:'text', bg:S.pbg || 'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:t.length > 90 ? t.slice(0, 88) + '…' : t, cap:t}); S.pdraft = ''; S.ftab = 'foryou'; const fresh = chDone('learn', 10); chSave(); closeSheet(); go('tm'); render(); toast(fresh ? 'Posted. Learn-or-make challenge done: +10' : 'Posted.'); break; }
     case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; S.justLiked = S.likes[b.dataset.k] ? b.dataset.k : null; render(); S.justLiked = null; break;
     case 'savepost': S.saves = S.saves || {}; S.saves[b.dataset.k] = !S.saves[b.dataset.k]; render(); toast(S.saves[b.dataset.k] ? 'Saved to your profile' : 'Removed from saved'); break;
     case 'comment': { const k = b.dataset.k, L = (S.comments = S.comments || {})[k] || []; S.cK = k; sheet(`<h2>Comments</h2>${L.map(t => `<p><b>You</b> ${esc(t)}</p>`).join('') || '<p style="color:var(--label2)">No comments yet. Be kind, be useful.</p>'}<form id="cmform" style="display:flex;gap:8px"><input class="inp" id="cmin" placeholder="Add a comment" style="flex:1" autocomplete="off"><button class="p-btn blue" type="submit">Post</button></form>`); break; }
@@ -2027,7 +2156,7 @@ document.addEventListener('click', e => {
     case 'chans': { const k = b.dataset.c, x = CHAL[k], i = +b.dataset.i; S.ch.ans[k] = i; S.ch.secs[k] = Math.max(1, Math.round((Date.now() - ((S.chStart || {})[k] || Date.now())) / 1000)); chDone(k, i === x.r ? 10 : 2); const onToday = location.hash.slice(1) === 'home' || !location.hash; render(); if (onToday) toast(i === x.r ? `Right · +10. ${x.why}` : `Not quite · +2. ${x.why}`); break; }
     case 'lb': S.lb = b.dataset.k; render(); break;
     case 'viewprof': S.viewProf = b.dataset.k || null; if (location.hash.slice(1) !== 'profile') go('profile'); else render(); break;
-    case 'follow': S.follows = S.follows || {}; S.follows[b.dataset.k] = !S.follows[b.dataset.k]; render(); break;
+    case 'follow': if (!needId('tm')) break; S.follows = S.follows || {}; S.follows[b.dataset.k] = !S.follows[b.dataset.k]; render(); break;
     case 'editprof': toast('Edit profile: name, photo, bio and college (preview).'); break;
     case 'shareprof': toast('Profile link copied (preview).'); break;
     case 'pwa': sheet(`<h2>Put it on your home screen</h2><p>It opens full-screen like an app. No app store, no download, no ads.</p><p><b>Android (Chrome):</b> ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> Share → Add to Home Screen.</p>`); break;
@@ -2066,10 +2195,10 @@ document.addEventListener('click', e => {
     case 'deepanalysis': sheet(`<h2>Deep analysis · ₹20</h2><p>Every question explained, your weak topics, time per question, and a two-week plan from the AI mentor.</p><p style="color:var(--label2)">Or get it on every mock with the OpenPrep Pass, ₹199 a month.</p><button class="p-btn blue">Pay ₹20 by UPI (preview)</button>`); break;
     case 'autosplit': { const g = S.game, tot = g.pending, idx = Math.round(tot*0.6/10000)*10000, gold = Math.round(tot*0.2/10000)*10000; g.alloc = {idx, gold, fd: tot - idx - gold}; render(); break; }
     case 'sharegame': { const g = S.game, st = stepNow(), inv = worth(st), gain = g.invested ? Math.round((inv - g.invested) / g.invested * 100) : 0, line = `I played ${ERAS[g.era].label} on GoodHabit and finished ${gain>=0?'+':''}${gain}% on my investments.`; S.shareLine = line; sheet(`<div class="sharecard"><span style="width:64px;flex:none">${goodguy('happy','#30D158')}</span><span><b>${gain>=0?'+':''}${gain}%</b><span style="opacity:.85">${esc(ERAS[g.era].label)} · GoodHabit money game</span></span></div><p>${esc(line)}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="gbtn" style="background:#0B7A3B" data-act="copyshare">Share to WhatsApp</button><button class="gbtn ghost" data-act="copyshare">Copy text</button></div><p style="font-size:12.5px;color:#5E6166">Pretend money. Your result card, ready for Instagram stories and WhatsApp.</p>`); break; }
-    case 'copyshare': { const t = S.shareLine + ' Play free: opensourceeverything.com'; try { navigator.clipboard.writeText(t).then(() => toast('Copied. Paste it in WhatsApp or your story.'), () => toast('Copy this: ' + t)); } catch (e) { toast('Copy this: ' + t); } break; }
+    case 'copyshare': { const t = S.shareLine + ' Play free: opensourceeverything.in'; try { navigator.clipboard.writeText(t).then(() => toast('Copied. Paste it in WhatsApp or your story.'), () => toast('Copy this: ' + t)); } catch (e) { toast('Copy this: ' + t); } break; }
     case 'hinv': { layer.querySelectorAll('[data-pane]').forEach(x => x.hidden = x.dataset.pane !== b.dataset.p); b.parentElement.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); break; }
     case 'invcontact': case 'invphone': { const nm = a === 'invphone' ? ($('#hph').value.trim() || '') : b.dataset.n; if (a === 'invphone' && !/^[+\d][\d\s-]{7,}$/.test(nm)) { toast('Type a phone number like 98765 43210'); break; } const k = 'c' + Date.now(); S.hissab[k] = {name: a === 'invphone' ? nm : b.dataset.n, id: a === 'invphone' ? 'invited by phone' : 'from your contacts', bg:'#4A3F8F', state:'invite-out', bal:0, msgs:[['hissab','Invite sent by SMS and WhatsApp. They can see your shared Hissab from the link before joining.']]}; closeSheet(); render(); toast('Invite sent'); break; }
-    case 'copyinv': { const t = 'Join our Hissab on GoodHabit: https://opensourceeverything.com/h/7Kx2'; try { navigator.clipboard.writeText(t).then(() => toast('Link copied. Paste it in WhatsApp.'), () => toast(t)); } catch (e) { toast(t); } break; }
+    case 'copyinv': { const t = 'Join our Hissab on GoodHabit: https://opensourceeverything.in/h/7Kx2'; try { navigator.clipboard.writeText(t).then(() => toast('Link copied. Paste it in WhatsApp.'), () => toast(t)); } catch (e) { toast(t); } break; }
     case 'msel': S.mSel = b.dataset.s; S.mRange = '1D'; render(); break;
     case 'mback': S.mSel = null; render(); break;
     case 'mrange': S.mRange = b.dataset.r; render(); break;
@@ -2088,18 +2217,18 @@ document.addEventListener('click', e => {
     case 'share': sheet(`<h2>Share with a friend</h2><p style="color:#5D6488">They can watch it free, even past their daily limit.</p>${Object.keys(S.hissab).map(k => `<button class="opt" data-act="sendreel" data-k="${k}" data-i="${b.dataset.i}">${hav(k)} ${esc(S.hissab[k].name)}</button>`).join('')}`); break;
     case 'sendreel': { const h = S.hissab[b.dataset.k]; h.msgs.push(['me', `Watch this: "${REELS[+b.dataset.i].h}"`]); closeSheet(); toast(`Sent to ${h.name.split(' ')[0]} in Chats`); break; }
     case 'like': toast('Liked'); break;
-    case 'openchat': ensureChat(b.dataset.k); (S.read = S.read || {})[b.dataset.k] = true; S.chatWith = b.dataset.k; if (location.hash.slice(1) !== 'chats') go('chats'); else render(); break;
+    case 'openchat': ensureChat(b.dataset.k); (S.read = S.read || {})[b.dataset.k] = true; S.chatWith = b.dataset.k; { const cr = location.hash.slice(1) || 'home'; if (cr.endsWith('inbox') || cr === 'chats') render(); else go(INBOX[appOfRoute(cr)]); } break;
     case 'backchats': S.chatWith = null; render(); break;
     case 'accept': { const h = S.hissab[b.dataset.k]; h.state = 'connected'; h.msgs.push(['hissab', 'Hissab connected. Shared expenses will show here.']); render(); toast('Hissab connected'); break; }
     case 'decline': { const h = S.hissab[b.dataset.k]; h.state = 'chat'; render(); toast('Invite declined. They won\'t be told why.'); break; }
-    case 'invite': { const k = b.dataset.k, h = S.hissab[k]; h.state = 'invite-out'; h.msgs.push(['hissab', `You sent ${h.name.split(' ')[0]} a Hissab invite.`]); render(); timers.push(setTimeout(() => { h.state = 'connected'; h.msgs.push(['hissab', `${h.name.split(' ')[0]} accepted. Your Hissab is live.`]); if (S.chatWith === k) render(); toast(`${h.name.split(' ')[0]} accepted your Hissab invite`); }, 1800)); break; }
-    case 'newhissab': sheet(`<h2>New Hissab invite</h2><p style="color:#5E6166">They get an invite to accept or decline. Nobody is added without saying yes, and they can see your shared Hissab from the link before joining.</p>
-      <div class="seg2" role="group" aria-label="Invite by">${[['contacts','Contacts'],['phone','Phone'],['link','WhatsApp link'],['gid','GitID']].map(([k,l],i) => `<button data-act="hinv" data-p="${k}" aria-pressed="${i===0}">${l}</button>`).join('')}</div>
+    case 'invite': { if (!needId('good')) break; const k = b.dataset.k, h = S.hissab[k]; h.state = 'invite-out'; h.msgs.push(['hissab', `You sent ${h.name.split(' ')[0]} a Hissab invite.`]); render(); timers.push(setTimeout(() => { h.state = 'connected'; h.msgs.push(['hissab', `${h.name.split(' ')[0]} accepted. Your Hissab is live.`]); if (S.chatWith === k) render(); toast(`${h.name.split(' ')[0]} accepted your Hissab invite`); }, 1800)); break; }
+    case 'newhissab': if (!needId('good')) break; sheet(`<h2>New Hissab invite</h2><p style="color:#5E6166">They get an invite to accept or decline. Nobody is added without saying yes, and they can see your shared Hissab from the link before joining.</p>
+      <div class="seg2" role="group" aria-label="Invite by">${[['contacts','Contacts'],['phone','Phone'],['link','WhatsApp link'],['gid','GoodID']].map(([k,l],i) => `<button data-act="hinv" data-p="${k}" aria-pressed="${i===0}">${l}</button>`).join('')}</div>
       <div data-pane="contacts">${['Arjun Mehta','Priya Sharma','Rahul (flatmate)'].map(n => `<div class="opt" style="justify-content:space-between"><span>${n}</span><button class="gbtn" style="min-height:40px" data-act="invcontact" data-n="${n}">Invite</button></div>`).join('')}<p style="font-size:12.5px;color:#5E6166">Contacts are read on your phone and never uploaded.</p></div>
       <div data-pane="phone" hidden><label class="lbl" for="hph">Phone number</label><input class="inp" id="hph" inputmode="tel" placeholder="98765 43210"><button class="gbtn" data-act="invphone" style="min-height:50px;margin-top:8px;width:100%">Send invite</button></div>
-      <div data-pane="link" hidden><div class="codebox">Join our Hissab on GoodHabit: https://opensourceeverything.com/h/7Kx2</div><button class="gbtn" data-act="copyinv" style="min-height:50px;margin-top:8px;width:100%;background:#0B7A3B">Copy link for WhatsApp</button></div>
-      <div data-pane="gid" hidden><label class="lbl" for="hid">Their GitID</label><input class="inp" id="hid" placeholder="@arjun" autocapitalize="off"><button class="gbtn" data-act="sendinvite" style="min-height:50px;margin-top:8px;width:100%">Send invite</button></div>`); break;
-    case 'sendinvite': { const v = ($('#hid').value || '').trim().toLowerCase(); if (!/^@?[a-z0-9._]{2,20}$/.test(v)) { toast('Use a GitID like @arjun'); break; } const k = v.replace('@','').replace(/\W/g,''); S.hissab[k] = {name: k[0].toUpperCase()+k.slice(1), id:'@' + k, bg:'#4A3F8F', state:'invite-out', bal:0, msgs:[['hissab','Hissab invite sent. Waiting for them to accept.']]}; closeSheet(); render(); toast('Invite sent'); break; }
+      <div data-pane="link" hidden><div class="codebox">Join our Hissab on GoodHabit: https://opensourceeverything.in/h/7Kx2</div><button class="gbtn" data-act="copyinv" style="min-height:50px;margin-top:8px;width:100%;background:#0B7A3B">Copy link for WhatsApp</button></div>
+      <div data-pane="gid" hidden><label class="lbl" for="hid">Their GoodID</label><input class="inp" id="hid" placeholder="@arjun" autocapitalize="off"><button class="gbtn" data-act="sendinvite" style="min-height:50px;margin-top:8px;width:100%">Send invite</button></div>`); break;
+    case 'sendinvite': { const v = ($('#hid').value || '').trim().toLowerCase(); if (!/^@?[a-z0-9._]{2,20}$/.test(v)) { toast('Use a GoodID like @arjun'); break; } const k = v.replace('@','').replace(/\W/g,''); S.hissab[k] = {name: k[0].toUpperCase()+k.slice(1), id:'@' + k, bg:'#4A3F8F', state:'invite-out', bal:0, msgs:[['hissab','Hissab invite sent. Waiting for them to accept.']]}; closeSheet(); render(); toast('Invite sent'); break; }
     case 'addhissab': sheet(`<h2>Add to Hissab</h2><div><label class="lbl" for="hw">What was it?</label><input class="inp" id="hw" placeholder="Chai, cab, movie"></div><div><label class="lbl" for="ha">Amount (₹)</label><input class="inp" id="ha" inputmode="decimal" placeholder="600"></div><div class="seg2" role="group" aria-label="Who paid"><button data-act="hpaid" data-p="me" aria-pressed="true">I paid</button><button data-act="hpaid" data-p="them" aria-pressed="false">They paid</button></div><p style="font-size:13.5px;color:#5D6488">Split equally between you two.</p><button class="gbtn" data-act="hsave" style="min-height:50px">Add</button>`); S.hpaid = 'me'; break;
     case 'hpaid': S.hpaid = b.dataset.p; b.parentElement.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); break;
     case 'hsave': { const amt = Math.round(parseFloat(String($('#ha').value).replace(/[,\s₹]/g,'')) * 100); if (!(amt > 0)) { toast('Type an amount like 600'); break; } const h = S.hissab[S.chatWith], what = $('#hw').value.trim() || 'Expense', half = Math.round(amt / 2), first = h.name.split(' ')[0]; h.bal += S.hpaid === 'me' ? half : -half; h.msgs.push(['hissab', `Hissab · ${what} ${inr(amt/100)} · ${S.hpaid==='me'?'you paid':first+' paid'} · split 2 ways → ${S.hpaid==='me'?`${first} owes you ${inr(half/100)}`:`you owe ${first} ${inr(half/100)}`}`]); closeSheet(); render(); break; }
