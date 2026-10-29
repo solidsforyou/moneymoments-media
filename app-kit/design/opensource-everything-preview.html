@@ -274,6 +274,26 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .exitbtn{flex:none;min-height:40px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid currentColor;background:transparent;opacity:.85}
 .wtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 28px 10px 0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
 @media(min-width:760px){.wtabs{-webkit-mask-image:none;mask-image:none;padding-right:0}}
+.osename{white-space:nowrap}
+@media(max-width:400px){.osename{font-size:16px}}
+.hint{color:var(--ash);font-size:14px}
+.myapps{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:14px 10px;margin-top:4px}
+.appicon{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;padding:4px;min-height:44px;color:inherit}
+.appicon .art,.approw .art{display:grid;place-items:center;overflow:hidden;flex:none}
+.appicon b{font-size:13px;font-weight:700;text-align:center;line-height:1.2}
+.applist{display:flex;flex-direction:column}
+.approw{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--steel);flex-wrap:wrap}
+.appmeta{display:flex;align-items:center;gap:14px;flex:1 1 260px;min-width:0;border:0;background:none;padding:0;text-align:left;color:var(--bone);min-height:56px}
+.appmeta b{display:block;font-family:var(--hudf);font-size:18px;font-weight:800;color:#111}
+.appmeta span span{font-size:13.5px;color:var(--ash)}
+.appmeta .soon{font-size:12px;font-weight:700;color:var(--ash);border:1px solid var(--steel);border-radius:999px;padding:2px 8px;margin-left:6px}
+.appbtns{display:flex;gap:8px;margin-left:auto}
+.openbtn,.pinbtn{min-height:40px;padding:0 14px;border-radius:999px;font-weight:700;font-size:14px;border:1px solid var(--steel);background:#fff;color:#111}
+.openbtn{background:#111;color:#fff;border-color:#111}
+.pinbtn[aria-pressed="true"]{background:#E8F5EC;border-color:#0B7A3B;color:#0B7A3B}
+.listing-acts{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:12px}
+.land-hero .pinbtn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
+.land-hero .pinbtn[aria-pressed="true"]{background:#fff;color:#0B7A3B;border-color:#fff}
 .subs{position:static!important;margin-top:8px;font-size:14px!important;line-height:1.45}
 @media(max-width:560px){.stage{aspect-ratio:4/3!important}.tv{width:70%!important;top:8%!important}.guy{width:30%!important}}
 .wtabs button{flex:none;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--p-line);background:#fff;color:var(--p-mute);font-weight:700;font-size:14px}
@@ -534,19 +554,29 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const OSE = ['home','about','more','skills','library','community'], ALIAS = {cat:'home','prep-about':'home','habit-about':'practice'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
+const OSE = ['home','about','prep-about','habit-about','skills','library','community'], ALIAS = {cat:'prep-about', more:'home'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money'];
 const ROUTES = [...OSE, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
 
 function signedChip(){ return S.user ? `<button class="chipbtn hot" data-act="me">${esc(S.user)}</button>` : `<button class="chipbtn hot" data-act="signin">Sign in<span class="wide-only"> · OpenID</span></button>`; }
+function appsBtn(){ return `<button class="exitbtn" data-act="apps" aria-label="Your apps"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Apps</button>`; }
 function bar(world){
-  const tabs = [['home','Home'],['quant','Quant'],['verbal','Verbal'],['reason','Reasoning'],['mock','Free mock'],['practice','Money'],['more','More']];
-  const cur = HABITW.includes(world) ? 'practice' : ['about','skills','library','community'].includes(world) ? 'more' : world === 'prep' ? 'home' : world;
+  if (PREPW.includes(world)) {
+    const tabs = [['prep','Home'],['quant','Quant'],['verbal','Verbal'],['reason','Reasoning'],['mock','Free mock']];
+    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="prep" aria-label="OpenPrep home"><span class="mark" aria-hidden="true">${goodguy('happy','#3FA9FF')}</span><span>OpenPrep</span></button>${appsBtn()}</div>
+      <div class="col"><nav class="wtabs" aria-label="OpenPrep">${tabs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+  }
+  if (HABITW.includes(world)) {
+    return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
+      <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span>GoodHabit${world==='money'?' · practice':''}</span></button>${appsBtn()}</div></header>`;
+  }
+  const crumbs = [['home','All apps'],['prep-about','OpenPrep'],['habit-about','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community'],['about','About us']];
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenPrep home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span>OpenPrep</span></button>
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything, all apps"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span></button>
     ${signedChip()}</div>
-    <div class="wrap"><nav class="wtabs" aria-label="Sections">${tabs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+    <div class="wrap"><nav class="wtabs" aria-label="OpenSource Everything">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
 }
 function icon(n){ const P = {wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
@@ -559,7 +589,7 @@ function render(){
   let r = location.hash.slice(1); if (ALIAS[r]) { history.replaceState(null, '', '#' + ALIAS[r]); r = ALIAS[r]; } if (!ROUTES.includes(r)) r = 'home';
   document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vCat,about:vAbout,more:vMore,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  const html = ({home:vHome,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
   window.scrollTo(0,0);
   if (r === 'reason') startSky(); else stopSky();
@@ -591,12 +621,33 @@ function tile(kind, title, tag, name, desc, opts={}){
     <div class="cover" style="${cover(kind)}">${opts.art||''}<span class="tag ${tag==='FREE'?'free':''}">${tag}</span><span class="cover-title" ${opts.locked?'style="color:#15161A;text-shadow:none;opacity:.35"':''}>${title}</span>${opts.locked?`<span class="lock">🔒 ${esc(opts.locked)}</span>`:''}</div>
     <div class="meta"><b>${name}</b><span>${desc}</span></div></button>`;
 }
-function vMore(){
-  const more = [['practice','GoodHabit','The money game, free with your account, plus Hissab with friends','linear-gradient(135deg,#2448FF,#121633)',ART.habit],['skills','The Good Stuff','AI skills · 90 free, 10 paid','linear-gradient(135deg,#FFC93C,#FF8A3D)',ART.skills],['library','AI Discovery Library','Trusted sources for people and AIs','linear-gradient(135deg,#7C5CFF,#3B1FA6)',ART.library],['community','Community','Boards, publishing your work, donations · 18+','linear-gradient(135deg,#14B8A6,#0E6B63)',ART.community],['','Accounting Unlocked','Offline books for Windows and Mac','linear-gradient(135deg,#C9CCD3,#8D929C)',ART.acct]];
+const APPS = [
+  {k:'prep', n:'OpenPrep', d:'Free CAT prep: lessons, unlimited practice, a full mock every month', open:'prep', page:'prep-about', bg:'linear-gradient(135deg,#1B4DFF,#06115A)'},
+  {k:'habit', n:'GoodHabit', d:'The money game, Hissab with friends and your own books', open:'practice', page:'habit-about', bg:'linear-gradient(135deg,#2448FF,#121633)'},
+  {k:'skills', n:'The Good Stuff', d:'AI skills · 90 free, 10 paid', open:'skills', page:'skills', bg:'linear-gradient(135deg,#FFC93C,#FF8A3D)'},
+  {k:'library', n:'AI Discovery Library', d:'Trusted sources for people and AIs', open:'library', page:'library', bg:'linear-gradient(135deg,#7C5CFF,#3B1FA6)'},
+  {k:'community', n:'Community', d:'Boards, publishing your work, donations · 18+', open:'community', page:'community', bg:'linear-gradient(135deg,#14B8A6,#0E6B63)'},
+  {k:'acct', n:'Accounting Unlocked', d:'Offline books for Windows and Mac', soon:true, bg:'linear-gradient(135deg,#C9CCD3,#8D929C)'},
+];
+const appOf = k => APPS.find(a => a.k === k);
+function appArt(a, size){ const inner = a.k === 'prep' ? `<span style="width:78%;display:block">${goodguy('happy','#3FA9FF')}</span>` : (ART[a.k] || ART.acct).replace('class="art"', `width="${Math.round(size*.9)}" height="${Math.round(size*.8)}"`); return `<span class="art" style="width:${size}px;height:${size}px;border-radius:${Math.round(size*.28)}px;background:${a.bg}">${inner}</span>`; }
+function myApps(){
+  const pins = S.pins.map(appOf).filter(Boolean);
+  if (!pins.length) return `<p class="hint">Pin the apps you use. Each one then opens on its own, like a separate app on your phone.</p>`;
+  return `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,64)}<b>${a.n}</b></button>`).join('')}</div>`;
+}
+function pinBtn(a){ const on = S.pins.includes(a.k); return `<button class="pinbtn" data-act="pinapp" data-k="${a.k}" aria-pressed="${on}">${on ? '✓ In my apps' : '＋ My apps'}</button>`; }
+function siteFoot(){ return `<footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><button data-act="nav" data-r="about">One ID for everything</button><span>Clickable preview with sample data.</span></footer>`; }
+function vHome(){
+  const startOpts = [['','All apps'],['prep','OpenPrep'],['habit','GoodHabit']];
   return `<main class="wrap" style="padding-block:22px 0">
-  <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(32px,6vw,52px);font-weight:800;letter-spacing:-.03em">More from us</h1><p style="margin-top:8px;font-size:17px">OpenPrep is made by OpenSource Everything. Here's everything else we're building, in the open.</p></section>
-  <div class="more">${more.map(([r,n,d,bg,art]) => `<button class="mitem" ${r?`data-act="nav" data-r="${r}"`:'data-act="locked" data-why="AccountingUnlocked"'}><span class="art" style="background:${bg}">${art.replace('class="art"','width="52" height="46"')}</span><span style="flex:1;min-width:0"><b>${n}${r?'':'<span class="soon">Soon</span>'}</b><span>${d}</span></span></button>`).join('')}</div>
-  <footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><span>Clickable preview with sample data.</span></footer>
+  <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,7vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1">Free, open apps<br>for learning and money.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch">One account for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
+  <section class="plain"><div class="sect-h"><h2>My apps</h2><span>${S.pins.length ? 'tap to open' : 'nothing pinned yet'}</span></div>${myApps()}
+    <div class="forrow" role="group" aria-label="Open straight into" style="margin-top:14px"><b>Open straight into</b>${startOpts.map(([k,l]) => `<button data-act="startapp" data-k="${k}" aria-pressed="${(S.start||'')===k}">${l}</button>`).join('')}</div>
+    <p class="hint" style="margin-top:6px">Next time you open OpenSource Everything, it goes straight to this.</p></section>
+  <section class="plain"><div class="sect-h"><h2>All apps</h2><span>everything we make, in one place</span></div>
+    <div class="applist">${APPS.map(a => `<div class="approw"><button class="appmeta" ${a.soon ? 'data-act="locked" data-why="AccountingUnlocked"' : `data-act="nav" data-r="${a.page}"`}>${appArt(a,56)}<span style="flex:1;min-width:0"><b>${a.n}${a.soon ? '<span class="soon">Soon</span>' : ''}</b><span>${a.d}</span></span></button>${a.soon ? '' : `<span class="appbtns"><button class="openbtn" data-act="nav" data-r="${a.open}">Open</button>${pinBtn(a)}</span>`}</div>`).join('')}</div></section>
+  ${siteFoot()}
   </main>`;
 }
 function vAbout(){
@@ -617,7 +668,7 @@ function vAbout(){
   <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
     <p>One sign-in across every app. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
     <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ GitHub projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
-  <footer class="sitefoot"><button data-act="nav" data-r="home">← Back to CAT prep</button><span>Clickable preview with sample data.</span></footer>
+  <footer class="sitefoot"><button data-act="nav" data-r="home">← All apps</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
 
@@ -813,7 +864,7 @@ function vCat(){
     <div class="land-art">${goodguy('happy','#3FA9FF')}</div>
     <div class="wrap inner"><div class="tagrow"><span>CAT 2027</span><span>Free</span><span>No ads</span></div>
       <h1>Free CAT prep. No ads.</h1><p class="lede">${PLANS.free.short} Pay only if you want all the video, more mocks or the AI mentor.</p>
-      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="nav" data-r="prep">Start learning</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
+      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#0A1F99" data-act="enter" data-r="mock" data-c="#1B4DFF" data-n="the free mock">Take the free mock</button><button class="btn-line" data-act="nav" data-r="prep">Open OpenPrep</button></div><div class="listing-acts">${pinBtn(appOf('prep'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="prep">Put OpenPrep on my home screen</button></div><button class="linkbtn" style="color:#fff;margin-top:14px;font-weight:700" data-act="enter" data-r="quant" data-c="#1B4DFF" data-n="Quant">Try a real CAT question now, no sign-in →</button></div></section>
   <main class="wrap">
     <section class="sect"><div class="sect-h"><h2>Free, forever</h2><span>the part that costs us almost nothing</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
@@ -834,10 +885,34 @@ function vCat(){
         <div class="whycard"><span class="k">Open</span><h3>Public corrections</h3><p>Every mistake we fix is listed, with the date.</p></div>
         <div class="whycard"><span class="k">Bounty</span><h3>Find a mistake, get ₹100 by UPI</h3><p>Real money, not credits. The first person to spot each real mistake gets paid, up to 50 payouts a month.</p></div>
       </div></section>
-    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Start free, decide later</h2><p>A full coaching course can cost ₹45,000 or more. Everything above is free; the Pass is ₹199 a month if you want more.</p><button class="btn-hud" data-act="nav" data-r="prep">Start learning</button><button class="linkbtn" data-act="plans" style="margin-top:10px">See what's free and what's paid</button></section>
-  <footer class="sitefoot"><span>OpenPrep by OpenSource Everything · ad-free, open</span><button data-act="nav" data-r="about">About us</button><button data-act="nav" data-r="more">More from us</button><button data-act="aboutnum">Open numbers</button><span>Clickable preview with sample data.</span></footer>
+    <section class="gate"><span style="width:110px">${goodguy('happy','#3FA9FF')}</span><h2>Start free, decide later</h2><p>A full coaching course can cost ₹45,000 or more. Everything above is free; the Pass is ₹199 a month if you want more.</p><button class="btn-hud" data-act="nav" data-r="prep">Open OpenPrep</button><button class="linkbtn" data-act="plans" style="margin-top:10px">See what's free and what's paid</button></section>
+  ${siteFoot()}
   </main>`;
 }
+function vHabitAbout(){
+  return `<section class="land-hero" style="background:radial-gradient(70% 90% at 85% 15%,rgba(11,122,59,.55),transparent 60%),linear-gradient(135deg,#17181A,#0B0D0C)">
+    <div class="land-ledger" style="display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:clamp(11px,1.8vw,14px);color:#E8E6DE;opacity:.9" aria-hidden="true">
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Salary</span><span style="color:#5CD08A">+40,000</span></div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Raju (milkman)</span><span style="color:#FF8A80">−1,240</span></div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Kabir owes you</span><span style="color:#5CD08A">450</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0"><span>Invested (practice)</span><span style="color:#FFB21A">1,806</span></div></div>
+    <div class="wrap inner"><div class="tagrow"><span>Beta</span><span>Money game free with your account</span><span>No bank link needed</span></div>
+      <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, share reels that teach, and play the investing game that builds the habit before you risk a rupee.</p>
+      <div class="ctas"><button class="btn-hud" style="background:#fff;color:#17181A" data-act="nav" data-r="practice">Open GoodHabit</button></div><div class="listing-acts">${pinBtn(appOf('habit'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="habit">Put GoodHabit on my home screen</button></div></div></section>
+  <main class="wrap">
+    <section class="sect"><div class="sect-h"><h2>What's inside</h2><span>a finance app, made friendly</span></div>
+      <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="whycard"><span class="k">Hissab · yours</span><h3>Your own books</h3><p>Write any entry yourself: names, amounts, cash, bank or UPI. Keep a personal account of everything. Nothing linked, nothing shared.</p></div>
+        <div class="whycard"><span class="k">Hissab · friends</span><h3>Inside your chats</h3><p>Send a Hissab invite to a Good ID. Once they accept, shared expenses and who owes whom live right in the chat.</p></div>
+        <div class="whycard"><span class="k">Reels</span><h3>Scroll useful things</h3><p>OpenPrep lessons and credited creator clips. Share with a friend in one tap.</p></div>
+        <div class="whycard"><span class="k">Practice</span><h3>The money game</h3><p>Free with your account. Ramesh, Amit or the Rich guy, easy to hard, the '90s to the 2010s, real crashes. Invest on a real-looking platform with pretend money.</p></div>
+      </div></section>
+    <section class="gate"><span style="width:110px">${goodguy('happy','#0B7A3B')}</span><h2>Open GoodHabit</h2><p>Its own app, with its own look. Tap Apps any time to switch to OpenPrep or see everything else.</p><button class="btn-hud" data-act="nav" data-r="practice">Open GoodHabit</button></section>
+  ${siteFoot()}
+  </main>`;
+}
+
+
 /* GoodHabit world: personal Hissab ledger (manual entries, kept on this device) */
 const LKEY = 'ose-hissab-v1';
 const SEED = {accounts:[{n:'Cash',open:200000},{n:'Bank (manual)',open:3000000},{n:'UPI wallet',open:150000}], entries:[
@@ -1161,6 +1236,10 @@ document.addEventListener('click', e => {
     case 'signin': sheet(`<h2>Sign in with OpenID</h2><p style="color:var(--ash)">One ID everywhere: PrepID in OpenPrep, GoodID in GoodHabit.</p><div><label class="lbl" for="oid">Your OpenID</label><input class="inp" id="oid" value="good/riya" autocapitalize="off"></div><button class="btn-hud" data-act="signin-ok">Continue</button><p style="font-size:12.5px;color:var(--ash)">Preview: no account is created.</p>`, true); break;
     case 'signin-ok': S.user = ($('#oid').value || 'good/riya').trim(); closeSheet(); render(); toast(`Signed in as ${S.user}`); break;
     case 'me': toast(`${S.user} · same ID in every product`); break;
+    case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:#5B6270">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="home" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
+    case 'pinapp': { const k = b.dataset.k; S.pins = S.pins.includes(k) ? S.pins.filter(x => x !== k) : [...S.pins, k]; try { localStorage.setItem('ose-pins', JSON.stringify(S.pins)); } catch (e) {} toast(S.pins.includes(k) ? `${appOf(k).n} added to My apps` : `${appOf(k).n} removed from My apps`); render(); break; }
+    case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on All apps'); render(); break;
+    case 'pwaapp': { const a = appOf(b.dataset.k); sheet(`<h2>Put ${a.n} on your home screen</h2><p>It installs as its own app called ${a.n}, with its own icon, and opens straight into ${a.n}. OpenPrep and GoodHabit can sit side by side on your phone like two separate apps. Same account in both.</p><p><b>Android (Chrome):</b> open ${a.n}, then ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> open ${a.n}, then Share → Add to Home Screen.</p>`); break; }
     case 'pwa': sheet(`<h2>Put it on your home screen</h2><p>It opens full-screen like an app. No app store, no download, no ads.</p><p><b>Android (Chrome):</b> ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> Share → Add to Home Screen.</p>`); break;
     /* OpenPrep */
     case 'plans': sheet(`<h2>What's free, what's paid</h2><p style="color:#5B6270">Learning stays free. You pay only for what costs us money to run.</p>
@@ -1280,6 +1359,9 @@ document.addEventListener('submit', e => {
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && layer.innerHTML) closeSheet(); });
 
 
+try { S.pins = JSON.parse(localStorage.getItem('ose-pins')) || []; S.start = localStorage.getItem('ose-start') || ''; } catch (e) { S.pins = []; S.start = ''; }
+if (!Array.isArray(S.pins)) S.pins = [];
+if (!location.hash && S.start && appOf(S.start)) history.replaceState(null, '', '#' + appOf(S.start).open);
 render();
 })();
 </script>
