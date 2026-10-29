@@ -324,6 +324,7 @@ const people = {
   rohan:{name:'Rohan Das', id:'good/rohan', bg:'#A8470A'},
   zoya:{name:'Zoya Khan', id:'good/zoya', bg:'#0E6B63'},
   tinkerlab:{name:'Tinker Lab', id:'good/tinkerlab', bg:'#4A3F8F'},
+  stranger:{name:'Help Desk 24x7', id:'good/helpdesk.24x7', bg:'#5D6488'},
 };
 const initials = p => p.name.split(' ').map(w => w[0]).slice(0,2).join('');
 const av = (k, cls='') => { const p = people[k]; return `<span class="avatar ${cls}" style="background:${p.bg}" aria-hidden="true">${esc(initials(p))}</span>`; };
@@ -331,9 +332,9 @@ const av = (k, cls='') => { const p = people[k]; return `<span class="avatar ${c
 const state = {
   tab:'feed', theme:null,
   user:{name:'', contact:'', monthly:null, goodId:'', topics:new Set(['Personal finance','Startups','Tech'])},
-  reminders:{on:false, every:'15 scrolls'}, scrolled:0, nudgeShown:false,
+  reminders:{on:false, every:'15 scrolls'}, scrolled:0, nudgeShown:false, snoozeUntil:0,
   liked:new Set(), approved:[], filter:'All', zerodha:false,
-  posts:[], ratings:{}, news:{q:'', loading:false, results:null},
+  posts:[], ratings:{}, reviews:{}, news:{q:'', loading:false, results:null},
   moneyTab:'Stocks', profileTab:'Flexes',
   hissab:null,
 };
@@ -393,8 +394,15 @@ const H = state.hissab = {
     {id:'e4', g:'g2', what:'Electricity, October', paid:'zoya', amt:286000, split:['me','zoya']},
     {id:'e5', g:'g2', what:'Groceries', paid:'me', amt:174000, split:['me','zoya']},
   ],
-  settled:[],
+  payments:[], // {k, amt}: amt in paise, positive when they paid you, negative when you paid them
 };
+// "₹1,200.50" -> 120050 paise; anything else -> NaN
+function parsePaise(str){
+  const t = String(str).replace(/[\s,₹]/g, '');
+  const m = /^(\d{1,9})(?:\.(\d{1,2}))?$/.exec(t);
+  return m ? +m[1] * 100 + +((m[2] || '0') + '0').slice(0, 2) : NaN;
+}
+const remLabel = x => x === 'Once a day' ? 'Once a day' : 'Every ' + x;
 
 /* ---------- toast / layers ---------- */
 let toastTimer;
@@ -414,14 +422,13 @@ function renderTabbar(){
   $('#tabbar').innerHTML = TABS.map(([k, label]) => `<button data-act="tab" data-tab="${k}" aria-label="${k==='money'?'Money Machine':label}" ${state.tab===k?'aria-current="page"':''}>${ico(k, 24)}<span>${label}</span></button>`).join('');
 }
 function go(tab){
-  state.tab = tab; closeLayer();
+  state.tab = tab; closeLayer(); state.nudgeShown = false;
   TABS.forEach(([k]) => $('#s-'+k).hidden = k !== tab);
   renderTabbar(); render[tab]();
   $('#s-'+tab).scrollTop = 0;
 }
 
 /* ---------- FEED ---------- */
-const FILTERS = ['All','Personal finance','Startups','Tech','Science'];
 function postHTML(p){
   const who = people[p.who];
   const liked = state.liked.has(p.id), approved = state.approved.some(a => a.pid === p.id);
@@ -452,6 +459,7 @@ function postHTML(p){
 const STORIES = ['ananya','kabir','studio','meera','rohan','zoya'];
 const render = {};
 render.feed = () => {
+  if (state.filter !== 'All' && !state.user.topics.has(state.filter)) state.filter = 'All';
   const list = state.posts.filter(p => state.filter === 'All' || p.topic === state.filter);
   $('#s-feed').innerHTML = `
     <div class="top"><div class="brand"><span class="mark">${ico('check',18,3)}</span>GoodHabits</div>
@@ -462,17 +470,17 @@ render.feed = () => {
       <button class="story" data-act="create" role="listitem"><span class="ring seen"><span class="avatar" style="background:var(--surface-2);color:var(--accent)">${ico('plus',22,2.5)}</span></span><span class="name">Your story</span></button>
       ${STORIES.map((k,i) => `<button class="story" data-act="story" data-who="${k}" role="listitem"><span class="ring ${i>3?'seen':''}">${av(k)}</span><span class="name">${esc(people[k].name.split(' ')[0])}</span></button>`).join('')}
     </div>
-    <div class="chips" role="group" aria-label="Show only">${FILTERS.map(f => `<button class="chip" data-act="filter" data-f="${f}" aria-pressed="${state.filter===f}">${f}</button>`).join('')}</div>
-    <div id="feed-list">${list.map(postHTML).join('') || '<p class="pad muted">Nothing in this category yet.</p>'}</div>
+    <div class="chips" role="group" aria-label="Show only">${['All', ...state.user.topics].map(f => `<button class="chip" data-act="filter" data-f="${f}" aria-pressed="${state.filter===f}">${f}</button>`).join('')}</div>
+    <div id="feed-list">${list.map(postHTML).join('') || `<p class="pad muted">Nothing in ${esc(state.filter)} from people you follow yet. Our house accounts post here soon.</p>`}</div>
     <p class="note" style="padding:16px 16px 28px;text-align:center">You're all caught up. Close the app, or learn one more thing in News.</p>`;
 };
 
 function onFeedScroll(e){
   const el = e.target;
-  if (!state.reminders.on || state.nudgeShown) return;
+  if (!state.reminders.on || state.nudgeShown || Date.now() < state.snoozeUntil) return;
   state.scrolled = Math.max(state.scrolled, Math.floor(el.scrollTop / 380));
   // In the app: every 15 scrolls or 10 minutes, as the user set it. Here after 3 posts so the preview shows it.
-  if (state.scrolled >= 3) showNudge();
+  if (state.scrolled >= 3) { state.scrolled = 0; showNudge(); }
 }
 function showNudge(){
   state.nudgeShown = true;
@@ -510,16 +518,18 @@ function runSearch(q){
   const n = state.news; n.q = q.trim(); if (!n.q) return;
   n.loading = true; n.results = null; render.news();
   const words = n.q.toLowerCase().split(/\W+/).filter(Boolean);
-  timers.push(setTimeout(() => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
     const scored = ARTICLES.map(a => ({a, s:a.k.filter(k => words.some(w => k.startsWith(w) || w.startsWith(k))).length})).filter(x => x.s).sort((x,y) => y.s - x.s);
     n.results = scored.map(x => x.a); n.loading = false; render.news();
-  }, 800));
+  }, 800);
 }
+let searchTimer;
 
 /* ---------- MONEY MACHINE ---------- */
 render.money = () => {
   const t = state.moneyTab;
-  const holdings = `<div class="statgrid"><div class="stat"><div class="small muted">Invested</div><div class="v num">₹48,600</div></div><div class="stat"><div class="small muted">Current value</div><div class="v num up">₹52,140</div></div></div>`;
+  const holdings = !state.zerodha ? `<div class="card" style="padding:12px 14px"><h3>Your holdings show up here</h3><p class="small soft" style="margin-top:4px">Connect Zerodha to see what you own and how it's doing.</p></div>` : `<div class="statgrid"><div class="stat"><div class="small muted">Invested</div><div class="v num">₹48,600</div></div><div class="stat"><div class="small muted">Current value</div><div class="v num up">₹52,140</div></div></div>`;
   let list = '';
   if (t === 'Stocks') list = STOCKS.map(s => `<button class="stock" data-act="stock" data-sym="${s.sym}"><span class="tick">${s.short}</span><span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(s.name)}</span><span class="small muted mono">${s.sym}</span></span><span style="text-align:right"><span class="num" style="display:block;font-weight:800">${inr(s.price)}</span><span class="small num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}%</span></span></button>`).join('');
   if (t === 'Mutual funds') list = `<div class="card" style="padding:14px 16px"><h3>Mutual funds open in Zerodha Coin</h3><p class="small soft" style="margin-top:6px;line-height:1.55">Zerodha's API can show your funds and SIPs here, but buying a fund or starting a SIP happens in Coin. We'll take you there in one tap.</p><button class="btn sm" style="margin-top:12px" data-act="coin">Open Coin</button></div>`;
@@ -548,13 +558,13 @@ function stockSheet(sym, presetPaise){
       <div class="field"><label>How much do you want to invest?</label><div class="amounts" style="grid-template-columns:repeat(4,minmax(0,1fr))">${amounts.map(a=>`<button class="amt" data-act="amt" data-a="${a}" aria-pressed="${a===amt}">${inr(a)}</button>`).join('')}</div></div>
       <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
         <div class="spread"><span class="soft">Shares you get</span><span class="num" style="font-weight:800">${c.qty}</span></div>
-        <div class="spread"><span class="soft">You pay</span><span class="num" style="font-weight:800">${inr(c.cost)}</span></div>
+        <div class="spread"><span class="soft">Share cost (before charges)</span><span class="num" style="font-weight:800">${inr(c.cost)}</span></div>
         <div class="spread small muted"><span>Brokerage</span><span>₹0 (Zerodha, delivery)</span></div>
         <div class="spread small muted"><span>Stays in your account</span><span class="num">${inr(c.left)}</span></div>
         <p class="note">Taxes and exchange charges are shown by Zerodha before you confirm.</p></div>
       ${c.qty === 0 ? `<p class="err">${inr(amt)} is less than one share. Pick a bigger amount or try an ETF.</p>` : ''}
       ${state.zerodha ? `<button class="btn block" data-act="buy" ${c.qty===0?'disabled':''}>Buy ${c.qty} share${c.qty===1?'':'s'}</button>` : `<button class="btn block" data-act="connect">Connect Zerodha to buy</button>`}
-      <p class="note">Not investment advice. Sample prices.</p>`, 'Buy '+s.name);
+      <p class="note">Sample prices. Not investment advice. Investments in the securities market are subject to market risks; read all related documents carefully before investing.</p>`, 'Buy '+s.name);
   };
   stockSheetState = {sym, set:a => { amt = a; draw(); }, get:() => calc()};
   draw();
@@ -606,7 +616,7 @@ function balances(){
       else if (p === 'me') bal[e.paid] = (bal[e.paid] || 0) - owed;
     });
   }
-  H.settled.forEach(k => { bal[k] = 0; });
+  for (const pay of H.payments) bal[pay.k] = (bal[pay.k] || 0) - pay.amt;
   return bal;
 }
 render.hissab = () => {
@@ -615,26 +625,42 @@ render.hissab = () => {
   $('#s-hissab').innerHTML = `<div class="top"><h1 style="font-size:26px">Hissab</h1><button class="btn sm" data-act="add-exp">${ico('plus',18)} Add expense</button></div>
     <div class="pad">
       <div class="bal"><div class="stat"><div class="small muted">You're owed</div><div class="v num owed">${inr(owed)}</div></div><div class="stat"><div class="small muted">You owe</div><div class="v num owe">${inr(owe)}</div></div></div>
-      <h3>Friends</h3><div>${Object.keys(H.friends).map(k => { const v = bal[k] || 0; return `<button class="person" data-act="friend" data-k="${k}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(H.friends[k])}</span><span class="small muted mono">${esc(people[k].id)}</span></span>
+      <div class="card spread" style="padding:12px 14px"><span><span class="small muted" style="display:block">Your spending, your share only</span><span class="num" style="font-weight:800;font-size:20px">${inr(myShare())}</span></span><span class="small muted" style="text-align:right">Includes things<br>you paid just for you</span></div>
+      <div class="spread"><h3>Friends</h3><button class="link" data-act="add-friend">${ico('plus',16)} Add friend</button></div><div>${Object.keys(H.friends).map(k => { const v = bal[k] || 0; return `<button class="person" data-act="friend" data-k="${k}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(H.friends[k])}</span><span class="small muted mono">${esc(people[k].id)}</span></span>
         <span style="text-align:right">${v === 0 ? '<span class="small muted">Settled up</span>' : v > 0 ? `<span class="small muted" style="display:block">owes you</span><span class="num up" style="font-weight:800">${inr(v)}</span>` : `<span class="small muted" style="display:block">you owe</span><span class="num down" style="font-weight:800">${inr(-v)}</span>`}</span></button>`; }).join('')}</div>
       <h3>Groups</h3>${H.groups.map(g => { const total = H.expenses.filter(e=>e.g===g.id).reduce((a,e)=>a+e.amt,0); return `<div class="card" style="padding:12px 14px;display:flex;align-items:center;gap:12px"><span class="avatar" style="background:var(--surface-2);color:var(--accent)">${ico('users',20)}</span><span style="flex:1"><span style="display:block;font-weight:800">${esc(g.name)}</span><span class="small muted">${g.members.length} people · ${inr(total)} spent</span></span></div>`; }).join('')}
-      <h3>Recent</h3>${H.expenses.slice().reverse().slice(0,5).map(e => `<div class="spread" style="padding:6px 0;border-bottom:1px solid var(--hair)"><span><span style="display:block;font-weight:700">${esc(e.what)}</span><span class="small muted">${e.paid==='me'?'You':esc(H.friends[e.paid])} paid · split ${e.split.length} ways</span></span><span class="num" style="font-weight:800">${inr(e.amt)}</span></div>`).join('')}
+      <h3>Recent</h3>${H.expenses.slice().reverse().slice(0,5).map(e => `<div class="spread" style="padding:6px 0;border-bottom:1px solid var(--hair)"><span><span style="display:block;font-weight:700">${esc(e.what)}</span><span class="small muted">${e.paid==='me'?'You':esc(H.friends[e.paid])} paid · ${e.split.length === 1 ? (e.split[0]==='me' ? 'just you' : 'for ' + esc(H.friends[e.split[0]].split(' ')[0])) : 'split ' + e.split.length + ' ways'}${e.g ? ' · ' + esc(H.groups.find(g=>g.id===e.g).name) : ''}</span></span><span class="num" style="font-weight:800">${inr(e.amt)}</span></div>`).join('')}
       <p class="note">Settling up by UPI inside GoodHabits is coming later. For now, mark it settled after you pay.</p>
     </div>`;
 };
+function myShare(){
+  let t = 0;
+  for (const e of H.expenses){ const i = e.split.indexOf('me'); if (i < 0) continue; const share = Math.floor(e.amt / e.split.length); t += share + (i < e.amt - share * e.split.length ? 1 : 0); }
+  return t;
+}
+function splitHelp(a, n){
+  if (Number.isNaN(a)) return '<span class="err">Type an amount like 1200 or 1,200.50</span>';
+  if (!n || !a) return 'Pick at least one person and an amount.';
+  if (n === 1 && sel1()) return 'Just for you: it counts in your spending, nobody owes anything.';
+  const each = Math.floor(a / n);
+  return `${inr(each)} each${a % n ? ` (the extra paise go to the first ${a % n})` : ''}`;
+}
+const sel1 = () => expState && expState.sel.size === 1 && expState.sel.has('me');
 function expenseSheet(){
-  const sel = new Set(['me','ananya','kabir','rohan']); let paid = 'me';
+  const sel = new Set(['me','ananya','kabir','rohan']); let paid = 'me', group = 'g1';
   const draw = (desc='', amt='') => {
-    const n = sel.size, a = Math.round(parseFloat(amt || '0') * 100), each = n ? Math.floor(a / n) : 0;
+    const n = sel.size, a = amt.trim() ? parsePaise(amt) : 0;
     sheet(`<h2>Add an expense</h2>
       <div class="field"><label for="ex-what">What was it?</label><input class="input" id="ex-what" placeholder="Dinner, cab, groceries" value="${esc(desc)}"></div>
       <div class="field"><label for="ex-amt">Amount (₹)</label><input class="input num" id="ex-amt" inputmode="decimal" placeholder="1200" value="${esc(amt)}"></div>
+      <div class="field"><label>Group</label><div class="who-pick">${[...H.groups.map(g=>[g.id,g.name]), ['', 'No group']].map(([id,nm])=>`<button class="chip" data-act="ex-group" data-g="${id}" aria-pressed="${group===id}">${esc(nm)}</button>`).join('')}<button class="chip" data-act="ex-justme" aria-pressed="${sel.size===1&&sel.has('me')&&paid==='me'}">Just me</button></div></div>
       <div class="field"><label>Paid by</label><div class="who-pick">${['me',...Object.keys(H.friends)].map(k=>`<button class="chip" data-act="ex-paid" data-k="${k}" aria-pressed="${paid===k}">${k==='me'?'You':esc(H.friends[k].split(' ')[0])}</button>`).join('')}</div></div>
       <div class="field"><label>Split equally between</label><div class="who-pick">${['me',...Object.keys(H.friends)].map(k=>`<button class="chip" data-act="ex-split" data-k="${k}" aria-pressed="${sel.has(k)}">${k==='me'?'You':esc(H.friends[k].split(' ')[0])}</button>`).join('')}</div>
-        <p class="help num">${n && a ? `${inr(each)} each${a % n ? ` (the extra paise go to the first ${a % n})` : ''}` : 'Pick at least one person and an amount.'}</p></div>
-      <button class="btn block" data-act="ex-save" ${n && a > 0 ? '' : 'disabled'}>Save expense</button>`, 'Add an expense');
+        <p class="help num" id="ex-help">${splitHelp(a, n)}</p></div>
+      <button class="btn block" id="ex-save-btn" data-act="ex-save" ${n && a > 0 ? '' : 'disabled'}>Save expense</button>`, 'Add an expense');
   };
-  expState = {sel, draw, get paid(){ return paid; }, set paid(v){ paid = v; }};
+  const refresh = () => { const raw = $('#ex-amt').value, a = raw.trim() ? parsePaise(raw) : 0; $('#ex-help').innerHTML = splitHelp(a, sel.size); $('#ex-save-btn').disabled = !(sel.size && a > 0); };
+  expState = {sel, draw, refresh, get paid(){ return paid; }, set paid(v){ paid = v; }, get group(){ return group; }, set group(v){ group = v; }};
   draw();
 }
 let expState = null;
@@ -654,7 +680,8 @@ function onboarding(){
   const dots = i => `<div class="dots" aria-hidden="true">${[0,1,2,3,4].map(d=>`<i class="${d===i?'on':''}"></i>`).join('')}</div>`;
   let html = '';
   if (onbStep === 0) html = `<div class="body"><div class="hero-art" style="background:${GRADS[0]}"><div><p style="font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:12px;opacity:.9">GoodHabits</p><h1 style="color:#fff;font-size:38px;margin-top:8px">Guilt-tripped on doom-scrolling? Here's the fix.</h1></div></div>
-      <p class="soft" style="font-size:16px;line-height:1.55">A calm social app with no ads and no promotions. Learn something, show work you're proud of, and invest a little instead of impulse-buying.</p>${dots(0)}</div>
+      <p class="soft" style="font-size:16px;line-height:1.55">A calm social app with no ads and no promotions. Learn something, show work you're proud of, and invest a little instead of impulse-buying.</p>
+      <p class="soft" style="font-size:15px;font-weight:700">Scroll kam, seekho zyada. Aur thoda invest bhi.</p>${dots(0)}</div>
       ${foot("Let's fix some habits",'onb-next')}`;
   if (onbStep === 1) html = `<div class="body"><h1>Everything, in five tabs</h1><div class="stack" style="gap:10px">${TOUR.map(([k,t,d])=>`<div class="tourcard"><span class="ico">${ico(k,22)}</span><span><h3>${t}</h3><p class="small soft" style="margin-top:3px;line-height:1.5">${d}</p></span></div>`).join('')}</div>${dots(1)}</div>${foot('Continue','onb-next')}`;
   if (onbStep === 2) html = `<div class="body"><h1>Some details before we start</h1>
@@ -668,7 +695,7 @@ function onboarding(){
       <div class="field"><label>What do you want to learn about?</label><div class="row" style="flex-wrap:wrap;gap:8px">${['Personal finance','Startups','Tech','Science','Design','Careers','Health','Climate'].map(x=>`<button class="chip" data-act="topic" data-t="${x}" aria-pressed="${u.topics.has(x)}">${x}</button>`).join('')}</div></div>${dots(3)}</div>${foot('Continue','onb-gid')}`; }
   if (onbStep === 4) html = `<div class="body"><h1>Want a nudge to invest?</h1><p class="soft" style="line-height:1.55">While you scroll Feed or News, we can show a small "Up for some investing?" at the top. It's off unless you turn it on, and you choose how often.</p>
       <div class="spread card" style="padding:12px 14px"><span><h3>Invest reminders</h3><p class="small muted">Off by default</p></span><button class="switch" role="switch" data-act="rem-toggle" aria-checked="${state.reminders.on}" aria-label="Invest reminders"></button></div>
-      <div class="stack" ${state.reminders.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${state.reminders.every===x}"><span class="radio"></span>Every ${x.replace('Once a day','day, once')}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>${dots(4)}</div>${foot('Start scrolling, the good way','onb-done')}`;
+      <div class="stack" ${state.reminders.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${state.reminders.every===x}"><span class="radio"></span>${remLabel(x)}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>${dots(4)}</div>${foot('Start scrolling, the good way','onb-done')}`;
   layer().innerHTML = `<div class="onb" role="dialog" aria-modal="true" aria-label="Sign up">${html}</div>`;
 }
 
@@ -708,11 +735,18 @@ document.addEventListener('click', e => {
     case 'activity': full(header('Recent activity') + `<div class="body"><div class="pad">${[['ananya','liked your post "3 tools I use for budgeting"','2m'],['kabir','Approved your reel "Budget in 60 seconds"','1h'],['meera','started following you','3h'],['zoya','added "Groceries" in Flat 302 · Hissab','5h'],['rohan','commented: "Saving this for salary day."','1d']].map(([k,t,w])=>`<div class="row" style="align-items:flex-start">${av(k)}<p class="small" style="line-height:1.5;flex:1"><b>${esc(people[k].name)}</b> ${esc(t)} <span class="muted">${w}</span></p></div>`).join('')}</div></div>`, 'Recent activity'); break;
     case 'dms': openDMs(); break;
     case 'chat': openChat(); break;
-    case 'nudge-x': document.querySelectorAll('.nudge-row').forEach(n => n.remove()); toast('Okay. We\'ll ask again on your schedule.'); break;
+    // In the app the snooze is the user's own interval; 30 seconds here so the preview shows it coming back.
+    case 'nudge-x': document.querySelectorAll('.nudge-row').forEach(n => n.remove()); state.nudgeShown = false; state.snoozeUntil = Date.now() + 30000; toast('Okay. We\'ll ask again later, on your schedule.'); break;
     case 'nudge-go': document.querySelectorAll('.nudge-row').forEach(n => n.remove()); go('money'); stockSheet('NIFTYBEES', 100000); break;
     case 'suggest': $('#news-q') && ($('#news-q').value = b.dataset.q); runSearch(b.dataset.q); break;
     case 'article': openArticle(state.news.results[+b.dataset.i]); break;
     case 'rate': rateSheet(b.dataset.src); break;
+    case 'review': { const t = b.dataset.title, r0 = state.reviews[t] || {v:'', text:''};
+      sheet(`<h2>Review this article</h2><p class="small muted">${esc(t)}</p><div class="field"><label>Was it accurate and fair?</label><div class="who-pick" role="radiogroup">${['Yes','Partly','No'].map(v=>`<button class="chip" role="radio" data-act="rv-pick" data-v="${v}" aria-checked="${r0.v===v}" aria-pressed="${r0.v===v}">${v}</button>`).join('')}</div></div>
+        <div class="field"><label for="arv">What should other readers know? (optional)</label><textarea class="input" id="arv" placeholder="A missing fact, a good source, a fair point">${esc(r0.text)}</textarea></div>
+        <p class="note">Reviews are public after a quick check. Be fair to the writer.</p><button class="btn block" data-act="review-save" data-title="${esc(t)}">Post review</button>`, 'Review article'); break; }
+    case 'rv-pick': b.parentElement.querySelectorAll('[data-act=rv-pick]').forEach(x => { const on = x === b; x.setAttribute('aria-checked', on); x.setAttribute('aria-pressed', on); }); break;
+    case 'review-save': { const sel = layer().querySelector('[data-act=rv-pick][aria-pressed=true]'); if (!sel) { toast('Pick Yes, Partly or No first.'); break; } state.reviews[b.dataset.title] = {v:sel.dataset.v, text:$('#arv').value.trim()}; closeLayer(); toast('Thanks. Your review goes public after a quick check.'); break; }
     case 'star': { const src = b.dataset.src, v = +b.dataset.v; rateState.stars = v; drawRate(src); break; }
     case 'rate-save': { state.ratings[b.dataset.src] = {stars:rateState.stars, review:$('#rv').value.trim()}; closeLayer(); render.news(); toast('Thanks. Your rating is public and counts now.'); break; }
     case 'mtab': state.moneyTab = b.dataset.t; render.money(); break;
@@ -735,9 +769,13 @@ document.addEventListener('click', e => {
     case 'add-exp': expenseSheet(); break;
     case 'ex-paid': { const d = $('#ex-what').value, m = $('#ex-amt').value; expState.paid = b.dataset.k; expState.draw(d, m); break; }
     case 'ex-split': { const d = $('#ex-what').value, m = $('#ex-amt').value, k = b.dataset.k; expState.sel.has(k) ? expState.sel.delete(k) : expState.sel.add(k); expState.draw(d, m); break; }
-    case 'ex-save': { const what = $('#ex-what').value.trim() || 'Expense', amt = Math.round(parseFloat($('#ex-amt').value) * 100); if (!(amt > 0)) break; H.expenses.push({id:'e'+Date.now(), g:'g1', what, paid:expState.paid, amt, split:[...expState.sel]}); H.settled = H.settled.filter(k => !expState.sel.has(k) && k !== expState.paid); closeLayer(); render.hissab(); toast('Expense added'); break; }
+    case 'ex-group': { const d = $('#ex-what').value, m = $('#ex-amt').value, g = H.groups.find(x => x.id === b.dataset.g); expState.group = b.dataset.g; if (g) { expState.sel.clear(); g.members.forEach(k => expState.sel.add(k)); } expState.draw(d, m); break; }
+    case 'ex-justme': { const d = $('#ex-what').value, m = $('#ex-amt').value; expState.group = ''; expState.paid = 'me'; expState.sel.clear(); expState.sel.add('me'); expState.draw(d, m); break; }
+    case 'ex-save': { const what = $('#ex-what').value.trim() || 'Expense', amt = parsePaise($('#ex-amt').value); if (!(amt > 0) || !expState.sel.size) break; H.expenses.push({id:'e'+Date.now(), g:expState.group || null, what, paid:expState.paid, amt, split:[...expState.sel]}); closeLayer(); render.hissab(); toast('Expense added'); break; }
+    case 'add-friend': sheet(`<h2>Add a friend</h2><div class="field"><label for="fr-name">Name</label><input class="input" id="fr-name" placeholder="Arjun Mehta"></div><div class="field"><label for="fr-id">Good ID or phone number</label><input class="input" id="fr-id" placeholder="good/arjun or 98xxxxxx10" autocapitalize="off"><p class="help">Not on GoodHabits yet? Add their phone number; we'll keep the hissab until they join.</p></div><p class="err" id="fr-err" hidden>Add a name and a Good ID or phone number.</p><button class="btn block" data-act="friend-save">Add friend</button>`, 'Add a friend'); break;
+    case 'friend-save': { const nm = $('#fr-name').value.trim(), raw = $('#fr-id').value.trim(); if (!nm || !raw) { $('#fr-err').hidden = false; break; } const k = 'f' + Date.now(), phone = /^[+\d][\d\s-]{6,}$/.test(raw); people[k] = {name:nm, id: phone ? raw : (raw.startsWith('good/') ? raw : 'good/' + raw).toLowerCase(), bg:'#4A3F8F'}; H.friends[k] = nm; closeLayer(); render.hissab(); toast(`${nm.split(' ')[0]} added`); break; }
     case 'friend': friendSheet(b.dataset.k); break;
-    case 'settle': H.settled.push(b.dataset.k); closeLayer(); render.hissab(); toast('Marked as settled'); break;
+    case 'settle': { const k = b.dataset.k, v = balances()[k] || 0; if (v) H.payments.push({k, amt:v}); closeLayer(); render.hissab(); toast('Marked as settled'); break; }
     case 'monthly': state.user.monthly = b.dataset.v; onboarding(); break;
     case 'topic': { const t = b.dataset.t; const gid = $('#u-gid').value; state.user.goodId = 'good/' + gid; state.user.topics.has(t) ? state.user.topics.delete(t) : state.user.topics.add(t); onboarding(); break; }
     case 'onb-next': onbStep++; onboarding(); break;
@@ -758,10 +796,11 @@ document.addEventListener('input', e => {
   if (t.id === 'u-name') state.user.name = t.value;
   if (t.id === 'u-contact') state.user.contact = t.value;
   if (t.id === 'u-gid') state.user.goodId = 'good/' + t.value;
+  if (t.id === 'ex-amt' && expState) expState.refresh();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && layer().innerHTML && !layer().querySelector('.onb')) closeLayer(); });
 $('#s-feed').addEventListener('scroll', onFeedScroll, {passive:true});
-$('#s-news').addEventListener('scroll', e => { if (state.reminders.on && !state.nudgeShown && e.target.scrollTop > 600) showNudge(); }, {passive:true});
+$('#s-news').addEventListener('scroll', e => { if (state.reminders.on && !state.nudgeShown && Date.now() >= state.snoozeUntil && e.target.scrollTop > 600) showNudge(); }, {passive:true});
 
 /* ---------- overlays: reel, story, dms, article, rating, settings, friend ---------- */
 function openReel(p){
@@ -775,16 +814,17 @@ function openStory(k){
   const p = people[k];
   layer().innerHTML = `<div class="viewer" role="dialog" aria-modal="true" aria-label="Story" style="background:${GRADS[Object.keys(people).indexOf(k) % 6]}">
     <div class="bars"><i><b id="sb"></b></i></div><button class="icon-btn close" data-act="close" aria-label="Close">${ico('close',26)}</button>
-    <div class="row" style="position:absolute;top:24px;left:14px">${av(k)}<b>${esc(p.name)}</b></div>
+    <div class="row" style="position:absolute;top:24px;left:14px;right:64px;flex-wrap:wrap">${av(k)}<b>${esc(p.name)}</b>${p.house?'<span class="badge house">House account · AI voice</span>':''}</div>
     <span class="big">${k==='studio'?'Today\'s habit: 10 minutes of reading before your phone':'Day 47 of investing before spending'}</span></div>`;
   const bar = $('#sb'); bar.style.transition = 'width 5s linear'; requestAnimationFrame(() => bar.style.width = '100%');
   timers.push(setTimeout(closeLayer, 5200));
 }
 function openDMs(){
-  full(header('Messages') + `<div class="body"><div class="pad">${[['ananya','Sending the invoice repo link now','2m',true],['kabir','Goa photos are up!','1h',false],['rohan','Hi, I am from GoodHabits support…','3h',true]].map(([k,t,w,u])=>`<button class="person" data-act="${k==='rohan'?'chat':'none'}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(people[k].name)}</span><span class="small ${u?'':'muted'}" style="${u?'font-weight:700':''}">${esc(t)}</span></span><span class="small muted">${w}</span></button>`).join('')}<p class="note">DMs are back where they were. Tap Rohan's chat to see how we flag scams.</p></div></div>`, 'Messages');
+  full(header('Messages') + `<div class="body"><div class="pad">${[['ananya','Sending the invoice repo link now','2m',true],['kabir','Goa photos are up!','1h',false],['stranger','Hi, I am from GoodHabits support…','3h',true]].map(([k,t,w,u])=>`<button class="person" data-act="${k==='stranger'?'chat':'none'}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(people[k].name)}</span><span class="small ${u?'':'muted'}" style="${u?'font-weight:700':''}">${esc(t)}</span></span><span class="small muted">${w}</span></button>`).join('')}<p class="note">DMs are back where they were. Messages from people you don't follow land in Requests; tap Help Desk 24x7 to see how we flag scams.</p></div></div>`, 'Messages');
 }
 function openChat(){
-  full(header(esc(people.rohan.name)) + `<div class="body"><div class="pad" id="thread" style="gap:10px">
+  full(header(esc(people.stranger.name)) + `<div class="body"><div class="pad" id="thread" style="gap:10px">
+    <p class="small muted">Message request · you don't follow this account · joined 2 days ago</p>
     <div class="msg them">Hi, I am from GoodHabits support. Your Zerodha link will be blocked today.</div>
     <div class="msg them">Share the OTP you received to keep it active.</div>
     <div class="flag" role="note">${ico('shield',18)}<span>This looks like a scam. GoodHabits and Zerodha never ask for codes or passwords in DMs. Don't share it.</span></div>
@@ -799,7 +839,7 @@ function openArticle(a){
     <div class="row small">${starsHTML(s.avg)}<b class="num">${s.avg.toFixed(1)}</b><span class="muted num">reader trust · ${s.n.toLocaleString('en-IN')} ratings</span></div>
     <p>Sample article text for the preview. In the app, the article opens in a clean reader with no ads, or at the source's own page with a short summary in our words.</p>
     <p>Every result comes from our index of approved sources, so you see where it's from and how readers rate that source before you trust it.</p>
-    <div class="card" style="padding:12px 14px"><h3>Review this article</h3><p class="small muted" style="margin-top:4px">Was it accurate and fair? Reviews are public and moderated.</p><button class="btn ghost sm" style="margin-top:10px" data-act="rate" data-src="${esc(a.src)}">Write a review</button></div>
+    <div class="card" style="padding:12px 14px"><h3>Review this article</h3><p class="small muted" style="margin-top:4px">Was it accurate and fair? Reviews are public and moderated.</p><button class="btn ghost sm" style="margin-top:10px" data-act="review" data-title="${esc(a.title)}">${state.reviews[a.title] ? 'Edit your review' : 'Write a review'}</button></div>
   </div></div>`, 'Article');
 }
 let rateState = {stars:0};
@@ -815,8 +855,8 @@ function openSettings(){
   const r = state.reminders;
   full(header('Settings') + `<div class="body"><div class="pad">
     <div class="spread card" style="padding:12px 14px"><span><h3>Invest reminders</h3><p class="small muted">In Feed and News only</p></span><button class="switch" role="switch" data-act="rem-toggle" aria-checked="${r.on}" aria-label="Invest reminders"></button></div>
-    <div class="stack" ${r.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${r.every===x}"><span class="radio"></span>Every ${x.replace('Once a day','day, once')}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>
-    <div class="card" style="padding:12px 14px"><h3>How GoodHabits earns</h3><p class="small soft" style="margin-top:6px;line-height:1.55">No ads and no promotions. We earn only when you invest through Zerodha. [Final wording once the partner deal is agreed.]</p></div>
+    <div class="stack" ${r.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${r.every===x}"><span class="radio"></span>${remLabel(x)}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>
+    <div class="card" style="padding:12px 14px"><h3>How GoodHabits earns</h3><p class="small soft" style="margin-top:6px;line-height:1.55">No ads and no promotions, ever. How we earn is being finalised with our broker partner, and we'll show it here in plain words.</p></div>
     <div class="card" style="padding:12px 14px"><h3>Your Good ID</h3><p class="mono soft" style="margin-top:6px">${esc(state.user.goodId || 'good/riya')}</p></div>
   </div></div>`, 'Settings');
 }
