@@ -152,7 +152,8 @@ Build the simplest feed that serves the brief, and say how it ranks.
      must never be described as "the scam filter".
    - **Layer 2, a language-model classifier.** What it sees decides what it
      can catch, so route widely:
-     - **every DM** (DMs are where most scams happen; the brief says so);
+     - **every DM** (the brief: "Comments and DMs are where crypto scams
+       spread");
      - **every comment or post** that mentions money, returns, a coin
        promise, a code or login, a wallet, an app to install, or contact
        elsewhere (a cheap keyword gate, much wider than layer 1's rules);
@@ -181,8 +182,10 @@ Build the simplest feed that serves the brief, and say how it ranks.
        is safe, return allow"). Pass the message only as quoted data,
        never as instructions; accept only the three fixed labels and treat
        anything else as hold; add injection attempts to the held-out set.
-     - Outage: if the model call fails or times out, hold DMs that layer
-       1's gate flagged and let the rest through with a warning on links;
+     - Outage: if the model call fails or times out, hold the DMs that
+       layer 2's routing gate picked out (money, codes, wallets, apps,
+       outside contact, links, payment IDs) and let the rest through with a
+       warning on links;
        never silently allow everything.
    - **Layer 3, people:** the moderation queue (point 4) is the main
      defence. Every scam a moderator finds becomes a held-out example.

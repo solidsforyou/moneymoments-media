@@ -213,7 +213,10 @@ def signal_hits(t: str):
     for sent in sentences:
         if SIG_SENSITIVE.search(sent) and SIG_REQUEST.search(sent) and not SIG_SAFE.search(sent):
             found.add(("asks for credentials or a code", 10, SIG_SENSITIVE.search(sent).group(0)))
-        if SIG_REMOTE.search(sent) and not SIG_ADVICE.search(sent):
+        mr = SIG_REMOTE.search(sent)
+        before = re.sub(r"(?i)\bnever\s*mind\b", "", sent[max(0, mr.start() - 25):mr.start()]) if mr else ""
+        if mr and not SIG_ADVICE.search(before) \
+                and not re.search(r"\b(?:are\s+how|is\s+how)\s+scammers\b", sent[mr.end():mr.end() + 40], re.I):
             found.add(("remote-access app", 8, SIG_REMOTE.search(sent).group(0)))
         m = SIG_SELF.search(sent)
         if m:
@@ -229,7 +232,8 @@ def signal_hits(t: str):
             found.add(("pay or send to receive or release", 6, SIG_PAY_TO_GET.search(sent).group(0)[:50]))
         if SIG_GIVEAWAY.search(sent):
             found.add(("giveaway or free crypto", 2, SIG_GIVEAWAY.search(sent).group(0)))
-        if SIG_UPI.search(sent) and not SIG_ADVICE.search(sent):
+        mu = SIG_UPI.search(sent)
+        if mu and not SIG_ADVICE.search(re.sub(r"(?i)\bnever\s*mind\b", "", sent[max(0, mu.start() - 25):mu.end() + 30])):
             found.add(("payment ID (UPI) to send money to", 4, SIG_UPI.search(sent).group(0)))
         mi = SIG_INCOME.search(sent)
         if mi and not NEGATION.search(sent[max(0, mi.start() - 30):mi.start()]) and not NOT_A_PROMISE.search(sent):

@@ -225,3 +225,7 @@ def test_safety_advice_about_remote_apps_and_upi_passes():
                  "My UPI id got blocked after a P2P trade, be careful"]:
         assert scan(text)["verdict"] == "allow", (text, scan(text))
     assert scan("Install AnyDesk so our support engineer can fix your wallet")["verdict"] in ("hold", "block")
+
+
+def test_advice_words_elsewhere_dont_hide_a_scam():
+    assert scan("Never mind the haters, install TeamViewer and I'll fix your wallet sync")["verdict"] in ("hold", "block")
