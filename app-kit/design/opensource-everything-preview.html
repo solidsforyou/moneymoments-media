@@ -275,7 +275,7 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .wtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 28px 10px 0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
 @media(min-width:760px){.wtabs{-webkit-mask-image:none;mask-image:none;padding-right:0}}
 .osename{white-space:nowrap}
-@media(max-width:400px){.osename{font-size:16px}}
+@media(max-width:430px){.osename{font-size:15.5px;letter-spacing:-.02em}}
 .hint{color:var(--ash);font-size:14px}
 .myapps{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:14px 10px;margin-top:4px}
 .appicon{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;padding:4px;min-height:44px;color:inherit}
@@ -321,6 +321,47 @@ label.lbl{font-size:13.5px;font-weight:700;display:block;margin-bottom:4px}
 .kvs b{font-size:16px;font-variant-numeric:tabular-nums}
 .simchart svg{width:100%;height:130px}
 .simfoot{color:var(--g-mute);font-size:12.5px;line-height:1.5}
+body.home #app{padding-bottom:84px}
+.feed{max-width:520px;margin:0 auto;padding:10px 0 110px;display:flex;flex-direction:column;gap:14px}
+.stories{display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;padding:6px 16px 4px}
+.stb{flex:none;display:flex;flex-direction:column;align-items:center;gap:5px;border:0;background:none;color:var(--bone);min-width:68px}
+.stb small{font-size:12px;color:var(--ash)}
+.ring{width:64px;height:64px;border-radius:50%;padding:3px;background:conic-gradient(var(--c,#2448FF),#FF3D8B,var(--c,#2448FF));display:grid}
+.ring>span{border-radius:50%;background:#fff;border:3px solid #fff;display:grid;place-items:center;font-weight:800;font-size:15px;color:#111}
+.ring.done{background:#D5D8DE}
+.ring.streak{background:linear-gradient(135deg,#FFB21A,#FF5A1F)}
+.post{background:#fff;border-top:1px solid var(--steel);border-bottom:1px solid var(--steel)}
+@media(min-width:540px){.post{border:1px solid var(--steel);border-radius:16px;overflow:hidden}}
+.post header{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.phead{display:flex;align-items:center;gap:10px;flex:1;min-width:0;border:0;background:none;text-align:left;color:#111;padding:0}
+.phead b{display:block;font-size:14.5px}
+.phead small{display:block;color:#6B7080;font-size:12.5px}
+.appchip{font-size:11px;font-weight:800;background:#EEF0F8;color:#4A5060;border-radius:6px;padding:1px 6px;vertical-align:1px}
+.dots{border:0;background:none;font-size:22px;min-width:44px;min-height:44px;color:#111}
+.media{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px;color:#fff;position:relative}
+.media h3{font-family:var(--hudf);font-size:clamp(26px,7vw,36px);line-height:1.05;letter-spacing:-.02em}
+.media p{opacity:.85;font-size:15px}
+.media .play{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.35);display:grid;place-items:center;font-size:15px}
+.pacts{display:flex;gap:4px;padding:4px 8px}
+.pacts button{min-width:44px;min-height:44px;border:0;background:none;font-size:22px;color:#111}
+.pacts button[aria-pressed="true"]{color:#E0245E}
+.cap{padding:0 14px 6px;font-size:14.5px;color:#111;line-height:1.45}
+.openin{margin:0 14px 12px;font-size:14px}
+.chal{border-left:5px solid var(--c)}
+.chal-k{font-size:12px;font-weight:800;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.chal .qopt{width:100%}
+.lbrow{display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:1px solid var(--g-line)}
+.lbrow:last-child{border-bottom:0}
+.lbrow.you{background:#EEF3FF;margin-inline:-16px;padding-inline:16px}
+.profhead{display:flex;align-items:center;gap:18px}
+.pstats{display:flex;flex:1;justify-content:space-around;text-align:center}
+.pstats b{display:block;font-size:18px}
+.pstats small{color:var(--ash);font-size:13px}
+.grid{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:3px}
+.grid i{aspect-ratio:1;border-radius:3px;background:#EBEDF0}
+.grid i.l1{background:#9BE9A8}.grid i.l2{background:#40C463}.grid i.l3{background:#30A14E}.grid i.l4{background:#216E39}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.pcell{aspect-ratio:1;display:flex;align-items:flex-end;padding:8px;color:#fff;font-size:12px;font-weight:700;line-height:1.2;overflow:hidden}
 .listing-acts{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:12px}
 .land-hero .pinbtn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
 .land-hero .pinbtn[aria-pressed="true"]{background:#fff;color:#0B7A3B;border-color:#fff}
@@ -575,7 +616,7 @@ const S = {
   free:{reels:10, long:1, mentor:10},
   hissab:{
     kabir:{name:'Kabir Shah', id:'good/kabir', bg:'#06683F', state:'connected', bal:45000, msgs:[['them','Goa photos are up!'],['hissab','Hissab · Dinner at Thalassa ₹1,800 · you paid · split 2 ways → Kabir owes you ₹900'],['me','Sending the cab money tonight?'],['hissab','Hissab · Cab ₹900 · Kabir paid · split 2 ways → you owe Kabir ₹450']]},
-    ananya:{name:'Riya Mehta', id:'good/riya', bg:'#B5134F', state:'invite-in', bal:0, msgs:[['them','Started a Hissab with you for the Jaipur trip?']]},
+    riya:{name:'Riya Mehta', id:'good/riya', bg:'#B5134F', state:'invite-in', bal:0, msgs:[['them','Started a Hissab with you for the Jaipur trip?']]},
     zoya:{name:'Zoya Khan', id:'good/zoya', bg:'#0E6B63', state:'chat', bal:0, msgs:[['them','That percentages reel was so good, sending to my sister']]},
   },
   chatWith:null, habitTab:'reels',
@@ -584,7 +625,7 @@ const S = {
 };
 
 /* ---------------- routing ---------------- */
-const OSE = ['home','about','prep-about','habit-about','skills','library','community'], ALIAS = {cat:'prep-about', more:'home'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','chats','reels','practice','money','sim'];
+const OSE = ['home','challenges','apps','chats','profile','about','prep-about','habit-about','skills','library','community'], ALIAS = {cat:'prep-about', more:'apps', reels:'home'}, PREPW = ['prep','quant','verbal','reason','mock'], HABITW = ['habit','markets','practice','money','sim'];
 const ROUTES = [...OSE, ...PREPW, ...HABITW];
 function go(r){ location.hash = r; }
 window.addEventListener('hashchange', render);
@@ -602,24 +643,25 @@ function bar(world){
     return `<header class="bar"><div class="col" style="display:flex;align-items:center;gap:10px;min-height:58px">
       <button class="logo" data-act="nav" data-r="practice" aria-label="GoodHabit home"><span>GoodHabit${world==='money'?' · practice':''}</span></button>${appsBtn()}</div></header>`;
   }
-  const crumbs = [['home','All apps'],['prep-about','OpenPrep'],['habit-about','GoodHabit'],['skills','The Good Stuff'],['library','AI Library'],['community','Community'],['about','About us']];
   return `<header class="bar"><div class="wrap" style="display:flex;align-items:center;gap:10px;min-height:58px">
-    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything, all apps"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span></button>
-    ${signedChip()}</div>
-    <div class="wrap"><nav class="wtabs" aria-label="OpenSource Everything">${crumbs.map(([r,l]) => `<button data-act="nav" data-r="${r}" ${r===world?'aria-current="page"':''}>${l}</button>`).join('')}</nav></div></header>`;
+    <button class="logo" data-act="nav" data-r="home" aria-label="OpenSource Everything home"><span class="mark" aria-hidden="true">${goodguy('happy','#2448FF')}</span><span class="osename">OpenSource Everything</span></button>
+    <button class="chipbtn" data-act="newpost" aria-label="New post" style="font-size:20px;min-width:44px">＋</button>${signedChip()}</div></header>`;
 }
-function icon(n){ const P = {wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
+function icon(n){ const P = {home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>', trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>', grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>', wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M5 6l10-3 1 3"/>', chart:'<path d="M3 17l5-6 4 3 6-8"/><path d="M3 21h18"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>', play:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>', target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>', lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`; }
 function tabbar(world){
-  if (!HABITW.includes(world) || world === 'money' || (world === 'chats' && S.chatWith)) return '';
-  const t = [['practice','target','Play'],['habit','wallet','Hissab'],['markets','chart','Markets'],['chats','chat','Chats'],['reels','play','Reels']];
-  return `<nav class="tabbar" aria-label="GoodHabit"><div class="in">${t.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===(world==='sim'?'practice':world)?'aria-current="page"':''}>${icon(i)}${l}</button>`).join('')}</div></nav>`;
+  if (OSE.includes(world)) { if (world === 'chats' && S.chatWith) return ''; const cur = ['home','challenges','apps','chats','profile'].includes(world) ? world : 'apps';
+    const o = [['home','home','Home'],['challenges','trophy','Challenges'],['apps','grid','Apps'],['chats','chat','Messages'],['profile','user','Profile']];
+    return `<nav class="tabbar" aria-label="OpenSource Everything"><div class="in">${o.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===cur?'aria-current="page"':''}>${icon(i)}${l}</button>`).join('')}</div></nav>`; }
+  if (!HABITW.includes(world) || world === 'money') return '';
+  const t = [['practice','target','Play'],['habit','wallet','Hissab'],['markets','chart','Markets']];
+  return `<nav class="tabbar" aria-label="GoodHabit"><div class="in" style="grid-template-columns:repeat(3,minmax(0,1fr))">${t.map(([r,i,l]) => `<button data-act="nav" data-r="${r}" ${r===(world==='sim'?'practice':world)?'aria-current="page"':''}>${icon(i)}${l}</button>`).join('')}</div></nav>`;
 }
 function render(){
   clearTimers(); closeSheet();
   let r = location.hash.slice(1); if (ALIAS[r]) { history.replaceState(null, '', '#' + ALIAS[r]); r = ALIAS[r]; } if (!ROUTES.includes(r)) r = 'home';
   document.body.className = OSE.includes(r) ? 'home' : HABITW.includes(r) ? (r === 'money' ? 'money' : 'habit') : r;
   $('#sky').hidden = r !== 'reason';
-  const html = ({home:vHome,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,reels:vReels,practice:vPractice,sim:vSim,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
+  const html = ({home:vFeed,apps:vHome,challenges:vChallenges,profile:vProfile,about:vAbout,'prep-about':vCat,'habit-about':vHabitAbout,mock:vMock,prep:vPrep,quant:vQuant,verbal:vVerbal,reason:vReason,habit:vHissab,markets:vMarkets,chats:vChats,practice:vPractice,sim:vSim,money:vMoney,skills:vSkills,library:vLibrary,community:vCommunity})[r]();
   app.innerHTML = bar(r) + html + tabbar(r);
   window.scrollTo(0,0);
   if (r === 'reason') startSky(); else stopSky();
@@ -669,7 +711,7 @@ function myApps(){
 function pinBtn(a){ const on = S.pins.includes(a.k); return `<button class="pinbtn" data-act="pinapp" data-k="${a.k}" aria-pressed="${on}">${on ? '✓ In my apps' : '＋ My apps'}</button>`; }
 function siteFoot(){ return `<footer class="sitefoot"><span>OpenSource Everything · ad-free, open, for everyone</span><button data-act="nav" data-r="about">About us</button><button data-act="aboutnum">Open numbers</button><button data-act="nav" data-r="about">One ID for everything</button><span>Clickable preview with sample data.</span></footer>`; }
 function vHome(){
-  const startOpts = [['','All apps'],['prep','OpenPrep'],['habit','GoodHabit']];
+  const startOpts = [['','Home feed'],['prep','OpenPrep'],['habit','GoodHabit']];
   return `<main class="wrap" style="padding-block:22px 0">
   <section class="plain"><h1 style="font-family:var(--hudf);font-size:clamp(34px,7vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1">Free, open apps<br>for learning and money.</h1><p style="margin-top:10px;font-size:17px;max-width:58ch">One account for all of them. Pin the ones you use, and each opens on its own, with its own look.</p></section>
   <section class="plain"><div class="sect-h"><h2>My apps</h2><span>${S.pins.length ? 'tap to open' : 'nothing pinned yet'}</span></div>${myApps()}
@@ -698,7 +740,7 @@ function vAbout(){
   <section class="plain"><div class="sect-h"><h2>One ID for everything</h2><span>OpenID · PrepID · GoodID</span></div>
     <p>One sign-in across every app. Your profile shows what you've learnt, built and practised. Recruiters can check the verified parts; you choose what's public.</p>
     <div class="idbadges" style="margin-top:10px"><span class="vb">Example badges:</span><span class="vb v">✓ OpenPrep Quant chapters done</span><span class="vb v">✓ GitHub projects</span><span class="vb v">✓ Investing-habit streak</span></div></section>
-  <footer class="sitefoot"><button data-act="nav" data-r="home">← All apps</button><span>Clickable preview with sample data.</span></footer>
+  <footer class="sitefoot"><button data-act="nav" data-r="apps">← All apps</button><span>Clickable preview with sample data.</span></footer>
   </main>`;
 }
 
@@ -885,7 +927,7 @@ function stopSky(){ cancelAnimationFrame(skyRaf); }
 /* ---------------- GOODHABIT ---------------- */
 const REELS = [
   {src:'OpenPrep · Quant', h:'25% off then 10% off is not 35% off', sub:'GoodGuy explains successive discounts in 40 seconds', bg:'linear-gradient(160deg,#1B4DFF,#06115A)'},
-  {src:'GoodHabit · Money', h:'Your ₹180 coffee is a ₹65,000 year', sub:'What small daily spends add up to', bg:'linear-gradient(160deg,#C8155E,#2A0A3A)'},
+  {src:'GoodHabit · Money', h:'Your ₹180 coffee is a ₹65,700 year', sub:'What small daily spends add up to', bg:'linear-gradient(160deg,#C8155E,#2A0A3A)'},
   {src:'Creator clip · @creator (sample)', h:'SIP vs lump sum, in plain Hindi', sub:'Clipped from a creator video, with credit', bg:'linear-gradient(160deg,#06683F,#0E2A22)'},
 ];
 function vCat(){
@@ -927,14 +969,14 @@ function vHabitAbout(){
       <div style="display:flex;justify-content:space-between;border-bottom:1px solid #2A312D;padding:6px 0"><span>Kabir owes you</span><span style="color:#5CD08A">450</span></div>
       <div style="display:flex;justify-content:space-between;padding:6px 0"><span>Invested (practice)</span><span style="color:#FFB21A">1,806</span></div></div>
     <div class="wrap inner"><div class="tagrow"><span>Beta</span><span>Money game free with your account</span><span>No bank link needed</span></div>
-      <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, share reels that teach, and play the investing game that builds the habit before you risk a rupee.</p>
+      <h1>GoodHabit</h1><p class="lede">Your money world. Keep a Hissab of everything, with friends or just for yourself, and play the investing game that builds the habit before you risk a rupee.</p>
       <div class="ctas"><button class="btn-hud" style="background:#fff;color:#17181A" data-act="nav" data-r="practice">Open GoodHabit</button></div><div class="listing-acts">${pinBtn(appOf('habit'))}<button class="linkbtn" style="color:#fff" data-act="pwaapp" data-k="habit">Add GoodHabit to my phone</button></div></div></section>
   <main class="wrap">
     <section class="sect"><div class="sect-h"><h2>What's inside</h2><span>a finance app, made friendly</span></div>
       <div class="why" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
         <div class="whycard"><span class="k">Hissab · yours</span><h3>Your own books</h3><p>Write any entry yourself: names, amounts, cash, bank or UPI. Keep a personal account of everything. Nothing linked, nothing shared.</p></div>
-        <div class="whycard"><span class="k">Hissab · friends</span><h3>Inside your chats</h3><p>Send a Hissab invite to a Good ID. Once they accept, shared expenses and who owes whom live right in the chat.</p></div>
-        <div class="whycard"><span class="k">Reels</span><h3>Scroll useful things</h3><p>OpenPrep lessons and credited creator clips. Share with a friend in one tap.</p></div>
+        <div class="whycard"><span class="k">Hissab · friends</span><h3>Inside your messages</h3><p>Send a Hissab invite to a friend. Once they accept, shared expenses and who owes whom live right in your OpenSource Everything messages.</p></div>
+        
         <div class="whycard"><span class="k">Practice</span><h3>The money game</h3><p>Free with your account. Ramesh, Amit or the Rich guy, easy to hard, the '90s to the 2010s, real crashes. Invest on a real-looking platform with pretend money.</p></div>
       </div></section>
     <section class="gate"><span style="width:110px">${goodguy('happy','#0B7A3B')}</span><h2>Open GoodHabit</h2><p>Its own app, with its own look. Tap Apps any time to switch to OpenPrep or see everything else.</p><button class="btn-hud" data-act="nav" data-r="practice">Open GoodHabit</button></section>
@@ -1017,7 +1059,7 @@ function vMarkets(){
     <div class="mk"><div style="display:flex;justify-content:space-between;align-items:baseline"><span><h2>Watchlist</h2><span class="sub">Sample prices, not today's</span></span><button class="gbtn" style="background:#1C1C1E;min-height:40px" data-act="madd">Edit</button></div>
     ${MK.filter(m => w.includes(m[0])).map(m => { const up = m[3] >= 0; return `<button class="mrow" data-act="msel" data-s="${m[0]}"><span style="min-width:0"><b>${esc(m[0])}</b><small>${esc(m[1])}</small></span><span>${spark(m[0], up)}</span><span style="text-align:right"><span class="px" style="display:block">${fmt(m[2])}</span><span class="chg ${up?'up':'down'}">${up?'+':''}${m[3].toFixed(2)}%</span></span></button>`; }).join('')}</div></main>`;
 }
-function vChats(){ return `<main class="col" style="padding-block:6px 110px">${S.chatWith ? chatView(S.chatWith) : chatList()}</main>${S.chatWith ? composer() : ''}`; }
+function vChats(){ return `<main class="col" style="padding-block:6px 110px">${S.chatWith ? chatView(S.chatWith) : '<h1 style="font-family:var(--hudf);font-size:30px;margin:12px 0 8px">Messages</h1>' + chatList()}</main>${S.chatWith ? composer() : ''}`; }
 function vReels(){ return `<main class="col" style="padding-block:14px 110px"><div style="display:flex;flex-direction:column;gap:14px">${REELS.map((r,i) => `<div class="reel" style="background:${r.bg}"><span class="src">${esc(r.src)}</span><div class="acts"><button data-act="share" data-i="${i}" aria-label="Share with a friend">Share</button><button data-act="like" aria-label="Like">♥</button></div><h3>${esc(r.h)}</h3><p style="opacity:.9">${esc(r.sub)}</p></div>`).join('')}<p style="text-align:center;color:var(--g-mute);font-size:14px">You're all caught up on useful stuff. Want more? Enter OpenPrep from the library.</p></div></main>`; }
 function hav(k){ const h = S.hissab[k]; return `<span class="av" style="background:${h.bg}" aria-hidden="true">${h.name.split(' ').map(w=>w[0]).join('')}</span>`; }
 function balPill(h){ if (h.state !== 'connected') return h.state === 'invite-in' ? '<span class="pill acc">Hissab invite</span>' : h.state === 'invite-out' ? '<span class="pill mute">Invite sent</span>' : ''; return h.bal === 0 ? '<span class="pill mute">Settled</span>' : h.bal > 0 ? `<span class="pill up">owes you ${inr(h.bal/100)}</span>` : `<span class="pill down">you owe ${inr(-h.bal/100)}</span>`; }
@@ -1034,7 +1076,7 @@ function chatView(k){
   if (h.state === 'invite-in') top = `<div class="gcard" style="margin-top:10px"><b>${esc(h.name)} wants to start a Hissab with you</b><p style="color:var(--g-mute);font-size:14px">You'll both see shared expenses and who owes whom, right here in the chat.</p><div style="display:flex;gap:8px"><button class="gbtn" data-act="accept" data-k="${k}">Accept</button><button class="gbtn ghost" data-act="decline" data-k="${k}">Decline</button></div></div>`;
   if (h.state === 'chat') top = `<div class="gcard" style="margin-top:10px;flex-direction:row;align-items:center;justify-content:space-between"><span style="font-size:14.5px">No Hissab with ${esc(h.name.split(' ')[0])} yet</span><button class="gbtn" data-act="invite" data-k="${k}">Send Hissab invite</button></div>`;
   if (h.state === 'invite-out') top = `<div class="gcard" style="margin-top:10px"><span style="font-size:14.5px">Hissab invite sent. Waiting for ${esc(h.name.split(' ')[0])} to accept.</span></div>`;
-  return `<button class="gbtn ghost" data-act="backchats" style="margin-top:4px">← Chats</button>
+  return `<button class="gbtn ghost" data-act="backchats" style="margin-top:4px">← Messages</button>
     <div style="display:flex;align-items:center;gap:10px;margin-top:10px">${hav(k)}<span><b style="display:block">${esc(h.name)}</b><span style="color:var(--g-mute);font-size:13px" class="num">${esc(h.id)}</span></span></div>
     ${top}<div class="chat" id="chatlog">${h.msgs.map(([w,t]) => `<div class="msg ${w}">${esc(t)}</div>`).join('')}</div>`;
 }
@@ -1126,6 +1168,92 @@ function endView(){
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="choice pri" data-act="sharegame">Share my result</button><button class="choice" data-act="quitgame">Play another era</button><button class="choice" data-act="nav" data-r="prep">Learn why in OpenPrep</button></div></div>
     <div class="gcard" style="margin-top:12px"><b>Your story</b>${g.log.map(l => `<p style="font-size:14px;color:var(--g-mute)">${esc(l)}</p>`).join('')}</div>`;
 }
+/* ---------------- OpenSource Everything: the social home (feed, challenges, GitID profiles) ---------------- */
+const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+function chLoad(){
+  let c = null; try { c = JSON.parse(localStorage.getItem('ose-ch')); } catch (e) {}
+  c = c && typeof c === 'object' ? c : {day:'', done:{}, ans:{}, pts:0, streak:0, last:''};
+  const t = todayISO(); if (c.day !== t) { const y = new Date(Date.now() - 864e5), yi = `${y.getFullYear()}-${String(y.getMonth()+1).padStart(2,'0')}-${String(y.getDate()).padStart(2,'0')}`; if (c.last !== yi && c.last !== t) c.streak = 0; c.day = t; c.done = {}; c.ans = {}; }
+  S.ch = c; try { S.posts = JSON.parse(localStorage.getItem('ose-posts')) || []; } catch (e) { S.posts = []; }
+}
+function chSave(){ try { localStorage.setItem('ose-ch', JSON.stringify(S.ch)); localStorage.setItem('ose-posts', JSON.stringify(S.posts)); } catch (e) {} }
+function chDone(k, pts){ const c = S.ch; if (c.done[k]) return; c.done[k] = true; c.pts += pts; if (c.last !== c.day) { c.streak += 1; c.last = c.day; } chSave(); }
+const CHAL = {
+  cat:{app:'OpenPrep', col:'#1B4DFF', title:'CAT question of the day', q:'A train 120 m long passes a pole in 6 seconds. What is its speed in km/h?', o:['60','72','80','90'], r:1, why:'120 m in 6 s is 20 m/s. To get km/h, multiply by 18/5: 20 × 3.6 = 72 km/h.'},
+  money:{app:'GoodHabit', col:'#0B7A3B', title:'Money quiz', q:'Which costs more in a year: a ₹180 coffee every day, or a ₹5,000-a-month gym?', o:['The coffee','The gym','About the same'], r:0, why:'₹180 × 365 = ₹65,700 a year. The gym is ₹5,000 × 12 = ₹60,000. Small daily spends add up.'},
+  build:{app:'Build', col:'#FF8A3D', title:'Build something', q:'Post something you made or learned today: a note, a project, a screenshot.'},
+};
+const PEOPLE = {
+  kabir:{name:'Kabir Shah', bg:'#B5134F', bio:'CAT 2027 · Pune · Quant nerd', college:'Sample college', streak:12, pts:140, seed:7},
+  riya:{name:'Riya Mehta', bg:'#5B25D9', bio:'Learning to invest, one crash at a time', college:'Sample college', streak:9, pts:120, seed:3},
+  zoya:{name:'Zoya Khan', bg:'#0E6B63', bio:'Building small things in the open', college:'Another college', streak:4, pts:80, seed:11},
+};
+const FEED = [
+  {k:'f1', by:'OpenPrep', app:'prep', type:'reel', bg:'linear-gradient(160deg,#1B4DFF,#06115A)', h:'25% off then 10% off is not 35% off', sub:'GoodGuy explains successive discounts in 40 seconds', cap:'Kitna dena padega? Watch till the end.', open:'quant', openL:'Open in OpenPrep'},
+  {k:'f2', by:'kabir', type:'text', bg:'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:'Day 12 of the daily CAT question', cap:'Haven\'t missed a day. Time-speed-distance finally makes sense.'},
+  {k:'f3', by:'GoodHabit', app:'habit', type:'reel', bg:'linear-gradient(160deg,#C8155E,#2A0A3A)', h:'Your ₹180 coffee is a ₹65,700 year', sub:'What small daily spends add up to', cap:'Not saying stop. Just know the number.', open:'practice', openL:'Open in GoodHabit'},
+  {k:'f4', by:'riya', type:'text', bg:'linear-gradient(135deg,#17181A,#3A3D44)', h:'I played Jan 2020 in the trading simulator', cap:'Sold everything in the Covid crash. The report card was brutal. Doing it again this weekend.', open:'sim', openL:'Try the simulator'},
+  {k:'f5', by:'zoya', type:'text', bg:'linear-gradient(135deg,#14B8A6,#0E6B63)', h:'Shipped my first portfolio site', cap:'Published it here in one tap. The code is open if you want to copy the layout.', open:'community', openL:'See Community'},
+  {k:'f6', by:'OpenPrep', app:'prep', type:'reel', bg:'linear-gradient(160deg,#06683F,#0E2A22)', h:'Find the customers a new rival serves badly', sub:'A 6-minute business case for Verbal', cap:'Today\'s reading practice, as a story.', open:'verbal', openL:'Read it in OpenPrep'},
+];
+const APPAV = {OpenPrep:['#1B4DFF','OP'], GoodHabit:['#17181A','GH']};
+function who(p){ if (p.by === 'you') return {name:'You', handle:'you', bg:'#2448FF', ini:'Y'}; if (APPAV[p.by]) return {name:p.by, handle:'app', bg:APPAV[p.by][0], ini:APPAV[p.by][1], app:true}; const P = PEOPLE[p.by]; return {name:P.name, handle:p.by, bg:P.bg, ini:P.name.split(' ').map(w => w[0]).join(''), id:p.by}; }
+function avatar(w, size = 38){ return `<span class="av" style="width:${size}px;height:${size}px;background:${w.bg};font-size:${Math.round(size*.36)}px">${esc(w.ini)}</span>`; }
+function postHtml(p){
+  const w = who(p), liked = S.likes && S.likes[p.k], saved = S.saves && S.saves[p.k], n = (S.comments && S.comments[p.k] || []).length;
+  return `<article class="post"><header>${w.id ? `<button class="phead" data-act="viewprof" data-k="${w.id}">` : '<span class="phead">'}${avatar(w)}<span style="min-width:0"><b>${esc(w.name)}${w.app ? ' <span class="appchip">app</span>' : ''}</b><small>${w.app ? 'OpenSource Everything app' : '@' + esc(w.handle)}</small></span>${w.id ? '</button>' : '</span>'}<button class="dots" data-act="postmore" data-k="${p.k}" aria-label="More options">⋯</button></header>
+    <div class="media" style="background:${p.bg}">${p.type === 'reel' ? `<span class="play" aria-hidden="true">▶</span>` : ''}<h3>${esc(p.h)}</h3>${p.sub ? `<p>${esc(p.sub)}</p>` : ''}</div>
+    <div class="pacts"><button data-act="like" data-k="${p.k}" aria-pressed="${!!liked}" aria-label="Like">${liked ? '♥' : '♡'}</button><button data-act="comment" data-k="${p.k}" aria-label="Comment">💬${n ? ' ' + n : ''}</button><button data-act="share" data-k="${p.k}" aria-label="Share">↗</button><button data-act="savepost" data-k="${p.k}" aria-pressed="${!!saved}" aria-label="Save" style="margin-left:auto">${saved ? '★' : '☆'}</button></div>
+    <p class="cap"><b>${esc(w.name)}</b> ${esc(p.cap)}</p>${p.open ? `<button class="linkbtn openin" data-act="nav" data-r="${p.open}">${esc(p.openL)} →</button>` : ''}</article>`;
+}
+function vFeed(){
+  const c = S.ch, stories = Object.entries(CHAL).map(([k, x]) => `<button class="stb" data-act="nav" data-r="challenges"><span class="ring ${c.done[k] ? 'done' : ''}" style="--c:${x.col}"><span>${k === 'cat' ? 'CAT' : k === 'money' ? '₹' : '✦'}</span></span><small>${k === 'cat' ? 'CAT Q' : k === 'money' ? 'Money quiz' : 'Build'}</small></button>`).join('');
+  return `<main class="feed">
+    <div class="stories" aria-label="Today's challenges">${stories}<button class="stb" data-act="nav" data-r="challenges"><span class="ring streak"><span>🔥${c.streak}</span></span><small>Streak</small></button></div>
+    ${S.posts.map(postHtml).join('')}${FEED.map(postHtml).join('')}
+    <p class="simfoot" style="text-align:center;padding:10px 16px 30px">You're all caught up. Sample people and posts in this preview.</p></main>`;
+}
+function vChallenges(){
+  const c = S.ch, lb = S.lb || 'friends';
+  const card = k => { const x = CHAL[k], a = c.ans[k];
+    if (k === 'build') return `<div class="gcard chal" style="--c:${x.col}"><span class="chal-k">${x.app}</span><b>${x.title}</b><p>${x.q}</p>${c.done.build ? '<span class="pill up">Done · +10</span>' : '<button class="gbtn" data-act="newpost">Post something · +10</button>'}</div>`;
+    return `<div class="gcard chal" style="--c:${x.col}"><span class="chal-k">${x.app}</span><b>${x.title}</b><p style="font-weight:700">${esc(x.q)}</p>${x.o.map((o, i) => `<button class="qopt ${a != null ? (i === x.r ? 'right' : i === a ? 'wrong' : '') : ''}" data-act="chans" data-c="${k}" data-i="${i}" ${a != null ? 'disabled' : ''}>${esc(o)}</button>`).join('')}${a != null ? `<p><b>${a === x.r ? 'Right · +10' : 'Not quite · +2 for trying'}</b> ${esc(x.why)}</p>` : ''}</div>`; };
+  const L = {friends:[['kabir',140,12],['riya',120,9],['zoya',80,4],['Aarav Jain',60,2]], college:[['Ishita P.',210,21],['kabir',140,12],['Dev R.',130,10],['riya',120,9],['Sana K.',95,6]], india:[['Meghna T.',340,48],['Rohan V.',325,41],['Ananth K.',310,39],['Pooja S.',298,30],['Faiz A.',290,33]]}[lb];
+  const rows = L.map(([n, p, s]) => ({name:PEOPLE[n] ? PEOPLE[n].name : n, id:PEOPLE[n] ? n : null, bg:PEOPLE[n] ? PEOPLE[n].bg : '#8D929C', p, s})).concat([{name:'You', you:true, bg:'#2448FF', p:c.pts, s:c.streak}]).sort((a, b) => b.p - a.p);
+  return `<main class="col" style="padding-block:18px 110px;display:flex;flex-direction:column;gap:12px">
+    <h1 style="font-family:var(--hudf);font-size:32px;letter-spacing:-.02em">Daily challenges</h1><p class="muted">New every morning, from every app. Points and streaks, never prizes.</p>
+    <div class="kvs"><div><small>Your streak</small><b>🔥 ${c.streak} day${c.streak === 1 ? '' : 's'}</b></div><div><small>Points this week</small><b>${c.pts}</b></div></div>
+    ${['cat', 'money', 'build'].map(card).join('')}
+    <h2 style="font-family:var(--hudf);font-size:24px;margin-top:8px">Leaderboard</h2>
+    <div class="seg2" role="group" aria-label="Leaderboard">${[['friends', 'Friends'], ['college', 'My college'], ['india', 'All India']].map(([k, l]) => `<button data-act="lb" data-k="${k}" aria-pressed="${lb === k}">${l}</button>`).join('')}</div>
+    <div class="gcard" style="gap:0;padding-block:6px">${rows.map((r, i) => `<div class="lbrow ${r.you ? 'you' : ''}"><b class="num" style="width:22px">${i + 1}</b><span class="av" style="width:34px;height:34px;background:${r.bg};font-size:12px">${esc(r.name.split(' ').map(w => w[0]).join('').slice(0, 2))}</span>${r.id ? `<button class="linkbtn" style="flex:1;text-align:left;color:inherit;text-decoration:none;font-weight:700" data-act="viewprof" data-k="${r.id}">${esc(r.name)}</button>` : `<span style="flex:1;font-weight:700">${esc(r.name)}</span>`}<span class="muted">🔥${r.s}</span><b class="num">${r.p}</b></div>`).join('')}</div>
+    <p class="simfoot">Ranked by challenge points this week: +10 for a right answer or a post, +2 for trying. Trading returns never count. Sample names and points until launch.</p></main>`;
+}
+function grid(seed, todayLvl){ let x = seed || 0, out = ''; for (let k = 0; k < 140; k++) { let l = 0; if (seed) { x = (x * 9301 + 49297) % 233280; const r = x / 233280; l = r < .25 ? 0 : r < .5 ? 1 : r < .75 ? 2 : r < .92 ? 3 : 4; } if (k === 139) l = todayLvl; out += `<i class="l${l}"></i>`; } return `<div class="grid" aria-label="Daily activity, last 20 weeks">${out}</div>`; }
+function vProfile(){
+  const id = S.viewProf, P = id && PEOPLE[id], c = S.ch, done = Object.values(c.done).filter(Boolean).length;
+  const posts = P ? FEED.filter(f => f.by === id) : S.posts;
+  const badges = P ? [`🔥 ${P.streak}-day streak`, 'OpenPrep: Percentages done', 'GoodHabit: simulator report card'] : [c.streak ? `🔥 ${c.streak}-day streak` : null, S.mock && S.mock.i >= MOCK.length ? 'OpenPrep: free mock taken' : null, S.sim && S.sim.done ? 'GoodHabit: simulator report card' : null].filter(Boolean);
+  const w = P ? {name:P.name, bg:P.bg, ini:P.name.split(' ').map(x => x[0]).join('')} : {name:'You', bg:'#2448FF', ini:'Y'};
+  return `<main class="col" style="padding-block:18px 110px;display:flex;flex-direction:column;gap:14px">
+    ${P ? '<button class="gbtn ghost" data-act="viewprof" data-k="" style="align-self:flex-start">← My profile</button>' : ''}
+    <div class="profhead">${avatar(w, 84)}<div class="pstats"><div><b>${posts.length}</b><small>posts</small></div><div><b>${P ? '—' : 0}</b><small>followers</small></div><div><b>${P ? '—' : 0}</b><small>following</small></div></div></div>
+    <div><b style="font-size:18px">${esc(w.name)}</b> <span class="muted">· GitID ${P ? '@' + id : '@you'}</span><p>${P ? esc(P.bio) : 'Add a bio: what you\'re learning or building.'}</p>${P ? `<p class="muted">${esc(P.college)} · sample profile</p>` : ''}</div>
+    <div style="display:flex;gap:8px">${P ? `<button class="gbtn" data-act="follow" data-k="${id}">${S.follows && S.follows[id] ? 'Following' : 'Follow'}</button><button class="gbtn ghost" data-act="openchat" data-k="${id}">Message</button>` : '<button class="gbtn ghost" data-act="editprof">Edit profile</button><button class="gbtn ghost" data-act="shareprof">Share profile</button>'}</div>
+    <div class="gcard"><b>Activity</b>${grid(P ? P.seed : 0, P ? 3 : Math.min(4, done + (S.posts.length ? 1 : 0)))}<span class="muted" style="font-size:13px">${P ? 'Every square is a day: challenges, lessons, simulator games and projects. Sample history.' : 'Each square is a day. They fill in as you do challenges, lessons, simulator games and projects.'}</span></div>
+    <div class="gcard"><b>Verified by the apps</b>${badges.length ? `<div class="idbadges">${badges.map(b => `<span class="vb v">✓ ${esc(b)}</span>`).join('')}</div>` : '<span class="muted">Badges show up here as you use OpenPrep, GoodHabit and the rest. Apps add them; you can\'t type them in.</span>'}</div>
+    <div class="gcard"><b>Projects</b><span class="muted">${P ? 'No public projects yet.' : 'Show your GitHub repos here, or publish a project from OSE in one tap.'}</span>${P ? '' : '<button class="gbtn ghost" data-act="nav" data-r="community">Connect GitHub</button>'}</div>
+    <div class="pgrid">${posts.map(p => `<div class="pcell" style="background:${p.bg}"><span>${esc(p.h)}</span></div>`).join('') || '<p class="muted">No posts yet.</p>'}</div></main>`;
+}
+function newPostSheet(){
+  const bgs = ['linear-gradient(135deg,#FFC93C,#FF8A3D)', 'linear-gradient(135deg,#2448FF,#121633)', 'linear-gradient(135deg,#14B8A6,#0E6B63)', 'linear-gradient(135deg,#17181A,#3A3D44)'], cur = S.pbg || bgs[0];
+  sheet(`<h2>New post</h2><p style="color:#5B6270;font-size:13.5px">Posting is for people 18 and over. Under-18s can watch, like and do challenges.</p>
+    <div><label class="lbl" for="pt">What did you make or learn today?</label><textarea class="inp" id="pt" maxlength="280" style="min-height:96px;padding:10px">${esc(S.pdraft || '')}</textarea></div>
+    <div class="seg2" role="group" aria-label="Background">${bgs.map(b => `<button data-act="pbg" data-b="${b}" aria-pressed="${b === cur}" style="width:46px;background:${b};border-color:${b === cur ? '#111' : 'transparent'}" aria-label="Background colour"></button>`).join('')}</div>
+    <button class="p-btn blue" data-act="postsave">Post</button><p style="color:#5B6270;font-size:12.5px">Anyone can report a post. A person reviews every report, and posts that break the rules come down.</p>`);
+}
+
+
 function vPractice(){ return `<main class="col" style="padding-block:14px 110px">${playModes('stories')}${practiceHome()}</main>`; }
 
 /* ---------------- trading simulator: real past NSE daily closes ---------------- */
@@ -1436,15 +1564,15 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-act]'); if (!b || b.dataset.act === 'scrim') return;
   const a = b.dataset.act;
   switch (a) {
-    case 'nav': closeSheet(); if (location.hash.slice(1) === b.dataset.r) render(); else go(b.dataset.r); break;
+    case 'nav': closeSheet(); if (b.dataset.r === 'profile' && b.closest('.tabbar')) S.viewProf = null; if (b.dataset.r === 'chats' && b.closest('.tabbar')) S.chatWith = null; if (location.hash.slice(1) === b.dataset.r) render(); else go(b.dataset.r); break;
     case 'close': closeSheet(); break;
     case 'locked': toast(`${b.dataset.why || 'This'} is coming after launch.`); break;
     case 'signin': sheet(`<h2>Sign in with OpenID</h2><p style="color:var(--ash)">One ID everywhere: PrepID in OpenPrep, GoodID in GoodHabit.</p><div><label class="lbl" for="oid">Your OpenID</label><input class="inp" id="oid" value="good/riya" autocapitalize="off"></div><button class="btn-hud" data-act="signin-ok">Continue</button><p style="font-size:12.5px;color:var(--ash)">Preview: no account is created.</p>`, true); break;
     case 'signin-ok': S.user = ($('#oid').value || 'good/riya').trim(); closeSheet(); render(); toast(`Signed in as ${S.user}`); break;
     case 'me': toast(`${S.user} · same ID in every product`); break;
-    case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:#5B6270">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="home" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
+    case 'apps': { const pins = S.pins.map(appOf).filter(Boolean); sheet(`<h2>Your apps</h2>${pins.length ? `<div class="myapps">${pins.map(a => `<button class="appicon" data-act="nav" data-r="${a.open}">${appArt(a,60)}<b>${a.n}</b></button>`).join('')}</div>` : '<p style="color:#5B6270">No pinned apps yet.</p>'}<button class="p-btn blue" data-act="nav" data-r="apps" style="margin-top:6px">All apps in OpenSource Everything</button>`); break; }
     case 'pinapp': { const k = b.dataset.k; S.pins = S.pins.includes(k) ? S.pins.filter(x => x !== k) : [...S.pins, k]; try { localStorage.setItem('ose-pins', JSON.stringify(S.pins)); } catch (e) {} toast(S.pins.includes(k) ? `${appOf(k).n} added to My apps` : `${appOf(k).n} removed from My apps`); render(); break; }
-    case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on All apps'); render(); break;
+    case 'startapp': S.start = b.dataset.k; try { localStorage.setItem('ose-start', S.start); } catch (e) {} toast(S.start ? `OpenSource Everything will open straight into ${appOf(S.start).n}` : 'OpenSource Everything will open on your home feed'); render(); break;
     case 'pwaapp': { const ks = b.dataset.k === 'pins' ? (S.pins.length ? S.pins : ['prep','habit']) : [b.dataset.k], list = ks.map(appOf).filter(a => a && !a.soon), one = list.length === 1 ? list[0] : null;
       const phone = ['prep','habit','skills'].map(appOf).filter(a => !ks.includes(a.k) && S.pins.includes(a.k)).concat(list);
       sheet(`<h2>${one ? `Add ${one.n} to your phone` : 'Add your apps to your phone'}</h2><p style="color:#5B6270">${one ? `${one.n} gets its own icon in your phone's app library and opens straight into ${one.n}.` : 'Each one gets its own icon in your phone\'s app library, like separate apps.'} Same account in all of them. No app store, no big download.</p>
@@ -1471,6 +1599,24 @@ document.addEventListener('click', e => {
     case 'simreset': S.sim = null; try { localStorage.removeItem(SKEY); } catch (e) {} render(); break;
     case 'simsend': { const link = `https://opensourceeverything.com/habit/sim?start=${siso(S.sim.i0)}&money=${S.sim.base}`; sheet(`<h2>Play the same dates with a friend</h2><p style="color:#5B6270">They start on ${sdate(S.sim.i0)} with ${rs(S.sim.base)}, same as you. Once they finish, you'll both see each other's result. No prizes.</p><div class="inp" style="padding:10px;word-break:break-all;font-size:13px">${esc(link)}</div><button class="gbtn" data-act="copysim" data-l="${esc(link)}">Copy link</button><button class="gbtn ghost" data-act="nav" data-r="chats">Send in Chats</button>`); break; }
     case 'copysim': try { navigator.clipboard.writeText(b.dataset.l).catch(() => {}); } catch (e) {} toast('Link copied (preview).'); break;
+    case 'newpost': newPostSheet(); break;
+    case 'pbg': S.pdraft = ($('#pt') || {}).value || ''; S.pbg = b.dataset.b; newPostSheet(); break;
+    case 'postsave': { const t = ($('#pt') || {}).value.trim(); if (!t) { toast('Write something first.'); break; } S.posts.unshift({k:'u' + Date.now(), by:'you', type:'text', bg:S.pbg || 'linear-gradient(135deg,#FFC93C,#FF8A3D)', h:t.length > 90 ? t.slice(0, 88) + '…' : t, cap:t}); S.pdraft = ''; chDone('build', 10); chSave(); closeSheet(); go('home'); render(); toast('Posted. Build challenge done: +10'); break; }
+    case 'like': S.likes = S.likes || {}; S.likes[b.dataset.k] = !S.likes[b.dataset.k]; b.setAttribute('aria-pressed', S.likes[b.dataset.k]); b.textContent = S.likes[b.dataset.k] ? '♥' : '♡'; break;
+    case 'savepost': S.saves = S.saves || {}; S.saves[b.dataset.k] = !S.saves[b.dataset.k]; b.setAttribute('aria-pressed', S.saves[b.dataset.k]); b.textContent = S.saves[b.dataset.k] ? '★' : '☆'; toast(S.saves[b.dataset.k] ? 'Saved to your profile' : 'Removed from saved'); break;
+    case 'comment': { const k = b.dataset.k, L = (S.comments = S.comments || {})[k] || []; S.cK = k; sheet(`<h2>Comments</h2>${L.map(t => `<p><b>You</b> ${esc(t)}</p>`).join('') || '<p style="color:#5B6270">No comments yet. Be kind, be useful.</p>'}<form id="cmform" style="display:flex;gap:8px"><input class="inp" id="cmin" placeholder="Add a comment" style="flex:1" autocomplete="off"><button class="p-btn blue" type="submit">Post</button></form>`); break; }
+    case 'share': sheet(`<h2>Send to</h2>${Object.keys(S.hissab).map(k => `<button class="person" data-act="sendpost" data-k="${k}">${hav(k)}<b style="flex:1;text-align:left">${esc(S.hissab[k].name)}</b><span>Send</span></button>`).join('')}<button class="gbtn ghost" data-act="copypost">Copy link</button>`); break;
+    case 'sendpost': S.hissab[b.dataset.k].msgs.push(['me', 'Shared a post with you']); closeSheet(); toast(`Sent to ${S.hissab[b.dataset.k].name.split(' ')[0]}`); break;
+    case 'copypost': closeSheet(); toast('Link copied (preview).'); break;
+    case 'postmore': sheet(`<h2>Report this post</h2><p style="color:#5B6270">Why are you reporting it? A person reviews every report.</p>${['Spam','Scam or fraud','False information','Hurtful or harassment','Something else'].map(r => `<button class="opt" data-act="reportpost" style="width:100%;text-align:left">${r}</button>`).join('')}<button class="gbtn ghost" data-act="notinterested">Not interested</button>`); break;
+    case 'reportpost': closeSheet(); toast('Thanks. A person will review it, and it comes down if it breaks the rules.'); break;
+    case 'notinterested': closeSheet(); toast('You\'ll see fewer posts like this.'); break;
+    case 'chans': { const k = b.dataset.c, x = CHAL[k], i = +b.dataset.i; S.ch.ans[k] = i; chDone(k, i === x.r ? 10 : 2); render(); break; }
+    case 'lb': S.lb = b.dataset.k; render(); break;
+    case 'viewprof': S.viewProf = b.dataset.k || null; if (location.hash.slice(1) !== 'profile') go('profile'); else render(); break;
+    case 'follow': S.follows = S.follows || {}; S.follows[b.dataset.k] = !S.follows[b.dataset.k]; render(); break;
+    case 'editprof': toast('Edit profile: name, photo, bio and college (preview).'); break;
+    case 'shareprof': toast('Profile link copied (preview).'); break;
     case 'pwa': sheet(`<h2>Put it on your home screen</h2><p>It opens full-screen like an app. No app store, no download, no ads.</p><p><b>Android (Chrome):</b> ⋮ menu → Add to Home screen.</p><p><b>iPhone (Safari):</b> Share → Add to Home Screen.</p>`); break;
     /* OpenPrep */
     case 'plans': sheet(`<h2>What's free, what's paid</h2><p style="color:#5B6270">Learning stays free. You pay only for what costs us money to run.</p>
@@ -1584,6 +1730,7 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('submit', e => {
   e.preventDefault();
+  if (e.target.id === 'cmform') { const v = $('#cmin').value.trim(); if (!v) return; (S.comments[S.cK] = S.comments[S.cK] || []).push(v); closeSheet(); render(); toast('Comment posted'); return; }
   if (e.target.id === 'cform') { const v = $('#cin').value.trim(); if (!v) return; S.hissab[S.chatWith].msgs.push(['me', v]); render(); $('#cin') && $('#cin').focus(); }
   if (e.target.id === 'libform') { S.libQ = $('#libq').value.trim(); render(); }
 });
@@ -1593,6 +1740,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && layer.inne
 try { S.pins = JSON.parse(localStorage.getItem('ose-pins')) || []; S.start = localStorage.getItem('ose-start') || ''; } catch (e) { S.pins = []; S.start = ''; }
 if (!Array.isArray(S.pins)) S.pins = [];
 simLoad();
+chLoad();
 if (!location.hash && S.start && appOf(S.start)) history.replaceState(null, '', '#' + appOf(S.start).open);
 render();
 })();
