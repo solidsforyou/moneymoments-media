@@ -179,7 +179,10 @@ def main():
     try:
         video = json.load(open(a.video, encoding="utf-8"))
         if not isinstance(video, dict) or not isinstance(video.get("claims", []), list) or not all(
-                isinstance(c, dict) and isinstance(c.get("sources", []), list) for c in video.get("claims", [])):
+                isinstance(c, dict) and isinstance(c.get("text", ""), str) and isinstance(c.get("sources", []), list)
+                and all(isinstance(x, dict) and all(isinstance(x.get(k, ""), str) for k in ("url", "publisher", "date", "archived_url"))
+                        for x in c.get("sources", []))
+                for c in video.get("claims", [])):
             raise ValueError("expected {\"claims\": [{\"text\": ..., \"sources\": [...]}]}")
         if video.get("published") and not parse_date(video["published"]):
             raise ValueError(f"published date {video['published']!r} isn't YYYY-MM-DD")

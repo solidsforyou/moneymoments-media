@@ -18,7 +18,8 @@ next to this repo's own app skills (`app-*`).
 - **The auditor is always on.** Every task's work is audited before it's delivered, committed
   as done, pushed or released (`.claude/skills/auditor/`, agent `.claude/agents/auditor.md`),
   and recorded in `audit/ledger.csv`. First session in the app repo: run
-  `python3 .claude/skills/auditor/scripts/audit.py init`. The hooks in `.claude/settings.json`
+  `python3 .claude/skills/auditor/scripts/audit.py init` (it also switches on git's pre-push
+  hook in `.githooks/`). The hooks in `.claude/settings.json`
   block finishing (uncommitted files, unaudited commits, open FAILs) and pushing until
   it's clean; never disable them. Answers, designs and research that never become commits
   are audited by rule and logged with `audit.py add --scope`.

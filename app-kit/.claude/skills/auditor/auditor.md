@@ -148,11 +148,22 @@ again: another reason not to rewrite shared history.
 
 ## 7a. What the hooks enforce, and what they can't
 
-The hooks see git, not conversations. They block a session from ending
-while files are uncommitted, commits are unaudited or a FAIL is open, and
-block `git push` (in any form) and the GitHub write tools until the
-ledger is clean. If the audit script itself breaks, they block (fail
-closed). They can't see chat answers, designs, research or advice that
+The hooks see git, not conversations. Three layers:
+- **Stop hook** (Claude Code): a session can't end while files are
+  uncommitted, commits are unaudited or a FAIL is open (it asks once, then
+  lets the session end, so it can never trap one).
+- **Pre-tool hook** (Claude Code): blocks the common forms of `git push`
+  (options before `push`, wrappers like `timeout` or `sudo`, `sh -c`,
+  `eval`, `if/then`, chains with `;` `&&` `|`) and the GitHub write tools
+  until the ledger is clean. Aliases or computed commands can slip past
+  it, which is why there's a third layer.
+- **git pre-push hook** (`.githooks/pre-push`, switched on by
+  `audit.py init` through `core.hooksPath`): git itself refuses the push,
+  however it was typed. Only `git push --no-verify` skips it, and that is
+  the founder's call, never Claude's.
+
+If the audit script itself breaks, pushes are blocked (fail closed) but
+ordinary commands still run and a session can still end. They can't see chat answers, designs, research or advice that
 never becomes a commit: for those, recording a `--scope` audit is a rule
 the session follows, not something a hook can force. Say so honestly
 when the founder asks.

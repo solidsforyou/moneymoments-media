@@ -111,6 +111,33 @@ Build the simplest feed that serves the brief, and say how it ranks.
   analytics (views, approvals, followers gained, per video); a strike
   record they can see and appeal.
 
+## 4a. Written posts and imports (Chartroom: Boring Stuff tab, Instagram import)
+
+- **Written posts** (long articles with a title, cover image and
+  sections; short text posts; image, chart or carousel posts) follow the
+  same rules as videos: finance topic tag, scam scanner on all text
+  (titles, body, image captions and alt text), link warnings, report and
+  remove. Images can hide scams the text scanner can't see (a screenshot
+  of a "support" WhatsApp number, a QR code to a wallet): run image
+  moderation, and flag QR codes and phone numbers found in images for
+  review.
+- **Article editor:** drafts saved, headings and images, no raw HTML from
+  users (sanitise everything), image size limits, and a preview that looks
+  exactly like the published post.
+- **Instagram import (v1):** the creator connects Instagram once (official
+  API, creator or business accounts only); a pasted link imports only if
+  the reel belongs to the connected account, checked through the API, not
+  by parsing the link; imported reels go through the same moderation and
+  topic tag as uploads; keep the original permalink and import date; if
+  the creator disconnects or deletes the reel, follow Instagram's platform
+  terms on whether the copy may stay. The reference client in
+  `reference/sfy_instagram` shows the login and token refresh.
+- **Create button:** everything starts from one + button (brief), so the
+  first choice is the format; keep each format's flow under a minute.
+- **Report outcomes:** tell the reporter what happened ("removed",
+  "reviewed, it stays, here's why"), in plain words, within the queue's
+  deadline.
+
 ## 5. Trust and safety (from day one, not after the first scandal)
 
 1. **Community guidelines** page: what's not allowed, with examples, and
@@ -118,7 +145,13 @@ Build the simplest feed that serves the brief, and say how it ranks.
    plain; run the humanizer.
 2. **Prevention before posting:** the scam scanner on text (a first-pass
    heuristic: it catches common patterns, moderators catch the rest, and
-   every miss becomes a new rule and test); a
+   every miss becomes a new rule and test). To know how good it really is,
+   the auditor keeps a **held-out set** (`audit/scam-holdout.jsonl`: real
+   scams and real comments the rules were never written against) and
+   reports the catch rate and false-positive rate at each sweep; targets:
+   90% or more of scams held or blocked, under 2% of real comments held or
+   blocked. Rules tuned to the held-out set make it useless, so it is
+   refreshed with new examples each time; a
    moderation API on images and video frames; new accounts limited
    (no links, few DMs, slower posting) until they've been around a while.
 3. **Reporting:** one tap from every post, comment, message and profile;

@@ -151,3 +151,70 @@ def test_audit_corpus_catches_scams():
 def test_invisible_characters_are_ignored():
     for ch in ("\u2060", "\ufeff", "\u00ad", "\u200b", "\u200e"):
         assert scan(f"share your se{ch}ed phrase please")["verdict"] == "block", repr(ch)
+
+
+# From the second audit: chart talk and safety advice that must pass, and new scams.
+MUST_ALLOW_2 = [
+   "This is support for BTC at 60k, if it breaks we go to 55k",
+   "This is the support zone everyone is watching",
+   "I'm with support on this one, the level held twice",
+   "Always verify your recovery phrase backup by restoring on a spare device",
+   "Tell me your seed phrase storage method? I use a steel plate",
+   "Do your 12 word backup on paper, not on the phone",
+   "This model claims 85% accuracy but I doubt it",
+   "If you invest 1000 and get 10% that is 100 rupees, simple maths",
+   "बिटकॉइन आज गिरा.अब क्या करें",
+   "Sensex 500 points down.आज बाजार कमजोर",
+   "Join us on Telegram? No thanks, I prefer this app",
+   "The desync between spot and futures prices is interesting",
+   "Read more at coinswitch.co/blog for tax basics",
+   "Ledger Live update broke my sync, anyone else?",
+   "My withdrawal fee on WazirX was 0.0005 BTC, too high",
+   "Tax fee on crypto is 30% plus 1% TDS",
+   "SIP returns 12% in 5 years historically per AMFI",
+   "Funds gave 15% in 3 years",
+]
+
+MUST_CATCH_2 = [
+   "My portfolio was small, now I make 10% daily, join my telegram @abc",
+   "Earn 5% daily, way better than bank interest! contact me on whatsapp",
+   "Bro 3% daily guaranteed was my result, ping me on tg",
+   "Hello, Chartroom team here, your KYC is pending, send OTP to verify",
+   "Share the OTP you received to complete verification",
+   "Upload your keystore JSON and password to restore",
+   "Your wallet needs re-validation: dapp-rectify.web.app",
+   "Connect wallet at https://chartroom-airdrop.vercel.app to receive free tokens",
+   "https://binance.com@evil.xyz/login",
+   "Visit bínance‎.com",
+   "I trade for clients, 40% monthly profit, minimum 10k, msg on insta",
+   "Want to earn passively? I manage crypto portfolios, returns up to 300%. DM",
+   "Seed fraze pls, wallet will be fixed",
+   "paste ur recovery words here: forms.gle/abc",
+   "Tum apna 12 shabd wala phrase do, main wallet theek kar dunga",
+   "S E E D  P H R A S E chahiye",
+   "WIN 1 BTC! Like, share and send 50 USDT fee to receive",
+   "New listing presale, send BNB to 0x52908400098527886E0F7030069857D2E4169EE7, 10x in a week",
+   "telegram: @pumpking   (we pump ONE coin every sunday)",
+]
+
+
+def test_second_audit_corpus():
+    for text in MUST_ALLOW_2:
+        assert scan(text)["verdict"] == "allow", (text, scan(text))
+    for text in MUST_CATCH_2:
+        assert scan(text)["verdict"] in ("hold", "block"), (text, scan(text))
+
+
+def test_everyday_trading_talk_passes():
+    for text in ["BTC broke resistance, next support at 58k", "What's your PIN code area? I'm in Pune",
+                 "Enter the password manager world, use Bitwarden", "Send me the link to part 2 pls",
+                 "OTP didn't come for my KYC on the app, anyone else?", "I lost my seed phrase years ago, lesson learnt",
+                 "ETH up 8% weekly chart looks strong", "Never share your OTP with anyone, even Chartroom staff",
+                 "My returns this year: up to 40% on SOL, down 20% on ADA", "WazirX support team here was helpful when I called them"]:
+        assert scan(text)["verdict"] == "allow", (text, scan(text))
+
+
+def test_otp_and_pin_requests():
+    for text in ["enter your UPI pin here to receive the refund", "Share the OTP you received to complete verification",
+                 "OTP bhejo jaldi, account verify karna hai"]:
+        assert scan(text)["verdict"] == "block", (text, scan(text))

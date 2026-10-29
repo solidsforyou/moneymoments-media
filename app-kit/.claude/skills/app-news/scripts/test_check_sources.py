@@ -102,7 +102,9 @@ def test_two_pages_of_one_site_count_once():
 def test_bad_input_exits_2(tmp_path):
     import subprocess
     script = Path(__file__).with_name("check_sources.py")
-    for content in ("not json", '{"claims": "x"}', '{"published": "soon", "claims": []}'):
+    for content in ("not json", '{"claims": "x"}', '{"published": "soon", "claims": []}',
+                    '{"claims": [{"text": null, "sources": []}]}', '{"claims": [{"text": "x", "sources": [5]}]}',
+                    '{"claims": [{"text": "x", "sources": [{"url": 7}]}]}'):
         f = tmp_path / "v.json"
         f.write_text(content)
         p = subprocess.run([sys.executable, str(script), str(f)], capture_output=True, text=True)

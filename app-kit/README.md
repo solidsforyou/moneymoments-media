@@ -2,7 +2,7 @@
 
 Starter kit for the founder's new app, pulled out of moneymoments-media (28 Oct 2026),
 plus a set of app-building skills written for it. Copy everything in this folder
-(including the hidden `.claude/`) to the root of the new app's repo. Nothing here is
+(including the hidden `.claude/` and `.githooks/` folders) to the root of the new app's repo. Nothing here is
 specific to Unicorn Ka Hisab.
 
 ## How it fits together
@@ -24,7 +24,8 @@ idea -> app-spec -> app-stack -> app-ui-taste (direction) -> app-build (story by
 | `.claude/skills/auditor/` | The method: what gets audited (everything: code, copy, designs, numbers, research, decisions, releases), three levels, the universal checklist, domain packs, verdict rules, weekly sweeps, auditing the auditor |
 | `.claude/agents/auditor.md` | The auditor as a separate agent with a fresh context, so it never grades its own work; it reports and never fixes |
 | `scripts/audit.py` | The ledger (`audit/ledger.csv` + `audit/reports/`): records every verdict, lists unaudited commits and open FAILs |
-| `.claude/settings.json` | Hooks: a session can't end while files are uncommitted, commits are unaudited or a FAIL is open; `git push` (any form) and the GitHub write tools are blocked until it's clean; if the audit script breaks, they block. Answers, designs and research that never become commits are audited by rule, not by hook |
+| `.claude/settings.json` | Hooks: a session can't end while files are uncommitted, commits are unaudited or a FAIL is open; common forms of `git push` and the GitHub write tools are blocked until it's clean; if the audit script breaks, pushes are blocked. Answers, designs and research that never become commits are audited by rule, not by hook |
+| `.githooks/pre-push` | git's own pre-push hook (switched on by `audit.py init`): refuses every push while anything is unaudited, however the command was typed |
 | `preflight.py --push` | Fails on unaudited work too |
 
 First session in the app repo: `python3 .claude/skills/auditor/scripts/audit.py init`.

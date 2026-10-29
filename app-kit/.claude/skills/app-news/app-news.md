@@ -9,14 +9,21 @@ Read `docs/spec.md` and `brief.md` first; the brief decides how strict
 each part is. This skill covers two modes, and an app can use both:
 
 - **Verified mode** (full pipeline, sections 3 and 4): every item is checked
-  before it goes live. Chartroom's brief v3 uses it for the **News tab**:
-  5 to 10 text cards a day, AI-drafted and AI-checked, verified by the team
-  before posting, citing approved outlets (outlets can apply to join the
-  list).
-- **Open mode** (post first, moderate after): Chartroom's brief v3 uses it
-  for **videos**: anyone can post after a quick check, every post is tagged
-  with a finance topic, there's no fact-check before going live, and
-  reports plus moderators remove misleading, scam or off-topic videos.
+  before it goes live. Chartroom's brief uses it for the **News tab**: the
+  team posts 3 to 5 full articles a day (400 to 800 words), AI-drafted and
+  AI-checked, verified by the team, sources cited with links, summaries in
+  our own words (never copied), the coins each article affects shown with a
+  trade button; approved outlets are cited, and outlets can apply to join
+  the list. Writing in our own words matters for copyright as much as for
+  trust: quote briefly, link to the original, never paste paywalled text.
+- **Open mode** (post first, moderate after): Chartroom's brief uses it
+  for **videos and the Boring Stuff tab** (anyone's articles, text posts and
+  image or chart posts): anyone can post after a quick check, every post is
+  tagged with a finance topic, there's no fact-check before going live, and
+  reports plus moderators remove misleading, scam or off-topic posts. The
+  reporter is told what happened; profiles show no strike counts and there
+  are no public safety numbers (brief), so the corrections and takedown
+  totals in section 7 stay internal for now.
   Here the pipeline runs *after* publishing, on reported and high-reach
   videos first; sources and the ID/credential badge are optional extras;
   labels, corrections, strikes and the law (sections 5 to 8) still apply.
@@ -77,7 +84,8 @@ published -> correction issued | taken down (reason, strike)
   reports, sudden reach (a video taking off), coin mentions (pump risk)
   and creators with past strikes; pump-style videos about a coin go to the
   front of the queue (app-crypto-trading section 8).
-- **Fast track for approved creators:** a smaller human check (high-risk
+- **Fast track for approved creators** (only if the brief has approved or
+  verified creators; Chartroom's verified badge waits for v1.1): a smaller human check (high-risk
   claims only, a sample of the rest) within a short target time, with
   stricter consequences if something slips. Write the rule down.
 - **Service levels:** target times from upload to decision (for example

@@ -16,6 +16,46 @@ Facts here were checked in October 2026; rules in this area change fast.
 Re-check before each country launch and get a lawyer per country. Not
 legal advice.
 
+## 0. Two modes: affiliate links first, an API partner later
+
+Check which mode the brief is in; Chartroom's brief starts in affiliate
+mode and moves to an API partner later.
+
+**Affiliate mode (Chartroom v1).** The app shows prices and a "Trade on
+<exchange>" button that opens the coin in the exchange's own app; trading,
+KYC, deposits, holdings and withdrawals all happen there. Much lighter to
+build and regulate, but still:
+- **Only FIU-IND-registered exchanges** (India), checked on the FIU-IND
+  list, not the exchange's word; re-check quarterly. Only coins the
+  exchange lists get a button.
+- **Deep links:** open the coin in the exchange app if installed, else its
+  Play Store page or website; test each exchange's link format on real
+  phones; the referral code rides in the link, with no personal data.
+- **Disclose the commission** where the button is ("Chartroom may earn a
+  commission"), plus the settings/about page the brief describes. A paid
+  link presented as neutral advice is a disguised advertisement under
+  India's dark-pattern guidelines and ASCI's rules.
+- **Neutral choice:** the user picks their exchange once, from a list
+  whose order doesn't depend on who pays more (or the order rule is
+  disclosed). Never switch a user's exchange for a higher commission.
+- **Prices:** from a source whose terms allow showing them in an app
+  (an exchange's public API or a licensed data provider), with the time
+  and source shown; never as a quote the user can rely on (the exchange's
+  price is the real one).
+- **Next to a video or article,** the button still carries the risk
+  warning and the creator's disclosures (section 8); no paid coin
+  promotions at all (brief).
+- **Stores:** the app doesn't hold funds or execute trades, but it
+  promotes crypto: declare it honestly in Play's forms and keep the ASCI
+  warning everywhere a trade button or invest reminder appears.
+- **Revenue tracking:** commissions arrive as the exchanges report them;
+  reconcile monthly against clicks, and keep the affiliate agreements in
+  `docs/decisions/`.
+
+Sections 1 to 7 and 9 apply in full once an **API partner** brings an
+in-app wallet; in affiliate mode use only section 4 (prices), section 7
+(warnings, reminders) and section 8 (social meets trading).
+
 ## 1. Who does what (fill this table in the decision record)
 
 | Job | Partner (gateway / exchange / broker) | The app |
@@ -166,21 +206,41 @@ draft -> quoted (expires) -> submitted (idempotency key) -> pending
   caps; never shown right after a loss, late at night, or to users who
   opted out; never claim or imply returns; always the risk warning; no
   crypto rewards for tasks (Apple 3.1.5(v)).
-- **Chartroom's habit jar (brief: no ads; reminders every 15 to 30 minutes
-  of scrolling; each tap adds ₹10 or ₹20; the jar auto-invests in the
-  user's chosen coin or basket at the partner's minimum order):**
+- **Chartroom's invest-habit reminders (brief: no ads; reminders every 15
+  to 30 minutes of scrolling).** In affiliate mode a reminder links to the
+  user's chosen coin or basket on their exchange (its SIP where it has
+  one), with the same rules as below except the money handling. With the
+  API partner it becomes the **habit jar** (each tap adds ₹10 or ₹20; the
+  jar auto-invests in the chosen coin or basket at the partner's minimum
+  order):
   - It's a standing instruction to buy: get explicit, recorded consent
     the first time (what it buys, that it buys automatically, the risk
     warning, how to stop), and confirm with the partner that it supports
     recurring or threshold buys from a held INR balance under its terms.
   - Each tap moves real money: show the amount, make it undoable for a
     short window, rate-limit taps, and send a receipt for every automatic
-    buy (with fees and TDS from `order_math.py`).
+    buy with the fees and the GST on fees from `order_math.py`. (India's
+    1% TDS is withheld from the *seller*, so it appears on sells and
+    withdrawals from the jar's coin, not on these buys; have the partner
+    confirm how TDS and GST appear on its contract notes.)
   - Off switch on every reminder and in settings; turning it off asks
     whether to keep, invest or withdraw the jar's balance.
   - Wording says "invest", never "save"; ASCI's warning on every reminder;
-    no streaks, badges or rewards that push more taps; never after a loss
-    or late at night.
+    ASCI's crypto guidelines also bar calling crypto "currency",
+    "securities", "custodian" or "depositories" in promotions; no streaks,
+    badges or rewards that push more taps; never after a loss or late at
+    night.
+  - **Dark patterns:** India's Guidelines for Prevention and Regulation of
+    Dark Patterns, 2023 (Central Consumer Protection Authority) list
+    "nagging" (repeated requests that disrupt what the user is doing) among
+    banned practices. A reminder every 15 to 30 minutes of scrolling, on by
+    default, is close to that line. Recommend: the jar is **opt-in** when
+    the user first sets it up (not on by default), the default frequency is
+    low (for example at most once or twice a day), the user picks the
+    frequency, and dismissing a reminder never makes the next one come
+    sooner. The general rule above ("invest prompts off by default") then
+    holds for the jar too. This is the founder's decision: put the options
+    and the risk to them, and save their choice to the memory sheet.
   - The jar balance is the user's money with the partner: show it, let
     them withdraw it, and reconcile it daily like orders (section 9).
 - **Stores:** an organisation developer account (Apple 5.1.1(ix)),

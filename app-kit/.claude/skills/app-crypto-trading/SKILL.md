@@ -1,6 +1,6 @@
 ---
 name: app-crypto-trading
-description: Build crypto trading into an app like a fintech product lead who has shipped regulated trading: the app as front end on a licensed partner (gateway, exchange or broker API), choosing that partner, KYC and onboarding, prices and quotes, the order lifecycle, exact fee and tax maths, security for money movement, per-country rules and risk warnings, where social content meets trading, reconciliation and incidents. Includes an exact order-maths script. Use for any trading, wallet, portfolio, price, deposit, withdrawal, partner, "invest" prompt or crypto compliance task.
+description: Build crypto trading into an app like a fintech product lead who has shipped regulated trading: affiliate "Trade on <exchange>" links first, then the app as front end on a licensed partner (gateway, exchange or broker API), choosing that partner, KYC and onboarding, prices and quotes, the order lifecycle, exact fee and tax maths, security for money movement, per-country rules and risk warnings, where social content meets trading, reconciliation and incidents. Includes an exact order-maths script. Use for any trading, wallet, portfolio, price, deposit, withdrawal, partner, "invest" prompt or crypto compliance task.
 ---
 
 The files this skill uses sit next to this SKILL.md. In Claude Code that

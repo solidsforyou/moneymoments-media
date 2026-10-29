@@ -205,3 +205,50 @@ def test_ledger_changes_are_not_uncommitted_work(tmp_path):
     (Path(tmp_path) / "old.txt").write_text("changed")
     code, out = audit(tmp_path, "hook", "stop", stdin="{}")
     assert code == 2 and "old.txt" in out
+
+
+def test_broken_ledger_never_traps_a_session(tmp_path):
+    repo(tmp_path)
+    audit(tmp_path, "init")
+    ledger = Path(tmp_path) / "audit" / "ledger.csv"
+    ledger.unlink()
+    ledger.mkdir()
+    assert audit(tmp_path, "hook", "stop", stdin=json.dumps({"stop_hook_active": True}))[0] == 0
+    ls = json.dumps({"tool_name": "Bash", "tool_input": {"command": "ls -la"}})
+    assert audit(tmp_path, "hook", "prepush", stdin=ls)[0] == 0
+    push = json.dumps({"tool_name": "Bash", "tool_input": {"command": "git push"}})
+    assert audit(tmp_path, "hook", "prepush", stdin=push)[0] == 2
+
+
+def test_more_push_forms():
+    sys.path.insert(0, str(SCRIPT.parent))
+    from audit import is_push
+    for cmd in ["sh -c 'git push'", 'bash -c "cd x && git push origin main"', "eval git push", "timeout 60 git push",
+                "nohup git push &", "echo main | xargs git push origin", "if true; then git push; fi", "{ git push; }",
+                "sudo -u me git push", "env GIT_TRACE=1 git push"]:
+        assert is_push(cmd), cmd
+    for cmd in ["sh -c 'git status'", "timeout 60 npm test", "eval echo push"]:
+        assert not is_push(cmd), cmd
+
+
+def test_git_pre_push_hook_blocks_real_pushes(tmp_path):
+    kit = SCRIPT.parents[3].parent  # app-kit/
+    remote = tmp_path / "remote.git"
+    work = tmp_path / "work"
+    sh("git", "init", "-q", "--bare", str(remote), cwd=tmp_path)
+    work.mkdir()
+    repo(work)
+    import shutil
+    shutil.copytree(kit / ".claude", work / ".claude")
+    shutil.copytree(kit / ".githooks", work / ".githooks")
+    sh("git", "add", "-A", cwd=work)
+    sh("git", "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "kit", cwd=work)
+    code, out = audit(work, "init")
+    assert "pre-push hook enabled" in out
+    sh("git", "remote", "add", "origin", str(remote), cwd=work)
+    commit(work, "feature.txt")
+    p = subprocess.run(["git", "push", "-q", "origin", "main"], cwd=work, capture_output=True, text=True)
+    assert p.returncode != 0 and "blocked by the auditor" in p.stderr
+    audit(work, "add", "--verdict", "PASS", "--kind", "code", "--summary", "ok", "--all-unaudited")
+    p = subprocess.run(["git", "push", "-q", "origin", "main"], cwd=work, capture_output=True, text=True)
+    assert p.returncode == 0, p.stderr
