@@ -1,1 +1,7 @@
 id,name,brand,channel,url,why_chosen
+us,GoodGuy (planned),GoodHabits,"Android, web (planned)",/home/user/moneymoments-media/app-kit/brief.md,"Our product: paid AI company-page explainer plus replay practice account, planned Rs 500/month"
+c1,StockGro,Assetgro Fintech Ltd,"Google Play India, web, iOS",https://www.stockgro.club/,Direct (AI explainer + same virtual-trading heritage) and category leader by claimed users. Memory #71 treats it as the closest rival; its own site now says it is not a virtual-trading platform.
+c2,Zerodha Varsity,Zerodha Broking Ltd,"Web, Google Play India",https://zerodha.com/varsity/,"Free substitute for the learning job; same broker as GoodHabits connects to, so the zero-price anchor users will compare against."
+c3,Sensibull,Riskilla Software Technologies Pvt Ltd,"Google Play India, web",https://sensibull.com/,"Rising / adjacent: free for Zerodha users (GoodHabits users are Zerodha-connected), and ships a Mindful Trading nudge, the nearest thing found to behaviour coaching."
+c4,Tickertape,CASE Platforms Pvt Ltd (smallcase),"Google Play India, web",https://www.tickertape.in/,Price challenger/premium analogue: paid Indian research subscription (Rs 399 per month) with per-stock news and earnings summaries; shows what Indians pay for stock context.
+c5,Virtual Trading 2.0,KavKrish Apps,"Google Play India, iOS, web",https://kavkrishapps.in/,"Direct for the practice-account job: pure Indian paper-trading app, ad-supported free tier plus cheap Pro; shows the price floor for practice-only."
