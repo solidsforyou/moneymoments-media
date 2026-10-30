@@ -32,6 +32,8 @@ npm test           # 12 end-to-end API tests
    | `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | Push notifications. Make a pair once with `npx web-push generate-vapid-keys` | For push |
    | `VAPID_SUBJECT` | Contact for push services, e.g. `mailto:hello@opensourceeverything.in` | No |
    | `MAX_FILE_MB` | Biggest file Tomorrow accepts (default 100) | No |
+   | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` | From Razorpay (Account → API keys). Switches on Arena's free daily minutes and the ₹99 / 30-day unlimited pass. Without them Arena stays free and unlimited | For Arena payments |
+   | `ARENA_FREE_MINUTES` | Free minutes of questions a day once payments are on (default 30) | No |
 
 3. **Telegram**: in @BotFather run `/setdomain` for the bot and give it
    `opensourceeverything.in` (or the Netlify URL while testing). The login button only
@@ -40,6 +42,8 @@ npm test           # 12 end-to-end API tests
 5. Netlify Blobs needs no setup; it's on for every site.
 
 That's all; there are no other keys or services. Nothing here sends email yet.
+Razorpay needs a business KYC in your name or your company's before live keys work; use
+its test keys first (card 4111 1111 1111 1111) to try the flow end to end.
 
 ## What works today
 
@@ -71,23 +75,27 @@ That's all; there are no other keys or services. Nothing here sends email yet.
     and 17 shares and ETFs, pretend money, approximate charges, big-day notes, and a report
     card against just holding the Nifty.
   - A content feed by pillar and the GoodID.
-- **Arena** (`/arena/`): the practice game for every app, classes 1 to 12.
-  - Make a player (an original character; glasses, cap, headband, headphones and a crown
-    unlock at 3, 8, 15, 25 and 40 levels cleared). Nicknames are generated, never typed, so
-    no child puts a real name on a leaderboard.
-  - Pick a class and a difficulty (Rookie, Pro, Legend: XP × 1, 1.5, 2). Thirty levels per
-    course, six questions each, a 90-second boss every fifth level; pass with 4 right (boss 5).
-  - Courses: Maths and English for classes 6 to 10, Money basics (the GoodHabit course) and
-    Digital skills for any class. Questions are generated or drawn from a bank on the server
-    and get harder level by level.
-  - Answers are checked on the server one at a time, so right answers never sit in the page.
-  - Play as a guest (progress on the device). Sign up (13+) to save and get ranked; the guest
-    player and its cleared levels move into the account. Under 18s need a parent's account to
-    approve them (Arena, Me tab) before they show on leaderboards.
-  - Leaderboards per course, class and difficulty, this week and all time. Ranks: Bronze,
-    Silver 500 XP, Gold 1,500, Diamond 3,500, Champion 7,000. Replays pay half; levels more
-    than 2 below your best pay nothing.
-  - Linked from the OSE store and from GoodHabit ("Practise in Arena").
+- **Arena** (`/arena/`): the practice game for every app.
+  - Make a player (an original character; extras unlock as you clear levels; nicknames are
+    generated so no child puts a real name on a leaderboard), pick your class (1 to 12, or
+    college/working) and Easy, Medium or Hard (XP × 1, 1.5, 2).
+  - Each course is one world per NCERT chapter in book order, with a 90-second boss after
+    every four chapters. Six questions a level; every question shows its band, its hardness
+    out of 10 and the time it should take. Easy is plain white, Medium has a red tint, Hard
+    glows red.
+  - Readiness per course: Unit test readiness (classes 1 to 9 and 11), Board readiness
+    (10 and 12), CAT readiness, Investment readiness (money), Digital readiness.
+  - Questions come from `content/arena`: real questions from NCERT mirrors, CBSE, PW,
+    Byju's, Vedantu, Career Launcher and others are logged and rated in `research/` (never
+    shown); Arena serves original questions modelled on the best-rated ones, top 6 per
+    chapter and band (`bank/`). `npm run build` turns them into the app's data. Per-class
+    research sheets, sources and a summary are in `content/arena/sheets/`.
+  - Answers are checked on the server one at a time. Guests play free on their device;
+    sign up (13+) to save and get ranked; under 18s need a parent's approval.
+  - Once Razorpay keys are set: free players get 30 minutes of questions a day; ₹99 is a
+    one-time payment for 30 days of unlimited practice (no auto-renew). Under 18s can't pay;
+    their parent unlocks it from the Me tab.
+  - Linked from the OSE store, GoodHabit (money course) and OpenPrep (CAT).
 - **`/play/`** is the old design demo, clearly labelled as made-up people and data.
 - **Content.** `/admin/` (with the admin token) publishes to any app's feed. The content
   machine can do the same with
