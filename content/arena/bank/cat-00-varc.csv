@@ -215,3 +215,195 @@ Question: 'Which is not the same as being neutral' most nearly means that",the t
 cat-00-varc-4-h6,4,"RC on society, history and the arts",Inference,hard,8,125,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
 
 Question: Which finding would most weaken the historians who think the clock mainly served the colonial economy?",Railways were built by the colonial state,"Indian-owned factories adopted fixed hours before colonial offices did, for their own reasons",Courts adopted the standard clock,Trams ran on fixed schedules,B,"If Indian enterprises adopted it first for their own ends, the 'colonial' reading weakens.",r-cat-00-varc-4-12,80,Y
+cat-00-varc-5-e1,5,Para-jumbles,Chronology and cause-effect,easy,2,50,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. She waited till the water boiled, then added tea leaves and a little ginger.
+B. Meera filled a kettle with water and set it on the stove.
+C. Finally she strained the tea into two cups and called her father.
+D. She let it simmer for two minutes until the colour deepened.
+
+Question: Which is the correct order?",BADC,BDAC,ABDC,BACD,A,"The steps run in time order: fill the kettle, boil and add leaves, simmer, then strain and serve.",r-cat-00-varc-5-4,80,Y
+cat-00-varc-5-e2,5,Para-jumbles,Pronoun and link cues,easy,3,55,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. It was built in 1911 and has carried trains ever since.
+B. The old railway bridge over the Mahi river will close for repairs next month.
+C. Engineers found that its iron girders have rusted badly.
+D. Until it reopens, trains will take a longer route via Anand.
+
+Question: Which is the correct order?",ABCD,BACD,BADC,DBAC,B,B introduces the bridge. A ('It was built') and C ('its iron girders') refer back to it. D ('Until it reopens') closes the paragraph.,r-cat-00-varc-5-4,80,Y
+cat-00-varc-5-m1,5,Para-jumbles,Link words and pronouns,medium,5,90,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Chai sellers, however, kept the price-sensitive customers who pass their stalls every morning.
+B. Coffee chains entered Indian metros in the late 1990s, promising a premium experience.
+C. Their survival shows that a new habit does not always replace an old one; it can sit beside it.
+D. Within a decade, a café meeting had become a normal part of a young professional's week.
+
+Question: Which is the correct order?",BADC,DBAC,BDAC,BDCA,C,"B opens with the chains. D follows ('Within a decade'). A needs the contrast signalled by 'however', and C ('Their survival') needs A's chai sellers before it.",r-cat-00-varc-5-5,80,Y
+cat-00-varc-5-m2,5,Para-jumbles,Chronology and cause-effect,medium,6,95,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Pricing seats cheaply to fill planes brought flying within reach of first-time travellers.
+B. Low-cost airlines in India dropped meals and free baggage to cut costs.
+C. Airports soon struggled with crowds they had not been built for.
+D. Demand for domestic flights grew faster than anyone had planned for.
+
+Question: Which is the correct order?",BDAC,ABDC,BACD,BADC,D,"Cause runs to effect: cost cutting (B), cheap seats (A), demand growth (D), crowded airports (C).",r-cat-00-varc-5-7,80,Y
+cat-00-varc-5-h1,5,Para-jumbles,Opening and closing sentences,hard,6,130,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Yet that habit of checking has a cost, since time spent verifying is time not spent doing the work.
+B. Where institutions are trusted, people can hand over a task without inspecting how it is done.
+C. Where they are not, every transaction needs a witness, a receipt or a second opinion.
+D. Economists sometimes describe trust as a way of saving effort rather than as a feeling.
+
+Question: Which is the correct order?",DBCA,BCAD,DCBA,BDCA,A,"D states the idea and is the only sentence that works as an opener. B and C then contrast trusting and distrusting settings, and A ('that habit of checking', 'Yet') refers back to C.",r-cat-00-varc-5-11,80,Y
+cat-00-varc-5-h2,5,Para-jumbles,Logical flow,hard,7,140,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. The finding unsettled researchers who had assumed that more screen time simply meant less sleep.
+B. In a study of 2,000 teenagers, those who read on a tablet before bed slept no worse than those who read printed books.
+C. What mattered, it turned out, was whether the content was calming or exciting.
+D. Screen brightness, by contrast, made almost no measurable difference.
+
+Question: Which is the correct order?",BCAD,BACD,BCDA,ABCD,B,"B reports the study. A ('The finding') reacts to it. C gives what did matter, and D ('by contrast') contrasts brightness with that content effect.",r-cat-00-varc-5-13,80,Y
+cat-00-varc-6-e1,6,Para summary,Core claim,easy,2,55,4,4,"Read the passage and pick the option that best summarises it.
+
+Stepwells in Gujarat were never just places to draw water. Travellers rested in their cool chambers, women met there to talk, and festivals were held at the water's edge. When piped water arrived, most stepwells were abandoned, and today they survive mostly as tourist sights.
+
+Question: Which option is the best summary of the passage?",Stepwells in Gujarat are now popular tourist sights.,Piped water has damaged India's heritage.,"Stepwells served as social spaces as well as water sources, and lost their role once piped water arrived.",Travellers preferred stepwells to inns when they journeyed.,C,"The passage gives stepwells two roles, water and community life, and says the second faded with piped water. The other options take one detail or add a claim.",r-cat-00-varc-6-1,80,Y
+cat-00-varc-6-e2,6,Para summary,Core claim,easy,3,60,4,4,"Read the passage and pick the option that best summarises it.
+
+When a Pune school let children grow vegetables, attendance rose and lunch waste fell. Pupils who had refused to eat greens began to taste what they had planted. Teachers also noticed that the garden gave quiet children a chance to lead.
+
+Question: Which option is the best summary of the passage?",Vegetables grown at school are tastier than market vegetables.,Quiet children should be given leadership roles in every school.,Schools in Pune have higher attendance than other schools.,"A school garden changed children's eating habits and confidence, and not just their knowledge of plants.",D,"The passage lists better attendance, less waste, more eating of greens and a leadership chance. The correct option covers these effects without extra claims.",r-cat-00-varc-6-1,80,Y
+cat-00-varc-6-m1,6,Para summary,Eliminating over-narrow options,medium,5,90,4,4,"Read the passage and pick the option that best summarises it.
+
+Rating systems promise fairness: a customer scores a driver, and the score decides who gets work. But a score squeezes a messy trip into a single number, and it is rarely clear what caused a low one: a late train, a rude passenger, a wrong turn on the map. Workers learn to chase the number rather than the service, thanking customers for five stars and avoiding difficult routes. The system measures behaviour, then quietly reshapes it.
+
+Question: Which option is the best summary of the passage?","Ratings that look fair reduce complex service to a number, and workers end up serving the number.",Drivers have learned to thank passengers for five stars.,Customers should stop rating the people who serve them.,Technology has made work worse for most people.,A,"The core claim is that a single score misreads and then reshapes behaviour. Thanking customers is only one example, and the other options go beyond the passage.",r-cat-00-varc-6-4,80,Y
+cat-00-varc-6-m2,6,Para summary,Eliminating over-broad options,medium,6,95,4,4,"Read the passage and pick the option that best summarises it.
+
+Monsoon forecasts have improved sharply: models now track rain-bearing systems days ahead. Yet a farmer rarely acts on a forecast for a whole district. What matters is whether rain will reach the village before the sowing window closes. Until forecasts are issued at that scale, better science will not become better harvests.
+
+Question: Which option is the best summary of the passage?",Science alone cannot solve the problems of Indian agriculture.,Better monsoon forecasts will help farmers only when they are specific to the village and the sowing window.,Monsoon models can now track rain systems several days ahead.,Farmers should ignore district-level forecasts altogether.,B,The claim is conditional and specific: scale decides whether forecasts help. 'Science alone' is too broad and the tracking detail is too narrow.,r-cat-00-varc-6-6,80,Y
+cat-00-varc-6-h1,6,Para summary,Tone and scope,hard,7,130,4,4,"Read the passage and pick the option that best summarises it.
+
+Nostalgia is usually dismissed as a longing for a past that never was, a sentimental editing of memory. But research suggests the dismissal is hasty. People who recall warm moments report feeling more connected and more willing to help strangers, which suggests nostalgia works less as an escape from the present than as a resource for it. The risk lies elsewhere: when whole societies borrow the feeling to promise a return, a private comfort becomes a political tool.
+
+Question: Which option is the best summary of the passage?",Nostalgia is harmful because it distorts memory and escapes reality.,Nostalgia makes people more willing to help strangers.,"Nostalgia, often waved away as sentimental, can strengthen connection in the present, though collectively invoked it can become a political instrument.",Societies should never promise a return to the past.,C,"The passage defends nostalgia, then warns about its collective use. Option two keeps only the first half and the others reverse the tone or overstate it.",r-cat-00-varc-6-11,80,Y
+cat-00-varc-6-h2,6,Para summary,Core claim,hard,8,140,4,4,"Read the passage and pick the option that best summarises it.
+
+Cities that widen roads to ease traffic often find the congestion returns within a few years. The new lanes make driving quicker and so attract trips that people had earlier postponed, shared or given up. Planners therefore treat road space as something that generates its own demand, and some now measure success not by speed but by how many people a street moves.
+
+Question: Which option is the best summary of the passage?",Congestion returns within a few years of widening a road.,Cities should stop building roads and ban private cars.,Road widening is too expensive for most cities.,"Added road capacity brings new trips, so congestion returns, and some planners now judge streets by people moved, not vehicle speed.",D,"The passage links widening to induced demand and then to a changed measure of success. The wrong options give only the first step, an unsupported cost claim, or an extreme policy.",r-cat-00-varc-6-10,80,Y
+cat-00-varc-7-e1,7,Odd sentence out,Spotting the off-theme sentence,easy,2,50,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Kaju katli is made by grinding cashews and cooking them with sugar syrup.
+2. The warm mixture is rolled flat and cut into diamonds.
+3. A thin sheet of edible silver is laid on top before packing.
+4. Many families buy a box from the same sweet shop every Diwali.
+5. The pieces are cooled completely before they are boxed.
+
+Question: Which sentence does not belong?",4,1,2,3,A,"Sentences 1, 2, 3 and 5 describe how the sweet is made. Sentence 4 is about buying habits.",r-cat-00-varc-7-1,80,Y
+cat-00-varc-7-e2,7,Odd sentence out,Mismatched scope,easy,3,55,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Mumbai's local trains slow down when tracks flood.
+2. Roads at low-lying junctions fill with water within an hour of heavy rain.
+3. Schools often declare a holiday after a red alert.
+4. Delhi's winter mornings are often covered by dense fog.
+5. Civic workers pump water out of underpasses to keep traffic moving.
+
+Question: Which sentence does not belong?",1,4,2,3,B,All other sentences describe the monsoon's effects on Mumbai. Sentence 4 is about winter fog in Delhi.,r-cat-00-varc-7-3,80,Y
+cat-00-varc-7-m1,7,Odd sentence out,Same topic different focus,medium,5,90,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Since 2020 the town library has lent e-books to members at home.
+2. Its reading rooms now stay open until 10 pm for students preparing for exams.
+3. A children's corner opened last year and fills up with families on weekends.
+4. The building was designed by a British engineer and finished in 1910.
+5. It has also started free weekend classes in spoken English.
+
+Question: Which sentence does not belong?",1,2,4,3,C,The theme is how the library has adapted to its readers. Sentence 4 is about the building's design and date.,r-cat-00-varc-7-5,80,Y
+cat-00-varc-7-m2,7,Odd sentence out,Mismatched tone,medium,6,95,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Uniforms reduce visible differences of wealth in a classroom.
+2. They also spare parents a daily argument over what to wear.
+3. Critics reply that sameness can suppress a child's sense of self.
+4. Honestly, nothing says 'learning' like a tie that chokes you in May.
+5. The evidence on results is mixed, so the argument rests more on values than on data.
+
+Question: Which sentence does not belong?",1,2,3,4,D,The other sentences weigh the uniform debate in a measured way. Sentence 4 is a flippant joke.,r-cat-00-varc-7-5,80,Y
+cat-00-varc-7-h1,7,Odd sentence out,Same topic different focus,hard,6,130,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. UPI grew quickly because any bank account holder could pay with just a phone number.
+2. Small shopkeepers adopted it because it cost them nothing, unlike card machines.
+3. Its open design let many apps compete on the same rails.
+4. Mobile data prices fell sharply in the mid-2010s, which made phone payments affordable.
+5. Surveys show that some older rural customers still fear scams, which keeps them tied to cash.
+
+Question: Which sentence does not belong?",5,1,2,3,A,Sentences 1 to 4 give reasons for UPI's rapid growth. Sentence 5 describes a limit on adoption.,r-cat-00-varc-7-9,80,Y
+cat-00-varc-7-h2,7,Odd sentence out,Mismatched scope,hard,7,140,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Prices of staple goods rise by a few per cent every year.
+2. Over decades, this makes fixed savings buy much less.
+3. Savers therefore look for returns above the rate of inflation.
+4. The RBI targets retail inflation at 4 per cent, with a tolerance band of 2 points either side.
+5. A fixed deposit that pays less than inflation loses value in real terms.
+
+Question: Which sentence does not belong?",1,4,2,3,B,The paragraph is about what inflation does to savers. Sentence 4 turns to the central bank's policy target.,r-cat-00-varc-7-12,80,Y
+cat-00-varc-8-e1,8,Sentence placement,Where a sentence fits,easy,3,60,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Bengaluru's lakes were once linked by channels that carried water from one lake to the next.
+2. As the city grew, many of these channels were built over.
+3. Heavy rain now floods streets that were once drained safely.
+4. Restoring even a few channels would help.
+
+Sentence to place: ""Without these links, rainwater has nowhere to go.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 3,After sentence 2,After sentence 4,C,"'These links' refers to the channels that were built over in sentence 2, and the sentence explains the flooding in sentence 3.",r-cat-00-varc-8-1,80,Y
+cat-00-varc-8-e2,8,Sentence placement,Link words and pronouns,easy,4,60,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Many people think a savings account is the safest place for all their money.
+2. It is safe, and the money can be withdrawn at any time.
+3. The interest rate, however, is often lower than the rise in prices.
+4. That is why experts suggest keeping only an emergency fund there.
+
+Sentence to place: ""Over a few years, this slowly shrinks what the money can buy.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 4,After sentence 3,D,"'This' refers to interest lagging behind price rises in sentence 3, and the new sentence leads to the advice in sentence 4.",r-cat-00-varc-8-2,80,Y
+cat-00-varc-8-m1,8,Sentence placement,Before-after logic,medium,5,95,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Ravi's bakery was close to shutting down in 2019.
+2. He had borrowed money to buy a second oven, but sales did not rise.
+3. So he began delivering through an app and cut his menu to six items.
+4. By 2022 he was repaying the loan early.
+
+Sentence to place: ""The extra oven stood idle for most of the day.""
+
+Question: After which numbered sentence does it fit best?",After sentence 2,After sentence 1,After sentence 3,After sentence 4,A,"'The extra oven' needs the second oven introduced in sentence 2, and the sentence explains why sales did not rise, which leads to the 'So' of sentence 3.",r-cat-00-varc-8-7,80,Y
+cat-00-varc-8-m2,8,Sentence placement,Flow of argument,medium,6,100,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Many believe that a good memory is a gift of birth.
+2. Studies of London taxi drivers show something different.
+3. And the longer they had been on the road, the larger that area was.
+4. The brain, in other words, behaves more like a muscle than like a fixed possession.
+
+Sentence to place: ""The area of the brain linked to navigation was larger in drivers who had passed the city's hard test than in ordinary adults.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,B,"The sentence needs taxi drivers to be introduced first, and sentence 3 ('that area was larger') depends on the sentence naming the brain area.",r-cat-00-varc-8-9,80,Y
+cat-00-varc-8-h1,8,Sentence placement,Before-after logic,hard,7,130,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Public libraries in the nineteenth century were often founded by factory owners.
+2. Their motive was not pure generosity.
+3. A literate worker could follow safety rules and run new machines.
+4. Yet the habit of reading, once started, could not be steered.
+
+Sentence to place: ""Books, they hoped, would also keep workers away from taverns and union meetings.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,C,"'Also' adds a second hope after the benefit in sentence 3, and 'Yet' in sentence 4 contradicts the idea that reading could be steered.",r-cat-00-varc-8-11,80,Y
+cat-00-varc-8-h2,8,Sentence placement,Flow of argument,hard,7,140,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Languages rarely die because people stop loving them.
+2. They die when the daily reasons to use them disappear.
+3. A child who needs another language to study, earn or even joke with friends gradually stops answering in the home tongue.
+4. By the time the grandparents notice, the chain of speakers has broken.
+
+Sentence to place: ""Affection, in short, is not enough to keep a language alive.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,D,"'In short' sums up the argument, which is complete only after sentence 4. Earlier positions would cut off the example and its consequence.",r-cat-00-varc-8-10,80,Y

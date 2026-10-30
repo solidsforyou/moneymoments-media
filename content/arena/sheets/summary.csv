@@ -1,6 +1,7 @@
 course,chapters,research_rows,research_sources,bank_selected,easy,medium,hard
+cat-00-dilr,8,24,1,48,16,16,16
 cat-00-qa,17,153,2,306,102,102,102
-cat-00-varc,4,108,1,72,24,24,24
+cat-00-varc,8,108,1,96,32,32,32
 school-05-english,7,63,2,126,42,42,42
 school-05-evs,10,30,1,60,20,20,20
 school-05-maths,15,45,1,90,30,30,30
