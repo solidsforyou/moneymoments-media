@@ -1,6 +1,6 @@
 course,chapters,research_rows,research_sources,bank_selected,easy,medium,hard
 cat-00-qa,17,153,2,306,102,102,102
-cat-00-varc,1,108,1,18,6,6,6
+cat-00-varc,4,108,1,72,24,24,24
 school-05-english,7,63,2,126,42,42,42
 school-06-english,7,63,2,126,42,42,42
 school-06-maths,10,109,2,180,60,60,60
@@ -13,5 +13,6 @@ school-08-maths,14,126,2,252,84,84,84
 school-08-science,13,131,4,234,78,78,78
 school-09-maths,14,157,3,252,84,84,84
 school-09-science,13,177,2,234,78,78,78
+school-10-english,7,27,1,126,42,42,42
 school-10-maths,14,234,4,252,84,84,84
 school-10-science,13,117,3,234,78,78,78
