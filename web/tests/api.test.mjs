@@ -155,56 +155,63 @@ test('progress: saved per person, newest copy wins, only known items', async () 
 });
 
 // Arena: read the round's seed from storage so the test knows the right answers
-const roundAnswers = rid => { const r = JSON.parse(fs.readFileSync(path.join(DATA, 'arena', `round__${rid}`))); return buildRound({ course: r.course, cls: r.cls, diff: DIFF[r.diff], level: r.level, seed: r.seed }).map(q => q.a); };
+const roundAnswers = rid => { const r = JSON.parse(fs.readFileSync(path.join(DATA, 'arena', `round__${rid}`))); return buildRound({ course: r.course, diff: DIFF[r.diff], level: r.level, seed: r.seed }).map(q => q.a); };
 async function play(agent, opts, right = 6) {
   const s = await agent.req('/api/arena/round', { method: 'POST', body: opts }); assert.equal(s.status, 200, JSON.stringify(s.data));
-  assert.equal(s.data.questions.length, 6); assert.equal(s.data.questions[0].a, undefined);   // answers never reach the page
+  const n = s.data.questions.length; assert.ok(n >= 4); assert.equal(s.data.questions[0].a, undefined);   // answers never reach the page
+  assert.ok(s.data.questions[0].h >= 1 && s.data.questions[0].t > 0);
   const ans = roundAnswers(s.data.round);
-  for (let i = 0; i < 6; i++) { const r = await agent.req(`/api/arena/round/${s.data.round}`, { method: 'POST', body: { action: 'answer', i, choice: i < right ? ans[i] : (ans[i] + 1) % 4 } }); assert.equal(r.data.right, i < right); assert.equal(r.data.correct, ans[i]); }
+  for (let i = 0; i < n; i++) { const r = await agent.req(`/api/arena/round/${s.data.round}`, { method: 'POST', body: { action: 'answer', i, choice: i < right ? ans[i] : (ans[i] + 1) % 4 } }); assert.equal(r.data.right, i < right); assert.equal(r.data.correct, ans[i]); }
   return { start: s.data, result: (await agent.req(`/api/arena/round/${s.data.round}`, { method: 'POST', body: { action: 'finish' } })).data };
 }
+let C;   // the first course in the bank, whatever it is
 
 test('arena: guests play unranked, nicknames are generated', async () => {
   const g = new Agent(), n = (await g.req('/api/arena/nickname')).data.nick; assert.match(n, /^[A-Z][a-z]+[A-Z][a-z]+\d{2}$/);
-  assert.equal((await g.req('/api/arena/courses')).data.courses.maths.classes.length, 5);
-  assert.equal((await g.req('/api/arena/round', { method: 'POST', body: { course: 'maths', cls: 3, difficulty: 'rookie', level: 1 } })).status, 400);
-  const { start, result } = await play(g, { course: 'money', difficulty: 'pro', level: 7 });
+  const cat = (await g.req('/api/arena/courses')).data; C = cat.courses[0]; assert.ok(C.chapters.length && C.levels.length && C.readiness);
+  assert.equal(cat.limit.on, false);
+  assert.equal((await g.req('/api/arena/round', { method: 'POST', body: { course: C.id, difficulty: 'easy', level: 999 } })).status, 400);
+  assert.equal((await g.req('/api/arena/round', { method: 'POST', body: { course: 'nope', difficulty: 'easy', level: 1 } })).status, 400);
+  const { start, result } = await play(g, { course: C.id, difficulty: 'medium', level: 2 });
   assert.equal(start.ranked, false); assert.equal(result.passed, true); assert.equal(result.stars, 3); assert.equal(result.player, null);
-  assert.equal((await g.req('/api/arena/player', { method: 'POST', body: { nick: n, cls: 7, difficulty: 'pro' } })).status, 401);
+  assert.equal((await g.req('/api/arena/player', { method: 'POST', body: { nick: n, cls: 7, difficulty: 'medium' } })).status, 401);
 });
 
-test('arena: ranked play, level gating, XP, leaderboard', async () => {
-  assert.equal((await asha.req('/api/arena/player', { method: 'POST', body: { nick: 'Asha Rao', cls: 7, difficulty: 'pro' } })).status, 400);
-  const p = await asha.req('/api/arena/player', { method: 'POST', body: { nick: 'BraveOtter42', cls: 7, difficulty: 'pro', avatar: { skin: 99, hair: 2 }, guestLevels: { 'english.7.pro': 3 } } });
-  assert.equal(p.data.player.status, 'ok'); assert.equal(p.data.player.avatar.skin, 5); assert.equal(p.data.player.xp, 0); assert.equal(p.data.player.progress['english.7.pro'].max, 3);
-  const opts = { course: 'maths', cls: 7, difficulty: 'pro' };
+test('arena: ranked play, level gating, XP, readiness data, leaderboard', async () => {
+  const cls = C.track === 'school' ? C.cls : 13;
+  assert.equal((await asha.req('/api/arena/player', { method: 'POST', body: { nick: 'Asha Rao', cls, difficulty: 'medium' } })).status, 400);
+  const p = await asha.req('/api/arena/player', { method: 'POST', body: { nick: 'BraveOtter42', cls, difficulty: 'medium', avatar: { skin: 99, hair: 2 }, guestLevels: { [`${C.id}.easy`]: 3, 'bad key': 9 } } });
+  assert.equal(p.data.player.status, 'ok'); assert.equal(p.data.player.avatar.skin, 5); assert.equal(p.data.player.xp, 0); assert.equal(p.data.player.progress[`${C.id}.easy`].max, 3);
+  const opts = { course: C.id, difficulty: 'medium' };
   assert.equal((await asha.req('/api/arena/round', { method: 'POST', body: { ...opts, level: 2 } })).status, 403);
   const one = await play(asha, { ...opts, level: 1 }, 5);
   assert.equal(one.start.ranked, true); assert.equal(one.result.passed, true); assert.equal(one.result.stars, 2); assert.equal(one.result.firstClear, true);
-  assert.ok(one.result.xp > 20); assert.equal(one.result.player.xp, one.result.xp); assert.equal(one.result.player.progress['maths.7.pro'].max, 1);
+  assert.ok(one.result.xp > 20); assert.equal(one.result.player.xp, one.result.xp);
+  const pr = one.result.player.progress[`${C.id}.medium`]; assert.equal(pr.max, 1); assert.equal(pr.best[1], Math.round(5 / one.start.questions.length * 100));
   const again = (await asha.req(`/api/arena/round/${one.start.round}`, { method: 'POST', body: { action: 'finish' } })).data; assert.equal(again.xp, one.result.xp);   // finishing twice pays once
-  const fail = await play(asha, { ...opts, level: 2 }, 3); assert.equal(fail.result.passed, false); assert.equal(fail.result.player.progress['maths.7.pro'].max, 1);
-  const lb = (await asha.req('/api/arena/leaderboard?course=maths&cls=7&difficulty=pro&period=week')).data;
+  const fail = await play(asha, { ...opts, level: 2 }, 1); assert.equal(fail.result.passed, false); assert.equal(fail.result.player.progress[`${C.id}.medium`].max, 1);
+  const lb = (await asha.req(`/api/arena/leaderboard?course=${C.id}&difficulty=medium&period=week`)).data;
   assert.equal(lb.rows[0].nick, 'BraveOtter42'); assert.equal(lb.rows[0].me, true); assert.equal(lb.me.place, 1); assert.equal(lb.rows[0].uid, undefined);
-  assert.equal((await asha.req('/api/arena/leaderboard?course=maths&cls=7&difficulty=rookie')).data.rows.length, 0);
-  // someone else can't answer Asha's round; a different class or difficulty plays unranked
+  assert.equal((await asha.req(`/api/arena/leaderboard?course=${C.id}&difficulty=hard`)).data.rows.length, 0);
   const s = await asha.req('/api/arena/round', { method: 'POST', body: { ...opts, level: 2 } });
   assert.equal((await kabir.req(`/api/arena/round/${s.data.round}`, { method: 'POST', body: { action: 'answer', i: 0, choice: 0 } })).status, 403);
-  assert.equal((await asha.req('/api/arena/round', { method: 'POST', body: { ...opts, difficulty: 'legend', level: 9 } })).data.ranked, false);
-  const boss = await asha.req('/api/arena/round', { method: 'POST', body: { course: 'digital', difficulty: 'legend', level: 5 } }); assert.equal(boss.data.boss, true); assert.equal(boss.data.seconds, 90);
+  assert.equal((await asha.req('/api/arena/round', { method: 'POST', body: { ...opts, difficulty: 'hard', level: 3 } })).data.ranked, false);
+  const bossAt = C.levels.findIndex(L => L.boss) + 1;
+  if (bossAt) { const boss = await asha.req('/api/arena/round', { method: 'POST', body: { course: C.id, difficulty: 'hard', level: bossAt } }); assert.equal(boss.data.boss, true); assert.equal(boss.data.seconds, 90); }
 });
 
 test('arena: under-18 players need a parent to approve', async () => {
-  const p = await zoya.req('/api/arena/player', { method: 'POST', body: { nick: 'SunnyFox07', cls: 9, difficulty: 'rookie' } });
+  const cls = C.track === 'school' ? C.cls : 13;
+  const p = await zoya.req('/api/arena/player', { method: 'POST', body: { nick: 'SunnyFox07', cls, difficulty: 'easy' } });
   assert.equal(p.data.player.status, 'needs-parent');
-  assert.equal((await zoya.req('/api/arena/round', { method: 'POST', body: { course: 'english', cls: 9, difficulty: 'rookie', level: 1 } })).data.ranked, false);
+  assert.equal((await zoya.req('/api/arena/round', { method: 'POST', body: { course: C.id, difficulty: 'easy', level: 1 } })).data.ranked, false);
   assert.equal((await zoya.req('/api/arena/parent/request', { method: 'POST', body: { parent: 'nobody' } })).status, 404);
   assert.equal((await zoya.req('/api/arena/parent/request', { method: 'POST', body: { parent: '@kabir' } })).data.player.status, 'waiting');
   const kids = (await kabir.req('/api/arena/parent')).data.children; assert.equal(kids[0].nick, 'SunnyFox07');
   assert.equal((await asha.req('/api/arena/parent/approve', { method: 'POST', body: { child: kids[0].id, approve: true } })).status, 404);
   assert.equal((await kabir.req('/api/arena/parent/approve', { method: 'POST', body: { child: kids[0].id, approve: true } })).data.status, 'ok');
-  const r = await play(zoya, { course: 'english', cls: 9, difficulty: 'rookie', level: 1 }); assert.equal(r.start.ranked, true);
-  assert.equal((await zoya.req('/api/arena/leaderboard?course=english&cls=9&difficulty=rookie')).data.rows[0].nick, 'SunnyFox07');
+  const r = await play(zoya, { course: C.id, difficulty: 'easy', level: 1 }); assert.equal(r.start.ranked, true);
+  assert.equal((await zoya.req(`/api/arena/leaderboard?course=${C.id}&difficulty=easy`)).data.rows[0].nick, 'SunnyFox07');
 });
 
 test('pages are served', async () => {
@@ -215,5 +222,5 @@ test('pages are served', async () => {
 test('delete account', async () => {
   assert.equal((await zoya.req('/api/auth/delete', { method: 'POST' })).status, 200);
   assert.equal((await new Agent().req('/api/auth/login', { method: 'POST', body: { handle: 'zoya', password: 'longenough' } })).status, 401);
-  assert.equal((await asha.req('/api/arena/leaderboard?course=english&cls=9&difficulty=rookie')).data.rows.length, 0);   // her Arena rows went too
+  assert.equal((await asha.req(`/api/arena/leaderboard?course=${C.id}&difficulty=easy`)).data.rows.length, 0);   // her Arena rows went too
 });

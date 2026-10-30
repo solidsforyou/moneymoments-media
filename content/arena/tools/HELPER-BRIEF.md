@@ -26,6 +26,10 @@ the files, columns, difficulty bands and ratings. Work only in your own three fi
   CERT-In, MeitY, CBSE IT/AI curriculum. Credible sources only.
 - For each chapter aim for at least 3 questions per band (9+ per chapter) from at least 2
   different sources, spread over the chapter's topics.
+- **Every research row is one real question you actually opened and read** on the page in
+  `source_url` (that exact page, not an index page). Never invent "typical" questions, and
+  never fill ratings by a pattern: judge `fit`, `quality`, `relevance` and `est_seconds`
+  for each question on its own. Rows that don't meet this will be thrown away.
 - `gist` is **your own summary** of what the question asks (20 words at most). Never paste
   the question's text. Rate `fit`, `quality`, `relevance`, `est_seconds` honestly, as a
   strict teacher would; not everything is a 5.

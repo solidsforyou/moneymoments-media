@@ -39,6 +39,7 @@ a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
 .nick b { font-size: 22px; }
 .parts, .classes { gap: var(--s2); }
 .classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+.classes .wide2 { grid-column: span 4; }
 .chip { min-height: 40px; min-width: 44px; padding: 0 var(--s3); border-radius: var(--pill); border: 1px solid var(--sep); background: var(--card); color: var(--label); font: 600 15px var(--font); cursor: pointer; }
 .chip:hover { border-color: var(--accent); }
 .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
@@ -77,7 +78,7 @@ a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
 .streak { display: inline-flex; align-items: center; gap: var(--s1); font-weight: 800; font-variant-numeric: tabular-nums; padding: var(--s1) var(--s3); border-radius: var(--pill); background: var(--fill); color: var(--label2); }
 .streak svg { width: 18px; height: 18px; fill: currentColor; }
 .streak.hot { background: var(--gold); color: var(--label); }
-.pips { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s1); }
+.pips { display: grid; grid-template-columns: repeat(var(--n, 6), 1fr); gap: var(--s1); }
 .pips i { height: 8px; border-radius: var(--pill); background: var(--fill); }
 .pips .cur { background: var(--accent); } .pips .ok { background: var(--good); } .pips .no { background: var(--bad); }
 .clock i { background: var(--bad); transition: transform .25s linear; }
@@ -114,3 +115,31 @@ a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
 
 :where(.node, .chip, .sw, .diff, .opt, .player, .course):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; transition: none; }
 @media (prefers-reduced-motion: reduce) { .node.open, .why, .result .stars svg { animation: none; } .xpbar i, .meter i, .clock i, .node { transition: none; } }
+
+/* difficulty: Easy plain white, Medium a red tint, Hard a red glow (founder, 30 Oct) */
+html:root { --tint: #FFF1F0; --tint-line: #F5C2BE; --glow: #E5322D; }
+@media (prefers-color-scheme: dark) { html:root:not([data-theme="light"]) { --tint: #2A1416; --tint-line: #5C2A2D; --glow: #FF5A52; } }
+html:root[data-theme="dark"] { --tint: #2A1416; --tint-line: #5C2A2D; --glow: #FF5A52; }
+.dtag { font-weight: 700; padding: 1px var(--s2); border-radius: var(--pill); border: 1px solid var(--sep); background: var(--card); color: var(--label); }
+.dtag.d-medium { background: var(--tint); border-color: var(--tint-line); color: var(--glow); }
+.dtag.d-hard { background: var(--glow); border-color: var(--glow); color: var(--on-color); }
+.diff.d-medium { background: var(--tint); }
+.diff.d-hard { box-shadow: 0 0 0 1px var(--glow), 0 0 16px color-mix(in srgb, var(--glow) 40%, transparent); }
+.diff.d-hard[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent), 0 0 18px color-mix(in srgb, var(--glow) 55%, transparent); }
+.game.d-easy .qcard { background: var(--card); }
+.game.d-medium .qcard { background: var(--tint); box-shadow: inset 0 0 0 1px var(--tint-line); }
+.game.d-hard .qcard { box-shadow: 0 0 0 2px var(--glow), 0 0 28px color-mix(in srgb, var(--glow) 45%, transparent); animation: glow 2.4s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow: 0 0 0 2px var(--glow), 0 0 40px color-mix(in srgb, var(--glow) 60%, transparent); } }
+.qmeta { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; color: var(--label2); }
+.hard { display: inline-flex; gap: 2px; }
+.hard i { width: 6px; height: 12px; border-radius: 2px; background: var(--fill); }
+.hard i.on { background: var(--glow); }
+.d-easy .hard i.on { background: var(--label2); }
+
+/* readiness ring */
+.ready { --r: 0; width: 56px; height: 56px; flex: none; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--xp) calc(var(--r) * 1%), var(--fill) 0); position: relative; }
+.ready::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--card); }
+.ready b { position: relative; font-size: 14px; font-variant-numeric: tabular-nums; }
+.readyline { font-weight: 600; }
+.mins .grow { flex: 1; min-width: 0; }
+@media (prefers-reduced-motion: reduce) { .game.d-hard .qcard { animation: none; } }

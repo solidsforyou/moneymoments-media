@@ -4,7 +4,7 @@ appPage({
   key: 'openprep', name: 'OpenPrep', accent: '#1B4DFF', mascot: buddy, idKey: 'prep', idName: 'PrepID',
   head: 'Free CAT prep. No ads.', lede: 'Small lessons, real CAT questions and Buddy explaining every step.',
   play: '/openprep/learn/', playLabel: 'Start a lesson',
-  starts: [['Free full mock', 'The CAT pattern: 3 sections, 40 minutes each, 68 questions, every answer explained.', '/openprep/mock/', 'Take the mock'], ['Quant lessons', 'Six short lessons with practice questions, from percentages to speed and distance.', '/openprep/learn/', 'Start learning']],
+  starts: [['Free full mock', 'The CAT pattern: 3 sections, 40 minutes each, 68 questions, every answer explained.', '/openprep/mock/', 'Take the mock'], ['Quant lessons', 'Six short lessons with practice questions, from percentages to speed and distance.', '/openprep/learn/', 'Start learning'], ['CAT readiness, as a game', 'Quant, DILR and VARC questions by topic in Arena, Easy to CAT-hard, with a CAT readiness score.', '/arena/#/c/cat-00-qa', 'Practise in Arena']],
   feedTitle: 'New on OpenPrep', pillars: ['Lesson', 'CAT tip', 'Career option'],
   empty: 'The first lessons, CAT tips and career guides land here soon.',
   whyTitle: 'How it works',
