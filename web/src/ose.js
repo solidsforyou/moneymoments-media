@@ -19,7 +19,7 @@ async function draw() {
     </section>
     <section class="wrap sec"><h2>Arena</h2>
       <div class="grid">
-        <div class="card stack"><h3>Your class, your chapters</h3><p class="muted">${chs ? `${chs} chapters and ${qs.toLocaleString('en-IN')} questions so far` : 'Every chapter'}, in the order of your NCERT book. Maths, Science and English for classes 5 to 12, and CAT.</p></div>
+        <div class="card stack"><h3>Your class, your chapters</h3><p class="muted">${chs ? `${chs} chapters and ${qs.toLocaleString('en-IN')} questions so far` : 'Every chapter'}, in the order of your NCERT book. Maths, Science and English, and CAT, with more chapters added every week.</p></div>
         <div class="card stack"><h3>Easy, Medium or Hard</h3><p class="muted">Pick your level. Each question shows how hard it is and how long it should take, and every answer is explained.</p></div>
         <div class="card stack"><h3>Know how ready you are</h3><p class="muted">Unit test readiness, Board readiness for classes 10 and 12, and CAT readiness, chapter by chapter.</p></div>
       </div>
