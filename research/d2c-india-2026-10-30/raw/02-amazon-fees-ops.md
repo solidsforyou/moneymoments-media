@@ -9,6 +9,49 @@ Research date: 30 Oct 2026. Sweep: India D2C, sub-topic Amazon.in fees and opera
 - No official 2026 referral-fee table, closing-fee table, Easy Ship/Self Ship rate card or FBA fee card was retrieved. The fee tables below are therefore built from press releases seen in search results, secondary blogs and one seller-forum post. Treat every number as "verify in Seller Central fee calculator before pricing."
 - Rating key (from RULES.md): A = official, B = reputable press, C = blog/agency/forum.
 
+## Pass 2 status (30 Oct 2026)
+
+Verification attempt: WebFetch returned DNS failure ("getaddrinfo ENOTFOUND") for sell.amazon.in,
+press.aboutamazon.com, www.aboutamazon.in, cbic-gst.gov.in, yourstory.com, indiaseatradenews.com and
+novadata.io. Nothing from those hosts was confirmed in this pass. Only the WebSearch snippets below
+were available, and they are NOT verified. The sell.amazon.in, sellercentral.amazon.in and
+press.aboutamazon.com allow-list needs to be opened for the session before a full pass 2 can run.
+
+- Zero-fee cap of Rs 1,000 from 16 Mar 2026: "Verified by coordinator" (aboutamazon.in, per the brief). Not re-fetched in this pass.
+- NEW snippet, UNVERIFIED: a search summary attributed to sell.amazon.in says Amazon India's 2026 blog reports
+  referral fee cuts of "about 4% to 9.5%" across fashion and other key categories. Source URL not fetched. Use only as a candidate for the apparel rate, pending the official page.
+- CONFLICT, UNRESOLVED: an Outlook Business snippet (1 Apr 2026) says zero referral on about 12 million products "under Rs 300", with clothing and shoes listed. This clashes with the Rs 1,000 cap. It may be a 2025 wording or a summary error. Not fetched.
+- SNIPPET, UNVERIFIED: sell.amazon.in blog says self-ship closing fee cut from Rs 45 to Rs 20 for items under Rs 300.
+- A search summary also pointed to a sell.amazon.in URL titled "...complete guide to seller fee change 2026" (the file's source 12 is the 2025 slug). Not fetched.
+- Still unverified: every referral %, closing fee, weight handling, Easy Ship/Self Ship/FBA rate, payment cycle, DD+7 date, Brand Registry rule, GST composition rule (CBIC), Bazaar/Amazon Now seller terms, Prime criteria, Karigar/Saheli/Launchpad criteria.
+
+### Illustrative fee table (apparel, Rs), computed in code
+
+Inputs (all from this file, C-rated unless stated):
+- Fee base = selling price. Buyer pays no shipping. GST on the price is ignored.
+- Referral fee: 0 under Rs 1,000 (coordinator-verified). Above Rs 1,000: unknown %.
+- Closing fee: third-party Easy Ship slab (Rs 9 for 251-500, Rs 30 for 501-1,000, Rs 50 for 1,001-5,000). Forum post says Rs 26 for Rs 300-500. The two conflict.
+- Weight handling for a 500 g or lighter parcel: local zone Rs 29, national zone Rs 65 (Easy Ship, third-party table).
+
+| Price | Referral | Closing (slab / forum) | Weight local / national | Net after fees, local / national |
+|---|---|---|---|---|
+| Rs 499 | 0 | 9 (slab) / 26 (forum) | 29 / 65 | 461 / 425 (slab); 444 / 408 (forum) |
+| Rs 799 | 0 | 30 | 29 / 65 | 740 / 704 |
+| Rs 1,299 | Unknown (%) | 50 | 29 / 65 | 1,220 / 1,184 before referral |
+| Rs 1,299 at 5% (illustrative) | 64.95 | 50 | 29 / 65 | 1,155 / 1,119 |
+| Rs 1,299 at 10% (illustrative) | 129.90 | 50 | 29 / 65 | 1,090 / 1,054 |
+| Rs 1,299 at 17% (illustrative) | 220.83 | 50 | 29 / 65 | 999 / 963 |
+
+Caveats: the 5%, 10% and 17% rates are not sourced for apparel on Amazon.in. The 5-17% range is an
+unverified search summary. The 4%-9.5% snippet above is also unverified. Replace the Rs 1,299 row
+with the Seller Central calculator output before pricing. The Rs 1,000 cliff matters: a Rs 999 item
+pays no referral fee, but a Rs 1,000 item pays the full category %.
+
+### Compute script
+
+Scratch script: /tmp/claude-0/-home-user-moneymoments-media/ad9b2b69-e7ae-5485-a9a7-7925159fc4cb/scratchpad/fees.py
+
+
 ## Key takeaways
 
 1. The zero-referral-fee policy is real, but the threshold in the premise is wrong. The 2025 waiver covered products under Rs 300 (announced 24 Mar 2025, live 7 Apr 2025, expanded Aug 2025 to 1.2 crore products). The 2026 expansion (effective 16 Mar 2026) covers products under Rs 1,000 across 1,800+ categories, about 12.5 crore products. No source supports a Rs 500 zero-fee threshold in 2025. [B/A, dates below]
