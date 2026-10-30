@@ -84,6 +84,8 @@ export default handled(async (req, ctx) => {
   if (action === 'delete' && m === 'POST') {   // data deletion, for users and for Meta's App Review
     const u = await requireUser(req); const { store } = await import('../lib/store.mjs'); const s = await store('users');
     await s.delete(`id/${u.id}`); await s.delete(`handle/${u.handle}`); for (const [a, h] of Object.entries(u.ids || {})) await s.delete(`app/${a}/${h}`); if (u.telegram) await s.delete(`tg/${u.telegram.id}`);
+    const ar = await store('arena'); await ar.delete(`player/${u.id}`); await ar.delete(`requests/${u.id}`);   // Arena player and leaderboard rows go too
+    for (const { key } of (await ar.list({ prefix: 'lb/' })).blobs) { const L = await ar.get(key, { type: 'json' }); if (L?.[u.id]) { delete L[u.id]; await ar.setJSON(key, L); } }
     return json({ ok: true }, 200, { 'set-cookie': clearCookie() });
   }
   return fail(404, 'Not found.');

@@ -2,7 +2,7 @@
 
 The real, deployable site: OSE (the store and your OpenID), **Tomorrow** (messaging and
 moving files between your devices and friends), **OpenPrep** and **GoodHabit** (each app's
-page, its content feed and its app ID), plus privacy, data-deletion, build and admin pages.
+page, its content feed and its app ID), **Arena** (the practice game), plus privacy, data-deletion, build and admin pages.
 
 - Front end: plain HTML, CSS and JavaScript modules, built with Vite. No framework.
 - Back end: Netlify Functions (`netlify/functions`), data in Netlify Blobs.
@@ -71,6 +71,23 @@ That's all; there are no other keys or services. Nothing here sends email yet.
     and 17 shares and ETFs, pretend money, approximate charges, big-day notes, and a report
     card against just holding the Nifty.
   - A content feed by pillar and the GoodID.
+- **Arena** (`/arena/`): the practice game for every app, classes 1 to 12.
+  - Make a player (an original character; glasses, cap, headband, headphones and a crown
+    unlock at 3, 8, 15, 25 and 40 levels cleared). Nicknames are generated, never typed, so
+    no child puts a real name on a leaderboard.
+  - Pick a class and a difficulty (Rookie, Pro, Legend: XP × 1, 1.5, 2). Thirty levels per
+    course, six questions each, a 90-second boss every fifth level; pass with 4 right (boss 5).
+  - Courses: Maths and English for classes 6 to 10, Money basics (the GoodHabit course) and
+    Digital skills for any class. Questions are generated or drawn from a bank on the server
+    and get harder level by level.
+  - Answers are checked on the server one at a time, so right answers never sit in the page.
+  - Play as a guest (progress on the device). Sign up (13+) to save and get ranked; the guest
+    player and its cleared levels move into the account. Under 18s need a parent's account to
+    approve them (Arena, Me tab) before they show on leaderboards.
+  - Leaderboards per course, class and difficulty, this week and all time. Ranks: Bronze,
+    Silver 500 XP, Gold 1,500, Diamond 3,500, Champion 7,000. Replays pay half; levels more
+    than 2 below your best pay nothing.
+  - Linked from the OSE store and from GoodHabit ("Practise in Arena").
 - **`/play/`** is the old design demo, clearly labelled as made-up people and data.
 - **Content.** `/admin/` (with the admin token) publishes to any app's feed. The content
   machine can do the same with
@@ -89,13 +106,17 @@ That's all; there are no other keys or services. Nothing here sends email yet.
   Reasoning lessons are next.
 - **Native desktop app** (Windows/Mac) with AirDrop-style transfer: the website installs as
   an app today; native comes later (founder idea, 29 Oct).
+- **Arena:** Maths and English for classes 1 to 5 and 11 to 12; more courses (each
+  course's practice moves here from its app). Children under 13 play as guests only, since
+  accounts are 13+. Money basics' fact questions aren't graded by level yet. Guest stars
+  don't carry into an account (cleared levels do).
 
 ## Design
 
 House design (the founder's Apple-inspired direction), held to Hallmark's floor
 (`.claude/skills/hallmark`). Check:
-`node ../.claude/skills/hallmark/scripts/sloplint.mjs src/shared/base.css src/tomorrow.css src/mock.css --scope app --url http://localhost:8888/ --render`
-Last run: 0 FAIL on `/`, `/tomorrow/`, `/goodhabit/`, `/openprep/mock/` and `/goodhabit/sim/`. The 6 WARNs are dismissed: they
+`node ../.claude/skills/hallmark/scripts/sloplint.mjs src/shared/base.css src/tomorrow.css src/mock.css src/arena.css --scope app --url http://localhost:8888/ --render`
+Last run: 0 FAIL on `/`, `/tomorrow/`, `/goodhabit/`, `/openprep/mock/`, `/goodhabit/sim/` and `/arena/`. The 6 WARNs are dismissed: they
 compare button text to the page background, but that text only sits on the accent button.
 
 ## Rebuilding generated files

@@ -1,11 +1,12 @@
 import './shared/base.css';
 import { esc, api, me, toast, sheet, accountSheet, makeAppId, footer, avatar } from './shared/ui.js';
-import { olly, sunny, buddy, goodguy } from './shared/mascots.js';
+import { olly, sunny, buddy, goodguy, ace } from './shared/mascots.js';
 
 const APPS = [
   { k: 'tomorrow', n: 'Tomorrow', d: 'Message anyone and move anything between your devices and friends.', url: '/tomorrow/', art: sunny, bg: 'linear-gradient(135deg,#FFE1B0,#FFC2CC)' },
   { k: 'openprep', n: 'OpenPrep', d: 'Free CAT prep. Lessons, CAT tips and careers, with Buddy.', url: '/openprep/', art: buddy, bg: 'linear-gradient(135deg,#1B4DFF,#06115A)' },
   { k: 'goodhabit', n: 'GoodHabit', d: 'Practise money before it\'s real, on real market history.', url: '/goodhabit/', art: goodguy, bg: 'linear-gradient(135deg,#1E3A2B,#0B7A3B)' },
+  { k: 'arena', n: 'Arena', d: 'The practice game: make a player, clear levels, get ranked. Class 1 to 12.', url: '/arena/', art: ace, bg: 'linear-gradient(135deg,#2A1B6B,#6A3DF0)' },
   { k: 'skills', n: 'The Good Stuff', d: 'Free AI skills for small businesses and makers.', soon: true },
   { k: 'library', n: 'AI Discovery Library', d: 'Trusted sources, for people and AIs.', soon: true },
   { k: 'acct', n: 'Accounting Unlocked', d: 'Offline books for shops and small firms.', soon: true },

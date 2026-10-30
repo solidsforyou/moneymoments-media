@@ -1,0 +1,17 @@
+{
+ "name": "Arena",
+ "short_name": "Arena",
+ "start_url": "/arena/",
+ "scope": "/arena/",
+ "display": "standalone",
+ "background_color": "#0D0B1A",
+ "theme_color": "#6A3DF0",
+ "icons": [
+  {
+   "src": "/icons/ace.svg",
+   "sizes": "any",
+   "type": "image/svg+xml",
+   "purpose": "any"
+  }
+ ]
+}
