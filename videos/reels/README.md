@@ -13,3 +13,11 @@
 - Check frames: `node peek.cjs <id> 1.5 5 9`.
 
 Captions and posting times for week 1: `content/ocm/week1/posting.md`.
+
+## Cutting to music
+
+Put the four tracks in `music/` (names and links in `music/README.md`), then run
+`./render-music.sh` (or `./render-music.sh <id> ...`). `beat.py` finds each track's tempo and
+first downbeat; the engine stretches or trims every scene to a whole number of half-bars so
+each cut lands on a beat; the track starts on its downbeat; sound effects sit under it at low
+volume; loudness -14 LUFS. Output: `out/music/<id>.mp4`, ready to post with the music in it.

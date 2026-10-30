@@ -15,3 +15,5 @@ videos/d2c/sfy/
 videos/explainer/out/*WITH-SONG*
 videos/trailer/out/*WITH-SONG*
 videos/reels/out/
+videos/reels/music/*.mp3
+videos/reels/music/*.wav

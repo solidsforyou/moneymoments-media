@@ -24,7 +24,11 @@ svg{overflow:visible}
 <script src="data/scripts.js"></script><script src="data/nifty.js"></script>
 <script>
 // One reel, picked by ?id=..., drawn frame by frame for videos/render.cjs.
-const R = window.REELS[new URLSearchParams(location.search).get('id')];
+const Q = new URLSearchParams(location.search);
+const R = JSON.parse(JSON.stringify(window.REELS[Q.get('id')]));
+// cut on the beat: with ?bpm=, every scene lasts a whole number of half-bars (2 beats),
+// so each cut lands on a beat of the track (the track is trimmed to start on its downbeat)
+if (Q.get('bpm')) { const half = 2 * 60 / +Q.get('bpm'); for (const s of R.scenes) s.d = Math.max(2, Math.round(s.d / half)) * half; }
 const $ = id => document.getElementById(id);
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), lerp = (a, b, k) => a + (b - a) * k;
 const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }, eout = x => 1 - Math.pow(1 - clamp(x), 3);
