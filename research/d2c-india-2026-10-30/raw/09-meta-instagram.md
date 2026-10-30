@@ -1,231 +1,254 @@
 # 09 - Meta (Instagram / Facebook / WhatsApp) for Indian D2C, 2025-2026 (PASS 2)
 
-Research date: 30 Oct 2026. Pass 1 by a Haiku helper; pass 2 (verification) by Claude, 30 Oct 2026.
+Research date: 30 Oct 2026. Pass 1: Haiku helper. Pass 2: Claude, 30 Oct 2026, fetching with curl through the agent proxy (WebFetch still fails DNS in this session; method per RULES.md "How to fetch pages on pass 2").
 
-**Access limits (read this first).** In pass 2, WebFetch failed with DNS errors (ENOTFOUND) for every primary and press host tried: engineering.fb.com, ascionline.in, www.facebook.com (Business Help), about.instagram.com, socialmediatoday.com, exchange4media.com, upgrowth.in. The session's network allowlist still blocks them. So **no primary page was read in pass 2**. Verification below comes from WebSearch result summaries (secondary sources that quote the primary pages), and those are labelled "corroborated, secondary". Nothing here is "verified against the primary page". To close that gap, add to the session's allowed hosts: engineering.fb.com, www.facebook.com (Business Help Centre), developers.facebook.com, about.instagram.com, creators.instagram.com, www.ascionline.in, www.socialmediatoday.com, www.exchange4media.com, upgrowth.in.
+## Access in pass 2
 
-Tags used in this file:
-- **Corroborated (secondary)**: at least one search summary of a secondary source agrees with the claim. Primary page not read.
-- **Corrected**: old text, then new text.
-- **Still unverified**: no usable source found, or sources conflict.
+**Primary pages read in full (curl):**
+- engineering.fb.com, Andromeda retrieval, 2 Dec 2024: https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/
+- engineering.fb.com, Andromeda GPU co-design, 28 Oct 2026: https://engineering.fb.com/2026/10/28/ml-applications/meta-andromeda-next-gen-ads-retrieval-gpu-co-design/
+- developers.facebook.com, Advantage+ campaign experience (sales, app, leads), current: https://developers.facebook.com/docs/marketing-api/advantage-campaigns
+- developers.facebook.com, Ad volume (per-Page ad limit): https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights-api/ads-volume
+- facebook.com/business/m/advantage-plus (Meta marketing page, date not shown): https://www.facebook.com/business/m/advantage-plus
+- about.instagram.com, "Instagram Ranking Explained" (Adam Mosseri, updated 31 May 2023; the page we reached labels it the latest): https://about.instagram.com/blog/announcements/instagram-ranking-explained/
+- about.instagram.com, "Shedding More Light on How Instagram Works" (8 Jun 2021, with 31 May 2023 update note): https://about.instagram.com/blog/announcements/shedding-more-light-on-how-instagram-works
+- creators.instagram.com, "Rewarding original creators on Instagram" (30 Apr 2026): https://creators.instagram.com/blog/rewarding-original-creators-on-instagram
+- creators.instagram.com, "Bringing more transparency to AI-generated profiles" (31 Aug 2026): https://creators.instagram.com/blog/ai-generated-profile-label
+- creators.instagram.com, "New ways to earn: making Reels shoppable" (24 Mar 2026, note updated Oct 2026): https://creators.instagram.com/blog/new-ways-to-earn-making-reels-shoppable
+- ASCI, "ASCI's Guide for Social Media Influencers" (2024 PDF, read via pdftotext): https://www.ascionline.in/social/wp-content/uploads/2024/03/ASCIs-Guide-For-Influencers-1.pdf
+
+**Not reached:**
+- Meta Business Help Centre articles (learning phase, Advantage+ sales, "About managing ad volume"). The help index is JavaScript-rendered, and search did not return the article URLs. Their wording is still unverified.
+- Mosseri's Jan 2025 post and any 2025-2026 official ranking post. No such page was found on the reachable Instagram sites. The 2023 post is the latest we could read.
+- asci.social/guidelines (ASCI's live guidelines site; host did not resolve).
+- socialmediatoday.com, exchange4media.com, upgrowth.in: the proxy refused the connection (not allowed for this session). Their claims below stay unverified.
+- engineering.fb.com's 2024 post contains no statement on creative diversity; that claim still rests on secondhand reports.
+
+**Tags used:**
+- **Verified in pass 2**: confirmed on a primary page read in pass 2 (URL above).
+- **Corrected**: old text, then new text, with the primary source.
+- **Still unverified**: no primary page, or sources conflict.
 
 ---
 
 ## Key takeaways
 
-1. **Creative is the main targeting input on Meta (PATTERN, corroborated secondary).** Andromeda is Meta's retrieval stage. Search summaries of Meta's Dec 2024 engineering post say it narrows "tens of millions" of ad candidates to "a few thousand" per user. The shortlist is driven by what the ad shows. [Corrected: pass 1 said "10,000x increase in model complexity"; the summary says "10,000x increase in model capacity". Primary still not read.]
-2. **Creative diversity is a long-running Meta best practice (corroborated secondary).** Near-identical ads can be counted as one ad. No number is given by Meta in any source found. Treat "5-8 distinct concepts" as our rule of thumb, not Meta's.
-3. **Meta Business Help says 6 or fewer creatives per ad set is recommended, per Jon Loomer's reading of "About Managing Ad Volume" (corroborated secondary, not read).** Hard cap of 50 ads per ad set on Advantage+ sales campaigns (corroborated across several blogs, not Meta's page).
-4. **Advantage+ sales campaigns replaced Advantage+ shopping (corroborated secondary).** Advantage+ budget is on by default and spreads spend across ad sets. Turning it off with manual ad-set budgets can take the campaign out of Advantage+. [Corrected: pass 1 said "default for new campaigns in 2026, merged manual flow, AI default". The "replaced" part is corroborated; "AI optimisation default" is only from one agency guide.]
-5. **Learning phase: about 50 optimisation events per ad set per 7 days (corroborated secondary, still unverified against Meta).** Several guides cite the Business Help Centre. Jon Loomer reported seeing a 10-events-in-3-days threshold in Ads Manager, then the old rule return. No official change found. "Learning limited" flag shows in Ads Manager. [Still unverified as to current official threshold.]
-6. **Broad targeting plus varied creative is vendor consensus, not a Meta document (PATTERN).** Do not present it as Meta guidance.
-7. **India CPM and CPC benchmarks are agency-only and conflict (still unverified).** The upGrowth 2026 figures (CPM beauty Rs 180-320, fashion Rs 140-280, Reels Rs 45-140; CPC Rs 8-25 general D2C; purchase cost Rs 450-1,200) could not be re-read because the site did not resolve. Other guides give Rs 45-350 CPM. Use only as a starting band.
-8. **Mosseri's Jan 2025 top signals are watch time, likes and sends (corroborated secondary; the 22 Jan 2025 date is from one source).** Sends matter more for non-followers; likes matter more for connected content. The "3-5x sends weight" is NOT verified and conflicts with "slightly more" wording. Do not use it.
-9. **2026 ranking order is disputed (still unverified).** Some 2026 blogs say DM shares now outrank likes, and that a December 2025 "Your Algorithm" feature exists. One source says Mosseri keeps stressing shares. Neither is confirmed by a primary page.
-10. **Originality is a stated Instagram ranking goal for 2026 (corroborated secondary).** Enforcement specifics (30 Apr 2026 scope for photos and carousels; "10 reposts in 30 days" cut-off; 31 Aug 2026 AI-label date) are single-source and still unverified. Do not plan around them.
-11. **Trial Reels: 1,000+ followers is the figure most sources give (corroborated secondary).** Press reports say Mosseri confirmed access for public creator and business accounts with 1,000+ followers. Launched or widened July 2025 per BetaNews (14 Jul 2025). Some guides say professional accounts qualify at 200 followers. That is NOT confirmed. Check in-app. [Corrected: pass 1 said "1,000+ since July 2025"; the 1,000 figure now has press support, the 200-follower tier conflicts.]
-12. **ASCI disclosure is mandatory on paid influencer posts; the platform "Paid partnership" tag is an accepted supplement, not a replacement (corroborated secondary).** Search summaries of the ASCI guide say to put a visible label (for example #ad) and not hide it under a group of hashtags. A one-time bio disclosure is generally not enough. Pass 1 said the platform tag was accepted "as an alternative" since Feb 2022; a conflicting Grynow blog says the tag alone is not sufficient. [Corrected: see ASCI section.]
-13. **Click-to-WhatsApp India signal: Meta says click-to-message revenue in India doubled year on year (corroborated secondary, date conflicting).** Pass 1 dated this to the Oct 2023 call (sentinelassam). A pass 2 search summary attributes the "doubled" and "60% of WhatsApp users message a business weekly" figures to the Q3 2025 call. The two cannot both be right without reading the source. [Still unverified as to date.]
-14. **Click-to-WhatsApp conversion and CPL benchmarks are vendor claims that disagree (still unverified).** Vendor ranges run from "3-5x conversion" to "92% lower CPL". Meta publishes no benchmark. India WhatsApp marketing rate about INR 0.86 per message and utility about INR 0.12 (one vendor source, Jan 2026). Rely on your own test data.
-15. **Instagram shopping in India is limited (corroborated secondary, mostly old).** In-app checkout is US-first. Outside the US, product tags open the brand's own checkout (search summary, 2026 guide). Tagging: up to 20 products on a feed post, 30 on a Reel (vendor doc). No 2026 India checkout announcement found.
+1. **Andromeda is Meta's retrieval stage: tens of millions of eligible ads are narrowed to a few thousand candidates per person, then ranking models choose the final ads (Verified in pass 2, Meta engineering, 2 Dec 2024).** Retrieval uses a custom deep network with "a meaningful increase of model capacity (10,000x)". Reported effects: +6% recall and +8% ads quality on selected segments. [Corrected: pass 1 said "10,000x model complexity"; the post says model capacity.]
+2. **Meta's post ties the candidate pool to creative volume, not to creative replacing audience targeting (Verified in pass 2).** The post says generative tools helped advertisers make "hundreds of millions of new ads", and Andromeda uses a hierarchical index to handle creative growth. The claim that creative is the main targeting input is still expert PATTERN (Loomer and others), not a Meta statement. [Corrected: the primary supports "more creative means a bigger candidate pool", not "creative is the targeting".]
+3. **Advantage+ sales campaigns are the successors of Advantage+ shopping (ASC) and app campaigns (AAC) (Verified in pass 2, Meta developer docs).** Creating ASC campaigns through the API ends at v25.0. ASC campaigns with more than 50 ads in one ad set cannot be migrated into Advantage+ sales. [Corrected: pass 1 said "50-ad cap on Advantage+ sales". The primary states a 50-ad limit for migrating ASC; a general 50-ad cap on Advantage+ sales ad sets is still unverified.]
+4. **Migrating or copying an ASC or AAC campaign into Advantage+ format sends it back into the learning stage, and there is no workaround for the learnings (Verified in pass 2, Meta developer docs).** Plan new structures from scratch rather than migrating running campaigns.
+5. **Learning phase: "about 50 optimisation events per ad set per 7 days" is still unverified.** The Business Help article was not reached. Jon Loomer reported seeing a 10-events-in-3-days threshold in Ads Manager, later reverting. Use Ads Manager's learning status as the test.
+6. **Meta's own Advantage+ marketing page says "22% higher ROAS with a 17-32% lower cost per purchase using Advantage+ Shopping Campaigns" (Meta marketing page, source credited to WARC/Fospha, date not shown).** Treat as Meta's own claim, not independent. [Corrected: pass 1 said "32% ROAS and 17% lower CPA", from a blog.]
+7. **Mosseri's official ranking post (updated 31 May 2023) names different Reels signals from pass 1 (Verified in pass 2).** For Reels, the most important predictions are how likely you are to reshare, watch all the way through, like, and visit the audio page. In Explore: likes, saves and shares. [Corrected: pass 1's "watch time, likes, sends (Jan 2025)" is not in this official post.] The Jan 2025 claim and the 3-5x sends weight remain unverified. Do not use them.
+8. **Instagram's originality rule (official, 30 Apr 2026, Verified in pass 2): accounts that mainly post unoriginal photos, carousels or reels are ineligible for recommendations.** They regain eligibility when most of their recent posts are original over a rolling 30 days; standing shows in Account Status, with an appeal option. Instagram says 75% of US recommendations now come from original posts. [Corrected: pass 1 said reposting accounts lose recommendations; the official rule covers aggregators, and the scope now includes photos and carousels.] The "10 or more reposts in 30 days" cut-off is NOT in the official post. Reject it.
+9. **AI-generated profile label (official, 31 Aug 2026, Verified in pass 2).** The AI creator label is renamed "AI-generated profile". Profiles that feature an AI-generated person and do not carry the label will have their reach limited. [Corrected: pass 1 said "no official announcement found"; it now is found.] Our rule: if the founder or a reel features an AI-generated person, label it.
+10. **ASCI guide (2024, Verified in pass 2): labels must be upfront and prominent (for example 'Ad'), not hidden under a group of hashtags, and a blanket disclosure in the bio is not enough.** For Instagram: put the label in the visible caption, or on the image or video itself if only that is seen. [Verified.]
+11. **ASCI guide on platform tags (Verified in pass 2): "in addition to disclosure labels, consider using platform disclosure features such as 'paid partnership' or 'sponsored' tags".** The tag supplements a label; it does not replace one. [Corrected: pass 1 said ASCI accepted the tag "as an alternative" since Feb 2022. The 2024 guide says "in addition". The 2022 press item was not reached.]
+12. **ASCI enforcement (Verified in pass 2):** ASCI does not impose fines or penalties. Non-compliant cases can be escalated to government and sector regulators. ASCI uses AI tools under NAMS to monitor paid influencer posts and publishes complaint reports.
+13. **ASCI's label list is still unverified.** The 2024 guide tells creators to choose a label "from the various options provided in the guidelines", which are on asci.social/guidelines (not reached). Pass 1's 2021 list and a search summary's five-label list (#ad, #collab, #promo, #sponsored, #partnership) conflict. Use 'Ad' or #Ad, which the guide does name, and check the live guidelines before using any other label.
+14. **Shoppable Reels (official, 24 Mar 2026, updated Oct 2026, Verified in pass 2).** Creators use "Add products" in the share sheet: tag any product in a business's Meta commerce catalog, or paste a product URL, including affiliate links. Up to 30 products per Reel; individual items only, not collections. The Oct 2026 note lists India among 26 markets; the sentence reads "enabled this capability for feed posts and across 26 markets", so its exact scope is not clear. [New in pass 2. Pass 1's "20 products per post, 30 per Reel" came from a vendor doc; the 30-per-Reel figure now matches the official post.]
+15. **Ad volume (Verified in pass 2, Meta developer docs): the per-Page ad limit counts ads that are running or in review.** Large creative sets count toward it, so plan volume per Page.
+16. **Meta's India click-to-WhatsApp data remains unverified and conflicting on date.** The "doubled in India" claim is from press. Pass 1 dated it to Oct 2023; a pass 2 search summary dates it to Q3 2025. Vendor CPL and conversion benchmarks disagree and are unverified. Meta has published no CTWA benchmark that we reached.
+17. **India CPM, CPC and CPA ranges are still unverified.** upGrowth could not be reached (proxy refused). Agency ranges disagree 2-3x. Use own account data.
 
 ---
 
 ## Findings by sub-question
 
-### 1. How Meta's ad system works now (Andromeda, Advantage+, creative as targeting, diversity, learning phase)
+### 1. How Meta's ad system works now
 
-- **Andromeda is the retrieval stage before ranking and the auction (corroborated secondary).** The Dec 2024 Meta engineering post, as summarised in search results: retrieval narrows "tens of millions of ad candidates" to "a few thousand relevant ad candidates"; reports +6% recall and +8% ads quality on selected segments; ads are organised into nested clusters. [Primary engineering.fb.com NOT read (DNS blocked). Figures are from a search summary only.] [Corrected: pass 1 said "10,000x increase in model complexity". Summary says "model capacity".]
-- **Creative as targeting (PATTERN, expert blogs).** Analyses by Jon Loomer and others argue retrieval matches people to ads largely on what the creative depicts. Loomer warns that 50 near-duplicates are not guaranteed to work. Differentiation (different pain points, personas, emotional triggers, formats) matters more than count. [C; jonloomer.com/meta-andromeda/, date not shown.]
-- **Creative diversity (corroborated secondary).** Meta's spokesperson calls diversification a long-running best practice, with no number and no date for updated guidance. Near-identical ads can be treated as one. [relevantaudience.com citing Marketing Brew; not fetched.]
-- **Creative Similarity / Diversity score.** One search summary says a similarity score above 60% triggers retrieval suppression, citing a 2025 admetrics analysis. Meta has not been found to confirm it. [Still unverified.] Pass 1's "Creative Diversity score (Low/Medium/High), launched 26 Aug 2026" is single-source (commonthreadco) and still unverified.
-- **Advantage+ sales campaigns (corroborated secondary).** Replace Advantage+ shopping. Ad sets capped at 50 ads (the older format allowed 150 per campaign). Meta's own recommendation of 6 or fewer creatives per ad set, per Loomer reading "About Managing Ad Volume" (not read). Advantage+ budget on by default. [1clickreport and admanage.ai blogs; Meta Help Centre not read.]
-- **Performance claims (unverified).** Vendor guides cite ROAS +32% and CPA -17% vs manual; a Meta global study cited as about 12% lower cost per purchase for Advantage+ shopping. Meta's own caveat: results are estimates. [Still unverified.]
-- **Advantage+ can underperform for niche or high-ticket products (PATTERN).** Stackmatix and other guides note tightly controlled manual campaigns still win for some niche or high-price products. [C.]
-- **Broad targeting (PATTERN, vendor consensus).** Blogs say broad with Advantage+ audiences is the default starting point. Not a Meta document.
-- **Learning phase (corroborated secondary, unverified against Meta).** About 50 optimisation events per ad set per 7 days. Ad sets short of this show "Learning limited". Jon Loomer saw a 10-events-in-3-days threshold in Ads Manager and called it a test or early rollout; the old rule later returned. Budget guide formula used by some vendors: (target CPA x 50) / 7 per day. [Pass 1 said "not found". Now found, but only via secondary sources.] [Corrected: "Learning phase thresholds: not found" becomes "about 50 events per 7 days, secondary only".]
+- **Andromeda (Verified in pass 2, engineering.fb.com 2 Dec 2024).** Retrieval, the first stage, "selects ads from tens of millions of ad candidates into a few thousand relevant ad candidates". Ranking models then pick the final ads. Deployment across Instagram and Facebook gave +6% recall and +8% ads quality on selected segments. [Corrected: pass 1's "10,000x model complexity" → "10,000x model capacity".]
+- **Andromeda in 2026 (Verified in pass 2, engineering.fb.com 28 Oct 2026).** Meta says Andromeda has delivered a 2.4% increase in conversions on Facebook since 2025. The 2024 system evaluates "tens of millions of ads per second per GPU card"; the new system is built for multi-billion ads per second. The post links larger Advantage+ automation and generative ad creative to growth in eligible ads. It does not give creative guidance for advertisers.
+- **Advantage+ creative (Verified in pass 2, Meta 2024 post).** Meta reports that advertisers who had not used Advantage+ creative and turned on its AI-driven targeting saw a 22% ROAS increase (Meta's estimate). Meta estimates about +7% conversions for businesses using image generation. These are Meta estimates, not independent tests.
+- **Creative as targeting (PATTERN).** Expert blogs (Loomer, admetrics) argue retrieval matches people to ads largely on what the creative shows. Meta's primary posts do not say so. Loomer warns that 50 near-duplicates are not guaranteed to work.
+- **Creative diversity (still unverified).** Pass 1 cites a Meta spokesperson, via Marketing Brew, calling diversification a long-running best practice with no number. No primary source reached.
+- **Creative Similarity and Creative Diversity scores (still unverified).** One search summary says a similarity score above 60% triggers retrieval suppression (admetrics 2025 analysis). Pass 1's "Creative Diversity score, 26 Aug 2026" is single-source (commonthreadco). Neither is confirmed by Meta.
+- **Advantage+ sales (Verified in pass 2, developer docs).** The updated form of ASC and AAC. Advantage+ audience is required for the Advantage+ criteria; Advantage+ placement is default; budget set at campaign level with a supported bid strategy. Creating new ASC campaigns through the API ends at v25.0.
+- **50-ad limit (partly verified).** The developer docs say ASC campaigns with more than 50 ads in one ad set cannot be migrated to Advantage+ sales. A general cap of 50 on Advantage+ sales ad sets is not stated in what we read. [Corrected: "50-ad cap on Advantage+ sales" → "50-ad migration limit for ASC; general Advantage+ sales cap unverified".]
+- **6 creatives per ad set (still unverified).** Pass 1 cites Jon Loomer quoting "About Managing Ad Volume" (6 or fewer). Other sources cite 5 (AdManage) or say the advice does not apply to Advantage+. The Business Help article was not reached.
+- **Learning phase (still unverified).** About 50 optimisation events per ad set per 7 days, per secondary sources. Ad sets short of this show "Learning limited". Loomer's Ads Manager observation of 10 in 3 days is unconfirmed.
+- **Advantage+ performance claims (Meta marketing, not independent).** Meta's Advantage+ page: 22% higher ROAS and 17-32% lower cost per purchase on Advantage+ Shopping campaigns (source credited to WARC/Fospha). Partnership Ads page: 53% more incremental conversions, CPA down 35% (also Meta's own page). Conversions API page: 24% increase in incremental conversions from better attribution. Meta's page is marketing; treat as claims.
+- **Migration costs learning (Verified in pass 2).** Moving an ASC or AAC campaign into Advantage+ format forces the learning stage. Copy also. No workaround.
+- **Advantage+ can underperform for niche or high-ticket products (PATTERN).** Some guides say manual, tightly controlled campaigns still win for these products. Not a Meta statement.
 
 ### 2. India CPM / CPC / CPA benchmarks
 
-- **upGrowth, Instagram Ads Pricing India 2026 (C, agency; https://upgrowth.in/instagram-ads-pricing-india-2026/). Still unverified: site did not resolve in pass 2.**
+- **upGrowth, Instagram Ads Pricing India 2026 (C, agency).** Still unverified: the site could not be reached (proxy refused the connection).
   - CPM: beauty Rs 180-320; fashion Rs 140-280; electronics/home Rs 120-250; Reels Rs 45-140.
   - CPC: general D2C Rs 8-25; beauty Rs 15-40; regional-language tier-2 Rs 4-12.
-  - Cost per purchase: Rs 450-1,200; electronics/home Rs 500-1,400. WhatsApp lead-form CPL Rs 120-280.
-- **Bosswallah, 2026 (C).** Photo-ad CPC Rs 5-30; Reels CPC Rs 10-50; CPA Rs 85-580 (mixes lead and purchase objectives, so not comparable). Still unverified.
+  - Purchase cost: Rs 450-1,200; electronics/home Rs 500-1,400.
+- **Bosswallah (C).** Photo-ad CPC Rs 5-30; Reels CPC Rs 10-50; CPA Rs 85-580 (mixes objectives). Still unverified.
 - **Generic range (C, undated).** CPM Rs 45-350; CPC Rs 8-35. Conflicting. Still unverified.
-- **Global reference (C).** Reels CPM USD 3-9.5; CPC USD 0.4-1.5. Not India.
-- **Caveat (PATTERN).** No government, Meta or independent India benchmark found. Use own account data before budgeting.
+- **Global reference (C).** Reels CPM USD 3-9.5. Not India.
+- **Caveat.** No government, Meta or independent India benchmark found. Use own account data.
 
-### 3. Creative formats that work for D2C in India
+### 3. Creative formats for D2C in India
 
-- **Hinglish and regional-language creative (PATTERN, vendor-claimed).** Vendors (Koro, Lapis) say it lowers CAC in tier-2/3. Lapis's 3-5x engagement and 20-36% CPA drop cite "Facebook India data" with no link. Still unverified.
-- **Market size (C, unverified).** Regional-language internet users about 540 million; Hindi about 201 million (38%). Likely KPMG-Google Indian Languages study, not read.
-- **AI-generated UGC in Hinglish (C, vendor).** No independent D2C case study with Meta metrics found.
+- **Hinglish and regional creative (PATTERN, vendor-claimed).** Vendors (Koro, Lapis) say it lowers CAC in tier-2/3. Lapis's 3-5x engagement and 20-36% CPA drop cite "Facebook India data" with no link. Still unverified.
+- **Market size (C, unverified).** Regional-language internet users about 540 million; Hindi about 201 million. Likely the KPMG-Google study; not reached.
+- **AI-generated UGC in Hinglish (C, vendor).** No independent D2C case with Meta metrics found.
 - **Founder-led vs UGC vs creator-led (not found).** No sourced India comparison.
-- **Academic (B, title and date only).** MICA 2025 paper on Hinglish in advertising. Findings not seen.
+- **Academic (B, title only).** MICA 2025 paper on Hinglish in advertising. Findings not seen.
 
 ### 4. Instagram organic ranking, 2025-2026
 
-- **Mosseri's January 2025 signals (corroborated secondary).** "The top three signals that matter most for ranking are watch time, likes and sends." Look at average watch time, likes per reach and sends per reach in Insights. Date 22 Jan 2025 per one source. [socialmediatoday.com, not read; search summary only.] [Primary Mosseri post or about.instagram.com not read.]
-- **Sends and non-followers (corroborated secondary).** Likes are slightly more important for connected content; sends slightly more for unconnected content. [creatorflow.so, C.]
-- **Sends per reach definition (B).** Out of everyone who saw the post, how many sent it by DM. [searchenginejournal, not read.]
-- **The 3-5x sends weight (NOT VERIFIED).** Conflicts with "slightly more". Do not use.
-- **Watch time has two parts (C).** Relative (share of video watched) and absolute (seconds).
-- **Shares and the 2026 order (still unverified).** Some blogs say DM shares outrank likes from Jan 2026. One says Mosseri stresses shares. Not confirmed by a primary page.
-- **Originality (corroborated secondary for the priority).** Year-end memo (31 Dec 2025, per other sources) lists "Continue to improve ranking for originality." Memo not read.
-- **Originality enforcement (still unverified).** 30 Apr 2026 scope for photos and carousels; accounts mostly reposting lose recommendations; "10 or more reposts in 30 days" excludes from Explore and Reels (one source); AI-generated persons without label get limited reach from 31 Aug 2026 (no Instagram announcement found).
-- **Trial Reels (corroborated secondary).** Public creator and business accounts with 1,000+ followers can test a Reel with non-followers for about 72 hours before sharing it with followers. Reel is excluded from hashtag pages, Explore grid and profile grid during the test. Launch month: July 2025 (BetaNews, 14 Jul 2025, for the wider-access item). [Corrected: "since July 2025" stays, now dated to BetaNews 14 Jul 2025. The 200-follower professional tier is unverified.]
-- **Reels length for non-follower recommendation (C, single source).** Up to 3 minutes. Unverified.
+- **Official ranking post (Verified in pass 2, Mosseri, 31 May 2023 update).** Ranking is per surface. Feed and Explore: the most important actions predicted are likes, saves and shares. Reels: the most important predictions are reshare, watch all the way through, like, and go to the audio page. Signals include your activity, information about the post and about the poster, and your history with the poster. [Corrected: pass 1's "Mosseri Jan 2025: watch time, likes, sends" is not in this official post.]
+- **Jan 2025 "watch time, likes, sends" (still unverified).** Pass 1 cites socialmediatoday (not reached). Several blogs repeat it. Not found on any reachable official page.
+- **Sends weight 3-5x (NOT VERIFIED).** Do not use.
+- **2026 signal order (still unverified).** Some blogs say DM shares outrank likes from Jan 2026. Not confirmed by a primary page.
+- **Originality (Verified in pass 2, creators.instagram.com, 30 Apr 2026).** Extends the Reels originality rules to photos and carousels. Accounts that primarily post unoriginal content in those formats are ineligible for recommendations across Instagram. Eligibility returns when most recent posts (photos, carousels and reels) are original over a 30-day rolling window. Standing shows in Account Status; appeals are possible. Original posts supply 75% of US recommendations. The "10 reposts in 30 days" rule is not in the post. [Corrected: "10 reposts" → rejected.]
+- **AI-generated profile label (Verified in pass 2, creators.instagram.com, 31 Aug 2026).** Renamed from "AI creator". Profiles that feature an AI-generated person without the label get reduced reach. Creators who merely use AI tools in production need no label. [Corrected: pass 1 said no announcement found; now found.]
+- **Trial Reels (still unverified; press only).** 1,000+ followers and a public account (per press reports of Mosseri's confirmation, BetaNews 14 Jul 2025). Some guides say professional accounts qualify at 200 followers; not confirmed. Check in-app. Test window about 72 hours, with non-followers only; excluded from hashtag pages, Explore and the profile grid during the test.
+- **Reels length for non-follower recommendation (single source).** Up to 3 minutes. Unverified.
 
 ### 5. Influencer marketing in India
 
 - **Rates by tier (C, sources disagree; not re-checked).**
-  - Nano (1K-10K): Rs 2,000-8,000 per Reel (Tring); other sources Rs 1,000-12,000.
+  - Nano (1K-10K): Rs 2,000-8,000 per Reel (Tring); others Rs 1,000-12,000.
   - Micro (10K-100K): Rs 5,000-80,000; Reels Rs 15,000-60,000 in one guide.
   - Macro (100K-1M): Rs 84,000-7.9 lakh (one source); up to Rs 12 lakh (another).
   - Still unverified. Ask each creator for a rate card.
-- **Market size (B/C).** India influencer marketing "nearing Rs 5,000 crore" (Deccan Chronicle, date not shown). Still unverified.
-- **Platforms (Winkl, Plixxo, Qoruz).** Pricing mostly not found. Qoruz paid plans reported from about Rs 15,000/month (one comparison site). Winkl ownership conflicts (MyGlamm vs Good Glamm). Ask vendors directly.
+- **Market size (B/C).** "Nearing Rs 5,000 crore" (Deccan Chronicle, date not shown). Still unverified.
+- **Platforms (Winkl, Plixxo, Qoruz).** Pricing mostly not found. Qoruz paid plans from about Rs 15,000/month (one comparison site). Winkl ownership conflicts. Ask vendors.
 
 ### 6. ASCI influencer guidelines (current text)
 
-- **Primary ASCI guide (2024 PDF, ascionline.in) NOT READ. Host blocked.**
-- **Disclosure labels (corroborated secondary, conflicting).** Search summaries of the ASCI guide quote a list of #ad, #collab, #promo, #sponsored, #partnership. Pass 1 cited the 2021 Inc42 list (Advertisement, Ad, Sponsored, Collaboration, Partnership, Employee, Free gift). [Corrected: the list has changed between the 2021 guidelines and the 2024 guide. Current list per the guide, as quoted in summaries: #ad, #collab, #promo, #sponsored, #partnership. Still unverified against the PDF.]
-- **Placement (corroborated secondary).** Labels must be upfront and legible. Superimposed labels need a clear, legible font. Do not bury labels under a group of hashtags. A one-time bio disclosure is generally not enough.
-- **Platform "Paid partnership" tag (conflicting).** Feb 2022 press (exchange4media, not read) says ASCI accepts the tag as an alternative to its labels. Grynow blog says the native tag alone is not sufficient. Per the ASCI guide summary, the tag is a supplement to a visible label. Current status: still unverified. Safe practice: visible #ad plus the platform tag.
-- **Enforcement (B, press, not read).** LinkedIn advisory Jan 2025 (60 flagged cases in one week). FY25: 14% of flagged ads linked to influencer violations (date not confirmed). Aug 2025 code update: media companies must label paid posts on their own handles (date per summary).
-- **2026 update (single law-firm source, sansalegal).** Claims new approved labels (#Ad, #Sponsored, #Paid, #Partnership) and AI-virtual-influencer rules requiring an AI disclosure plus the paid label. A Haulpack blog gives a different list (ad, sponsored, partnership, gifts, cooperation). Still unverified. Do not use until ASCI's site confirms.
+- **Guide read (Verified in pass 2, ASCI's Guide for Social Media Influencers, 2024 PDF).**
+  - A disclosure is required for all brand promotions with a material connection (monetary or non-monetary): paid posts, free or discounted products, affiliate links or codes, barter, employment or family ties.
+  - Use upfront, prominent labels such as 'Ad'. Use a clear, legible font for superimposed labels. Do not hide labels under a group of hashtags. Do not put blanket disclosures in the profile bio.
+  - Instagram: include the label in the visible caption; if only the image or video is seen (Reels, Stories), include it in the image or video itself.
+  - Disclose even when reviews are unbiased. Do not promote a product you have not tried.
+  - Platform features ("paid partnership", "sponsored") are in addition to labels.
+  - Guidelines apply to influencers with 1K followers as well as 10M.
+  - ASCI imposes no penalties or fines itself; it can escalate to government and sector regulators. NAMS uses AI tools to monitor paid influencer posts and publishes complaint reports.
+- **Label list (still unverified).** The guide points to the "options provided in the guidelines" at asci.social/guidelines (not reached). Pass 1's 2021 list (Advertisement, Ad, Sponsored, Collaboration, Partnership, Employee, Free gift) and a 2026 law-firm list (#Ad, #Sponsored, #Paid, #Partnership) conflict with a five-label list in a search summary. Do not rely on any single list.
+- **Enforcement data (B, press, not reached).** LinkedIn advisory Jan 2025; FY25 14% of flagged ads tied to influencers (date unconfirmed); Aug 2025 code update covering media companies' paid posts on their own handles (date per summary).
+- **AI influencers (single source).** The 2026 law-firm post says AI virtual influencers need an AI disclosure plus the paid label. Not confirmed by ASCI.
 
 ### 7. Click-to-WhatsApp (CTWA)
 
-- **Global (B).** Meta Q3 results: click-to-WhatsApp ad revenue up about 60% year on year (exchange4media, Q3 2025; not read).
-- **India (B, conflicting date).** Zuckerberg: click-to-message ad revenue in India doubled year on year; over 60% of WhatsApp users in India message a business each week. Pass 1 dated this to the Oct 2023 call (sentinelassam). A pass 2 search summary dates the same wording to the Q3 2025 call. [Still unverified as to date. Read the sentinelassam article to settle.]
-- **Message pricing India (C, one vendor).** Marketing about INR 0.86; utility about INR 0.12 (Jan 2026). Corroborated only by the same vendor data as the RULES file.
-- **Benchmarks (vendor, conflicting).** "3-5x conversion vs lead ads"; "92% lower CPL vs landing page" (one vendor). Still unverified.
-- **Measurement (C, consistent across guides).** Send conversions back via the Conversions API and capture ctwa_clid. Without this, you only see "conversations started".
-- **Search gap.** No India CTWA performance figures (CPA, conversion rate) from a checkable source.
+- **Global (B, press; not reached).** Meta Q3 2025 results: click-to-WhatsApp ad revenue up about 60% year on year.
+- **India (B, conflicting date).** Zuckerberg: click-to-message ad revenue in India doubled year on year; over 60% of WhatsApp users in India message a business weekly. Pass 1 dated this to the Oct 2023 call (sentinelassam). A pass 2 search summary dates the same words to Q3 2025. Still unverified as to date.
+- **Message pricing India (C, vendor).** Marketing about INR 0.86; utility about INR 0.12 (Jan 2026). One vendor source.
+- **Benchmarks (vendor, conflicting).** "3-5x conversion vs lead ads" and "92% lower CPL" from different vendors. Still unverified.
+- **Measurement (C, consistent across guides).** Send conversions back via the Conversions API and capture the ctwa_clid. Without this you see only "conversations started".
 
 ### 8. Instagram shopping in India
 
-- **Product tags (C, vendor doc).** Feed posts and Reels; up to 20 products per post, 30 per Reel.
-- **Checkout (corroborated secondary, mostly old).** In-app checkout is US-only. For brands outside the US, tags open the brand's own checkout. Earlier India reports (2018-2020) on in-app shopping never reached launch as far as found.
-- **India access (C, Shopify community).** Instagram Shopping in India historically limited to managed clients. Date unknown.
-- **Meta India (B).** Meta calls India a key market; SMB tools include Shop Now, Stories links and Shoppable tags. No 2026 India checkout or tag change found.
+- **Shoppable Reels (Verified in pass 2, creators.instagram.com, 24 Mar 2026, updated Oct 2026).** "Add products" in the share sheet. Tag any product in a business's Meta commerce catalog, or paste a product URL (affiliate links supported). Up to 30 products per Reel; individual items only. The Oct 2026 note lists India among 26 markets, though the wording on which feature that covers is unclear. [New in pass 2.]
+- **Feed-post tags.** Pass 1's "20 products per feed post" came from a vendor doc. Not verified.
+- **Checkout.** In-app checkout was US-first (search summary). For other markets, tags open the brand's own checkout. No 2026 India in-app checkout found.
+- **India access (C, Shopify community, old).** Instagram Shopping in India was limited to managed clients. Date unknown.
 
 ---
 
-## Ranking / visibility mechanics (how things show up and why)
+## Ranking / visibility mechanics
 
-- **Paid (corroborated secondary).** Andromeda retrieval shortlists candidates on creative content, then ranking and the auction pick. Few near-duplicates means fewer candidates.
-- **Paid (PATTERN).** Advantage+ pools budget and learning across creatives and placements. Small brands with low purchase volume can stay in "learning limited".
-- **Organic (corroborated secondary).** Watch time, likes and sends per reach drive Reels distribution. Sends and watch time matter most for non-followers. 2026 order disputed.
-- **Organic (corroborated secondary, specifics unverified).** Originality is a stated 2026 goal. Reposted or AI-looking content is reported to lose reach.
-- **Organic (PATTERN).** Trial Reels let a new account test a Reel on non-followers before sharing to followers.
+- **Paid (Verified in pass 2, Meta 2024 post).** Retrieval narrows tens of millions of eligible ads to a few thousand candidates; then ranking and the auction choose. Eligible-ad volume grows with creative and Advantage+ automation.
+- **Paid (PATTERN).** Advantage+ pools budget and learning across creatives and placements. Migrating a campaign resets learning (verified). Low purchase volume can keep ad sets in "learning limited" (secondary).
+- **Organic, Reels (Verified in pass 2, Mosseri 2023 post).** Reshare, full watch, like and audio-page visits are the top predicted actions. Shares matter in Explore and Reels.
+- **Organic, originality (Verified in pass 2, Instagram 30 Apr 2026).** Aggregator content is ineligible for recommendations; original posts over 30 days restore eligibility.
+- **Organic, AI-generated people (Verified in pass 2, Instagram 31 Aug 2026).** Unlabelled AI-person profiles get reduced reach.
+- **Organic (PATTERN).** Trial Reels let a new account test a Reel on non-followers first (press-level detail only).
 
 ---
 
 ## What a small new D2C seller should do / avoid (PATTERN, labelled)
 
 **Do:**
-- Make 5-8 distinct creative concepts (different hook, format and angle). Do not make 50 variants. [PATTERN; corroborated secondary on diversity.]
-- Keep at most 6 creatives per ad set, as Meta's Help Centre reportedly advises (not read). [Corroborated secondary.]
-- Start with a controlled manual campaign while purchase volume is low; move to Advantage+ sales once there are enough conversions per ad set per week. [PATTERN; learning-phase figure secondary.]
-- Test Hinglish and regional versions of the best creative against English in your own account. Do not assume vendor lift numbers. [PATTERN.]
-- Budget from your own data. Use the India ranges only as a starting band. [PATTERN; still unverified.]
-- Post originals: founder-shot, real product use, own voice. Avoid reposting other creators' Reels. [PATTERN; corroborated secondary.]
-- Check Trial Reels eligibility in-app before planning around it. [Corroborated secondary; 200 vs 1,000 conflict.]
-- Disclose every paid or gifted creator post with a visible label (for example #Ad) in the caption or on the image. Add the platform "Paid partnership" tag as a supplement, not a replacement. [Corroborated secondary on ASCI placement.]
-- Pick influencers by engagement and audience fit. Get a written rate card and negotiate bundles of 3+ posts. [PATTERN.]
-- Use CTWA where a human sales or support conversation adds value. Send conversions back via the Conversions API. Check Meta's current India WhatsApp message rates before building a funnel. [PATTERN.]
+- Make 5-8 distinct creative concepts. Andromeda's candidate pool grows with creative variety (verified), but advice on the number of creatives per ad set is not confirmed. [Verified basis for variety; number unverified.]
+- Do not migrate running ASC or AAC campaigns to Advantage+ if you care about learning; build new campaigns. [Verified.]
+- Start with a controlled campaign while volume is low. Move to Advantage+ once the ad set has enough conversions. [PATTERN; learning threshold unverified.]
+- Post originals: founder-shot, real product use, own voice. Do not repost others' Reels or carousels. [Verified: Instagram's 30 Apr 2026 rule.]
+- Label any AI-generated person in content, and check the AI-generated profile label if the profile features one. [Verified: Instagram's 31 Aug 2026 rule.]
+- Disclose every paid, gifted or affiliate post: label 'Ad' in the visible caption (or on the image or video if only that is seen), and add the platform paid-partnership tag in addition. Do not hide the label under hashtags or bury it in the bio. [Verified: ASCI 2024 guide.]
+- Use shoppable Reels (up to 30 products) if the catalogue is in Meta's commerce system. [Verified.]
+- Test Hinglish or regional creative against English in your own account. Do not assume vendor lift numbers. [PATTERN.]
+- Budget from own data. Use the India ranges only as a starting band. [PATTERN.]
+- Use click-to-WhatsApp where a human conversation adds value. Send conversions back via the Conversions API. Check Meta's current India messaging rates. [PATTERN.]
 
 **Avoid:**
-- Using the 3-5x sends multiplier, the 10-reposts cut-off, or the 60% creative-similarity cut-off as facts. [Unverified.]
+- Treating the 3-5x sends multiplier, the 10-reposts cut-off, the 60% similarity cut-off, or the Jan 2025 Mosseri order as facts. [Unverified or not in official sources.]
+- Treating Meta's marketing percentages (22% ROAS, 53% more conversions) as independent results. [Meta's own claims.]
 - Using US or global CPM benchmarks for India. [C.]
-- Buying influencer posts from platforms with unknown pricing and no written rate card. [PATTERN.]
-- Posting undisclosed paid content, or hiding the label under hashtags. [Corroborated secondary.]
+- Buying influencer posts without a written rate card. [PATTERN.]
+- Posting undisclosed paid content. [Verified: ASCI guide; enforcement via NAMS.]
 
 ---
 
 ## Open questions and conflicting claims
 
-1. **Primary sources not read (all of them).** engineering.fb.com (Andromeda), Meta Business Help (Advantage+ sales, ad volume, learning phase), about.instagram.com or creators.instagram.com (Mosseri, originality, Trial Reels), ascionline.in (ASCI guide). All blocked by DNS in pass 2. Allow these hosts and rerun.
-2. **Mosseri's sends multiplier (3-5x) vs "slightly more" wording.** Still conflicting. Need the original post.
-3. **2026 signal order (shares vs likes vs watch time).** Conflicting secondary sources.
-4. **Originality enforcement (30 Apr 2026, 10-repost threshold, 31 Aug 2026 AI-label date).** Single-source. Need Instagram newsroom.
-5. **Trial Reels eligibility: 1,000 vs 200 followers for professional accounts.** Conflicting. Check in-app.
-6. **Learning phase: 50 events per 7 days vs 10 in 3 days (Ads Manager test).** Conflicting. Check Ads Manager.
-7. **Advantage+ sales 50-ad cap and 6-creative advice.** Secondary only.
-8. **Creative Similarity 60% threshold and Creative Diversity score (26 Aug 2026).** Single-source or unverified.
-9. **Andromeda figures (+6% recall, +8% quality, "10,000x capacity").** From a search summary; primary not read.
-10. **India CPM/CPC/CPA benchmarks.** upGrowth could not be re-read. Agencies disagree 2-3x.
-11. **Click-to-WhatsApp India "doubled" and "60% weekly" figures: 2023 or Q3 2025?** Conflicting dates. Read the sentinelassam article.
-12. **ASCI label list and the platform-tag status.** 2021 list vs 2024 guide list; Feb 2022 acceptance vs Grynow "not sufficient". Primary PDF not read.
-13. **ASCI 2026 labels and AI-influencer rules.** Single law-firm source, conflicts with a Haulpack list. Unverified.
-14. **Hinglish/regional lift (3-5x, 20-36%).** Vendor claim with no link.
-15. **Founder-led vs UGC vs creator-led ranking for Indian D2C.** No sourced India comparison.
-16. **Instagram shopping checkout in India, 2026.** No announcement found.
-17. **Influencer tier rates.** Conflicting; need quotes.
+1. **Meta Business Help Centre articles not reached.** Learning phase, Advantage+ sales structure and limits, "About managing ad volume". Need the article URLs (the help index is JavaScript-rendered) or a host that serves them.
+2. **Mosseri's Jan 2025 signals and 3-5x sends weight.** No primary found. Official 2023 post names different signals.
+3. **2026 signal order (shares vs likes vs watch time).** Conflicting; unverified.
+4. **Trial Reels eligibility (1,000 vs 200 professional followers).** Conflicting; press only.
+5. **Learning phase threshold (50 events per 7 days vs 10 in 3 days).** Conflicting; Business Help not reached.
+6. **Creative similarity 60% threshold, Creative Diversity score (26 Aug 2026).** Unverified.
+7. **Creative diversity spokesperson statement (Marketing Brew via relevantaudience).** Not reached.
+8. **ASCI label list.** 2021 list vs 2024 guide reference vs 2026 law-firm list. Need asci.social/guidelines.
+9. **ASCI "paid partnership" tag status.** Resolved for the 2024 guide ("in addition to"). The 2022 press item is not reached.
+10. **Click-to-WhatsApp India "doubled" figure: 2023 or Q3 2025?** Conflicting dates. Need the source article.
+11. **India CPM/CPC/CPA benchmarks.** upGrowth and Bosswallah not verified; agencies disagree 2-3x.
+12. **Hinglish/regional lift (3-5x, 20-36%).** Vendor claim, no link.
+13. **Founder-led vs UGC vs creator-led ranking for Indian D2C.** No sourced comparison.
+14. **Shoppable Reels India scope.** The Oct 2026 note lists India among 26 markets for "this capability"; scope ambiguous.
+15. **Influencer rates.** Conflicting; need quotes.
 
 ---
 
 ## Sources
 
-Ratings: A = official, B = reputable press, C = blog/agency/vendor. "Read" means the page itself was opened in pass 2. "Snippet" means only a search summary was seen. Dates as shown.
+Ratings: A = official, B = reputable press, C = blog/agency/vendor. "Read" = page read in pass 2. "Snippet" = search summary only. Dates as shown.
 
-Primary, not read (blocked in pass 2):
-1. https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-platform/ (Dec 2024) [A; NOT read, DNS blocked]
-2. https://www.ascionline.in/social/wp-content/uploads/2024/03/ASCIs-Guide-For-Influencers-1.pdf (2024) [A; NOT read, DNS blocked]
-3. https://www.facebook.com/business/help/1576994822553428 (Advantage+ sales; date not shown) [A; NOT read, DNS blocked]
-4. https://about.instagram.com/blog/announcements/shedding-more-light-on-how-instagram-works [A; NOT read, DNS blocked; the URL is a guess, not a confirmed link]
-5. https://www.socialmediatoday.com/news/instagram-shares-algorithm-2025/738034/ (Jan 2025 per summary) [B; NOT read, DNS blocked]
-6. https://www.exchange4media.com/influence-zone-news/14-of-flagged-ads-in-fy25-linked-to-influencer-violations-asci-143887.html [B; NOT read, DNS blocked]
-7. https://upgrowth.in/instagram-ads-pricing-india-2026/ (2026) [C; NOT read, DNS blocked]
+Read in pass 2 (primary):
+1. https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/ (2 Dec 2024) [A; read]
+2. https://engineering.fb.com/2026/10/28/ml-applications/meta-andromeda-next-gen-ads-retrieval-gpu-co-design/ (28 Oct 2026) [A; read]
+3. https://developers.facebook.com/docs/marketing-api/advantage-campaigns (current; date not shown) [A; read]
+4. https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights-api/ads-volume (current) [A; read]
+5. https://www.facebook.com/business/m/advantage-plus (date not shown) [A marketing page; read]
+6. https://about.instagram.com/blog/announcements/instagram-ranking-explained/ (31 May 2023) [A; read]
+7. https://about.instagram.com/blog/announcements/shedding-more-light-on-how-instagram-works (8 Jun 2021; update note 31 May 2023) [A; read]
+8. https://creators.instagram.com/blog/rewarding-original-creators-on-instagram (30 Apr 2026) [A; read]
+9. https://creators.instagram.com/blog/ai-generated-profile-label (31 Aug 2026) [A; read]
+10. https://creators.instagram.com/blog/new-ways-to-earn-making-reels-shoppable (24 Mar 2026; updated Oct 2026) [A; read]
+11. https://www.ascionline.in/social/wp-content/uploads/2024/03/ASCIs-Guide-For-Influencers-1.pdf (2024) [A; read]
 
-Snippets read in pass 2 (WebSearch summaries):
-8. https://www.eclincher.com/articles/how-the-instagram-algorithm-works-in-2026 (2026) [C; snippet]
-9. https://www.jonloomer.com/meta-andromeda/ (date not shown) [C; snippet]
-10. https://www.jonloomer.com/meta-andromeda-creative-diversification/ (date not shown) [C; snippet]
-11. https://www.jonloomer.com/advantage-plus-sales-app-leads-campaigns/ (date not shown) [C; snippet]
-12. https://www.jonloomer.com/qvt/learning-phase-10-or-50-events/ (date not shown) [C; snippet]
-13. https://www.1clickreport.com/blog/meta-advantage-plus-campaign-setup-2026 (2026) [C; snippet]
-14. https://admanage.ai/blog/meta-advantage-plus-shopping-campaigns (date not shown) [C; snippet]
-15. https://www.socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/ (date not shown) [B; snippet]
-16. https://betanews.com/2025/07/14/instagram-opens-up-trial-reels-feature-to-more-creators/ (14 Jul 2025) [B; snippet]
-17. https://www.socialsamosa.com/news-2/instagram-introduces-wider-access-trial-reels-9493132 (date not shown) [B; snippet]
-18. https://www.sansalegal.com/post/asci-influencer-advertising-guidelines-2026-disclosure-rules-for-paid-content-and-ai-influencers (2026) [C; snippet]
-19. https://www.legal500.com/developments/?p=28469 (date not shown) [B; snippet, headline only]
-20. https://www.grynow.in/blog/asci-guidelines-for-influencer-marketing-in-india.html (date not shown) [C; snippet]
-21. https://haulpack.com/blog/asci-guidelines-for-influencers (date not shown) [C; snippet]
-22. https://www.stackmatix.com/blog/when-to-use-meta-advantage-plus-campaigns (date not shown) [C; snippet]
-23. https://chatmaxima.com/blog/2026-click-to-whatsapp-ads-playbook/ (2026) [C; snippet]
-24. https://www.spurnow.com/en/blogs/click-to-whatsapp-ads-benchmarks (date not shown) [C; snippet]
-25. https://www.medianews4u.com/metas-q3-results-highlight-whatsapps-rising-role-in-revenue-mix/ (date shown oddly; not read) [B; snippet]
-26. https://sentinelassam.com/business/revenue-from-click-to-message-ads-in-india-has-doubled-meta-founder-672693 (date conflicting: Oct 2023 per pass 1; Q3 2025 per pass 2 summary) [B; not read]
-27. https://www.community.shopify.com/t/how-can-i-enable-the-instagram-shop-feature-in-india/107462 (date not shown) [C; snippet]
-28. https://www.gizbot.com/amphtml/apps/news/instagram-brings-product-tagging-feature-for-everyone-how-does-it-work-080250.html (date not shown) [C; snippet]
+Not reached in pass 2 (blocked or not found):
+12. https://asci.social/guidelines [A; host did not resolve]
+13. https://www.socialmediatoday.com/news/instagram-shares-algorithm-2025/738034/ [B; proxy refused]
+14. https://www.exchange4media.com/ (ASCI and CTWA articles) [B; proxy refused]
+15. https://upgrowth.in/instagram-ads-pricing-india-2026/ [C; proxy refused]
+16. Meta Business Help Centre articles (learning phase; Advantage+ sales; ad volume) [A; URLs not found]
 
-From pass 1 (not re-checked in pass 2):
-29. https://www.admetrics.io/post/meta-andromeda-ads-retrieval-explained (date not shown) [C]
-30. https://confect.io/tactics/meta-andromeda-2026 (2026) [C]
-31. https://relevantaudience.com/meta/meta-ad-creative-diversification-same-hook-same-ad/ (date not shown) [B/C]
-32. https://commonthreadco.com/blogs/coachs-corner/metas-new-creative-diversity-score-is-live-in-ads-manager-what-ecommerce-brands-must-act-on-now (26 Aug 2026 per source) [C]
-33. https://bosswallah.com/blog/creator-hub/instagram-ads-cost-in-india-2026-how-much-should-you-actually-spend/ (2026) [C]
-34. https://www.youngurbanproject.com/instagram-ads-cost-in-india/ (date not shown) [C]
-35. https://creatorflow.so/blog/instagram-algorithm/ (2026) [C]
-36. https://www.searchenginejournal.com/instagram-algorithm-shift-why-sends-matter-more-than-ever/521389 (date not shown) [B]
-37. https://www.inc42.com/buzz/new-influencer-marketing-guidelines-mandating-disclosure-on-promotional-content-to-be-effective-from-june-14/ (June 2021) [B]
-38. https://www.exchange4media.com/advertising-news/paid-partnership-tag-acceptable-alternative-to-disclosure-labels-for-influencer-ads-asci-118473.html (Feb 2022) [B; not read]
-39. https://www.exchange4media.com/digital-news/asci-issues-advisory-to-linkedin-influencers-disclose-ads-or-face-action-140078.html (Jan 2025) [B; not read]
-40. https://www.exchange4media.com/advertising-news/asci-updates-code-says-media-companies-must-label-paid-posts-on-social-handles-146389.html (2025 per summary) [B; not read]
-41. https://getkoro.app/blog/ai-ugc-video-in-hinglish-voice-lipsync-guide-for-indian-brands-2026 (2026) [C]
-42. https://www.trylapis.com/resources/indian-language-ai-ads-guide (date not shown) [C]
-43. https://ir.mica.ac.in/entities/publication/17b86fb2-f287-431a-82cb-8fd7abadb2d2/full (2025) [B/academic]
-44. https://bosswallah.com/blog/brand-collaborations/micro-influencer-rates-in-india-what-to-actually-charge-in-2026/ (2026) [C]
-45. https://www.tring.co.in/brands/blogs/influencer-marketing-cost-in-india-list (date not shown) [C]
-46. https://influee.co/blog/instagram-influencer-pricing (2026) [C]
-47. https://www.deccanchronicle.com/amp/business/indias-influencer-marketing-boom-industry-nears-5000-crore-as-regional-creators-rise-1970876 (date not shown) [B/C]
-48. https://www.elev8or.io/blog/best-influencer-marketing-platforms-in-india (date not shown) [C]
-49. https://www.cbinsights.com/company/winkl (date not shown) [C]
-50. https://www.outlookbusiness.com/news/business-messaging-whatsapp-engines-of-growth-biz-digitisation-driving-headroom-meta-india-head (date not shown) [B]
-51. https://beastoftraal.com/2025/02/19/linkedin-brand-partnership-label-vs-asci-guidelines/ (Feb 2025) [C]
-52. https://www.naiknaik.com/?p=4165 (date not shown) [C]
+Snippets (pass 1 and pass 2 search summaries, not read):
+17. https://www.jonloomer.com/meta-andromeda/ (date not shown) [C]
+18. https://www.jonloomer.com/qvt/learning-phase-10-or-50-events/ (date not shown) [C]
+19. https://www.1clickreport.com/blog/meta-advantage-plus-campaign-setup-2026 (2026) [C]
+20. https://betanews.com/2025/07/14/instagram-opens-up-trial-reels-feature-to-more-creators/ (14 Jul 2025) [B]
+21. https://www.sansalegal.com/post/asci-influencer-advertising-guidelines-2026-disclosure-rules-for-paid-content-and-ai-influencers (2026) [C]
+22. https://www.eclincher.com/articles/how-the-instagram-algorithm-works-in-2026 (2026) [C]
+23. https://creatorflow.so/blog/instagram-algorithm/ (2026) [C]
+24. https://www.admetrics.io/post/meta-andromeda-ads-retrieval-explained (date not shown) [C]
+25. https://relevantaudience.com/meta/meta-ad-creative-diversification-same-hook-same-ad/ (date not shown) [B/C]
+26. https://commonthreadco.com/blogs/coachs-corner/metas-new-creative-diversity-score-is-live-in-ads-manager-what-ecommerce-brands-must-act-on-now (26 Aug 2026 per source) [C]
+27. https://bosswallah.com/blog/creator-hub/instagram-ads-cost-in-india-2026-how-much-should-you-actually-spend/ (2026) [C]
+28. https://www.youngurbanproject.com/instagram-ads-cost-in-india/ (date not shown) [C]
+29. https://sentinelassam.com/business/revenue-from-click-to-message-ads-in-india-has-doubled-meta-founder-672693 (conflicting date) [B]
+30. https://www.exchange4media.com/digital-news/whatsapp-powers-metas-q3-surge-as-click-to-chat-ads-spike-60-148883.html (Q3 2025) [B]
+31. https://www.exchange4media.com/advertising-news/paid-partnership-tag-acceptable-alternative-to-disclosure-labels-for-influencer-ads-asci-118473.html (Feb 2022) [B]
+32. https://www.exchange4media.com/digital-news/asci-issues-advisory-to-linkedin-influencers-disclose-ads-or-face-action-140078.html (Jan 2025) [B]
+33. https://www.exchange4media.com/influence-zone-news/14-of-flagged-ads-in-fy25-linked-to-influencer-violations-asci-143887.html (date unconfirmed) [B]
+34. https://www.inc42.com/buzz/new-influencer-marketing-guidelines-mandating-disclosure-on-promotional-content-to-be-effective-from-june-14/ (June 2021) [B]
+35. https://www.grynow.in/blog/asci-guidelines-for-influencer-marketing-in-india.html (date not shown) [C]
+36. https://haulpack.com/blog/asci-guidelines-for-influencers (date not shown) [C]
+37. https://www.community.shopify.com/t/how-can-i-enable-the-instagram-shop-feature-in-india/107462 (date not shown) [C]
+38. https://www.tring.co.in/brands/blogs/influencer-marketing-cost-in-india-list (date not shown) [C]
+39. https://www.deccanchronicle.com/amp/business/indias-influencer-marketing-boom-industry-nears-5000-crore-as-regional-creators-rise-1970876 (date not shown) [B/C]
+40. https://getkoro.app/blog/ai-ugc-video-in-hinglish-voice-lipsync-guide-for-indian-brands-2026 (2026) [C]
+41. https://www.trylapis.com/resources/indian-language-ai-ads-guide (date not shown) [C]
+42. https://ir.mica.ac.in/entities/publication/17b86fb2-f287-431a-82cb-8fd7abadb2d2/full (2025) [B/academic]
+43. https://www.outlookbusiness.com/news/business-messaging-whatsapp-engines-of-growth-biz-digitisation-driving-headroom-meta-india-head (date not shown) [B]
+44. https://www.elev8or.io/blog/best-influencer-marketing-platforms-in-india (date not shown) [C]
+45. https://www.cbinsights.com/company/winkl (date not shown) [C]
+46. https://www.naiknaik.com/?p=4165 (date not shown) [C]
+47. https://beastoftraal.com/2025/02/19/linkedin-brand-partnership-label-vs-asci-guidelines/ (Feb 2025) [C]
