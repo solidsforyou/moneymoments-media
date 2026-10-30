@@ -1,0 +1,235 @@
+qid,chapter,question,A,B,C,D
+school-09-science-1-e1,Exploration: Entering the World of Secondary Science,A scientific model is best described as:,an exact full-size copy of the real object,a simplified picture of something that keeps the important features and leaves out minor details,a guess that no one has tested,a law that can never change
+school-09-science-1-e2,Exploration: Entering the World of Secondary Science,"In physics, the symbol c stands for:",the speed of sound in air,the charge on an electron,the speed of light in vacuum,the mass of the Earth
+school-09-science-1-e3,Exploration: Entering the World of Secondary Science,The SI unit of mass is the:,gram,quintal,newton,kilogram
+school-09-science-1-e4,Exploration: Entering the World of Secondary Science,How many minutes are there in 2 days?,2880,1440,2400,1220
+school-09-science-1-e5,Exploration: Entering the World of Secondary Science,"A statement about what will happen under given conditions, which can later be checked, is called a:",definition,prediction,unit,symbol
+school-09-science-1-e6,Exploration: Entering the World of Secondary Science,"A statement that describes a regular pattern in nature, often written as an equation, is called a:",guess,opinion,law,model of a car
+school-09-science-1-m1,Exploration: Entering the World of Secondary Science,"To estimate how long a cricket ball takes to fall from a 20 m high roof, which detail can be safely ignored in a simple model?",the height of the roof,the pull of gravity,the logo printed on the ball,the starting speed of the ball
+school-09-science-1-m2,Exploration: Entering the World of Secondary Science,"Anita breathes 15 times a minute, taking in about 0.5 L each time. How many litres of air does she breathe in one hour?",900 L,7.5 L,225 L,450 L
+school-09-science-1-m3,Exploration: Entering the World of Secondary Science,Which statement correctly contrasts a law and a theory?,A law describes what happens; a theory explains why it happens,A law is a guess; a theory is a proven fact,A theory is always simpler than a law,A law and a theory mean exactly the same
+school-09-science-1-m4,Exploration: Entering the World of Secondary Science,"Speed = distance / time. If a bus covers twice the distance in the same time, its speed:",halves,doubles,stays the same,becomes four times
+school-09-science-1-m5,Exploration: Entering the World of Secondary Science,Which of these is a testable prediction?,Plants are beautiful,This plant is a happy plant,"If I water this plant with 100 mL daily, it will grow at least 2 cm in a week",Plants were better long ago
+school-09-science-1-m6,Exploration: Entering the World of Secondary Science,"A model predicts that a pendulum swings once in 2.0 s, but you measure 2.3 s. What should you do first?",Change the measured value to 2.0 s,Decide that science does not work,Ignore the model forever,"Recheck the measurement and the assumptions, such as ignoring air drag"
+school-09-science-1-h1,Exploration: Entering the World of Secondary Science,"A person breathes 16 times a minute, about 0.5 L per breath. About how many litres of air is that in one day?","8,000 L","23,040 L",720 L,"11,520 L"
+school-09-science-1-h2,Exploration: Entering the World of Secondary Science,A heart beats 72 times a minute. How many beats are there in one day?,"103,680","4,320","1,728","10,368"
+school-09-science-1-h3,Exploration: Entering the World of Secondary Science,"A classmate says, ""A theory is just a guess."" The best reply is:","Yes, theories are guesses that no one tests",A scientific theory is a well-tested explanation backed by a lot of evidence,A theory is a law that has been proven wrong,A theory is a number with units
+school-09-science-1-h4,Exploration: Entering the World of Secondary Science,Light travels 3 x 10^8 m/s. The Sun is 1.5 x 10^11 m away. About how long does sunlight take to reach Earth?,83 minutes,0.83 minutes,8.3 minutes,500 minutes
+school-09-science-1-h5,Exploration: Entering the World of Secondary Science,Scientists may treat a cow as a sphere to estimate heat loss. Why is this acceptable?,Real cows are perfect spheres,Models must include every detail to be valid,It proves that shape never matters,"It keeps only the features that matter for that question, and answers hold within those assumptions"
+school-09-science-1-h6,Exploration: Entering the World of Secondary Science,Someone says food cooked during a solar eclipse is poisonous. What is the most scientific way to check?,Compare food cooked during and outside an eclipse under the same conditions and look at the evidence,Believe it because elders say so,Reject it without looking at any evidence,Count how many people believe it
+school-09-science-2-e1,Cell: The Building Block of Life,"Who first observed cells, using a thin slice of cork?",Rudolf Virchow,Robert Brown,Robert Hooke,Matthias Schleiden
+school-09-science-2-e2,Cell: The Building Block of Life,Which organelle is called the powerhouse of the cell?,Ribosome,Golgi apparatus,Lysosome,Mitochondria
+school-09-science-2-e3,Cell: The Building Block of Life,The main material of the plant cell wall is:,cellulose,keratin,glycogen,chlorophyll
+school-09-science-2-e4,Cell: The Building Block of Life,Protein synthesis takes place on:,lysosomes,ribosomes,vacuoles,mitochondria
+school-09-science-2-e5,Cell: The Building Block of Life,Osmosis is the movement of:,salt across a membrane from concentrated to dilute solution,any gas into a cell,water across a selectively permeable membrane from dilute to concentrated solution,water from concentrated to dilute solution
+school-09-science-2-e6,Cell: The Building Block of Life,A bacterium differs from an onion cell because it does not have a:,cell membrane,ribosome,DNA,membrane-bound nucleus
+school-09-science-2-m1,Cell: The Building Block of Life,Dry raisins soaked in plain water swell up because:,salt leaves the raisin cells,the raisin cells make more water,the cell wall pumps in sugar,water enters the raisin cells by osmosis
+school-09-science-2-m2,Cell: The Building Block of Life,Which statement about endoplasmic reticulum is correct?,SER has no ribosomes and helps make lipids; RER has ribosomes and helps make proteins,SER is studded with ribosomes and makes proteins,RER has no ribosomes,Both make only DNA
+school-09-science-2-m3,Cell: The Building Block of Life,A plant cell kept in strong salt solution loses water and its membrane pulls away from the wall. This is called:,turgidity,plasmolysis,photosynthesis,diffusion of gases
+school-09-science-2-m4,Cell: The Building Block of Life,Mature human red blood cells have no nucleus. A result of this is that they:,can divide very fast,make their own proteins in the nucleus,cannot divide or repair themselves but have more room for haemoglobin,cannot carry oxygen
+school-09-science-2-m5,Cell: The Building Block of Life,"If all mitochondria are removed from an animal cell, the cell would:",stop making DNA only,become a plant cell,make more ATP,make much less ATP and soon run short of energy
+school-09-science-2-m6,Cell: The Building Block of Life,The correct path of a protein made for secretion is:,"ribosome on RER, then Golgi apparatus, then vesicle to the membrane","Golgi, then ribosome, then nucleus","nucleus, then lysosome, then vacuole","vacuole, then ribosome, then Golgi"
+school-09-science-2-h1,Cell: The Building Block of Life,Amla pieces kept in salt and sugar do not spoil. The main reason is that:,"salt and sugar draw water out of microbes by osmosis, so they cannot grow",salt and sugar kill all cells by heat,microbes cannot see in salt,salt makes the amla acidic only
+school-09-science-2-h2,Cell: The Building Block of Life,"A human body cell has 46 chromosomes. If gametes were made by mitosis, a zygote would have:",46 chromosomes,92 chromosomes,23 chromosomes,69 chromosomes
+school-09-science-2-h3,Cell: The Building Block of Life,Which statement is true of both mitochondria and chloroplasts?,Both make glucose from carbon dioxide,Both are found in every cell,Both have a double membrane and their own DNA,Both have a single membrane
+school-09-science-2-h4,Cell: The Building Block of Life,"In a potato-cup experiment, a boiled potato cup with sugar in it shows no rise in water level. The reason is that boiling:",added more sugar,made the cell wall thicker,turned water into gas inside the cup,destroyed the selectively permeable membrane of the cells
+school-09-science-2-h5,Cell: The Building Block of Life,A cell with 8 chromosomes undergoes meiosis. The result is:,4 cells with 4 chromosomes each,2 cells with 8 chromosomes each,4 cells with 8 chromosomes each,2 cells with 4 chromosomes each
+school-09-science-2-h6,Cell: The Building Block of Life,"In a culture, normal cells stop dividing when they touch each other, but some cells keep piling up. These cells have most likely lost:",their cell membrane,contact inhibition,all their mitochondria,their ribosomes
+school-09-science-3-e1,Tissues in Action,Growth in the length of a root or shoot tip is due to:,lateral meristem,epidermis,sclerenchyma,apical meristem
+school-09-science-3-e2,Tissues in Action,The tissue that carries food from leaves to other parts of a plant is:,phloem,xylem,sclerenchyma,epidermis
+school-09-science-3-e3,Tissues in Action,The tissue that lines the mouth and the inside of the gut is:,nervous tissue,epithelial tissue,bone,cardiac muscle
+school-09-science-3-e4,Tissues in Action,A tendon joins:,bone to bone,muscle to muscle,muscle to bone,skin to muscle
+school-09-science-3-e5,Tissues in Action,The knee is an example of a:,ball-and-socket joint,pivot joint,fixed joint,hinge joint
+school-09-science-3-e6,Tissues in Action,Messages are carried through the body by:,nervous tissue,epithelial tissue,cartilage,smooth muscle
+school-09-science-3-m1,Tissues in Action,Meristematic cells usually have:,"thin walls, dense cytoplasm and little or no vacuole",thick walls and a large vacuole,dead cells with lignin,no nucleus
+school-09-science-3-m2,Tissues in Action,Grass grows back quickly after mowing because of:,apical meristem in the root tip,intercalary meristem at the base of leaves,lateral meristem under the bark,phloem fibres
+school-09-science-3-m3,Tissues in Action,The hard shell of a coconut husk gets its strength from:,parenchyma,phloem sieve tubes,sclerenchyma,epidermis
+school-09-science-3-m4,Tissues in Action,Which tissue gives tender stems and leaf stalks both flexibility and support?,sclerenchyma,xylem vessels,cork,collenchyma
+school-09-science-3-m5,Tissues in Action,A ring of bark is cut all around a tree trunk. Soon the roots below the cut starve because:,food cannot move down through the removed phloem,water cannot go up through the bark,roots cannot take in oxygen,leaves stop making sugar at once
+school-09-science-3-m6,Tissues in Action,"An involuntary, unstriped muscle found in the walls of the intestine is:",skeletal muscle,smooth muscle,cardiac muscle,cartilage
+school-09-science-3-h1,Tissues in Action,"The tip of a growing root, about 2 mm, is cut off. Which result is most likely?",The root grows twice as fast,The root stops growing longer because its apical meristem is lost,The root becomes a shoot,Nothing changes
+school-09-science-3-h2,Tissues in Action,"A trunk's girth grows 3 cm each year. At 10 years it measures 60 cm. Assuming the same rate, its girth at 15 years will be:",63 cm,90 cm,75 cm,180 cm
+school-09-science-3-h3,Tissues in Action,A ring of bark is removed from a tree. Leaves stay green for some days. Why?,Phloem still carries food down,Leaves make water from air,Roots no longer need food,"Xylem inside still carries water up, while the phloem that carried food down is gone"
+school-09-science-3-h4,Tissues in Action,Which statement is correct?,Xylem has dead vessels and tracheids as well as living xylem parenchyma,All xylem cells are dead,Xylem carries food from leaves,Xylem has only sieve tubes
+school-09-science-3-h5,Tissues in Action,Which pairing of tissue and function is correct?,Ligament: joins muscle to bone,Companion cell: helps the sieve tube,Collenchyma: dead cells for strength,Cardiac muscle: voluntary movement
+school-09-science-3-h6,Tissues in Action,Landing on stiff legs hurts more than landing with bent knees because:,bent knees make you heavier,stiff legs have no bones,"joints cannot bend, so the force acts for a shorter time and is larger",stiff legs increase gravity
+school-09-science-4-e1,Describing Motion Around Us,Meera walks 300 m from home to school and returns the same way. Her displacement is:,0 m,300 m,600 m,-300 m
+school-09-science-4-e2,Describing Motion Around Us,72 km/h expressed in m/s is:,72 m/s,20 m/s,259.2 m/s,7.2 m/s
+school-09-science-4-e3,Describing Motion Around Us,A car at 10 m/s speeds up at 2 m/s^2 for 5 s. Its final speed is:,12 m/s,15 m/s,20 m/s,25 m/s
+school-09-science-4-e4,Describing Motion Around Us,A train covers 150 km in 3 hours. Its average speed is:,450 km/h,153 km/h,5 km/h,50 km/h
+school-09-science-4-e5,Describing Motion Around Us,Acceleration is the rate of change of:,velocity,distance,mass,displacement
+school-09-science-4-e6,Describing Motion Around Us,The slope of a position-time graph gives:,acceleration,velocity,distance travelled only,mass
+school-09-science-4-m1,Describing Motion Around Us,A car starts from rest with a = 3 m/s^2. Distance covered in 6 s is:,18 m,54 m,108 m,27 m
+school-09-science-4-m2,Describing Motion Around Us,A bike at 20 m/s brakes uniformly to rest in 4 s. Distance covered while braking is:,80 m,20 m,40 m,5 m
+school-09-science-4-m3,Describing Motion Around Us,A cart slows uniformly from 15 m/s to 10 m/s in 10 s. Distance covered is:,150 m,100 m,12.5 m,125 m
+school-09-science-4-m4,Describing Motion Around Us,A swimmer does 2 lengths of a 50 m pool in 100 s and ends at the start. Average speed and average velocity are:,1 m/s and 0,0 and 1 m/s,1 m/s and 1 m/s,2 m/s and 0
+school-09-science-4-m5,Describing Motion Around Us,A scooter moves at a steady 40 km/h around a curve. It is accelerating because:,its speed changes,"its direction, and so its velocity, changes",its mass changes,it is not accelerating
+school-09-science-4-m6,Describing Motion Around Us,"A body speeds up uniformly from 0 to 12 m/s in 6 s, then moves at 12 m/s for 4 s. Total distance is:",120 m,72 m,84 m,48 m
+school-09-science-4-h1,Describing Motion Around Us,"A bus at 20 m/s sees an obstacle 55 m ahead. Reaction time is 0.5 s, then it brakes at 5 m/s^2. It stops:",15 m before the obstacle,at the obstacle exactly,5 m before the obstacle,after hitting it
+school-09-science-4-h2,Describing Motion Around Us,The tip of a 14 cm minute hand moves from 6:00 to 6:30 (use pi = 22/7). Distance and displacement of the tip are:,28 cm and 44 cm,44 cm and 44 cm,88 cm and 28 cm,44 cm and 28 cm
+school-09-science-4-h3,Describing Motion Around Us,A car at 30 km/h stops in 6 m with a fixed braking deceleration. At 60 km/h it will stop in:,24 m,12 m,18 m,36 m
+school-09-science-4-h4,Describing Motion Around Us,A runner goes 100 m east in 20 s and then 40 m west in 10 s. Average velocity is:,4.67 m/s east,2 m/s east,4 m/s east,6 m/s east
+school-09-science-4-h5,Describing Motion Around Us,Car A starts from rest with a = 2 m/s^2. Car B moves at a constant 10 m/s from the same point at the same time. A catches B after:,5 s,20 s,10 s,15 s
+school-09-science-4-h6,Describing Motion Around Us,A ball is thrown straight up at 20 m/s (g = 10 m/s^2). It returns to the thrower's hand after:,2 s,8 s,10 s,4 s
+school-09-science-5-e1,Exploring Mixtures and their Separation,Which of these is a homogeneous mixture?,sand and water,sugar dissolved in water,oil and water,muddy river water
+school-09-science-5-e2,Exploring Mixtures and their Separation,Which of these shows the Tyndall effect?,salt solution,sugar solution,milk,copper sulphate solution
+school-09-science-5-e3,Exploring Mixtures and their Separation,Which method separates insoluble chalk powder from water?,sublimation,distillation of water only,magnetic separation,filtration
+school-09-science-5-e4,Exploring Mixtures and their Separation,20 g of salt is dissolved in 80 g of water. The mass percent of the solution is:,20%,25%,80%,4%
+school-09-science-5-e5,Exploring Mixtures and their Separation,A separating funnel is used to separate:,sand and salt,two immiscible liquids such as oil and water,iron and sulphur,two gases
+school-09-science-5-e6,Exploring Mixtures and their Separation,Which of these sublimes on heating?,sugar,common salt,camphor,sand
+school-09-science-5-m1,Exploring Mixtures and their Separation,Brass is 70% copper by mass. How much zinc is in 250 g of brass?,175 g,30 g,75 g,7.5 g
+school-09-science-5-m2,Exploring Mixtures and their Separation,"Ethanol (bp 78 C) and water (bp 100 C) are mixed. On heating, the first distillate is rich in:",water,salt,sand,ethanol
+school-09-science-5-m3,Exploring Mixtures and their Separation,"The right order to separate sand, salt and camphor is:","sublimation, add water and filter, then evaporate","evaporate, filter, sublime","filter, sublimate, add water","add water, sublimate, evaporate"
+school-09-science-5-m4,Exploring Mixtures and their Separation,Arrange by increasing particle size:,"suspension, colloid, solution","solution, colloid, suspension","colloid, solution, suspension","solution, suspension, colloid"
+school-09-science-5-m5,Exploring Mixtures and their Separation,The solubility of a salt at 20 C is 36 g per 100 g of water. How much salt saturates 250 g of water?,36 g,144 g,90 g,72 g
+school-09-science-5-m6,Exploring Mixtures and their Separation,Alum is added to muddy water to:,kill all salts,make the water acidic,dissolve the mud,make fine particles clump and settle
+school-09-science-5-h1,Exploring Mixtures and their Separation,300 g of a 10% (m/m) solution loses 100 g of water by evaporation. The new mass percent is:,10%,30%,20%,15%
+school-09-science-5-h2,Exploring Mixtures and their Separation,At 50 C a salt dissolves 40 g per 100 g water; at 20 C it is 36 g. A saturated solution with 200 g water cooled from 50 C to 20 C deposits:,8 g,4 g,16 g,76 g
+school-09-science-5-h3,Exploring Mixtures and their Separation,"Iron filings, salt and sand are mixed. The best sequence is:","evaporate, magnet, filter","magnet, add water and filter, evaporate","filter, magnet, evaporate","add water, magnet, sublimate"
+school-09-science-5-h4,Exploring Mixtures and their Separation,Two miscible liquids have boiling points differing by only 5 C. The best method is:,filtration,simple distillation,fractional distillation,decantation
+school-09-science-5-h5,Exploring Mixtures and their Separation,Assertion: A true solution does not show the Tyndall effect. Reason: its particles are too small to scatter light. Which is right?,"Both true, reason does not explain","Assertion true, reason false","Assertion false, reason true","Both are true, and the reason explains the assertion"
+school-09-science-5-h6,Exploring Mixtures and their Separation,"A mixture passes through filter paper, scatters a light beam and does not settle. It is a:",colloid,suspension,true solution,pure element
+school-09-science-6-e1,How Forces Affect Motion,The SI unit of force is the:,joule,watt,newton,kilogram
+school-09-science-6-e2,How Forces Affect Motion,A force of 20 N acts on a 5 kg block. Its acceleration is:,100 m/s^2,0.25 m/s^2,15 m/s^2,4 m/s^2
+school-09-science-6-e3,How Forces Affect Motion,Inertia of a body depends on its:,mass,colour,shape only,temperature
+school-09-science-6-e4,How Forces Affect Motion,Passengers lurch forward when a bus brakes suddenly. This illustrates:,the third law of motion,the first law of motion,gravitation,Ohm's law
+school-09-science-6-e5,How Forces Affect Motion,Action and reaction forces always act on:,the same object,only moving objects,different objects,only heavy objects
+school-09-science-6-e6,How Forces Affect Motion,Forces of 8 N and 5 N act on a box in opposite directions. The net force is:,13 N,40 N,0 N,3 N
+school-09-science-6-m1,How Forces Affect Motion,A 6 kg trolley is pushed with a net force of 30 N from rest. Its speed after 4 s is:,5 m/s,120 m/s,30 m/s,20 m/s
+school-09-science-6-m2,How Forces Affect Motion,A 20 g bullet leaves a 4 kg gun with equal and opposite forces. The bullet's acceleration is how many times the gun's?,200,20,400,2000
+school-09-science-6-m3,How Forces Affect Motion,A sailor jumps from a boat toward the shore. The boat moves:,toward the shore,away from the shore,up,not at all
+school-09-science-6-m4,How Forces Affect Motion,A fielder pulls his hands back while catching a fast ball because it:,increases the ball's mass,removes the ball's momentum,increases the time of impact and so reduces the force,increases the force
+school-09-science-6-m5,How Forces Affect Motion,A crate is pushed at constant speed by 40 N. The friction acting is:,0 N,80 N,4 N,40 N
+school-09-science-6-m6,How Forces Affect Motion,A 1000 kg car accelerates at 2 m/s^2 against a 500 N friction. The engine force is:,2500 N,2000 N,1500 N,500 N
+school-09-science-6-h1,How Forces Affect Motion,A 0.02 kg bullet at 200 m/s stops after going 0.1 m into wood. The average stopping force is:,4000 N,400 N,"40,000 N",2000 N
+school-09-science-6-h2,How Forces Affect Motion,A 500 N kick gives a 0.5 kg ball a speed of 20 m/s from rest. The contact time is:,0.2 s,0.02 s,0.04 s,0.01 s
+school-09-science-6-h3,How Forces Affect Motion,A 2 kg block slides at 10 m/s on a rough patch with a 4 N friction force. It slides before stopping:,50 m,12.5 m,25 m,5 m
+school-09-science-6-h4,How Forces Affect Motion,Block P (4 kg) is tied by a string to block Q (6 kg). Q is pulled by 50 N away from P on a smooth floor. Tension in the string is:,30 N,50 N,10 N,20 N
+school-09-science-6-h5,How Forces Affect Motion,A horse pulls a cart and the cart pulls back equally. They move forward because:,the ground pushes the horse forward more than it resists the cart,the horse's pull is bigger,the cart has no reaction force,the forces cancel
+school-09-science-6-h6,How Forces Affect Motion,"A 2000 kg rocket has thrust 30,000 N (g = 10 m/s^2). Its initial acceleration is:",15 m/s^2,5 m/s^2,10 m/s^2,20 m/s^2
+school-09-science-7-e1,"Work, Energy, and Simple Machines",The work done by a 20 N force moving a box 5 m in its own direction is:,25 J,4 J,15 J,100 J
+school-09-science-7-e2,"Work, Energy, and Simple Machines",The SI unit of work is the:,joule,newton,watt,pascal
+school-09-science-7-e3,"Work, Energy, and Simple Machines",600 J of work is done in 3 s. The power is:,1800 W,200 W,2 W,603 W
+school-09-science-7-e4,"Work, Energy, and Simple Machines",A 2 kg ball moves at 3 m/s. Its kinetic energy is:,6 J,18 J,9 J,3 J
+school-09-science-7-e5,"Work, Energy, and Simple Machines",A 5 kg book is raised 2 m (g = 10 m/s^2). Its gain in potential energy is:,10 J,50 J,25 J,100 J
+school-09-science-7-e6,"Work, Energy, and Simple Machines","In a solar panel, energy changes from:",light to electrical,chemical to heat,sound to light,electrical to light
+school-09-science-7-m1,"Work, Energy, and Simple Machines","When the speed of a body doubles, its kinetic energy becomes:",4 times,2 times,half,8 times
+school-09-science-7-m2,"Work, Energy, and Simple Machines",A 20 kg bucket is lifted 5 m in 10 s (g = 10 m/s^2). The power developed is:,1000 W,100 W,10 W,200 W
+school-09-science-7-m3,"Work, Energy, and Simple Machines","A ball is dropped from 20 m (g = 10 m/s^2, no air resistance). Its speed just before landing is:",10 m/s,200 m/s,20 m/s,40 m/s
+school-09-science-7-m4,"Work, Energy, and Simple Machines",Aman goes up 6 m by stairs and Rita goes up 6 m by lift (same mass). Their potential energy gains are:,larger for Aman,larger for Rita,zero for Rita,equal
+school-09-science-7-m5,"Work, Energy, and Simple Machines",A 1000 kg car moving at 20 m/s is brought to rest. The work done by the brakes is:,"200,000 J","20,000 J","400,000 J","100,000 J"
+school-09-science-7-m6,"Work, Energy, and Simple Machines",A crowbar has effort arm 1.5 m and load arm 0.5 m. To move a 90 N load needs an effort of:,270 N,30 N,90 N,60 N
+school-09-science-7-h1,"Work, Energy, and Simple Machines",A 2 kg coconut falls 5 m onto sand (g = 10 m/s^2) and sinks 0.1 m. The average stopping force is:,1000 N,1020 N,100 N,"10,200 N"
+school-09-science-7-h2,"Work, Energy, and Simple Machines",A ball thrown up reaches 12 m on Earth. With the same speed on the Moon (g is one-sixth) it would rise about:,2 m,12 m,72 m,6 m
+school-09-science-7-h3,"Work, Energy, and Simple Machines",A 2 kg block moving at 3 m/s is pushed by an 8 N force through 2 m on a smooth floor. Its final speed is:,4 m/s,3 m/s,7 m/s,5 m/s
+school-09-science-7-h4,"Work, Energy, and Simple Machines",A 0.5 kg pendulum bob is released from 0.8 m above its lowest point (g = 10 m/s^2). Its speed at the lowest point is:,4 m/s,8 m/s,16 m/s,0.4 m/s
+school-09-science-7-h5,"Work, Energy, and Simple Machines",A car engine delivers 20 kW at a steady 25 m/s. The total resistive force is:,"500,000 N",800 N,"20,000 N",1250 N
+school-09-science-7-h6,"Work, Energy, and Simple Machines",A 600 N drum is rolled up a smooth 3 m ramp to a 1.2 m height. The effort needed is:,1500 N,600 N,240 N,120 N
+school-09-science-8-e1,Journey Inside the Atom,The electron was discovered by:,J.J. Thomson,Ernest Rutherford,Niels Bohr,John Dalton
+school-09-science-8-e2,Journey Inside the Atom,The nucleus was discovered through the gold foil experiment by:,Thomson,Rutherford,Dalton,Bohr
+school-09-science-8-e3,Journey Inside the Atom,The neutron is:,positively charged,negatively charged,neutral,lighter than the electron
+school-09-science-8-e4,Journey Inside the Atom,The atomic number of sodium is 11. It has how many protons?,12,23,10,11
+school-09-science-8-e5,Journey Inside the Atom,An atom has 12 protons and 12 neutrons. Its mass number is:,24,12,36,0
+school-09-science-8-e6,Journey Inside the Atom,The maximum number of electrons in the K shell is:,8,2,18,1
+school-09-science-8-m1,Journey Inside the Atom,"Most alpha particles passed straight through gold foil, which showed that:",atoms are solid,atoms are mostly empty space,electrons are heavy,the nucleus is large
+school-09-science-8-m2,Journey Inside the Atom,An atom has 17 protons and 18 neutrons. Its mass number and electrons (neutral) are:,17 and 35,18 and 17,35 and 17,35 and 18
+school-09-science-8-m3,Journey Inside the Atom,The electronic configuration of chlorine (Z = 17) is:,"2, 8, 8","2, 7, 8","2, 15","2, 8, 7"
+school-09-science-8-m4,Journey Inside the Atom,Cl-35 and Cl-37 are:,isotopes with 18 and 20 neutrons,isobars,isotopes with the same neutrons,different elements
+school-09-science-8-m5,Journey Inside the Atom,Argon-40 (Z = 18) and calcium-40 (Z = 20) are:,isotopes,isobars,isotones,the same element
+school-09-science-8-m6,Journey Inside the Atom,Aluminium (Z = 13) loses 3 electrons. The ion has:,13 electrons and charge 3+,10 electrons and charge 3-,10 electrons and charge 3+,16 electrons
+school-09-science-8-h1,Journey Inside the Atom,Element X has mass number 35 and 18 neutrons. Its atomic number and valency are:,18 and 1,17 and 7,17 and 1,35 and 1
+school-09-science-8-h2,Journey Inside the Atom,"A species has 16 protons, 16 neutrons and 18 electrons. It is:",S with mass number 34,Ar with mass number 32,S2+ with mass number 34,S2- with mass number 32
+school-09-science-8-h3,Journey Inside the Atom,Boron has isotopes of mass 10 (20%) and 11 (80%). The average atomic mass is:,10.8,10.5,10.2,11.0
+school-09-science-8-h4,Journey Inside the Atom,The main drawback of Rutherford's model was that:,atoms have no nucleus,a circling electron should radiate energy and spiral into the nucleus,electrons are positive,protons are missing
+school-09-science-8-h5,Journey Inside the Atom,"P (Z=19, A=40), Q (Z=20, A=40), R (Z=19, A=39). Correct statement:",P and Q are isotopes; P and R are isobars,Q and R are isotopes,P and R are isotopes; P and Q are isobars,P and R are isobars
+school-09-science-8-h6,Journey Inside the Atom,"A neutral carbon-14 atom (Z = 6) has protons, neutrons, electrons of:","6, 6, 8","8, 6, 6","14, 6, 6","6, 8, 6"
+school-09-science-9-e1,Atomic Foundations of Matter,The law of conservation of mass says that during a chemical reaction mass is:,always increased,neither created nor destroyed,always decreased,converted into energy only
+school-09-science-9-e2,Atomic Foundations of Matter,The chemical formula of sodium chloride is:,Na2Cl,NaCl2,NaCl,NCl
+school-09-science-9-e3,Atomic Foundations of Matter,"The molecular mass of water (H = 1, O = 16) is:",17 u,16 u,34 u,18 u
+school-09-science-9-e4,Atomic Foundations of Matter,A positively charged ion is called a:,cation,anion,isotope,molecule
+school-09-science-9-e5,Atomic Foundations of Matter,A chlorine atom gains one electron and becomes:,Cl+,Cl-,Cl2+,Cl2-
+school-09-science-9-e6,Atomic Foundations of Matter,"In water, hydrogen and oxygen are always in the mass ratio:",1 : 16,2 : 1,1 : 8,8 : 1
+school-09-science-9-m1,Atomic Foundations of Matter,The formula of aluminium oxide is:,AlO,Al3O2,Al2O3,Al2O
+school-09-science-9-m2,Atomic Foundations of Matter,"The formula unit mass of CaCl2 (Ca = 40, Cl = 35.5) is:",75.5 u,151 u,71 u,111 u
+school-09-science-9-m3,Atomic Foundations of Matter,12 g of carbon burns completely in 32 g of oxygen. The carbon dioxide formed is:,44 g,20 g,384 g,32 g
+school-09-science-9-m4,Atomic Foundations of Matter,What mass of hydrogen is in 36 g of water?,32 g,4 g,2 g,8 g
+school-09-science-9-m5,Atomic Foundations of Matter,The formula of magnesium chloride is:,MgCl,Mg2Cl,MgCl2,Mg2Cl2
+school-09-science-9-m6,Atomic Foundations of Matter,"The molecular mass of HNO3 (H = 1, N = 14, O = 16) is:",47 u,31 u,79 u,63 u
+school-09-science-9-h1,Atomic Foundations of Matter,"Element A has configuration 2, 8, 1 and B has 2, 8, 7. They form:",a covalent compound A2B,a covalent compound AB2,no compound,an ionic compound AB
+school-09-science-9-h2,Atomic Foundations of Matter,"The formula unit mass of Ca(NO3)2 (Ca = 40, N = 14, O = 16) is:",164 u,102 u,148 u,132 u
+school-09-science-9-h3,Atomic Foundations of Matter,Assertion: Solid NaCl does not conduct. Reason: its ions are fixed in the lattice. Which is correct?,"Both true, reason does not explain",Both true and the reason explains the assertion,"Assertion true, reason false","Assertion false, reason true"
+school-09-science-9-h4,Atomic Foundations of Matter,CaCO3 reacts with acid in an open flask. The reading drops from 110.0 g to 105.6 g. This means:,the law is violated,mass vanished,the law holds; 4.4 g of CO2 gas escaped,CaCO3 lost mass
+school-09-science-9-h5,Atomic Foundations of Matter,Ammonia has N : H = 14 : 3 by mass. How much hydrogen is in 51 g of ammonia?,3 g,14 g,42 g,9 g
+school-09-science-9-h6,Atomic Foundations of Matter,Which is the correct name of PCl3?,phosphorus trichloride,phosphorus chloride,triphosphorus chloride,phosphorus monochloride
+school-09-science-10-e1,Sound Waves: Characteristics and Applications,Sound cannot travel through:,water,steel,a vacuum,air
+school-09-science-10-e2,Sound Waves: Characteristics and Applications,The unit of frequency is the:,metre,newton,second,hertz
+school-09-science-10-e3,Sound Waves: Characteristics and Applications,12 compressions pass a point in 3 s. The frequency is:,4 Hz,36 Hz,0.25 Hz,15 Hz
+school-09-science-10-e4,Sound Waves: Characteristics and Applications,Sound in air is a:,transverse wave,longitudinal wave,light wave,radio wave
+school-09-science-10-e5,Sound Waves: Characteristics and Applications,The range of human hearing is roughly:,2 Hz to 200 Hz,200 Hz to 2 MHz,"20 Hz to 20,000 Hz",20 kHz to 200 kHz
+school-09-science-10-e6,Sound Waves: Characteristics and Applications,The pitch of a sound depends on its:,amplitude,speed in air only,wavelength unit,frequency
+school-09-science-10-m1,Sound Waves: Characteristics and Applications,A wave has frequency 500 Hz and wavelength 0.68 m. Its speed is:,735 m/s,0.00136 m/s,500.68 m/s,340 m/s
+school-09-science-10-m2,Sound Waves: Characteristics and Applications,The time period of a 250 Hz sound is:,0.004 s,250 s,0.4 s,4 s
+school-09-science-10-m3,Sound Waves: Characteristics and Applications,An echo from a cliff is heard 3 s after a shout (v = 340 m/s). The cliff is:,1020 m,510 m,340 m,255 m
+school-09-science-10-m4,Sound Waves: Characteristics and Applications,A SONAR pulse returns after 0.8 s (v = 1500 m/s in water). The depth is:,1200 m,300 m,600 m,1500 m
+school-09-science-10-m5,Sound Waves: Characteristics and Applications,A thunderclap is heard 4 s after lightning (v = 340 m/s). The strike was:,85 m,680 m,2720 m,1360 m
+school-09-science-10-m6,Sound Waves: Characteristics and Applications,Speed of sound is greatest in:,steel,water,air,vacuum
+school-09-science-10-h1,Sound Waves: Characteristics and Applications,A parking sensor detects a wall 1.7 m away. The round-trip time of a pulse (v = 340 m/s) is:,0.01 s,0.005 s,0.02 s,0.1 s
+school-09-science-10-h2,Sound Waves: Characteristics and Applications,A signal travels 1700 m through air (340 m/s) and through water (1700 m/s). How much later does it arrive through air?,6 s,4 s,5 s,1 s
+school-09-science-10-h3,Sound Waves: Characteristics and Applications,A wave has wavelength 0.5 m and speed 340 m/s. Its frequency is:,170 Hz,340 Hz,680 Hz,0.0015 Hz
+school-09-science-10-h4,Sound Waves: Characteristics and Applications,Two sounds travel in the same medium; A has 200 Hz and B has 400 Hz. Then:,B is twice as fast,B's wavelength is twice A's,A's wavelength is smaller,B's wavelength is half of A's
+school-09-science-10-h5,Sound Waves: Characteristics and Applications,"When the speed of sound is 350 m/s, the minimum distance for a distinct echo is:",17.5 m,35 m,17 m,8.75 m
+school-09-science-10-h6,Sound Waves: Characteristics and Applications,Which change reduces reverberation in a hall?,smooth hard walls,"curtains, carpets and soft panels",bare glass walls,more reflections
+school-09-science-11-e1,Reproduction: How Life Continues,Amoeba reproduces by:,pollination,budding in flowers,fertilisation,binary fission
+school-09-science-11-e2,Reproduction: How Life Continues,Transfer of pollen from anther to stigma is called:,pollination,fertilisation,germination,budding
+school-09-science-11-e3,Reproduction: How Life Continues,"After fertilisation in a flower, the ovary becomes the:",seed,fruit,petal,sepal
+school-09-science-11-e4,Reproduction: How Life Continues,Yeast reproduces mainly by:,binary fission,spore pollination,budding,seed dispersal
+school-09-science-11-e5,Reproduction: How Life Continues,Fertilisation in humans normally occurs in the:,uterus wall,vagina,ovary,fallopian tube
+school-09-science-11-e6,Reproduction: How Life Continues,Sperms are produced in the:,testes,ovaries,uterus,kidneys
+school-09-science-11-m1,Reproduction: How Life Continues,Offspring from asexual reproduction are identical to the parent because:,they are produced by mitosis from a single parent,two parents mix genes,meiosis occurs,pollen is exchanged
+school-09-science-11-m2,Reproduction: How Life Continues,Menstruation stops during pregnancy because:,the ovary is removed,the uterine lining is kept to nourish the embryo,eggs are destroyed,blood stops flowing
+school-09-science-11-m3,Reproduction: How Life Continues,Night-blooming flowers are often white because:,white reflects no light,white repels insects,white is easily visible to night pollinators like moths,they have no pigments
+school-09-science-11-m4,Reproduction: How Life Continues,The zygote implants in the:,fallopian tube,vagina,ovary,wall of the uterus
+school-09-science-11-m5,Reproduction: How Life Continues,The correct order is:,"pollination, pollen tube growth, fertilisation, zygote","fertilisation, pollination, zygote","zygote, pollination, fertilisation","pollen tube, zygote, pollination"
+school-09-science-11-m6,Reproduction: How Life Continues,The placenta helps by:,making sperm,exchanging nutrients and oxygen between mother and embryo,storing eggs,producing urine
+school-09-science-11-h1,Reproduction: How Life Continues,A pest wipes out a banana grove grown by vegetative propagation. This is likely because:,bananas have no cells,plants are genetically identical and equally vulnerable,plants grow too slowly,seeds were used
+school-09-science-11-h2,Reproduction: How Life Continues,"If a plant species only self-pollinates for many generations, genetic variation:",increases greatly,stays the same,decreases,doubles each year
+school-09-science-11-h3,Reproduction: How Life Continues,A farmer wants 500 identical banana plants quickly. The best method is:,growing from seeds,pollination,grafting unrelated plants,tissue culture or suckers
+school-09-science-11-h4,Reproduction: How Life Continues,Assertion: Papaya needs cross-pollination. Reason: male and female flowers are on separate plants. Which is correct?,Both true and the reason explains the assertion,Both true but reason does not explain,"Assertion true, reason false","Assertion false, reason true"
+school-09-science-11-h5,Reproduction: How Life Continues,"In a pollen germination study across sugar concentrations, the dependent variable is:",sugar concentration,percentage of pollen grains that germinate,temperature,time of keeping
+school-09-science-11-h6,Reproduction: How Life Continues,Which birth control method also reduces the risk of infections?,copper T,oral pill,condom,sterilisation
+school-09-science-12-e1,Patterns in Life: Diversity and Classification,The five-kingdom classification was proposed by:,R.H. Whittaker,Carolus Linnaeus,Charles Darwin,Gregor Mendel
+school-09-science-12-e2,Patterns in Life: Diversity and Classification,Binomial nomenclature was introduced by:,Whittaker,Linnaeus,Aristotle,Mendel
+school-09-science-12-e3,Patterns in Life: Diversity and Classification,Bacteria belong to the kingdom:,Protista,Fungi,Monera,Plantae
+school-09-science-12-e4,Patterns in Life: Diversity and Classification,Mushrooms belong to the kingdom:,Plantae,Animalia,Monera,Fungi
+school-09-science-12-e5,Patterns in Life: Diversity and Classification,Animals with a backbone are called:,vertebrates,invertebrates,arthropods,protists
+school-09-science-12-e6,Patterns in Life: Diversity and Classification,"In a scientific name such as Panthera tigris, the genus name:",and the species name both start with capital letters,starts with a capital letter and the species name with a small letter,and the species name are both written in small letters,is written after the species name
+school-09-science-12-m1,Patterns in Life: Diversity and Classification,Fungi are not plants because they:,make food by photosynthesis,have no chlorophyll and absorb food from outside,have a backbone,are unicellular only
+school-09-science-12-m2,Patterns in Life: Diversity and Classification,Pteridophytes differ from bryophytes in having:,flowers,fruits,vascular tissue (xylem and phloem),no chlorophyll
+school-09-science-12-m3,Patterns in Life: Diversity and Classification,A sponge is placed in phylum:,Cnidaria,Mollusca,Arthropoda,Porifera
+school-09-science-12-m4,Patterns in Life: Diversity and Classification,Gymnosperms are plants with:,naked seeds,fruits around seeds,no seeds,spores only
+school-09-science-12-m5,Patterns in Life: Diversity and Classification,A typical insect has:,eight legs,six legs and three body regions,four legs,no legs
+school-09-science-12-m6,Patterns in Life: Diversity and Classification,The correct descending order is:,"species, genus, family, order, class, phylum, kingdom","kingdom, class, phylum, order, genus, family, species","kingdom, phylum, class, order, family, genus, species","phylum, kingdom, class, family, order, genus, species"
+school-09-science-12-h1,Patterns in Life: Diversity and Classification,Viruses are left out of the five kingdoms mainly because they:,are very large,have chlorophyll,are not cellular and reproduce only inside host cells,have no genetic material
+school-09-science-12-h2,Patterns in Life: Diversity and Classification,A unicellular organism has a nucleus and moves by cilia. It belongs to:,Monera,Fungi,Plantae,Protista
+school-09-science-12-h3,Patterns in Life: Diversity and Classification,"A multicellular organism with chitin cell walls, no chlorophyll, absorbing food externally belongs to:",Fungi,Animalia,Plantae,Protista
+school-09-science-12-h4,Patterns in Life: Diversity and Classification,Bryophytes are called amphibians of the plant kingdom because they:,live only in sea,need water for fertilisation but live on land,have fruits,have vascular tissue
+school-09-science-12-h5,Patterns in Life: Diversity and Classification,Grouping organisms only by habitat is a poor method because:,habitats never change,all organisms live in water,unrelated organisms can share a habitat and related ones live in different habitats,it needs a microscope
+school-09-science-12-h6,Patterns in Life: Diversity and Classification,"A has a nucleoid and cell wall, B is unicellular with a nucleus, C is a cone-bearing plant. Correct pairing:","A: Protista, B: Monera, C: angiosperm","A: Fungi, B: Monera, C: gymnosperm","A: Monera, B: Fungi, C: bryophyte","A: Monera, B: Protista, C: gymnosperm"
+school-09-science-13-e1,"Earth as a System: Energy, Matter, and Life",Weather happens mainly in the:,stratosphere,troposphere,mesosphere,thermosphere
+school-09-science-13-e2,"Earth as a System: Energy, Matter, and Life",Which is NOT one of Earth's five spheres?,geosphere,hydrosphere,chromosphere,cryosphere
+school-09-science-13-e3,"Earth as a System: Energy, Matter, and Life",A greenhouse gas is:,nitrogen,argon,helium,carbon dioxide
+school-09-science-13-e4,"Earth as a System: Energy, Matter, and Life",Albedo is the:,fraction of sunlight a surface reflects,heat stored in the ocean,wind speed,amount of rain
+school-09-science-13-e5,"Earth as a System: Energy, Matter, and Life",Rhizobium bacteria help plants by:,making carbon dioxide,fixing atmospheric nitrogen,making ozone,eating soil
+school-09-science-13-e6,"Earth as a System: Energy, Matter, and Life",The ozone layer protects life by absorbing:,sound,infrared radiation only,ultraviolet radiation,visible light
+school-09-science-13-m1,"Earth as a System: Energy, Matter, and Life",Fresh snow stays cold in sunshine mainly because it:,has a low albedo,absorbs all sunlight,has a high albedo and reflects most sunlight,makes heat
+school-09-science-13-m2,"Earth as a System: Energy, Matter, and Life",The equator is warmer than the poles because sunlight there:,is stronger on the Sun,has no clouds,is absorbed by ice,falls more directly on the surface
+school-09-science-13-m3,"Earth as a System: Energy, Matter, and Life",A valley breeze blows:,up the slope during the day,down the slope during the day,up the slope at night,from the sea
+school-09-science-13-m4,"Earth as a System: Energy, Matter, and Life",Deforestation tends to:,decrease CO2,increase atmospheric CO2,stop the water cycle,increase ozone
+school-09-science-13-m5,"Earth as a System: Energy, Matter, and Life",Algal overgrowth in water caused by fertiliser runoff is called:,denitrification,photosynthesis,eutrophication,evaporation
+school-09-science-13-m6,"Earth as a System: Energy, Matter, and Life",The fast carbon cycle includes:,rock formation,mountain building,volcanic eruption only,"photosynthesis, respiration and decomposition"
+school-09-science-13-h1,"Earth as a System: Energy, Matter, and Life",Cities are often warmer than nearby villages mainly because dark roads and roofs:,reflect all light,have high albedo,have more trees,have low albedo and absorb more heat
+school-09-science-13-h2,"Earth as a System: Energy, Matter, and Life",Melting polar ice lowers Earth's albedo. This is a positive feedback because it:,leads to more absorbed sunlight and more warming,cools the planet,stops melting,raises albedo
+school-09-science-13-h3,"Earth as a System: Energy, Matter, and Life","Without denitrifying bacteria, nitrogen would:",increase in the air,accumulate as nitrates in soil and water,disappear from soil,become carbon
+school-09-science-13-h4,"Earth as a System: Energy, Matter, and Life","During the day, a sea breeze blows from sea to land because:",the sea is hotter,land is cooler,"land heats faster than the sea, so warm air rises over land",the Moon pulls air
+school-09-science-13-h5,"Earth as a System: Energy, Matter, and Life",Excess CO2 is harmful because it:,is poisonous to all plants,makes ozone,cools the Earth,traps more heat and acidifies oceans
+school-09-science-13-h6,"Earth as a System: Energy, Matter, and Life",Ocean currents affect climate by:,carrying heat from the equator toward the poles,stopping rainfall,making land flat,changing the Moon

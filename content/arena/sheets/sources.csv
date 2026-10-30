@@ -1,10 +1,11 @@
 source_id,rows,selected,courses,example_url
 TIWARI,453,453,school-07-maths; school-07-science; school-08-maths; school-09-maths; school-09-science; school-10-maths; school-10-science,https://www.tiwariacademy.com/ncert-solutions/class-7/maths/ganita-prakash-chapter-1/
-OTHER,402,402,school-05-english; school-06-english; school-06-maths; school-07-english; school-07-maths; school-07-science; school-08-english; school-08-maths; school-09-maths,https://leverageedu.com/explore/learn-english/class-six-english-grammar
+OTHER,409,409,money-00-money; school-05-english; school-06-english; school-06-maths; school-07-english; school-07-maths; school-07-science; school-08-english; school-08-maths; school-09-maths,https://www.outlookmoney.com/personal-finance/sebinism-quiz-to-test-financial-literacy-as-markets-grow-so-must-minds
 NCERT,263,263,school-09-maths; school-09-science,https://www.tiwariacademy.com/ncert-solutions/class-9/maths/ganita-manjari-chapter-1/
 VEDANTU,177,177,school-05-english; school-06-english; school-06-maths; school-07-english; school-08-english; school-10-maths; school-10-science,https://www.vedantu.com/cbse/class-8-english-grammar-ncert-solutions-active-and-passive-voice
 CRACKU,115,115,cat-00-qa; school-07-maths,https://cracku.in/cat-number-systems-questions
 NCERT-EXEMPLAR,69,69,school-10-maths,https://www.learncbse.in/ncert-exemplar-class-10-maths-chapter-1/
+NCFE,65,65,money-00-money,https://ncfe.org.in/wp-content/uploads/2023/12/Class_9th.pdf
 CL,51,51,cat-00-qa,https://careerlauncher.com/cat-mba/syllabus
 LEARNCBSE,39,39,school-10-science,https://www.learncbse.in/ncert-exemplar-class-10-science/
 CAREERS360,16,16,school-07-maths,https://school.careers360.com/ncert/ncert-solutions-class-7-maths-part-2-chapter-1
