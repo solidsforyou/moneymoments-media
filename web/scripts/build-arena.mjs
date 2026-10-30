@@ -9,6 +9,8 @@ const WEB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.resolve(WEB, '../content/arena'), OUT = path.join(WEB, 'netlify/lib/arena-data.json');
 const SUBJECT = { maths: 'Maths', evs: 'EVS', science: 'Science', english: 'English', physics: 'Physics', chemistry: 'Chemistry', biology: 'Biology', qa: 'CAT Quant', dilr: 'CAT DILR', varc: 'CAT VARC', money: 'Money', digital: 'Digital skills' };
 const BOSS_AFTER = 4;
+// what's live: classes 5 to 12 and CAT (founder, 30 Oct 2026); money and digital come later
+const LIVE = (track, cls) => (track === 'school' && cls >= 5) || track === 'cat';
 
 if (!fs.existsSync(path.join(SRC, 'bank'))) { console.log('arena: no content/arena here; keeping the committed arena-data.json'); process.exit(0); }
 
@@ -31,6 +33,7 @@ const list = dir => fs.existsSync(path.join(SRC, dir)) ? fs.readdirSync(path.joi
 const courses = {}, summary = [];
 for (const file of list('bank')) {
   const id = file.replace(/\.csv$/, ''), [track, cc, subject] = id.split('-'), cls = +cc;
+  if (!LIVE(track, cls)) continue;
   const bank = read('bank', file).filter(r => r.selected === 'Y'), syl = read('syllabus', file);
   const names = new Map(syl.map(s => [+s.chapter_no, { name: s.chapter, topics: s.topics }]));
   for (const r of bank) if (!names.has(+r.chapter_no)) names.set(+r.chapter_no, { name: r.chapter, topics: '' });

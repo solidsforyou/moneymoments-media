@@ -5,7 +5,8 @@ import path from 'node:path';
 
 const onNetlify = () => !!(process.env.NETLIFY_BLOBS_CONTEXT || process.env.NETLIFY || globalThis.Netlify);
 const DATA = process.env.OSE_DATA_DIR || path.resolve(process.cwd(), '.data');
-const safe = k => encodeURIComponent(k).replace(/%2F/g, '__');
+// '/' becomes '__', so every '_' is escaped first; otherwise ids ending in '_' read back wrong
+const safe = k => encodeURIComponent(k).replace(/_/g, '%5F').replace(/%2F/g, '__');
 
 function fileStore(name) {
   const dir = path.join(DATA, name);

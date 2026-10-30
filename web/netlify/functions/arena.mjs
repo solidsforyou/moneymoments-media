@@ -4,7 +4,7 @@
 // are set, free players get ARENA_FREE_MINUTES of questions a day and ₹99 unlocks 30 days.
 import crypto from 'node:crypto';
 import { getJSON, setJSON } from '../lib/store.mjs';
-import { json, fail, body, handled, currentUser, requireUser, clean, id } from '../lib/http.mjs';
+import { json, fail, body, handled, currentUser, requireUser, clean, id, limit } from '../lib/http.mjs';
 import { COURSES, DIFF, buildRound, isBoss, rankOf, catalog, coursesFor } from '../lib/arena-bank.mjs';
 
 const ADJ = ['Swift', 'Brave', 'Clever', 'Mighty', 'Lucky', 'Bright', 'Calm', 'Bold', 'Sharp', 'Quick', 'Sunny', 'Cosmic'];
@@ -31,10 +31,12 @@ async function addUsage(uid, secs) {
   if (!uid || !payOn()) return; const k = `usage/${uid}/${today()}`, u = (await getJSON('arena', k)) || { secs: 0 };
   u.secs += secs; await setJSON('arena', k, u);
 }
-async function lbAdd(b, uid, p, xp) {
-  for (const period of ['all', week()]) {
+// A board row is the player's own total, copied from their record (never added to), so if
+// two players finish at the same moment and one write is lost, their next round puts it right.
+async function lbSet(b, uid, p, pr) {
+  for (const [period, xp] of [['all', pr.xp || 0], [week(), pr.wk?.w === week() ? pr.wk.xp : 0]]) {
     const k = `lb/${b}/${period}`, L = (await getJSON('arena', k)) || {};
-    L[uid] = { nick: p.nick, avatar: p.avatar, xp: (L[uid]?.xp || 0) + xp }; await setJSON('arena', k, L);
+    L[uid] = { nick: p.nick, avatar: p.avatar, xp }; await setJSON('arena', k, L);
   }
 }
 async function razorpay(path, payload) {
@@ -110,6 +112,7 @@ export default handled(async (req, ctx) => {
 
   // ---- rounds: start, answer one at a time, finish ----
   if (a === 'round' && !sub && m === 'POST') {
+    await limit(req, ctx, 'round', 40, 600);
     const b = await body(req), c = COURSES[b.course], diff = DIFF[b.difficulty], level = parseInt(b.level, 10);
     if (!c || diff === undefined || !(level >= 1 && level <= c.levels.length)) return fail(400, 'That level doesn\'t exist.');
     if (u) { const pl = await plan(u.id); if (!pl.unlimited && pl.usedSecs >= pl.freeSecs) return json({ error: `That's your ${freeMinutes()} free minutes for today. Come back tomorrow, or unlock unlimited practice for ₹${PRICE}.`, paywall: true }, 402); }
@@ -121,6 +124,7 @@ export default handled(async (req, ctx) => {
     return json({ round: r.id, boss, seconds: boss ? BOSS_SECS : null, ranked, questions: qs.map(q => ({ q: q.q, o: q.o, h: q.h, t: q.t, band: q.band })) });
   }
   if (a === 'round' && sub) {
+    await limit(req, ctx, 'answer', 400, 600);
     const r = await getJSON('arena', `round/${sub}`); if (!r || Date.now() - r.at > ROUND_TTL) return fail(404, 'That round has ended. Start the level again.');
     if (r.uid && (!u || u.id !== r.uid)) return fail(403, 'Not your round.');
     const qs = buildRound({ course: r.course, diff: DIFF[r.diff], level: r.level, seed: r.seed }), b = await body(req);
@@ -150,7 +154,8 @@ export default handled(async (req, ctx) => {
         xp = Math.round(xp); pr.max = Math.max(pr.max, passed ? r.level : 0);
         pr.stars = { ...(pr.stars || {}), [r.level]: Math.max(pr.stars?.[r.level] || 0, stars) };
         pr.best = { ...(pr.best || {}), [r.level]: Math.max(pr.best?.[r.level] || 0, Math.round(right / total * 100)) };
-        p.progress[k] = pr; p.xp = (p.xp || 0) + xp; await setJSON('arena', `player/${u.id}`, p); await lbAdd(k, u.id, p, xp); player = publicPlayer(p);
+        pr.xp = (pr.xp || 0) + xp; pr.wk = { w: week(), xp: (pr.wk?.w === week() ? pr.wk.xp : 0) + xp };
+        p.progress[k] = pr; p.xp = (p.xp || 0) + xp; await setJSON('arena', `player/${u.id}`, p); await lbSet(k, u.id, p, pr); player = publicPlayer(p);
       } else xp = Math.round(passed ? xp + (boss ? 50 : 20) : xp / 4);
       r.done = true; r.result = { right, total, need, passed, stars, xp, best, secs: Math.round(secs), par, late, firstClear, ranked: r.ranked, player, pct: Math.round(right / total * 100) };
       await setJSON('arena', `round/${r.id}`, r); return json(r.result);

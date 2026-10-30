@@ -19,9 +19,22 @@ async function draw() {
       <div class="field"><label for="link">Link (https)</label><input id="link" name="link"></div>
       <button class="btn">Publish</button></form>
     <h2>Published on ${esc(cur)}</h2><div class="list">${items.map(i => `<div class="item"><span class="grow"><b>${esc(i.title)}</b><small>${esc(i.pillar)}</small></span><button class="btn quiet small" data-del="${esc(i.id)}">Remove</button></div>`).join('') || '<p class="empty">Nothing yet.</p>'}</div></main>${footer()}`;
+  numbers();
   document.getElementById('tok').onchange = e => { try { sessionStorage.setItem('ose-admin', e.target.value); } catch {} };
   document.getElementById('app-s').onchange = e => { cur = e.target.value; draw(); };
   document.getElementById('f').onsubmit = async e => { e.preventDefault(); try { await call(`/api/content/${cur}`, 'POST', Object.fromEntries(new FormData(e.target))); toast('Published'); draw(); } catch (x) { toast(x.message); } };
   app.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => { try { await call(`/api/content/${cur}`, 'DELETE', { id: b.dataset.del }); draw(); } catch (x) { toast(x.message); } });
+}
+// interest taps and page views: counts only, nothing about who
+async function numbers() {
+  if (!key()) return;
+  const box = document.createElement('section'); box.className = 'wrap stack'; box.style.cssText = 'max-width:760px;padding-bottom:40px';
+  try {
+    const [i, v] = await Promise.all([call('/api/pulse/interest', 'GET'), call('/api/pulse/views', 'GET')]);
+    const days = Object.entries(v.days).filter(([, d]) => Object.keys(d).length);
+    box.innerHTML = `<h2>Interest in coming-soon apps</h2><div class="list">${Object.entries(i.counts).map(([a, n]) => `<div class="item"><span class="grow"><b>${esc(a)}</b></span><b>${n}</b></div>`).join('')}</div>
+      <h2>Page views, last 14 days</h2><div class="list">${days.map(([d, pages]) => `<div class="item"><span class="grow"><b>${d}</b><small>${Object.entries(pages).sort((a, b) => b[1] - a[1]).map(([p, n]) => `${esc(p)} ${n}`).join(' · ')}</small></span><b>${Object.values(pages).reduce((a, b) => a + b, 0)}</b></div>`).join('') || '<div class="item muted">No views yet.</div>'}</div>`;
+  } catch (x) { box.innerHTML = `<p class="muted">Numbers: ${esc(x.message)}</p>`; }
+  app.append(box);
 }
 draw();

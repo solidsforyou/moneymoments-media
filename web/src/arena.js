@@ -20,7 +20,7 @@ if (S.local && OLD[S.local.difficulty]) { S.local.difficulty = OLD[S.local.diffi
 // ---- who is playing, and where they've got to ----
 const prof = () => S.player || S.local;
 const ranked = () => S.player?.status === 'ok';
-const clsName = n => n === 13 ? 'College or working' : `Class ${n}`;
+const clsName = n => n === 13 ? 'College / CAT' : `Class ${n}`;
 const visible = () => S.cat.filter(c => c.track === 'school' ? c.cls === prof().cls : c.track === 'cat' ? prof().cls >= 11 : prof().cls >= 6);
 const board = (id, d = prof().difficulty) => `${id}.${d}`;
 const progressMap = () => (ranked() ? S.player.progress : S.local?.progress) || {};
@@ -90,7 +90,7 @@ function title() {
       <div class="stack"><h1>Practise like it's a game.</h1>
         <p class="lede">Make your player, pick Easy, Medium or Hard, and clear your NCERT chapters one world at a time. Your readiness score tells you how ready you are for the test.</p>
         <div class="row"><a class="btn" href="#/make">Make your player</a>${S.user ? '' : '<button class="btn quiet" data-act="login">I have an account</button>'}</div>
-        <p class="small muted">Class 1 to 12, CAT, money and digital skills. ${n.toLocaleString('en-IN')} questions so far. Play as a guest; sign up only to save and join the leaderboards.</p></div>
+        <p class="small muted">Classes 5 to 12 and CAT, free. ${n.toLocaleString('en-IN')} questions so far. Play as a guest; sign up only to save and join the leaderboards.</p></div>
       <div class="art">${ace()}</div>
     </section>
     <section class="wrap sec"><div class="how">
@@ -118,7 +118,7 @@ async function make() {
         <p class="small muted">Names are picked for you, so nobody puts their real name on a leaderboard.</p></div>
       <div class="stack">
         <h1 class="h2">${prof() ? 'Edit your player' : 'Make your player'}</h1>
-        <div><label>Your class</label><div class="classes">${Array.from({ length: 12 }, (_, i) => `<button class="chip" data-cls="${i + 1}" aria-pressed="${draft.cls === i + 1}">${i + 1}</button>`).join('')}<button class="chip wide2" data-cls="13" aria-pressed="${draft.cls === 13}">College or working</button></div></div>
+        <div><label>Your class</label><div class="classes">${Array.from({ length: 8 }, (_, i) => `<button class="chip" data-cls="${i + 5}" aria-pressed="${draft.cls === i + 5}">${i + 5}</button>`).join('')}<button class="chip wide2" data-cls="13" aria-pressed="${draft.cls === 13}">College / CAT</button></div></div>
         <div><label>Difficulty</label><div class="diffs">${DIFFS.map(([k, n, d]) => `<button class="diff d-${k}" data-diff="${k}" aria-pressed="${draft.difficulty === k}"><b>${n}</b><small>${d}</small></button>`).join('')}</div>
           ${prof() ? '<p class="small muted" style="margin-top:8px">Progress and leaderboards are kept separately for each difficulty; readiness counts all three.</p>' : ''}</div>
         ${Object.keys(AV).map(k => `<div><label>${LABELS[k]}</label><div class="row parts">${part(k)}</div></div>`).join('')}

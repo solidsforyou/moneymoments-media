@@ -1,7 +1,7 @@
 // Accounts: sign up, log in (password or Telegram), log out, me, app IDs, settings.
 import crypto from 'node:crypto';
 import { getJSON, setJSON } from '../lib/store.mjs';
-import { json, fail, body, handled, sessionCookie, clearCookie, currentUser, requireUser, HANDLE, id, clean, publicUser } from '../lib/http.mjs';
+import { json, fail, body, handled, limit, sessionCookie, clearCookie, currentUser, requireUser, HANDLE, id, clean, publicUser } from '../lib/http.mjs';
 
 const scrypt = (pw, salt) => new Promise((ok, no) => crypto.scrypt(pw, salt, 64, (e, k) => e ? no(e) : ok(k.toString('base64'))));
 const APPS = { prep: 'PrepID', good: 'GoodID', tm: 'Tomorrow ID' };
@@ -23,7 +23,7 @@ function telegramValid(d) {
 export default handled(async (req, ctx) => {
   const action = ctx.params.action, m = req.method;
   if (action === 'me' && m === 'GET') { const u = await currentUser(req); const t = process.env.TELEGRAM_BOT_TOKEN; return json({ user: publicUser(u), notify: u?.notify || 'app', telegramBotId: t ? Number(t.split(':')[0]) || null : null }); }
-  if (action === 'signup' && m === 'POST') {
+  if (action === 'signup' && m === 'POST') { await limit(req, ctx, 'signup', 5, 3600);
     const b = await body(req), name = clean(b.name, 60), handle = clean(b.handle, 24).toLowerCase().replace(/^@/, ''), age = parseInt(b.age, 10);
     if (!name) return fail(400, 'Add your name.');
     if (!HANDLE.test(handle)) return fail(400, 'Your ID can use 2 to 24 letters, numbers, dots or underscores.');
@@ -35,7 +35,7 @@ export default handled(async (req, ctx) => {
     const code = newCode(); u.rc = await scrypt(code.replace(/-/g, ''), salt);
     await saveUser(u); return ok(u, { recoveryCode: code });
   }
-  if (action === 'login' && m === 'POST') {
+  if (action === 'login' && m === 'POST') { await limit(req, ctx, 'login', 20, 900);
     const b = await body(req), u = await byHandle(clean(b.handle, 24).toLowerCase().replace(/^@/, ''));
     if (!u || !u.pw || (await scrypt(String(b.password || ''), u.salt)) !== u.pw) return fail(401, 'That ID and password don\'t match.');
     return ok(u);
@@ -56,7 +56,7 @@ export default handled(async (req, ctx) => {
     await saveUser(u); await setJSON('users', `tg/${d.id}`, { id: u.id });
     return ok(u);
   }
-  if (action === 'recover' && m === 'POST') {   // reset a password with the recovery code shown at sign-up
+  if (action === 'recover' && m === 'POST') { await limit(req, ctx, 'recover', 10, 3600);   // reset a password with the recovery code shown at sign-up
     const b = await body(req), u = await byHandle(clean(b.handle, 24).toLowerCase().replace(/^@/, ''));
     const code = String(b.code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
     if (!u || !u.rc || (await scrypt(code, u.salt)) !== u.rc) return fail(401, 'That ID and recovery code don\'t match.');

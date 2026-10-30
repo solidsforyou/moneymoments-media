@@ -1,6 +1,6 @@
 // Small helpers shared by every function: JSON responses, sessions, input checks.
 import crypto from 'node:crypto';
-import { getJSON } from './store.mjs';
+import { getJSON, setJSON } from './store.mjs';
 
 export const json = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers } });
 export const fail = (status, error) => json({ error }, status);
@@ -41,3 +41,15 @@ export const id = (n = 12) => crypto.randomBytes(n).toString('base64url');
 export const clean = (s, max = 2000) => String(s ?? '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '').trim().slice(0, max);
 export const publicUser = u => u && ({ id: u.id, name: u.name, handle: u.handle, ids: u.ids || {}, telegram: !!u.telegram, oseLinked: u.oseLinked !== false });
 export const handled = fn => async (req, ctx) => { try { return await fn(req, ctx); } catch (e) { if (e instanceof Response) return e; console.error(e); return fail(500, 'Something went wrong on our side.'); } };
+
+// Rate limits: at most `max` calls per `secs` from one address, per bucket. The address is
+// hashed with the day, so no IP address is ever stored.
+export async function limit(req, ctx, bucket, max, secs) {
+  if (process.env.OSE_NO_LIMITS === '1') return;   // tests only
+  const ip = ctx?.ip || req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0] || 'local';
+  const day = new Date().toISOString().slice(0, 10), win = Math.floor(Date.now() / 1000 / secs);
+  const who = crypto.createHash('sha256').update(`${secret()}|${day}|${ip}`).digest('base64url').slice(0, 16);
+  const k = `${bucket}/${who}/${win}`, n = ((await getJSON('rl', k)) || 0) + 1;
+  await setJSON('rl', k, n);
+  if (n > max) throw fail(429, 'Too many tries. Wait a few minutes and try again.');
+}

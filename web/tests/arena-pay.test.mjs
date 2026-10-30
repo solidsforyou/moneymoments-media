@@ -21,7 +21,7 @@ const agent = () => { let cookie = ''; return async (p, body) => {
   const r = await fetch(BASE + p, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) }, body: body && JSON.stringify(body) });
   const sc = r.headers.get('set-cookie'); if (sc) cookie = sc.split(';')[0]; return { status: r.status, data: await r.json() };
 }; };
-const put = (k, v) => { fs.mkdirSync(path.join(DATA, 'arena'), { recursive: true }); fs.writeFileSync(path.join(DATA, 'arena', encodeURIComponent(k).replace(/%2F/g, '__')), JSON.stringify(v)); };
+const put = (k, v) => { fs.mkdirSync(path.join(DATA, 'arena'), { recursive: true }); fs.writeFileSync(path.join(DATA, 'arena', encodeURIComponent(k).replace(/_/g, '%5F').replace(/%2F/g, '__')), JSON.stringify(v)); };
 
 test('free minutes run out, a parent pays, the child plays on', async () => {
   const parent = agent(), kid = agent(), guest = agent();
@@ -47,4 +47,10 @@ test('free minutes run out, a parent pays, the child plays on', async () => {
   assert.equal(again.data.until, ok.data.until);
   assert.equal((await kid('/api/arena/round', round)).status, 200);
   assert.equal((await kid('/api/arena/plan')).data.unlimited, true);
+});
+
+test('sign-ups are rate limited per address', async () => {
+  const a = agent(); let last;   // two sign-ups already happened above; the limit is 5 an hour
+  for (let i = 0; i < 4; i++) last = await a('/api/auth/signup', { name: 'X', handle: `spam${i}`, age: 30, password: 'longenough' });
+  assert.equal(last.status, 429);
 });

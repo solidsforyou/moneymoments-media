@@ -87,7 +87,7 @@ export async function makeAppId(app, label) {
   });
 }
 
-export const footer = () => `<footer class="foot wrap"><p>OpenSource Everything. Free, ad-free, built in the open.</p><nav><a href="/">All apps</a><a href="/privacy/">Privacy</a><a href="/delete-data/">Delete my data</a><a href="/build/">Build with us</a></nav></footer>`;
+export const footer = () => `<footer class="foot wrap"><p>OpenSource Everything. Free, ad-free, built in the open.</p><nav><a href="/">All apps</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/delete-data/">Delete my data</a><a href="/build/">Build with us</a></nav></footer>`;
 
 // The recovery code: shown once at sign-up, the only way back in without Telegram.
 export function showRecovery(code) {
@@ -130,3 +130,6 @@ export function ask(title, label, value = '') {
     d.addEventListener('close', () => res(out));
   });
 }
+
+// one anonymous page-view count per page load (no cookies, no IP, see pulse.mjs)
+try { if (!/^\/admin/.test(location.pathname)) navigator.sendBeacon?.('/api/pulse/view', JSON.stringify({ p: location.pathname.replace(/[^a-z0-9/-]/gi, '').slice(0, 60) || '/' })); } catch {}

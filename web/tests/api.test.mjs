@@ -11,7 +11,7 @@ const PORT = 18000 + Math.floor(Math.random() * 1000), BASE = `http://localhost:
 const DATA = fs.mkdtempSync(path.join(os.tmpdir(), 'ose-test-')), ADMIN = 'test-admin-token-0123456789abcdef';
 let srv;
 before(async () => {
-  srv = spawn('node', ['dev/server.mjs'], { env: { ...process.env, PORT: String(PORT), OSE_DATA_DIR: DATA, ADMIN_TOKEN: ADMIN }, stdio: 'pipe' });
+  srv = spawn('node', ['dev/server.mjs'], { env: { ...process.env, PORT: String(PORT), OSE_DATA_DIR: DATA, ADMIN_TOKEN: ADMIN, OSE_NO_LIMITS: '1' }, stdio: 'pipe' });
   await new Promise((ok, no) => { srv.stdout.on('data', d => String(d).includes('dev server') && ok()); srv.on('exit', c => no(new Error('server exited ' + c))); setTimeout(() => no(new Error('server timeout')), 8000); });
 });
 after(() => { srv.kill(); fs.rmSync(DATA, { recursive: true, force: true }); });
@@ -155,7 +155,7 @@ test('progress: saved per person, newest copy wins, only known items', async () 
 });
 
 // Arena: read the round's seed from storage so the test knows the right answers
-const roundAnswers = rid => { const r = JSON.parse(fs.readFileSync(path.join(DATA, 'arena', `round__${rid}`))); return buildRound({ course: r.course, diff: DIFF[r.diff], level: r.level, seed: r.seed }).map(q => q.a); };
+const roundAnswers = rid => { const r = JSON.parse(fs.readFileSync(path.join(DATA, 'arena', `round__${encodeURIComponent(rid).replace(/_/g, '%5F')}`))); return buildRound({ course: r.course, diff: DIFF[r.diff], level: r.level, seed: r.seed }).map(q => q.a); };
 async function play(agent, opts, right = 6) {
   const s = await agent.req('/api/arena/round', { method: 'POST', body: opts }); assert.equal(s.status, 200, JSON.stringify(s.data));
   const n = s.data.questions.length; assert.ok(n >= 4); assert.equal(s.data.questions[0].a, undefined);   // answers never reach the page
@@ -214,8 +214,21 @@ test('arena: under-18 players need a parent to approve', async () => {
   assert.equal((await zoya.req(`/api/arena/leaderboard?course=${C.id}&difficulty=easy`)).data.rows[0].nick, 'SunnyFox07');
 });
 
+test('pulse: interest taps and page views are counted, nothing else', async () => {
+  const x = new Agent();
+  assert.equal((await x.req('/api/pulse/interest', { method: 'POST', body: { app: 'nope' } })).status, 400);
+  assert.equal((await x.req('/api/pulse/interest', { method: 'POST', body: { app: 'tomorrow' } })).data.count, null);   // hidden until 50
+  assert.equal((await x.req('/api/pulse/interest')).data.counts.tomorrow, null);
+  assert.equal((await x.req('/api/pulse/interest', { headers: { authorization: `Bearer ${ADMIN}` } })).data.counts.tomorrow, 1);
+  assert.equal((await x.req('/api/pulse/view', { method: 'POST', body: { p: '/arena/' } })).status, 200);
+  assert.equal((await x.req('/api/pulse/view', { method: 'POST', body: { p: 'javascript:x' } })).status, 400);
+  assert.equal((await x.req('/api/pulse/views')).status, 401);
+  const v = (await x.req('/api/pulse/views', { headers: { authorization: `Bearer ${ADMIN}` } })).data.days;
+  assert.equal(Object.values(v).find(d => d['/arena/'])['/arena/'], 1);
+});
+
 test('pages are served', async () => {
-  for (const p of ['/', '/tomorrow/', '/openprep/', '/openprep/learn/', '/openprep/mock/', '/goodhabit/', '/goodhabit/sim/', '/privacy/', '/delete-data/', '/build/', '/admin/', '/play/', '/arena/', '/sw.js', '/data/sim.json']) { const r = await fetch(BASE + p); assert.equal(r.status, 200, p); }
+  for (const p of ['/', '/tomorrow/', '/openprep/', '/openprep/learn/', '/openprep/mock/', '/goodhabit/', '/goodhabit/sim/', '/privacy/', '/delete-data/', '/build/', '/admin/', '/arena/', '/terms/', '/sw.js', '/data/sim.json']) { const r = await fetch(BASE + p); assert.equal(r.status, 200, p); }
   assert.equal((await fetch(BASE + '/nope')).status, 404);
 });
 
