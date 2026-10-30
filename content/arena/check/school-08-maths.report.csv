@@ -1,0 +1,2 @@
+qid,key,checker,confidence,question,a,b,c,d,why
+school-08-maths-12-m8,D,A,high,"For that rainfall data, what is the difference between the wettest and driest month?",90 mm,10 mm,50 mm,80 mm,90 - 10.
