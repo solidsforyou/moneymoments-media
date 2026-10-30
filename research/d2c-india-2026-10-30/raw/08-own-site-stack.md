@@ -4,9 +4,12 @@ Researcher: helper 08. Pass 1: 30 Oct 2026. Pass 2 (verification): 30 Oct 2026.
 
 ## Pass 2 method and status (read first)
 
-- **Primary sources could not be opened in this session.** Every WebFetch to an official host failed with a DNS error (`getaddrinfo ENOTFOUND`): www.shopify.com (pricing), developers.facebook.com (WhatsApp pricing), www.npci.org.in (UPI statistics), www.shiprocket.in (rate card), www.delhivery.com, razorpay.com (Magic Checkout), www.gokwik.co, www.trai.gov.in. Secondary sites also failed: sociolabs.in, shipprime.live, hillteck.com, ecorpit.com. The session's network allowlist does not include these hosts. The session asked that they be allowed before retrying, so no further fetch attempts were made.
-- **What worked:** WebSearch only (standard mode, 11 queries in pass 2). Results are search snippets, not full pages. Snippets were cross-checked across several vendors where possible.
-- **Consequence:** Nothing in this file is "Verified in pass 2" from a primary page. Claims that several independent search results agree on are tagged **[Cross-checked, secondary]**. Anything still resting on one vendor or on the official page that could not be reached is **[Still unverified]**.
+- **WebFetch failed on every official host (DNS error), so pass 2 switched to curl through the proxy**, per the coordinator's instruction and the "How to fetch pages on pass 2" section of RULES.md. Results with curl:
+  - **Opened, primary (A or company page):** https://www.shopify.com/in/pricing (200), https://developers.facebook.com/docs/whatsapp/pricing (200), https://razorpay.com/pricing/ (200, but this is the US product), https://www.gokwik.co/pricing (200), https://razorpay.com/magic/ (200, marketing page, no India price list).
+  - **Not reachable:** https://www.npci.org.in (403 from the site/proxy; not retried, per the proxy policy). https://www.trai.gov.in (connect rejected by the egress proxy). https://checkout.shiprocket.in (connect rejected). https://www.shiprocket.in/shipping-rates/ (404). https://www.delhivery.com (no connection). https://business.whatsapp.com (connect rejected). The proxy log lists these as not allowed for this session. Per the proxy guidance, they were not retried or routed around.
+  - Shopify and Meta text was extracted from the HTML with a script. The Meta INR list-rate CSV/PDF is linked from the page, but the link could not be fetched, so the exact INR per-message rates are still unverified.
+- **Search (WebSearch, standard mode, 11 queries in pass 2)** gave snippets only. Snippets were cross-checked across vendors where possible.
+- **Tags:** **[Verified in pass 2]** = read from the primary page itself. **[Cross-checked, secondary]** = two or more search results agree, none primary. **[Still unverified]** = not confirmed.
 - The proxy log also shows 403 policy denials for several Indian press hosts (indianretailer.com, cxotoday.com, cbre.co.in, scconline.com, fonearena.com). Those were not retried, per the proxy guidance.
 
 Tag key: **[Cross-checked, secondary]** = two or more search results agree, none is primary. **[Corrected]** = pass 1 figure changed (old → new shown). **[Still unverified]** = not confirmed. Ratings as in RULES.md: A official, B press, C vendor/blog.
@@ -17,13 +20,13 @@ Tag key: **[Cross-checked, secondary]** = two or more search results agree, none
 
 1. **COD RTO is the core cost problem for an own site, but no independent India-wide figure exists.** Vendor and logistics blogs quote COD RTO between roughly 25% and 40%, with the commonest band at 25-35%. A 2026 search turned up a COD share of 45% of D2C orders (down from 55% in 2024), attributed to Growww Tech data. The source is a vendor. [C, cross-checked, secondary; see Findings 3]
 2. **Prepaid RTO is quoted at 2-8%.** Sources differ: 2-3% (ShipPrime, pass 1), 4-8% (several vendors, pass 2), and one outlier putting prepaid at 20-30%. Treat it as low single digits to high single digits. [C, conflict]
-3. **Shopify India Basic is about ₹1,499/month on annual billing or ₹1,994/month on monthly billing, before 18% GST.** Two separate search results agree. The official pricing page could not be opened. A third result (Socio Labs, pass 2) lists Basic at about ₹3,240/month, which conflicts. [Cross-checked, secondary; Still unverified against shopify.com]
-4. **Shopify Payments is reported as not live in India, so Basic carries a 2% fee on third-party gateways.** This is a single-vendor claim, not checked against Shopify. It matters for the cost model. [C, Still unverified]
-5. **Checkout tools sell uplift figures with no control group.** Razorpay's headline (40% conversion, 50% RTO reduction) is unattributed. The GoKwik Shopify listing shows a 2.5% extra charge on prepaid orders through the GoKwik gateway. Its COD fee is not confirmed: one search result gives 0.5% after a free tier, which vendor blogs state and the listing does not. [B/C; listing fee partly cross-checked]
+3. **Shopify India (official page, verified in pass 2): Basic ₹1,994/month monthly or ₹1,499/month yearly; Grow ₹7,447 or ₹5,599; Advanced ₹30,164 or ₹22,680; Plus from ₹1,75,000/month; all before GST.** The 2% / 1% / 0.6% / 0.2% fees on third-party payment providers for Basic / Grow / Advanced / Plus are also on the page. The page offers 3 days free, then ₹20/month for 3 months. [Verified in pass 2, A]
+4. **Shopify Payments availability in India is not stated in the extracted page text.** The page says only that Shopify Payments is available in certain countries. Pass 1's "not live in India" claim came from one vendor and is still unverified. Budget the 2% third-party fee on Basic until confirmed. [Still unverified]
+5. **Checkout tools sell uplift figures with no control group.** GoKwik's official pricing page (verified) lists an Emerging plan at ₹3,000/month platform fee for 0-2,000 orders/month, plus a COD charge of 3.5% "applicable on all transactions" (wording ambiguous), with Enterprise as custom pricing. This conflicts with the Shopify app-listing snippet (USD subscription tiers, 2.5% prepaid charge). Razorpay's /pricing page is the US product (2.70% + $0.30 per card), so India Magic Checkout pricing is not on any page reached. The "40% conversion / 50% RTO" headline was not on the Magic Checkout page as fetched; the page shows client-specific figures instead. [A for GoKwik page; C for conflicts]
 6. **Shipping rates are indicative only, and no official rate card for Shiprocket or Delhivery is public.** Shiprocket is quoted from about ₹20 per 500g by aggregator guides and from ₹23 on a plugin page. Its own help page says the rate card is inside the logged-in dashboard (Tools → Rate Card). COD fees are quoted at ₹25-50 or 1.5-2.5% of order value, whichever is higher, in one July 2026 guide. [C; Still unverified against Shiprocket]
 7. **UPI dominates digital payments, and the latest NPCI-derived figures are confirmed.** September 2026: about 24.07 bn transactions (-1.8% MoM, +23% YoY), value about ₹29.37 lakh crore (-1.5% MoM, +18% YoY), average 802 million a day. August 2026 was the record at 24.51 bn. Two search results agree. [Cross-checked, secondary; NPCI page not opened]
-8. **WhatsApp marketing messages cost about ₹0.8631 each in India from 1 Jan 2026 (up from ~₹0.7846).** Several sources agree. Utility and authentication are about ₹0.115 on most sources, but one provider lists ₹0.145 and another says a 1 Oct 2026 card date. Meta's India INR billing deadline is 31 Dec 2026. Meta's own page was not opened. [Cross-checked, secondary; Still unverified against Meta]
-9. **Cart-recovery templates are likely Marketing, which costs about 3-5x Utility.** No search result gave Meta policy text. Plan the budget on Marketing rates. [C, pattern; Still unverified]
+8. **Meta's own page (verified in pass 2) classifies a cart abandonment reminder template as Marketing.** Its worked example lists "Cart abandonment reminder | Template | Marketing". Meta says India has an INR list-rate card "available already", and that utility and authentication have volume tiers since 1 July 2025. The exact INR rates are not on the page text; the ₹0.8631 marketing figure (up from ~₹0.7846 on 1 Jan 2026) is from several BSP sites. Utility at ~₹0.115 vs ₹0.145 is still conflicting. [Verified in pass 2 for the category; Cross-checked, secondary for the rates]
+9. **Free entry point windows (Meta, verified):** if a business gets a user message, a reply within the customer service window opens a free-entry-point window of up to 7 days, during which marketing, utility, authentication and service messages are not charged. The first 1,000 service messages each month are free. [Verified in pass 2, A]
 10. **SMS DLT and variable pre-tagging are live compliance gates.** The TRAI direction is Press Release No. 133/2025, dated 18 Nov 2025, requiring pre-tagged variables such as URLs, app links and callback numbers. Sources disagree on the deadline: a 60-day window for existing templates versus templates created after 14 Jan 2026 needing pre-tags (a Fast2SMS claim). Check with the DLT operator. [B/C, conflict]
 11. **Conversion and AOV benchmarks disagree and none is verified for India.** Global e-commerce conversion is quoted at 1.4% (Littledata, pass 1), 1.7% (IRP, Apr 2026) and about 1.8% (late 2025, pass 2). ClickPost category AOVs are ₹1,586 (new-age fashion) and ₹1,854 (traditional fashion). Neither is a D2C-wide figure. [C]
 12. **COD confirmation and deposits are the most-cited RTO fixes, but the evidence is anecdote and vendor case studies.** Deposit plus OTP is claimed at 5-8% RTO, against 25-35% for unverified full COD. A COD-to-prepaid nudge within 30 minutes is claimed to convert 8-12% of COD orders. [C, anecdotal]
@@ -40,8 +43,9 @@ Tag key: **[Cross-checked, secondary]** = two or more search results agree, none
   - **Conflict (pass 2):** the Socio Labs guide lists Basic at roughly ₹3,240/month with about ₹2,410 on annual billing, and says INR values move with USD/INR. The search snippet said so; the page was not opened. [C; https://sociolabs.in/shopify-pricing-india-2026-plans-costs-guide/ (2026 per URL)]
   - **Promotion (pass 2):** a ₹20/month for three months offer appears in some articles. [C, Still unverified]
   - **Pass 1 conflict, still open:** older pages list Basic at ₹1,994 and Plus at ₹1,52,000 (likely pre-revision). Plus at ₹1,75,000 is not confirmed. [Still unverified]
-  - **Official check:** https://www.shopify.com/in/pricing failed with a DNS error in both passes. [A source, NOT FETCHED]
-- **Shopify India payments:** Pass 2 search reports that Shopify Payments is not live in India, so Basic uses a third-party gateway with a 2% fee. [Corrected: pass 1 said "not verified", pass 2 gives one vendor claim, Still unverified]
+  - **Official page (pass 2, curl, verified):** https://www.shopify.com/in/pricing. Pricing (monthly / yearly): Basic ₹1,994 / ₹1,499; Grow ₹7,447 / ₹5,599; Advanced ₹30,164 / ₹22,680; Plus from ₹1,75,000 monthly. Third-party payment provider fees: Basic 2%, Grow 1%, Advanced 0.6%, Plus 0.2%. POS Pro add-on ₹7,000/month per location. Marketplace connector 1% up to $99 USD/month. Promo: 3 days free, then ₹20/month for 3 months. Prices shown before GST. [Verified in pass 2, A]
+  - **Corrected:** the pass 1 Basic pair stands. Socio Labs' ₹3,240/month (pass 2 snippet) is contradicted by the official page and is rejected. Pass 1's "Plus ₹1,52,000" is a pre-revision figure, now replaced by ₹1,75,000 from the official page. Starter at ~₹399 is not on the extracted text; still unverified.
+- **Shopify India payments:** The official page (pass 2) says Shopify Payments is "available only in certain countries" and lists third-party fees per plan. It does not say India is or is not covered. One vendor claims it is not live in India. [Still unverified]
 - **Platform market share in India:** Sources disagree by about 2x.
   - WooCommerce about 43%, Shopify about 38%, Wix about 3% of sites. [C; https://www.digitaldawn.in/shopify-woocommerce-custom-guide-2025/ (2025)]
   - WooCommerce 45.13%, Shopify 28.61% of stores. [C; date not shown]
@@ -53,6 +57,8 @@ Tag key: **[Cross-checked, secondary]** = two or more search results agree, none
 ### 2. Checkout tools and conversion claims
 
 - **GoKwik (Kwik COD & Checkout Shopify app):**
+  - **GoKwik official pricing page (pass 2, curl, verified, https://www.gokwik.co/pricing):** "Emerging" plan (best for early-stage and mid-size D2C): platform fee ₹3,000/month for 0-2,000 orders/month; COD charge row reads "3.5% applicable on all transactions" plus "PA charges, as applicable" (wording ambiguous: may be a per-COD-order fee). "Enterprise": custom pricing for 2,000+ orders/month. Page claims 220M+ shopper network and 20,000+ brands. [Verified in pass 2, A; the 3.5% row needs a call to confirm]
+  - **Conflict:** this official page (₹3,000/month, 3.5% COD) differs from the Shopify app-listing snippet below (USD tiers, 2.5% prepaid). The app listing and the GoKwik site may describe different products or dates. [C conflict]
   - Shopify listing (pass 2 snippet): free to install with a free trial. Paid tiers listed in USD: $9.99/month Basic and $29.99/month for merchants over 500 orders a month. Both add a 2.5% charge on prepaid orders through the GoKwik Payment Gateway. Listing text varies by locale. [B/C, search snippet; https://apps.shopify.com/kwikcheckout (date not shown). Listing not opened. Still unverified]
   - **Corrected:** pass 1 said the listing notes "a 2.5% transaction fee on prepaid payments". Pass 2 adds the USD subscription tiers and the 500-order threshold. The subscription figures are still unverified.
   - **COD fee (conflict):** third-party comparison sites say 0.5% commission after a free tier of 1,000 COD orders a month, or zero for the first three months. The official listing snippet did not show this. [C, conflict]
@@ -61,7 +67,9 @@ Tag key: **[Cross-checked, secondary]** = two or more search results agree, none
   - RTO: contained RTO at 25% during a pre-festive sale that saw a 21% rise in COD orders. Company claim. [C; https://cxotoday.com/media-coverage/e-commerce-enabler-gokwik-says-over-3-4th-of-pre-festive-d2c-sales-on-came-from-tier-23-cities/ (date not shown; host returned 403 via proxy)]
   - Client claims (vendor case studies): Boult cut RTO 40.21%; Attitudist saw 2.5x prepaid conversions. [C; https://www.casestudies.com/company/gokwik (date not shown)]
   - 2026 financials or audited RTO data: not found.
-- **Razorpay Magic Checkout:** Headline 40% conversion growth and 50% RTO reduction, unattributed. Kalakaar case: 75% rise in order conversion, prepaid share 30% to 70%. Other case studies: Blue Tokai 5%, Root Deep 30%, Alphonso Mango 25%, Reload Casuals 57.91%. Single-page checkout: 20-40 bps conversion lift. Single-page mobile checkout gives 12-17% over multi-page (Razorpay's own benchmark). [C; https://razorpay.com/magic, https://razorpay.com/blog/category/magic-checkout/magic-checkout-case-studies, https://razorpay.com/blog/magic-checkouts-new-single-page-checkout/, https://razorpay.com/blog/high-converting-checkout-experience-guide/ (all dates not shown)]
+- **Razorpay Magic Checkout (pass 2, curl):** The Magic Checkout page (https://razorpay.com/magic/) shows named-client testimonials, not the 40%/50% headline: Borosil 7.3% higher order conversion and 70% prepaid share with 36.36% RTO reduction (client quotes, not dated); Uberlyfe 14% conversion rise. These are vendor-selected. The Razorpay /pricing page is the US product (2.70% + $0.30 per card; international cards +1.2%; ACH 0.5%, capped at $5); no India Magic Checkout price is on it. [Verified in pass 2 as page content, C as evidence]
+  - **Corrected:** pass 1 said the page headline was "40% higher conversion and 50% lower RTO". Not found on the page as fetched in pass 2. Pass 1's 40%/50% figure is unattributed and should not be used.
+  - Pass 1 headline notes follow (unverified in pass 2): Kalakaar case: 75% rise in order conversion, prepaid share 30% to 70%. Other case studies: Blue Tokai 5%, Root Deep 30%, Alphonso Mango 25%, Reload Casuals 57.91%. Single-page checkout: 20-40 bps conversion lift. Single-page mobile checkout gives 12-17% over multi-page (Razorpay's own benchmark). [C; https://razorpay.com/magic, https://razorpay.com/blog/category/magic-checkout/magic-checkout-case-studies, https://razorpay.com/blog/magic-checkouts-new-single-page-checkout/, https://razorpay.com/blog/high-converting-checkout-experience-guide/ (all dates not shown)]
   - Pricing: not found in pass 2 (razorpay.com failed DNS). [Still unverified]
 - **Simpl:** No Simpl-specific checkout data. [not found]
 - **Shiprocket Checkout:** Only the GoKwik comparison (Shiprocket blog, Aug 2026 per snippet). Pricing not found. [C; https://checkout.shiprocket.in/blog/gokwik-vs-fastrr-by-shiprocket-detailed-comparison/]
@@ -126,7 +134,8 @@ Tag key: **[Cross-checked, secondary]** = two or more search results agree, none
   - All-in marketing rate with BSP markup: ~₹0.95 (MyOperator) to ₹1.09 (AiSensy). Pass 1 said markups of 10-30%. [C; https://myoperator.com/blog/whatsapp-business-api-pricing-india-2026 ; https://m.aisensy.com/blog/whatsapp-business-pricing/]
   - Currency migration: eligible India accounts must move to INR billing by 31 Dec 2026. [Cross-checked, C; baat.ai and Montymobile snippets]
   - GST: 18% applies to provider invoices in India. [C]
-  - **Meta's official pricing page:** not opened (DNS failure in both passes). [A source, NOT FETCHED; Still unverified]
+  - **Meta's official pricing page (pass 2, curl, verified, https://developers.facebook.com/docs/whatsapp/pricing):** Meta has 47 rate-card markets as of 1 Oct 2026, including India. Rates are "fixed per published rates" for utility, authentication and service; marketing rates vary by market and category. INR list rates and volume tiers are linked as CSV/PDF from the page, and India is listed as "Available already". The INR amounts were not in the extracted text, so the ₹0.8631 / ₹0.115 figures remain **Still unverified** against Meta's own card. [Verified in pass 2 for structure; Still unverified for amounts]
+  - Pass 2 also found: free entry point windows and 1,000 free service messages per month, both from Meta's page.
 - **WhatsApp for abandoned carts:** Two sources say cart-recovery is usually Marketing by default, costing roughly 3-5x Utility. [C; https://chakrahq.com/id/article/whatsapp-abandoned-cart-recovery-d2c (date not shown); https://www.go4whatsup.com/guides/whatsapp-for-ecommerce/ (2026 per title)]. Meta policy text not found. [Still unverified]
   - Open rates: vendor claims 95-98% WhatsApp vs 18-25% email. No independent measure. [C]
   - Recovery claims: 15-25% (Go4WhatsUp); 25-30% within 30 minutes (CampaignHQ); up to 27% (Edesy). One Indian D2C case: about 12% of lost carts returned. [C]
@@ -211,20 +220,24 @@ Not applicable in the marketplace sense. An own site is found through its own tr
 
 Rating: A = official (none reachable this session); B = reputable press or regulator news; C = vendors, blogs, aggregators. Dates are those visible in search output; "date not shown" means no date was shown.
 
-**Not reachable in pass 2 (DNS failure, session allowlist):**
-1. https://www.shopify.com/in/pricing - A - NOT FETCHED (DNS)
-2. https://developers.facebook.com/docs/whatsapp/pricing - A - NOT FETCHED (DNS)
-3. https://www.npci.org.in/what-we-do/upi/upi-ecosystem-statistics - A - NOT FETCHED (DNS)
-4. https://www.shiprocket.in/shipping-rates/ - A - NOT FETCHED (DNS)
-5. https://www.delhivery.com/shipping-rates/ - A - NOT FETCHED (DNS)
-6. https://razorpay.com/magic/ - A/C - NOT FETCHED (DNS)
-7. https://www.gokwik.co/pricing - A/C - NOT FETCHED (DNS)
-8. https://www.trai.gov.in/ - A - NOT FETCHED (DNS)
-9. https://sociolabs.in/shopify-pricing-india-2026-plans-costs-guide/ - C - NOT FETCHED (DNS)
-10. https://shipprime.live/resources/blogs/cod-vs-prepaid-rto-profitability - C - NOT FETCHED (DNS)
-11. https://hillteck.com/blog/rto-trends-2026-indian-d2c.html - C - NOT FETCHED (DNS)
-12. https://ecorpit.com/whatsapp-business-api-cost-india-d2c-2026/ - C - NOT FETCHED (DNS)
-13. https://cxotoday.com/media-coverage/e-commerce-enabler-gokwik-says-over-3-4th-of-pre-festive-d2c-sales-on-came-from-tier-23-cities/ (GoKwik pre-festive; proxy returned 403 on this host in pass 2, so the item was cited from pass 1 only) - B/C - date not shown
+**Opened in pass 2 via curl through the proxy (primary):**
+1. https://www.shopify.com/in/pricing - A - opened, verified in pass 2
+2. https://developers.facebook.com/docs/whatsapp/pricing - A - opened, structure verified; INR amounts not in text
+3. https://www.gokwik.co/pricing - A (company page) - opened, verified in pass 2
+4. https://razorpay.com/magic/ - C (marketing page) - opened
+5. https://razorpay.com/pricing/ - A (company page, US product) - opened
+
+**Not reachable in pass 2 (curl and WebFetch both failed, or proxy refused):**
+6. https://www.npci.org.in/what-we-do/upi/upi-ecosystem-statistics - A - 403 from site/proxy; not retried
+7. https://www.shiprocket.in/shipping-rates/ - A - 404 (path); checkout.shiprocket.in connect rejected by proxy
+8. https://www.delhivery.com/shipping-rates/ - A - no connection
+9. https://www.trai.gov.in/ - A - connect rejected by proxy
+10. https://business.whatsapp.com/products/platform-pricing - A - connect rejected by proxy
+11. https://sociolabs.in/shopify-pricing-india-2026-plans-costs-guide/ - C - NOT FETCHED (DNS in WebFetch; not retried via curl)
+12. https://shipprime.live/resources/blogs/cod-vs-prepaid-rto-profitability - C - NOT FETCHED (DNS in WebFetch; not retried via curl)
+13. https://hillteck.com/blog/rto-trends-2026-indian-d2c.html - C - NOT FETCHED (DNS in WebFetch; not retried via curl)
+14. https://ecorpit.com/whatsapp-business-api-cost-india-d2c-2026/ - C - NOT FETCHED (DNS in WebFetch; not retried via curl)
+15. https://cxotoday.com/media-coverage/e-commerce-enabler-gokwik-says-over-3-4th-of-pre-festive-d2c-sales-on-came-from-tier-23-cities/ (GoKwik pre-festive; proxy returned 403 on this host in pass 2, so the item was cited from pass 1 only) - B/C - date not shown
 
 **Opened in pass 1 or cited from search snippets in pass 2 (not opened in full):**
 14. https://indiapost.org/shopify-pricing-india - C - date not shown

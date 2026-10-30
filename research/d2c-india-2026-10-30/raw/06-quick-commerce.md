@@ -1,190 +1,248 @@
 # 06 Quick commerce in India (2025-2026) and what it means for D2C brands
 
-Research date: 30 Oct 2026. Coverage: Blinkit, Zepto, Swiggy Instamart, Flipkart Minutes, Amazon Now. BB Now and Myntra M-Now were searched and nothing usable was found (see Open questions).
+Research date: 30 Oct 2026. Pass 1 date: 30 Oct 2026. Pass 2 (verification) date: 30 Oct 2026.
+Coverage: Blinkit (Eternal), Zepto, Swiggy Instamart, Flipkart Minutes, Amazon Now, BigBasket BB Now, Myntra M-Now, Slikk.
 
-Source ratings: A = official/govt/regulator/company filing; B = reputable press or analyst firm; C = blog, agency, vendor, YouTube. Dates are taken from the URL or article where visible; "undated" means no date was visible.
+## Read this first: what pass 2 could and could not verify
 
-## Key takeaways
+- NETWORK: In pass 2 this session could not open any primary page. Official sites (blinkit.com, seller and partner pages, eternal.com, swiggy.com, bain.com, redseer.com, sebi.gov.in, pib.gov.in, cci.gov.in, sell.amazon.in, myntra.com) and most news sites (inc42.com, storyboard18.com, yourstory.com, outlookbusiness.com, medianama.com, businesstoday.in, indianstartupnews.com, business-standard.com, and others) failed DNS resolution. Only WebSearch worked.
+- So NO claim below carries a "Verified in pass 2" tag from a primary page. The tags used instead:
+  - [CS] = corroborated in pass 2 by two or more independent search-result snippets (titles, URLs and summaries from different outlets). The primary document was NOT opened.
+  - [CORR] = corrected in pass 2 (old value and new value both shown).
+  - [SU] = still unverified; no usable confirmation found.
+  - [FACT-B] / [FACT-C] etc. keep the pass 1 source rating (A official, B reputable press or analyst, C blog, agency, vendor, YouTube).
+- Action needed to finish verification: allow the official domains (eternal.com, swiggy.com, bain.com, redseer.com, zeptonow/zepto domains, seller.blinkit.com, sebi.gov.in, cci.gov.in, pib.gov.in, sell.amazon.in) and the news domains listed above, then re-run WebFetch on: Eternal Q2 FY27 shareholder letter, Swiggy Q2 FY27 shareholder letter (and the Q1 letter PDF at swiggy.com/corporate/wp-content/uploads/2026/07/Q1-FY2027-Shareholder-letter.pdf), Zepto updated DRHP (SEBI), Bain "How India Shops Online 2026", the Redseer report page, and the Maharashtra FDA order.
 
-1. Quick commerce (QC) GMV is roughly USD 10-11 bn in 2025 on the most-cited (Bain-based) estimate, and the rupee-based CareEdge series puts it at about Rs 64,000 crore in FY25, rising toward Rs 2 lakh crore by FY28. Definitions differ (GMV vs GOV vs TAM), so check the base before comparing. [B]
-2. Google-Redseer (Oct 2026) projects QC going from about USD 13 bn in FY26 to USD 90 bn by FY31, with growth expected from metros and non-grocery categories. This is the most aggressive forecast found; treat it as a projection. [B, via secondary coverage]
-3. Blinkit leads QC. Estimates range from about 46% to 49% of QC (orders or GOV) in 2026, Instamart second or third, and Zepto's share has slipped. Estimates conflict on method and date; direction is consistent. [B/C]
-4. Blinkit turned adjusted EBITDA positive in Q3 FY26 and reported a profit of about Rs 102 crore in Q1 FY27 (figures vary across sources; one outlier reports Rs 365 crore). [B]
-5. Zepto is still loss-making. FY26 revenue was about Rs 22,624 crore (roughly doubled), net loss Rs 5,905 crore (up from Rs 4,699 crore), and loss per order fell from Rs 136 to Rs 79 (March 2026 quarter: Rs 59). [A, company's updated DRHP as reported by Outlook Business, 2026]
-6. Instamart's adjusted EBITDA loss was Rs 778 crore in Q1 FY27 on GOV of Rs 7,907 crore (about 9.8% of GOV). Contribution margin is around breakeven (sign disputed between sources). [B]
-7. Platform take is rising. Blinkit moved from fixed category commissions (reported as 3-18%) to price-band variable commissions. Vendor study sample (C) puts typical commission rising from 12% (2023) to about 24% (2026). Instamart take rate was 15.2% in Q2 FY25 vs Blinkit 18.9%. [B for historic take rates, C for 2026 estimates]
-8. Ads are now a major revenue line. Zepto disclosed ad revenue of Rs 1,636 crore (up 151% YoY); industry estimates for all three platforms combined are Rs 3,000-3,500 crore. Brands increasingly pay for visibility. [B for Zepto disclosure; C for industry total]
-9. Reported seller-side fees include a mandatory Blinkit listing charge of Rs 25,000 per SKU per state credited to an ad wallet. This comes from a single seller post and one startup article; it is not confirmed by a platform document. [C, unverified]
-10. Regulatory pressure is building from several directions: state food-safety/FDA licence suspensions for dark stores (Maharashtra suspended 14 dark stores of Blinkit, Zepto and Instamart), FSSAI penalties, distributor complaints to CCI/DPIIT about FDI inventory rules, and CCI cost-of-production rules (May 2025) aimed at predatory pricing. No CCI final outcome was found. [B]
-11. Expansion is heavy among legacy platforms: Flipkart Minutes reportedly reached about 1,000 micro-fulfilment centres across about 130 cities, targeting 1,500 by end-2026; Amazon Now reported about 300 to 700 MFCs (sources conflict) in Delhi NCR, Mumbai and Bengaluru, with plans to double. [B/C]
-12. Beauty is the clearest non-grocery growth story with a quantified number: Redseer says QC is about 15% of online beauty sales now and could reach about 40% by 2030. Fashion and electronics QC growth was not quantified in any source found. [B]
-13. For large legacy FMCG (Britannia, Tata Consumer, Dabur) QC is already 70-75% of their online sales. This does not transfer to D2C brands; no D2C-specific share figure was found. [C]
-14. Ranking on QC apps is driven by stock availability at the nearest dark store, paid placement (sponsored search, category and homepage banners), and organic signals, per vendor sources. Paid and organic positions should be tracked separately. No platform ranking documentation was found. [C]
-15. Several founders report their own D2C website sales dipping after QC listing; this is anecdotal and appears in a secondary blog. [C]
+## Key takeaways (pass 2, most important first)
+
+1. Q2 FY27 is out, so the pass 1 "Q1 FY27 latest" framing is stale. Eternal reported on 21 Oct 2026 and Swiggy on 22 Oct 2026. [CORR, CS]
+2. Blinkit Q2 FY27: NOV Rs 20,940 cr, up 79.3% YoY and 22.2% QoQ; adjusted EBITDA Rs 184 cr, 0.9% of NOV, the sixth straight quarter of improvement; 2,751 stores after 308 net additions. Eternal consolidated net profit about Rs 125 cr (up 92%), consolidated revenue about Rs 24,138 cr (up 78%). [CS]
+3. Instamart Q2 FY27: GOV about Rs 9,230 cr (up about 31% YoY); adjusted EBITDA loss Rs 895 cr, about 9.7% of GOV, up from Rs 778 cr in Q1. Swiggy says the adjusted EBITDA losses "peaked out in Q2FY27" and guides about 100 bps margin improvement in the December quarter. Instamart Q2 NOV is disputed (Rs 6,954 cr vs Rs 6,594 cr). [CS; conflict open]
+4. Zepto FY26 (updated DRHP, June 2026): operating revenue Rs 22,624 cr; restated net loss Rs 5,905.19 cr; advertising revenue Rs 1,635.7 cr, up 151% from Rs 651.2 cr in FY25 and about 7.2% of operating revenue. The pass 1 "14% ad share" figure is rejected. [CS; DRHP not opened]
+5. Zepto IPO is on hold, not "timing unconfirmed": SEBI observation letter 8 May 2026, updated DRHP filed about 8-9 June 2026 (fresh issue Rs 8,010 cr), no listing date set as of Oct 2026, reported private round instead. [CORR, CS]
+6. Market size, Bain (2026 edition, search summary of the Bain page): quick commerce about USD 10-11 bn GMV in 2025, 16-17% of e-retail GMV, doubling yearly since 2023, projected USD 65-70 bn by 2030. Pass 1 cited the Bain page through a regional URL; the canonical 2026 page is bain.com/insights/how-india-shops-online-2026/. [CORR, CS]
+7. Market size, Google-Redseer (Oct 2026, Redseer report page summary): about USD 13 bn in FY26 to about USD 90 bn in FY31P (about 41-48% CAGR), metros about 60% of incremental growth. Redseer's separate FY26 analysis puts QC at USD 13-14 bn, about 17% of online retail GMV, rising to 25-30% of online retail GMV by FY30. Other forecasts: Anand Rathi about USD 60 bn for FY31; Inc42 Datalabs about USD 68 bn by 2031. [CS]
+8. The brand's economics have moved from commission to wholesale. From 1 Sept 2025 Blinkit began buying inventory from sellers; secondary sources say about 90% of NOV was from its own inventory by Q3 FY26. Blinkit Q2 revenue (Rs 19,152 cr) is now close to NOV (Rs 20,940 cr), so the old "18.9% take rate" no longer describes what a brand pays. [CORR, CS, B/C]
+9. Blinkit publishes no seller or brand rate card (several guides say so). The 2025 price-band commission (2% under Rs 500, 6% for Rs 500-700, 18% for Rs 1,200 and above) is confirmed for March 2025 by Business Standard. The 2026 band tables from agency blogs conflict with each other. [CS for 2025; SU for 2026]
+10. The Rs 25,000-per-SKU Blinkit listing fee is still NOT confirmed: one 2026 guide says it is charged and credited to an ad wallet, another says there is no listing fee. Do not budget it. [SU]
+11. Regulation in 2026 is state-led food-safety action, not a central competition ruling. Maharashtra FDA suspended 14 food licences linked to Blinkit, Zepto and Instamart around 15 Aug 2026; Telangana suspended four dark-store licences (Instamart, Flipkart, Zepto) on 30 Sep 2026; FSSAI is drafting e-commerce food rules. No CCI order found for 2026. [CS, with one C-rated tracker for Telangana]
+12. Rival expansion: Amazon announced on 1 Oct 2026 that Amazon Now is in more than 120 cities with close to 800 micro and urban fulfilment centres, and targets 300+ cities (it was in 3 cities in late 2025). Flipkart Minutes: about 1,000 MFCs in about 130 cities (June 2026), target 1,500 by end-2026. [CS; counts disputed]
+13. Fashion on quick commerce: Myntra M-Now (launched Dec 2024) is reportedly in about 10 cities (mid-2026); Slikk (Bengaluru, 60-minute fashion) raised a USD 10 mn Series A. Blinkit dropped its "10-minute" tagline by Jan 2026. No fashion-on-QC GMV figure and no Zepto fashion data were found. [C]
+14. BB Now: a dark-store tracker counts BigBasket at 664 dark stores in 108 cities (July 2026), against about 850 stated by BigBasket late 2025. No BB Now brand-onboarding terms were found. [C, conflict]
+15. Ranking and visibility on the apps remain unverified: no platform document was found. Vendor sources still say stock at the nearest dark store and paid placement drive visibility. [C, unchanged]
 
 ## Findings by sub-question
 
 ### 1. Market size and growth
 
-- FACT: Bain-based estimate puts Indian QC GMV at USD 10-11 bn in 2025, roughly doubling annually since 2023. Cited via Ken Research. [B, Ken Research citing Bain; undated page, Bain "How India Shops Online 2026" referenced] https://bain.com/insights/how-india-shops-online-2025 (2025) and https://www.bain.com/ru/insights/how-india-shops-online-2026/ (2026)
-- FACT: Ken Research's own sizing also lands near USD 10-11 bn for 2025; top eight cities produced about 68% of QC GMV in 2025. [C, market research vendor] https://www.kenresearch.com/industry-reports/india-hyperlocal-commerce-market (undated)
-- FACT: Markntel puts the market at about USD 5.6 bn (2025) and USD 5.8 bn (2026), and says QC was nearly 17% of India's e-commerce GMV in July 2026. Lower than Bain-based figure. [C] https://www.marknteladvisors.com/query/request-customization/india-quick-commerce-market.html (2026)
-- FACT: CareEdge: QC orders on Blinkit and Instamart at about Rs 64,000 crore in FY25 (from Rs 30,000 crore in FY24). CareEdge projects about Rs 2 lakh crore (about Rs 2 trillion) by FY28. [B] https://ianslive.in/india-quick-commerce-market-to-triple-to-rs-2-lakh-crore-by-fy28-report--20250710153349 (10 Jul 2025) and https://hdfcsky.com/news/quick-commerce-orders-in-india-soar-to-rs-64000-crore-in-fy25-set-to-triple-by-fy28 (undated)
-- FACT: Google-Redseer study: QC from about USD 13 bn (FY26) to USD 90 bn (FY31), growth from metros and non-grocery categories. [B, secondary coverage] https://yourstory.com/2026/10/india-quick-commerce-set-for-usd-90b-boom-by-2031-google-redseer-study (Oct 2026); also https://newsbytesapp.com/news/business/report-forecasts-indias-quick-commerce-to-reach-90-billion/tldr (2026, undated)
-- FACT: Redseer: overall Indian online retail above USD 90 bn in 2026, growing 22-24% YoY, fastest in five years. [B] https://bwretailworld.com/fmcg/indias-online-retail-sector-to-cross-90-bn-in-2026 (2026, undated); see also https://www.theweek.in/news/biz-tech/2026/09/18/india-festive-online-retail-growth.amp.html (18 Sep 2026)
-- FACT: One outlier (Coherent Market Insights) puts QC at USD 1.7 bn in 2025, rising to USD 53.5 bn by 2032. Treat as an outlier. [C] https://www.coherentmi.com/press-releases/india-quick-e-commerce-market (undated)
-- PATTERN: Estimates differ by roughly 2x for the same year (USD 5.6 bn vs USD 10-11 bn for 2025), so the GMV definition matters more than the headline number.
+- FACT: Bain (2026 edition, search summary of its insight page): QC GMV about USD 10-11 bn in 2025, doubling yearly since 2023, 16-17% of e-retail GMV, projected USD 65-70 bn by 2030 and 45-50% of incremental e-retail growth. Bain's e-retail total for 2025 is USD 65-66 bn, up 19-21% (Business Standard, 9 Apr 2026 by URL). [B, CS] https://www.bain.com/insights/how-india-shops-online-2026/ (2026); https://www.business-standard.com/industry/news/india-s-e-retail-market-hits-66-billion-as-growth-reaccelerates-126040901077_1.html (9 Apr 2026)
+- CORRECTED: Pass 1 cited a 2025 Bain URL and a regional /ru/ path. The canonical 2026 page is the URL above. The 2030 projection of USD 65-70 bn is new to this file. [CORR]
+- FACT: Google-Redseer "Think Quick Commerce: Unlocking the USD 90 bn opportunity", released Oct 2026: about USD 13 bn FY26 to about USD 90 bn FY31P, about 5-7x; survey of 1,200+ respondents, plus Redseer benchmarks. Non-grocery (beauty, personal care, home essentials, electronics) from about USD 3 bn FY26 to USD 21-27 bn FY31P. Monthly transacting users from about 40-44 mn to over 100 mn (one summary). [B, CS] https://redseer.com/reports/think-quick-commerce-unlocking-the-90bn-opportunity/ (Oct 2026); https://www.deccanherald.com/amp/story/business/companies/quick-commerce-to-reach-90-billion-by-fy31-capturing-5-of-retail-market-google-redseer-report-4173655 (Oct 2026); https://www.ibef.org/news/india-s-quick-commerce-market-poised-for-seven-fold-growth-to-us-90-billion-by-fy31-report (2026)
+- FACT: Redseer's separate FY26 analysis: QC about USD 13-14 bn, about 17% of online retail GMV, rising to 25-30% of online retail GMV by FY30. [B, CS] https://redseer.com/articles/speed-in-metro-scale-in-bharat-indias-80-bn-online-retail-story/ (2026, date not visible)
+- FACT: CareEdge: QC orders on Blinkit and Instamart about Rs 64,000 cr in FY25, projected about Rs 2 lakh cr by FY28. [B, pass 1, not re-checked in pass 2] https://ianslive.in/india-quick-commerce-market-to-triple-to-rs-2-lakh-crore-by-fy28-report--20250710153349 (10 Jul 2025) [SU for pass 2]
+- Pass 1 outliers, NOT re-checked in pass 2 and low weight: Markntel (USD 5.6 bn 2025) [C]; Coherent Market Insights (USD 1.7 bn 2025) [C]; Ken Research (about USD 10-11 bn 2025) [C]. [SU]
+- PATTERN: The spread between estimates is still about 2x for the same year. Define GMV vs GOV vs TAM before comparing. Redseer and Bain now agree within about USD 1-3 bn for FY26/2025, which makes them the anchor.
 
 ### 2. Platform share and standing
 
-- FACT: Blinkit ~1,816 stores; Instamart ~1,102; Zepto 750-1,000 (count varies by source; undated/2026). Another source says Blinkit had 2,443 active dark stores across 300 cities in June 2026 (Inc42). Store counts conflict. [C/B] https://apparelresources.com (Blinkit, Instamart counts); https://inc42.com/buzz/fssai-penalises-amazon-flipkart-instamart-over-regulatory-non-compliance/ (2026)
-- FACT: Share estimates: 49% Blinkit / 29% Zepto / 29% Instamart (one 2026 source; sums over 100, so inconsistent); 46% / 35% / 19% of orders (another); BofA says Blinkit above 50%; Motilal Oswal early 2025: 47% / 29% / 24%. [C, mixed] Sources: https://www.cxodigitalpulse.com/blinkit-and-instamart-gain-market-share-amid-zeptos-slowdown-focus-shifts-to-profitability/ (2026, undated)
-- FACT: ICICI Securities: Blinkit GOV grew over 25% and Instamart about 22% in Apr-Jun 2026 quarter, faster than the sector (under 20% QoQ); Zepto growth slowed as it cut cash burn. [B, via secondary] https://www.outlookbusiness.com/explainers/has-quick-commerce-growth-hit-a-speed-bump-inside-blinkit-instamart-zeptos-q1-fy26-performance (2025/2026, date partly visible)
+- CORRECTED: Store counts. Blinkit: 1,816 (pass 1, apparelresources, stale). Blinkit had 2,443 stores in June 2026 (Inc42, pass 1), and 2,751 stores at end Sept 2026 after 308 net additions (Eternal Q2 FY27, search summary). The two numbers reconcile (2,751 minus 308 = 2,443). [CORR, CS] https://www.indianstartupnews.com/news/eternal-q2-profit-jumps-92-to-rs-125-crore-as-blinkit-earns-rs-184-crore-and-targets-3500-stores-12696316 (21-22 Oct 2026)
+- CORRECTED: Instamart stores. Pass 1 gave 1,102 (apparelresources). Swiggy's own disclosure (search summary) is 1,171 active dark stores at end June 2026 across 131 cities, with about 75 more planned for Q2. The end-Q2 count was not found. Another analysis gives 1,143 stores in 129 cities. Use 1,171 (Q1 FY27). [CORR, CS] https://www.bwdisrupt.com/article/swiggy-to-add-around-75-instamart-dark-stores-in-q2-fy27-amid-rising-demand-617350
+- Zepto: 750-1,000 stores (pass 1, undated) [SU].
+- Market share (pass 1): 49/29/29 (sums above 100%), 46/35/19 of orders, BofA above 50% for Blinkit, Motilal early 2025 47/29/24. None re-checked. The pass 1 "46-49% Blinkit in 2026" stays [SU]. Blinkit's Q2 growth (79% YoY NOV) versus Instamart's (about 31% GOV) is consistent with Blinkit gaining share, but no share number was confirmed. [SU]
+- Flipkart Minutes: about 1,000 MFCs in about 130 cities (June 2026, company figure as reported). Target 1,500 by end-2026 (UBS). A later claim of 150+ cities and about 1,200 centres could not be dated. A CLSA report (Aug 2026) puts Minutes at 627 dark stores in the top 10 cities vs Instamart's 615 (mapping excludes Amazon). [CS, city count disputed] https://entrackr.com/news/flipkart-targets-over-1500-quick-commerce-dark-stores-by-2026-ubs-report-11461258; https://inc42.com/buzz/quick-commerce-race-heats-up-flipkart-minutes-eyes-1500-dark-stores-amazon-300-cities/
+- BB Now (BigBasket): tracker counts 664 dark stores in 108 cities (July 2026, C); BigBasket's chief buying officer said about 850 dark stores in late 2025 (Business Standard, pass 2 snippet). Conflicting; no city count confirmed. [C, conflict] https://quickcommercemap.com/changelog/2026-07 ; https://www.business-standard.com/companies/news/quick-commerce-platform-bigbasket-targets-50-60-revenue-growth-in-fy26-125121400480_1.html (Dec 2025)
 
 ### 3. Profitability and losses
 
-- FACT: Zepto FY26 (updated DRHP): operating revenue about Rs 22,624 crore (roughly doubled); total expenses Rs 29,026 crore (up 79%); net loss Rs 5,905 crore vs Rs 4,699 crore in FY25; loss per order Rs 136.1 (FY25) to Rs 78.8 (FY26) to Rs 59.4 (Mar 2026 qtr). [A-company filing as reported; B press] https://www.outlookbusiness.com/markets/ipo-bound-zepto-doubles-revenue-in-fy26-but-losses-reach-5905-cr (2026, undated)
-- FACT: Zepto IPO status conflicts: one source says SEBI approval in May 2026 with no open date set as of Oct 2026; another (June 2026) reports a target of about USD 1.1 bn listing. Treat timing as unconfirmed. [B/C] https://www.businesstoday.in/amp/latest/corporate/story/inside-zeptos-1bn-ipo-revenue-surge-mounting-losses-cac-pressures-ed-cloud-535709-2026-06-09 (9 Jun 2026) - fetch failed in this session, so the article's content came from search snippet only.
-- FACT: Blinkit Q1 FY27: adjusted revenue Rs 15,664 crore (up 18.4% QoQ), NOV Rs 17,132 crore (up 86% YoY), adjusted EBITDA about Rs 102 crore (vs a loss of Rs 162 crore in Q1 FY26 per one source). Fifth consecutive quarter of improvement. [B] https://inc42.com/buzz/blinkits-q1-adjusted-ebitda-rises-to-%e2%82%b9102-cr-others-losses-rise-on-nugget-rd/ (Jul 2026, date not visible in snippet). One source (IndiaInfoline) reports Rs 365 crore EBITDA, which conflicts; treat as error until checked against Eternal's filing.
-- FACT: Eternal consolidated Q1 FY27 net profit Rs 92 crore; down 47% QoQ from Rs 174 crore. 'Others' segment loss widened to Rs 94 crore. [B] https://yourstory.com/2026/07/eternal-rs-92-crore-net-profit-first-quarter-of-fy27 (Jul 2026)
-- FACT: Instamart Q1 FY27: GOV Rs 7,907 crore (up nearly 40% YoY); adjusted EBITDA loss Rs 778 crore (vs Rs 896 crore a year earlier); 1,171 active dark stores. Contribution margin reported as both -0.2% and +0.2% (conflict). [B] https://inc42.com/buzz/swiggys-instamart-hits-contribution-margin-breakeven-in-q1-fy27/ (Jul-Aug 2026)
-- CONFLICT: One Inc42 snippet says Instamart's Q2 FY27 adjusted EBITDA loss rose to Rs 895 crore and Swiggy said losses peaked in Q2. Q2 FY27 is dated after this report's date in some coverage; not verified against a filing. [C/B, unverified]
+- CS, Blinkit Q2 FY27 (released 21 Oct 2026): revenue Rs 19,152 cr (up about 94% YoY, per Medianama); NOV Rs 20,940 cr (up 79.3% YoY, 22.2% QoQ); adjusted EBITDA Rs 184 cr = 0.9% of NOV, against a steady-state target of about 6% that the company cites; year-ago loss Rs 156 cr (one source). Consolidated adjusted EBITDA reported as Rs 666 cr in one source and Rs 750 cr in another (definitions differ; not resolved). [CS] https://www.angelone.in/news/stocks/eternal-share-price-gains-2-7-as-blinkit-net-order-value-jumps-79-3-in-q2-fy27 ; https://www.medianama.com/2026/10/223-eternal-125-crore-profit-q2fy27/ (Oct 2026); https://www.businesstoday.in/technology/artificial-intelligence/story/blinkit-is-eternals-proven-bet-darkai-is-the-next-gamble-563252-2026-10-23 (23 Oct 2026)
+- CS, Eternal consolidated Q2 FY27: net profit about Rs 125 cr (up 92%); revenue about Rs 24,138 cr (up 78%). One outlier reports revenue of Rs 3,663 cr (rejected: a different line item). Q1 FY27 net profit Rs 92 cr (pass 1) is consistent with this sequence. [CS] https://yourstory.com/2026/10/eternal-q2-net-profit-rises-92-fy27-revenue-up-78-percent (21-22 Oct 2026)
+- CS, Blinkit Q1 FY27 adjusted EBITDA about Rs 102 cr (pass 1, Inc42). The Q2 letter's "sixth straight quarter of improvement" is consistent with it, but the Q1 figure itself was not re-checked. The Rs 365 cr figure (IndiaInfoline) remains the outlier. [SU for Q1 exact figure]
+- CS, Instamart Q2 FY27 (released 22 Oct 2026): GOV about Rs 9,230 cr, up about 31% YoY; adjusted EBITDA loss Rs 895 cr (about -9.7% of GOV, which checks out arithmetically: 895 / 9,230 = 9.7%), up from Rs 778 cr in Q1 (Q1 check: 778 / 7,907 = 9.8%, matches pass 1). Swiggy's letter says losses "peaked out in Q2FY27"; about 80 bps of contribution-margin gain expected from the inventory-led model over 2-3 quarters; about 100 bps adjusted EBITDA margin improvement guided for the December quarter; break-even needs about 2.3x current scale. [CS] https://upstox.com/news/market-news/earnings/swiggy-q2-results-loss-narrows-yo-y-to-922-crore-revenue-surges-36-check-numbers/article-202243/ ; https://openthemagazine.com/business/swiggy-q2-analysis-have-instamarts-losses-finally-peaked ; https://insights.tridge.com/speaker-product-news-reports/KJLyFXpzJzgKuB1Gqsm5QUKHGgR43AVdqLEy7SqWs3NtGLp1u4VYmXbi
+- CONFLICT (open): Instamart Q2 NOV Rs 6,954 cr (up 31.4%) vs Rs 6,594 cr (up 34.8%). Q1 NOV was Rs 5,817 cr (up 38.9%) against GOV Rs 7,907 cr (BW Disrupt). [SU]
+- CS, Swiggy Q2 consolidated: net loss Rs 922 cr (down from Rs 1,092 cr); revenue about Rs 7,571 cr (up 36%); food delivery GOV about Rs 10,054 cr (up 17.7%) with a record adjusted EBITDA of Rs 341 cr. Q1 consolidated adjusted EBITDA loss is reported as Rs 651 cr in one source and Rs 770 cr in another. [CS, Q1 figure conflicting]
+- CORRECTED: Instamart contribution margin. Pass 1 showed -0.2% and +0.2% for Q1 FY27. Swiggy's Q1 letter (search summary) describes Q1 FY27 as contribution-margin breakeven. The sign is still disputed. [CORR-partial, SU]
+- FACT, Zepto FY26 (updated DRHP, June 2026; reported by several outlets): operating revenue about Rs 22,624 cr (roughly doubled); restated net loss Rs 5,905.19 cr (vs Rs 4,699 cr FY25). Advertising revenue Rs 1,635.7 cr, up 151% from Rs 651.2 cr. Ad spend about Rs 1,389 cr in FY26 (one analysis), so ad revenue exceeded ad spend (one analysis). [CS, DRHP not opened] https://www.storyboard18.com/brand-marketing/zepto-ad-revenue-jumps-151-percent-in-fy26-ahead-of-ipo-debut-ws-l-100656.htm ; https://www.forbesindia.com/article/news/deep-dive/how-zeptos-burning-cash-chasing-growth/2994869/1 ; https://www.outlookbusiness.com/markets/ipo-bound-zepto-doubles-revenue-in-fy26-but-losses-reach-5905-cr (2026, pass 1)
+- SU: Zepto total expenses (Rs 29,026 cr) and loss per order (Rs 136.1 FY25, Rs 78.8 FY26, Rs 59.4 Mar 2026 qtr) from pass 1 were not re-confirmed in pass 2. [SU]
 
 ### 4. How a brand gets listed (onboarding, distributors, margins, fees, ads)
 
-- FACT: Blinkit commission moved from fixed category rates (reported 3-18%) to rates varying by each item's selling price (price bands), aimed at raising take rate. Effective date reported as "March 13"; year not stated in snippet. [B] https://inc42.com/?p=503754 (undated)
-- FACT: Take rate definition: share of revenue on gross order value. Blinkit take rate 18.9% (Q2 FY25); Instamart 15.2% (Q2 FY25), up from 12.2% (Q1 FY24), with growth credited to ads. [B] https://bwmarketingworld.com/article/swiggy-instamarts-ad-push-drives-take-rate-to-152-in-q2-fy25-541098 (Q2 FY25, 2024/25)
-- REPORTED: Inc42 reports Instamart may raise commission to 20-22% from 15% (article date unclear). [B, unconfirmed] Same source area as above.
-- FACT (vendor sample): SW Cybernetics, across its 80+ client brands, says typical commission rose from 12% (2023) to about 24% estimated for 2026. Sample, not a platform disclosure. [C] https://swcybernetics.in/reports/state-of-q-commerce-2026 (2026)
-- REPORTED: Blog estimates say commission is usually 2-18% by price band, with warehousing and last-mile charges layered on top, pushing total platform take to 30-35% of selling price. [C, unverified; no primary source]
-- FACT: Ad revenue: Zepto disclosed Rs 1,636 crore (up 151% YoY), the only platform that discloses it. Blinkit and Zepto each reportedly crossed Rs 1,000 crore in ad revenue by FY25. Industry estimates Rs 3,000-3,500 crore combined; a LinkedIn-hosted projection says about Rs 4,900 crore for 2026 (informal). [B for Zepto; C for others] Source URL for the Zepto disclosure was not captured in the search summary; the figure is from a search result summary citing Zepto's filing and an industry-estimate article (https://www.storyboard18.com/brand-marketing/quick-commerces-ad-fee-toll-are-platforms-squeezing-out-small-d2c-brands-73952.htm, undated). Verify before quoting.
-- REPORTED: Mandatory Blinkit listing fee Rs 25,000 per SKU per state, credited to ad wallet, non-refundable, 12-month expiry. [C, single seller post plus startup article; unverified]
-- REPORTED: D2C sellers describe delayed payment cycles and ask for performance-linked ad models. [B, Storyboard18 article, date not visible] https://www.storyboard18.com/brand-marketing/quick-commerces-ad-fee-toll-are-platforms-squeezing-out-small-d2c-brands-73952.htm (undated; fetch failed in this session, so content came from search snippet)
-- NOT FOUND: Distributor-route terms, onboarding timelines, official seller rate cards, and whether brands can list directly vs through distributors/aggregators. Search returned vendor guides only (e.g., base.com blog: https://base.com/en-IN/blog/?p=19769, undated; echai.ventures: https://echai.ventures/d2c/d2c-quick-commerce/qcomm-margins-commissions-listing-fees, undated). Treat as C.
+- CORRECTED: The price-band commission date. Pass 1 said "March 13", no year. Business Standard (article dated 7 Mar 2025 per its URL) reports the change effective 13 March 2025: 2% for items under Rs 500, 6% for Rs 500-700, 18% for Rs 1,200 and above. [CORR, CS] https://www.business-standard.com/industry/news/quick-commerce-blinkit-zepto-commission-structure-revenue-growth-125030700154_1.html (Mar 2025)
+- 2026 bands (agency blogs, C): one guide 2% / 6% / 13% (Rs 700-900) / 16% (Rs 900-1,200) / 18%; another says category commissions of 8-22%; a third says an all-in take of 22-38%. These conflict and are not platform disclosures. [C, SU] https://swcybernetics.in/guides/blinkit-seller-fees-2026 ; https://ladya.in/guides/blinkit-commission-seller-economics
+- CS, inventory-led model: Blinkit notified sellers that from 1 Sept (2025) it would buy inventory directly; sellers who did not opt in had stock returned with reverse-logistics costs deducted. Secondary sources say about 90% of NOV came from own inventory by Q3 FY26. The model shift is presented as a margin improvement (one analysis: 50-110 bps could be worth Rs 290-635 cr). [CS, B/C] https://www.indiablooms.com/finance/blinkit-to-shift-to-inventory-led-model-from-sept-1-as-parent-gains-indian-ownership-report/details ; https://www.logisticsinsider.in/explained-blinkits-new-inventory-led-model/ ; https://inc42.com/features/blinkit-inventory-model-quick-commerce-cash-burn-problem/
+- CS, Blinkit's own position (Q2 FY27 call, search summary): no private label; Blinkit owns its stock; the CFO says private labels are not an area of competence; ads income is tied to the brands on the platform growing. [CS] https://www.medianama.com/2026/10/223-eternal-q2-fy27-results-ai-strategy/ (Oct 2026, by search summary)
+- CS, Take rate history (pass 1, B): Blinkit 18.9% (Q2 FY25); Instamart 15.2% (Q2 FY25), up from 12.2% (Q1 FY24), credited to ads. This is historic and no longer describes brand-side cost under the inventory model. [B] https://bwmarketingworld.com/article/swiggy-instamarts-ad-push-drives-take-rate-to-152-in-q2-fy25-541098 (2025)
+- SU: Inc42's claim that Instamart may raise commission from 15% to 20-22%. Date unclear; no confirmation. [SU]
+- Blinkit seller registration and fees (2026 agency and blog guides, C; not an official rate card): registration at seller.blinkit.com said to be free (one source); recurring fees about Rs 50 per unit fulfilment, Rs 5 per unit inwarding, Rs 1 per unit per day storage, plus 18% GST; TCS of 1% on selling price; onboarding 14-21 days. Blooprint says Blinkit publishes no rate card as of Sept 2026. [C, SU] https://unicommerce.com/blog/how-to-sell-on-blinkit-seller-onboarding-guide-2026/ ; https://blooprint.in/blog/blinkit-seller-fees-explained/ ; https://ecomhelp.in/blinkit/
+- SU: Rs 25,000 per SKU per state listing or activation fee credited to an ad wallet (pass 1, one seller post plus one startup article; a 2026 guide repeats it as "per listing request", another says none). Not confirmed. Agency reports describe a launch charge of about Rs 25,000 per SKU per cluster, credited back as ad credit; Blinkit has not published it. [SU]
+- FACT, Zepto ad revenue Rs 1,636 cr (up 151%; about 7.2% of operating revenue) is the only platform ad-revenue disclosure found. Blinkit and Instamart ad revenue were not disclosed in pass 2. [CS, DRHP not opened]
+- REPORTED (pass 1, B): D2C sellers describe delayed payment cycles and ask for performance-linked ad models. Storyboard18 (undated; not re-fetched). [B, SU]
+- NOT FOUND: distributor route terms, official seller rate card, whether brands must list via distributors or aggregators. [SU]
 
 ### 5. Ranking and visibility on the apps
 
-- REPORTED (C, several vendor sources agree): Search ranking weighs stock availability at the nearest dark store, not only relevance. A product can rank higher because it is in stock at the nearest store. [C] https://echai.ventures/d2c/d2c-quick-commerce/qcomm-ads-visibility-search-ranking (undated)
-- REPORTED (C, agree): Sponsored search listings appear at top for specific queries; other slots include category pages and homepage banners; Zepto has a paid track (sponsored listings, homepage banners, in-app video) and an organic track. [C] https://confetti.design/blog/how-new-brands-get-visibility-on-zepto (undated)
-- REPORTED (C, one source): Brands can spend heavily on ads while organic rank falls. Track paid and organic separately. [C] https://www.42signals.com/blog/visibility-on-quick-commerce-platforms/ (undated)
-- REPORTED (C): Blinkit sponsored placements "significantly influence" seller performance. Vendor claim, no data. [C] https://base.com/en-EN/blog/blinkit-zepto-or-instamart-where-should-your-d2c-brand-sell-on-quick-commerce-platforms/ (undated)
-- NOT FOUND: Official platform documentation on ranking or auction mechanics; brand shop mechanics; category placement rules; dark store stocking decision criteria.
-- PATTERN (my inference): Because ads are a rising share of platform revenue and rank depends on dark-store stock, a small brand's visibility is driven by (a) being stocked in enough dark stores, (b) paid spend, and (c) sales velocity feeding organic rank. None of these is confirmed by a platform document.
+- REPORTED (C, several vendor sources agree): search ranking weighs stock availability at the nearest dark store; a product can rank higher because it is in stock nearby. [C, unchanged] https://echai.ventures/d2c/d2c-quick-commerce/qcomm-ads-visibility-search-ranking (undated)
+- REPORTED (C, agree): sponsored search at the top for specific queries; category pages and homepage banners are paid; Zepto has a paid track (sponsored listings, banners, in-app video) and an organic track. [C] https://confetti.design/blog/how-new-brands-get-visibility-on-zepto (undated)
+- REPORTED (C, one source): ad spend can rise while organic rank falls. [C] https://www.42signals.com/blog/visibility-on-quick-commerce-platforms/ (undated)
+- Blinkit's ad income is growing (Blinkit's CEO says it will keep spending to onboard consumers; ad revenue grows as brands on the platform grow). [CS] https://www.storyboard18.com/brand-marketing/if-growth-continues-well-keep-spending-more-says-blinkit-ceo-albinder-dhindsa-on-rising-ad-costs-83008.htm (date not confirmed; the marketing-spend numbers in that piece look like a year-old quarter)
+- NOT FOUND: official platform documentation on ranking or auction mechanics; brand shop mechanics; category placement rules. [SU]
+- PATTERN (my inference): visibility depends on (a) being stocked in enough dark stores, (b) paid spend, (c) sales velocity feeding organic rank. None is confirmed by a platform document. Under the inventory-led model, Blinkit is buying the stock itself, so a brand's leverage over stock placement may be lower than the older marketplace model implied. [PATTERN]
 
 ### 6. Categories growing beyond grocery
 
-- FACT (B): Redseer 2026 category growth for total online (not QC): fashion 17-20%; beauty and personal care 16-18%; electronics 2-3%; mobiles 16-18%. Electronics sources conflict (one says rebound 20%, another 22%). [B] https://www.theweek.in/news/biz-tech/2026/09/18/india-festive-online-retail-growth.amp.html (Sep 2026); https://www.peoplematters.in/news/business/indias-online-retail-market-to-cross-usd-90-bn-in-2026-grocery-to-overtake-mobiles-redseer-52833 (2026)
-- FACT (B): Redseer: QC could go from about 15% of online beauty sales today to nearly 40% by 2030, becoming the largest online format in the category. [B, via secondary] https://yourstory.com/2026/10/india-quick-commerce-set-for-usd-90b-boom-by-2031-google-redseer-study (Oct 2026) and https://www.theweek.in (2026)
-- FACT (B): Redseer BPC: QC share of online BPC rises from 18% in FY26 to 27-31% by FY31; legacy brands lean more on QC (63% vs 53% for digitally native brands). [B, Redseer India BPC 2030 report] https://redseer.com/wp-content/uploads/2026/02/India-BPC-2030_Growth-Shifts-and-Opportunities_ExecReport_Redseer-2.pdf (Feb 2026)
-- FACT (C/B): BusinessToday, Feb 2026: "India's $40bn beauty boom led by GenZ" with QC. [B] https://www.businesstoday.in/amp/latest/trends/story/swipe-click-delivered-how-quick-commerce-is-powering-indias-40bn-beauty-boom-led-by-genz-515665-2026-02-11 (11 Feb 2026)
-- NOT QUANTIFIED: Fashion and electronics on QC. Redseer assessed the possibility but the summaries did not give QC-specific growth. A Mint piece says fashion is the next battleground for QC. [B, Mint, date not visible] https://www.magzter.com/nb/stories/newspaper/Mint-Chennai/QUICK-COMMERCE-IS-FASHION-RETAILERS-NEXT-BATTLEGROUND (undated)
-- FACT (C): Legacy FMCG QC share of online sales: Britannia and Tata Consumer above 70%; Dabur 75%. Not a D2C benchmark. [C] https://www.thirdeyesight.in/tag/britannia/ (undated)
-- REPORTED (C): Platform sales mix: over 30% of QC platform sales come from new-age brands; over 30% of offerings from D2C/emerging brands. Describes platform mix, not one brand. [C] https://base.com/en-IN/blog/?p=19463 (undated)
+- FACT (B, pass 1): Redseer 2026 category growth for total online (not QC): fashion 17-20%; beauty and personal care 16-18%; electronics 2-3% (forecast) vs claimed rebound of 20-22%; mobiles 16-18%. Electronics still conflicts. [B, SU for electronics] https://www.theweek.in/news/biz-tech/2026/09/18/india-festive-online-retail-growth.amp.html (18 Sep 2026)
+- FACT (B, pass 1 and pass 2 snippet): Redseer on QC share of beauty: about 15% of online beauty sales today, about 40% by 2030. [B, CS-by-summary] https://yourstory.com/2026/10/india-quick-commerce-set-for-usd-90b-boom-by-2031-google-redseer-study (Oct 2026) [primary not opened]
+- FACT (B): Redseer BPC report: QC share of online BPC rises from 18% in FY26 to 27-31% by FY31; legacy brands lean more on QC (63% vs 53% for digitally native). Not re-fetched. [B, SU for pass 2] https://redseer.com/wp-content/uploads/2026/02/India-BPC-2030_Growth-Shifts-and-Opportunities_ExecReport_Redseer-2.pdf (Feb 2026)
+- FASHION, NEW in pass 2:
+  - Myntra M-Now (30-minute fashion, from Dec 2024 per TechCrunch, 5 Dec 2024): about 10 cities as of May-mid 2026 per one guide; plans 15-20 cities by end-2026; about 10% of Myntra orders in its markets in year one (one analysis); a market overview gives 10+ cities, 940+ pincodes, 90+ dark stores. Style counts conflict (10,000 at launch vs 100,000+ later per one source; not confirmed). AJIO Rush (4-hour promise) is also cited. [C, CS for launch date only] https://techcrunch.com/2024/12/05/myntra-pushes-into-india-quick-commerce-race-with-30-minute-fashion-delivery ; https://zoutons.com/news/myntra-m-now-explained-30-minute-fashion-delivery-2026
+  - Slikk (Bengaluru, 60-minute fashion delivery): raised USD 10 mn Series A led by Nexus Venture Partners and Lightspeed; plans new cities and beauty, accessories, footwear. Round date disputed (one source says 1 Oct 2026, metadata suggests older). About 100 deliveries a day (one report). Slikk's claim that returns are 40-50% lower than marketplaces is self-reported. [CS for funding, C for ops] https://www.outlookbusiness.com/start-up/investors/slikk-raises-10-mn-to-expand-60-minute-fashion-delivery-in-urban-areas ; https://indiantextilejournal.com/slikk-rebrands-with-a-bolder-identity-and-60-minute-delivery/
+  - Blinkit fashion: Blinkit dropped its "10-minute" tagline by Jan 2026 after gig-worker strikes and government talks (search summary). Its fashion push was not covered. [C, SU]
+  - Zepto fashion: nothing found. [SU]
+  - Other fashion-first QC players named in 2026 coverage: KNOT, Zilo, Zulu Club, Amazon Now. Mostly about 60-minute promises. [C] https://www.firstresort.in/blogs/research/quick-commerce-fashion-india-2026 (2026)
+  - Still NOT QUANTIFIED: fashion QC GMV. Mint says fashion is the next battleground (pass 1). [SU]
+- Legacy FMCG QC share (Britannia, Tata Consumer above 70%; Dabur 75%) [C, pass 1, not re-checked]. Not a D2C benchmark. [SU]
+- Platform mix: over 30% of QC platform sales from new-age brands (pass 1, C). [SU]
 
 ### 7. Expansion of other players (Flipkart, Amazon, BB Now, Myntra)
 
-- FACT (B/C): Flipkart Minutes: about 1,000 micro-fulfilment centres across about 130 cities; target 1,500 by end-2026; about 90 of the 130 cities are tier-2/3. A report says Flipkart postponed its IPO plans. [B/C] https://techcrunch.com/2026/06/23/walmart-backed-flipkart-expands-quick-commerce-push-as-amazon-ramps-up-in-india/ (23 Jun 2026); https://www.outlookbusiness.com/corporate/flipkart-minutes-hits-1000-stores-amid-deferred-ipo (2026)
-- FACT (B/C): Amazon Now: about 300 MFCs in Delhi NCR, Mumbai and Bengaluru, with plans to more than double by end-2026, tied to a Rs 2,800 crore (about USD 300 mn) Amazon India investment. Sources conflict on count (300 vs 500 vs 700) and city target (100 vs 300). [B/C] https://apparelresources.com/business-news/retail/amazon-now-expands-q-commerce-network-100-new-fulfilment-centers/ (2026, undated); https://inc42.com/?p=556141 (undated)
-- NOT FOUND: BB Now (BigBasket) and Myntra M-Now: searches returned no usable 2025-2026 information. Not verified.
+- CORRECTED, Amazon Now: Amazon announced on 1 Oct 2026 that Amazon Now had expanded to more than 120 cities (about 60 cities in mid-Sept), with close to 800 micro and urban fulfilment centres, and said it is on track for 300+ cities. One report gives about 750 stores and a goal of about 1,300 by April 2027. Pass 1's "300 MFCs in Delhi NCR, Mumbai and Bengaluru" was the late-2025 position (Business Standard, 1 Dec 2025: about 2 new dark stores a day, 300 by year-end, three cities first). [CORR, CS, the 120-city figure is from several outlets reporting Amazon's release; Amazon's own page not opened] https://www.retail-insight-network.com/news/amazon-now-120-indian-cities/ ; https://startuptalky.com/news/amazon-now-reaches-over-120-cities/ ; https://www.business-standard.com/companies/news/amazon-now-dark-stores-expansion-2025-quick-commerce-125120100985_1.html (1 Dec 2025)
+- CS, Flipkart Minutes: 1,000 MFCs in 130 cities (June 2026, company figure as reported); target 1,500 by end-2026; UBS expects a doubling of the dark-store footprint by 2027 (CIOL). A Business Standard piece (2 Jul 2026) covers the Amazon-Flipkart race. [CS] https://www.ciol.com/news/flipkart-minutes-may-double-its-dark-store-footprint-by-2027-ubs-12502102 ; https://www.business-standard.com/amp/industry/news/amazon-now-flipkart-minutes-go-full-throttle-in-india-s-qcom-space-126070201168_1.html (2 Jul 2026)
+- CORRECTED: BB Now. Pass 1 found nothing. Pass 2 found a tracker count of 664 BigBasket dark stores in 108 cities (July 2026, C), against about 850 stated late 2025. Tata-owned Croma and 1mg outlets are reportedly used as dark stores for fast delivery. No BB Now brand-onboarding terms were found. [C, conflict] https://quickcommercemap.com/reports/india-quick-commerce-map-2026 (5,625 dark stores across 408 cities, July 2026, all platforms; C)
+- Myntra M-Now: see section 6. [C]
 
-### 8. Regulation and disputes
+### 8. Regulation and disputes (2026 focus)
 
-- FACT (B): Maharashtra FDA suspended licences of 14 dark stores run by Blinkit, Zepto and Instamart. Date not visible. https://inc42.com/buzz/maharashtra-fda-suspends-licences-of-14-dark-stores-of-blinkit-zepto-instamart/ (undated)
-- FACT (B): FSSAI penalised Amazon, Flipkart and Instamart for regulatory non-compliance; scrutiny of dark store upkeep is rising; Karnataka scrutiny reported. https://inc42.com/buzz/fssai-penalises-amazon-flipkart-instamart-over-regulatory-non-compliance/ (undated)
-- FACT (B): AICPDF has raised concerns with CCI and DPIIT about alleged FDI breaches (inventory and pricing control) by QC platforms. Status not confirmed. https://www.mondaq.com/india/inward-foreign-investment/1553348/navigating-the-challenges-of-quick-commerce-can-indian-regulatory-framework-keep-up (undated, likely 2024-2025)
-- FACT (B): CAIT accused platforms of heavy influence over vendor operations. https://www.barandbench.com/view-point/regulatory-uncertainty-clouds-the-future-of-dark-stores-in-india (undated)
-- FACT (B): CCI notified cost-of-production regulations in May 2025 aimed at predatory pricing and deep discounting. https://www.sansalegal.com/post/quick-commerce-in-india-regulatory-challenges-and-legal-compliance-in-2026 (2026)
-- FACT (B): FDI policy bars marketplace-model e-commerce entities with foreign investment from owning inventory or influencing pricing. Whether dark store operations count as inventory is the open question. https://www.sansalegal.com/post/quick-commerce-in-india-regulatory-challenges-and-legal-compliance-in-2026 (2026)
-- FACT (B/C): Government probes into QC platforms' dark store ownership structures reported. https://www.outlookbusiness.com/start-up/news/government-probes-into-quick-commerce-platforms-and-its-dark-store-ownership-structures (undated)
-- NOT FOUND: Current CCI investigation outcome, DPIIT clarification, or a dated FDI policy change for 2026.
-- REPORTED (C): Blinkit has been moving to an inventory-led (buy-from-seller) model: one source says the marketplace model caps take at about 18% vs about 23% for Zepto's inventory model. Blinkit inventory model plan reported from Sept 2025. [B/C] https://inc42.com/?p=522764 (2025); https://www.medianama.com/2025/07/223-blinkit-inventory-model-shift-2025-means-for-sellers/ (Jul 2025)
+- CORRECTED, Maharashtra FDA: suspended licences of 14 food units linked to Blinkit, Zepto and Instamart; reported around 15 Aug 2026 (date inferred from coverage and URL dates, not stated in the snippets). Breakdown in one report: 5 Blinkit, 5 Zepto, 2 Instamart, plus 2 other businesses (Bhagwati Stores; Swinsta Ent Pvt Ltd). 86 outlets inspected; 60 improvement notices; one facility ordered to stop immediately; no licence permanently cancelled. Violations reported include food packets on the floor at an Instamart facility in Andheri. Pass 1 said "14 dark stores" (the count is 14 licences, of which 12 are on the three platforms). [CORR, CS] https://inc42.com/buzz/maharashtra-fda-suspends-licences-of-14-dark-stores-of-blinkit-zepto-instamart/ ; https://www.storyboard18.com/brand-marketing/expired-food-pest-infestation-maharashtra-fda-suspends-14-blinkit-zepto-instamart-licences-ws-l-107785.htm ; https://www.omnicuris.com/medshots/panorama/maharashtra-fda-suspends-quick-commerce-licences-food-safety_15-Aug-26_08-08
+- CS, Telangana: food safety authority suspended four dark-store licences across Instamart, Flipkart and Zepto on 30 Sep 2026, with improvement or show-cause notices to eight others. One C-rated tracker. [C-tracker, CS-by-summary] https://blacklisted.co.in/food/notices/quick-commerce-actions-2026
+- CS, Karnataka: Rs 25,000 penalty on a Zepto warehouse in Hoskote (one tracker; order not published online per that tracker). [C, SU]
+- CS, FSSAI: penalised Amazon, BigBasket, Flipkart, Instamart and Zepto for food-safety lapses (dates not confirmed; pass 1 Inc42 article undated). Regulator's CEO says prosecutions rose at least 5-6x in the past year (one source). ISB professor notes dark stores are not a separate category under food law: "The standards and advisories are issued by FSSAI, but action is largely state-driven." [CS] https://www.business-standard.com/industry/news/quick-commerce-who-inspects-dark-stores-food-safety-india-126062500904_1.html (25 Jun 2026); https://inc42.com/buzz/fssai-penalises-amazon-flipkart-instamart-over-regulatory-non-compliance/ (undated)
+- PROPOSED, FSSAI e-commerce food rules covering quick commerce and cloud kitchens: manufacturing date, expiry date and batch display; tighter dark-store checks, including frozen-food storage. No draft text found; one source says no penalty framework yet. [SU] https://retailintel.in/signal/fssai-weighs-ecommerce-specific-food-rules-for-quick-commerc-95b4032c
+- CS, CCI: AICPDF (distributors' federation) complaint to CCI filed March 2025 over predatory pricing, deep discounting, possible FDI breaches (inventory and pricing control) and distributor/franchise issues, naming Blinkit, Instamart and Zepto. No CCI investigation order or ruling found for 2026. [CS, 2025 filing; 2026 status SU] https://thetechportal.com/2025/03/06/indias-quick-commerce-giants-face-antitrust-complaint/ ; https://www.icle.in/resource/competition-in-digital-markets-making-sense-of-the-aicpdf-complaint-at-the-cci/
+- CS, SEBI: AICPDF asked SEBI in Dec 2025 to pause or tighten IPO approvals for loss-making quick-commerce firms, specifically naming Zepto's application (Business Standard, 30 Dec 2025 by URL). No SEBI action found. [CS] https://www.business-standard.com/markets/ipo/fmcg-distributors-body-writes-sebi-loss-making-quick-commerce-companies-ipo-125123000929_1.html
+- CONFIRMED-BY-PATTERN (pass 1, not re-checked): CCI cost-of-production regulations (May 2025) on predatory pricing and deep discounting. [SU for pass 2]
+- FDI rule (pass 1): marketplace-model entities with foreign investment cannot own inventory or influence pricing; whether dark-store stock counts is open. The Blinkit move to buy its own inventory (section 4) is the relevant change; its legal status is not confirmed. [B, pass 1; SU on how it applies]
+- Government probes into dark-store ownership structures (Outlook Business, pass 1, undated). [SU]
+- CAIT accused platforms of heavy influence over vendor operations (pass 1). [B, SU]
 
 ### 9. D2C founders on QC share of sales
 
-- FACT (NOT FOUND for a clean figure): No D2C brand-level share-of-sales number found. Adjacent data only.
-- REPORTED (C): Founder Chirag Gupta (4700BC): QC shows the highest consumer engagement among online channels and is now integral to the digital strategy. https://base.com/en-IN/blog/?p=19463 (undated)
-- REPORTED (C): Multiple D2C founders report their own website sales dipped after listing on QC. Anecdotal. https://base.com/en-IN/blog/?p=19463 (undated)
-- REPORTED (B): ChrysCapital's Rajiv Batra says owned-channel share (D2C or offline) will be key to category leadership. [B, Inc42] https://inc42.com/?p=558124 (undated)
+- NOT FOUND (still): a clean D2C brand-level share-of-sales figure. [SU]
+- REPORTED (C, pass 1): founders report their own website sales dipping after QC listing; anecdotal. [C, SU]
+- REPORTED (B, pass 1): ChrysCapital's Rajiv Batra says owned-channel share (D2C or offline) will be key to category leadership. [B] https://inc42.com/?p=558124 (undated)
 
 ## Ranking / visibility mechanics
 
-- Confirmed by sources: Paid placements exist (sponsored search, category, homepage banners, in-app video). Blinkit and Zepto ad revenue is large.
-- Agreed by several vendor sources (C): stock at the nearest dark store matters for ranking; paid and organic rank should be tracked separately.
-- Not confirmed: ranking formula, relevance weights, auction design, brand-shop rules, category placement rules. Treat all as unverified.
-- Practical implication: check actual ad and store availability with each platform's brand team before budgeting; do not assume a stable organic rank.
+- Confirmed by several sources (B/C): paid placements exist (sponsored search, category and homepage banners, in-app video). Blinkit and Zepto ad revenue is large (Zepto disclosed; Blinkit's CEO describes ad income as growing with brands).
+- Agreed by vendor sources (C): nearest-dark-store stock matters for ranking; track paid and organic separately.
+- Not confirmed: ranking formula, relevance weights, auction design, brand-shop rules, category placement rules. All unverified.
+- New pattern (inference): with the inventory-led model, Blinkit is the buyer of record for most stock, so stock placement and rank may depend more on Blinkit's own buying and on ad spend than on the brand's listing choices. Not confirmed.
 
 ## What a small new D2C seller should do / avoid (PATTERN, my inference)
 
-- Do: get a written rate card from each platform before signing (commission by price band, listing fees, ad wallet terms, payment cycle). Sources say rates change and are negotiated.
-- Do: model margin with the full stack: commission, ad spend, warehousing/last-mile, and payment delay, not just the headline commission. Sources disagree on the total take (vendor blogs say 30-35%); verify with your own numbers.
-- Do: test one platform first; sources note different city coverage and stock dynamics per platform.
-- Do: track paid and organic performance separately, since sponsored placements can mask falling organic rank.
-- Avoid: committing to a listing fee (e.g., the reported Rs 25,000 per SKU per state) until it is confirmed in writing.
-- Avoid: assuming QC volume transfers to your own site. Anecdotal reports say D2C site sales dipped after QC listing; watch channel cannibalisation.
-- Watch: state food-safety and dark-store licence enforcement; FDI/inventory rules, which could change who controls pricing and stock; take rate direction (rising).
+- Do: get a written commercial offer from each platform before signing. For Blinkit this now means the wholesale (purchase-order) terms and margin, not a commission-only rate card, because Blinkit buys stock under the inventory-led model. Blinkit publishes no public rate card.
+- Do: model margin on the full stack: buy-in margin or commission, ad spend, warehousing and last-mile where they apply, payment cycle, and returns. Do not use the 18.9% take rate of FY25; it does not describe current brand economics.
+- Do: check any state-level licence or food-safety requirements before a dark-store listing. In 2026, enforcement is state-led (Maharashtra, Telangana, Karnataka) and food products carry the most risk.
+- Do: test one platform first. Store coverage and stock dynamics differ by platform and city; Flipkart and Amazon are expanding fastest in tier-2 cities.
+- Do: track paid and organic performance separately.
+- Avoid: committing to any listing or activation fee (including the reported Rs 25,000 per SKU) until it is in writing.
+- Avoid: assuming QC volume transfers to your own site; channel cannibalisation is anecdotal but plausible.
+- Watch: FSSAI e-commerce food rules (expiry and batch display); the AICPDF CCI and SEBI complaints; Zepto's IPO timing (not before about Feb 2027, if the reported CEO target holds); Blinkit's inventory model and any 2026 commission change.
 
-## Open questions and conflicting claims
+## Open questions and conflicting claims (after pass 2)
 
-- Market size: USD 5.6 bn (Markntel, 2025) vs USD 10-11 bn (Bain-based, 2025). Definitions differ.
-- Market share: Blinkit 46-49% (2026 estimates) but the 49/29/29 split sums above 100%; Motilal Oswal early 2025 figures differ.
-- Blinkit Q1 FY27 EBITDA: Rs 102 crore (Inc42) vs Rs 365 crore (IndiaInfoline). Check against Eternal's filing.
-- Blinkit Q1 FY26 EBITDA: loss Rs 162 crore (one source) vs loss Rs 42 crore (another). Check.
-- Instamart contribution margin: -0.2% vs +0.2% for Q1 FY27.
-- Instamart Q2 FY27 loss: one source reports Rs 895 crore and "peak" language; not verified against a filing. Q2 FY27 dating also needs checking.
-- Blinkit store counts: 1,816 vs 2,443 (June 2026).
-- Amazon Now: 300 vs 500 vs 700 MFCs; target 100 vs 300 cities.
-- Blinkit commission change: date reported as "March 13" without a year; 2026 rate card not confirmed.
-- Zepto IPO timing: SEBI approval (May 2026) and no open date vs targeting a listing (June 2026 report). Unconfirmed.
-- Electronics online growth: 2% (Redseer forecast) vs 20-22% (H1 2026 rebound claims).
-- Gaps: no BB Now, Myntra M-Now, fashion-on-QC or electronics-on-QC figures; no D2C brand share-of-sales number; no CCI outcome; no official seller rate card.
-- Fetch failures: businesstoday.in, storyboard18.com and yourstory.com were not reachable in this session (DNS blocked). Several claims above rest on search snippets only. The yourstory and storyboard18 links are cited as their search-result URLs. Two web searches hit rate limits (listing margins; CCI/predatory pricing), so those sub-questions are thinner than planned.
+- Market size: Bain USD 10-11 bn (2025) and Redseer USD 13-14 bn (FY26) are now the anchor pair; Markntel (USD 5.6 bn) and Coherent (USD 1.7 bn) are outliers. [SU for the outliers]
+- Market share (Blinkit 46-49%): still unverified; 49/29/29 sums above 100%. [SU]
+- Blinkit Q1 FY27 adjusted EBITDA: Rs 102 cr (Inc42, pass 1) vs Rs 365 cr (IndiaInfoline). Q2 letter does not resolve it. Needs the Eternal Q1 letter. [SU]
+- Blinkit Q2 FY27 consolidated adjusted EBITDA: Rs 666 cr vs Rs 750 cr across sources (definitions). [SU]
+- Instamart Q2 FY27 NOV: Rs 6,954 cr vs Rs 6,594 cr. Needs the Swiggy Q2 letter. [SU]
+- Instamart contribution margin: -0.2% vs +0.2% in Q1 FY27. [SU]
+- Instamart Q1 FY27 consolidated adjusted EBITDA: Rs 651 cr vs Rs 770 cr across sources. [SU]
+- Blinkit store target: 3,500 by March 2027 (one source: raised from 3,000) and 5,000 by March 2028 (both agree on 5,000). [CS]
+- Blinkit 2026 commission bands: conflicting agency tables. No official rate card. [SU]
+- Blinkit listing fee Rs 25,000 per SKU per state or cluster: contested (charged vs none). [SU]
+- Zepto IPO: on hold (no date). Reported CEO target Feb-May 2027 listing; a private round reported. [CS, reported]
+- Zepto loss per order (pass 1 figures): not re-checked. [SU]
+- Amazon Now: 120+ cities (Amazon release as reported) vs 800 MFCs vs 750 stores; target 300+ cities. [CS, count disputed]
+- Flipkart Minutes: 130 cities (June 2026) vs 150+ cities / 1,200 centres (undated). [SU for the later number]
+- BB Now: 664 stores in 108 cities (tracker, July 2026) vs about 850 stores (company, late 2025). [C, conflict]
+- Myntra M-Now: 10 cities (mid-2026, guide) vs 15-20 target by end-2026; style count disputed. [C]
+- Electronics online growth: 2% vs 20-22%. [SU]
+- Maharashtra FDA action: date inferred (about 15 Aug 2026); "14 dark stores" vs "14 licences, 12 on the three platforms". [CORR, CS]
+- Gaps still open: official seller or brand rate card (none public); D2C brand share-of-sales figure; CCI status for 2026; the CCI cost-of-production rule (May 2025) status; fashion-on-QC GMV; Zepto fashion; Blinkit fashion.
+- Fetch failures in pass 2: all official sites and most news sites (DNS). See "Read this first".
 
 ## Sources
 
-1. https://bain.com/insights/how-india-shops-online-2025 (2025; Bain, via Ken Research citation)
-2. https://www.bain.com/ru/insights/how-india-shops-online-2026/ (2026)
-3. https://www.kenresearch.com/industry-reports/india-hyperlocal-commerce-market (undated)
-4. https://www.marknteladvisors.com/query/request-customization/india-quick-commerce-market.html (2026)
-5. https://ianslive.in/india-quick-commerce-market-to-triple-to-rs-2-lakh-crore-by-fy28-report--20250710153349 (10 Jul 2025)
-6. https://hdfcsky.com/news/quick-commerce-orders-in-india-soar-to-rs-64000-crore-in-fy25-set-to-triple-by-fy28 (undated)
-7. https://www.coherentmi.com/press-releases/india-quick-e-commerce-market (undated)
-8. https://yourstory.com/2026/10/india-quick-commerce-set-for-usd-90b-boom-by-2031-google-redseer-study (Oct 2026)
-9. https://newsbytesapp.com/news/business/report-forecasts-indias-quick-commerce-to-reach-90-billion/tldr (2026, undated)
-10. https://bwretailworld.com/fmcg/indias-online-retail-sector-to-cross-90-bn-in-2026 (2026, undated)
-11. https://www.theweek.in/news/biz-tech/2026/09/18/india-festive-online-retail-growth.amp.html (18 Sep 2026)
-12. https://www.peoplematters.in/news/business/indias-online-retail-market-to-cross-usd-90-bn-in-2026-grocery-to-overtake-mobiles-redseer-52833 (2026)
-13. https://www.cxodigitalpulse.com/blinkit-and-instamart-gain-market-share-amid-zeptos-slowdown-focus-shifts-to-profitability/ (2026, undated)
-14. https://www.outlookbusiness.com/explainers/has-quick-commerce-growth-hit-a-speed-bump-inside-blinkit-instamart-zeptos-q1-fy26-performance (2025/2026)
-15. https://www.outlookbusiness.com/markets/ipo-bound-zepto-doubles-revenue-in-fy26-but-losses-reach-5905-cr (2026, undated)
-16. https://www.businesstoday.in/amp/latest/corporate/story/inside-zeptos-1bn-ipo-revenue-surge-mounting-losses-cac-pressures-ed-cloud-535709-2026-06-09 (9 Jun 2026; fetch failed, snippet only)
-17. https://inc42.com/buzz/blinkits-q1-adjusted-ebitda-rises-to-%e2%82%b9102-cr-others-losses-rise-on-nugget-rd/ (Jul 2026)
-18. https://yourstory.com/2026/07/eternal-rs-92-crore-net-profit-first-quarter-of-fy27 (Jul 2026)
-19. https://inc42.com/buzz/swiggys-instamart-hits-contribution-margin-breakeven-in-q1-fy27/ (Jul-Aug 2026)
-20. https://inc42.com/?p=503754 (undated; Blinkit variable commission)
-21. https://bwmarketingworld.com/article/swiggy-instamarts-ad-push-drives-take-rate-to-152-in-q2-fy25-541098 (Q2 FY25 data)
-22. https://swcybernetics.in/reports/state-of-q-commerce-2026 (2026; vendor sample, C)
-23. https://www.storyboard18.com/brand-marketing/quick-commerces-ad-fee-toll-are-platforms-squeezing-out-small-d2c-brands-73952.htm (undated; fetch failed, snippet only)
-24. https://echai.ventures/d2c/d2c-quick-commerce/qcomm-margins-commissions-listing-fees (undated, C)
-25. https://echai.ventures/d2c/d2c-quick-commerce/qcomm-ads-visibility-search-ranking (undated, C)
-26. https://confetti.design/blog/how-new-brands-get-visibility-on-zepto (undated, C)
-27. https://www.42signals.com/blog/visibility-on-quick-commerce-platforms/ (undated, C)
-28. https://base.com/en-EN/blog/blinkit-zepto-or-instamart-where-should-your-d2c-brand-sell-on-quick-commerce-platforms/ (undated, C)
-29. https://base.com/en-IN/blog/?p=19463 (undated, C; D2C founder quotes)
-30. https://redseer.com/wp-content/uploads/2026/02/India-BPC-2030_Growth-Shifts-and-Opportunities_ExecReport_Redseer-2.pdf (Feb 2026)
-31. https://www.businesstoday.in/amp/latest/trends/story/swipe-click-delivered-how-quick-commerce-is-powering-indias-40bn-beauty-boom-led-by-genz-515665-2026-02-11 (11 Feb 2026)
-32. https://www.magzter.com/nb/stories/newspaper/Mint-Chennai/QUICK-COMMERCE-IS-FASHION-RETAILERS-NEXT-BATTLEGROUND (undated)
-33. https://www.thirdeyesight.in/tag/britannia/ (undated, C)
-34. https://techcrunch.com/2026/06/23/walmart-backed-flipkart-expands-quick-commerce-push-as-amazon-ramps-up-in-india/ (23 Jun 2026)
-35. https://www.outlookbusiness.com/corporate/flipkart-minutes-hits-1000-stores-amid-deferred-ipo (2026, undated)
-36. https://apparelresources.com/business-news/retail/amazon-now-expands-q-commerce-network-100-new-fulfilment-centers/ (2026, undated)
-37. https://inc42.com/?p=556141 (undated)
-38. https://inc42.com/buzz/maharashtra-fda-suspends-licences-of-14-dark-stores-of-blinkit-zepto-instamart/ (undated)
-39. https://inc42.com/buzz/fssai-penalises-amazon-flipkart-instamart-over-regulatory-non-compliance/ (undated)
-40. https://www.mondaq.com/india/inward-foreign-investment/1553348/navigating-the-challenges-of-quick-commerce-can-indian-regulatory-framework-keep-up (undated; likely 2024-25)
-41. https://www.barandbench.com/view-point/regulatory-uncertainty-clouds-the-future-of-dark-stores-in-india (undated)
-42. https://www.sansalegal.com/post/quick-commerce-in-india-regulatory-challenges-and-legal-compliance-in-2026 (2026)
-43. https://www.outlookbusiness.com/start-up/news/government-probes-into-quick-commerce-platforms-and-its-dark-store-ownership-structures (undated)
-44. https://inc42.com/?p=522764 (2025; Blinkit inventory model plan)
-45. https://www.medianama.com/2025/07/223-blinkit-inventory-model-shift-2025-means-for-sellers/ (Jul 2025)
-46. https://inc42.com/?p=558124 (undated; ChrysCapital quote)
-47. https://hdfcsky.com (see 6)
+Pass 2 status: every entry below was reached through a WebSearch result (title, URL, summary). None was fetched as a page. Ratings as in pass 1.
+
+1. https://www.bain.com/insights/how-india-shops-online-2026/ (2026; B; Bain page via search summary; not fetched)
+2. https://www.business-standard.com/industry/news/india-s-e-retail-market-hits-66-billion-as-growth-reaccelerates-126040901077_1.html (9 Apr 2026; B; not fetched)
+3. https://redseer.com/reports/think-quick-commerce-unlocking-the-90bn-opportunity/ (Oct 2026; B; not fetched)
+4. https://www.deccanherald.com/amp/story/business/companies/quick-commerce-to-reach-90-billion-by-fy31-capturing-5-of-retail-market-google-redseer-report-4173655 (Oct 2026; B)
+5. https://www.ibef.org/news/india-s-quick-commerce-market-poised-for-seven-fold-growth-to-us-90-billion-by-fy31-report (2026; B)
+6. https://redseer.com/articles/speed-in-metro-scale-in-bharat-indias-80-bn-online-retail-story/ (2026; B)
+7. https://brandchanakya.in/india-quick-commerce-and-e-commerce-statistics/ (2026; C; cites Redseer FY26 figure)
+8. https://www.angelone.in/news/stocks/eternal-share-price-gains-2-7-as-blinkit-net-order-value-jumps-79-3-in-q2-fy27 (Oct 2026; B)
+9. https://www.medianama.com/2026/10/223-eternal-125-crore-profit-q2fy27/ (Oct 2026; B)
+10. https://www.medianama.com/2026/10/223-eternal-q2-fy27-results-ai-strategy/ (Oct 2026; B)
+11. https://www.businesstoday.in/technology/artificial-intelligence/story/blinkit-is-eternals-proven-bet-darkai-is-the-next-gamble-563252-2026-10-23 (23 Oct 2026; B)
+12. https://yourstory.com/2026/10/eternal-q2-net-profit-rises-92-fy27-revenue-up-78-percent (Oct 2026; B)
+13. https://indianstartupnews.com/news/eternal-q2-profit-jumps-92-to-rs-125-crore-as-blinkit-earns-rs-184-crore-and-targets-3500-stores-12696316 (Oct 2026; B)
+14. https://upstox.com/news/market-news/earnings/swiggy-q2-results-loss-narrows-yo-y-to-922-crore-revenue-surges-36-check-numbers/article-202243/ (22 Oct 2026; B)
+15. https://openthemagazine.com/business/swiggy-q2-analysis-have-instamarts-losses-finally-peaked (Oct 2026; B)
+16. https://insights.tridge.com/speaker-product-news-reports/KJLyFXpzJzgKuB1Gqsm5QUKHGgR43AVdqLEy7SqWs3NtGLp1u4VYmXbi (Oct 2026; C-aggregator)
+17. https://www.bwdisrupt.com/article/swiggy-to-add-around-75-instamart-dark-stores-in-q2-fy27-amid-rising-demand-617350 (2026; B)
+18. https://www.storyboard18.com/brand-marketing/zepto-ad-revenue-jumps-151-percent-in-fy26-ahead-of-ipo-debut-ws-l-100656.htm (2026; B)
+19. https://www.forbesindia.com/article/news/deep-dive/how-zeptos-burning-cash-chasing-growth/2994869/1 (2026; B)
+20. https://www.outlookbusiness.com/markets/ipo-bound-zepto-doubles-revenue-in-fy26-but-losses-reach-5905-cr (2026; B; pass 1)
+21. https://unlistedzone.com/zepto-fy26-loss-ad-revenue-ipo-paused (2026; C)
+22. https://plindia.com/news/zepto-files-updated-drhp-with-sebi-plans-rs-8010-crore-fresh-issue/ (June 2026; B)
+23. https://segmara.com/blog/when-will-zepto-ipo (2026; C; Bloomberg 1 Aug 2026 cited)
+24. https://www.business-standard.com/companies/news/quick-commerce-platform-bigbasket-targets-50-60-revenue-growth-in-fy26-125121400480_1.html (Dec 2025; B)
+25. https://www.business-standard.com/industry/news/quick-commerce-blinkit-zepto-commission-structure-revenue-growth-125030700154_1.html (Mar 2025; B)
+26. https://www.indiablooms.com/finance/blinkit-to-shift-to-inventory-led-model-from-sept-1-as-parent-gains-indian-ownership-report/details (2025; B/C)
+27. https://www.logisticsinsider.in/explained-blinkits-new-inventory-led-model/ (2025; C)
+28. https://inc42.com/features/blinkit-inventory-model-quick-commerce-cash-burn-problem/ (2025; B)
+29. https://newsbytesapp.com/news/business/blinkit-to-start-selling-products-directly-to-consumers/story (2025; C)
+30. https://swcybernetics.in/guides/blinkit-seller-fees-2026 (Apr 2026; C)
+31. https://ladya.in/guides/blinkit-commission-seller-economics (2026; C)
+32. https://unicommerce.com/blog/how-to-sell-on-blinkit-seller-onboarding-guide-2026/ (2026; C)
+33. https://blooprint.in/blog/blinkit-seller-fees-explained/ (2026; C; says no public rate card)
+34. https://ecomhelp.in/blinkit/ (2026; C)
+35. https://bwmarketingworld.com/article/swiggy-instamarts-ad-push-drives-take-rate-to-152-in-q2-fy25-541098 (2025; B)
+36. https://www.storyboard18.com/brand-marketing/if-growth-continues-well-keep-spending-more-says-blinkit-ceo-albinder-dhindsa-on-rising-ad-costs-83008.htm (undated; B)
+37. https://echai.ventures/d2c/d2c-quick-commerce/qcomm-ads-visibility-search-ranking (undated; C; pass 1)
+38. https://confetti.design/blog/how-new-brands-get-visibility-on-zepto (undated; C; pass 1)
+39. https://www.42signals.com/blog/visibility-on-quick-commerce-platforms/ (undated; C; pass 1)
+40. https://techcrunch.com/2024/12/05/myntra-pushes-into-india-quick-commerce-race-with-30-minute-fashion-delivery (5 Dec 2024; B)
+41. https://zoutons.com/news/myntra-m-now-explained-30-minute-fashion-delivery-2026 (May 2026; C)
+42. https://www.firstresort.in/blogs/research/quick-commerce-fashion-india-2026 (2026; C)
+43. https://www.outlookbusiness.com/start-up/investors/slikk-raises-10-mn-to-expand-60-minute-fashion-delivery-in-urban-areas (date disputed; B)
+44. https://indiantextilejournal.com/slikk-rebrands-with-a-bolder-identity-and-60-minute-delivery/ (2026; B/C)
+45. https://retail-insight-network.com/news/amazon-now-120-indian-cities/ (Oct 2026; B; reports Amazon's 1 Oct release)
+46. https://startuptalky.com/news/amazon-now-reaches-over-120-cities/ (Oct 2026; B)
+47. https://www.business-standard.com/companies/news/amazon-now-dark-stores-expansion-2025-quick-commerce-125120100985_1.html (1 Dec 2025; B)
+48. https://www.business-standard.com/amp/industry/news/amazon-now-flipkart-minutes-go-full-throttle-in-india-s-qcom-space-126070201168_1.html (2 Jul 2026; B)
+49. https://entrackr.com/news/flipkart-targets-over-1500-quick-commerce-dark-stores-by-2026-ubs-report-11461258 (2026; B)
+50. https://www.ciol.com/news/flipkart-minutes-may-double-its-dark-store-footprint-by-2027-ubs-12502102 (2026; B)
+51. https://quickcommercemap.com/changelog/2026-07 (July 2026; C)
+52. https://quickcommercemap.com/reports/india-quick-commerce-map-2026 (July 2026; C)
+53. https://inc42.com/buzz/maharashtra-fda-suspends-licences-of-14-dark-stores-of-blinkit-zepto-instamart/ (Aug 2026; B)
+54. https://www.storyboard18.com/brand-marketing/expired-food-pest-infestation-maharashtra-fda-suspends-14-blinkit-zepto-instamart-licences-ws-l-107785.htm (Aug 2026; B)
+55. https://www.omnicuris.com/medshots/panorama/maharashtra-fda-suspends-quick-commerce-licences-food-safety_15-Aug-26_08-08 (15 Aug 2026; C)
+56. https://blacklisted.co.in/food/notices/quick-commerce-actions-2026 (2026; C; Telangana and Karnataka)
+57. https://www.business-standard.com/industry/news/quick-commerce-who-inspects-dark-stores-food-safety-india-126062500904_1.html (25 Jun 2026; B)
+58. https://inc42.com/buzz/fssai-penalises-amazon-flipkart-instamart-over-regulatory-non-compliance/ (undated; B; pass 1)
+59. https://retailintel.in/signal/fssai-weighs-ecommerce-specific-food-rules-for-quick-commerc-95b4032c (2026; C/B)
+60. https://thetechportal.com/2025/03/06/indias-quick-commerce-giants-face-antitrust-complaint/ (6 Mar 2025; B)
+61. https://www.icle.in/resource/competition-in-digital-markets-making-sense-of-the-aicpdf-complaint-at-the-cci/ (2025; B)
+62. https://www.business-standard.com/markets/ipo/fmcg-distributors-body-writes-sebi-loss-making-quick-commerce-companies-ipo-125123000929_1.html (30 Dec 2025; B)
+63. https://www.theweek.in/news/biz-tech/2026/09/18/india-festive-online-retail-growth.amp.html (18 Sep 2026; B; pass 1)
+64. https://yourstory.com/2026/10/india-quick-commerce-set-for-usd-90b-boom-by-2031-google-redseer-study (Oct 2026; B; pass 1)
+65. https://redseer.com/wp-content/uploads/2026/02/India-BPC-2030_Growth-Shifts-and-Opportunities_ExecReport_Redseer-2.pdf (Feb 2026; B; pass 1)
+66. https://inc42.com/?p=558124 (undated; B; pass 1)
+67. https://www.indianstartupnews.com/news/swiggy-q2-loss-narrows-16-to-rs-922-crore-as-revenue-jumps-36-but-instamart-losses-widen-12738851 (Oct 2026; B; search result)
+68. https://www.tradingview.com/news/moodys:498380a83b9d3:0-swiggy-faces-quick-commerce-test-as-instamart-losses-hit-rs-895-crore-in-q2/ (Oct 2026; B-aggregator)
+69. https://www.swiggy.com/corporate/wp-content/uploads/2026/07/Q1-FY2027-Shareholder-letter.pdf (Jul 2026; A; listed in search, NOT fetched; priority for next pass)
+70. https://www.medianama.com/2026/08/223-swiggy-earnings-call-key-takeaways/ (Aug 2026; B; search result, not fetched)
+71. https://www.storyboard18.com/brand-marketing/expired-food-pest-infestation-maharashtra-fda-suspends-14-blinkit-zepto-instamart-licences-ws-l-107785.htm (duplicate of 54, retained for pass 1 numbering)
+72. https://www.businesstoday.in/magazine/deep-dive/story/quick-commerce-firms-go-big-on-dark-stores-517751-2026-02-24 (24 Feb 2026; B; search result, not fetched)
