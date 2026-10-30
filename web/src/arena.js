@@ -298,7 +298,7 @@ function result(id, level, res) {
     <section class="card stack center">
       ${starRow(res.stars, 44)}
       <h1 class="h2">${res.passed ? (L.boss ? 'Boss beaten!' : 'Chapter cleared!') : res.late ? 'Out of time' : 'Not this time'}</h1>
-      <p class="muted">${res.right} of ${res.total} right${res.passed ? '' : `. You need ${res.need} to clear it.`} · best streak ${res.best} · ${res.secs} second${res.secs === 1 ? '' : 's'}${res.par ? ` (par ${res.par})` : ''}</p>
+      <p class="muted">${res.right} of ${res.total} right${res.passed ? '' : `. You need ${res.need} to clear it.`} · best streak ${res.best} · ${res.secs} second${res.secs === 1 ? '' : 's'}${res.par ? ` (par ${Math.max(1, Math.round(res.par / 60))} min)` : ''}</p>
       <p class="xpgain">+<span data-count="${res.xp}">0</span> XP</p>
       ${res.ranked ? '' : `<p class="small muted">${S.user ? 'Practice XP: it counts once you\'re ranked.' : 'Guest XP is kept on this device only.'}</p>`}
       <p class="readyline">${esc(c.readiness)}: <b>${readyAfter}%</b>${readyAfter > readyBefore ? ` <span class="up">+${readyAfter - readyBefore}</span>` : ''}</p>
