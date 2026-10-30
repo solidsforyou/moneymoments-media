@@ -130,7 +130,7 @@ Method: WebSearch (standard mode, about 17 queries) and WebFetch. Two primary-so
 
 ### 7. Typical own-site conversion rates and AOV in India
 
-- **Conversion (global/Shopify):** Littledata Shopify average 1.4%; top 20% above 3.2%; top 10% above 4.7%. [C; https://blendcommerce.com/... and Littledata (date not shown)]
+- **Conversion (global/Shopify):** Littledata Shopify average 1.4%; top 20% above 3.2%; top 10% above 4.7%. [C; Littledata figure as cited in https://blendcommerce.com/blogs/shopify/ecommerce-conversion-rate-benchmarks-2026 (2026 per URL)]
   - IRP Commerce: 1.70% eCommerce conversion, April 2026. [C; date per snippet]
   - Dynamic Yield global benchmark: 2.66%. [C; date not shown]
   - Definitions differ (Shopify counts checkout-completing sessions; Dynamic Yield counts purchases per visitor). Not directly comparable.

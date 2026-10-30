@@ -100,7 +100,7 @@ Prepared 30 Oct 2026 for SOLIDS FOR YOU (Amazon.in seller, small D2C brand).
 
 Labelled FACT and PATTERN.
 
-- FACT (sourced): AI Overviews and AI Mode now sit above organic results for many queries in India (Google launches above). The US CTR studies show clicks drop when these appear.
+- FACT (sourced, US data): clicks to organic results drop on queries where AI Overviews appear (Ahrefs, Seer, Pew studies above). The India-specific placement of AI Overviews and AI Mode results was not verified in this run.
 - FACT (sourced): Shopping and free listings require an approved Merchant Center feed. Only approved products appear in the Shopping tab.
 - FACT (sourced, company-reported): YouTube Shopping tags are the path from video to purchase on Flipkart, Myntra, Nykaa, Purplle and (from 2026) Amazon.
 - PATTERN (inference): Product data quality (feed, schema, reviews) is the common input for Google Shopping, ChatGPT shopping and Rufus. Improving it helps across all three at once.
