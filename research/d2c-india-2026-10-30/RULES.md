@@ -23,3 +23,18 @@ e-commerce and D2C work right now, and especially WHY things rank and show up wh
    - Open questions and conflicting claims
    - Sources (numbered list of URLs with dates)
 6. Reply to the coordinator with only: the file path and your 8-15 key takeaways.
+
+## Pass 2 (verification, 30 Oct 2026, network opened)
+
+Official sites now load (sell.amazon.in, aboutamazon.in, pib.gov.in, blog.google,
+developers.facebook.com, bain.com, inc42.com and more). Your job on pass 2:
+1. Read your existing raw file in full.
+2. For every claim rated C, every "snippet"/"unverified"/"check"/"not found" item, and every
+   conflict: open the primary source with WebFetch (official page first, then B press) and
+   confirm, correct or reject it. Use WebFetch on the sites; don't rely on search snippets.
+3. Fill the gaps listed in the file's open questions.
+4. Rewrite the file in place: same sections, plus a "Verified in pass 2" tag on each claim
+   you confirmed from the primary page, "Corrected" with old vs new where you changed it,
+   and "Still unverified" where you couldn't. Keep source URLs and dates.
+5. Reply with: file path, what you corrected (old → new), the top 10 takeaways after
+   verification, and what is still unverified.
