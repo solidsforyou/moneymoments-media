@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>SFY part 1: type layer</title>
+<style>
+/* Transparent type layer for 'building a clothing brand from zero, part 1'. Text never shakes (footage only).
+   Words land on kicks (reel time = song time - 4.37). Driven only by renderFrame(t). */
+@font-face{font-family:IT;src:url(fonts/InterTight-900-normal.woff2);font-weight:900}
+@font-face{font-family:MS;src:url(fonts/Montserrat-600-normal.woff2);font-weight:600}
+:root{--cream:#F6F2EA;--red:#E8262B}
+html,body{margin:0;width:1080px;height:1920px;background:transparent;overflow:hidden}
+.blk{position:absolute;left:40px;right:40px;text-align:center;white-space:nowrap}
+.w{display:inline-block;opacity:0}
+.top{font:900 84px/0.95 IT;letter-spacing:-.04em;color:var(--cream);text-transform:uppercase;text-shadow:0 8px 34px rgba(0,0,0,.55)}
+.red{font:900 200px/0.86 IT;letter-spacing:-.055em;color:var(--red);text-transform:uppercase;text-shadow:0 14px 50px rgba(0,0,0,.45)}
+.caps{font:600 30px MS;letter-spacing:.34em;color:var(--cream);text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,.6)}
+.red2{font:900 150px/0.9 IT;letter-spacing:-.05em;color:var(--red);text-transform:uppercase;text-shadow:0 12px 44px rgba(0,0,0,.5)}
+#grad{position:absolute;left:0;right:0;bottom:0;height:1000px;background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0));opacity:0}
+</style></head><body>
+<div id="grad"></div>
+<div class="blk top" style="top:1000px"><span class="w" id="b1">building a</span><br><span class="w" id="b2">clothing brand</span></div>
+<div class="blk red" style="top:1170px"><span class="w" id="fz">from zero</span></div>
+<div class="blk caps" style="top:1410px"><span class="w" id="p1">part 1</span></div>
+<div class="blk red2" style="top:1150px"><span class="w" id="e1">part 2</span>&nbsp;<span class="w" id="e2">soon</span></div>
+<div class="blk caps" style="top:1330px;font-size:40px"><span class="w" id="e3">follow</span></div>
+<script>
+const DURATION=18.46; window.DURATION=DURATION; const LOOP=DURATION;
+// [id, in, out, entrance scale]
+const W=[['b1',0.10,1.56,1.25],['b2',0.22,1.56,1.25],['fz',0.69,1.56,1.6],['p1',0.92,1.56,1.15],
+ ['e1',15.46,LOOP+1,1.4],['e2',16.37,LOOP+1,1.4],['e3',17.78,LOOP+1,1.2]];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), p=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3), in2=x=>x*x;
+function word(el,t,a,b,s0){
+  if(t<a||t>b){el.style.opacity=0;return 0}
+  const i=out3(p(t,a,s0>1.5?.14:.2)), o=1-in2(p(t,b-.1,.1));
+  el.style.opacity=Math.min(i,o); el.style.transform=`scale(${s0+(1-s0)*i})`;
+  el.style.filter=`blur(${(1-i)*20+(1-o)*12}px)`; return Math.min(i,o)}
+function renderFrame(t){
+  let g=0; W.forEach(([id,a,b,s])=>{g=Math.max(g,word(document.getElementById(id),t,a,b,s))});
+  document.getElementById('grad').style.opacity=g;
+}
+window.renderFrame=renderFrame;
+if(!navigator.webdriver){const t0=performance.now();(function loop(){renderFrame(((performance.now()-t0)/1000)%DURATION);requestAnimationFrame(loop)})()}
+</script></body></html>
