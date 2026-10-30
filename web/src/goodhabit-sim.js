@@ -2,6 +2,7 @@ import './shared/base.css';
 import './mock.css';
 import { esc, toast, sheet, footer } from './shared/ui.js';
 import { goodguy } from './shared/mascots.js';
+import { track, sync, savePrompt } from './shared/progress.js';
 
 // The trading simulator: real daily closing prices since 2007, pretend money.
 const app = document.getElementById('app');
@@ -19,7 +20,7 @@ const move = (sym, i) => { const p = D.by[sym].px; return i > 0 && p[i] && p[i -
 // delivery trade charges at a ₹0-brokerage broker, approximate
 const charges = (side, v) => { const stt = .001 * v, exch = .0000297 * v, sebi = v * 1e-6, stamp = side === 'buy' ? .00015 * v : 0, gst = .18 * (exch + sebi), dp = side === 'sell' ? 15.34 : 0; return stt + exch + sebi + stamp + gst + dp; };
 const value = (i, g = G) => g.cash + Object.entries(g.hold).reduce((a, [s, h]) => a + h.q * (px(s, i) ?? h.avg), 0);
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(G)); } catch {} };
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(G)); } catch {} track(KEY); };
 
 async function boot() {
   app.innerHTML = '<main class="wrap" style="padding:48px 16px"><p class="muted">Loading 19 years of market data…</p></main>';
@@ -27,6 +28,7 @@ async function boot() {
   const days = [Date.parse(j.data.d0 + 'T00:00:00Z')]; for (const g of j.data.gaps) days.push(days[days.length - 1] + (+g) * 864e5);
   const N = days.length, inst = j.data.s.map(([sym, name, kind, first, enc]) => { const p = new Array(N).fill(null); let v = 0; enc.split(',').forEach((t, k) => { v = k ? v + parseInt(t, 36) : parseInt(t, 36); p[first + k] = v / 100; }); return { sym, name, kind, first, px: p }; });
   D = { days, N, inst, by: Object.fromEntries(inst.map(x => [x.sym, x])) }; EV = j.events;
+  await sync();
   try { G = JSON.parse(localStorage.getItem(KEY)); } catch { G = null; }
   G ? (G.done ? report() : play()) : setup();
 }
@@ -113,8 +115,10 @@ function report() {
     <div class="grid"><div class="card"><span class="muted small">You ended with</span><br><b style="font-size:32px">${inr(v, 2)}</b><br><span class="${cls(r)}">${pct(r)}</span></div><div class="card"><span class="muted small">Just holding the Nifty</span><br><b style="font-size:32px" class="${cls(n)}">${pct(n)}</b></div><div class="card"><span class="muted small">Worst fall from your best</span><br><b style="font-size:32px">${pct(dd)}</b></div><div class="card"><span class="muted small">Trades and charges</span><br><b style="font-size:32px">${G.trades.length}</b><br>${inr(G.charges, 2)}</div></div>
     <div class="card" style="margin-top:16px">${chart()}</div>
     <div class="card stack" style="margin-top:16px"><b>GoodGuy's notes</b>${notes.map(t => `<p class="muted">${esc(t)}</p>`).join('')}<p class="small muted">GoodGuy reviews how you played, never which share to buy.</p></div>
+    <div id="saveslot" style="margin-top:16px"></div>
     <div class="row" style="margin-top:20px"><button class="btn" data-act="again">Play the same dates again</button><button class="btn quiet" data-act="new">Pick new dates</button><button class="btn quiet" data-act="keep">Keep playing</button></div>
   </main>${footer()}`;
+  savePrompt(document.getElementById('saveslot'), 'your game');
 }
 
 app.addEventListener('click', e => {
@@ -127,6 +131,6 @@ app.addEventListener('click', e => {
   if (a === 'finish') { G.done = true; save(); report(); }
   if (a === 'keep') { G.done = false; save(); play(); }
   if (a === 'again') { G = { ...G, i: G.i0, cash: G.base, hold: {}, trades: [], charges: 0, vals: [G.base], done: false }; save(); play(); }
-  if (a === 'new') { try { localStorage.removeItem(KEY); } catch {} G = null; setup(); }
+  if (a === 'new') { try { localStorage.removeItem(KEY); } catch {} G = null; track(KEY); setup(); }
 });
 boot().catch(() => { app.innerHTML = '<main class="wrap" style="padding:48px 16px"><h1>Couldn\'t load the market data.</h1><p class="muted">Check your connection and refresh.</p></main>'; });

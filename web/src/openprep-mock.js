@@ -3,12 +3,13 @@ import './mock.css';
 import { esc, api, me, toast, sheet, accountSheet, footer } from './shared/ui.js';
 import { buddy } from './shared/mascots.js';
 import { MOCK1 as M } from './data/mock1.js';
+import { track, sync, savePrompt } from './shared/progress.js';
 
 const app = document.getElementById('app');
 document.documentElement.style.setProperty('--accent', '#1B4DFF');
 const KEY = `op-${M.id}`, SEC_MS = M.minutesPerSection * 60000;
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch { return null; } };
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} track(KEY); };
 let S = load(), tick = null;
 const total = M.sections.reduce((a, s) => a + s.questions.length, 0);
 
@@ -75,11 +76,13 @@ async function results(fresh) {
     <h1>Your score: ${score} of ${max}</h1>
     <p class="muted" id="pct" style="margin:8px 0 20px">Checking how others did…</p>
     <div class="tablewrap"><table><thead><tr><th>Section</th><th>Score</th><th>Right</th><th>Wrong</th><th>Skipped</th><th>Accuracy</th></tr></thead><tbody>${per.map(p => `<tr><td>${p.name}</td><td><b>${p.score}</b></td><td>${p.right}</td><td>${p.wrong}</td><td>${p.n - p.att}</td><td>${p.att ? Math.round(p.right / p.att * 100) + '%' : '–'}</td></tr>`).join('')}</tbody></table></div>
+    <div id="saveslot" style="margin-top:16px"></div>
     <div class="row" style="margin:20px 0 28px"><a class="btn" href="#review">Review every answer</a><button class="btn quiet" data-act="restart">Take it again</button><a class="btn quiet" href="/openprep/learn/">Practise with lessons</a></div>
     <h2 id="review" style="margin-bottom:12px">Every answer, explained</h2>
     ${M.sections.map((s, i) => `<h3 style="margin:24px 0 8px">${esc(s.name)}</h3><div class="stack">${s.questions.map((q, j) => { const v = S.ans[k(i, j)], c = correct(q, v); return `<details class="card"><summary><b>${j + 1}.</b> ${c === null ? '<span class="muted">Skipped</span>' : c ? '<span style="color:var(--good)">Right, +3</span>' : `<span style="color:var(--bad)">Wrong${q.type === 'mcq' ? ', −1' : ', 0'}</span>`}</summary>${q.passage || q.set ? '<p class="small muted" style="margin-top:8px">From the passage or set above in the test.</p>' : ''}<div class="qtext" style="margin-top:8px">${rich(q.q)}</div><p style="margin-top:8px">Your answer: <b>${v == null || v === '' ? 'none' : q.type === 'mcq' ? esc(q.o[v]) : esc(v)}</b>. Correct: <b>${q.type === 'mcq' ? esc(q.o[q.a]) : esc(q.a)}</b>.</p><p class="why" style="margin-top:6px">${esc(q.why)}</p></details>`; }).join('')}</div>`).join('')}
   </main>${footer()}`;
   const pct = document.getElementById('pct');
+  savePrompt(document.getElementById('saveslot'), 'your score and answers');
   const { user } = await me();
   const sections = Object.fromEntries(per.map(p => [p.name, p.score]));
   try {
@@ -106,4 +109,7 @@ app.addEventListener('click', e => {
   if (a === 'saveresult') { e.preventDefault(); accountSheet({ app: 'ose', onDone: async () => { S.sent = false; save(); results(true); } }); }
 });
 
+function boot() { S = load();
 if (S && !S.finished && location.hash !== '#intro') { if (S.ends[S.sec] < Date.now()) nextSection(); else intro(); } else if (S && S.finished && location.hash === '#review') results(false); else intro();
+}
+sync().then(boot, boot);

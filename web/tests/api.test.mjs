@@ -143,6 +143,16 @@ test('content: public to read, admin token to publish', async () => {
   assert.equal((await x.req('/api/content/nope')).status, 404);
 });
 
+test('progress: saved per person, newest copy wins, only known items', async () => {
+  assert.equal((await new Agent().req('/api/progress')).status, 401);
+  const t = Date.now();
+  assert.equal((await asha.req('/api/progress', { method: 'PUT', body: { items: { 'op-done': { v: { 'successive': true }, t }, 'gh-sim-v1': { v: { i: 5 }, t } } } })).status, 200);
+  await asha.req('/api/progress', { method: 'PUT', body: { items: { 'gh-sim-v1': { v: { i: 1 }, t: t - 1000 } } } });   // older copy is ignored
+  const got = (await asha.req('/api/progress')).data.items; assert.equal(got['gh-sim-v1'].v.i, 5); assert.equal(got['op-done'].v.successive, true);
+  assert.equal((await asha.req('/api/progress', { method: 'PUT', body: { items: { 'cookies': { v: 1, t } } } })).status, 400);
+  assert.deepEqual((await kabir.req('/api/progress')).data.items, {});
+});
+
 test('pages are served', async () => {
   for (const p of ['/', '/tomorrow/', '/openprep/', '/openprep/learn/', '/openprep/mock/', '/goodhabit/', '/goodhabit/sim/', '/privacy/', '/delete-data/', '/build/', '/admin/', '/play/', '/sw.js', '/data/sim.json']) { const r = await fetch(BASE + p); assert.equal(r.status, 200, p); }
   assert.equal((await fetch(BASE + '/nope')).status, 404);
