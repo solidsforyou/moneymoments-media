@@ -87,7 +87,7 @@ export async function makeAppId(app, label) {
   });
 }
 
-export const footer = () => `<footer class="foot wrap"><p>OpenSource Everything. Free, ad-free, built in the open.</p><nav><a href="/">All apps</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/delete-data/">Delete my data</a><a href="/build/">Build with us</a></nav></footer>`;
+export const footer = () => `<footer class="foot wrap"><p>OpenSource Everything. Free, ad-free, built in the open.</p><nav><a href="/">All apps</a><a href="/privacy/">Privacy</a><a href="/#donate">Donate</a><a href="/terms/">Terms</a><a href="/delete-data/">Delete my data</a><a href="/build/">Build with us</a></nav></footer>`;
 
 // The recovery code: shown once at sign-up, the only way back in without Telegram.
 export function showRecovery(code) {

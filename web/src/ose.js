@@ -38,6 +38,7 @@ async function draw() {
       <div class="card row" style="margin-bottom:16px">${avatar(user, 56)}<span class="grow" style="flex:1;min-width:0"><b style="font-size:19px">${esc(user.name)}</b><br><span class="muted">OpenID @${esc(user.handle)}</span></span></div>
       <div class="row"><a class="btn quiet" href="/arena/#/me">Arena profile</a><button class="btn quiet" data-act="logout">Log out</button><a class="btn quiet" href="/delete-data/">Delete my account</a></div>
     </section>` : ''}
+    <section class="wrap sec" id="donate"><h2>Support us</h2><div class="card stack"><p>Arena is free for every student, with no ads. If you'd like to donate or back the work, write to <a href="mailto:shashwat@solidsforyou.com?subject=Donation%20to%20OpenSource%20Everything">shashwat@solidsforyou.com</a>.</p></div></section>
     <section class="wrap sec"><h2>Built in the open</h2><div class="card stack"><p>Every app's code goes public under the AGPL licence. Read it, copy it, or build on it.</p><p><a href="/build/">How to build with us</a></p></div></section>
   </main>${footer()}`;
 }
