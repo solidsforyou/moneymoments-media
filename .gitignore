@@ -20,3 +20,4 @@ videos/reels/music/*.wav
 videos/trailer/music/
 videos/trailer/cap3/
 videos/trailer/out/v3/
+videos/trailer/out/*.log
