@@ -6,8 +6,9 @@ sys.path.insert(0,os.path.dirname(__file__)); from shots import *
 RAW=os.environ['RAW']
 ins=[];fl=[]
 for i,(f,ss,sp,flip,z,cx,cy,push) in enumerate(SHOTS):
-    d=CUTS[i+1]-CUTS[i]; path=f if '/' in f else f'{RAW}/{f}.MOV'
-    ins+=['-ss',f'{ss}','-t',f'{d*sp+0.3:.2f}','-i',path]
+    d=CUTS[i+1]-CUTS[i]
+    if f.startswith('PHOTO:'): ins+=['-loop','1','-framerate','30','-t',f'{d+0.3:.2f}','-i',f'assets/sfy/photos/{f[6:]}.jpg']
+    else: ins+=['-ss',f'{ss}','-t',f'{d*sp+0.3:.2f}','-i',f if '/' in f else f'{RAW}/{f}.MOV']
     pu=f'(1+0.045*exp(-t*9))' if i>0 else '1'   # punch on every cut
     zz=f'{z}*{pu}*(1+{push}*t/{d:.3f})'
     shake="+18*sin(t*90)*exp(-t*10)" if i==6 else ""

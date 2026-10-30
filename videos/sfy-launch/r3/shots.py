@@ -18,10 +18,10 @@ SHOTS=[('IMG_3552',22.6,1.0,1,1.18,.5,.30,.04),   # 1 hook: tee coming down over
  (f'{C}/folding-blue-tee-hands.mp4',3.0,1.0,0,1.0,.5,.5,.06),  # 12 folding a blue tee
  (f'{C}/stacks-blue-black-white-on-table.mp4',0.2,1.0,0,1.0,.5,.5,0),  # 13 packing: stacks
  (f'{C}/taping-master-box-shut.mp4',1.0,1.3,0,1.0,.5,.5,0),  # 14 packing: tape
- ('IMG_3551',4.5,1.5,0,1.0,.5,.5,0),           # 15 opens the jogger bag
- ('IMG_3551',16.3,1.0,0,1.0,.5,.45,.04),       # 16 joggers held up
- ('IMG_3552',3.0,1.5,1,1.12,.5,.32,0),         # 17 opens the blue tee
- ('IMG_3552',16.5,3.5,1,1.12,.5,.32,0),        # 18 pulls it on (fast), lands on tee on
- ('IMG_3552',24.2,1.0,1,1.12,.5,.32,0),        # 19 tee on, adjusting
- ('IMG_3552',31.0,1.0,1,1.12,.5,.32,.06)]      # 20 final look, under the end card
+ ('PHOTO:black-joggers-drawstring-3',0,1,0,1.0,.5,.5,.07),   # 15 joggers, drawstring (photo)
+ ('IMG_3551',16.3,1.0,0,1.0,.5,.45,.04),       # 16 joggers held up (the founder, product-led)
+ ('PHOTO:black-joggers-drawstring-2',0,1,0,1.0,.45,.5,.06),  # 17 joggers detail (photo)
+ ('PHOTO:blue-tees-folded-stack',0,1,0,1.0,.45,.5,.08),     # 18 folded blue tees (photo)
+ ('IMG_3552',24.2,1.0,1,1.12,.5,.32,0),        # 19 tee on (the founder)
+ ('PHOTO:blue-tee-collar-1',0,1,0,1.0,.4,.5,.10)]           # 20 collar close-up, under the end card
 assert len(SHOTS)==len(CUTS)-1

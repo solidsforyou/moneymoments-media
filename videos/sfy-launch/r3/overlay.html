@@ -1,126 +1,64 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><title>SFY roll to wear: type layer</title>
 <style>
-/* Transparent typography layer for the round-3 reel. Everything is driven by renderFrame(t).
-   Fonts and logo are expected next to this file (fonts/, sfy-logo-white.png). */
-@font-face{font-family:IT;src:url(fonts/InterTight-900-normal.woff2);font-weight:900}
+/* Clean transparent type layer. One short line at a time in the lower third; every word appears on a sung word
+   of the track (Whisper word times, reel time = song time - 1.73). Driven only by renderFrame(t). */
 @font-face{font-family:IT;src:url(fonts/InterTight-800-normal.woff2);font-weight:800}
 @font-face{font-family:DMS;src:url(fonts/DMSerifDisplay-400-italic.woff2);font-style:italic}
-@font-face{font-family:MS;src:url(fonts/Montserrat-600-normal.woff2);font-weight:600}
 @font-face{font-family:MS;src:url(fonts/Montserrat-500-normal.woff2);font-weight:500}
-:root{--cream:#F5F1E8;--butter:#FAE67A;--ink:#0d0d0f}
+:root{--cream:#F6F2EA}
 html,body{margin:0;width:1080px;height:1920px;background:transparent;overflow:hidden}
-#stage{position:absolute;inset:0}
-.abs{position:absolute;left:0;right:0}
-.shadow{text-shadow:0 10px 40px rgba(0,0,0,.55),0 2px 10px rgba(0,0,0,.35)}
-/* spec rail */
-#rail{top:236px;left:56px;right:56px;opacity:0}
-#rail .row{display:flex;justify-content:space-between;align-items:baseline;font:600 28px MS;letter-spacing:.32em;color:var(--cream)}
-#rail .bar{margin-top:16px;height:3px;background:rgba(245,241,232,.25);border-radius:2px;overflow:hidden}
-#rail .fill{height:100%;width:0;background:var(--cream)}
-#rail .step{display:inline-block;transform-origin:right center}
-#rail .num{color:var(--butter)}
-/* big words */
-.big{font:900 230px/0.9 IT;letter-spacing:-.05em;color:var(--cream);text-align:center;white-space:nowrap}
-.serif{font:italic 400 140px/1 DMS;color:var(--cream);text-align:center;white-space:nowrap}
-.mask{display:inline-block;overflow:hidden;padding:.02em 0 .14em;margin-bottom:-.12em;vertical-align:bottom}
-.mask>span{display:inline-block}
-.caps{font:600 34px MS;letter-spacing:.32em;color:var(--cream);text-align:center;white-space:nowrap}
-.spread{display:flex;justify-content:space-between;font:600 34px MS;color:var(--cream)}
-/* spec blocks */
-.spec{left:70px;right:auto}
-.spec .n{font:900 330px/0.82 IT;letter-spacing:-.06em;color:var(--cream)}
-.spec .u{font:800 64px IT;letter-spacing:-.02em;color:var(--butter);margin-left:10px}
-.spec .k{font:600 30px MS;letter-spacing:.32em;color:var(--cream);margin-top:18px}
-/* price chips */
-.chip{left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:22px;padding:22px 34px;border-radius:999px;
-  background:rgba(13,13,15,.55);backdrop-filter:blur(14px);border:1.5px solid rgba(245,241,232,.35);white-space:nowrap}
-.chip .a{font:600 28px MS;letter-spacing:.28em;color:var(--cream)}
-.chip .p{font:800 56px IT,Inter;color:var(--butter);letter-spacing:-.02em}
-#shade{inset:0;background:radial-gradient(120% 70% at 50% 46%,rgba(8,8,10,.35),rgba(8,8,10,.86));opacity:0}
-#flash{inset:0;background:#fff;opacity:0}
-#logo{top:770px;left:50%;width:720px;transform:translateX(-50%);opacity:0}
-.grad{left:0;right:0;height:640px;bottom:0;background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0));opacity:0}
-</style></head><body><div id="stage">
-<div id="gradB" class="abs grad"></div>
-<div id="rail" class="abs"><div class="row"><span>SOLIDS FOR YOU</span><span class="step" id="step"><span class="num" id="num">01/09</span>&nbsp;&nbsp;<span id="sname">CUT</span></span></div><div class="bar"><div class="fill" id="fill"></div></div></div>
-
-<div id="hook" class="abs big shadow" style="top:1150px;font-size:210px">this tee</div>
-<div id="started" class="abs serif shadow" style="top:1120px"></div>
-<div id="pressed" class="abs big" style="top:860px;font-size:280px;color:var(--butter);text-shadow:0 14px 50px rgba(0,0,0,.6)">pressed</div>
-<div id="ourname" class="abs serif shadow" style="top:330px;font-size:130px"></div>
-<div id="every" class="abs spread shadow" style="top:1400px;left:190px;right:190px"></div>
-<div id="spec320" class="abs spec shadow" style="top:1060px"><div><span class="n" id="n320">0</span><span class="u">GSM</span></div><div class="k">COTTON JOGGERS</div></div>
-<div id="spec230" class="abs spec shadow" style="top:1060px"><div><span class="n" id="n230">0</span><span class="u">GSM</span></div><div class="k">COTTON TEES</div></div>
-<div id="chipJ" class="abs chip" style="top:1330px"><span class="a">JOGGERS</span><span class="p">₹1,499</span></div>
-<div id="chipT" class="abs chip" style="top:1330px"><span class="a">TEES</span><span class="p">₹999</span></div>
-<div id="shade" class="abs"></div>
-<img id="logo" class="abs" src="sfy-logo-white.png">
-<div id="roll" class="abs serif shadow" style="top:1050px;font-size:96px"></div>
-<div id="soon" class="abs caps" style="top:1250px;font-size:30px">COMING SOON ON AMAZON</div>
-<div id="flash" class="abs"></div>
-</div>
+.line{position:absolute;left:60px;right:60px;top:1210px;text-align:center;white-space:nowrap;color:var(--cream);
+  text-shadow:0 8px 36px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)}
+.w{display:inline-block;margin:0 .13em;opacity:0;will-change:transform,filter,opacity}
+.s{font:800 118px/1 IT,Inter;letter-spacing:-.045em}
+.i{font:italic 400 136px/1 DMS,Inter;letter-spacing:-.01em}
+#grad{position:absolute;left:0;right:0;bottom:0;height:900px;background:linear-gradient(to top,rgba(0,0,0,.42),rgba(0,0,0,0));opacity:0}
+#shade{position:absolute;inset:0;background:rgba(8,8,10,.55);opacity:0}
+#logo{position:absolute;top:800px;left:50%;width:700px;transform:translateX(-50%);opacity:0}
+#soon{top:1130px}
+#soon .w{font:500 34px MS;letter-spacing:.32em;margin:0 .22em}
+</style></head><body>
+<div id="grad"></div><div id="shade"></div>
+<img id="logo" src="sfy-logo-white.png">
+<div id="lines"></div>
+<div id="soon" class="line"></div>
 <script>
-const DURATION=28.48; window.DURATION=DURATION;
-const C={drop:1.20,stitch:2.64,print:4.24,press:6.33,label:7.02,hero:7.93,thread:10.02,fold:10.72,tee:11.62,pack:13.71,tape:14.41,wear:15.31,
-  jogUp:16.50,teeBag:18.10,pull:19.01,teeOn:21.10,last:22.70,end:24.79};
-const STEPS=[[C.drop,'CUT'],[C.stitch,'STITCH'],[C.print,'PRINT'],[C.press,'PRESS'],[C.label,'LABEL'],[C.thread,'THREAD'],[C.fold,'FOLD'],[C.pack,'PACK'],[C.wear,'WEAR']];
-const $=id=>document.getElementById(id);
-const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
-const E={out3:x=>1-Math.pow(1-x,3),expo:x=>x>=1?1:1-Math.pow(2,-10*x),in2:x=>x*x,outBack:x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)}};
-const p=(t,a,d)=>clamp((t-a)/d);
-// blur pop in at a, blur out ending at b
-function pop(el,t,a,b,{s0=1.22,blur=22,din=.2,dout=.12,extra=''}={}){
-  if(t<a||t>b){el.style.opacity=0;return 0}
-  const i=E.out3(p(t,a,din)), o=1-E.in2(p(t,b-dout,dout)), k=Math.min(i,o);
-  const sc=s0+(1-s0)*i;
-  el.style.opacity=k; el.style.filter=`blur(${(1-i)*blur+(1-o)*blur*.6}px)`;
-  el.style.transform=`${extra} scale(${sc})`; return k}
-// serif word that rises letter by letter out of a mask
-function setMask(el,text){el.innerHTML=[...text].map(ch=>`<span class="mask"><span>${ch===' '?'&nbsp;':ch}</span></span>`).join('')}
-function rise(el,t,a,b,{st=.028,d=.45}={}){
-  const vis=t>=a&&t<=b; el.style.opacity=vis?1:0; if(!vis)return;
-  const out=E.in2(p(t,b-.18,.18));
-  [...el.querySelectorAll('.mask>span')].forEach((s,i)=>{const k=E.expo(p(t,a+i*st,d));
-    s.style.transform=`translateY(${(1-k)*115 - out*115}%)`;
-    s.style.filter=`blur(${(1-k)*6}px)`});}
-// tracked caps that "track in": scaleX 1.45 -> 1 + blur, letters stagger
-function setSpread(el,text){el.innerHTML=[...text].map(ch=>`<span>${ch===' '?'&nbsp;':ch}</span>`).join('')}
-function trackIn(el,t,a,b){const vis=t>=a&&t<=b; el.style.opacity=vis?1:0; if(!vis)return;
-  const k=E.expo(p(t,a,.6)), o=1-E.in2(p(t,b-.15,.15));
-  el.style.transform=`scaleX(${1.45-.45*k})`; el.style.filter=`blur(${(1-k)*10}px)`; el.style.opacity=k*o;}
-setMask($('started'),'started here.'); setMask($('ourname'),'our name'); setMask($('roll'),'from roll to wear.');
-setSpread($('every'),'ON EVERY PIECE');
+const DURATION=28.48; window.DURATION=DURATION; const END=24.79;
+// [ [word, appears at, style s=sans i=serif italic], ... ], line leaves at `out`
+const LINES=[
+ {out:1.18, w:[['this',0.05,'s'],['tee',0.71,'s']]},
+ {out:2.60, w:[['started',1.20,'s'],['here.',1.85,'i']]},
+ {out:10.00,w:[['our',8.25,'s'],['name,',8.81,'i']]},
+ {out:10.00,top:1350,w:[['on',9.49,'s'],['every',9.62,'s'],['piece.',9.77,'i']]},
+ {out:11.60,w:[['320',10.07,'s'],['gsm',10.55,'i']]},
+ {out:13.69,w:[['230',11.87,'s'],['gsm',13.01,'i']]},
+ {out:18.08,w:[['joggers',15.73,'s'],['₹1,499',16.41,'i']]},
+ {out:21.08,w:[['tees',19.73,'s'],['₹999',20.41,'i']]},
+];
+const SOON=[['COMING',25.27],['SOON',25.95],['ON',26.27],['AMAZON',26.77]];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), p=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3), in2=x=>x*x;
+const root=document.getElementById('lines');
+const built=LINES.map(L=>{const d=document.createElement('div');d.className='line';if(L.top)d.style.top=L.top+'px';
+  L.els=L.w.map(([txt,,st])=>{const s=document.createElement('span');s.className='w '+st;s.textContent=txt;d.appendChild(s);return s});
+  root.appendChild(d);return L});
+const soon=document.getElementById('soon');
+const soonEls=SOON.map(([txt])=>{const s=document.createElement('span');s.className='w';s.textContent=txt;soon.appendChild(s);return s});
+function word(el,t,a,out){ // blur-pop in on its sung word, blur out with the line
+  if(t<a||t>out){el.style.opacity=0;return}
+  const i=out3(p(t,a,.2)), o=1-in2(p(t,out-.12,.12));
+  el.style.opacity=Math.min(i,o);
+  el.style.transform=`translateY(${(1-i)*18}px) scale(${1.18-.18*i})`;
+  el.style.filter=`blur(${(1-i)*18+(1-o)*12}px)`}
 function renderFrame(t){
-  // ---- spec rail: appears on the drop, fills toward WEAR, leaves after it
-  const r=$('rail'); const rin=E.out3(p(t,C.drop,.3)), rout=1-E.in2(p(t,C.wear+0.9,.35));
-  r.style.opacity=t<C.drop?0:Math.min(rin,rout); r.style.transform=`translateY(${(1-rin)*-24}px)`;
-  let si=0; STEPS.forEach((s,i)=>{if(t>=s[0])si=i});
-  $('num').textContent=String(si+1).padStart(2,'0')+'/09'; $('sname').textContent=STEPS[si][1];
-  const sk=E.expo(p(t,STEPS[si][0],.35)); $('step').style.transform=`scaleX(${1.35-.35*sk})`; $('step').style.filter=`blur(${(1-sk)*8}px)`;
-  $('fill').style.width=(100*E.out3(clamp((t-C.drop)/(C.wear-C.drop))))+'%';
-  // ---- hook and drop
-  pop($('hook'),t,0.06,C.drop-0.02,{s0:1.3});
-  rise($('started'),t,C.drop+0.02,C.stitch-0.05);
-  // ---- press slam (+ 2-frame flash)
-  pop($('pressed'),t,C.press,C.label-0.03,{s0:1.6,blur:30,din:.12,extra:`translateX(${Math.sin(t*90)*14*Math.exp(-(t-C.press)*10)}px)`});
-  $('flash').style.opacity=t>=C.press&&t<C.press+0.07?0.55*(1-p(t,C.press,.07)):0;
-  // ---- label hero
-  rise($('ourname'),t,C.hero+0.05,C.thread-0.04,{st:.035});
-  trackIn($('every'),t,C.hero+0.45,C.thread-0.04);
-  // ---- GSM counters
-  const s3=$('spec320'), s2=$('spec230');
-  pop(s3,t,C.thread,C.tee-0.03,{s0:1.12,blur:16}); $('n320').textContent=Math.round(320*E.out3(p(t,C.thread,.55)));
-  pop(s2,t,C.tee,C.pack-0.03,{s0:1.12,blur:16}); $('n230').textContent=Math.round(230*E.out3(p(t,C.tee,.55)));
-  $('gradB').style.opacity=(t>=C.thread&&t<C.pack)?1:(t>=C.jogUp&&t<C.end?0.8:0);
-  // ---- price chips
-  pop($('chipJ'),t,C.jogUp+0.15,C.teeBag-0.03,{s0:1.15,blur:14,extra:'translateX(-50%)'});
-  pop($('chipT'),t,C.last+0.1,C.end-0.03,{s0:1.15,blur:14,extra:'translateX(-50%)'});
-  // ---- end card
-  const sh=E.out3(p(t,C.end,.5)); $('shade').style.opacity=sh;
-  pop($('logo'),t,C.end+0.02,DURATION+1,{s0:1.18,blur:24,din:.32,extra:'translateX(-50%)'});
-  rise($('roll'),t,C.end+0.45,DURATION+1,{st:.03,d:.5});
-  trackIn($('soon'),t,C.end+1.1,DURATION+1);
+  built.forEach(L=>L.els.forEach((el,k)=>word(el,t,L.w[k][1],L.out)));
+  const g=Math.max(0,...LINES.map(L=>Math.min(p(t,L.w[0][1]-.15,.3),1-p(t,L.out-.1,.3))));
+  document.getElementById('grad').style.opacity=g;
+  const sh=out3(p(t,END,.5)); document.getElementById('shade').style.opacity=sh;
+  const lg=document.getElementById('logo'), k=out3(p(t,END+.02,.32));
+  lg.style.opacity=t>=END?k:0; lg.style.filter=`blur(${(1-k)*22}px)`; lg.style.transform=`translateX(-50%) scale(${1.15-.15*k})`;
+  soonEls.forEach((el,i)=>word(el,t,SOON[i][1],DURATION+1));
 }
 window.renderFrame=renderFrame;
 if(!navigator.webdriver){const t0=performance.now();(function loop(){renderFrame(((performance.now()-t0)/1000)%DURATION);requestAnimationFrame(loop)})()}
