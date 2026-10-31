@@ -175,3 +175,12 @@ to pay this much.
 3. A GSM/composition proof image.
 4. "Pre-shrunk" with care instructions.
 5. A launch price or tee + jogger combo, until reviews exist.
+
+## Founder answers (31 Oct 2026)
+
+- Pre-shrunk: **yes**, so fix 5 can say "pre-shrunk" with care instructions.
+- XL and up: **not for now**, so fix 2 becomes: say "S-L only" clearly, give model height and
+  size worn, and keep the size chart prominent.
+- Spec sheet: **none**. Founder burn-tested the fabric and says it's pure cotton. A burn test
+  is a good sign but not proof a buyer, Amazon or a regulator can see: fix 4 still needs a
+  fibre-composition lab test and a measured GSM.
