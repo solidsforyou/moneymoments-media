@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Barlow;src:url(../../../brand/fonts/BarlowCondensed-900.ttf);font-weight:900}
+@font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-600.ttf);font-weight:600}
+@font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-700.ttf);font-weight:700}
+:root{--ink:#fff;--mute:#9a9aa3;--line:rgba(255,255,255,.14);--blue:#3d6bff}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2000px;height:2000px;background:#000;overflow:hidden}
+.frame{position:relative;width:2000px;height:2000px;background:#000;color:var(--ink);font-family:Manrope;font-weight:600}
+.photo{position:absolute;top:0;right:0;width:1240px;height:2000px;background:url(../../../assets/sfy/photos/white-cut-panels-pattern-paper.jpg) center/cover no-repeat}
+.photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.85) 14%,rgba(0,0,0,0) 46%),
+             radial-gradient(120% 60% at 0% 0%,#000 30%,rgba(0,0,0,0) 70%),
+             linear-gradient(0deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 22%),
+             linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,0) 16%)}
+.nav{position:absolute;top:110px;left:130px;right:130px;display:flex;align-items:center;justify-content:space-between}
+.nav img{height:118px}
+.nav .tag{font-size:30px;letter-spacing:.32em;color:var(--mute);text-transform:uppercase}
+.eyebrow{position:absolute;top:560px;left:130px;display:flex;align-items:center;gap:28px;font-size:32px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+.eyebrow b{color:var(--blue);font-weight:700}
+.eyebrow i{display:block;width:120px;height:2px;background:var(--line)}
+h1{position:absolute;top:640px;left:120px;font-family:Barlow;font-weight:900;font-size:340px;line-height:.86;letter-spacing:-.005em;text-transform:uppercase}
+.lede{position:absolute;bottom:305px;left:130px;width:900px;font-size:52px;line-height:1.3;color:#cfcfd6}
+.foot{position:absolute;left:130px;right:130px;bottom:110px;display:flex;justify-content:space-between;align-items:center;
+  padding-top:44px;border-top:2px solid var(--line);font-size:34px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.foot .usp{color:var(--blue)}
+.foot .usp span{color:var(--line);margin:0 26px}
+.foot .idx{color:var(--mute);font-weight:600}
+</style></head>
+<body><div class="frame">
+  <div class="photo"></div>
+  <div class="nav"><img src="logo.png" alt="SOLIDS FOR YOU"><div class="tag">Essentials</div></div>
+  <div class="eyebrow">The brand</div>
+  <h1>Solids<br>for you.</h1>
+  <p class="lede">Solid basics, nothing extra.<br>100% cotton. Made in India.</p>
+  <div class="foot"><div class="usp">100% Cotton<span>/</span>Made in India</div><div class="idx"></div></div>
+</div></body></html>
