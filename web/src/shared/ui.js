@@ -133,3 +133,21 @@ export function ask(title, label, value = '') {
 
 // one anonymous page-view count per page load (no cookies, no IP, see pulse.mjs)
 try { if (!/^\/admin/.test(location.pathname)) navigator.sendBeacon?.('/api/pulse/view', JSON.stringify({ p: location.pathname.replace(/[^a-z0-9/-]/gi, '').slice(0, 60) || '/' })); } catch {}
+
+// ---- "Add to Home Screen": Android/desktop Chrome get the real install prompt; iPhone and
+// in-app browsers can't be prompted, so they get the steps instead ----
+let installEvt = null;
+export const installed = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+export const installBtn = (label = 'Add to Home Screen', cls = 'btn quiet small') => installed() ? '' : `<button class="${cls}" data-install>${esc(label)}</button>`;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
+addEventListener('appinstalled', () => { installEvt = null; document.querySelectorAll('[data-install]').forEach(b => b.remove()); toast('Added. Open it from your home screen.'); });
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-install]'); if (!b) return;
+  if (installEvt) { const ev = installEvt; installEvt = null; ev.prompt(); try { await ev.userChoice; } catch {} return; }
+  const ua = navigator.userAgent, ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const inApp = /Instagram|FBAN|FBAV|WhatsApp|Line\/|Snapchat|Twitter/i.test(ua);
+  const steps = inApp ? `<p>You're inside another app's browser, which can't add apps to your home screen.</p><ol class="steps"><li>Tap the menu (⋯ or ⋮) and choose <b>Open in browser</b>.</li><li>Then tap <b>Add to Home Screen</b> on this page again.</li></ol>`
+    : ios ? `<ol class="steps"><li>Tap the <b>Share</b> button (the square with an arrow). In Safari it's at the bottom; in Chrome it's at the top right.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol>`
+    : `<ol class="steps"><li>Open your browser's menu (⋮ at the top right).</li><li>Tap <b>Add to Home screen</b> or <b>Install app</b>.</li></ol>`;
+  sheet(`<div class="stack"><h2>Add to your home screen</h2>${steps}<p class="muted small">It opens like an app, full screen, with its own icon. Nothing to download from a store.</p></div>`);
+});

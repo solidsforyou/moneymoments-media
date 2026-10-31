@@ -6,10 +6,16 @@ import { SOON, soonCard, soonCounts } from './shared/soon.js';
 // Launch page (30 Oct 2026): Arena is live, OpenPrep gives a glimpse, the rest is coming soon.
 const app = document.getElementById('app');
 
+let data = { user: null, counts: {}, cat: { courses: [] } }, drawn = '';
 async function draw() {
+  paint();   // straight away, so the page never sits blank while the server wakes up
   const [{ user }, counts, cat] = await Promise.all([me(), soonCounts(), api('/api/arena/courses').catch(() => ({ courses: [] }))]);
+  data = { user, counts, cat }; paint();
+}
+function paint() {
+  const { user, counts, cat } = data;
   const qs = cat.courses.reduce((a, c) => a + c.chapters.reduce((s, ch) => s + ch.n.easy + ch.n.medium + ch.n.hard, 0), 0), chs = cat.courses.reduce((a, c) => a + c.chapters.length, 0);
-  app.innerHTML = `
+  const html = `
   <header class="bar"><div class="wrap"><a class="brand" href="/"><span class="m">${olly()}</span>OpenSource Everything</a>${user ? `<button class="btn quiet small" data-act="me">@${esc(user.handle)}</button>` : '<a class="btn small" href="/arena/">Open Arena</a>'}</div></header>
   <main>
     <section class="wrap hero">
@@ -43,6 +49,7 @@ async function draw() {
     <section class="wrap sec" id="donate"><h2>Support us</h2><div class="card stack"><p>Arena is free for every student, with no ads. If you'd like to donate or back the work, write to <a href="mailto:shashwat@solidsforyou.com?subject=Donation%20to%20OpenSource%20Everything">shashwat@solidsforyou.com</a>.</p></div></section>
     <section class="wrap sec"><h2>Built in the open</h2><div class="card stack"><p>Every app's code goes public under the AGPL licence. Read it, copy it, or build on it.</p><p><a href="/build/">How to build with us</a></p></div></section>
   </main>${footer()}`;
+  if (html !== drawn) { app.innerHTML = html; drawn = html; }   // unchanged: leave playing videos alone
 }
 
 app.addEventListener('click', async e => {

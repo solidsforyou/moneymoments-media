@@ -6,11 +6,18 @@ import { esc, api, me, toast, accountSheet, makeAppId, footer } from './ui.js';
 export async function appPage(o) {
   const app = document.getElementById('app');
   document.documentElement.style.setProperty('--accent', o.accent);
+  let first = true;
   const draw = async () => {
-    const { user } = await me(); let items = []; try { items = (await api(`/api/content/${o.key}`)).items; } catch {}
+    let user = null, items = [];
+    if (first) { first = false; paint(user, items); }
+    ({ user } = await me()); try { items = (await api(`/api/content/${o.key}`)).items; } catch {}
+    paint(user, items);
+  };
+  let drawn = '';
+  const paint = (user, items) => {
     const tab = new URLSearchParams(location.search).get('show') || 'all';
     const shown = tab === 'all' ? items : items.filter(i => i.pillar === tab);
-    app.innerHTML = `
+    const html = `
     <header class="bar"><div class="wrap"><a class="brand" href="/${o.key}/"><span class="m">${o.mascot()}</span>${o.name}</a><a class="btn quiet small" href="/">All apps</a></div></header>
     <main>
       <section class="wrap hero"><div><h1>${o.head}</h1><p class="lede">${o.lede}</p>
@@ -24,6 +31,7 @@ export async function appPage(o) {
       </section>
       <section class="wrap sec"><h2>${o.whyTitle}</h2><div class="grid">${o.why.map(([h, p]) => `<div class="card stack"><h3>${h}</h3><p class="muted">${p}</p></div>`).join('')}</div></section>
     </main>${footer()}`;
+    if (html !== drawn) { app.innerHTML = html; drawn = html; }
   };
   app.addEventListener('click', async e => {
     const b = e.target.closest('[data-act]'); if (!b) return;

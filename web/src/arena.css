@@ -14,7 +14,7 @@ html:root[data-theme="dark"] { --accent: #9B7BFF; --accent-ink: #0D0B1A; --bg: #
 /* player card */
 .homegrid { padding-top: var(--s5); }
 .player { display: flex; gap: var(--s4); align-items: center; text-decoration: none; color: inherit; }
-.player:not(.static):hover { box-shadow: inset 0 0 0 2px var(--accent); }
+@media (hover: hover) { .player:not(.static):hover { box-shadow: inset 0 0 0 2px var(--accent); } }
 .pav { width: 88px; height: 88px; flex: none; border-radius: 50%; background: var(--fill); overflow: hidden; }
 .pn { font-size: 20px; }
 .player .grow { flex: 1; min-width: 0; }
@@ -27,7 +27,7 @@ html:root[data-theme="dark"] { --accent: #9B7BFF; --accent-ink: #0D0B1A; --bg: #
 /* courses */
 .courses { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
 .course { display: flex; flex-direction: column; gap: var(--s1); text-decoration: none; color: inherit; }
-a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
+@media (hover: hover) { a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); } }
 .course b { font-size: 19px; }
 .course.off { color: var(--label2); background: var(--fill); box-shadow: none; }
 
@@ -41,7 +41,7 @@ a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
 .classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
 .classes .wide2 { grid-column: span 4; }
 .chip { min-height: 40px; min-width: 44px; padding: 0 var(--s3); border-radius: var(--pill); border: 1px solid var(--sep); background: var(--card); color: var(--label); font: 600 15px var(--font); cursor: pointer; }
-.chip:hover { border-color: var(--accent); }
+@media (hover: hover) { .chip:hover { border-color: var(--accent); } }
 .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .chip[disabled] { background: var(--fill); color: var(--label2); border-color: transparent; cursor: not-allowed; font-weight: 500; }
 .sw { width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--card); background: var(--c); box-shadow: 0 0 0 1px var(--sep); cursor: pointer; }
@@ -49,7 +49,7 @@ a.course:hover { box-shadow: inset 0 0 0 2px var(--accent); }
 .diffs { display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); }
 .diff { text-align: left; padding: var(--s3) var(--s4); border-radius: var(--r2); border: 1px solid var(--sep); background: var(--card); color: var(--label); font: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
 .diff small { color: var(--label2); font-size: 14px; }
-.diff:hover { border-color: var(--accent); }
+@media (hover: hover) { .diff:hover { border-color: var(--accent); } }
 .diff[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 
 /* the level path */
@@ -143,3 +143,7 @@ html:root[data-theme="dark"] { --tint: #2A1416; --tint-line: #5C2A2D; --glow: #F
 .readyline { font-weight: 600; }
 .mins .grow { flex: 1; min-width: 0; }
 @media (prefers-reduced-motion: reduce) { .game.d-hard .qcard { animation: none; } }
+
+/* a tapped level waits for its questions */
+.node[aria-busy="true"] { animation: none; opacity: .55; cursor: progress; }
+.loadcard { min-height: 40vh; display: grid; place-items: center; }

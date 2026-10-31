@@ -3,7 +3,7 @@
 // one by one, so leaderboards stay fair. Each course shows a readiness score.
 import './shared/base.css';
 import './arena.css';
-import { esc, api, me, toast, sheet, accountSheet, footer } from './shared/ui.js';
+import { esc, api, me, toast, sheet, accountSheet, footer, installBtn, installed } from './shared/ui.js';
 import { ace } from './shared/mascots.js';
 import { avatarSvg, AV, LABELS, EXTRAS, EXTRA_UNLOCK, SWATCH } from './arena-avatar.js';
 
@@ -13,6 +13,7 @@ const WEIGHT = { easy: 0.6, medium: 0.85, hard: 1 };
 const BLURB = { maths: 'Every chapter of your NCERT maths book.', evs: 'The world around you, chapter by chapter.', science: 'Every chapter of your NCERT science book.', english: 'Grammar, words and reading for your class.', physics: 'NCERT physics, chapter by chapter.', chemistry: 'NCERT chemistry, chapter by chapter.', biology: 'NCERT biology, chapter by chapter.', qa: 'Arithmetic, algebra, geometry and more, at CAT level.', dilr: 'Data sets, arrangements, games and logic.', varc: 'Reading, para-jumbles, summaries and reasoning.', money: 'Budgets, interest, investing basics and scams. The GoodHabit course.', digital: 'Online safety, spreadsheets, AI and more.' };
 const RANKS = [[0, 'Bronze'], [500, 'Silver'], [1500, 'Gold'], [3500, 'Diamond'], [7000, 'Champion']];
 const app = document.getElementById('app');
+let nav = 0;   // bumped on every screen change; async screens check it before drawing
 const ls = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
 const S = { user: null, player: null, adult: null, plan: null, cat: [], byId: {}, limit: { on: false }, local: ls.get('arena-guest') };
 if (S.local && OLD[S.local.difficulty]) { S.local.difficulty = OLD[S.local.difficulty]; S.local.progress = {}; }   // the first Arena used other names
@@ -89,7 +90,7 @@ function title() {
     <section class="wrap hero ahero">
       <div class="stack"><h1>Practise like it's a game.</h1>
         <p class="lede">Make your player, pick Easy, Medium or Hard, and clear your NCERT chapters one world at a time. Your readiness score tells you how ready you are for the test.</p>
-        <div class="row"><a class="btn" href="#/make">Make your player</a>${S.user ? '' : '<button class="btn quiet" data-act="login">I have an account</button>'}</div>
+        <div class="row"><a class="btn" href="#/make">Make your player</a>${S.user ? '' : '<button class="btn quiet" data-act="login">I have an account</button>'}${installBtn('Add to Home Screen', 'btn quiet')}</div>
         <p class="small muted">Classes 5 to 12 and CAT, free. ${n.toLocaleString('en-IN')} questions so far. Play as a guest; sign up only to save and join the leaderboards.</p></div>
       <div class="art">${ace()}</div>
     </section>
@@ -103,8 +104,9 @@ function title() {
 
 let draft;
 async function make() {
-  const p = prof();
+  const my = nav, p = prof();
   draft = p ? JSON.parse(JSON.stringify({ nick: p.nick, avatar: p.avatar, cls: p.cls, difficulty: p.difficulty })) : { nick: (await api('/api/arena/nickname')).nick, avatar: { skin: Math.floor(Math.random() * 6), eyes: 1, hair: Math.floor(Math.random() * 5), hairColor: 0, shirt: 0, extra: 0 }, cls: null, difficulty: 'easy' };
+  if (my !== nav) return;
   const have = cleared();
   const part = k => {
     if (SWATCH[k]) return SWATCH[k].map((c, i) => `<button class="sw" style="--c:${c}" data-part="${k}" data-v="${i}" aria-pressed="${draft.avatar[k] === i}" aria-label="${LABELS[k]} ${i + 1}"></button>`).join('');
@@ -168,6 +170,7 @@ function home() {
         <span class="small muted">${clsName(p.cls)} · <span class="dtag d-${p.difficulty}">${DNAME[p.difficulty]}</span>${ranked() ? '' : ' · not ranked yet'}</span>${xpBar(xp)}</span>
     </a>
     ${statusCard()}${minutesCard()}
+    ${installed() ? '' : `<div class="card note row"><span class="grow"><b>Play Arena like an app</b><small class="muted"> Add it to your home screen: full screen, its own icon, no store.</small></span>${installBtn('Add')}</div>`}
     <h2>Your courses</h2>
     ${cs.length ? `<div class="courses">${cs.map(c => {
       const g = prog(c.id), r = readiness(c), total = c.levels.length;
@@ -193,7 +196,7 @@ function map(id) {
     <ol class="path">${html}</ol>
   </main>${tabs('')}`;
   app.querySelector('.node.open')?.scrollIntoView({ block: 'center', behavior: 'instant' });
-  app.onclick = e => { const b = e.target.closest('[data-level]'); if (b) { app.onclick = null; play(id, +b.dataset.level); } };
+  app.onclick = e => { const b = e.target.closest('[data-level]'); if (b) { app.onclick = null; b.setAttribute('aria-busy', 'true'); play(id, +b.dataset.level); } };
 }
 
 // ---- paying for unlimited (a parent pays for a child under 18) ----
@@ -223,7 +226,7 @@ function unlockSheet(why) {
 // ---- a level ----
 let timer;
 async function play(id, level) {
-  clearInterval(timer);
+  clearInterval(timer); const my = ++nav;
   const c = S.byId[id];
   if (!S.user && minutesLeft() === 0) { unlockSheet(`That's your ${S.limit.minutes} free minutes for today.`); return map(id); }
   let r;
@@ -232,15 +235,16 @@ async function play(id, level) {
     r = await res.json();
     if (res.status === 402) { unlockSheet(r.error); return map(id); }
     if (!res.ok) throw new Error(r.error || 'Something went wrong.');
-  } catch (x) { toast(x.message); return map(id); }
+  } catch (x) { if (my === nav) { toast(x.message); map(id); } return; }
+  if (my !== nav) return;
   const L = lvl(c, level), st = { i: 0, right: 0, streak: 0, answered: false, ends: r.seconds ? Date.now() + r.seconds * 1000 : 0, done: false, log: {}, last: Date.now() };
   const finish = async () => {
     if (st.done) return; st.done = true; clearInterval(timer); document.onkeydown = null;
-    let res; try { res = await api(`/api/arena/round/${r.round}`, { method: 'POST', body: { action: 'finish' } }); } catch (x) { toast(x.message); return map(id); }
-    result(id, level, res);
+    let res; try { res = await api(`/api/arena/round/${r.round}`, { method: 'POST', body: { action: 'finish' } }); } catch (x) { if (my === nav) { toast(x.message); map(id); } return; }
+    if (my === nav) result(id, level, res);
   };
   const draw = () => {
-    const q = r.questions[st.i];
+    const q = r.questions[st.i]; window.scrollTo(0, 0);
     app.innerHTML = `<main class="arena wrap game d-${q.band}">
       <div class="row ghead"><button class="btn quiet small" data-act="quit">Leave</button>
         <span class="grow"><b>${L.boss ? 'Boss' : `Chapter ${L.ch}`}</b> <span class="small muted">· ${esc(L.boss ? `chapters ${L.boss.join(', ')}` : chName(c, L.ch))}</span></span>
@@ -263,7 +267,9 @@ async function play(id, level) {
   const answer = async j => {
     if (st.answered || st.done) return; st.answered = true;
     const btns = app.querySelectorAll('.opt'); btns.forEach(b => { b.disabled = true; }); btns[j].setAttribute('aria-pressed', 'true');
-    let a; try { a = await api(`/api/arena/round/${r.round}`, { method: 'POST', body: { action: 'answer', i: st.i, choice: j } }); } catch (x) { toast(x.message); st.answered = false; btns.forEach(b => { b.disabled = false; }); return; }
+    const why = app.querySelector('[data-why]'); if (why) why.innerHTML = '<p class="small checking" role="status">Checking…</p>';
+    let a; try { a = await api(`/api/arena/round/${r.round}`, { method: 'POST', body: { action: 'answer', i: st.i, choice: j } }); } catch (x) { if (st.done || my !== nav) return; toast(x.message); st.answered = false; btns.forEach(b => { b.disabled = false; b.removeAttribute('aria-pressed'); }); if (why) why.innerHTML = ''; return; }
+    if (st.done || my !== nav) return;
     if (!S.user && S.limit.on) { addGuest(Math.min(180, (Date.now() - st.last) / 1000)); st.last = Date.now(); }
     btns[a.correct].classList.add('right'); if (!a.right) { btns[j].classList.add('wrong'); navigator.vibrate?.(60); }
     st.log[st.i] = a.right; if (a.right) { st.right++; st.streak++; } else st.streak = 0;
@@ -314,16 +320,18 @@ function result(id, level, res) {
   const n = app.querySelector('[data-count]'), t0 = performance.now(), to = res.xp, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const step = t => { const p = reduce ? 1 : Math.min(1, (t - t0) / 900); n.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
   requestAnimationFrame(step);
-  app.onclick = e => { const b = e.target.closest('[data-go]'); if (b) { app.onclick = null; play(id, +b.dataset.go); } };
+  app.onclick = e => { const b = e.target.closest('[data-go]'); if (b) { app.onclick = null; b.setAttribute('aria-busy', 'true'); play(id, +b.dataset.go); } };
 }
 
 // ---- leaderboards ----
 async function leaderboard(id, period = 'week') {
+  const my = nav;
   const cs = visible(); if (!S.byId[id] || !cs.some(c => c.id === id)) id = cs[0]?.id;
   if (!id) { app.innerHTML = `${top(loginBtns())}<main class="arena wrap stack"><h1 class="h2">Leaderboard</h1><p class="muted">No courses for your class yet.</p></main>${tabs('lb')}`; return; }
   const c = S.byId[id], d0 = prof().difficulty;
   app.innerHTML = `${top(loginBtns())}<main class="arena wrap stack"><h1 class="h2">Leaderboard</h1><p class="muted">Loading…</p></main>${tabs('lb')}`;
   let d; try { d = await api(`/api/arena/leaderboard?course=${id}&difficulty=${d0}&period=${period}`); } catch (x) { toast(x.message); d = { rows: [] }; }
+  if (my !== nav) return;
   app.innerHTML = `${top(loginBtns())}<main class="arena wrap stack">
     <h1 class="h2">Leaderboard</h1>
     <div class="row seg" role="group" aria-label="Course">${cs.map(x => `<button class="chip" data-c="${x.id}" aria-pressed="${x.id === id}">${esc(x.name)}</button>`).join('')}</div>
@@ -341,7 +349,9 @@ async function leaderboard(id, period = 'week') {
 async function mePage() {
   const p = prof(), xp = p ? xpNow() : 0;
   let kids = [];
+  const my = nav;
   if (S.user && S.adult) kids = (await api('/api/arena/parent').catch(() => ({ children: [] }))).children;
+  if (my !== nav) return;
   const plan = S.plan, until = plan?.until && plan.until > Date.now() ? new Date(plan.until).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
   app.innerHTML = `${top(loginBtns())}<main class="arena wrap stack">
     ${p?.cls ? `<section class="card player static"><span class="pav">${avatarSvg(p.avatar, p.nick)}</span><span class="grow stack" style="gap:6px"><span class="row" style="gap:8px"><b class="pn">${esc(p.nick)}</b>${badge(xp)}</span><span class="small muted">${cleared()} levels cleared · ${clsName(p.cls)} · ${DNAME[p.difficulty]}</span>${xpBar(xp)}</span></section>
@@ -378,7 +388,7 @@ document.addEventListener('submit', async e => {
 });
 
 function route() {
-  clearInterval(timer); document.onkeydown = null; app.onclick = null;
+  nav++; clearInterval(timer); document.onkeydown = null; app.onclick = null; window.scrollTo(0, 0);
   const [r, arg, arg2] = location.hash.replace(/^#\/?/, '').split('/');
   if (r === 'make') return make();
   if (r === 'me' && (S.user || prof()?.cls)) return mePage();   // parents can approve without a player of their own
@@ -386,7 +396,7 @@ function route() {
   if (r === 'c') return map(arg);
   if (r === 'lb') return leaderboard(arg, arg2);
   home();
-  window.scrollTo(0, 0);
 }
 window.addEventListener('hashchange', route);
+app.innerHTML = `${top()}<main class="arena wrap"><div class="loadcard"><p class="muted" role="status">Loading Arena…</p></div></main>`;
 load().then(route).catch(() => { app.innerHTML = `<main class="wrap sec"><h1>Arena</h1><p class="muted">Couldn't reach the server. Check your connection and reload.</p></main>`; });

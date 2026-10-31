@@ -33,9 +33,12 @@ document.addEventListener('click', async e => {
 
 // a whole page for an app that isn't live (Tomorrow, GoodHabit)
 export async function soonPage(k) {
-  const s = SOON.find(x => x.k === k), app = document.getElementById('app'), counts = await soonCounts();
-  app.innerHTML = `<header class="bar"><div class="wrap"><a class="brand" href="/"><span class="m">${s.art()}</span>${esc(s.n)}</a><a class="btn quiet small" href="/">All apps</a></div></header>
+  const s = SOON.find(x => x.k === k), app = document.getElementById('app');
+  const paint = counts => { app.innerHTML = `<header class="bar"><div class="wrap"><a class="brand" href="/"><span class="m">${s.art()}</span>${esc(s.n)}</a><a class="btn quiet small" href="/">All apps</a></div></header>
   <main class="wrap sec stack" style="max-width:720px">${soonCard(s, counts)}
     <div class="card stack"><b>Live now: Arena</b><p class="muted">Free practice for classes 5 to 12 and CAT, chapter by chapter from your NCERT books.</p><a class="btn" href="/arena/" style="align-self:flex-start">Open Arena</a></div>
-  </main>`;
+  </main>`; };
+  paint({});
+  const counts = await soonCounts();
+  if (Object.keys(counts).length) { const c = app.querySelector(`#soon-${s.k}`); if (c) c.outerHTML = soonCard(s, counts); }
 }
