@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>SFY coming soon: cards and type</title>
+<style>
+/* Trailer-style layer: full-screen colour cards with one short statement, one word per beat (110 BPM,
+   beat 0.5455 s), over graded footage. Bold sentence case with a full stop. Driven only by renderFrame(t). */
+@font-face{font-family:IT;src:url(fonts/InterTight-800-normal.woff2);font-weight:800}
+html,body{margin:0;width:1080px;height:1920px;background:transparent;overflow:hidden}
+.card{position:absolute;inset:0;opacity:0;display:flex;align-items:center;justify-content:center}
+.navy{background:radial-gradient(90% 60% at 50% 45%,#22307f 0%,#121a4d 55%,#080c26 100%)}
+.blue{background:radial-gradient(90% 60% at 50% 40%,#3d63ff 0%,#2346d6 60%,#1733a8 100%)}
+.ink{background:radial-gradient(90% 60% at 50% 45%,#1a1b1f 0%,#0b0b0d 100%)}
+.paper{background:linear-gradient(180deg,#fbfaf7 0%,#f1eee7 100%)}
+.say{position:absolute;left:60px;right:60px;top:50%;transform:translateY(-50%);text-align:center;white-space:nowrap;
+  font:800 132px/1 IT;letter-spacing:-.05em;color:#fff}
+.say .w{display:inline-block;opacity:0;margin:0 .1em}
+.solo .w{position:absolute;left:0;right:0;margin:0}
+#endlogo{position:absolute;left:50%;top:790px;width:600px;transform:translateX(-50%)}
+#soon{top:1120px;transform:none;color:#111;font-size:96px}
+</style></head><body>
+<div id="c1" class="card navy"><div class="say solo" id="s1"></div></div>
+<div id="c2" class="card blue"><div class="say" id="s2"></div></div>
+<div id="c3" class="card ink"><div class="say" id="s3"></div></div>
+<div id="c4" class="card paper"><img id="endlogo" src="sfy-logo-black.png"><div class="say" id="soon"></div></div>
+<script>
+const DURATION=33.82; window.DURATION=DURATION; const B=0.5455;
+// cards: [id, in, out]; words: [text, time]. Solo = each word replaces the last (trailer opening).
+const CARDS=[['c1',0,2.18],['c2',7.64,8.73],['c3',18.55,19.64],['c4',29.46,DURATION+1]];
+const SAY={s1:{solo:1,w:[['Plain.',0.02],['Heavy.',B],['Cotton.',2*B],['Ours.',3*B]],out:2.18},
+  s2:{w:[['Our',7.64],['own',7.64+B*.5],['label.',7.64+B]],out:8.73},
+  s3:{w:[['Packed',18.55],['by',18.55+B*.5],['hand.',18.55+B]],out:19.64},
+  soon:{w:[['Coming',30.0],['soon.',30.0+B]],out:DURATION+1}};
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), p=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+for(const [id,S] of Object.entries(SAY)){const el=document.getElementById(id);
+  S.els=S.w.map(([txt])=>{const s=document.createElement('span');s.className='w';s.textContent=txt;el.appendChild(s);return s})}
+function renderFrame(t){
+  CARDS.forEach(([id,a,b])=>{const c=document.getElementById(id); const on=t>=a&&t<b; c.style.opacity=on?1:0;
+    const k=out3(p(t,a,.35)); c.style.transform=on?`scale(${1.035-.035*k})`:''});
+  for(const S of Object.values(SAY)) S.els.forEach((el,i)=>{
+    const a=S.w[i][1], next=S.solo&&i<S.w.length-1?S.w[i+1][1]:S.out;
+    if(t<a||t>=next){el.style.opacity=0;return}
+    const k=out3(p(t,a,.22)); el.style.opacity=k;
+    el.style.transform=`translateY(${(1-k)*26}px) scale(${1.1-.1*k})`; el.style.filter=`blur(${(1-k)*14}px)`});
+  const lg=document.getElementById('endlogo'), k=out3(p(t,29.5,.45));
+  lg.style.opacity=t>=29.46?k:0; lg.style.filter=`blur(${(1-k)*16}px)`; lg.style.transform=`translateX(-50%) scale(${1.08-.08*k})`;
+}
+window.renderFrame=renderFrame;
+if(!navigator.webdriver){const t0=performance.now();(function loop(){renderFrame(((performance.now()-t0)/1000)%DURATION);requestAnimationFrame(loop)})()}
+</script></body></html>
