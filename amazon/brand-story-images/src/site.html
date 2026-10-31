@@ -1,64 +1,71 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solids For You brand story</title>
-<meta name="description" content="Seven 2000px brand story cards for the Solids For You Amazon listing, designed as one page and screenshotted per section.">
+<meta name="description" content="The Solids For You brand story in seven cards: plain cotton basics, made in India.">
 <style>
-/* Hallmark · shape: Story strip (7 fixed 2000px cards) · genre: editorial · theme: brand · redesign: full
+/* Hallmark · shape: Story strip (seven square cards, each one idea) · genre: editorial · theme: brand · redesign: full
  * paper: oklch(13% 0.012 264) · accent: oklch(58% 0.21 264) · display: Barlow Condensed 900 · body: Manrope 600/700 · hero: full-bleed photo, logo as head · nav: none (image cards) · footer: claim rule, kept · signature: the logo set huge over the cutting table
- * axes: dark/condensed caps/brand blue · posture: Restrained · contrast: pass · fold: n/a (fixed print canvas) · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, cards 1 and 3 share a head-over-pictures build; card 1 runs one wide band with an overlapping inset, card 3 three equal moments */
-/* Hallmark · waive 23 · .foot .u on every card · the blue claim line is the series thread */
+ * axes: dark/condensed caps/brand blue · posture: Restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three cards opened the same way (head over pictures); 03 is now a day list beside one photo, 04 a plate the head wraps, 06 the tagline over a product plate */
+/* Hallmark · waive 59 · body gap 3.2cqw between every card · the story reads as one series of square cards, one gutter throughout, made to export one by one */
+/* Hallmark · waive 23 · .foot .u on every card · the blue cotton and India claim is the thread through the story */
 :root{
   --paper:oklch(13% 0.012 264);--ink:oklch(96% 0.008 264);--ink-2:oklch(84% 0.012 264);--mute:oklch(66% 0.014 264);
   --rule:oklch(96% 0.008 264 / .16);--accent:oklch(58% 0.21 264);--accent-soft:oklch(80% 0.09 264);--accent-deep:oklch(36% 0.11 264);
   --shade-0:oklch(13% 0.012 264 / 0);--shade-50:oklch(13% 0.012 264 / .5);--shade-70:oklch(13% 0.012 264 / .7);--shade-90:oklch(13% 0.012 264 / .92);
   --font-display:"Barlow","Arial Narrow",sans-serif;--font-body:"Manrope",system-ui,sans-serif;
-  --s-sm:12px;--s-md:16px;--s-lg:24px;--s-xl:40px;--s-2xl:64px;--s-3xl:96px;--edge:120px;--shadow:0 1px 2px oklch(20% 0.01 264 / .05);
+  --s-sm:0.6cqw;--s-md:0.8cqw;--s-lg:1.2cqw;--s-xl:2cqw;--s-2xl:3.2cqw;--s-3xl:4.8cqw;--edge:6cqw;
+  --shadow:0 1px 2px oklch(20% 0.01 264 / .05);
 }
 @font-face{font-family:Barlow;src:url(../../../brand/fonts/BarlowCondensed-900.ttf);font-weight:900;font-display:swap}
 @font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-600.ttf);font-weight:600;font-display:swap}
 @font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-700.ttf);font-weight:700;font-display:swap}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:clip}
-body{width:2000px;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:600;font-synthesis:none}
-section{position:relative;width:2000px;height:2000px;overflow:hidden;background:var(--paper);color:var(--ink)}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:600;font-synthesis:none;
+  display:grid;justify-items:center;gap:64px;padding:0 0 64px}
+/* each card: a square that fits the screen on the web, 100cqw when exported (html.print) */
+section{position:relative;width:min(100%,1520px,100svh);aspect-ratio:1;overflow:hidden;background:var(--paper);color:var(--ink);container-type:inline-size}
+html.print body{gap:0;padding:0}
+html.print section{width:2000px}
 .abs{position:absolute}
 .ph{position:absolute;background-size:cover;background-position:center;filter:contrast(1.12) saturate(.9) brightness(.9)}
 .ph.dim{filter:contrast(1.15) saturate(.65) brightness(.5)}
 h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-.005em;text-wrap:balance;overflow-wrap:break-word;min-width:0}
-.logo{position:absolute;z-index:6;top:var(--edge);left:var(--edge);height:84px}
-.lede{font-size:48px;line-height:1.36;color:var(--ink-2);text-wrap:pretty}
-.lede.s{font-size:40px}
+.logo{position:absolute;z-index:6;top:var(--edge);left:var(--edge);height:5.5cqw}
+.lede{font-size:3cqw;line-height:1.36;color:var(--ink-2);text-wrap:pretty}
+.lede.s{font-size:2.8cqw}
 .foot{position:absolute;z-index:6;left:var(--edge);right:var(--edge);bottom:var(--s-3xl);display:flex;justify-content:space-between;padding-top:var(--s-xl);
-  border-top:2px solid var(--rule);font-size:32px;font-weight:700}
+  border-top:0.1cqw solid var(--rule);font-size:2.2cqw;font-weight:700}
 .foot .u{color:var(--accent-soft)}.foot .u span{color:var(--mute);margin:0 var(--s-md)}.foot .x{color:var(--mute);font-weight:600;font-variant-numeric:tabular-nums}
 .grain{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.1;mix-blend-mode:overlay;
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-/* shades: all from the paper token */
-.v-hero{inset:0;background:radial-gradient(60% 40% at 50% 50%,var(--shade-50),var(--shade-0) 85%),linear-gradient(180deg,var(--shade-50),var(--shade-0) 25%,var(--shade-0) 55%,var(--paper) 96%)}
-.v-band{background:linear-gradient(180deg,var(--paper),var(--shade-0) 30%,var(--shade-0) 70%,var(--paper))}
-.v-split{background:linear-gradient(90deg,var(--shade-0) 65%,var(--paper)),linear-gradient(180deg,var(--shade-70),var(--shade-0) 15%,var(--shade-0) 78%,var(--paper))}
-.v-bottom{inset:0;background:linear-gradient(180deg,var(--shade-70),var(--shade-0) 20%,var(--shade-0) 40%,var(--shade-90) 85%)}
-.v-top{background:linear-gradient(180deg,var(--shade-70),var(--shade-0) 20%,var(--shade-0) 55%,var(--paper))}
-.num{font-family:var(--font-display);font-weight:900;font-size:480px;line-height:1;color:transparent;-webkit-text-stroke:3px var(--accent-deep);font-variant-numeric:tabular-nums}
-.tile{position:absolute;overflow:hidden}.tile .ph{inset:0}
-.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--shade-90),var(--shade-0) 50%)}
-.tile .t{position:absolute;z-index:2;left:var(--s-xl);bottom:var(--s-xl)}
-.tile .t small{display:block;font-size:30px;color:var(--accent-soft);margin-bottom:var(--s-sm);font-variant-numeric:tabular-nums}
-.tile .t b{font-family:var(--font-display);font-weight:900;font-size:104px;line-height:1;text-transform:uppercase}
+/* shades on the photographs themselves, all from the paper token */
+.ph::after{content:"";position:absolute;inset:0}
+.ph.v-hero::after{background:radial-gradient(60% 40% at 50% 45%,var(--shade-50),var(--shade-0) 85%),linear-gradient(180deg,var(--shade-50),var(--shade-0) 25%,var(--shade-0) 55%,var(--paper) 96%)}
+.ph.v-band::after{background:linear-gradient(180deg,var(--paper),var(--shade-0) 30%,var(--shade-0) 70%,var(--paper))}
+.ph.v-left::after{background:linear-gradient(90deg,var(--shade-0) 65%,var(--paper)),linear-gradient(180deg,var(--shade-70),var(--shade-0) 15%,var(--shade-0) 78%,var(--paper))}
+.ph.v-right::after{background:linear-gradient(270deg,var(--shade-0) 55%,var(--paper)),linear-gradient(0deg,var(--paper),var(--shade-0) 25%)}
+.ph.v-top::after{background:linear-gradient(180deg,var(--shade-70),var(--shade-0) 20%,var(--shade-0) 55%,var(--paper))}
+.num{font-family:var(--font-display);font-weight:900;font-size:24cqw;line-height:1;color:transparent;-webkit-text-stroke:0.15cqw var(--accent-deep);font-variant-numeric:tabular-nums}
 .inset{box-shadow:var(--shadow)}
-.sw{flex:1;height:120px;background:url(../../../assets/sfy/photos/blue-tee-knit-texture-closeup.jpg) 30% 60%/900px}
-.swl{flex:1;font-size:28px;font-weight:700;color:var(--mute);padding-top:var(--s-lg)}
-.more{display:inline-flex;align-items:center;gap:var(--s-lg);font-size:40px;font-weight:700;color:var(--accent-soft)}
-.more i{display:block;width:120px;height:2px;background:var(--accent)}
+/* 03: the day list */
+.day{list-style:none;width:44cqw}
+.day li{display:grid;grid-template-columns:12cqw minmax(0,1fr);align-items:baseline;border-top:0.1cqw solid var(--rule);padding:var(--s-xl) 0}
+.day time{font-size:2.6cqw;color:var(--accent-soft);font-variant-numeric:tabular-nums}
+.day b{font-family:var(--font-display);font-weight:900;font-size:4.8cqw;line-height:1;text-transform:uppercase}
+/* 04: the plate */
+.plate h1 span{position:absolute;display:block;white-space:nowrap}
+.more{display:inline-flex;align-items:center;gap:var(--s-lg);font-size:2.2cqw;font-weight:700;color:var(--accent-soft)}
+.more i{display:block;width:8cqw;height:0.1cqw;background:var(--accent)}
 </style></head><body>
 
 <section id="solids-for-you">
-  <div class="ph dim" style="inset:0;background-image:url(../../../assets/sfy/photos/white-cut-panels-pattern-paper.jpg)"></div>
-  <div class="abs v-hero"></div>
-  <div class="abs" style="left:0;right:0;top:760px;text-align:center">
-    <h1 style="font-size:0"><img src="logo.png" alt="Solids For You" style="width:1300px"></h1>
-    <p class="lede" style="margin-top:var(--s-xl)">Solid basics, nothing extra.<br>100% cotton. Made in India.</p>
+  <div class="ph dim v-hero" style="inset:0;background-image:url(../../../assets/sfy/photos/white-cut-panels-pattern-paper.jpg)"></div>
+  <div class="abs" style="left:0;right:0;top:28cqw;text-align:center">
+    <h1 style="font-size:0"><img src="logo.png" alt="Solids For You" style="width:65cqw"></h1>
+    <p class="lede" style="margin-top:var(--s-xl)">Solid basics, nothing extra.</p>
   </div>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">The brand</div></div>
@@ -66,69 +73,60 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
 
 <section id="plain-on-purpose">
   <img class="logo" src="logo.png" alt="">
-  <h1 class="abs" style="left:108px;top:300px;font-size:340px">Plain on<br>purpose.</h1>
-  <p class="lede s abs" style="left:1440px;top:340px;width:440px">No prints to hide behind. When it&rsquo;s just the colour, the fabric has to be good.</p>
-  <div class="ph" style="left:0;top:1060px;width:2000px;height:720px;background-image:url(../../../assets/sfy/photos/factory-floor-sewing-line-cropped.jpg);filter:contrast(1.15) saturate(.7) brightness(.7)"></div>
-  <div class="abs v-band" style="left:0;top:1060px;width:2000px;height:720px"></div>
-  <div class="ph inset" style="left:1440px;top:880px;width:440px;height:560px;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg)"></div>
+  <h1 class="abs" style="left:5.4cqw;top:15cqw;font-size:17cqw">Plain on<br>purpose.</h1>
+  <p class="lede s abs" style="left:70cqw;top:17cqw;width:24cqw">No prints to hide behind. When it&rsquo;s just the colour, the fabric has to be good.</p>
+  <div class="ph v-band" style="left:0;top:53cqw;width:100cqw;height:36cqw;background-image:url(../../../assets/sfy/photos/factory-floor-sewing-line-cropped.jpg);filter:contrast(1.15) saturate(.7) brightness(.7)"></div>
+  <div class="ph inset" style="left:68cqw;top:53cqw;width:26cqw;height:36cqw;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg)"></div>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">01 / 06</div></div>
 </section>
 
 <section id="good-basics">
-  <div class="ph" style="left:0;top:0;width:1000px;height:2000px;background-image:url(cutting-tee-frame.jpg)"></div>
-  <div class="abs v-split" style="left:0;top:0;width:1000px;height:2000px"></div>
+  <div class="ph v-left" style="left:0;top:0;width:50cqw;height:100cqw;background-image:url(cutting-tee-frame.jpg)"></div>
   <img class="logo" src="logo.png" alt="">
-  <div class="abs num" style="left:1080px;top:200px">02</div>
-  <h1 class="abs" style="left:1090px;top:740px;width:820px;font-size:180px">We couldn&rsquo;t find good basics.</h1>
-  <p class="lede abs" style="left:1100px;top:1500px;width:760px">Plain tees were thin and lost their shape fast. So we made our own.</p>
+  <h1 class="abs" style="left:54.5cqw;top:25cqw;width:41cqw;font-size:9cqw">We couldn&rsquo;t find good basics.</h1>
+  <p class="lede abs" style="left:55cqw;top:64cqw;width:39cqw">Plain tees were thin and lost their shape fast. So we made our own.</p>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">02 / 06</div></div>
 </section>
 
 <section id="every-plan">
+  <div class="ph v-right" style="left:50cqw;top:0;width:50cqw;height:100cqw;background-image:url(tee-flatlay-upright.jpg);background-size:auto 125%;background-position:45% 40%"></div>
   <img class="logo" src="logo.png" alt="">
-  <h1 class="abs" style="left:108px;top:300px;font-size:290px">One tee.<br>Every plan.</h1>
-  <p class="lede s abs" style="left:1440px;top:340px;width:440px">Wear it anywhere.</p>
-  <div class="tile" style="left:120px;top:1000px;width:568px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/label-heat-transfer-on-blue-tee.jpg)"></div><div class="t"><small>09:00</small><b>Class</b></div></div>
-  <div class="tile" style="left:716px;top:1000px;width:568px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/blue-tee-flatlay-glass-table-rotated.jpg)"></div><div class="t"><small>14:00</small><b>Work</b></div></div>
-  <div class="tile" style="left:1312px;top:1000px;width:568px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg)"></div><div class="t"><small>23:30</small><b>The late-night<br>chai run</b></div></div>
+  <h1 class="abs" style="left:5.4cqw;top:15cqw;font-size:10cqw">One tee.<br>Every plan.</h1>
+  <ol class="day abs" style="left:6cqw;top:40cqw">
+    <li><time>09:00</time><b>Class</b></li>
+    <li><time>14:00</time><b>Work</b></li>
+    <li><time>23:30</time><b>The late-night chai run</b></li>
+  </ol>
+  <p class="lede abs" style="left:6cqw;top:80.5cqw">Wear it anywhere.</p>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">03 / 06</div></div>
 </section>
 
-<section id="feel-it">
-  <div class="ph" style="inset:0;background-image:url(../../../assets/sfy/photos/blue-tee-shoulder-knit-closeup.jpg)"></div>
-  <div class="abs v-bottom"></div>
+<section id="feel-it" class="plate">
+  <div class="ph" style="left:28cqw;top:23cqw;width:48cqw;height:48cqw;background-image:url(../../../assets/sfy/photos/blue-tee-shoulder-knit-closeup.jpg);background-size:190%;background-position:75% 85%"></div>
   <img class="logo" src="logo.png" alt="">
-  <h1 class="abs" style="left:108px;top:1000px;font-size:340px">You&rsquo;ll<br>feel it.</h1>
-  <p class="lede abs" style="right:120px;top:1500px;width:520px;text-align:right">Pick it up once and you&rsquo;ll know.</p>
+  <h1 style="font-size:16.5cqw"><span style="left:5.4cqw;top:15cqw">You&rsquo;ll</span><span style="right:6cqw;top:64.5cqw">feel it.</span></h1>
+  <p class="lede abs" style="left:6cqw;top:71.5cqw;width:22cqw">Pick it up once and you&rsquo;ll know.</p>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">04 / 06</div></div>
 </section>
 
 <section id="stays-the-same">
-  <div class="ph" style="left:0;top:0;width:2000px;height:1120px;background-image:url(tee-label.jpg);background-position:center 42%"></div>
-  <div class="abs v-top" style="left:0;top:0;width:2000px;height:1120px"></div>
+  <div class="ph v-top" style="left:0;top:0;width:100cqw;height:64cqw;background-image:url(tee-label.jpg);background-position:center 42%"></div>
   <img class="logo" src="logo.png" alt="">
-  <h1 class="abs" style="left:108px;top:1020px;font-size:250px">Stays the<br>same.</h1>
-  <p class="lede s abs" style="left:1440px;top:1060px;width:440px">Wash after wash, the colour holds.</p>
-  <div class="abs" style="left:120px;right:120px;top:1580px">
-    <div style="display:flex;gap:var(--s-md)"><div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div></div>
-    <div style="display:flex;gap:var(--s-md)"><div class="swl">Wash 1</div><div class="swl">Wash 2</div><div class="swl">Wash 3</div><div class="swl">Wash 4</div><div class="swl">Wash 5+</div></div>
-  </div>
+  <h1 class="abs" style="left:5.4cqw;top:60cqw;font-size:12.5cqw">Stays the<br>same.</h1>
+  <p class="lede s abs" style="left:70cqw;top:63cqw;width:24cqw">Wash after wash, the colour holds.</p>
   <div class="grain"></div>
-  <div class="foot" style="bottom:64px;padding-top:28px"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">05 / 06</div></div>
+  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">05 / 06</div></div>
 </section>
 
 <section id="essentials">
-  <div class="ph dim" style="inset:0;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);filter:contrast(1.15) saturate(.85) brightness(.45)"></div>
-  <div class="abs v-hero"></div>
+  <div class="ph" style="left:50cqw;top:50cqw;width:44cqw;height:35cqw;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);background-size:190%;background-position:15% 95%"></div>
   <img class="logo" src="logo.png" alt="">
-  <div class="abs" style="left:0;right:0;top:600px;text-align:center">
-    <h1 style="font-size:240px;margin:0 auto;max-width:1700px">Every style starts with the essentials.</h1>
-    <p class="more" style="margin-top:var(--s-2xl)">See the full range <i></i></p>
-  </div>
+  <h1 class="abs" style="left:5.4cqw;top:17cqw;font-size:11cqw">Every style<br>starts with<br>the essentials.</h1>
+  <p class="more abs" style="left:6cqw;top:81cqw">See the full range <i></i></p>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">06 / 06</div></div>
 </section>

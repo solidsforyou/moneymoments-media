@@ -6,6 +6,7 @@ const { chromium } = require('playwright');
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 2000, height: 2000 } });
   await pg.goto('file://' + path.resolve('site.html'));
+  await pg.evaluate(() => document.documentElement.classList.add('print'));
   await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(500);
   const ids = await pg.$$eval('section', s => s.map(x => x.id));
   for (const [i, id] of ids.entries()) await (await pg.$('#' + id)).screenshot({ path: `../site/${i}-${id}-1x1.jpg`, type: 'jpeg', quality: 90 });
