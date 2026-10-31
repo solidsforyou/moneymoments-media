@@ -5,7 +5,7 @@ headlines, short lines, no slang, no exclamation marks); English only; for 18-30
 wear; founder's reason in brand voice, unsigned, no name or face; real factory photos only;
 ends at the brand store. Claims used are all confirmed: 100% cotton, 230/320 GSM, cotton
 fleece joggers, printed neck label, colour holds after 5+ washes (founder tested), made in India.
-Character limits to be checked against Seller Central when building.
+Limit: about 75 words per card (founder, 31 Oct 2026); every card is well under. Background: black, matching the listing images.
 
 | # | Module | Image (assets/sfy/photos or clips) | Headline | Text |
 |---|---|---|---|---|
