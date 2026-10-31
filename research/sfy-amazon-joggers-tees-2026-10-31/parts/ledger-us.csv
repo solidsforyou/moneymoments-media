@@ -1,7 +1,8 @@
 id,competitor_id,field,value,unit,source_url,captured_at,method,quote,confidence,verified
-us-001,us,tee_price,999,INR,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
-us-002,us,tee_gsm,230,GSM,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
-us-003,us,tee_fabric,pure cotton,,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
-us-004,us,jogger_price,1499,INR,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
-us-005,us,jogger_gsm,320,GSM,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
-us-006,us,jogger_fabric,pure cotton,,founder chat 2026-10-31 (memory/memory.csv),2026-10-31T02:08,founder-stated,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,yes
+us-001,us,price_selling,999,INR,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-002,us,price_selling,1499,INR,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-003,us,spec,230,tee GSM,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-004,us,material,pure cotton (tee),,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-005,us,spec,320,jogger GSM,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-006,us,material,pure cotton (joggers),,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
+us-007,us,note,price_selling 999 = tees; 1499 = joggers; not yet listed on Amazon.in,,https://github.com/solidsforyou/moneymoments-media/blob/claude/solidsforyou-review-1z8hof/memory/memory.csv,2026-10-31T00:00,user,"Tees ₹999 230 GSM Pure cotton , joggers ₹1,499 320 GSM Pure cotton",high,
