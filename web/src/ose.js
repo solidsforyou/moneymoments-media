@@ -1,5 +1,5 @@
 import './shared/base.css';
-import { esc, api, me, toast, accountSheet, footer, avatar } from './shared/ui.js';
+import { esc, api, me, toast, accountSheet, footer, avatar, installBtn } from './shared/ui.js';
 import { olly, buddy, ace } from './shared/mascots.js';
 import { SOON, soonCard, soonCounts } from './shared/soon.js';
 
@@ -20,7 +20,7 @@ function paint() {
   <main>
     <section class="wrap hero">
       <div><h1>Free practice for every student.</h1><p class="lede">Arena is live: classes 5 to 12 and CAT, chapter by chapter from your NCERT books. Free, no ads, no sign-up to start.</p>
-        <div class="row actions"><a class="btn" href="/arena/">Start practising</a><a class="btn quiet" href="#trailer">Watch the trailer</a></div></div>
+        <div class="row actions"><a class="btn" href="/arena/">Start practising</a><a class="btn quiet" href="#trailer">Watch the trailer</a>${installBtn('Add to Home Screen', 'btn quiet')}</div></div>
       <div class="art">${ace()}</div>
     </section>
     <section class="wrap sec"><h2>Arena</h2>
