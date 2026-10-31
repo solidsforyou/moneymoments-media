@@ -9,10 +9,14 @@ Limit: about 75 words per card (founder, 31 Oct 2026); every card is well under.
 
 | # | Module | Image (assets/sfy/photos or clips) | Headline | Text |
 |---|---|---|---|---|
-| 0 | Background + logo + about | white-cut-panels-pattern-paper.jpg (background), sfy logo | SOLIDS FOR YOU | Solid basics in heavy 100% cotton. Cut and stitched in India. |
-| 1 | Image + text | factory-floor-sewing-line-cropped.jpg | MADE HERE. MADE RIGHT. | Every piece is cut and stitched in India by people who know the craft. No shortcuts. |
-| 2 | Image + text | cutting-blue-tee-label-scissors-vertical (frame) | WE COULDN'T FIND GOOD BASICS. | Plain tees were thin and lost their shape fast. So we made our own: heavier, and made to last. |
-| 3 | Image + text | label-heat-transfer-on-blue-tee.jpg | FROM FABRIC TO YOU | Cotton fabric. Cut. Stitched. Labelled. Checked. Packed. Then on its way to you. |
-| 4 | Image + text | blue-tee-shoulder-knit-closeup.jpg | 100% COTTON. HEAVY BY DESIGN. | 230 GSM tees. 320 GSM cotton fleece joggers. Thick, soft and made to breathe. |
-| 5 | Image + text | blue-tee-printed-neck-label-hand-held.jpg | OUR PROMISE | No itchy tags: the label is printed inside. Colours that stay, wash after wash. |
-| 6 | Store showcase | brand store tile | EVERY STYLE STARTS WITH THE ESSENTIALS. | See the full range. |
+| 0 | Background + logo + about | white-cut-panels-pattern-paper.jpg (background), sfy logo | SOLIDS FOR YOU | Solid basics, nothing extra. 100% cotton. Made in India. |
+| 1 | Image + text | factory-floor-sewing-line-cropped.jpg | PLAIN ON PURPOSE. | No prints to hide behind. When it's just the colour, the fabric has to be good. |
+| 2 | Image + text | cutting-blue-tee-label-scissors-vertical (frame) | WE COULDN'T FIND GOOD BASICS. | Plain tees were thin and lost their shape fast. So we made our own. |
+| 3 | Image + text | label-heat-transfer-on-blue-tee.jpg | ONE TEE. EVERY PLAN. | Class, work, the late-night chai run. Wear it anywhere. |
+| 4 | Image + text | blue-tee-shoulder-knit-closeup.jpg | YOU'LL FEEL IT. | Pick it up once and you'll know. |
+| 5 | Image + text | blue-tee-printed-neck-label-hand-held.jpg | STAYS THE SAME. | Wash after wash, the colour holds. |
+| 6 | Store page | brand store tile | EVERY STYLE STARTS WITH THE ESSENTIALS. | See the full range. |
+
+Rule (founder, from Bluorng): the photo already says what it shows, so the words never repeat it.
+The factory photo doesn't get "handmade"; the label photo doesn't get "no tag"; the fabric photo
+doesn't get "heavy cotton". Words add what the photo can't: attitude, the reason, the feeling, where you wear it.
