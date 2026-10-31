@@ -2,7 +2,7 @@
 
 Rules: 2 USPs on images (100% Cotton + Made in India); simple English; no prices or claims
 beyond these facts: tees 230 GSM, joggers 320 GSM, 100% cotton, made in India, printed neck
-label, sizes S/M/L. Male model 6'2" / 64 kg, female model 5'5" / 50 kg (size worn: TBC).
+label, sizes S/M/L. Male model 6'2" / 64 kg, female model 5'5" / 50 kg (size worn not shown).
 Status: draft, before Humanizer and founder approval.
 
 ---
@@ -198,7 +198,7 @@ Values marked **TBC** need the founder. Sizes, weights and stock per SKU: amazon
 | Fit type | Relaxed | Relaxed |
 | Leg style | Wide leg, straight open hem | Wide leg, straight open hem |
 | Waist / closure | Elastic, very stretchy, with drawstring; Pull on | same |
-| Waist rise | Mid rise **TBC** | Mid rise **TBC** |
+| Waist rise | Optional: leave blank unless founder confirms | same |
 | Pockets | 2 deep side pockets | 2 deep side pockets |
 | Fabric stretch | Waistband stretchy; leg fabric low stretch | same |
 | Waist sizes, S / M / L (in) | 28-29 / 30-32 / 33-35 | 26-28 / 29-30 / 31-32 |
