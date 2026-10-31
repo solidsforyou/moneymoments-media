@@ -42,9 +42,12 @@ Where things stand:
 - Left to do (wait for my go on):
   - Some research sheets are generic (class 10 science, English 5-8, CAT QA). Reference
     only; low priority.
-  - Trailers: v4 (money-private/trailers/*-v4-*-ADDICTION.mp4) use 'Addiction' at 110 BPM,
-    flashes removed. Apply the founder's further notes in one render; before re-rendering
-    scene3.html, turn off its #flash and swap the music (memory, 31 Oct).
+  - Trailers: all 11 final in money-private/trailers/final/ (Welcome To Miami, section per
+    trailer, music only, end cards fixed). Open: the purple/blue blob background is a Hallmark
+    trope (needs a full re-render, ~1 h); site teasers in web/public/media still carry sfx and
+    the old end card (songs can't go in the public repo; re-render sfx-free silent versions?).
+    Rendering scene3.html needs videos/trailer/cap3/ (gitignored): run capture3.cjs, or at
+    least copy mascots.js to cap3/mascots.js.
 - Trailers: Arena trailer in videos/trailer/scene3.html; OpenPrep's trailer comes last.
   Renders and songs are in money-private.
 - Payments: Cashfree will replace Razorpay later (code is Razorpay today, off without keys).
