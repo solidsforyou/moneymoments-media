@@ -1,0 +1,163 @@
+qid,chapter,question,A,B,C,D
+school-11-english-1-e1,Tenses and Modals,I ___ him since 2019.,have known,know,knew,am knowing
+school-11-english-1-e3,Tenses and Modals,She ___ in Chennai since 2020.,lived,is living,has lived,lives
+school-11-english-1-e4,Tenses and Modals,Look! The children ___ cricket in the park.,play,played,has playing,are playing
+school-11-english-1-e5,Tenses and Modals,We ___ to the museum yesterday.,went,go,have gone,are going
+school-11-english-1-e6,Tenses and Modals,You ___ wear a helmet while riding a scooter; it is the law.,might,must,used to,would
+school-11-english-1-e7,Tenses and Modals,"___ I borrow your pen, please?",Must,Ought,May,Need
+school-11-english-1-m1,Tenses and Modals,"When I called her, she ___ dinner.",cooks,will cook,was cooking,has cooked
+school-11-english-1-m3,Tenses and Modals,"By the time the police arrived, the thief ___.",had escaped,has escaped,escapes,was escaping
+school-11-english-1-m4,Tenses and Modals,I ___ for the bus for twenty minutes when it finally came.,have been waiting,had been waiting,was wait,am waiting
+school-11-english-1-m5,Tenses and Modals,My brother ___ in Bengaluru for five years now.,works,worked,has been working,had worked
+school-11-english-1-m7,Tenses and Modals,You ___ told me earlier; I would have helped.,should have,must have,can have,may have
+school-11-english-1-m8,Tenses and Modals,"If it ___ tomorrow, we will cancel the picnic.",will rain,rains,rained,had rained
+school-11-english-1-h3,Tenses and Modals,"If she had left earlier, she ___ the train.",would catch,will catch,would have caught,had caught
+school-11-english-1-h4,Tenses and Modals,I wish I ___ the answer yesterday.,knew,know,would know,had known
+school-11-english-1-h5,Tenses and Modals,"The lights are on, so they ___ at home.",must be,can't be,needn't be,shouldn't be
+school-11-english-1-h6,Tenses and Modals,"Had I known about the strike, I ___ at home.",will have stayed,would have stayed,would stay,had stayed
+school-11-english-1-h7,Tenses and Modals,"By next March, Aarav ___ in this company for ten years.",will work,has worked,will have worked,would work
+school-11-english-1-h8,Tenses and Modals,It is high time we ___ the project.,start,will start,had started,started
+school-11-english-2-e1,Determiners and Clauses,___ honest man never lies.,A,The,An,Some
+school-11-english-2-e2,Determiners and Clauses,There is hardly ___ milk left.,many,few,a few,any
+school-11-english-2-e3,Determiners and Clauses,She bought ___ umbrella yesterday.,an,a,many,few
+school-11-english-2-e4,Determiners and Clauses,"He has two cars, but ___ of them is new.",some,neither,many,all
+school-11-english-2-e5,Determiners and Clauses,How ___ water is left in the bottle?,many,few,much,several
+school-11-english-2-e7,Determiners and Clauses,Mumbai is ___ biggest city in Maharashtra.,the,a,an,one
+school-11-english-2-m3,Determiners and Clauses,The girl ___ won the quiz is my cousin.,whom,whose,who,which
+school-11-english-2-m4,Determiners and Clauses,I will wait here ___ you return.,because,although,unless,until
+school-11-english-2-m5,Determiners and Clauses,"In ""I know that he is honest"", the clause ""that he is honest"" is a",noun clause,adjective clause,adverb clause,main clause
+school-11-english-2-m6,Determiners and Clauses,The book ___ I borrowed from the library is very old.,whose,which,who,whom
+school-11-english-2-m7,Determiners and Clauses,"I have ___ time left, so I cannot help you.",a little,few,little,a few
+school-11-english-2-m8,Determiners and Clauses,Every student ___ a library card.,have,are having,were,has
+school-11-english-2-h3,Determiners and Clauses,He asked me ___ I had finished the work.,whether,which,whose,who
+school-11-english-2-h4,Determiners and Clauses,This is the man ___ car was stolen.,who,whose,whom,which
+school-11-english-2-h5,Determiners and Clauses,"In ""The house where I was born is now a museum"", the clause ""where I was born"" is a",noun clause,adverb clause,adjective clause,simple sentence
+school-11-english-2-h6,Determiners and Clauses,We went out to play ___ the rain had stopped.,unless,until,although,after
+school-11-english-2-h7,Determiners and Clauses,Which sentence has an adverb clause of reason?,She stayed at home because she had a fever.,She asked why he was late.,The boy who is tall is my brother.,I think that he is right.
+school-11-english-2-h8,Determiners and Clauses,"Which is the correct way to join ""He is rich. He is unhappy."" using although?",Although he is rich but he is unhappy.,"Although he is rich, he is unhappy.","He is although rich, unhappy.","Though rich, but unhappy he is."
+school-11-english-3-e1,Voice and Reported Speech,"Passive of ""The peon rang the bell.""",The bell was rung by the peon.,The bell is rung by the peon.,The bell was ringing by the peon.,The bell rang by the peon.
+school-11-english-3-e2,Voice and Reported Speech,"They said, ""We have won."" They said that they ___.",have won,had won,won,will win
+school-11-english-3-e3,Voice and Reported Speech,"Passive of ""The cook prepares lunch daily.""",Lunch prepared by the cook daily.,Lunch was prepared by the cook daily.,Lunch is prepared by the cook daily.,Lunch is preparing by the cook daily.
+school-11-english-3-e4,Voice and Reported Speech,"Passive of ""Farmers grow rice in Punjab.""",Rice grows by farmers in Punjab.,Rice is grew by farmers in Punjab.,Rice was growing by farmers in Punjab.,Rice is grown by farmers in Punjab.
+school-11-english-3-e5,Voice and Reported Speech,"She said, ""I am tired."" Reported:",She said that she was tired.,She said that I am tired.,She said that she were tired.,She said that she will be tired.
+school-11-english-3-e6,Voice and Reported Speech,"Rohit said to Mina, ""I will help you."" Reported:",Rohit told Mina that I would help her.,Rohit told Mina that he would help her.,Rohit told Mina that he will help you.,Rohit told Mina that he would help you.
+school-11-english-3-m3,Voice and Reported Speech,"Passive of ""They are building a new bridge.""",A new bridge is being built by them.,A new bridge has been built by them.,A new bridge was being built by them.,A new bridge is built by them.
+school-11-english-3-m4,Voice and Reported Speech,"Passive of ""The manager will announce the results.""",The results will be announcing by the manager.,The results will be announced by the manager.,The results would announced by the manager.,The results are announced by the manager.
+school-11-english-3-m5,Voice and Reported Speech,"He said, ""I have finished my homework."" Reported:",He said that he has finished his homework.,He said that I had finished his homework.,He said that he had finished his homework.,He said that he will finish his homework.
+school-11-english-3-m6,Voice and Reported Speech,"She asked me, ""Where do you live?"" Reported:",She asked me where did I live.,She asked me where do I live.,She asked me where had I lived.,She asked me where I lived.
+school-11-english-3-m7,Voice and Reported Speech,"The teacher said to the boys, ""Stand in line."" Reported:",The teacher ordered the boys to stand in line.,The teacher said the boys that stand in line.,The teacher asked if the boys stood in line.,The teacher ordered the boys that they stood in line.
+school-11-english-3-m8,Voice and Reported Speech,"Passive of ""Who wrote this poem?""",Who was this poem written?,By whom was this poem written?,By whom this poem was written?,Who is this poem written by?
+school-11-english-3-h3,Voice and Reported Speech,"Passive of ""Why did the committee reject the proposal?""",Why the proposal was rejected by the committee?,Why was the committee rejected the proposal?,Why was the proposal rejected by the committee?,Why is the proposal rejected by the committee?
+school-11-english-3-h4,Voice and Reported Speech,"She said to me, ""Will you attend the meeting tomorrow?"" Reported:",She asked me if I will attend the meeting tomorrow.,She asked me that I would attend the meeting the next day.,She asked me whether would I attend the meeting the next day.,She asked me whether I would attend the meeting the next day.
+school-11-english-3-h5,Voice and Reported Speech,"He said, ""I met her here yesterday."" Reported:",He said that he had met her there the day before.,He said that he had met her here the previous day.,He said that he would meet her there the day before.,He said that he has met her there the next day.
+school-11-english-3-h6,Voice and Reported Speech,"Passive of ""Nobody has ever seen such a sight.""",Such a sight had never been seen.,Such a sight has never been seen.,Such a sight was never seen by nobody.,Such a sight never has seen.
+school-11-english-3-h7,Voice and Reported Speech,"Passive of ""The principal gave Ravi a medal.""",A medal is given to Ravi by the principal.,Ravi was given to a medal by the principal.,A medal was given to Ravi by the principal.,A medal gave Ravi by the principal.
+school-11-english-3-h8,Voice and Reported Speech,"""Please lend me your pen,"" said Anil to Rita. Reported:",Anil told Rita please lend him her pen.,Anil asked Rita that she lends him her pen.,Anil requested Rita that lend me your pen.,Anil requested Rita to lend him her pen.
+school-11-english-4-e1,"Vocabulary, Editing and Sentence Reordering","The word closest in meaning to ""abundant"" is",scarce,tiny,plentiful,costly
+school-11-english-4-e3,"Vocabulary, Editing and Sentence Reordering","The word closest in meaning to ""rapid"" is",swift,slow,rough,late
+school-11-english-4-e4,"Vocabulary, Editing and Sentence Reordering","The opposite of ""generous"" is",kind,stingy,rich,clever
+school-11-english-4-e6,"Vocabulary, Editing and Sentence Reordering","""A piece of cake"" means",a sweet dish,a small gift,a party,something very easy
+school-11-english-4-e7,"Vocabulary, Editing and Sentence Reordering","Find the wrong word in ""He don't like tea.""",don't,He,like,tea
+school-11-english-4-e8,"Vocabulary, Editing and Sentence Reordering","The opposite of ""increase"" is",grow,decrease,rise,add
+school-11-english-4-m3,"Vocabulary, Editing and Sentence Reordering","""Once in a blue moon"" means",every night,at midnight,very rarely,very loudly
+school-11-english-4-m4,"Vocabulary, Editing and Sentence Reordering","The word closest in meaning to ""reluctant"" is",eager,ready,happy,unwilling
+school-11-english-4-m5,"Vocabulary, Editing and Sentence Reordering","Find the error in ""Each of the boys have finished the work.""",have,Each,of the boys,work
+school-11-english-4-m6,"Vocabulary, Editing and Sentence Reordering",Fill the blank: He was punished ___ coming late.,by,for,with,of
+school-11-english-4-m7,"Vocabulary, Editing and Sentence Reordering",Arrange: always / success / hard / brings / work,Always hard brings work success.,Success hard always work brings.,Hard work always brings success.,Brings hard work always success.
+school-11-english-4-m8,"Vocabulary, Editing and Sentence Reordering",The speaker's talk was so ___ that half the audience fell asleep.,thrilling,brief,witty,monotonous
+school-11-english-4-h3,"Vocabulary, Editing and Sentence Reordering","""To burn the midnight oil"" means to",work or study late into the night,waste fuel at night,start a fire,sleep early
+school-11-english-4-h4,"Vocabulary, Editing and Sentence Reordering",Choose the correct spelling.,acommodate,accommodate,accomodate,acomodate
+school-11-english-4-h5,"Vocabulary, Editing and Sentence Reordering","Find the error in ""Neither the teacher nor the students was present.""",Neither,nor,was,present
+school-11-english-4-h6,"Vocabulary, Editing and Sentence Reordering",Which sentence is correct?,She is senior than me.,She is more senior than me.,She is senior from me.,She is senior to me.
+school-11-english-4-h7,"Vocabulary, Editing and Sentence Reordering","In ""The minister's reply was evasive"", evasive means",avoiding a direct answer,very long,full of facts,loud and angry
+school-11-english-4-h8,"Vocabulary, Editing and Sentence Reordering","Order the sentences. P: Wash the rice thoroughly in cold water. Q: Then soak it for half an hour. R: Add it to boiling water. S: Finally, let it simmer until soft.",PRQS,PQRS,QPRS,PQSR
+school-11-english-5-e1,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+According to the passage, the deep chambers of stepwells",kept the air cooler than outside,stored grain for festivals,were open to the sky,were built in the last decade
+school-11-english-5-e2,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+""Restored"" in the last line means",removed,brought back to good condition,sold,forgotten
+school-11-english-5-e3,Unseen Passages and Note Making,"Passage: The Sundarbans, shared by India and Bangladesh, is the world's largest mangrove forest. Its tangled roots trap silt and slow the waves that strike the coast, so villages behind the forest suffer less damage in cyclones. The forest is also home to the Bengal tiger, which swims between its islands. Yet rising seas and salty water are killing the trees, and scientists warn that thousands of families may lose both their protection and their livelihood from fishing and honey collection.
+
+According to the passage, the Sundarbans is",the largest desert in Asia,a tiger reserve found only in Bangladesh,the world's largest mangrove forest,a river between two countries
+school-11-english-5-e4,Unseen Passages and Note Making,"Passage: The Sundarbans, shared by India and Bangladesh, is the world's largest mangrove forest. Its tangled roots trap silt and slow the waves that strike the coast, so villages behind the forest suffer less damage in cyclones. The forest is also home to the Bengal tiger, which swims between its islands. Yet rising seas and salty water are killing the trees, and scientists warn that thousands of families may lose both their protection and their livelihood from fishing and honey collection.
+
+What do the tangled roots of the mangroves do?",Attract tigers to the coast,Raise the sea level,Store honey for villagers,Trap silt and slow the waves
+school-11-english-5-e5,Unseen Passages and Note Making,"Passage: In 2022, Meera's school replaced plastic bottles in its canteen with steel tumblers. At first the students grumbled about carrying them. Within a term, the canteen's daily waste fell from forty kilograms to twelve. The principal, who had expected resistance, now says the change taught students that small habits add up. Other schools in the city have asked for the plan, and the municipality is considering a grant for any school that follows it.
+
+To what level did the canteen's daily waste fall?",Twelve kilograms,Forty kilograms,Twenty-eight kilograms,Zero
+school-11-english-5-e7,Unseen Passages and Note Making,"Passage: Some people believe that mobile phones should be banned in schools. They argue that phones distract students and invite cheating. Others reply that phones are also tools: a student can look up a word, record a lecture or reach parents in an emergency. A sensible middle path may be to allow phones in the building but keep them switched off during lessons, unless a teacher permits their use for a task.
+
+According to those who want a ban, phones",help students record lectures,reach parents in an emergency,distract students and invite cheating,replace teachers in class
+school-11-english-5-m1,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+Why did most stepwells fall into neglect?",Villagers stopped celebrating festivals,Their chambers became too hot,Piped water made them less necessary,They were built poorly
+school-11-english-5-m2,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+Which is the best main heading for notes on this passage?",Heat Waves in India,Festivals of Villagers,Piped Water Schemes,Stepwells: More Than Water Sources
+school-11-english-5-m3,Unseen Passages and Note Making,"Passage: The Sundarbans, shared by India and Bangladesh, is the world's largest mangrove forest. Its tangled roots trap silt and slow the waves that strike the coast, so villages behind the forest suffer less damage in cyclones. The forest is also home to the Bengal tiger, which swims between its islands. Yet rising seas and salty water are killing the trees, and scientists warn that thousands of families may lose both their protection and their livelihood from fishing and honey collection.
+
+Which can be inferred from the passage?","If the mangroves vanish, coastal villages will face more danger from cyclones.",Tigers will become better swimmers.,Honey collection will increase.,The sea level will fall.
+school-11-english-5-m4,Unseen Passages and Note Making,"Passage: The Sundarbans, shared by India and Bangladesh, is the world's largest mangrove forest. Its tangled roots trap silt and slow the waves that strike the coast, so villages behind the forest suffer less damage in cyclones. The forest is also home to the Bengal tiger, which swims between its islands. Yet rising seas and salty water are killing the trees, and scientists warn that thousands of families may lose both their protection and their livelihood from fishing and honey collection.
+
+The word ""livelihood"" means",a long life,a means of earning a living,a place to live,a type of fish
+school-11-english-5-m7,Unseen Passages and Note Making,"Passage: Some people believe that mobile phones should be banned in schools. They argue that phones distract students and invite cheating. Others reply that phones are also tools: a student can look up a word, record a lecture or reach parents in an emergency. A sensible middle path may be to allow phones in the building but keep them switched off during lessons, unless a teacher permits their use for a task.
+
+The writer's suggestion is that phones should be",kept switched off in lessons unless a teacher allows them,banned from the school building,used freely at all times,handed to parents every morning
+school-11-english-5-m8,Unseen Passages and Note Making,"Passage: Some people believe that mobile phones should be banned in schools. They argue that phones distract students and invite cheating. Others reply that phones are also tools: a student can look up a word, record a lecture or reach parents in an emergency. A sensible middle path may be to allow phones in the building but keep them switched off during lessons, unless a teacher permits their use for a task.
+
+The phrase ""middle path"" here means",a road through the school,a compromise between two extremes,a path avoiding teachers,a rule that nobody follows
+school-11-english-5-h1,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+The writer's attitude towards stepwells is best described as",appreciative and concerned,hostile,indifferent,humorous
+school-11-english-5-h2,Unseen Passages and Note Making,"Passage: India's stepwells, built a thousand years ago, were not mere sources of water. Villagers gathered at them to rest, trade news and celebrate festivals. Their deep, cool chambers kept the air several degrees below the heat outside. With piped water, most fell into neglect, though a few are now being restored as heritage sites.
+
+Which is the best one-sentence summary?",Stepwells are cool places that are all being restored.,"Stepwells served water and community needs but mostly decayed after piped water, though some are being restored.",Piped water was built a thousand years ago to cool the air.,Villagers built stepwells only for festivals.
+school-11-english-5-h3,Unseen Passages and Note Making,"Passage: The Sundarbans, shared by India and Bangladesh, is the world's largest mangrove forest. Its tangled roots trap silt and slow the waves that strike the coast, so villages behind the forest suffer less damage in cyclones. The forest is also home to the Bengal tiger, which swims between its islands. Yet rising seas and salty water are killing the trees, and scientists warn that thousands of families may lose both their protection and their livelihood from fishing and honey collection.
+
+Which is the best title for the passage?",Tigers of the Sundarbans,How to Collect Honey,"A Forest That Protects, and Is Itself in Danger",Cyclones in Bangladesh
+school-11-english-5-h5,Unseen Passages and Note Making,"Passage: In 2022, Meera's school replaced plastic bottles in its canteen with steel tumblers. At first the students grumbled about carrying them. Within a term, the canteen's daily waste fell from forty kilograms to twelve. The principal, who had expected resistance, now says the change taught students that small habits add up. Other schools in the city have asked for the plan, and the municipality is considering a grant for any school that follows it.
+
+The municipality's possible grant suggests that it",sees the plan as worth copying,wants to ban steel tumblers,is angry with schools,plans to close the canteen
+school-11-english-5-h6,Unseen Passages and Note Making,"Passage: In 2022, Meera's school replaced plastic bottles in its canteen with steel tumblers. At first the students grumbled about carrying them. Within a term, the canteen's daily waste fell from forty kilograms to twelve. The principal, who had expected resistance, now says the change taught students that small habits add up. Other schools in the city have asked for the plan, and the municipality is considering a grant for any school that follows it.
+
+The writer's main purpose is to show that",students dislike new rules,a small change can have a large effect,steel is cheaper than plastic,principals expect resistance
+school-11-english-5-h7,Unseen Passages and Note Making,"Passage: Some people believe that mobile phones should be banned in schools. They argue that phones distract students and invite cheating. Others reply that phones are also tools: a student can look up a word, record a lecture or reach parents in an emergency. A sensible middle path may be to allow phones in the building but keep them switched off during lessons, unless a teacher permits their use for a task.
+
+Which statement is an opinion, not a fact?",Some people believe phones should be banned.,Phones can be used to record a lecture.,A sensible middle path is to keep phones off in lessons.,Others say phones can reach parents in an emergency.
+school-11-english-6-e1,"Short Writing: Notices, Posters, Advertisements and Invitations",Which detail is NOT needed in a school notice?,Name of the issuing body,Date,A long personal story,Signature with designation
+school-11-english-6-e2,"Short Writing: Notices, Posters, Advertisements and Invitations",Which feature suits a poster best?,Long paragraphs,A formal salutation,A closing line like Yours faithfully,A catchy slogan in large letters
+school-11-english-6-e3,"Short Writing: Notices, Posters, Advertisements and Invitations",The word limit for a notice in the CBSE exam is usually about,50 words,150 words,300 words,500 words
+school-11-english-6-e4,"Short Writing: Notices, Posters, Advertisements and Invitations",A poster is meant to,tell a long story,catch attention at a glance,replace a letter,record the minutes
+school-11-english-6-e5,"Short Writing: Notices, Posters, Advertisements and Invitations",Classified advertisements are kept brief because,readers dislike facts,editors forbid details,the cost depends on the space used,newspapers have no space at all
+school-11-english-6-e8,"Short Writing: Notices, Posters, Advertisements and Invitations","In an invitation, ""RSVP"" means",return soon,please reply,ready to serve,remember to visit
+school-11-english-6-m1,"Short Writing: Notices, Posters, Advertisements and Invitations",A formal invitation is written in the ___ person.,third,first,second,first and second mixed
+school-11-english-6-m2,"Short Writing: Notices, Posters, Advertisements and Invitations",A classified advertisement for selling a bicycle must end with,a poem,a contact number,a long description of the seller,greetings to readers
+school-11-english-6-m3,"Short Writing: Notices, Posters, Advertisements and Invitations",Which is the most suitable classified advertisement?,Cycle is for sale. Very very good. Come.,"I want to sell my cycle because I am going to college and it is good, please call me.","FOR SALE: Hero cycle, two years old, gears work well, ₹3,500. Call 98765xxxxx after 5 pm.",Buy my cycle!!!
+school-11-english-6-m4,"Short Writing: Notices, Posters, Advertisements and Invitations",Which slogan best suits a poster on saving water?,Water is a compound of hydrogen and oxygen.,Rivers flow to the sea.,Water is sold in bottles.,Every drop counts: close the tap!
+school-11-english-6-m5,"Short Writing: Notices, Posters, Advertisements and Invitations",Which is NOT needed in a notice about a change in bus timings?,A paragraph on the history of buses,The new timings,The date from which it applies,A contact person
+school-11-english-6-m6,"Short Writing: Notices, Posters, Advertisements and Invitations",Which is the correct opening of a formal invitation?,"Hey! Come to our Annual Day, it will be fun.",The Principal and staff of Sunrise Public School request the pleasure of your company at the Annual Day.,You must attend our Annual Day.,"I invite you, yaar, to our Annual Day."
+school-11-english-6-h1,"Short Writing: Notices, Posters, Advertisements and Invitations",Which set of details is the most complete for a blood donation camp notice?,Only the title and date,Venue and a motto,"Date, time, venue, who may donate and a contact person",A story about a donor
+school-11-english-6-h2,"Short Writing: Notices, Posters, Advertisements and Invitations","In a formal invitation, ""RSVP"" should be followed by",the host's age,a list of guests,a thank-you line,a phone number or email to confirm attendance
+school-11-english-6-h3,"Short Writing: Notices, Posters, Advertisements and Invitations",Which sentence is best in the body of a notice for a debate?,All students of classes XI and XII interested in the inter-house debate on 5 August at 11 a.m. in the auditorium should give their names to Mr Rao by 1 August.,Everybody should come to the debate sometime.,The debate will be very nice and fun.,Names are needed.
+school-11-english-6-h5,"Short Writing: Notices, Posters, Advertisements and Invitations",A classified ad offering a flat for rent is placed under the heading,SITUATIONS WANTED,LOST AND FOUND,TO LET,MATRIMONIAL
+school-11-english-6-h6,"Short Writing: Notices, Posters, Advertisements and Invitations","Which layout suits a poster on ""Save Electricity""?",A long continuous paragraph,A letter with a salutation and closing,Only the issuer's name,"Bold heading, two short lines and the issuer's name at the bottom"
+school-11-english-6-h7,"Short Writing: Notices, Posters, Advertisements and Invitations",A formal reply accepting an invitation is best written in,"the third person, like the invitation",the first person with slang,the second person as a command,any person at all
+school-11-english-7-e3,"Letters, Reports and Articles",A newspaper report is written in the,first person always,second person,third person,letter format
+school-11-english-7-e4,"Letters, Reports and Articles","""Yours faithfully"" is used when the letter begins with",Dear Rohit,Hi friend,Dear Mama,Dear Sir
+school-11-english-7-e5,"Letters, Reports and Articles",A byline in a report or article shows,the writer's name,the date of printing,the price,the page number
+school-11-english-7-e6,"Letters, Reports and Articles",The subject line of a formal letter should be,a long paragraph,short and to the point,left blank,written in rhyme
+school-11-english-7-e7,"Letters, Reports and Articles",An article for a school magazine should have,a salutation and a closing,only bullet points,a title and a clear introduction,a poster slogan
+school-11-english-7-e8,"Letters, Reports and Articles",A report on a school event should answer,why I dislike it,only the price,only the weather,"what, when, where and who"
+school-11-english-7-m3,"Letters, Reports and Articles",Best subject line for a letter complaining about late delivery of a washing machine ordered on 3 May:,Complaint about delayed delivery of washing machine ordered on 3 May,Washing machine,Complaint!!!,Please read
+school-11-english-7-m4,"Letters, Reports and Articles",The introduction of an article should,repeat the conclusion,catch interest and state the topic,be left out,list the page numbers
+school-11-english-7-m5,"Letters, Reports and Articles",Which headline suits a report on a tree plantation drive?,Trees,A drive was done by students in school on a day,Green Brigade Plants 200 Saplings,"Why trees are good, a long essay"
+school-11-english-7-m6,"Letters, Reports and Articles",Which line suits a letter of enquiry to a coaching institute?,Tell me everything fast.,I demand a discount.,"I will join tomorrow, keep a seat.","Kindly send me details of the course fee, duration and batch timings."
+school-11-english-7-m7,"Letters, Reports and Articles",Which closing suits a letter to the Editor?,"Yours faithfully, Rohan Mehta","Yours lovingly, Rohan","Your friend, Rohan","Love, Rohan"
+school-11-english-7-m8,"Letters, Reports and Articles",Which is true of a report?,It uses slang freely.,It states facts in an objective tone.,It tells the writer's secrets.,It is written as a dialogue.
+school-11-english-7-h3,"Letters, Reports and Articles",Which sentence is suitable in a newspaper report?,I felt the fair was awesome.,You must visit it next year.,"The chief guest, Dr Anita Rao, inaugurated the fair, which drew over 2,000 visitors.","Dear readers, hello."
+school-11-english-7-h4,"Letters, Reports and Articles",Which is the best ending for a job application letter?,Call me when you want.,Hire me or I will complain.,"Waiting, your friend.",I shall be grateful for an opportunity to appear for an interview.
+school-11-english-7-h5,"Letters, Reports and Articles",Which order is best for an article on the importance of sleep?,"Striking opening fact, effects, suggestions, conclusion","Conclusion, opening, suggestions, effects","Suggestions, title, opening, effects",Effects only
+school-11-english-7-h6,"Letters, Reports and Articles",Which is NOT a feature of a good report?,Accurate facts,Personal opinions in the first person,A clear headline,Third-person narration
+school-11-english-7-h7,"Letters, Reports and Articles",Which is the most effective first paragraph for an article on road safety?,Road safety is road safety.,"Hello readers, I am writing about roads.","Every year, over a lakh people die on Indian roads; most of these deaths can be prevented.",Roads are made of tar.
+school-11-english-7-h8,"Letters, Reports and Articles","In a formal letter, the best way to state your complaint is to",use angry words,threaten the reader,ask many unrelated questions,state the problem factually and ask for a specific remedy

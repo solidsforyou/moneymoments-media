@@ -1,0 +1,343 @@
+qid,chapter,question,A,B,C,D
+school-11-biology-1-e1,The Living World,Which property is shown by ALL living organisms without exception?,Reproduction,Metabolism,Growth in body size,Locomotion
+school-11-biology-1-e2,The Living World,Which taxonomic category is placed immediately above family?,Order,Genus,Class,Phylum
+school-11-biology-1-m1,The Living World,Which rule is correct for writing the scientific name Triticum aestivum?,Both words start with capital letters,"Genus in small letters, species epithet starts with a capital","Both words in capital letters, underlined only","Genus starts with a capital letter, species epithet in small letters, both italicised"
+school-11-biology-1-h1,The Living World,"Panthera leo, Panthera tigris and Panthera pardus share a genus. Which statement must be true?",They belong to the same species but different varieties,"They also share the same family, order and class",They share a genus but belong to different families,They share a family but different orders
+school-11-biology-2-e1,Biological Classification,The cell wall of fungi is made mainly of,chitin and polysaccharides,cellulose,peptidoglycan,pectin and lignin
+school-11-biology-2-e2,Biological Classification,The five-kingdom classification was proposed by,Carolus Linnaeus,Ernst Haeckel,Louis Pasteur,R.H. Whittaker
+school-11-biology-2-m2,Biological Classification,Red tides in the sea are caused by rapid multiplication of,diatoms,dinoflagellates,euglenoids,slime moulds
+school-11-biology-2-h1,Biological Classification,Which statement about viruses is correct?,"Each virus has either DNA or RNA as genetic material, never both",Viroids have a protein coat around their RNA,Prions are infectious particles with RNA but no protein,Bacteriophages mostly carry single-stranded RNA
+school-11-biology-3-e1,Plant Kingdom,The brown colour of brown algae is due to the pigment,phycoerythrin,chlorophyll b,phycocyanin,fucoxanthin
+school-11-biology-3-m1,Plant Kingdom,"In ferns the free-living, photosynthetic, multicellular gametophyte is called the",protonema,prothallus,sorus,strobilus
+school-11-biology-3-h1,Plant Kingdom,Which life cycle pattern is correctly matched?,Fucus: haplontic,Pinus: haplodiplontic,Funaria: diplontic,Spirogyra: haplontic
+school-11-biology-4-e1,Animal Kingdom,Adult echinoderms show which type of body symmetry?,bilateral,asymmetry,radial,biradial
+school-11-biology-4-m1,Animal Kingdom,Which pair correctly matches the animal with its body cavity?,Ascaris: pseudocoelomate,Taenia: coelomate,Pheretima: acoelomate,Sycon: coelomate
+school-11-biology-4-h1,Animal Kingdom,Which statement is true of class Chondrichthyes?,Gills are covered by an operculum,An air bladder regulates buoyancy,Gill slits are separate and have no operculum,Skin is covered by cycloid scales
+school-11-biology-5-e1,Morphology of Flowering Plants,Which root system is found in wheat?,tap,fibrous,adventitious only from the radicle,prop
+school-11-biology-5-m1,Morphology of Flowering Plants,Placentation in mustard is,axile,marginal,basal,parietal
+school-11-biology-5-m2,Morphology of Flowering Plants,Vexillary aestivation is shown by,Calotropis,China rose,pea,Cassia
+school-11-biology-5-h1,Morphology of Flowering Plants,"A flower has a superior bicarpellary ovary with swollen placentae, axile placentation, five united sepals and five united petals with epipetalous stamens. The family is",Fabaceae,Solanaceae,Liliaceae,Brassicaceae
+school-11-biology-6-e1,Anatomy of Flowering Plants,Companion cells are closely associated with,sieve tube elements,vessels,tracheids,xylem fibres
+school-11-biology-6-m1,Anatomy of Flowering Plants,Which feature is seen in a monocot stem but not in a dicot stem?,Vascular bundles arranged in a ring and open,Collenchymatous hypodermis,Vascular bundles scattered and closed,Medullary rays between bundles
+school-11-biology-7-e1,Structural Organisation in Animals,Which epithelium lines blood vessels and alveoli?,simple columnar,cuboidal,stratified squamous,simple squamous
+school-11-biology-7-e2,Structural Organisation in Animals,Tendons connect,bone to bone,muscle to muscle,muscle to bone,cartilage to skin
+school-11-biology-8-e1,Cell: The Unit of Life,Which organelle is the main site of ATP production in aerobic respiration?,Golgi apparatus,lysosome,mitochondria,ribosome
+school-11-biology-8-m1,Cell: The Unit of Life,The fluid mosaic model of the plasma membrane was proposed by,Singer and Nicolson,Robertson,Danielli and Davson,Schleiden and Schwann
+school-11-biology-9-e1,Biomolecules,A peptide bond links,two carboxyl groups,the carboxyl group of one amino acid to the amino group of the next,two amino groups,two R groups
+school-11-biology-9-e2,Biomolecules,Most enzymes are,proteins,lipids,carbohydrates,sterols
+school-11-biology-9-m1,Biomolecules,The Michaelis constant (Km) is the substrate concentration at which the reaction velocity is,equal to Vmax,zero,double the Vmax,half of Vmax
+school-11-biology-9-h1,Biomolecules,A competitive inhibitor added to an enzyme reaction will,lower Km and lower Vmax,raise Km and leave Vmax unchanged,leave Km unchanged and lower Vmax,lower Km and leave Vmax unchanged
+school-11-biology-10-e1,Cell Cycle and Cell Division,DNA replication occurs in which phase of the cell cycle?,S phase,G1 phase,G2 phase,M phase
+school-11-biology-10-e2,Cell Cycle and Cell Division,Chromosomes line up at the equator of the cell during,prophase,anaphase,telophase,metaphase
+school-11-biology-10-m1,Cell Cycle and Cell Division,Crossing over between non-sister chromatids takes place during,leptotene,zygotene,pachytene,diplotene
+school-11-biology-10-m2,Cell Cycle and Cell Division,The synaptonemal complex is formed during,leptotene,zygotene,pachytene,diakinesis
+school-11-biology-10-h1,Cell Cycle and Cell Division,"A diploid cell has 2n = 12. How many bivalents form at metaphase I, and how many chromosomes does each cell have at the end of meiosis II?",6 bivalents; 6 chromosomes,12 bivalents; 6 chromosomes,6 bivalents; 12 chromosomes,12 bivalents; 12 chromosomes
+school-11-biology-11-e1,Photosynthesis in Higher Plants,The light reactions of photosynthesis occur in the,stroma,cytoplasm,mitochondria,thylakoid membranes
+school-11-biology-11-m1,Photosynthesis in Higher Plants,The primary CO2 acceptor in C4 plants is,RuBP,phosphoenolpyruvate,oxaloacetate,malate
+school-11-biology-11-m2,Photosynthesis in Higher Plants,Photolysis of water is associated with,photosystem II,photosystem I,cyclic photophosphorylation,the Calvin cycle
+school-11-biology-11-h1,Photosynthesis in Higher Plants,"To make one glucose by the C3 cycle and by the C4 pathway, the ATP needed is respectively",30 and 18,12 and 18,18 and 24,18 and 30
+school-11-biology-11-h2,Photosynthesis in Higher Plants,In photorespiration the organelles involved in order are,"chloroplast, mitochondria, Golgi","peroxisome, chloroplast, ER","chloroplast, peroxisome, mitochondria","mitochondria, peroxisome, nucleus"
+school-11-biology-12-e1,Respiration in Plants,Glycolysis takes place in the,mitochondrial matrix,nucleus,cytoplasm,chloroplast
+school-11-biology-12-e2,Respiration in Plants,The final electron acceptor in the mitochondrial electron transport chain is,NAD+,oxygen,cytochrome c,FAD
+school-11-biology-12-m1,Respiration in Plants,"Per glucose molecule, how many CO2 molecules are released in the link reaction and Krebs cycle together?",6,2,4,8
+school-11-biology-12-m2,Respiration in Plants,The respiratory quotient when fats are the substrate is,exactly 1,more than 1,infinity,less than 1
+school-11-biology-12-h1,Respiration in Plants,Which statement about ATP synthase is correct?,F1 forms a proton channel and F0 has the catalytic site,Both parts are catalytic only,F0 forms a proton channel and F1 has the catalytic site,It pumps protons into the matrix
+school-11-biology-13-e1,Plant Growth and Development,Which plant hormone is a gas?,auxin,ethylene,gibberellin,cytokinin
+school-11-biology-13-e2,Plant Growth and Development,Which hormone promotes cell elongation in stems?,auxin,abscisic acid,ethylene,cytokinin
+school-11-biology-13-m1,Plant Growth and Development,Bolting in rosette plants such as cabbage is induced by,abscisic acid,ethylene,cytokinin,gibberellins
+school-11-biology-13-m2,Plant Growth and Development,Which hormone delays senescence of leaves?,ethylene,abscisic acid,cytokinin,gibberellic acid
+school-11-biology-13-h1,Plant Growth and Development,A short-day plant receives long nights. A brief flash of red light is given in the middle of the dark period. The plant will,flower as usual,fail to flower,flower earlier,become a long-day plant
+school-11-biology-14-e1,Breathing and Exchange of Gases,During normal inspiration the diaphragm,contracts and flattens,relaxes and domes upward,contracts and domes upward,moves sideways
+school-11-biology-14-m1,Breathing and Exchange of Gases,"A person has tidal volume 500 mL, inspiratory reserve volume 2500 mL and expiratory reserve volume 1000 mL. The vital capacity is",3500 mL,3000 mL,4000 mL,4500 mL
+school-11-biology-14-h1,Breathing and Exchange of Gases,The oxyhaemoglobin dissociation curve shifts to the right in actively metabolising tissues because of,"high pCO2, high H+ and higher temperature","low pCO2, low H+ and lower temperature",high pO2 and low H+,low temperature and high pH
+school-11-biology-15-e1,Body Fluids and Circulation,Which blood group has no antigens on its red cells?,A,B,AB,O
+school-11-biology-15-m1,Body Fluids and Circulation,A person with blood group A has which antibodies in plasma?,anti-A,anti-B,anti-A and anti-B,none
+school-11-biology-15-h1,Body Fluids and Circulation,The end of the T-wave in an ECG marks,the beginning of atrial systole,ventricular depolarisation,the start of the cardiac cycle,the end of ventricular systole
+school-11-biology-15-h2,Body Fluids and Circulation,A heart pumps 60 mL per beat at 75 beats per minute. Cardiac output per minute is,3600 mL,5250 mL,4500 mL,1250 mL
+school-11-biology-16-e1,Excretory Products and their Elimination,The functional unit of the kidney is the,neuron,glomerulus alone,nephron,ureter
+school-11-biology-16-e2,Excretory Products and their Elimination,The chief nitrogenous waste of human beings is,ammonia,urea,uric acid,creatinine
+school-11-biology-16-m1,Excretory Products and their Elimination,The glomerular filtration rate of a healthy adult is about,125 mL per minute,12.5 mL per minute,1250 mL per minute,25 mL per minute
+school-11-biology-16-h1,Excretory Products and their Elimination,Atrial natriuretic factor acts on the kidney by,activating renin release,increasing aldosterone,causing vasodilation and countering the RAAS,raising Na+ reabsorption
+school-11-biology-17-e1,Locomotion and Movement,The adult human skeleton has how many bones?,300,206,150,212
+school-11-biology-17-e2,Locomotion and Movement,The contractile proteins of muscle are,actin and myosin,collagen and elastin,keratin and fibrin,albumin and globulin
+school-11-biology-17-m1,Locomotion and Movement,Movement in all directions is possible at a,hinge joint,pivot joint,gliding joint,ball and socket joint
+school-11-biology-17-h1,Locomotion and Movement,During muscle contraction the length of which band remains unchanged?,I band,A band,H zone,distance between Z lines
+school-11-biology-18-e1,Neural Control and Coordination,The brain part that controls balance and posture is the,cerebellum,cerebrum,hypothalamus,thalamus
+school-11-biology-18-m1,Neural Control and Coordination,A resting axon membrane is more permeable to,Na+,Cl-,K+,Ca2+
+school-11-biology-18-m2,Neural Control and Coordination,In myelinated fibres the impulse jumps from node to node. This is,continuous conduction,saltatory conduction,synaptic delay,reflex transmission
+school-11-biology-18-h1,Neural Control and Coordination,Which sequence describes an action potential?,"Na+ influx, K+ efflux, then restoring by the sodium-potassium pump","K+ influx, Na+ efflux, then diffusion","Ca2+ influx, Cl- efflux, then osmosis","K+ efflux, Na+ influx, then phagocytosis"
+school-11-biology-19-e1,Chemical Coordination and Integration,The master gland of the body is the,thyroid,adrenal,pancreas,pituitary
+school-11-biology-19-m1,Chemical Coordination and Integration,Deficiency of dietary iodine causes,acromegaly,simple goitre,Addison disease,diabetes insipidus
+school-11-biology-19-m2,Chemical Coordination and Integration,Over-secretion of growth hormone in an adult causes,acromegaly,gigantism,dwarfism,Cushing syndrome
+school-11-biology-19-h2,Chemical Coordination and Integration,"A patient shows weakness, low blood pressure, low blood sodium and darker skin. The likely cause is",hypersecretion of cortisol,lack of insulin,hyposecretion of adrenal cortex hormones,excess aldosterone
+school-11-biology-1-e3,The Living World,Who introduced the system of binomial nomenclature?,Carolus Linnaeus,Robert Whittaker,Ernst Haeckel,Charles Darwin
+school-11-biology-1-e4,The Living World,A group of closely related species is placed in one,Family,Genus,Order,Class
+school-11-biology-1-e5,The Living World,Growth in a living organism differs from growth of a non-living object like a crystal because it,Occurs by accumulation of material on the surface,Stops only when the object is heated,Occurs from inside by an increase in cell mass and number,Is shown only by animals
+school-11-biology-1-e6,The Living World,"A store-house of dried, pressed and preserved plant specimens is called a",Museum,Zoological park,Botanical garden,Herbarium
+school-11-biology-1-m3,The Living World,"Which category is called ""division"" in plant classification, but ""phylum"" in animal classification?",The rank placed between class and order,The rank placed between genus and species,The rank placed between kingdom and class,The rank placed between order and family
+school-11-biology-1-m4,The Living World,Solanum tuberosum (potato) and Solanum melongena (brinjal) share which lowest category?,Species,Variety,Population,Genus
+school-11-biology-1-m5,The Living World,Which taxonomic aid gives information for the identification of species found in an area?,Manual,Herbarium,Museum,Botanical garden
+school-11-biology-1-m7,The Living World,"When a scientific name is handwritten, it should be",Written in capital letters only,Enclosed in brackets,"Underlined, with genus and species underlined separately",Written in italics with both words joined
+school-11-biology-1-m8,The Living World,"In Mangifera indica Linn., the abbreviation Linn. shows",The place where the mango is grown,The family of the plant,The year of publication,The author who first described the species
+school-11-biology-1-h3,The Living World,Two organisms belong to the same order but to different families. Which statement must be true?,They belong to the same class and the same phylum,They belong to the same genus,They belong to the same species,They have more shared characters than two members of one genus
+school-11-biology-1-h4,The Living World,Felis catus (cat) and Panthera leo (lion) share the family Felidae. Canis familiaris (dog) is in Canidae. All three are in order Carnivora. The lowest category shared by all three is,Family,Order,Genus,Class
+school-11-biology-1-h5,The Living World,"As we move from species towards kingdom in the hierarchy, what happens?",The characters shared increase and the number of organisms increases,Both the characters shared and the number of organisms decrease,The characters shared decrease and the number of organisms included increases,The characters shared decrease and the number of organisms decreases
+school-11-biology-1-h6,The Living World,Metabolic reactions are carried out in a test tube using a cell-free extract. Which conclusion is correct?,The extract is a living organism,The extract has become a cell,The extract is a living organism only while it is warm,The reactions are biochemical and the extract is not a living organism
+school-11-biology-1-h7,The Living World,In which organism are growth and reproduction essentially the same event?,Amoeba,Hydra,A human being,A fern
+school-11-biology-2-e3,Biological Classification,The cell wall of most bacteria is made mainly of,Cellulose,Peptidoglycan (a polymer of sugars and amino acids),Chitin,Pectin
+school-11-biology-2-e4,Biological Classification,Amoeba and Paramecium are placed in kingdom,Monera,Fungi,Protista,Animalia
+school-11-biology-2-e5,Biological Classification,Mushrooms and yeast belong to kingdom,Plantae,Protista,Monera,Fungi
+school-11-biology-2-e6,Biological Classification,"Diatoms, whose cell walls form ""diatomaceous earth"", belong to",Chrysophytes,Dinoflagellates,Euglenoids,Slime moulds
+school-11-biology-2-m3,Biological Classification,Euglena is said to link plants and animals because it,Has a cellulose wall and no chlorophyll,Has no flagellum,Is always parasitic,Photosynthesises in light but feeds heterotrophically and moves without light
+school-11-biology-2-m4,Biological Classification,Slime moulds under favourable conditions form a plasmodium. Slime moulds are,Saprophytic protists,Autotrophic bacteria,Parasitic viruses,Photosynthetic fungi
+school-11-biology-2-m5,Biological Classification,Mycorrhiza is an association between,An alga and a fungus,A fungus and the roots of a higher plant,A bacterium and a legume leaf,A virus and a root
+school-11-biology-2-m7,Biological Classification,A comma-shaped bacterium is called a,Coccus,Bacillus,Spirillum,Vibrio
+school-11-biology-2-m8,Biological Classification,Which disease is caused by a virus?,Mumps,Cholera,Typhoid,Tetanus
+school-11-biology-2-h3,Biological Classification,Which structure of Nostoc is the site of nitrogen fixation?,Akinete,Heterocyst,Hormogonium,Mesosome
+school-11-biology-2-h4,Biological Classification,A viroid differs from a virus because the viroid,Has DNA and a lipid coat,Is larger and visible under a light microscope,Lacks a protein coat and is a low molecular weight free RNA,Contains both DNA and RNA
+school-11-biology-2-h5,Biological Classification,A fungus has aseptate coenocytic hyphae and forms zygospores. It most likely is,Agaricus,Penicillium,Puccinia,Rhizopus
+school-11-biology-2-h6,Biological Classification,Which pair of fungi belongs to the same class Ascomycetes?,Neurospora and Penicillium,Rhizopus and Mucor,Puccinia and Ustilago,Alternaria and Trichoderma
+school-11-biology-2-h7,Biological Classification,Which criterion was NOT used by Whittaker for the five-kingdom classification?,Cell structure,Geographical distribution of the organism,Mode of nutrition,Phylogenetic relationships
+school-11-biology-3-e3,Plant Kingdom,The red colour of red algae is due to the pigment,Fucoxanthin,Chlorophyll b,r-phycoerythrin,Carotene
+school-11-biology-3-e5,Plant Kingdom,"Peat, used as fuel and packing material, is formed from",Sphagnum,Funaria,Marchantia,Pinus
+school-11-biology-3-e6,Plant Kingdom,Plants whose ovules are not enclosed in an ovary and have naked seeds are,Angiosperms,Gymnosperms,Bryophytes,Algae
+school-11-biology-3-e7,Plant Kingdom,The first terrestrial plants to possess vascular tissues were,Bryophytes,Algae,Pteridophytes,Liverworts
+school-11-biology-3-e8,Plant Kingdom,The dominant phase in the life cycle of a bryophyte is,The sporophyte,The zygote,The embryo,The gametophyte
+school-11-biology-3-m3,Plant Kingdom,Selaginella and Salvinia produce two kinds of spores. They are,Heterosporous,Homosporous,Isosporous,Apogamous
+school-11-biology-3-m4,Plant Kingdom,"Fucus, a brown alga, shows which type of life cycle?",Haplontic,Diplontic,Haplodiplontic,Triplontic
+school-11-biology-3-m6,Plant Kingdom,In bryophytes the sporophyte is,Free-living and dominant,Absent,Haploid,Attached to the gametophyte and dependent on it for nutrition
+school-11-biology-3-m7,Plant Kingdom,The flask-shaped female sex organ of a bryophyte is the,Archegonium,Antheridium,Sporangium,Gemma
+school-11-biology-3-m8,Plant Kingdom,Which of these is a gymnosperm?,Funaria,Pinus,Salvinia,Chara
+school-11-biology-3-h3,Plant Kingdom,A pollen grain of an angiosperm has 14 chromosomes. How many chromosomes are present in the endosperm and in the zygote respectively?,28 and 14,14 and 28,42 and 28,28 and 42
+school-11-biology-3-h4,Plant Kingdom,Spore mother cells of a fern have 48 chromosomes. How many chromosomes are present in a spore and in a prothallus cell?,48 and 24,24 and 48,12 and 24,24 and 24
+school-11-biology-3-h5,Plant Kingdom,Which statement about the dominant generation is correct?,Gametophyte dominates in bryophytes and sporophyte dominates in pteridophytes,Sporophyte dominates in both bryophytes and pteridophytes,Gametophyte dominates in both groups,Gametophyte dominates in pteridophytes and sporophyte in bryophytes
+school-11-biology-3-h6,Plant Kingdom,Gymnosperms do not need free water for fertilisation because,Male gametes swim through dew,The pollen tube carries the male gametes to the egg,Wind carries the egg to the male gamete,The sperms are flagellated
+school-11-biology-3-h7,Plant Kingdom,Which alga shows oogamous reproduction?,Ulothrix,Spirogyra,Fucus,Cladophora
+school-11-biology-4-e3,Animal Kingdom,Water enters the body of a sponge through small pores called,Osculum,Spiracles,Stomata,Ostia
+school-11-biology-4-e4,Animal Kingdom,Stinging cells called cnidoblasts are found in phylum,Cnidaria,Porifera,Annelida,Mollusca
+school-11-biology-4-e5,Animal Kingdom,The largest phylum of the animal kingdom is,Mollusca,Arthropoda,Annelida,Chordata
+school-11-biology-4-e6,Animal Kingdom,A feature found only in mammals among the following is,Warm blood,Four-chambered heart,Mammary glands,Vertebral column
+school-11-biology-4-e7,Animal Kingdom,Pneumatic bones (hollow bones with air cavities) are a feature of,Reptilia,Amphibia,Pisces,Aves
+school-11-biology-4-m3,Animal Kingdom,Balanoglossus belongs to phylum,Chordata,Hemichordata,Annelida,Echinodermata
+school-11-biology-4-m4,Animal Kingdom,True metameric segmentation first appears in phylum,Platyhelminthes,Aschelminthes,Annelida,Cnidaria
+school-11-biology-4-m5,Animal Kingdom,Comb plates used for locomotion are a feature of,Cnidaria,Porifera,Mollusca,Ctenophora
+school-11-biology-4-m6,Animal Kingdom,A rasping organ called the radula is found in,Mollusca,Arthropoda,Annelida,Echinodermata
+school-11-biology-4-m8,Animal Kingdom,"The air bladder, which helps in buoyancy, is present in",Cartilaginous fishes,Cyclostomes,Bony fishes,Amphibians
+school-11-biology-4-h3,Animal Kingdom,Flame cells help in excretion and osmoregulation in,Annelida,Arthropoda,Mollusca,Platyhelminthes
+school-11-biology-4-h4,Animal Kingdom,Organs first appear in the animal kingdom in phylum,Platyhelminthes,Cnidaria,Ctenophora,Porifera
+school-11-biology-4-h5,Animal Kingdom,Which animal has a two-chambered heart?,Frog,Rohu,Crocodile,Pigeon
+school-11-biology-4-h6,Animal Kingdom,Which pair contains only homeothermous (warm-blooded) groups?,Reptilia and Aves,Pisces and Mammalia,Aves and Mammalia,Amphibia and Reptilia
+school-11-biology-4-h7,Animal Kingdom,"An animal is bilaterally symmetrical, acoelomate, hermaphrodite and parasitic, with hooks and suckers. It is most likely",Ascaris,Pheretima,Sycon,Taenia
+school-11-biology-5-e3,Morphology of Flowering Plants,"In a germinating seed, the primary root develops from the",Radicle,Plumule,Cotyledon,Hilum
+school-11-biology-5-e4,Morphology of Flowering Plants,Stilt roots that give extra support are found in,Carrot and radish,Maize and sugarcane,Mangrove only,Turnip
+school-11-biology-5-e5,Morphology of Flowering Plants,The arrangement of leaves on the stem or branch is called,Venation,Aestivation,Phyllotaxy,Placentation
+school-11-biology-5-e6,Morphology of Flowering Plants,Alstonia (devil tree) shows which type of phyllotaxy?,Alternate,Opposite,Spiral,Whorled
+school-11-biology-5-e7,Morphology of Flowering Plants,"A fruit is a mature, ripened",Ovary,Ovule,Anther,Stigma
+school-11-biology-5-m3,Morphology of Flowering Plants,Parallel venation in leaves is a feature of,Dicotyledonous plants such as mustard,Gymnosperms only,Monocotyledonous plants such as wheat,Algae
+school-11-biology-5-m4,Morphology of Flowering Plants,In a racemose inflorescence,The main axis ends in a flower,The flowers are all at the base,The youngest flower is at the base,The main axis keeps growing and flowers open in acropetal order
+school-11-biology-5-m6,Morphology of Flowering Plants,The single cotyledon of a grass seed such as maize is called the,Coleoptile,Scutellum,Radicle,Plumule
+school-11-biology-5-m7,Morphology of Flowering Plants,Twisted aestivation is shown by,Calotropis,Cassia,China rose,Pea
+school-11-biology-5-h3,Morphology of Flowering Plants,Thorns of Bougainvillea and tendrils of cucumber are,"Homologous, since both are modified stems","Analogous, since both help in climbing","Homologous, since both are modified leaves","Analogous, since both are modified roots"
+school-11-biology-5-h4,Morphology of Flowering Plants,The floral formula ⊕ ⚥ K(5) C(5) A5 G(2) with a superior ovary best fits,Fabaceae,Solanaceae,Liliaceae,Brassicaceae
+school-11-biology-5-h5,Morphology of Flowering Plants,Which pair of plant and placentation is correct?,Pea - basal,Sunflower - parietal,Dianthus - free central,Tomato - marginal
+school-11-biology-5-h6,Morphology of Flowering Plants,In a bean seed water enters mainly through the,Hilum,Raphe,Plumule,Micropyle
+school-11-biology-5-h7,Morphology of Flowering Plants,Which seed is a dicot with a persistent endosperm?,Castor,Gram,Pea,Bean
+school-11-biology-6-e3,Anatomy of Flowering Plants,Meristems at the tips of roots and shoots are called,Lateral meristems,Apical meristems,Intercalary meristems,Permanent tissues
+school-11-biology-6-e4,Anatomy of Flowering Plants,Tracheids and vessels are elements of,Phloem,Cortex,Xylem,Epidermis
+school-11-biology-6-e5,Anatomy of Flowering Plants,Sieve tubes are part of the tissue that conducts,Water only,Air,Gums,Food
+school-11-biology-6-e6,Anatomy of Flowering Plants,Guard cells that regulate gas exchange are present in the,Epidermis,Cortex,Pith,Endodermis
+school-11-biology-6-e7,Anatomy of Flowering Plants,"A tissue with cell corners thickened by pectin and cellulose, giving flexible support, is",Parenchyma,Collenchyma,Sclerenchyma,Aerenchyma
+school-11-biology-6-m3,Anatomy of Flowering Plants,Vascular bundles in a dicot stem are,"Conjoint, collateral and closed",Radial and closed,Scattered and closed,"Conjoint, collateral and open"
+school-11-biology-6-m4,Anatomy of Flowering Plants,Casparian strips are present in the,Endodermis,Epidermis,Pericycle,Pith
+school-11-biology-6-m5,Anatomy of Flowering Plants,The xylem of a monocot root is,Diarch,Polyarch with more than six bundles,Triarch,Tetrarch
+school-11-biology-6-m7,Anatomy of Flowering Plants,Lenticels in the bark of a woody stem help in,Water storage,Food conduction,Cork formation,Gas exchange
+school-11-biology-6-m8,Anatomy of Flowering Plants,The guard cells of grasses are,Dumb-bell shaped,Kidney shaped,Rectangular only,Absent
+school-11-biology-6-h3,Anatomy of Flowering Plants,"A leaf has stomata on both surfaces and palisade and spongy mesophyll differentiated, with more stomata on the lower surface. It is a",Isobilateral leaf of a monocot,Dorsiventral leaf of a dicot,Root hair zone,Stem of a monocot
+school-11-biology-6-h4,Anatomy of Flowering Plants,In a dicot root the vascular cambium arises from,The epidermis,The cortex only,Conjunctive tissue below the phloem and the pericycle opposite the protoxylem,The pith
+school-11-biology-6-h5,Anatomy of Flowering Plants,"Xylem in a stem is endarch, which means the protoxylem lies",Towards the periphery,In the middle of the metaxylem,Outside the phloem,Towards the centre (pith)
+school-11-biology-6-h6,Anatomy of Flowering Plants,Which of these belongs to the ground tissue system?,Pith,Epidermis,Cambium,Xylem
+school-11-biology-6-h7,Anatomy of Flowering Plants,Which element is absent from the phloem of a monocot stem?,Sieve tubes,Phloem parenchyma,Companion cells,Vessels
+school-11-biology-6-h8,Anatomy of Flowering Plants,The waxy cuticle covering the epidermis of a leaf mainly,Conducts water upward,Stores starch in the pith,Reduces water loss from the surface,Produces new xylem
+school-11-biology-7-e3,Structural Organisation in Animals,Blood is classified as a,Muscular tissue,Epithelial tissue,Fluid connective tissue,Neural tissue
+school-11-biology-7-e4,Structural Organisation in Animals,Fat is stored mainly in,Cartilage,Bone,Areolar tissue,Adipose tissue
+school-11-biology-7-e5,Structural Organisation in Animals,An earthworm breathes through its,Moist skin,Gills,Lungs,Spiracles
+school-11-biology-7-e6,Structural Organisation in Animals,Mouthparts of a cockroach are of the,Piercing and sucking type,Chewing and biting type,Sponging type,Siphoning type
+school-11-biology-7-m3,Structural Organisation in Animals,Ciliated columnar epithelium lines the,Bronchioles and fallopian tubes,Stomach lining only,Walls of capillaries,Sweat gland ducts
+school-11-biology-7-m4,Structural Organisation in Animals,The typhlosole of the earthworm intestine,Grinds food,Increases the absorptive surface,Stores blood,Secretes hormones
+school-11-biology-7-m5,Structural Organisation in Animals,The heart of a cockroach has how many chambers?,7,4,13,2
+school-11-biology-7-m6,Structural Organisation in Animals,The heart of a frog has,One atrium and two ventricles,Two atria and two ventricles,One atrium and one ventricle,Two atria and one ventricle
+school-11-biology-7-m7,Structural Organisation in Animals,The main nitrogenous waste of a cockroach is,Uric acid,Urea,Ammonia,Creatinine
+school-11-biology-7-m8,Structural Organisation in Animals,The functional unit of neural tissue is the,Nephron,Neuron,Myofibril,Osteocyte
+school-11-biology-7-h3,Structural Organisation in Animals,"In a male frog, sperms pass from the testes to the kidney through",Bidder's canal,Ureter only,Vasa efferentia,Oviduct
+school-11-biology-7-h4,Structural Organisation in Animals,Dense irregular connective tissue is found in,Tendons,Ligaments,Cartilage of the ear,The dermis of the skin
+school-11-biology-7-h5,Structural Organisation in Animals,During winter sleep (hibernation) a frog breathes mainly through,Skin,Gills,Buccal cavity,Lungs
+school-11-biology-7-h6,Structural Organisation in Animals,The mushroom gland is part of the,Female reproductive system of the cockroach,Male reproductive system of the cockroach,Digestive system of the frog,Nervous system of the earthworm
+school-11-biology-7-h7,Structural Organisation in Animals,Tight junctions in epithelium help to,Allow cytoplasm to pass between cells,Anchor cells to the basal lamina only,Stop substances from leaking across the tissue,Carry electrical signals
+school-11-biology-7-h8,Structural Organisation in Animals,Haemoglobin in the earthworm is present,Inside red blood cells,Only in the coelomic fluid,In the muscles,Dissolved in blood plasma
+school-11-biology-8-e3,Cell: The Unit of Life,The cell theory was proposed by,Robert Hooke,Watson and Crick,Mendel,Schleiden and Schwann
+school-11-biology-8-e4,Cell: The Unit of Life,"""New cells arise from pre-existing cells"" was stated by",Rudolf Virchow,Robert Brown,Anton van Leeuwenhoek,Camillo Golgi
+school-11-biology-8-e5,Cell: The Unit of Life,Hydrolytic digestive enzymes are present in,Ribosomes,Lysosomes,Mitochondria,Centrioles
+school-11-biology-8-e6,Cell: The Unit of Life,The site of protein synthesis in the cell is the,Golgi body,Lysosome,Ribosome,Vacuole
+school-11-biology-8-e8,Cell: The Unit of Life,The main component of plant cell walls is,Cellulose,Chitin,Peptidoglycan,Keratin
+school-11-biology-8-m3,Cell: The Unit of Life,Lipid synthesis in animal cells takes place mainly in the,Rough endoplasmic reticulum,Smooth endoplasmic reticulum,Nucleus,Ribosome
+school-11-biology-8-m4,Cell: The Unit of Life,The Golgi apparatus is mainly concerned with,Making ATP,Making rRNA,Packaging and secreting materials,Storing starch
+school-11-biology-8-m5,Cell: The Unit of Life,Amyloplasts store,Proteins,Oils,Pigments,Starch
+school-11-biology-8-m7,Cell: The Unit of Life,The axoneme of cilia and flagella shows a pattern of,9 + 0 microtubules,9 + 2 microtubules,9 triplets,2 + 9 triplets
+school-11-biology-8-m8,Cell: The Unit of Life,The longest cell in the human body is the,Red blood cell,Ovum,Neuron,Osteocyte
+school-11-biology-8-h3,Cell: The Unit of Life,"In a plasmolysed plant cell, the space between the wall and the shrunken protoplast is filled with",Water from the vacuole,Cytoplasm,Air,The external hypertonic solution
+school-11-biology-8-h4,Cell: The Unit of Life,Euchromatin is,"Loosely packed, lightly stained and transcriptionally active","Tightly packed, darkly stained and inactive",Found only in prokaryotes,A type of RNA
+school-11-biology-8-h5,Cell: The Unit of Life,Enzymes of the Calvin cycle are located in the chloroplast,Grana,Stroma,Outer membrane,Intermembrane space
+school-11-biology-8-h6,Cell: The Unit of Life,The subunits of the eukaryotic 80S ribosome are,50S and 30S,70S and 10S,60S and 40S,60S and 20S
+school-11-biology-8-h7,Cell: The Unit of Life,Which is NOT part of the endomembrane system?,Golgi apparatus,Lysosomes,Endoplasmic reticulum,Mitochondria
+school-11-biology-8-h8,Cell: The Unit of Life,The enzymes of the Krebs cycle are found in the mitochondrial,Matrix,Intermembrane space,Outer membrane,Cristae surface
+school-11-biology-9-e3,Biomolecules,The monomers of proteins are,Amino acids,Nucleotides,Monosaccharides,Fatty acids
+school-11-biology-9-e4,Biomolecules,The sugar present in DNA is,Ribose,Deoxyribose,Glucose,Fructose
+school-11-biology-9-e5,Biomolecules,The storage polysaccharide of plants is,Glycogen,Cellulose,Starch,Chitin
+school-11-biology-9-e6,Biomolecules,The unbranched polysaccharide forming plant cell walls is,Starch,Glycogen,Inulin,Cellulose
+school-11-biology-9-m3,Biomolecules,A triglyceride is formed from,Three glycerols and one fatty acid,One glycerol and one fatty acid,One glycerol and three fatty acids,Three amino acids
+school-11-biology-9-m4,Biomolecules,Which is an unsaturated fatty acid?,Palmitic acid,Stearic acid,Butyric acid,Oleic acid
+school-11-biology-9-m5,Biomolecules,The four polypeptide chains of haemoglobin illustrate which level of protein structure?,Quaternary,Primary,Secondary,Tertiary
+school-11-biology-9-m6,Biomolecules,The haem group of catalase is an example of a,Coenzyme,Prosthetic group,Substrate,Inhibitor
+school-11-biology-9-m7,Biomolecules,Sucrose is a disaccharide of,Two glucose units,Glucose and galactose,Glucose and fructose,Two fructose units
+school-11-biology-9-h3,Biomolecules,An enzyme has Vmax = 80 micromol per min and Km = 4 mM. The velocity at a substrate concentration of 12 mM is,60 micromol per min,40 micromol per min,48 micromol per min,70 micromol per min
+school-11-biology-9-h4,Biomolecules,A double-stranded DNA has 30 per cent adenine. The percentage of guanine is,30,20,40,70
+school-11-biology-9-h5,Biomolecules,The effect of a competitive inhibitor can be overcome by,Lowering the pH,Adding more inhibitor,Increasing the substrate concentration,Cooling the mixture
+school-11-biology-9-h6,Biomolecules,In feedback inhibition the end product of a pathway,Activates the first substrate,Destroys the final enzyme only,Is converted back to the substrate,Inhibits an early enzyme of the same pathway
+school-11-biology-9-h7,Biomolecules,A single polypeptide chain contains 120 amino acid residues. The number of peptide bonds is,119,120,121,240
+school-11-biology-10-e3,Cell Cycle and Cell Division,Chromosomes first become visible as condensed structures during,Interphase,Prophase,Telophase,Cytokinesis
+school-11-biology-10-e4,Cell Cycle and Cell Division,Sister chromatids separate during,Prophase,Metaphase,Anaphase,S phase
+school-11-biology-10-e5,Cell Cycle and Cell Division,In which phase does the cell grow and prepare for DNA synthesis?,S,M,Cytokinesis,G1
+school-11-biology-10-e6,Cell Cycle and Cell Division,Division of the cytoplasm is called,Cytokinesis,Karyokinesis,Synapsis,Replication
+school-11-biology-10-m3,Cell Cycle and Cell Division,"In a human cell with a cycle of 24 hours, the M phase lasts about",Twelve hours,Twenty hours,Twenty-four hours,One hour
+school-11-biology-10-m4,Cell Cycle and Cell Division,Chromosomes are most condensed and best counted at,Metaphase,Prophase,Telophase,G1
+school-11-biology-10-m5,Cell Cycle and Cell Division,The reductional division of meiosis is,Meiosis II,Meiosis I,Mitosis,S phase
+school-11-biology-10-m8,Cell Cycle and Cell Division,Which phase is the longest in a typical dividing animal cell?,Interphase,Prophase,Metaphase,Anaphase
+school-11-biology-10-h3,Cell Cycle and Cell Division,A cell with 2n = 20 completes meiosis I. Each daughter cell has,20 chromosomes of one chromatid,"10 chromosomes, each of two chromatids",10 chromosomes of one chromatid,20 chromosomes of two chromatids
+school-11-biology-10-h4,Cell Cycle and Cell Division,A single cell divides by mitosis six times. The number of cells formed is,32,12,64,36
+school-11-biology-10-h5,Cell Cycle and Cell Division,How many pollen mother cells must undergo meiosis to produce 800 pollen grains?,400,800,100,200
+school-11-biology-10-h6,Cell Cycle and Cell Division,Which event occurs only in meiosis I and not in mitosis?,Pairing of homologous chromosomes,Condensation of chromosomes,Spindle formation,Cytokinesis
+school-11-biology-10-h7,Cell Cycle and Cell Division,A cell in G2 has 8 pg of DNA. A gamete formed by meiosis from it will have,4 pg,2 pg,8 pg,1 pg
+school-11-biology-11-e3,Photosynthesis in Higher Plants,The main pigment that directly takes part in the light reactions is,Carotene,Xanthophyll,Chlorophyll a,Chlorophyll c
+school-11-biology-11-e4,Photosynthesis in Higher Plants,The dark (biosynthetic) reactions of photosynthesis occur in the,Grana,Thylakoid lumen,Mitochondrion,Stroma
+school-11-biology-11-e5,Photosynthesis in Higher Plants,The oxygen released in photosynthesis comes from,Water,Carbon dioxide,Glucose,RuBP
+school-11-biology-11-e6,Photosynthesis in Higher Plants,RuBisCO stands for,Ribose bisphosphate carbonic oxidase,Ribulose bisphosphate carboxylase-oxygenase,Ribulose phosphate carbon oxidase,Reduced bisphosphate carboxylase
+school-11-biology-11-e7,Photosynthesis in Higher Plants,Which of these is a C4 plant?,Wheat,Rice,Maize,Potato
+school-11-biology-11-m3,Photosynthesis in Higher Plants,The reaction centre of photosystem II absorbs light best at,680 nm,700 nm,450 nm,540 nm
+school-11-biology-11-m4,Photosynthesis in Higher Plants,Non-cyclic photophosphorylation produces,Only ATP,"ATP, NADPH and oxygen",Only NADPH,Glucose
+school-11-biology-11-m5,Photosynthesis in Higher Plants,Cyclic photophosphorylation involves,Only photosystem II and produces NADPH,Both photosystems and produces oxygen,Only photosystem I and produces only ATP,Photolysis of water
+school-11-biology-11-m6,Photosynthesis in Higher Plants,The primary acceptor of CO2 in the Calvin cycle is,"PEP, a three-carbon compound",Oxaloacetic acid,PGA,"RuBP, a five-carbon compound"
+school-11-biology-11-h3,Photosynthesis in Higher Plants,How many CO2 molecules must be fixed to make two molecules of glucose?,6,18,12,24
+school-11-biology-11-h4,Photosynthesis in Higher Plants,C4 plants show little photorespiration mainly because,They have no RuBisCO,They lack chloroplasts,They close stomata at night only,CO2 is concentrated in the bundle sheath cells
+school-11-biology-11-h5,Photosynthesis in Higher Plants,Electrons lost by the reaction centre of photosystem II are replaced by electrons from,Splitting of water,NADPH,CO2,ATP
+school-11-biology-11-h6,Photosynthesis in Higher Plants,The optimum temperature for photosynthesis in C4 plants is about,10 to 15 degrees C,30 to 40 degrees C,20 to 25 degrees C,50 to 60 degrees C
+school-11-biology-12-e3,Respiration in Plants,The end product of glycolysis is,Acetyl CoA,Ethanol,Lactic acid,Pyruvic acid
+school-11-biology-12-e5,Respiration in Plants,The Krebs cycle occurs in the,Cytoplasm,Mitochondrial matrix,Thylakoid,Nucleus
+school-11-biology-12-e6,Respiration in Plants,Yeast fermentation of glucose gives,Lactic acid,Water and CO2,Ethanol and CO2,Acetic acid
+school-11-biology-12-e7,Respiration in Plants,The respiratory quotient when carbohydrates are oxidised fully is,0.7,0.9,Infinity,1
+school-11-biology-12-m3,Respiration in Plants,How many NADH molecules are produced in the Krebs cycle for each glucose molecule (two turns)?,2,6,3,8
+school-11-biology-12-m5,Respiration in Plants,"During heavy exercise, muscle cells short of oxygen produce",Ethanol,Pyruvic acid only,Acetic acid,Lactic acid
+school-11-biology-12-m7,Respiration in Plants,Which substrate gives an RQ of less than 1?,Glucose,Fat,Starch,Sucrose
+school-11-biology-12-m8,Respiration in Plants,The link reaction converts,Glucose to pyruvic acid,Acetyl CoA to citric acid,"Pyruvic acid to acetyl CoA, releasing CO2 and NADH",Succinate to fumarate
+school-11-biology-12-h3,Respiration in Plants,Germinating seeds release 10 mL of CO2 and absorb 12.5 mL of O2. The RQ is,1.25,1.0,0.5,0.8
+school-11-biology-12-h4,Respiration in Plants,Cyanide poisons cells by blocking,Cytochrome c oxidase,Hexokinase,Pyruvate kinase,Citrate synthase
+school-11-biology-12-h5,Respiration in Plants,Two ATP are consumed in glycolysis in the conversion of,Pyruvate to lactate and PEP to pyruvate,"Glucose to glucose-6-phosphate and fructose-6-phosphate to fructose-1,6-bisphosphate","1,3-BPGA to 3-PGA and PEP to pyruvate",Acetyl CoA to citrate and succinate to fumarate
+school-11-biology-12-h6,Respiration in Plants,"Compared with the energy in glucose, alcoholic fermentation releases",About 40 per cent,About 70 per cent,Less than 7 per cent,Over 90 per cent
+school-11-biology-12-h8,Respiration in Plants,Which stage between glycolysis and the Krebs cycle releases CO2?,The link reaction,Fermentation,Substrate phosphorylation in glycolysis,ATP synthesis
+school-11-biology-13-e3,Plant Growth and Development,Apical dominance is mainly caused by,Auxin,Cytokinin,Ethylene,Abscisic acid
+school-11-biology-13-e4,Plant Growth and Development,The stress hormone that closes stomata during water shortage is,Gibberellin,Abscisic acid,Auxin,Cytokinin
+school-11-biology-13-e5,Plant Growth and Development,Which hormone is sprayed to increase the length of grape stalks and the size of seedless grapes?,Ethylene,Abscisic acid,Gibberellin,Cytokinin
+school-11-biology-13-e7,Plant Growth and Development,Photoperiodism is the response of plants to,The relative length of day and night,Temperature only,Soil water,Wind speed
+school-11-biology-13-m3,Plant Growth and Development,Vernalisation is the promotion of flowering by,Long days,Short nights,Exposure to low temperature,Gibberellin spray only
+school-11-biology-13-m4,Plant Growth and Development,Xanthium is an example of,A long-day plant,A day-neutral plant,A C4 plant,A short-day plant
+school-11-biology-13-m6,Plant Growth and Development,"The synthetic auxin 2,4-D is used as a",Fruit ripener,Weedicide for dicot weeds in cereal fields,Seed dormancy inducer,Cytokinin
+school-11-biology-13-m7,Plant Growth and Development,Gibberellins were first isolated from the fungus,Rhizopus,Aspergillus,Gibberella fujikuroi,Neurospora
+school-11-biology-13-h3,Plant Growth and Development,A root grows from 2 cm to 8 cm in 4 days. The mean absolute growth rate is,1.5 cm per day,6 cm per day,0.5 cm per day,4 cm per day
+school-11-biology-13-h4,Plant Growth and Development,An organ doubles its size every 3 days under exponential growth. Its size after 9 days compared with the start is,6 times,8 times,9 times,4 times
+school-11-biology-13-h6,Plant Growth and Development,In tissue culture a medium with a high cytokinin to auxin ratio will mainly produce,Roots,Only callus without shoots,Seeds,Shoots
+school-11-biology-13-h7,Plant Growth and Development,Which pair of hormones promotes abscission of leaves and fruits?,Abscisic acid and ethylene,Auxin and cytokinin,Gibberellin and cytokinin,Auxin and gibberellin
+school-11-biology-13-h8,Plant Growth and Development,The hormone that breaks seed dormancy and the one that induces it are,Abscisic acid and gibberellin,Gibberellin and abscisic acid,Auxin and ethylene,Cytokinin and auxin
+school-11-biology-14-e3,Breathing and Exchange of Gases,Gases are exchanged across the alveolar wall by,Active transport,Simple diffusion,Osmosis only,Endocytosis
+school-11-biology-14-e4,Breathing and Exchange of Gases,Air moves into the lungs when the pressure in the lungs is,Equal to the atmospheric pressure,More than the atmospheric pressure,Less than the atmospheric pressure,Zero
+school-11-biology-14-e5,Breathing and Exchange of Gases,Most of the oxygen in blood is carried as,Dissolved O2 in plasma,Bicarbonate,Carbaminohaemoglobin,Oxyhaemoglobin
+school-11-biology-14-e6,Breathing and Exchange of Gases,The cartilaginous flap that prevents food from entering the larynx is the,Epiglottis,Glottis,Uvula,Pharynx
+school-11-biology-14-e8,Breathing and Exchange of Gases,The actual sites of gas exchange in the lungs are the,Bronchi,Trachea,Alveoli,Pleura
+school-11-biology-14-m4,Breathing and Exchange of Gases,A person breathes 16 times per minute with a tidal volume of 450 mL. The pulmonary ventilation per minute is,7200 mL,4500 mL,900 mL,2250 mL
+school-11-biology-14-m5,Breathing and Exchange of Gases,Most carbon dioxide is transported in the blood as,Carbaminohaemoglobin,Bicarbonate,Dissolved CO2,Carbonic acid
+school-11-biology-14-m6,Breathing and Exchange of Gases,"Damage to the alveolar walls, often caused by smoking, is called",Asthma,Silicosis,Emphysema,Bronchitis
+school-11-biology-14-m7,Breathing and Exchange of Gases,Wheezing and difficulty in breathing due to inflammation of the bronchi and bronchioles is,Emphysema,Fibrosis,Anaemia,Asthma
+school-11-biology-14-m8,Breathing and Exchange of Gases,Which of these has the highest partial pressure of oxygen?,Alveolar air,Deoxygenated blood,Body tissues,Oxygenated blood leaving the lungs
+school-11-biology-14-h3,Breathing and Exchange of Gases,"If the vital capacity is 4600 mL and the residual volume is 1200 mL, the total lung capacity is",3400 mL,5800 mL,4600 mL,6000 mL
+school-11-biology-14-h4,Breathing and Exchange of Gases,A person has a tidal volume of 500 mL and an inspiratory reserve volume of 3000 mL. The inspiratory capacity is,2500 mL,4600 mL,3500 mL,1100 mL
+school-11-biology-14-h5,Breathing and Exchange of Gases,"During forced expiration, the muscles that contract are",External intercostals and diaphragm,Only the diaphragm,Only external intercostals,Internal intercostals and abdominal muscles
+school-11-biology-14-h6,Breathing and Exchange of Gases,About what fraction of CO2 is transported as carbaminohaemoglobin?,20 to 25 per cent,70 per cent,7 per cent,50 per cent
+school-11-biology-14-h8,Breathing and Exchange of Gases,The chemosensitive area near the rhythm centre is highly sensitive to,Oxygen only,Nitrogen,CO2 and hydrogen ions,Glucose
+school-11-biology-15-e3,Body Fluids and Circulation,Plasma forms about what percentage of blood?,25,90,55,10
+school-11-biology-15-e4,Body Fluids and Circulation,The most abundant white blood cells are,Lymphocytes,Basophils,Eosinophils,Neutrophils
+school-11-biology-15-e5,Body Fluids and Circulation,Blood platelets are mainly concerned with,Clotting,Carrying oxygen,Making antibodies,Digestion
+school-11-biology-15-e7,Body Fluids and Circulation,The natural pacemaker of the heart is the,AV node,Purkinje fibres,SA node,Bundle of His
+school-11-biology-15-e8,Body Fluids and Circulation,The universal recipient blood group is,O,A,B,AB
+school-11-biology-15-m3,Body Fluids and Circulation,A low haemoglobin level in the blood leads to,Anaemia,Leukaemia,Haemophilia,Jaundice
+school-11-biology-15-m4,Body Fluids and Circulation,Fats absorbed from the intestine are carried by the lymph in the,Capillaries,Lacteals,Veins,Arteries
+school-11-biology-15-m5,Body Fluids and Circulation,The valve between the left atrium and left ventricle is the,Tricuspid valve,Pulmonary valve,Bicuspid valve,Aortic valve
+school-11-biology-15-m6,Body Fluids and Circulation,The duration of one cardiac cycle in a healthy person is about,8 seconds,0.08 seconds,1.5 minutes,0.8 seconds
+school-11-biology-15-m7,Body Fluids and Circulation,Blood from the left ventricle is pumped into the,Aorta,Pulmonary artery,Vena cava,Pulmonary vein
+school-11-biology-15-h3,Body Fluids and Circulation,A person has a heart rate of 72 beats per minute and stroke volume of 70 mL. The cardiac output is,1008 mL per minute,142 mL per minute,5040 mL per minute,50400 mL per minute
+school-11-biology-15-h5,Body Fluids and Circulation,A person of blood group B receives group A blood by mistake. The reaction occurs because,The recipient's anti-A antibodies attack the donor's A antigens,The donor's anti-B antibodies attack the recipient's plasma,The recipient has no antibodies,Group A blood lacks antigens
+school-11-biology-15-h6,Body Fluids and Circulation,"In an ECG, the QRS complex represents",Depolarisation of the atria,Depolarisation of the ventricles,Repolarisation of the atria,Repolarisation of the ventricles
+school-11-biology-15-h7,Body Fluids and Circulation,Prothrombin is converted to thrombin by,Fibrinogen,Haemoglobin,"Thrombokinase, with calcium ions",Plasmin
+school-11-biology-16-e3,Excretory Products and their Elimination,Birds excrete their nitrogenous waste mainly as,Urea,Ammonia,Creatinine,Uric acid
+school-11-biology-16-e5,Excretory Products and their Elimination,Ultrafiltration of blood occurs in the,Loop of Henle,Glomerulus and Bowman's capsule,Collecting duct,Distal tubule
+school-11-biology-16-e6,Excretory Products and their Elimination,Urine is stored temporarily in the,Ureter,Urethra,Urinary bladder,Renal pelvis
+school-11-biology-16-e8,Excretory Products and their Elimination,Most bony fishes excrete nitrogenous waste as,Ammonia,Urea,Uric acid,Creatinine
+school-11-biology-16-m3,Excretory Products and their Elimination,Podocytes are cells that form the,Wall of the loop of Henle,Inner wall of Bowman's capsule,Lining of the bladder,Wall of the collecting duct
+school-11-biology-16-m4,Excretory Products and their Elimination,Renin is secreted by,Podocytes,The pituitary,Juxtaglomerular cells,The liver
+school-11-biology-16-m6,Excretory Products and their Elimination,Glucose is reabsorbed mainly in the,Proximal convoluted tubule,Collecting duct,Distal tubule,Loop of Henle
+school-11-biology-16-m7,Excretory Products and their Elimination,The dialysing fluid in haemodialysis has the same composition as plasma except that it,Lacks glucose,Lacks nitrogenous wastes,Lacks all salts,Contains extra urea
+school-11-biology-16-m8,Excretory Products and their Elimination,Presence of glucose in urine is called,Ketonuria,Uremia,Glycosuria,Haematuria
+school-11-biology-16-h3,Excretory Products and their Elimination,About 180 L of filtrate forms per day and 1.5 L of urine is passed. What percentage of the filtrate is reabsorbed?,About 90,About 50,About 1,About 99
+school-11-biology-16-h4,Excretory Products and their Elimination,Angiotensin II stimulates the adrenal cortex to release,Aldosterone,Adrenaline,Cortisol,ADH
+school-11-biology-16-h5,Excretory Products and their Elimination,The vasa recta helps in urine concentration by,Filtering plasma,Maintaining the medullary osmotic gradient as a counter-current exchanger,Secreting renin,Reabsorbing glucose actively
+school-11-biology-16-h7,Excretory Products and their Elimination,"After a long walk in the heat without drinking water, the kidneys will",Release less ADH and form a large volume of urine,Stop filtering,Excrete more water,Release more ADH and form a small volume of concentrated urine
+school-11-biology-16-h8,Excretory Products and their Elimination,"In uremia, the best way to remove urea from the blood of a patient with failed kidneys is",Haemodialysis,Taking insulin,Blood transfusion alone,Antibiotics
+school-11-biology-17-e3,Locomotion and Movement,The axial skeleton of an adult human has how many bones?,80,126,206,64
+school-11-biology-17-e4,Locomotion and Movement,The human cranium is made of how many bones?,14,8,12,6
+school-11-biology-17-e5,Locomotion and Movement,Smooth muscles are found in the,Biceps,Hamstrings,Walls of the alimentary canal,Diaphragm only
+school-11-biology-17-e6,Locomotion and Movement,The elbow is an example of a,Ball and socket joint,Pivot joint,Gliding joint,Hinge joint
+school-11-biology-17-m3,Locomotion and Movement,The immovable joints between the bones of the skull are,Synovial joints,Cartilaginous joints,Fibrous joints (sutures),Pivot joints
+school-11-biology-17-m4,Locomotion and Movement,Gouty arthritis is caused by the accumulation of,Calcium in blood,Lactic acid in muscles,Cholesterol in arteries,Uric acid crystals in joints
+school-11-biology-17-m5,Locomotion and Movement,Osteoporosis is common in older women because of,Decreased levels of oestrogen,Excess calcium,Excess vitamin D,High growth hormone
+school-11-biology-17-m7,Locomotion and Movement,Muscle fatigue is due to accumulation of,Pyruvic acid,Glucose,Lactic acid,Calcium
+school-11-biology-17-m8,Locomotion and Movement,The joint between two adjacent vertebrae is a,Fibrous joint,Hinge joint,Ball and socket joint,Cartilaginous joint
+school-11-biology-17-h3,Locomotion and Movement,During muscle contraction the distance between two adjacent Z lines,Decreases,Increases,Remains unchanged,Becomes zero
+school-11-biology-17-h4,Locomotion and Movement,"The glenoid cavity, which receives the head of the humerus, belongs to the",Clavicle,Scapula,Pelvis,Sternum
+school-11-biology-17-h5,Locomotion and Movement,"Counting the fused sacral and coccygeal bones as one each, the human vertebral column has",33 vertebrae,24 vertebrae,26 vertebrae,12 vertebrae
+school-11-biology-17-h6,Locomotion and Movement,Calcium ions needed for muscle contraction are released from the,Mitochondria,Sarcolemma,Z line,Sarcoplasmic reticulum
+school-11-biology-17-h8,Locomotion and Movement,"Rapid, uncontrolled spasms of muscles caused by low Ca2+ in body fluid are known as",Myasthenia gravis,Tetany,Muscular dystrophy,Gout
+school-11-biology-18-e3,Neural Control and Coordination,The cell body of a neuron is called the,Axon,Cyton,Dendron,Node
+school-11-biology-18-e4,Neural Control and Coordination,How many meninges cover the brain?,Two,Four,Three,One
+school-11-biology-18-e5,Neural Control and Coordination,A reflex action is,Slow and voluntary,Learned in school,Controlled by the cerebrum,"Quick, involuntary and automatic"
+school-11-biology-18-e6,Neural Control and Coordination,Vision in dim light is by,Rods,Cones,Iris,Cornea
+school-11-biology-18-e7,Neural Control and Coordination,The eardrum is also called the,Basilar membrane,Tympanic membrane,Oval window,Round window
+school-11-biology-18-m3,Neural Control and Coordination,A common neurotransmitter released at neuromuscular junctions is,Insulin,Thyroxine,Adrenaline only,Acetylcholine
+school-11-biology-18-m4,Neural Control and Coordination,The aqueous humor lies in the,Space between the cornea and the lens,Space behind the lens,Retina,Optic nerve
+school-11-biology-18-m5,Neural Control and Coordination,The two cerebral hemispheres are connected by the,Pons,Corpus callosum,Medulla,Cerebellum
+school-11-biology-18-m6,Neural Control and Coordination,"The body's temperature, hunger and thirst are controlled by the",Cerebellum,Medulla,Hypothalamus,Corpus callosum
+school-11-biology-18-h3,Neural Control and Coordination,In each cycle the sodium-potassium pump moves,2 Na+ out and 3 K+ in,3 Na+ out and 2 K+ in,3 Na+ in and 2 K+ out,1 Na+ out and 1 K+ in
+school-11-biology-18-h4,Neural Control and Coordination,Impulse transmission at a chemical synapse is one-way because,The axon is longer than the dendrite,Dendrites cannot carry impulses,Neurotransmitters are released only from the presynaptic terminal and receptors are on the postsynaptic membrane,The cyton has no receptors
+school-11-biology-18-h5,Neural Control and Coordination,The correct order of structures in a reflex arc is,"Receptor, motor neuron, CNS, sensory neuron, effector","Effector, sensory neuron, CNS, motor neuron, receptor","Receptor, CNS, effector, motor neuron, sensory neuron","Receptor, sensory neuron, CNS, motor neuron, effector"
+school-11-biology-18-h6,Neural Control and Coordination,The dorsal root of a spinal nerve carries,Sensory impulses into the spinal cord,Motor impulses out of the cord,Only autonomic signals,No impulses
+school-11-biology-18-h7,Neural Control and Coordination,The hindbrain consists of,"Thalamus, hypothalamus and pons","Pons, cerebellum and medulla",Cerebrum and corpus callosum,Midbrain and thalamus
+school-11-biology-19-e3,Chemical Coordination and Integration,Which mineral element is a part of thyroxine?,Iron,Calcium,Iodine,Sodium
+school-11-biology-19-e4,Chemical Coordination and Integration,The emergency hormone adrenaline is secreted by the,Adrenal cortex,Thyroid,Pancreas,Adrenal medulla
+school-11-biology-19-e5,Chemical Coordination and Integration,Glucagon,Raises blood glucose level,Lowers blood glucose level,Raises blood calcium,Lowers blood pressure
+school-11-biology-19-e6,Chemical Coordination and Integration,The sleep-wake cycle is regulated by the hormone from the,Thyroid,Pineal gland,Pancreas,Adrenal
+school-11-biology-19-e7,Chemical Coordination and Integration,Testosterone is mainly secreted by the,Adrenal medulla,Pituitary,Leydig cells of the testes,Sertoli cells only
+school-11-biology-19-m3,Chemical Coordination and Integration,Parathyroid hormone,Raises blood calcium,Lowers blood calcium,Raises blood sugar,Lowers blood sugar
+school-11-biology-19-m4,Chemical Coordination and Integration,Calcitonin is secreted by the,Parathyroid,Thyroid,Pituitary,Adrenal
+school-11-biology-19-m5,Chemical Coordination and Integration,Hypothyroidism in infancy results in,Acromegaly,Gigantism,Cretinism,Addison disease
+school-11-biology-19-m6,Chemical Coordination and Integration,"Cortisol, the stress hormone, is secreted by the",Adrenal medulla,Thyroid,Pancreas,Adrenal cortex
+school-11-biology-19-h3,Chemical Coordination and Integration,Oxytocin and vasopressin are,Made and released by the anterior pituitary,Made in the thyroid,Made in the hypothalamus and released from the posterior pituitary,Made in the adrenal cortex
+school-11-biology-19-h4,Chemical Coordination and Integration,Hypothalamic hormones reach the anterior pituitary through the,Pituitary stalk nerve fibres,Lymph,Cerebrospinal fluid,Hypophyseal portal system
+school-11-biology-19-h5,Chemical Coordination and Integration,Degeneration of the thymus in old age leads to,Lower thymosin and weaker cell-mediated immunity,Higher blood sugar,Loss of vision,Greater growth
+school-11-biology-19-h6,Chemical Coordination and Integration,Which hormone acts through a membrane-bound receptor and cAMP?,Cortisol,Glucagon,Thyroxine,Oestrogen
+school-11-biology-19-h7,Chemical Coordination and Integration,"When blood calcium level rises, the hormone released to lower it comes from the",Parathyroid,Adrenal,Thyroid,Pancreas
