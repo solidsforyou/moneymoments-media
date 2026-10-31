@@ -100,16 +100,16 @@ Wear it with jeans, wide-leg pants or a skirt.
 **Title:** SOLIDS FOR YOU Men's Wide Leg Joggers | 100% Cotton 320 GSM | Baggy Track Pants with Pockets | Made in India
 
 **Bullets**
-1. 100% COTTON, 320 GSM: Heavy, soft cotton with a brushed inside. No polyester mixed in.
+1. 100% COTTON, 320 GSM: Heavy, soft cotton fleece, brushed on the inside. No polyester mixed in.
 2. MADE IN INDIA: Cut and stitched in India.
 3. RELAXED WIDE LEG: Loose, straight leg with an open hem. Check the size chart for your waist. Model is 6'2" and 64 kg.
-4. COMFORT DETAILS: Soft waistband with a drawstring you can tighten. Two deep side pockets.
+4. COMFORT DETAILS: Very stretchy waistband with a drawstring you can tighten. Two deep side pockets.
 5. EASY CARE: Machine wash cold, inside out. Dry in shade. Do not tumble dry.
 
 **Description**
 Joggers you can wear at home, out with friends, or on the way to class.
 GSM tells you how heavy a fabric is. These are 320 GSM, so they feel thick and fall straight.
-They are 100% cotton, brushed soft on the inside, and they let air through.
+They are 100% cotton fleece, brushed soft on the inside, and they let air through.
 Cut and stitched in India.
 Wear them with an oversized tee or a hoodie.
 
@@ -122,17 +122,89 @@ Wear them with an oversized tee or a hoodie.
 **Title:** SOLIDS FOR YOU Women's Wide Leg Joggers | 100% Cotton 320 GSM | Baggy Track Pants with Pockets | Made in India
 
 **Bullets**
-1. 100% COTTON, 320 GSM: Heavy, soft cotton with a brushed inside. No polyester mixed in.
+1. 100% COTTON, 320 GSM: Heavy, soft cotton fleece, brushed on the inside. No polyester mixed in.
 2. MADE IN INDIA: Cut and stitched in India.
 3. RELAXED WIDE LEG: Loose, straight leg with an open hem. Check the size chart for your waist. Model is 5'5" and 50 kg.
-4. COMFORT DETAILS: Soft waistband with a drawstring you can tighten. Two deep side pockets.
+4. COMFORT DETAILS: Very stretchy waistband with a drawstring you can tighten. Two deep side pockets.
 5. EASY CARE: Machine wash cold, inside out. Dry in shade. Do not tumble dry.
 
 **Description**
 Joggers you can wear at home, out with friends, or on the way to college.
 GSM tells you how heavy a fabric is. These are 320 GSM, so they feel thick and fall straight.
-They are 100% cotton, brushed soft on the inside, and they let air through.
+They are 100% cotton fleece, brushed soft on the inside, and they let air through.
 Cut and stitched in India.
 Wear them with a fitted tee or a crop top.
 
 **Backend keywords:** baggy joggers women wide leg track pants cotton trackpants loose straight pants sweatpants lounge pants black white 320 gsm
+
+---
+
+# Product details (every field in Amazon's apparel template)
+
+Values marked **TBC** need the founder. "Est." = estimate from the shipment box weights.
+
+## Same for all 6 listings
+
+| Field | Value |
+|---|---|
+| Brand name | SOLIDS FOR YOU |
+| Manufacturer | **TBC** (factory name and full address, required by Legal Metrology) |
+| Packer | **TBC** (name and address; founder's business name if you pack) |
+| Importer | Not applicable (made in India) |
+| Country / region of origin | India |
+| Condition | New |
+| Number of items / Unit count | 1 / 1 piece (net quantity: 1N) |
+| Material composition | 100% Cotton |
+| Age range | Adult |
+| Care instructions | Machine wash cold, inside out. Dry in shade. Do not tumble dry. Do not bleach. |
+| Pattern | Solid |
+| Fabric stretch | Low stretch (tees); joggers: see below |
+| Special features | Printed neck label (tagless), Breathable |
+| Occasion | Casual, Daily wear, Lounge |
+| Season | All season (tees); Winter / All season (joggers) |
+| Customer care | **TBC** (email shashwat@solidsforyou.com is on the website; add a phone number?) |
+| Month and year of manufacture | **TBC** (e.g. October 2026) |
+| GST rate | 5% |
+| Fulfilment | Merchant (Easy Ship), handling time 1 day |
+| Size system / size map | India, S / M / L |
+
+## Tees (4 listings)
+
+| Field | Men's Oversized | Women's Oversized | Men's Fitted | Women's Fitted |
+|---|---|---|---|---|
+| Item type name | T-Shirt | T-Shirt | T-Shirt | T-Shirt |
+| Department / target gender | Men | Women | Men | Women |
+| Fit type | Oversized / Relaxed | Oversized / Relaxed | Regular | Slim / Fitted |
+| Sleeve type | Half sleeve, drop shoulder | Half sleeve, drop shoulder | Half sleeve | Half sleeve |
+| Neck style | Round neck (ribbed crew) | Round neck (ribbed crew) | Round neck | Round neck |
+| Colour | Solid Blue (colour map: Blue) | Solid Blue | Solid Blue | Solid Blue |
+| Fabric weight | 230 GSM, Heavyweight | 230 GSM | 230 GSM | 230 GSM |
+| Closure | Pull on | Pull on | Pull on | Pull on |
+| Chest, S / M / L (flat, in) | 23 / 24 / 25 | 22 / 23 / 24 | 21.25 / 22.25 / 23.25 | 21.5 / 22.5 / 23.5 |
+| Length, S / M / L (in) | 28 / 29 / 30 | 26 / 27 / 28 | 25.75 / 26.375 / 27.375 | 25.5 / 26.5 / 27.5 |
+| HSN code | 61091000 | 61091000 | 61091000 | 61091000 |
+| Price / MRP | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 |
+| Item weight | Est. 0.20 kg, **weigh one** | Est. 0.19 kg | Est. 0.19 kg | Est. 0.18 kg |
+| Package size (L x W x H cm) | **TBC** (folded polybag) | **TBC** | **TBC** | **TBC** |
+
+## Joggers (2 listings)
+
+| Field | Men's Wide Leg Joggers | Women's Wide Leg Joggers |
+|---|---|---|
+| Item type name | Track Pants | Track Pants |
+| Department / target gender | Men | Women |
+| Colours (variations) | Black, White | Black, White |
+| Fabric | 100% Cotton fleece, brushed inside, 320 GSM | same |
+| Fit type | Relaxed | Relaxed |
+| Leg style | Wide leg, straight open hem | Wide leg, straight open hem |
+| Waist / closure | Elastic, very stretchy, with drawstring; Pull on | same |
+| Waist rise | Mid rise **TBC** | Mid rise **TBC** |
+| Pockets | 2 deep side pockets | 2 deep side pockets |
+| Fabric stretch | Waistband stretchy; leg fabric low stretch | same |
+| Waist sizes, S / M / L (in) | 28-29 / 30-32 / 33-35 | 26-28 / 29-30 / 31-32 |
+| Length, S / M / L (in) | 41.5 / 42 / 42.5 | 39.5 / 40 / 40.5 |
+| Pocket opening (in) | 6.5 | 6 |
+| HSN code | 61034200 (verify) | 61046200 (verify) |
+| Price / MRP | Rs 1,499 / Rs 2,499 | Rs 1,499 / Rs 2,499 |
+| Item weight | Est. 0.42 kg, **weigh one** | Est. 0.40 kg |
+| Package size (L x W x H cm) | **TBC** | **TBC** |
