@@ -42,8 +42,9 @@ Where things stand:
 - Left to do (wait for my go on):
   - Some research sheets are generic (class 10 science, English 5-8, CAT QA). Reference
     only; low priority.
-  - Trailers: music is Welcome To Miami only (memory, 31 Oct); apply the founder's review
-    notes to the v3 trailers in one render.
+  - Trailers: v4 (money-private/trailers/*-v4-*-ADDICTION.mp4) use 'Addiction' at 110 BPM,
+    flashes removed. Apply the founder's further notes in one render; before re-rendering
+    scene3.html, turn off its #flash and swap the music (memory, 31 Oct).
 - Trailers: Arena trailer in videos/trailer/scene3.html; OpenPrep's trailer comes last.
   Renders and songs are in money-private.
 - Payments: Cashfree will replace Razorpay later (code is Razorpay today, off without keys).
