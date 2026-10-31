@@ -7,7 +7,7 @@
 /* Hallmark · shape: Story strip (seven square cards, each one idea) · genre: editorial · theme: brand · redesign: full
  * paper: oklch(13% 0.012 264) · accent: oklch(58% 0.21 264) · display: Barlow Condensed 900 · body: Manrope 600/700 · hero: full-bleed photo, logo as head · nav: none (image cards) · footer: claim rule, kept · signature: the logo set huge over the cutting table
  * axes: dark/condensed caps/brand blue · posture: Restrained · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three cards opened the same way (head over pictures); 03 is now a day list beside one photo, 04 a plate the head wraps, 06 the tagline over the range, tee beside jogger */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three cards opened the same way (head over pictures); 03 is now a day list beside one photo, 04 a plate the head wraps, 06 the tagline over the whole range as a grid */
 /* Hallmark · waive 59 · body gap 3.2cqw between every card · the story reads as one series of square cards, one gutter throughout, made to export one by one */
 /* Hallmark · waive 23 · .foot .u on the first and last card · the blue cotton and India claim opens and closes the story */
 :root{
@@ -16,6 +16,7 @@
   --shade-0:oklch(13% 0.012 264 / 0);--shade-50:oklch(13% 0.012 264 / .5);--shade-70:oklch(13% 0.012 264 / .7);--shade-90:oklch(13% 0.012 264 / .92);
   --font-display:"Barlow","Arial Narrow",sans-serif;--font-body:"Manrope",system-ui,sans-serif;
   --s-sm:0.6cqw;--s-md:0.8cqw;--s-lg:1.2cqw;--s-xl:2cqw;--s-2xl:3.2cqw;--s-3xl:4.8cqw;--edge:6cqw;
+  --well:oklch(17% 0.014 264);--well-hi:oklch(25% 0.02 264);
   --shadow:0 1px 2px oklch(20% 0.01 264 / .05);
 }
 @font-face{font-family:Barlow;src:url(../../../brand/fonts/BarlowCondensed-900.ttf);font-weight:900;font-display:swap}
@@ -58,6 +59,14 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
 .day b{font-family:var(--font-display);font-weight:900;font-size:4.8cqw;line-height:1;text-transform:uppercase}
 /* 04: the plate */
 .plate h1 span{position:absolute;display:block;white-space:nowrap}
+/* 06: the range grid */
+.range{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,2fr);grid-template-rows:1fr 1fr;gap:1cqw}
+.cell{position:relative;border-radius:0.4cqw;overflow:hidden;background:radial-gradient(70% 60% at 50% 42%,var(--well-hi),var(--well))}
+.cell img{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);max-width:84%;max-height:76%}
+.cell.j{grid-row:1 / 3;grid-column:3}
+.cell.j img{max-height:none;max-width:none;height:84%;top:47%}
+.cell.j .jb{left:38%;z-index:2}.cell.j .jw{left:63%;z-index:1}
+.cell p{position:absolute;left:var(--s-lg);bottom:var(--s-md);font-size:1.6cqw;color:var(--ink-2)}
 .more{display:inline-flex;align-items:center;gap:var(--s-lg);font-size:2.2cqw;font-weight:700;color:var(--accent-soft)}
 .more i{display:block;width:8cqw;height:0.1cqw;background:var(--accent)}
 </style></head><body>
@@ -124,10 +133,15 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
 
 <section id="essentials">
   <img class="logo" src="logo.png" alt="">
-  <h1 class="abs" style="left:5.4cqw;top:17cqw;font-size:11cqw">Every style<br>starts with<br>the essentials.</h1>
-  <div class="ph" style="left:38cqw;top:54cqw;width:27.5cqw;height:32cqw;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);background-size:320%;background-position:62% 88%"></div>
-  <div class="ph" style="left:66.5cqw;top:54cqw;width:27.5cqw;height:32cqw;background-image:url(../../../assets/sfy/photos/black-joggers-drawstring-metal-tips-factory-cropped.jpg);background-size:auto 150%;background-position:45% 60%;filter:contrast(1.1) brightness(1.05)"></div>
-  <p class="more abs" style="left:6cqw;top:81cqw">See the full range <i></i></p>
+  <h1 class="abs" style="left:5.4cqw;top:14.5cqw;font-size:8cqw">Every style starts with<br>the essentials.</h1>
+  <p class="more abs" style="right:6cqw;top:26cqw">See the full range <i></i></p>
+  <div class="range abs" style="left:6cqw;right:6cqw;top:35cqw;height:53cqw">
+    <div class="cell"><img src="../../../assets/sfy/products/tee-mens-fitted-blue.png" alt="Men's fitted tee in blue"><p>Men&rsquo;s fitted</p></div>
+    <div class="cell"><img src="../../../assets/sfy/products/tee-mens-oversized-blue.png" alt="Men's oversized tee in blue"><p>Men&rsquo;s oversized</p></div>
+    <div class="cell j"><img class="jw" src="../../../assets/sfy/products/joggers-white.png" alt="White joggers"><img class="jb" src="../../../assets/sfy/products/joggers-black.png" alt="Black joggers"><p>Joggers</p></div>
+    <div class="cell"><img src="../../../assets/sfy/products/tee-womens-fitted-blue.png" alt="Women's fitted tee in blue"><p>Women&rsquo;s fitted</p></div>
+    <div class="cell"><img src="../../../assets/sfy/products/tee-womens-oversized-blue.png" alt="Women's oversized tee in blue"><p>Women&rsquo;s oversized</p></div>
+  </div>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">06 / 06</div></div>
 </section>

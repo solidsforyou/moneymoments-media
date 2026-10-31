@@ -71,3 +71,16 @@ when a reel needs them, named by what they show.
 Use these instead of the originals anywhere public: `photos/black-joggers-drawstring-metal-tips-factory-cropped.jpg`,
 `photos/black-joggers-drawstring-factory-table-workers-cropped.jpg`, `photos/black-joggers-drawstring-factory-table-cropped.jpg`,
 `photos/factory-floor-sewing-line-cropped.jpg`. Founder rule: factory workers are never shown.
+
+## products/ (cutouts on transparent background, added 31 Oct 2026)
+
+Founder's product renders with the white studio background removed (flood-fill from the borders, feathered and defringed; joggers' floor shadow trimmed and hems faded so they sit on black). Used on Brand Story card 06.
+
+| File | Shows |
+|---|---|
+| `products/tee-mens-fitted-blue.png` | Men's fitted tee, blue, neck print "MM" |
+| `products/tee-mens-oversized-blue.png` | Men's oversized tee, blue, "MM" |
+| `products/tee-womens-fitted-blue.png` | Women's fitted tee, blue, "FM" |
+| `products/tee-womens-oversized-blue.png` | Women's oversized tee, blue, "FM" |
+| `products/joggers-black.png` | Wide-leg joggers, black, white drawstring with metal tips (hem fades out) |
+| `products/joggers-white.png` | Wide-leg joggers, white (hem fades out) |
