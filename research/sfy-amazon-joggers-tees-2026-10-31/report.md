@@ -14,6 +14,20 @@ Top tee: Sleepynuts #14, Rs 944, 3.8 stars, 1,856 ratings [c1-002..005]. Top jog
 our Rs 1,499 jogger is above every jogger price found [us-001, us-002]. No product page states
 GSM [c1-035, c3-011, c5-050, c9-100], so our 230 / 320 GSM would be the only stated weights.
 
+## Update from founder screenshots (31 Oct, 09:35 IST)
+
+- **Snitch IS on Amazon.in** (corrects "not found" below): oversized textured half-sleeve tee,
+  Rs 551, MRP Rs 1,199 (54% off), 6 colours [c3-051..053]. Same price as on Flipkart (c3-002).
+- **New closest rival, DaMENSCH (c10):** "Statement Solid Oversized T Shirt for Men,
+  Heavyweight", Rs 1,199 (MRP 1,299, 8% off), 4.2 stars from 124 ratings, 9 colours
+  [c10-001..006]. A heavyweight solid oversized tee, 20% above our Rs 999 tee. GSM and fabric
+  not yet seen.
+- **Ads on rivals' searches and pages:** DaMENSCH is a sponsored result on the "snitch oversized
+  t-shirt" search [c10-007]; a Jockey 9930 vest ad (Rs 379, 4.2, 10,771 ratings) sits on a
+  Snitch product page (founder screenshot). Brands buy placements on each other's searches.
+- Founder reports listings claiming "100% pure cotton" while selling about 80% cotton, and a
+  possible fake Snitch listing. Not yet evidenced in the ledger; needs the listing screenshots.
+
 ## 2. Data limits
 
 - Amazon.in: only Bestseller lists loaded. Every /dp/ page hit a bot check; search pages 503.
