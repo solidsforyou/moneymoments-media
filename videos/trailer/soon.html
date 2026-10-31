@@ -1,0 +1,184 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Coming-soon teasers, one per app: soon.html?app=tomorrow|goodhabit|ai|goodstuff|library|accounting
+     Same family as the Arena trailer (scene3.html): dark stage, app-colour blobs, word-by-word
+     mask reveals, flash on whips, mascot end card. 110 BPM grid (Welcome To Miami, Slowed),
+     36 beats = 19.6 s. The website copies carry sound effects only (sfx.py); no song. -->
+<style>
+*{box-sizing:border-box;margin:0}html,body{width:100%;height:100%;overflow:hidden;background:#07060F;font-family:-apple-system,"Inter","Segoe UI",Roboto,sans-serif;color:#F5F3FF}
+#bg,#flash,#vig,#demo,#end{position:absolute;inset:0}
+.blob{position:absolute;border-radius:50%;filter:blur(80px)}
+.t{position:absolute;left:0;right:0;padding:0 5%;text-align:center;font-weight:850;letter-spacing:-.03em;line-height:1.05}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .08em .06em}.w>span{display:inline-block}
+.o{position:absolute;transform-origin:50% 50%}
+.card{background:#16142A;border:2px solid #2E2A4A;border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.chip{display:inline-flex;align-items:center;gap:.4em;padding:.35em .8em;border-radius:999px;font-weight:750}
+#end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;opacity:0}
+#flash{background:#fff;opacity:0}#vig{background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}
+.pill{display:inline-block;padding:.12em .5em;border-radius:999px}
+</style></head><body>
+<div id="bg"><div class="blob" id="b1"></div><div class="blob" id="b2"></div></div>
+<div id="demo"></div>
+<div id="T1" class="t"></div><div id="T2" class="t"></div>
+<div id="end"></div><div id="vig"></div><div id="flash"></div>
+<script src="mascots.js"></script><script src="nifty2020.js"></script>
+<script>
+const Q = new URLSearchParams(location.search), APP = Q.get('app') || 'tomorrow';
+const BEAT = 60 / 110, NB = 36; window.DURATION = NB * BEAT;
+const $ = id => document.getElementById(id), W = innerWidth, H = innerHeight, U = Math.min(W, H) / 1080;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), mix = (a, b, k) => a + (b - a) * k;
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const out = x => 1 - Math.pow(1 - clamp(x), 4);
+const spring = x => { x = clamp(x); return 1 - Math.exp(-6 * x) * Math.cos(10 * x); };
+let S = 1; const px = v => v * U * S + 'px';   // S scales the demo layer
+
+// cue table (beats): hook lines, the demo, the whip into the end card
+const CUE = { hook1: 0, hook2: 3, demo: 7, whip: 27.5, end: 28, fade: 35.2 };
+// one entry per app: colours, mascot, hook, end-card line; the demo is drawn by DEMO[APP]
+const APPS = {
+  tomorrow:   { name: 'Tomorrow', m: 'sunny', c1: '#FF4F6D', c2: '#FFB020', hook: [['Your', 'phone.'], ['Your', 'laptop.', 'Your', 'friends.']], line: 'Messages and files, anywhere.' },
+  goodhabit:  { name: 'GoodHabit', m: 'goodguy', c1: '#E8A317', c2: '#1FA35B', hook: [['Practise', 'money'], ['before', 'it\'s', 'real.']], line: 'Real market history. Pretend money.' },
+  ai:         { name: 'How to use AI', m: 'olly', c1: '#5B6CFF', c2: '#22B8CF', hook: [['AI', 'can', 'help', 'you', 'learn.'], ['If', 'you', 'know', 'how', 'to', 'ask.']], line: 'Short lessons. Practice in Arena.' },
+  goodstuff:  { name: 'The Good Stuff', m: 'G', c1: '#0E7C86', c2: '#3DDC97', hook: [['AI', 'skills'], ['for', 'small', 'businesses.']], line: 'Free AI skills for makers.' },
+  library:    { name: 'AI Discovery Library', m: 'L', c1: '#5B25D9', c2: '#2BB3FF', hook: [['Too', 'many', 'answers.'], ['Which', 'ones', 'can', 'you', 'trust?']], line: 'Trusted sources, for people and for AIs.' },
+  accounting: { name: 'Accounting Unlocked', m: 'A', c1: '#B7791F', c2: '#FFCF4D', hook: [['Your', 'shop\'s', 'books.'], ['On', 'your', 'computer.']], line: 'Offline books for shops and small firms.' },
+};
+const A = APPS[APP];
+const letter = (l, bg) => `<svg viewBox="0 0 120 120"><rect width="120" height="120" rx="28" fill="${bg}"/><text x="60" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="56" font-weight="800" fill="#FBFBFE">${l}</text></svg>`;
+const mascot = () => (window.MASCOTS || {})[A.m] || letter(A.m, A.c1);
+
+function words(el, list, b, { size = 140, y = .5, color = '#F5F3FF', exit = 1e9 } = {}) {
+  const k = clamp(1 - (b - exit) / .6);
+  el.style.cssText = `top:${y * H - size * U * .5}px;font-size:${size * U}px;color:${color};opacity:${k}`;
+  el.innerHTML = list.map(([w, at]) => { const p = out((b - at) / .45); return `<span class="w"><span style="transform:translateY(${(1 - p) * 110}%);opacity:${p > 0 ? 1 : 0}">${w}</span></span>`; }).join(' ');
+}
+const seq = (ws, at, step = .4) => ws.map((w, i) => [w, at + i * step]);
+// an object that springs in at `a` and fades out at `z`; x, y are fractions of the frame (centre)
+function obj(html, b, a, z, { x = .5, y = .5, w = 300, rot = 0, from = 0, cls = 'o', style = '' } = {}) {
+  if (b < a || b > z + .5) return '';
+  const k = spring((b - a) / 1.2), e = clamp((z + .5 - b) / .5), dy = (1 - k) * from * U;
+  return `<div class="${cls}" style="left:${x * W}px;top:${y * H}px;width:${px(w)};transform:translate(-50%,-50%) translateY(${dy}px) scale(${mix(.6, 1, k)}) rotate(${rot * (1 - k)}deg);opacity:${Math.min(clamp((b - a) / .25), e)};${style}">${html}</div>`;
+}
+const bar = (k, c, w = 100) => `<div style="height:${px(14)};border-radius:99px;background:#2E2A4A;overflow:hidden;width:${w}%"><div style="height:100%;width:${clamp(k) * 100}%;background:${c};border-radius:99px"></div></div>`;
+const ICON = {
+  file: c => `<svg viewBox="0 0 48 48" width="100%"><path d="M12 4h16l10 10v30H12z" fill="${c}"/><path d="M28 4v10h10" fill="#fff" opacity=".5"/></svg>`,
+  check: c => `<svg viewBox="0 0 24 24" width="1em" height="1em"><circle cx="12" cy="12" r="11" fill="${c}"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  wifiOff: c => `<svg viewBox="0 0 48 48" width="100%"><path d="M6 18q18-14 36 0M12 25q12-9 24 0M18 32q6-4 12 0" stroke="${c}" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="24" cy="38" r="3" fill="${c}"/><path d="M8 8l32 32" stroke="#FF5A52" stroke-width="4" stroke-linecap="round"/></svg>`,
+  bot: c => `<svg viewBox="0 0 48 48" width="100%"><rect x="8" y="14" width="32" height="24" rx="8" fill="${c}"/><circle cx="18" cy="26" r="3.5" fill="#fff"/><circle cx="30" cy="26" r="3.5" fill="#fff"/><path d="M24 6v8" stroke="${c}" stroke-width="3"/><circle cx="24" cy="6" r="3" fill="${c}"/></svg>`,
+  person: c => `<svg viewBox="0 0 48 48" width="100%"><circle cx="24" cy="16" r="9" fill="${c}"/><path d="M8 42q16-22 32 0z" fill="${c}"/></svg>`,
+};
+
+// the demos: each returns HTML for beat b (CUE.demo to CUE.whip), sets T1/T2 itself
+const DEMO = {
+  tomorrow(b) {
+    const T1 = $('T1'), T2 = $('T2');
+    words(T1, b < 15 ? seq(['Move', 'any', 'file.'], 8) : b < 21.5 ? seq(['Message', 'anyone.'], 15.3) : seq(['Up', 'to', '100', 'MB', 'a', 'file.'], 21.8, .3), b, { size: 96, y: .1, exit: b < 15 ? 14.7 : b < 21.5 ? 21.2 : 27.2 });
+    if (b >= 21.8) words(T2, seq(['Phone,', 'laptop,', 'friends.'], 23.5), b, { size: 64, y: .9, color: A.c2, exit: 27.2 });
+    const k = ease((b - 9) / 4), sent = b >= 13.2;
+    // the file arcs from the phone to the laptop
+    const fx = mix(.27, .7, k), fy = .5 - Math.sin(k * Math.PI) * .22;
+    const phone = `<div class="card" style="width:${px(260)};height:${px(470)};border-radius:${px(44)};padding:${px(18)};display:flex;flex-direction:column;justify-content:flex-end;gap:${px(14)};background:#14122A">
+      ${[['On my way. Send the notes?', 0, 16], ['Sending now', 1, 17.2], ['notes.pdf', 1, 18.4], ['Got it, thanks!', 0, 19.6]].map(([t, me, at]) => { const p = spring((b - at) / 1), file = t.endsWith('.pdf'); return b < at ? '' : `<div style="align-self:${me ? 'flex-end' : 'flex-start'};max-width:85%;padding:${px(12)} ${px(16)};border-radius:${px(20)};font-size:${px(22)};font-weight:650;background:${me ? A.c1 : '#2E2A4A'};transform:scale(${p});transform-origin:${me ? 'right' : 'left'} bottom;display:flex;gap:${px(10)};align-items:center">${file ? `<span style="width:${px(26)}">${ICON.file('#fff')}</span>` : ''}${t}</div>`; }).join('')}</div>`;
+    const laptop = `<div class="card" style="width:${px(560)};height:${px(350)};border-radius:${px(22)};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${px(18)};background:#14122A">
+      ${sent ? `<div style="width:${px(90)};transform:scale(${spring((b - 13.2) / 1)})">${ICON.file(A.c2)}</div><div class="chip" style="font-size:${px(26)};background:#1FA35B33;color:#3DDC97">${ICON.check('#1FA35B')} trip-photos.zip</div>` : b >= 9 ? `<div style="font-size:${px(24)};color:#B9B4D6;font-weight:650">Receiving…</div>${bar(k, A.c2, 60)}` : ''}</div>
+      <div style="width:${px(640)};height:${px(18)};margin:${px(-2)} auto 0;border-radius:0 0 ${px(18)} ${px(18)};background:#2E2A4A"></div>`;
+    return obj(phone, b, 7.5, 26.8, { x: .27, y: .53, w: 260, from: 300 }) + obj(laptop, b, 8, 26.8, { x: .68, y: .53, w: 640, from: 300 })
+      + (b >= 9 && b < 13.4 ? `<div class="o" style="left:${fx * W}px;top:${fy * H}px;width:${px(80)};transform:translate(-50%,-50%) rotate(${(k - .5) * 30}deg)">${ICON.file(A.c2)}</div>` : '');
+  },
+  goodhabit(b) {
+    const T1 = $('T1'), T2 = $('T2'), N = window.NIFTY2020 || [1, 1];
+    words(T1, b < 20 ? seq(['The', 'real', 'Nifty,', '2020.'], 8) : seq(['Would', 'you', 'have', 'held?'], 20.2), b, { size: 92, y: .1, exit: b < 20 ? 19.7 : 27.2 });
+    if (b >= 22.5) words(T2, seq(['Practise', 'with', 'pretend', 'money.'], 23), b, { size: 64, y: .91, color: '#FFCF4D', exit: 27.2 });
+    // draw the line: start to the March low by beat 14.5, then to December by 19.5
+    const lo = N.indexOf(Math.min(...N)), n = N.length, k = b < 14.5 ? ease((b - 9) / 5.5) * lo / (n - 1) : mix(lo / (n - 1), 1, ease((b - 14.5) / 5));
+    const cw = 1500, ch = 520, mn = Math.min(...N) * .97, mx = Math.max(...N) * 1.02, X = i => i / (n - 1) * cw, Y = v => ch - (v - mn) / (mx - mn) * ch;
+    const upto = Math.max(1, Math.round(k * (n - 1))), d = N.slice(0, upto + 1).map((v, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join('');
+    const hx = X(upto), hy = Y(N[upto]), red = upto <= lo, col = red ? '#FF5A52' : '#3DDC97';
+    const lab = (t, sub, x, y, at, c) => b < at ? '' : `<g transform="translate(${x},${y}) scale(${spring((b - at) / 1)})"><rect x="-200" y="-112" width="400" height="104" rx="22" fill="${c}"/><text y="-63" text-anchor="middle" font-size="48" font-weight="850" fill="#fff">${t}</text><text y="-26" text-anchor="middle" font-size="26" font-weight="650" fill="#fff" opacity=".85">${sub}</text></g>`;
+    const svg = `<svg viewBox="-40 -120 ${cw + 80} ${ch + 160}" width="100%" style="overflow:visible;font-family:inherit">
+      <path d="${d}" fill="none" stroke="${col}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="${hx}" cy="${hy}" r="14" fill="${col}"/><circle cx="${hx}" cy="${hy}" r="${26 + Math.sin(b * 6) * 4}" fill="${col}" opacity=".25"/>
+      ${lab('−38%', 'Jan to Mar 2020, Covid crash', X(lo) + 300, Y(N[lo]) + 60, 14.6, '#E5322D')}
+      ${lab('+84%', 'from the low, by December', X(n - 1) - 160, Y(N[n - 1]) - 20, 19.6, '#1FA35B')}
+      <text x="0" y="${ch + 36}" font-size="30" fill="#8F89B3" font-weight="650">Jan</text><text x="${cw}" y="${ch + 36}" font-size="30" fill="#8F89B3" font-weight="650" text-anchor="end">Dec</text></svg>`;
+    return obj(svg, b, 8.5, 26.8, { x: .5, y: .55, w: 940, from: 120 });
+  },
+  ai(b) {
+    const T1 = $('T1'), T2 = $('T2');
+    words(T1, b < 17 ? seq(['Learn', 'to', 'ask', 'well.'], 8) : b < 22 ? seq(['Short', 'lessons.'], 17.3) : seq(['Then', 'practise', 'in', 'Arena.'], 22.3), b, { size: 96, y: .1, exit: b < 17 ? 16.7 : b < 22 ? 21.7 : 27.2 });
+    const ask = 'Explain this chapter in simple words, then quiz me', typed = ask.slice(0, Math.round(clamp((b - 9) / 3.5) * ask.length));
+    const box = `<div class="card" style="padding:${px(30)};display:flex;flex-direction:column;gap:${px(22)}">
+      <div style="display:flex;gap:${px(16)};align-items:center"><span style="width:${px(54)};flex:none">${ICON.person('#8F89B3')}</span><div style="font-size:${px(32)};font-weight:700;text-align:left">${typed}<span style="opacity:${b < 12.6 && Math.sin(b * 9) > 0 ? 1 : 0}">|</span></div></div>
+      ${b >= 13 ? `<div style="display:flex;gap:${px(16)};align-items:flex-start"><span style="width:${px(54)};flex:none">${ICON.bot(A.c1)}</span><div style="flex:1;display:flex;flex-direction:column;gap:${px(14)}">${[1, .85, .92, .6].map((w, i) => bar(clamp((b - 13 - i * .4) / .8), '#3B3760', w * 100)).join('')}</div></div>` : ''}</div>`;
+    const lessons = ['Asking good questions', 'Checking AI\'s answers', 'Using AI for homework, honestly'];
+    let h = obj(box, b, 8.3, 16.8, { x: .5, y: .52, w: 800, from: 200 });
+    lessons.forEach((t, i) => { h += obj(`<div class="card" style="padding:${px(26)};text-align:left"><div style="font-size:${px(22)};color:${A.c2};font-weight:800">Lesson ${i + 1}</div><div style="font-size:${px(34)};font-weight:800;margin-top:${px(8)}">${t}</div></div>`, b, 17.6 + i * .5, 21.8, { x: .2 + i * .3, y: .52, w: 340, from: 200, rot: (i - 1) * 6 }); });
+    h += obj(`<div style="display:flex;align-items:center;gap:${px(30)}"><div style="width:${px(220)}">${(window.MASCOTS || {}).ace || ''}</div><div class="card" style="padding:${px(28)} ${px(36)};text-align:left"><div style="font-size:${px(22)};color:#C9B8FF;font-weight:800">ARENA</div><div style="font-size:${px(40)};font-weight:850">Questions on every lesson</div></div></div>`, b, 22.5, 26.8, { x: .5, y: .54, w: 620, from: 200 });
+    return h;
+  },
+  goodstuff(b) {
+    const T1 = $('T1');
+    words(T1, b < 18 ? seq(['Ready-made', 'AI', 'skills.'], 8) : seq(['Free.', 'One', 'tap', 'to', 'add.'], 18.3, .35), b, { size: 92, y: .1, exit: b < 18 ? 17.7 : 27.2 });
+    const S = [['Humanizer', 'Makes your posts sound like you'], ['Harsh buyer review', 'Reviews a listing like a tough customer'], ['Competitor research', 'Sourced facts on who you sell against'], ['Careful mode', 'Checks money and legal work three times']];
+    let h = '';
+    S.forEach(([n, d], i) => {
+      const added = b >= 19.5 + i * 1.2;
+      h += obj(`<div class="card" style="padding:${px(26)};text-align:left;display:flex;flex-direction:column;gap:${px(12)};min-height:${px(190)}"><div style="font-size:${px(34)};font-weight:850">${n}</div><div style="font-size:${px(24)};color:#B9B4D6;font-weight:600;flex:1">${d}</div><div class="chip" style="align-self:flex-start;font-size:${px(24)};background:${added ? '#1FA35B33' : A.c1};color:${added ? '#3DDC97' : '#fff'}">${added ? ICON.check('#1FA35B') + ' Added' : '+ Add'}</div></div>`, b, 9 + i * .9, 26.8, { x: i % 2 ? .7 : .3, y: i < 2 ? .37 : .73, w: 440, from: 260, rot: (i - 1.5) * 5 });
+    });
+    return h;
+  },
+  library(b) {
+    const T1 = $('T1'), T2 = $('T2');
+    words(T1, b < 19 ? seq(['Only', 'trusted', 'sources.'], 8) : seq(['Built', 'for', 'AIs', 'to', 'read', 'too.'], 19.3, .35), b, { size: 92, y: .1, exit: b < 19 ? 18.7 : 27.2 });
+    const qry = 'CBSE class 10 sample papers', typed = qry.slice(0, Math.round(clamp((b - 9) / 2.5) * qry.length));
+    let h = obj(`<div class="card" style="padding:${px(22)} ${px(30)};font-size:${px(34)};font-weight:700;text-align:left;border-radius:999px">🔍 ${typed}</div>`, b, 8.4, 18.6, { x: .5, y: .3, w: 900, from: 150 });
+    [['Official board website', true], ['Government portal', true], ['Random forum post', false]].forEach(([t, ok], i) => {
+      const at = 12 + i * 1.3;
+      h += obj(`<div class="card" style="padding:${px(22)} ${px(30)};display:flex;justify-content:space-between;align-items:center;font-size:${px(30)};font-weight:750;opacity:${ok || b < 16.5 ? 1 : .35}"><span>${t}</span>${ok ? `<span class="chip" style="font-size:${px(22)};background:#1FA35B33;color:#3DDC97">${ICON.check('#1FA35B')} Trusted</span>` : b >= 16.5 ? `<span class="chip" style="font-size:${px(22)};background:#E5322D33;color:#FF7A73">Left out</span>` : ''}</div>`, b, at, 18.6, { x: .5, y: .45 + i * .14, w: 900, from: 150 });
+    });
+    h += obj(`<div style="display:flex;align-items:center;gap:${px(60)}"><div style="width:${px(200)}">${ICON.person('#B9B4D6')}</div><div style="display:flex;flex-direction:column;gap:${px(16)}">${[0, 1, 2].map(i => `<div class="chip" style="font-size:${px(26)};background:#1FA35B33;color:#3DDC97;transform:translateX(${(1 - out((b - 20.5 - i * .4) / .6)) * -200}px);opacity:${clamp((b - 20.5 - i * .4) / .3)}">${ICON.check('#1FA35B')} Trusted source</div>`).join('')}</div><div style="width:${px(200)}">${ICON.bot(A.c2)}</div></div>`, b, 19.6, 26.8, { x: .5, y: .55, w: 700, from: 200 });
+    return h;
+  },
+  accounting(b) {
+    const T1 = $('T1'), T2 = $('T2');
+    words(T1, b < 18.5 ? seq(['Sales,', 'stock,', 'bills.'], 8) : seq(['Works', 'without', 'internet.'], 18.8), b, { size: 92, y: .1, exit: b < 18.5 ? 18.2 : 27.2 });
+    if (b >= 22) words(T2, seq(['Only', 'you', 'can', 'open', 'your', 'books.'], 22.5, .3), b, { size: 60, y: .91, color: A.c2, exit: 27.2 });
+    const R = [['Sale', 'Counter', '#3DDC97'], ['Purchase', 'Supplier', '#FF7A73'], ['Stock', 'Updated', '#FFCF4D'], ['GST bill', 'Ready to print', '#9AA5FF']];
+    const ledger = `<div class="card" style="padding:${px(28)};display:flex;flex-direction:column;gap:${px(14)}">
+      <div style="display:flex;justify-content:space-between;font-size:${px(22)};color:#8F89B3;font-weight:800;letter-spacing:.06em"><span>TODAY'S BOOK</span><span>${b >= 18.8 ? 'OFFLINE' : ''}</span></div>
+      ${R.map(([a, s, c], i) => { const p = out((b - 9.5 - i * 1.4) / .7); return `<div style="display:flex;align-items:center;gap:${px(18)};padding:${px(16)} ${px(20)};border-radius:${px(18)};background:#1E1B36;transform:translateX(${(1 - p) * 120}px);opacity:${p}"><span style="width:${px(16)};height:${px(16)};border-radius:50%;background:${c}"></span><b style="font-size:${px(30)};flex:1;text-align:left">${a}</b><span style="font-size:${px(24)};color:#B9B4D6;font-weight:650">${s}</span></div>`; }).join('')}</div>`;
+    return obj(ledger, b, 8.5, 26.8, { x: b < 18.5 ? .5 : mix(.5, .36, ease((b - 18.5) / 1.5)), y: .52, w: 760, from: 200 })
+      + obj(`<div style="width:${px(220)}">${ICON.wifiOff('#B9B4D6')}</div>`, b, 19.2, 26.8, { x: .82, y: .5, w: 220, from: 120, rot: -12 });
+  },
+};
+
+function renderFrame(t) {
+  const b = t / BEAT, pulse = Math.pow(1 - (b % 1), 6) * (b >= CUE.demo && b < CUE.whip ? 1 : 0);
+  $('b1').style.cssText = `width:${px(900)};height:${px(900)};left:${W * .1 + Math.sin(t * .4) * 120 * U}px;top:${H * .05 + Math.cos(t * .3) * 90 * U}px;background:${A.c1};opacity:${.3 + pulse * .15}`;
+  $('b2').style.cssText = `width:${px(700)};height:${px(700)};right:${W * .08 + Math.cos(t * .35) * 140 * U}px;bottom:${H * .02 + Math.sin(t * .5) * 100 * U}px;background:${A.c2};opacity:.25`;
+  document.body.style.background = b < 1 ? '#000' : '#07060F';
+  const T1 = $('T1'), T2 = $('T2'); T1.innerHTML = ''; T2.innerHTML = ''; T1.style.opacity = 0; T2.style.opacity = 0;
+  // hook: two lines, the second in the app's colour
+  if (b < CUE.demo) {
+    words(T1, seq(A.hook[0], CUE.hook1 + .2, .5), b, { size: 130, y: .4, exit: CUE.demo - .5 });
+    words(T2, seq(A.hook[1], CUE.hook2, .4), b, { size: 130, y: .58, color: A.c2, exit: CUE.demo - .5 });
+  }
+  S = 1.6; $('demo').innerHTML = b >= CUE.demo - .5 && b < CUE.whip + .5 ? DEMO[APP](b) : ''; S = 1;
+  $('demo').style.transform = `scale(${b >= CUE.whip ? 1 + (b - CUE.whip) * .6 : 1})`; $('demo').style.opacity = b >= CUE.whip ? clamp(1 - (b - CUE.whip) * 2) : 1;
+  // end card
+  const E = $('end'), e = b >= CUE.end;
+  E.style.opacity = e ? Math.min(clamp((b - CUE.end) / .5), clamp((NB - b) / .8)) : 0;
+  if (e) {
+    const ak = spring((b - CUE.end) / 1.6);
+    const r = (txt, at, size, color = '#F5F3FF') => { const p = out((b - at) / .5); return `<div style="font-weight:850;letter-spacing:-.03em;font-size:${px(size)};color:${color};transform:translateY(${(1 - p) * 40}px);opacity:${p}">${txt}</div>`; };
+    E.innerHTML = `<div style="width:${px(220)};height:${px(220)};transform:scale(${ak}) rotate(${(1 - ak) * -20}deg)">${mascot()}</div>
+      ${r(A.name, 28.8, A.name.length > 14 ? 110 : 140)}${r(A.line, 30, 54, '#C9B8FF')}
+      ${r(`<span class="pill" style="background:${A.c1}">Coming soon</span>`, 31.2, 50)}${r('Tap “I\'m interested” at opensourceeverything.in', 32.2, 44, '#FFC83D')}`;
+  }
+  const fl = Math.max(...[CUE.demo, CUE.whip + .3].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
+  $('flash').style.opacity = fl;
+}
+window.renderFrame = renderFrame;
+// sound design cues for sfx.py (beat, kind)
+window.SFX = [[0.2, 'tick'], [0.7, 'tick'], [3, 'pop'], [7, 'whoosh'], [8, 'pop'], [9, 'rise'], [13.2, 'pop'], [14.6, 'pop'], [16, 'click'], [17.2, 'click'], [18.4, 'click'], [19.6, 'pop'], [20.5, 'rise'], [22.5, 'pop'], [26, 'riser'], [27.8, 'whoosh'], [28, 'impact'], [28.8, 'pop'], [31.2, 'pop']];
+</script></body></html>

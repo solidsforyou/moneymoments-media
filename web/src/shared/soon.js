@@ -5,12 +5,12 @@ import { sunny, goodguy, olly } from './mascots.js';
 
 const letter = (l, bg) => () => `<svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="28" fill="${bg}"/><text x="60" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="52" font-weight="800" fill="#FBFBFE">${l}</text></svg>`;
 export const SOON = [
-  { k: 'tomorrow', n: 'Tomorrow', d: 'Message anyone, and move any file between your phone, your laptop and your friends.', art: sunny, url: '/tomorrow/' },
-  { k: 'goodhabit', n: 'GoodHabit', d: 'Practise money before it\'s real: replay Indian market history with pretend money.', art: goodguy, url: '/goodhabit/' },
-  { k: 'ai', n: 'How to use AI', d: 'Short lessons on using AI well for study and work, with practice in Arena.', art: olly },
-  { k: 'goodstuff', n: 'The Good Stuff', d: 'Free AI skills for small businesses and makers.', art: letter('G', '#0E7C86') },
-  { k: 'library', n: 'AI Discovery Library', d: 'Trusted sources, for people and for AIs.', art: letter('L', '#5B25D9') },
-  { k: 'accounting', n: 'Accounting Unlocked', d: 'Offline books for shops and small firms.', art: letter('A', '#8A5A00') },
+  { k: 'tomorrow', video: '/media/soon-tomorrow.mp4', poster: '/media/soon-tomorrow.jpg', n: 'Tomorrow', d: 'Message anyone, and move any file between your phone, your laptop and your friends.', art: sunny, url: '/tomorrow/' },
+  { k: 'goodhabit', video: '/media/soon-goodhabit.mp4', poster: '/media/soon-goodhabit.jpg', n: 'GoodHabit', d: 'Practise money before it\'s real: replay Indian market history with pretend money.', art: goodguy, url: '/goodhabit/' },
+  { k: 'ai', video: '/media/soon-ai.mp4', poster: '/media/soon-ai.jpg', n: 'How to use AI', d: 'Short lessons on using AI well for study and work, with practice in Arena.', art: olly },
+  { k: 'goodstuff', video: '/media/soon-goodstuff.mp4', poster: '/media/soon-goodstuff.jpg', n: 'The Good Stuff', d: 'Free AI skills for small businesses and makers.', art: letter('G', '#0E7C86') },
+  { k: 'library', video: '/media/soon-library.mp4', poster: '/media/soon-library.jpg', n: 'AI Discovery Library', d: 'Trusted sources, for people and for AIs.', art: letter('L', '#5B25D9') },
+  { k: 'accounting', video: '/media/soon-accounting.mp4', poster: '/media/soon-accounting.jpg', n: 'Accounting Unlocked', d: 'Offline books for shops and small firms.', art: letter('A', '#8A5A00') },
 ];
 const ls = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
 const mine = () => ls.get('ose-interest') || {};

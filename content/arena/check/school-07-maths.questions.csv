@@ -1,0 +1,271 @@
+qid,chapter,question,A,B,C,D
+school-07-maths-1-e1,Large Numbers Around Us,"How is 45,00,000 read in the Indian system?",Four crore fifty lakh,Forty-five lakh,Four lakh fifty thousand,Forty-five crore
+school-07-maths-1-e2,Large Numbers Around Us,How many lakhs make one crore?,10,"1,000",100,"10,000"
+school-07-maths-1-e3,Large Numbers Around Us,"Which is the greatest number: 8,45,000; 8,54,000; 8,05,400; 85,400?","8,45,000","8,05,400","85,400","8,54,000"
+school-07-maths-1-e4,Large Numbers Around Us,One million is the same as how many lakh?,10 lakh,1 lakh,100 lakh,1 crore
+school-07-maths-1-e5,Large Numbers Around Us,"What is the place value of the digit 7 in 3,27,45,810?","70,000","7,00,000","7,000","70,00,000"
+school-07-maths-1-e6,Large Numbers Around Us,"What is the successor of 99,99,999?","10,00,000","99,99,998","1,00,00,000","1,00,000"
+school-07-maths-1-m1,Large Numbers Around Us,Which is 3 crore 25 lakh 4 thousand 7 written in figures?,"3,52,04,007","3,25,04,007","3,25,40,007","3,25,00,407"
+school-07-maths-1-m2,Large Numbers Around Us,"Town A has 12,45,000 people and town B has 9,87,500. How many people live in both together?","22,22,500","21,32,500","22,32,500","2,57,500"
+school-07-maths-1-m3,Large Numbers Around Us,"Round 7,46,382 to the nearest ten thousand.","7,40,000","7,46,000","8,00,000","7,50,000"
+school-07-maths-1-m4,Large Numbers Around Us,Which statement is true?,25 crore is less than 2 billion,25 crore is greater than 2 billion,25 crore equals 2 billion,They cannot be compared
+school-07-maths-1-m7,Large Numbers Around Us,Population of a state is 5.2 million. In lakh this is,5.2 lakh,5.2 crore,520 lakh,52 lakh
+school-07-maths-1-m8,Large Numbers Around Us,One billion equals how many crore?,100 crore,10 crore,"1,000 crore",1 crore
+school-07-maths-1-h1,Large Numbers Around Us,"Light travels about 3,00,000 km each second. How far does it travel in one day of 86,400 seconds?","2,59,20,00,000 km","25,92,00,00,000 km","2,59,20,000 km","25,92,00,000 km"
+school-07-maths-1-h2,Large Numbers Around Us,"A city of 1,25,00,000 people uses 150 litres of water per person per day. How many litres a day is that?","18,75,00,000 litres","1,87,50,000 litres","1,87,50,00,000 litres","18,75,00,00,000 litres"
+school-07-maths-1-h3,Large Numbers Around Us,Roughly how many seconds are there in a non-leap year (365 days)?,"31,53,600","3,15,360","3,15,36,00,000","3,15,36,000"
+school-07-maths-1-h4,Large Numbers Around Us,"How many more must be added to 87,65,432 to reach one crore?","12,34,568","13,34,568","12,35,568","12,34,658"
+school-07-maths-1-h5,Large Numbers Around Us,How many 6-digit numbers are there in all?,"10,00,000","9,00,000","9,99,999","8,99,999"
+school-07-maths-1-h8,Large Numbers Around Us,What is the smallest 7-digit number in which all seven digits are different?,"10,23,456","10,00,000","12,34,567","10,23,465"
+school-07-maths-2-e1,Arithmetic Expressions,What is 8 + 6 x 2?,28,16,20,22
+school-07-maths-2-e2,Arithmetic Expressions,What is 20 - (6 + 4)?,18,30,22,10
+school-07-maths-2-e3,Arithmetic Expressions,What is 36 / 6 x 3 (divide and multiply from left to right)?,18,2,12,9
+school-07-maths-2-e4,Arithmetic Expressions,"In 5 + 3 x (8 - 2), which step is done first?",5 + 3,8 - 2,3 x 8,3 x 5
+school-07-maths-2-e5,Arithmetic Expressions,What is 15 - 3 x 4?,48,12,3,7
+school-07-maths-2-e7,Arithmetic Expressions,What is 7 x (10 - 4)?,42,66,36,46
+school-07-maths-2-m1,Arithmetic Expressions,Rina buys 3 pens at Rs 12 each and 2 notebooks at Rs 45 each. Which gives her total spend?,(3 + 2) x (12 + 45) = Rs 285,3 x (12 + 45) = Rs 171,3 x 12 + 2 x 45 = Rs 126,3 x 12 x 2 x 45
+school-07-maths-2-m2,Arithmetic Expressions,Which expression has the same value as 9 x (4 + 6)?,9 x 4 + 6,9 + 4 x 6,(9 x 4) x 6,9 x 4 + 9 x 6
+school-07-maths-2-m4,Arithmetic Expressions,What is 2 + 3 x (12 - 4 / 2)?,50,32,14,36
+school-07-maths-2-m5,Arithmetic Expressions,Where must brackets go in 12 - 4 x 2 + 1 to make the value 17?,12 - (4 x 2) + 1,12 - 4 x (2 + 1),(12 - 4) x 2 + 1,(12 - 4 x 2) + 1
+school-07-maths-2-m6,Arithmetic Expressions,"A shopkeeper sells 2 bags, each priced Rs 450 and given a Rs 50 discount. Which expression gives the total?",2 x 450 - 50,450 - 50,2 x 450 + 50,2 x (450 - 50)
+school-07-maths-2-m7,Arithmetic Expressions,What is 48 / (2 + 4) x 3?,24,36,84,8
+school-07-maths-2-h1,Arithmetic Expressions,What is 100 - [20 + {15 - (8 - 3)}]?,90,50,70,110
+school-07-maths-2-h2,Arithmetic Expressions,Which single pair of brackets gives 2 + 3 x 4 + 5 its greatest value?,(2 + 3) x 4 + 5,(2 + 3 x 4) + 5,2 + (3 x 4 + 5),2 + 3 x (4 + 5)
+school-07-maths-2-h3,Arithmetic Expressions,"Using distribution, what is 37 x 63 + 37 x 37?","3,700","3,737","2,331",370
+school-07-maths-2-h4,Arithmetic Expressions,"Using (50 + 4)(50 - 4), what is 54 x 46?","2,516","2,484","2,500","2,400"
+school-07-maths-2-h5,Arithmetic Expressions,What is 64 / 8 / 2 - 2 x 3 + 10?,20,-12,8,0
+school-07-maths-2-h7,Arithmetic Expressions,"Using 999 = 1000 - 1, what is 999 x 15?","14,985","15,015","14,895","15,985"
+school-07-maths-3-e1,A Peek Beyond the Point,What is the value of the digit 6 in 3.465?,6 tenths (0.6),6 ones,6 thousandths (0.006),6 hundredths (0.06)
+school-07-maths-3-e2,A Peek Beyond the Point,Which fraction is 0.7?,7/10,7/100,1/7,70/10
+school-07-maths-3-e4,A Peek Beyond the Point,3/100 as a decimal is,0.3,0.003,0.03,3.00
+school-07-maths-3-e6,A Peek Beyond the Point,1 m 25 cm written in metres is,1.25 m,1.025 m,12.5 m,1.5 m
+school-07-maths-3-e7,A Peek Beyond the Point,How many hundredths are in 0.3?,3,30,300,0.3
+school-07-maths-3-e8,A Peek Beyond the Point,How is 9.07 read?,Nine point seven,Nine point seventy,Nine point zero seven,Ninety point seven
+school-07-maths-3-m1,A Peek Beyond the Point,12.4 - 7.86 = ,5.54,4.46,5.46,4.54
+school-07-maths-3-m2,A Peek Beyond the Point,"Which is the second smallest of 0.62, 0.6, 0.062, 0.602?",0.6,0.062,0.602,0.62
+school-07-maths-3-m3,A Peek Beyond the Point,3/8 as a decimal is,0.38,0.375,0.35,3.8
+school-07-maths-3-m4,A Peek Beyond the Point,Ravi walks 2.75 km in the morning and 1.9 km in the evening. How many metres in all?,"3,650 m","4,750 m","4,650 m","46,500 m"
+school-07-maths-3-m5,A Peek Beyond the Point,0.1 + 0.02 + 0.003 = ,0.321,0.6,1.23,0.123
+school-07-maths-3-m8,A Peek Beyond the Point,Which is NOT equal to 0.5?,0.50,5/10,0.05,1/2
+school-07-maths-3-h1,A Peek Beyond the Point,"A tailor needs 2.4 m of cloth for one shirt. He has 15 m. After making 6 shirts, how much is left?",0.06 m,1.0 m,6.0 m,0.6 m
+school-07-maths-3-h2,A Peek Beyond the Point,Which number lies between 3.25 and 3.26?,3.255,3.3,3.205,3.265
+school-07-maths-3-h3,A Peek Beyond the Point,What is 25.4 - (12.75 + 3.6)?,9.95,9.05,10.05,16.35
+school-07-maths-3-h4,A Peek Beyond the Point,7 tenths + 15 hundredths + 8 thousandths equals,0.7158,0.948,0.858,7.158
+school-07-maths-3-h5,A Peek Beyond the Point,2 3/8 written as a decimal is,2.38,2.125,2.83,2.375
+school-07-maths-3-h8,A Peek Beyond the Point,"A number is 3 ones, 4 tenths and 12 hundredths. It equals",3.412,3.16,3.52,34.12
+school-07-maths-4-e1,Expressions Using Letter-Numbers,A square has side s. Its perimeter is,4s,s + 4,2s,s squared
+school-07-maths-4-e2,Expressions Using Letter-Numbers,What is the value of 3x + 2 when x = 4?,24,14,9,34
+school-07-maths-4-e3,Expressions Using Letter-Numbers,Which expression means 'n increased by 7'?,7n,n - 7,n + 7,n / 7
+school-07-maths-4-e4,Expressions Using Letter-Numbers,What is the coefficient of x in 7x + 3?,3,x,10,7
+school-07-maths-4-e7,Expressions Using Letter-Numbers,Which expression means 'five less than twice y'?,5 - 2y,2(y - 5),2y - 5,y - 10
+school-07-maths-4-e8,Expressions Using Letter-Numbers,"If n is an even number, what is the next even number?",n + 1,2n,n + 4,n + 2
+school-07-maths-4-m1,Expressions Using Letter-Numbers,Pens cost Rs p each and pencils Rs q each. What is the cost of 3 pens and 2 pencils?,3p + 2q,5pq,3p x 2q,5(p + q)
+school-07-maths-4-m2,Expressions Using Letter-Numbers,Simplify 4x + 7 - x + 2.,3x + 5,3x + 9,5x + 9,4x + 9
+school-07-maths-4-m3,Expressions Using Letter-Numbers,Find 2a squared + b when a = 3 and b = 4 (here 2a squared means 2 times a times a).,40,10,22,25
+school-07-maths-4-m5,Expressions Using Letter-Numbers,A rectangle has length x + 3 and breadth x. Its perimeter is,4x + 6,2x + 3,4x + 3,2x + 6
+school-07-maths-4-m6,Expressions Using Letter-Numbers,Three consecutive numbers start at n. Their sum is,3n,3n + 3,n + 3,3n + 6
+school-07-maths-4-m8,Expressions Using Letter-Numbers,Meena is m years old. Her father is 3 years older than 4 times her age. His age is,4(m + 3),m + 7,3m + 4,4m + 3
+school-07-maths-4-h1,Expressions Using Letter-Numbers,Simplify 5(2a - 3) - 3(a - 4).,7a - 3,7a - 27,13a - 27,7a + 3
+school-07-maths-4-h2,Expressions Using Letter-Numbers,A row of n squares needs 3n + 1 matchsticks. How many are needed for 15 squares?,45,46,60,48
+school-07-maths-4-h3,Expressions Using Letter-Numbers,Find p squared - 2pq + q squared for p = 5 and q = 2.,21,29,9,13
+school-07-maths-4-h4,Expressions Using Letter-Numbers,For what value of n does 5n - 3 equal 47?,8,9,11,10
+school-07-maths-4-h5,Expressions Using Letter-Numbers,For which x are 3x + 5 and 5x + 1 equal?,2,3,4,1
+school-07-maths-4-h6,Expressions Using Letter-Numbers,Simplify (x + 4) + (2x - 7) - (x - 1).,2x - 4,2x - 2,2x + 2,2x - 12
+school-07-maths-5-e1,Parallel and Intersecting Lines,Angles on a straight line add up to,90 degrees,180 degrees,360 degrees,270 degrees
+school-07-maths-5-e2,Parallel and Intersecting Lines,Two lines cross. One angle is 65 degrees. Its vertically opposite angle is,115 degrees,25 degrees,65 degrees,295 degrees
+school-07-maths-5-e3,Parallel and Intersecting Lines,What is the complement of 35 degrees?,145 degrees,65 degrees,35 degrees,55 degrees
+school-07-maths-5-e5,Parallel and Intersecting Lines,An acute angle is one that measures,exactly 90 degrees,less than 90 degrees,between 90 and 180 degrees,more than 180 degrees
+school-07-maths-5-e7,Parallel and Intersecting Lines,One angle of a linear pair is 130 degrees. The other is,130 degrees,230 degrees,40 degrees,50 degrees
+school-07-maths-5-e8,Parallel and Intersecting Lines,A right angle measures,90 degrees,45 degrees,180 degrees,60 degrees
+school-07-maths-5-m1,Parallel and Intersecting Lines,Two lines intersect and one angle is 40 degrees. What is the largest of the four angles?,40 degrees,140 degrees,320 degrees,180 degrees
+school-07-maths-5-m2,Parallel and Intersecting Lines,Parallel lines are cut by a transversal. A co-interior (same-side interior) angle is 110 degrees. The other is,110 degrees,250 degrees,70 degrees,90 degrees
+school-07-maths-5-m3,Parallel and Intersecting Lines,Angles x and 2x form a linear pair. What is x?,30 degrees,90 degrees,120 degrees,60 degrees
+school-07-maths-5-m4,Parallel and Intersecting Lines,Two complementary angles are in the ratio 2 : 3. The larger is,54 degrees,36 degrees,60 degrees,45 degrees
+school-07-maths-5-m5,Parallel and Intersecting Lines,Three angles together fill the whole space around a point. Two of them are 130 degrees and 100 degrees. The third is,100 degrees,130 degrees,80 degrees,230 degrees
+school-07-maths-5-m7,Parallel and Intersecting Lines,Two lines cross. A pair of vertically opposite angles measure (2x + 10) and (3x - 20) degrees. What does each measure?,30 degrees,80 degrees,110 degrees,70 degrees
+school-07-maths-5-h1,Parallel and Intersecting Lines,An angle is twice its supplement. Find the angle.,60 degrees,120 degrees,90 degrees,100 degrees
+school-07-maths-5-h2,Parallel and Intersecting Lines,An angle is three times its complement. Find the angle.,22.5 degrees,60 degrees,67.5 degrees,45 degrees
+school-07-maths-5-h4,Parallel and Intersecting Lines,The angles of a linear pair are in the ratio 7 : 2. The smaller angle is,40 degrees,20 degrees,35 degrees,140 degrees
+school-07-maths-5-h5,Parallel and Intersecting Lines,Two lines cross making angles (x + 20) and (2x - 10) that are vertically opposite. The angle adjacent to one of them is,50 degrees,130 degrees,30 degrees,80 degrees
+school-07-maths-5-h7,Parallel and Intersecting Lines,"On one side of a straight line, three angles meet at a point and measure x, 50 and 70 degrees. What is x?",50 degrees,120 degrees,70 degrees,60 degrees
+school-07-maths-5-h8,Parallel and Intersecting Lines,The bisectors of the two angles of a linear pair make an angle of,90 degrees,45 degrees,180 degrees,60 degrees
+school-07-maths-6-e1,Number Play,What do you get when you add two odd numbers?,Always an odd number,"Odd or even, it depends",Always an even number,Always a multiple of 4
+school-07-maths-6-e2,Number Play,A bulb is ON. Its switch is pressed 50 times. Is it ON or OFF at the end?,OFF,Half ON,Cannot be said,ON
+school-07-maths-6-e3,Number Play,"What comes next in 2, 6, 18, 54, ...?",162,108,72,216
+school-07-maths-6-e4,Number Play,"What comes next in 7, 14, 21, 28, ...?",32,35,42,49
+school-07-maths-6-e5,Number Play,The product of an odd number and an even number is,Always odd,Odd or even,Always even,Always a multiple of 3
+school-07-maths-6-e8,Number Play,What is 1 + 3 + 5 + 7 + 9?,45,25,20,30
+school-07-maths-6-m1,Number Play,"Gita picks 5 cards, each with an odd number, and says the total is 40. What can you say?",Possible: odd numbers can add to any total,Possible: 40 is a multiple of 5,Not possible: five odd numbers always add to an odd number,Not possible: odd numbers are too small
+school-07-maths-6-m2,Number Play,What is the magic sum of a 3 x 3 magic square that uses the numbers 1 to 9?,12,18,45,15
+school-07-maths-6-m3,Number Play,"In a sequence each term is the sum of the previous two. The terms 34, 55, 89 are followed by",144 and 233,144 and 244,134 and 223,145 and 234
+school-07-maths-6-m4,Number Play,"Tara has an odd number of Rs 1 coins, an odd number of Rs 5 coins and an even number of Rs 10 coins. She says her total is Rs 247. What is wrong?",The total must be odd,The total must be even,The total must be a multiple of 5,Nothing is wrong
+school-07-maths-6-m6,Number Play,What is 1 + 3 + 5 + ... + 19 (the first ten odd numbers)?,90,110,95,100
+school-07-maths-6-m7,Number Play,Three consecutive whole numbers add up to 87. The largest is,30,29,28,31
+school-07-maths-6-h1,Number Play,Meera says the two page numbers on one loose sheet of a book add up to 154. Is this possible?,Yes: pages 76 and 78,Yes: pages 77 and 77,"No: the two page numbers are consecutive, so their sum is odd",No: 154 is not a multiple of 7
+school-07-maths-6-h2,Number Play,Three loose sheets are found. Can the sum of all six page numbers be 6000?,Yes: pages could be 998 to 1003,No: 6000 is too large,Yes: any even total is possible,No: each sheet gives an odd sum and three odd numbers add to an odd number
+school-07-maths-6-h3,Number Play,"In every 3 x 3 magic square made from 1 to 9, which of these numbers can sit in a corner?",8,5,7,9
+school-07-maths-6-h6,Number Play,Three consecutive odd numbers add up to 63. The largest is,21,25,19,23
+school-07-maths-6-h7,Number Play,What is 1 + 2 + 3 + ... + 50?,"1,275","1,250","2,550","1,325"
+school-07-maths-6-h8,Number Play,What is 1 + 3 + 5 + ... + 49 (all odd numbers up to 49)?,600,625,"1,225","2,500"
+school-07-maths-7-e1,A Tale of Three Intersecting Lines,The three angles of any triangle add up to,90 degrees,360 degrees,270 degrees,180 degrees
+school-07-maths-7-e2,A Tale of Three Intersecting Lines,"A triangle has angles 60, 60 and 60 degrees. It is",equilateral,scalene,right-angled,obtuse
+school-07-maths-7-e3,A Tale of Three Intersecting Lines,Which three lengths can be the sides of a triangle?,"3 cm, 4 cm, 8 cm","3 cm, 4 cm, 5 cm","2 cm, 3 cm, 6 cm","5 cm, 5 cm, 10 cm"
+school-07-maths-7-e4,A Tale of Three Intersecting Lines,Two angles of a triangle are 50 and 60 degrees. The third is,80 degrees,110 degrees,70 degrees,60 degrees
+school-07-maths-7-e5,A Tale of Three Intersecting Lines,A triangle with all three sides of different lengths is called,isosceles,equilateral,acute,scalene
+school-07-maths-7-e6,A Tale of Three Intersecting Lines,In a right-angled triangle one acute angle is 35 degrees. The other is,55 degrees,145 degrees,65 degrees,35 degrees
+school-07-maths-7-m1,A Tale of Three Intersecting Lines,The angles of a triangle are in the ratio 2 : 3 : 4. The largest angle is,40 degrees,90 degrees,60 degrees,80 degrees
+school-07-maths-7-m2,A Tale of Three Intersecting Lines,The vertex angle of an isosceles triangle is 40 degrees. Each base angle is,70 degrees,40 degrees,140 degrees,100 degrees
+school-07-maths-7-m3,A Tale of Three Intersecting Lines,Two sides of a triangle are 5 cm and 9 cm. Which could be the third side?,3 cm,10 cm,4 cm,14 cm
+school-07-maths-7-m4,A Tale of Three Intersecting Lines,An exterior angle of a triangle is 125 degrees and one opposite interior angle is 50 degrees. The other opposite interior angle is,55 degrees,175 degrees,75 degrees,125 degrees
+school-07-maths-7-m5,A Tale of Three Intersecting Lines,The acute angles of an isosceles right-angled triangle are each,30 degrees,60 degrees,90 degrees,45 degrees
+school-07-maths-7-m6,A Tale of Three Intersecting Lines,An isosceles triangle has two sides 7 cm and 3 cm. Its perimeter is,17 cm,13 cm,10 cm,14 cm
+school-07-maths-7-h1,A Tale of Three Intersecting Lines,"In triangle ABC, angle B is twice angle A, and the exterior angle at C is 120 degrees. Angle C is",40 degrees,80 degrees,120 degrees,60 degrees
+school-07-maths-7-h2,A Tale of Three Intersecting Lines,Two sides of a triangle are 4 cm and 11 cm. The third side is a whole number of cm. How many values are possible?,7,6,8,14
+school-07-maths-7-h3,A Tale of Three Intersecting Lines,An isosceles triangle ABC has AB = AC. The exterior angle at B is 110 degrees. The angle at A is,70 degrees,40 degrees,110 degrees,20 degrees
+school-07-maths-7-h4,A Tale of Three Intersecting Lines,A triangle has angles in the ratio 1 : 2 : 3. Which type is it?,Equilateral,Obtuse,Right-angled,Isosceles
+school-07-maths-7-h5,A Tale of Three Intersecting Lines,The perimeter of a triangle is 36 cm and its sides are in the ratio 3 : 4 : 5. The longest side is,12 cm,9 cm,18 cm,15 cm
+school-07-maths-7-h8,A Tale of Three Intersecting Lines,An isosceles triangle has two sides of 8 cm and a whole-number third side. Its perimeter is at most 20 cm. How many third sides are possible?,3,15,4,12
+school-07-maths-8-e1,Working with Fractions,What is 1/2 x 1/3?,1/6,1/5,2/5,5/6
+school-07-maths-8-e2,Working with Fractions,What is 2/3 of 12?,6,8,18,10
+school-07-maths-8-e3,Working with Fractions,The reciprocal of 5/7 is,5/7,-5/7,7/5,2/12
+school-07-maths-8-e4,Working with Fractions,What is 6 divided by 1/2?,3,6,1/3,12
+school-07-maths-8-e5,Working with Fractions,What is 3/4 of 8?,6,4,24,11
+school-07-maths-8-e6,Working with Fractions,2 1/2 written as an improper fraction is,3/2,5/2,2/5,21/2
+school-07-maths-8-m1,Working with Fractions,What is 3/4 divided by 3/8?,2,1/2,9/32,8
+school-07-maths-8-m2,Working with Fractions,What is 2 1/3 x 1 1/2?,2 1/6,3 1/2,3 1/3,4
+school-07-maths-8-m3,Working with Fractions,A ribbon of 3 1/2 m is cut into pieces of 1/4 m each. How many pieces?,7,12,14,8
+school-07-maths-8-m4,Working with Fractions,What is 3/8 of 4/5?,7/13,12/13,15/32,3/10
+school-07-maths-8-m6,Working with Fractions,What is 5/6 x 9/10?,45/16,3/4,14/16,5/9
+school-07-maths-8-m8,Working with Fractions,A rectangle is 2 1/2 m long and 1 3/5 m wide. Its area is,3 7/10 m squared,3 3/5 m squared,4 1/5 m squared,4 m squared
+school-07-maths-8-h1,Working with Fractions,A tank is 3/5 full. 1/4 of the water is used. What fraction of the tank has water now?,9/20,3/20,7/20,2/5
+school-07-maths-8-h2,Working with Fractions,Asha reads 2/5 of a book on day 1 and 1/3 of the remaining pages on day 2. What fraction is unread?,1/5,2/5,1/3,3/5
+school-07-maths-8-h3,Working with Fractions,What is (3/4 divided by 1/2) x 2/3?,9/4,1/2,1,2
+school-07-maths-8-h4,Working with Fractions,3/5 of a number is 36. What is 1/4 of the number?,9,60,27,15
+school-07-maths-8-h7,Working with Fractions,What is (1 - 1/2)(1 - 1/3)(1 - 1/4)(1 - 1/5)?,1/120,24/120,1/5,4/5
+school-07-maths-8-h8,Working with Fractions,A tap fills 3/8 of a tank in one hour. How long will it take to fill the whole tank?,2 hours 30 minutes,3 hours 20 minutes,2 hours 8 minutes,2 hours 40 minutes
+school-07-maths-9-e1,Geometric Twins,Two figures are congruent when they have,the same shape only,the same shape and the same size,the same area only,the same perimeter only
+school-07-maths-9-e2,Geometric Twins,"Triangle ABC is congruent to triangle PQR (A with P, B with Q, C with R). Which side equals AB?",QR,PR,PQ,AC
+school-07-maths-9-e3,Geometric Twins,Triangle ABC is congruent to triangle DEF and angle A = 50 degrees. Which angle is also 50 degrees?,Angle E,Angle F,Angle B,Angle D
+school-07-maths-9-e6,Geometric Twins,Two circles are congruent if they have,equal centres,equal colours,equal radii,equal tangents
+school-07-maths-9-e7,Geometric Twins,"Triangle ABC is congruent to triangle PQR, with AB = 5 cm, BC = 6 cm and CA = 7 cm. The perimeter of PQR is",12 cm,21 cm,15 cm,18 cm
+school-07-maths-9-e8,Geometric Twins,"Triangle HEN is congruent to triangle BIG (H with B, E with I, N with G). Angle N matches",angle G,angle B,angle I,angle H
+school-07-maths-9-m1,Geometric Twins,"Triangle ABC is congruent to triangle XYZ with A, B, C matching X, Y, Z. If angle B = 70 and angle C = 50 degrees, angle X is",70 degrees,60 degrees,50 degrees,120 degrees
+school-07-maths-9-m2,Geometric Twins,Which information guarantees that two triangles are congruent?,All three angles are equal,One side and one angle are equal,All three sides of one equal all three sides of the other,Two angles are equal
+school-07-maths-9-m3,Geometric Twins,"For the SAS rule, the equal angle must be",opposite the longest side,outside the two sides,any angle in the triangle,between the two equal sides
+school-07-maths-9-m4,Geometric Twins,"Triangle PQR is congruent to triangle ABC with P, Q, R matching A, B, C. If QR = 3x - 4 and BC = 17, then x is",7,5,13,21
+school-07-maths-9-m5,Geometric Twins,"In RHS, the letters stand for","ratio, height, shape","a right angle, hypotenuse and a side","right, half, same","radius, height, side"
+school-07-maths-9-m7,Geometric Twins,"Triangle ABC is congruent to DEF. Angles A, B, C are in the ratio 2 : 3 : 4. Angle E is",40 degrees,80 degrees,90 degrees,60 degrees
+school-07-maths-9-h1,Geometric Twins,"Triangles ABC and DEF have AB = DE = 5 cm, BC = EF = 7 cm and angle A = angle D = 60 degrees. Are they necessarily congruent?","Yes, by SAS",No: the equal angle is not between the equal sides,"Yes, by SSS","Yes, by ASA"
+school-07-maths-9-h2,Geometric Twins,"Triangle ABC is congruent to PQR, AB = 2x + 1 and PQ = 3x - 4. The length of AB is",5,7,11,9
+school-07-maths-9-h3,Geometric Twins,"In an isosceles triangle ABC with AB = AC, D is the midpoint of BC. Angle ADB is",60 degrees,45 degrees,120 degrees,90 degrees
+school-07-maths-9-h4,Geometric Twins,"Triangle ABC is congruent to DEF, angle A = (2x + 10) degrees and angle D = (3x - 15) degrees. Angle A is",60 degrees,25 degrees,50 degrees,70 degrees
+school-07-maths-9-h5,Geometric Twins,"Triangle ABC has sides x, x + 2 and x + 4 cm, and a congruent triangle PQR has perimeter 30 cm. The longest side is",8 cm,12 cm,10 cm,14 cm
+school-07-maths-9-h6,Geometric Twins,"In kite ABCD, AB = AD and CB = CD. Diagonal AC makes triangles ABC and ADC congruent. If angle B = 85 degrees, angle D is",95 degrees,45 degrees,85 degrees,170 degrees
+school-07-maths-10-e1,Operations with Integers,What is (-5) + 8?,-3,13,3,-13
+school-07-maths-10-e2,Operations with Integers,What is 7 - 12?,5,19,-19,-5
+school-07-maths-10-e3,Operations with Integers,What is (-4) x 6?,-24,24,-10,2
+school-07-maths-10-e6,Operations with Integers,The additive inverse of -9 is,-9,0,1/9,9
+school-07-maths-10-e7,Operations with Integers,"Which is the greatest: -9, -2, -15, -5?",-2,-15,-9,-5
+school-07-maths-10-e8,Operations with Integers,What is 0 - (-6)?,-6,6,0,-12
+school-07-maths-10-m1,Operations with Integers,What is (-8) + (-7) - (-5)?,-20,0,-10,-2
+school-07-maths-10-m2,Operations with Integers,What is (-6) x 5 + 4?,-34,26,-14,-26
+school-07-maths-10-m3,Operations with Integers,At night the temperature is -4 degrees C and it drops by 7 degrees. The new temperature is,-11 degrees C,3 degrees C,-3 degrees C,11 degrees C
+school-07-maths-10-m4,Operations with Integers,What is (-48) / 6 x (-2)?,-16,16,4,-4
+school-07-maths-10-m5,Operations with Integers,What is 12 - (-8) + (-5)?,-1,25,15,9
+school-07-maths-10-m6,Operations with Integers,What is (-2) x (-3) x (-4)?,24,-9,9,-24
+school-07-maths-10-h1,Operations with Integers,"In a quiz, +4 marks for each right answer and -2 for each wrong one. Rohan answers all 20 questions and gets 13 right. His score is",52,24,38,66
+school-07-maths-10-h2,Operations with Integers,What is (-3) x (-4) - (-2) x 5 + (-6) / 3?,16,24,-4,20
+school-07-maths-10-h3,Operations with Integers,What is the sum of all integers from -5 to 8?,21,26,-21,29
+school-07-maths-10-h4,Operations with Integers,"A shop gains Rs 2,500 in each of 3 months and loses Rs 3,200 in each of 2 months. Net result is","Loss of Rs 1,100","Profit of Rs 1,100","Profit of Rs 7,500","Loss of Rs 6,400"
+school-07-maths-10-h5,Operations with Integers,"If (-7) x n + 15 = 78, what is n?",9,-13,-9,13
+school-07-maths-10-h6,Operations with Integers,"A lift starts at floor 5, goes down 8, up 3, then down 6 floors. It is now at floor",6,-8,-4,-6
+school-07-maths-11-e1,Finding Common Ground,What is the HCF of 12 and 18?,3,36,12,6
+school-07-maths-11-e2,Finding Common Ground,What is the LCM of 4 and 6?,12,24,2,10
+school-07-maths-11-e3,Finding Common Ground,Which of these is a prime number?,21,23,25,27
+school-07-maths-11-e4,Finding Common Ground,How many factors does 12 have?,4,5,6,8
+school-07-maths-11-e5,Finding Common Ground,What is the LCM of 3 and 5?,8,30,1,15
+school-07-maths-11-e6,Finding Common Ground,The prime factorisation of 36 is,2 x 2 x 3 x 3,2 x 3 x 6,4 x 9,2 x 2 x 9
+school-07-maths-11-m1,Finding Common Ground,What is the HCF of 36 and 48?,6,24,144,12
+school-07-maths-11-m2,Finding Common Ground,What is the LCM of 12 and 18?,36,6,72,216
+school-07-maths-11-m3,Finding Common Ground,Two bells ring every 12 minutes and every 15 minutes. They ring together at 9:00. After how many minutes will they next ring together?,3 minutes,60 minutes,30 minutes,180 minutes
+school-07-maths-11-m4,Finding Common Ground,What is the largest number that divides both 70 and 105 exactly?,5,7,35,210
+school-07-maths-11-m5,Finding Common Ground,The product of two numbers is 180 and their HCF is 6. Their LCM is,186,"1,080",174,30
+school-07-maths-11-m8,Finding Common Ground,The prime factorisation of 180 is,2 x 3 x 5 x 6,2 x 2 x 9 x 5,2 x 2 x 3 x 3 x 5,2 x 3 x 3 x 10
+school-07-maths-11-h1,Finding Common Ground,"What is the smallest number that leaves remainder 3 when divided by 8, 12 or 15?",120,243,63,123
+school-07-maths-11-h2,Finding Common Ground,What is the largest 3-digit number divisible by both 12 and 18?,972,990,936,996
+school-07-maths-11-h3,Finding Common Ground,"Ribbons of 84 cm, 126 cm and 210 cm are cut into equal pieces, as long as possible, with none left over. Each piece is",21 cm,42 cm,14 cm,84 cm
+school-07-maths-11-h4,Finding Common Ground,"Three runners take 40 s, 50 s and 60 s for one lap. They start together. When do they next meet at the start?",After 5 minutes,After 20 minutes,After 10 minutes,After 2 minutes
+school-07-maths-11-h5,Finding Common Ground,Two numbers have HCF 8 and LCM 240. One is 48. The other is,80,30,60,40
+school-07-maths-11-h7,Finding Common Ground,What is the smallest perfect square that is a multiple of 8 and 12?,96,144,576,24
+school-07-maths-12-e1,Another Peek Beyond the Point,What is 0.4 x 3?,1.2,12,0.12,7
+school-07-maths-12-e2,Another Peek Beyond the Point,What is 2.5 x 10?,2.50,25,250,0.25
+school-07-maths-12-e3,Another Peek Beyond the Point,What is 0.6 / 2?,3,0.03,0.3,0.12
+school-07-maths-12-e4,Another Peek Beyond the Point,What is 1.5 x 0.2?,3,0.03,0.17,0.3
+school-07-maths-12-e6,Another Peek Beyond the Point,What is 0.3 x 0.3?,0.9,0.09,0.6,0.009
+school-07-maths-12-e8,Another Peek Beyond the Point,What is 0.05 x 100?,0.5,50,0.005,5
+school-07-maths-12-m1,Another Peek Beyond the Point,A pen costs Rs 7.50. What do 12 pens cost?,Rs 90,Rs 84,Rs 9,Rs 900
+school-07-maths-12-m2,Another Peek Beyond the Point,What is 3.6 / 0.4?,0.9,9,90,0.09
+school-07-maths-12-m3,Another Peek Beyond the Point,What is 0.25 x 0.8?,2,0.02,0.2,0.33
+school-07-maths-12-m4,Another Peek Beyond the Point,A 15.6 m rope is cut into 6 equal pieces. Each piece is,26 m,2.06 m,9.6 m,2.6 m
+school-07-maths-12-m5,Another Peek Beyond the Point,What is 6.4 x 2.5?,16,1.6,160,15.6
+school-07-maths-12-m6,Another Peek Beyond the Point,Rice costs Rs 45.50 per kg. What do 3.5 kg cost?,Rs 149.25,Rs 159.25,"Rs 1,592.50",Rs 159.50
+school-07-maths-12-h1,Another Peek Beyond the Point,Petrol costs Rs 104.50 a litre. What do 2.4 litres cost?,Rs 250.80,"Rs 2,508",Rs 25.08,Rs 251.60
+school-07-maths-12-h2,Another Peek Beyond the Point,What is 2.5 x 0.4 x 0.5?,5,0.5,0.05,1.25
+school-07-maths-12-h3,Another Peek Beyond the Point,A tailor uses 1.25 m of cloth for one shirt. How many shirts from 7.5 m?,9,5,6,60
+school-07-maths-12-h4,Another Peek Beyond the Point,A tap fills a 9.6 litre can at 0.32 litre per second. How long does it take?,3 seconds,300 seconds,0.3 seconds,30 seconds
+school-07-maths-12-h5,Another Peek Beyond the Point,What is (3.6 + 2.4) / 0.15?,40,4,24.15,400
+school-07-maths-12-h6,Another Peek Beyond the Point,Which product is greater than 1?,0.9 x 0.9,1.1 x 0.95,0.5 x 1.9,0.25 x 3.9
+school-07-maths-13-e1,Connecting the Dots,"What is the mean of 4, 6, 8, 10 and 12?",6,8,10,40
+school-07-maths-13-e2,Connecting the Dots,"What is the median of 3, 9, 5, 7, 1?",9,7,5,3
+school-07-maths-13-e3,Connecting the Dots,"What is the range of 12, 5, 20, 9?",20,8,46,15
+school-07-maths-13-e4,Connecting the Dots,Which of these is a statistical question?,How tall are the students in Class 7B?,How tall am I?,Is 7 a prime number?,How many days are in a week?
+school-07-maths-13-e5,Connecting the Dots,Five numbers have a mean of 6. Their sum is,11,30,1.2,6
+school-07-maths-13-e8,Connecting the Dots,Which is NOT a statistical question?,What is the capital of India?,How many hours do Class 7 students sleep?,What pets do the students of a school keep?,How far do students live from school?
+school-07-maths-13-m1,Connecting the Dots,"Marks in five tests are 56, 72, 64, 48 and 80. The mean is",60,64,72,320
+school-07-maths-13-m2,Connecting the Dots,"What is the median of 31, 28, 35, 40, 26, 33?",33,31,32,35
+school-07-maths-13-m3,Connecting the Dots,"The mean of five numbers is 12. A sixth number, 24, is added. The new mean is",18,36,12,14
+school-07-maths-13-m5,Connecting the Dots,"Temperatures in five days are 28, 30, 29, 33 and 35 degrees C. The mean is",30 degrees C,31 degrees C,29 degrees C,155 degrees C
+school-07-maths-13-m6,Connecting the Dots,"What is the range of 45, 12, 38, 60 and 27?",60,12,48,33
+school-07-maths-13-m8,Connecting the Dots,Which question is statistical?,How many siblings do students in our school have?,How many sides does a triangle have?,What is 15 + 27?,What day is today?
+school-07-maths-13-h1,Connecting the Dots,The mean of 8 numbers is 25. One number is removed and the mean of the other 7 is 24. The removed number is,24,32,25,1
+school-07-maths-13-h2,Connecting the Dots,"Data: 12, 14, 13, 15, 90. The median is 14 and the mean is 28.8. Which better shows a typical value, and why?","Mean, because it uses all values","Mean, because it is larger","Median, because 90 is an outlier pulling the mean up",Both are equally good
+school-07-maths-13-h4,Connecting the Dots,"Five numbers are in order: 6, 9, x, 14, 20, and their median is 12. The mean is",12.2,12,13,11.8
+school-07-maths-13-h6,Connecting the Dots,All scores in a test lie between 40 and 90. Which of these could be the mean score?,38,91,65,100
+school-07-maths-13-h7,Connecting the Dots,Seven sorted numbers have a median of 15. The three largest are each increased by 10. The new median is,25,18,20,15
+school-07-maths-13-h8,Connecting the Dots,Anu's mean score in 4 tests is 72. What must she score in the 5th test to bring her mean to 75?,87,75,78,90
+school-07-maths-14-e1,Constructions and Tilings,An angle bisector divides an angle into,two right angles,three equal angles,two equal angles,two equal sides
+school-07-maths-14-e2,Constructions and Tilings,The perpendicular bisector of an 8 cm segment XY meets XY at a point that is how far from X?,8 cm,2 cm,90 cm,4 cm
+school-07-maths-14-e3,Constructions and Tilings,A 90 degree angle is bisected. Each part is,45 degrees,30 degrees,60 degrees,180 degrees
+school-07-maths-14-e4,Constructions and Tilings,Every angle of an equilateral triangle measures,30 degrees,60 degrees,90 degrees,45 degrees
+school-07-maths-14-e5,Constructions and Tilings,How many sides does a regular hexagon have?,5,8,6,12
+school-07-maths-14-e6,Constructions and Tilings,Any point on the perpendicular bisector of XY is,closer to X,closer to Y,on the segment XY,at equal distance from X and Y
+school-07-maths-14-m1,Constructions and Tilings,Bisecting a 60 degree angle twice gives,30 degrees,20 degrees,15 degrees,7.5 degrees
+school-07-maths-14-m2,Constructions and Tilings,"Using only 60 degrees, 90 degrees, bisection, addition and subtraction, which angle can be built?",65 degrees,55 degrees,25 degrees,75 degrees
+school-07-maths-14-m3,Constructions and Tilings,A regular hexagon is split by joining its centre to all six corners. Each of the six triangles is,equilateral,right-angled,scalene,obtuse
+school-07-maths-14-m4,Constructions and Tilings,P lies on the perpendicular bisector of AB and PA = 9 cm. Then PB is,4.5 cm,9 cm,18 cm,cannot be told
+school-07-maths-14-m5,Constructions and Tilings,A point on the bisector of an angle is 4 cm from one arm. Its distance from the other arm is,8 cm,2 cm,4 cm,cannot be told
+school-07-maths-14-m7,Constructions and Tilings,"To draw the perpendicular bisector of a 10 cm segment, which compass radius can you use for the arcs?",6 cm,5 cm,4 cm,2 cm
+school-07-maths-14-h1,Constructions and Tilings,"Which of these angles cannot be built from 60 and 90 degrees using bisection, addition and subtraction?",22.5 degrees,37.5 degrees,65.5 degrees,67.5 degrees
+school-07-maths-14-h2,Constructions and Tilings,Which angle can be built from 60 degrees using repeated bisection and subtraction?,10 degrees,20 degrees,25 degrees,7.5 degrees
+school-07-maths-14-h3,Constructions and Tilings,"In a tiling made only of regular hexagons, how many hexagons meet at each corner?",3,2,4,6
+school-07-maths-14-h5,Constructions and Tilings,Why can regular pentagons not tile a floor by themselves?,They have an odd number of sides,Their angle is more than 90 degrees,"Their angle, 108 degrees, does not divide 360 evenly",They cannot be drawn with a compass
+school-07-maths-14-h6,Constructions and Tilings,"A student bisects a 60 degree angle twice, then adds the result to a 90 degree angle. The new angle is",120 degrees,75 degrees,150 degrees,105 degrees
+school-07-maths-14-h8,Constructions and Tilings,"To prove that the line drawn through the vertex O and the arc meeting point C bisects angle AOB (with OA = OB and CA = CB), which rule is used?",SAS,SSS,ASA,RHS
+school-07-maths-15-e1,Finding the Unknown,Solve 2x + 5 = 21.,x = 13,x = 26,x = 5.5,x = 8
+school-07-maths-15-e2,Finding the Unknown,Solve x / 3 = 7.,x = 21,x = 10,x = 4,x = 7/3
+school-07-maths-15-e3,Finding the Unknown,Solve x - 9 = 14.,x = 5,x = 23,x = -5,x = 126
+school-07-maths-15-e4,Finding the Unknown,Solve 5x = 45.,x = 40,x = 50,x = 9,x = 225
+school-07-maths-15-e6,Finding the Unknown,Solve 4y - 3 = 17.,y = 5,y = 3.5,y = 20,y = 14
+school-07-maths-15-e7,Finding the Unknown,Solve y + 7 = 3.,y = 4,y = -4,y = 10,y = -10
+school-07-maths-15-m1,Finding the Unknown,Solve 7m - 4 = 3m + 12.,m = 2,m = 1.6,m = 8,m = 4
+school-07-maths-15-m2,Finding the Unknown,A packet weighs 2 kg more than one third of its weight. The packet weighs,3 kg,6 kg,2 kg,2.5 kg
+school-07-maths-15-m3,Finding the Unknown,"One fifth of a number, increased by 8, equals the number. The number is",40,10,8,2
+school-07-maths-15-m4,Finding the Unknown,The sum of two numbers is 90 and one is 4 times the other. The larger number is,18,60,72,80
+school-07-maths-15-m5,Finding the Unknown,Five less than three times a number is 22. The number is,7,27,17,9
+school-07-maths-15-m7,Finding the Unknown,Solve 3(x - 2) = 2(x + 1).,x = 4,x = 8,x = -8,x = 1
+school-07-maths-15-h1,Finding the Unknown,"A taxi charges a fixed Rs 600 a day plus Rs 15 per km. A ride costs Rs 1,950. How many km?",130 km,40 km,"1,350 km",90 km
+school-07-maths-15-h2,Finding the Unknown,Solve -2(y + 4) = 3(y - 6).,y = 2,y = -2,y = 26/5,y = 10
+school-07-maths-15-h3,Finding the Unknown,A farm has hens (2 legs) and goats (4 legs): 30 heads and 84 legs. How many goats?,18,12,24,10
+school-07-maths-15-h4,Finding the Unknown,The sum of four consecutive even numbers is 188. The largest is,44,47,50,52
+school-07-maths-15-h5,Finding the Unknown,A father is 4 times as old as his son. After 6 years he will be 3 times as old. The father's present age is,40,36,52,48
+school-07-maths-15-h6,Finding the Unknown,Twice a number plus 7 equals four times the number minus 9. The number is,8,1,16,-8

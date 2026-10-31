@@ -27,6 +27,8 @@ async function draw() {
     </section>
     <section class="wrap sec"><h2>OpenPrep, a first look</h2>
       <a class="card row" href="/openprep/" style="text-decoration:none;color:inherit;align-items:center;flex-wrap:nowrap"><span class="av" style="width:72px;height:72px;background:none;flex:none">${buddy()}</span><span class="stack" style="gap:4px"><b>Free CAT mock and Quant lessons</b><span class="muted">A full-length mock on the CAT pattern with every answer explained, six short lessons, and CAT practice in Arena.</span></span></a>
+      <p class="muted" style="margin:16px 0 8px">Here's what a lesson looks like:</p>
+      <video class="trailer" src="/media/openprep-lesson.mp4" poster="/media/openprep-lesson.jpg" controls playsinline preload="none"></video>
     </section>
     <section class="wrap sec" id="trailer"><h2>What we're building</h2>
       <video class="trailer" src="/media/ose-trailer.mp4" poster="/media/ose-trailer.jpg" controls playsinline preload="none"></video>

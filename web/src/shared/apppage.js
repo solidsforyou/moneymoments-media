@@ -16,6 +16,7 @@ export async function appPage(o) {
       <section class="wrap hero"><div><h1>${o.head}</h1><p class="lede">${o.lede}</p>
         <div class="row actions"><a class="btn" href="${o.play}">${o.playLabel}</a>${user ? (user.ids[o.idKey] ? `<span class="muted small">${o.idName} @${esc(user.ids[o.idKey])}</span>` : `<button class="btn quiet" data-act="mkid">Create your ${o.idName}</button>`) : '<button class="btn quiet" data-act="signup">Sign up free</button>'}</div></div>
         <div class="art">${o.mascot()}</div></section>
+      ${o.video ? `<section class="wrap sec"><h2>${o.video.title}</h2><p class="muted" style="margin:-8px 0 16px">${o.video.text}</p><video class="trailer" src="${o.video.src}" poster="${o.video.poster}" controls playsinline preload="none"></video></section>` : ''}
       ${o.starts ? `<section class="wrap sec"><div class="grid">${o.starts.map(([h, p, href, cta]) => `<a class="card stack" href="${href}" style="text-decoration:none;color:inherit"><h3>${h}</h3><p class="muted">${p}</p><span class="btn small" style="align-self:flex-start">${cta}</span></a>`).join('')}</div></section>` : ''}
       <section class="wrap sec"><h2>${o.feedTitle}</h2>
         <div class="row" role="group" aria-label="Show" style="margin-bottom:16px">${['all', ...o.pillars].map(p => `<a class="btn ${tab === p ? '' : 'quiet'} small" href="?show=${encodeURIComponent(p)}">${p === 'all' ? 'Everything' : esc(p)}</a>`).join('')}</div>
