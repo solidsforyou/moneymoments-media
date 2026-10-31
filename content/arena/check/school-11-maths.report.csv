@@ -1,0 +1,2 @@
+qid,key,checker,confidence,question,a,b,c,d,why
+school-11-maths-6-h4,A,B,high,"How many 5-digit numbers divisible by 4 can be formed from digits 1, 2, 3, 4, 5 with no digit repeated?",24,18,30,12,"The last two digits must form 12, 24, 32 or 52 (4 ways). The other three digits fill the rest in 3! = 6 ways. 4 x 6 = 24."

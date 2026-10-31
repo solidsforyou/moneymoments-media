@@ -1,0 +1,181 @@
+qid,chapter,question,A,B,C,D
+school-12-chemistry-1-e1,Solutions,4 g of NaOH (molar mass 40 g/mol) is dissolved in 500 g of water. What is the molality of the solution?,0.1 m,0.2 m,0.8 m,2.0 m
+school-12-chemistry-1-e2,Solutions,"According to Henry's law, at constant temperature the solubility of a gas in a liquid is directly proportional to what?",Temperature of the liquid,Volume of the liquid,Partial pressure of the gas,Molar mass of the gas
+school-12-chemistry-1-m1,Solutions,18 g of glucose (molar mass 180 g/mol) is dissolved in 90 g of water. What is the mole fraction of glucose?,0.98,0.2,0.0098,0.0196
+school-12-chemistry-1-m2,Solutions,"6 g of urea (molar mass 60 g/mol) is dissolved in 200 g of water. If Kb of water is 0.52 K kg/mol, what is the rise in boiling point?",0.26 K,0.52 K,0.13 K,2.6 K
+school-12-chemistry-1-h1,Solutions,"What is the freezing point depression of 0.1 m CaCl2 solution, assuming complete dissociation? (Kf of water = 1.86 K kg/mol)",0.186 K,0.372 K,0.558 K,0.279 K
+school-12-chemistry-1-h2,Solutions,The vapour pressure of pure water at 25 C is 23.8 mmHg. What is the vapour pressure of a solution of 9 g glucose (molar mass 180 g/mol) in 162 g water?,About 23.93 mmHg,About 0.13 mmHg,About 22.5 mmHg,About 23.67 mmHg
+school-12-chemistry-2-e1,Electrochemistry,At which electrode does oxidation take place in a galvanic cell?,Cathode,Salt bridge,Anode,Both electrodes
+school-12-chemistry-2-e2,Electrochemistry,What is the SI-based unit commonly used for molar conductivity?,S cm-1,ohm cm,S mol cm-2,S cm2 mol-1
+school-12-chemistry-2-m1,Electrochemistry,E0 values: Ag+/Ag = +0.80 V and Cu2+/Cu = +0.34 V. What is E0cell for the cell Cu | Cu2+ || Ag+ | Ag?,+0.46 V,+1.14 V,+0.06 V,-0.46 V
+school-12-chemistry-2-m2,Electrochemistry,"A current of 2 A is passed for 965 s through CuSO4 solution. What mass of copper is deposited? (Cu = 63.5, 1 F = 96500 C)",1.27 g,0.635 g,0.3175 g,6.35 g
+school-12-chemistry-2-h1,Electrochemistry,"For Zn + Cu2+ -> Zn2+ + Cu, E0cell = 1.10 V. What is Ecell at 298 K when [Zn2+] = 0.01 M and [Cu2+] = 1 M? (use 0.059/n log Q)",About 1.04 V,About 1.13 V,About 1.22 V,About 1.16 V
+school-12-chemistry-2-h2,Electrochemistry,"Limiting molar conductivities (S cm2 mol-1) are 426 for HCl, 126 for NaCl and 91 for CH3COONa. What is the value for CH3COOH?",391,461,643,301
+school-12-chemistry-3-e1,Chemical Kinetics,What is the unit of the rate constant of a first-order reaction?,mol L-1 s-1,L mol-1 s-1,mol s-1,s-1
+school-12-chemistry-3-e2,Chemical Kinetics,What is the overall order of a reaction with rate = k[A]^2[B]?,3,2,1,0
+school-12-chemistry-3-m1,Chemical Kinetics,A first-order reaction has k = 0.0231 min-1. What is its half-life?,15 min,30 min,60 min,0.016 min
+school-12-chemistry-3-m2,Chemical Kinetics,"For rate = k[A][B]^2, by what factor does the rate change if both [A] and [B] are doubled?",4,6,8,16
+school-12-chemistry-3-h1,Chemical Kinetics,"The rate of a reaction doubles when temperature rises from 300 K to 310 K. What is the approximate activation energy? (R = 8.314 J/K/mol, ln 2 = 0.693)",53.6 kJ/mol,5.36 kJ/mol,107 kJ/mol,26.8 kJ/mol
+school-12-chemistry-3-h2,Chemical Kinetics,A first-order reaction is 75% complete in 40 min. How long will it take to be 93.75% complete?,60 min,80 min,160 min,120 min
+school-12-chemistry-4-e1,The d- and f-Block Elements,Which of these is not considered a transition element?,Zn,Fe,Cu,Ni
+school-12-chemistry-4-e2,The d- and f-Block Elements,What is the general outer electronic configuration of d-block elements?,ns2 np1-6,(n-1)d1-10 ns1-2,(n-2)f1-14 (n-1)d0-1 ns2,ns1-2
+school-12-chemistry-4-m1,The d- and f-Block Elements,Which of these ions is colourless in aqueous solution?,Cu2+,Ti3+,Zn2+,Fe3+
+school-12-chemistry-4-m2,The d- and f-Block Elements,What is the spin-only magnetic moment of Fe3+ (Z = 26)?,4.90 BM,3.87 BM,1.73 BM,5.92 BM
+school-12-chemistry-4-h1,The d- and f-Block Elements,Cr2+ is a strong reducing agent while Mn3+ is a strong oxidising agent. Which explanation is correct?,Cr2+ -> Cr3+ gives d5 and Mn3+ -> Mn2+ gives d3,Cr2+ -> Cr3+ gives stable d3 (t2g3) and Mn3+ -> Mn2+ gives stable half-filled d5,Both change to a noble gas configuration,Both change to a completely filled d10
+school-12-chemistry-4-h2,The d- and f-Block Elements,"How many unpaired electrons are there in Gd3+ (Z = 64, Gd = [Xe]4f7 5d1 6s2)?",8,6,7,5
+school-12-chemistry-5-e1,Coordination Compounds,What is the oxidation state of iron in K4[Fe(CN)6]?,+3,+2,+4,0
+school-12-chemistry-5-e2,Coordination Compounds,What is the coordination number of cobalt in [Co(NH3)6]Cl3?,3,9,6,4
+school-12-chemistry-5-m1,Coordination Compounds,What is the IUPAC name of [Co(NH3)4Cl2]Cl?,Dichloridotetraamminecobalt(II) chloride,Tetraamminedichlorocobalt(III) chlorine,Tetraamminedichloridocobalt(II) chloride,Tetraamminedichloridocobalt(III) chloride
+school-12-chemistry-5-m2,Coordination Compounds,Excess AgNO3 is added to a solution of 1 mol of [Co(NH3)5Cl]Cl2. How many moles of AgCl are precipitated?,2,1,3,0
+school-12-chemistry-5-h1,Coordination Compounds,Which complex has the highest number of unpaired electrons?,[Fe(CN)6]4-,[Fe(CN)6]3-,[FeF6]3-,[Co(NH3)6]3+
+school-12-chemistry-5-h2,Coordination Compounds,How many stereoisomers (counting optical isomers) does [Co(en)2Cl2]+ have?,2,4,1,3
+school-12-chemistry-6-e1,Haloalkanes and Haloarenes,What is the IUPAC name of CH3CH2CH2Br?,2-Bromopropane,Propyl bromine,1-Bromopropane,3-Bromopropane
+school-12-chemistry-6-e2,Haloalkanes and Haloarenes,Which reagent converts an alcohol to an alkyl chloride giving only gaseous by-products?,PCl5,HCl with ZnCl2,NaCl,SOCl2
+school-12-chemistry-6-m1,Haloalkanes and Haloarenes,Which of these alkyl chlorides reacts fastest by the SN1 mechanism?,(CH3)3CCl,CH3Cl,CH3CH2Cl,(CH3)2CHCl
+school-12-chemistry-6-m2,Haloalkanes and Haloarenes,What is the major product when 2-bromobutane is heated with alcoholic KOH?,But-1-ene,But-2-ene,Butan-2-ol,Butane
+school-12-chemistry-6-h1,Haloalkanes and Haloarenes,Optically active 2-chlorobutane is hydrolysed by an SN1 reaction. What does the alcohol product look like?,Pure enantiomer with inversion,Pure enantiomer with retention,Optically inactive meso compound,Racemic mixture
+school-12-chemistry-6-h2,Haloalkanes and Haloarenes,Why is chlorobenzene less reactive than cyclohexyl chloride towards nucleophilic substitution?,The C-Cl bond has partial double bond character and the carbon is sp2,Chlorobenzene has no polar C-Cl bond,The benzene ring is not planar,Chlorine is a better leaving group in cyclohexyl chloride
+school-12-chemistry-7-e1,"Alcohols, Phenols and Ethers",Which of these is the most acidic?,Ethanol,Methanol,Water,Phenol
+school-12-chemistry-7-e2,"Alcohols, Phenols and Ethers",What is formed when ethanol is heated with concentrated H2SO4 at 443 K?,Ethene,Ethoxyethane,Ethanal,Ethane
+school-12-chemistry-7-m1,"Alcohols, Phenols and Ethers",What is the product of the reaction of sodium ethoxide with methyl iodide?,Ethanol,Ethoxymethane,Methanol,Ethoxyethane
+school-12-chemistry-7-m2,"Alcohols, Phenols and Ethers",Which of these phenols is the most acidic?,Phenol,p-Cresol,p-Nitrophenol,p-Methoxyphenol
+school-12-chemistry-7-h1,"Alcohols, Phenols and Ethers","Phenol is treated with CHCl3 and aqueous NaOH, followed by acid. What is the main product?",Salicylaldehyde,Salicylic acid,Chlorobenzene,Benzaldehyde
+school-12-chemistry-7-h2,"Alcohols, Phenols and Ethers",What is the major product of acid-catalysed dehydration of 2-methylbutan-2-ol?,2-Methylbut-1-ene,2-Methylbut-2-ene,3-Methylbut-1-ene,Pent-2-ene
+school-12-chemistry-8-e1,"Aldehydes, Ketones and Carboxylic Acids",Which of these gives a positive Tollens test?,Propanal,Propanone,Propanoic acid,Benzophenone
+school-12-chemistry-8-m1,"Aldehydes, Ketones and Carboxylic Acids",Which of these undergoes the Cannizzaro reaction with concentrated NaOH?,Ethanal,Propanal,Benzaldehyde,Propanone
+school-12-chemistry-8-m2,"Aldehydes, Ketones and Carboxylic Acids",Which acid is the strongest?,CH3COOH,ClCH2COOH,Cl2CHCOOH,Cl3CCOOH
+school-12-chemistry-8-h1,"Aldehydes, Ketones and Carboxylic Acids",What is the product when acetophenone is heated with Zn-Hg and concentrated HCl?,1-Phenylethanol,Ethylbenzene,Benzoic acid,Styrene
+school-12-chemistry-8-h2,"Aldehydes, Ketones and Carboxylic Acids",Which of these undergoes aldol condensation in dilute alkali?,Methanal,Benzaldehyde,Propanal,"2,2-Dimethylpropanal"
+school-12-chemistry-9-e1,Amines,What is the IUPAC name of CH3CH2NH2?,Methanamine,Ethanamine,Aminoethane-1,N-Methylmethanamine
+school-12-chemistry-9-m1,Amines,Which compound gives a foul-smelling isocyanide with CHCl3 and alcoholic KOH?,Diethylamine,Triethylamine,"N,N-Dimethylaniline",Ethylamine
+school-12-chemistry-9-m2,Amines,What is the product when ethanamide is heated with Br2 and aqueous NaOH?,Methanamine,Ethanamine,Ethanoic acid,Methanol
+school-12-chemistry-9-h1,Amines,Which conversion of benzenediazonium chloride does not need a copper salt?,C6H5N2+ -> C6H5Cl,C6H5N2+ -> C6H5Br,C6H5N2+ -> C6H5I using KI,C6H5N2+ -> C6H5CN
+school-12-chemistry-9-h2,Amines,What is the correct order of basic strength of ethyl amines in aqueous solution?,(C2H5)3N > (C2H5)2NH > C2H5NH2 > NH3,C2H5NH2 > (C2H5)2NH > (C2H5)3N > NH3,NH3 > C2H5NH2 > (C2H5)2NH > (C2H5)3N,(C2H5)2NH > (C2H5)3N > C2H5NH2 > NH3
+school-12-chemistry-10-e1,Biomolecules,Which of these is a monosaccharide?,Sucrose,Lactose,Glucose,Maltose
+school-12-chemistry-10-m1,Biomolecules,Why is sucrose a non-reducing sugar?,"Its glycosidic bond uses both anomeric carbons, so no free aldehyde or ketone group remains",It has no hydroxyl groups,It contains a ketone group but no aldehyde,It is a polysaccharide
+school-12-chemistry-10-h1,Biomolecules,A sample of double-stranded DNA has 30% adenine. What percentage is guanine?,30%,40%,70%,20%
+school-12-chemistry-10-h2,Biomolecules,"When a protein is denatured by heating, which structure level is not affected?",Primary structure,Secondary structure,Tertiary structure,Quaternary structure
+school-12-chemistry-1-e3,Solutions,Which of these concentration terms changes with temperature?,Molarity,Molality,Mole fraction,Mass percentage
+school-12-chemistry-1-e4,Solutions,A solution contains 1 mol of ethanol and 3 mol of water. What is the mole fraction of ethanol?,0.33,0.75,0.25,0.5
+school-12-chemistry-1-e6,Solutions,Which colligative property is best suited for finding the molar mass of proteins and polymers?,Boiling point elevation,Freezing point depression,Osmotic pressure,Relative lowering of vapour pressure
+school-12-chemistry-1-e7,Solutions,What are the values of delta H(mix) and delta V(mix) for an ideal solution?,Both are zero,Both are positive,Both are negative,delta H positive and delta V zero
+school-12-chemistry-1-m3,Solutions,4.9 g of H2SO4 (molar mass 98 g/mol) is dissolved in water to make 500 mL of solution. What is its molarity?,0.2 M,0.1 M,0.5 M,0.05 M
+school-12-chemistry-1-m6,Solutions,A 0.2 molal solution of a non-electrolyte in water is cooled. What is its freezing point? (Kf = 1.86 K kg/mol),+0.372 C,-1.86 C,-0.372 C,-0.186 C
+school-12-chemistry-1-m7,Solutions,What is the van't Hoff factor of Al2(SO4)3 if it dissociates completely in water?,5,2,3,4
+school-12-chemistry-1-m8,Solutions,What mass of glucose (molar mass 180 g/mol) is needed to prepare 250 mL of 0.1 M solution?,18 g,1.8 g,4.5 g,45 g
+school-12-chemistry-1-h4,Solutions,Ethanoic acid dimerises completely in benzene. What is its van't Hoff factor?,2,1,0.5,1.5
+school-12-chemistry-1-h5,Solutions,K4[Fe(CN)6] is 70% dissociated in a 0.1 molal aqueous solution into 4 K+ and [Fe(CN)6](4-). What is the freezing point depression? (Kf = 1.86 K kg/mol),0.707 K,0.186 K,0.930 K,0.521 K
+school-12-chemistry-1-h6,Solutions,"Liquids A and B have pure vapour pressures of 100 mmHg and 200 mmHg. For an equimolar ideal liquid mixture, what is the mole fraction of B in the vapour?",0.50,0.33,0.67,0.75
+school-12-chemistry-1-h8,Solutions,A urea solution containing 3.0 g of urea (60 g/mol) per litre is isotonic with a glucose solution at the same temperature. How many grams of glucose (180 g/mol) are in each litre?,3 g,1 g,9 g,30 g
+school-12-chemistry-2-e3,Electrochemistry,What is the standard electrode potential of the standard hydrogen electrode by convention?,0 V,+1 V,-1 V,+0.34 V
+school-12-chemistry-2-e4,Electrochemistry,Which of these is a secondary cell?,Dry cell,Mercury cell,Lead storage battery,Fuel cell
+school-12-chemistry-2-e6,Electrochemistry,How much charge do one mole of electrons carry?,1.6 x 10^-19 C,6.022 x 10^23 C,96500 C,9650 C
+school-12-chemistry-2-e7,Electrochemistry,What is the SI-related unit commonly used for the conductivity (kappa) of a solution?,S cm^-1,S cm^2 mol^-1,ohm cm^2,S mol cm^-1
+school-12-chemistry-2-m3,Electrochemistry,A current of 0.5 A is passed for 1930 s through silver nitrate solution. What mass of silver is deposited? (Ag = 108; 1 F = 96500 C),1.08 g,2.16 g,0.54 g,10.8 g
+school-12-chemistry-2-m4,Electrochemistry,E0 values are Zn2+/Zn = -0.76 V and Ag+/Ag = +0.80 V. What is E0cell for Zn | Zn2+ || Ag+ | Ag?,0.04 V,-1.56 V,1.56 V,0.84 V
+school-12-chemistry-2-m5,Electrochemistry,A cell reaction with n = 2 has E0cell = 0.46 V. What is delta G0? (F = 96500 C/mol),-88.8 kJ/mol,-44.4 kJ/mol,+88.8 kJ/mol,-0.89 kJ/mol
+school-12-chemistry-2-m7,Electrochemistry,A conductivity cell filled with a solution of kappa = 0.002 S/cm shows a resistance of 500 ohm. What is the cell constant?,1.0 cm^-1,0.001 cm^-1,250 cm^-1,0.25 cm^-1
+school-12-chemistry-2-h4,Electrochemistry,A cell has n = 2 and E0cell = 0.118 V at 298 K. What is its equilibrium constant? (Use E0 = (0.059/n) log K),10^2,10^8,10^4,2
+school-12-chemistry-2-h5,Electrochemistry,What is the EMF at 298 K of the concentration cell Cu | Cu2+ (0.01 M) || Cu2+ (1.0 M) | Cu?,0.059 V,0.118 V,0.0295 V,0 V
+school-12-chemistry-2-h6,Electrochemistry,"Limiting molar conductivities (S cm^2/mol) are NH4Cl 150, NaOH 248 and NaCl 126. What is the value for NH4OH?",224,524,272,100
+school-12-chemistry-2-h7,Electrochemistry,A 0.01 M weak acid HA has conductivity 3.9 x 10^-4 S/cm and its limiting molar conductivity is 390 S cm^2/mol. What is its degree of dissociation?,0.1,0.01,0.39,1.0
+school-12-chemistry-3-e3,Chemical Kinetics,Which of these is the unit of the rate of a reaction?,mol L^-1 s^-1,s^-1,L mol^-1 s^-1,mol L^-1
+school-12-chemistry-3-e4,Chemical Kinetics,What is the unit of the rate constant of a zero-order reaction?,s^-1,L mol^-1 s^-1,mol L^-1 s^-1,mol^2 L^-2 s^-1
+school-12-chemistry-3-e5,Chemical Kinetics,The half-life of a first-order reaction depends on which of these?,Only the rate constant,Initial concentration,Initial pressure,Both rate constant and concentration
+school-12-chemistry-3-e8,Chemical Kinetics,The rate of a reaction doubles when the concentration of A is doubled. What is the order with respect to A?,0,2,1,1/2
+school-12-chemistry-3-m3,Chemical Kinetics,"A first-order reaction has k = 0.0693 min^-1. If the initial concentration is 0.8 M, what is the concentration after 20 min?",0.2 M,0.4 M,0.1 M,0.6 M
+school-12-chemistry-3-m4,Chemical Kinetics,A zero-order reaction has k = 0.02 mol/L/s and an initial concentration of 1.0 M. How long does it take to finish?,25 s,0.02 s,50 s,100 s
+school-12-chemistry-3-m7,Chemical Kinetics,A first-order reaction has a half-life of 34.65 min. What is its rate constant?,0.02 min^-1,0.2 min^-1,24 min^-1,0.002 min^-1
+school-12-chemistry-3-m8,Chemical Kinetics,"In a plot of ln k against 1/T for a reaction, what is the slope?",Ea / R,-R / Ea,-Ea / R,ln A
+school-12-chemistry-3-h3,Chemical Kinetics,"20% of a first-order reaction is completed in 10 min. How long will it take for 80% to be completed? (log 5 = 0.699, log 1.25 = 0.097)",About 72 min,About 40 min,About 50 min,About 36 min
+school-12-chemistry-3-h4,Chemical Kinetics,"The rate constant of a reaction triples when the temperature is raised from 300 K to 310 K. What is the activation energy? (R = 8.314 J/K/mol, ln 3 = 1.10)",About 29 kJ/mol,About 8.5 kJ/mol,About 85 kJ/mol,About 170 kJ/mol
+school-12-chemistry-3-h7,Chemical Kinetics,A reaction has the mechanism: step 1 (slow) A + B -> C; step 2 (fast) C + B -> D. What is the rate law?,Rate = k[A][B],Rate = k[A][B]^2,Rate = k[C][B],Rate = k[A]
+school-12-chemistry-3-h8,Chemical Kinetics,A radioactive isotope (first-order decay) has a half-life of 10 years. What mass of a 100 g sample remains after 25 years?,25 g,12.5 g,17.7 g,6.25 g
+school-12-chemistry-4-e3,The d- and f-Block Elements,Which 3d-series element shows the highest oxidation state of +7?,Manganese,Chromium,Iron,Vanadium
+school-12-chemistry-4-e4,The d- and f-Block Elements,Which oxidation state is the most common among lanthanoids?,+2,+4,+3,+5
+school-12-chemistry-4-e5,The d- and f-Block Elements,Brass is an alloy of which two metals?,Copper and zinc,Copper and tin,Iron and carbon,Copper and nickel
+school-12-chemistry-4-e6,The d- and f-Block Elements,Which ion is responsible for the purple colour of potassium permanganate solution?,Mn2+,MnO2,MnO4-,MnO4(2-)
+school-12-chemistry-4-m3,The d- and f-Block Elements,What is the spin-only magnetic moment of Ti3+ (Z = 22)?,1.73 BM,2.83 BM,0 BM,3.87 BM
+school-12-chemistry-4-m4,The d- and f-Block Elements,"In acidic medium, permanganate ion is reduced to which species?",MnO2,MnO4(2-),Mn2+,Mn3+
+school-12-chemistry-4-m5,The d- and f-Block Elements,Why do transition metals show variable oxidation states?,Because ns and (n-1)d electrons have nearly equal energies,Because they have large atomic size,Because they have high ionisation energies only,Because they are all metals
+school-12-chemistry-4-m6,The d- and f-Block Elements,What is the main cause of lanthanoid contraction?,Strong shielding by 4f electrons,Increase in the number of shells,Poor shielding by 4f electrons,Decrease in nuclear charge
+school-12-chemistry-4-h4,The d- and f-Block Elements,Which ion has a spin-only magnetic moment of about 4.90 BM?,Fe3+ (Z = 26),Cu2+ (Z = 29),Fe2+ (Z = 26),Zn2+ (Z = 30)
+school-12-chemistry-4-h5,The d- and f-Block Elements,K2MnO4 solution is acidified. What products form?,MnO4- and MnO2,Mn2+ and MnO2,MnO4- and Mn2+,Only MnO2
+school-12-chemistry-4-h6,The d- and f-Block Elements,Why is Cu+ colourless while Cu2+ is coloured?,Cu+ has no d electrons,Cu2+ has a full d subshell,Cu+ is d10 so no d-d transition; Cu2+ is d9 with one vacancy,Cu+ has seven unpaired electrons
+school-12-chemistry-4-h7,The d- and f-Block Elements,"Why do zinc, cadmium and mercury have low melting points compared with other d-block metals?",Their d10 configuration means no d electrons take part in metallic bonding,They have no valence electrons,They have very large atomic mass,They are non-metals
+school-12-chemistry-5-e3,Coordination Compounds,Which of these is a bidentate ligand?,Ethylenediamine,Ammonia,Chloride ion,Water
+school-12-chemistry-5-e4,Coordination Compounds,What is the coordination number of platinum in [PtCl4](2-)?,2,6,4,1
+school-12-chemistry-5-e5,Coordination Compounds,What is the oxidation state of chromium in [Cr(H2O)6]Cl3?,+3,+6,0,+2
+school-12-chemistry-5-e6,Coordination Compounds,What is the formula of potassium tetrahydroxozincate(II)?,K[Zn(OH)4],K2[Zn(OH)2],K2[Zn(OH)4],K4[Zn(OH)4]
+school-12-chemistry-5-m3,Coordination Compounds,What is the geometry of Ni(CO)4?,Tetrahedral (sp3),Square planar (dsp2),Octahedral (d2sp3),Linear (sp)
+school-12-chemistry-5-m4,Coordination Compounds,What is the spin-only magnetic moment of the low-spin [Fe(CN)6](3-) ion?,0 BM,2.83 BM,1.73 BM,5.92 BM
+school-12-chemistry-5-m6,Coordination Compounds,How many unpaired electrons are in [Co(NH3)6]3+?,4,2,0,6
+school-12-chemistry-5-m7,Coordination Compounds,Which complex is used as an anticancer drug?,cis-[Pt(NH3)2Cl2],trans-[Pt(NH3)2Cl2],[Ni(CO)4],K4[Fe(CN)6]
+school-12-chemistry-5-h3,Coordination Compounds,What is the spin-only magnetic moment of the high-spin [CoF6](3-) ion? (Co: Z = 27),4.90 BM,5.92 BM,3.87 BM,0 BM
+school-12-chemistry-5-h4,Coordination Compounds,What is the crystal field stabilisation energy of a d3 ion in an octahedral field?,-0.6 delta(o),-0.4 delta(o),-1.2 delta(o),-1.8 delta(o)
+school-12-chemistry-5-h5,Coordination Compounds,How many geometrical isomers does [Co(NH3)3Cl3] have?,2,3,4,1
+school-12-chemistry-5-h6,Coordination Compounds,Which complex gives the highest molar conductivity in water?,[Co(NH3)5Cl]Cl2,[Co(NH3)4Cl2]Cl,[Co(NH3)6]Cl3,[Co(NH3)3Cl3]
+school-12-chemistry-6-e3,Haloalkanes and Haloarenes,How is CH3CH2CHBrCH3 classified?,Secondary alkyl halide,Primary alkyl halide,Tertiary alkyl halide,Allylic halide
+school-12-chemistry-6-e4,Haloalkanes and Haloarenes,Which of these compounds is used as an antiseptic?,Chloroform,Freon-12,Iodoform,DDT
+school-12-chemistry-6-e5,Haloalkanes and Haloarenes,Which reagent converts CH3CH2Br into CH3CH2OH?,Aqueous KOH,Alcoholic KOH,Na in dry ether,AgCN
+school-12-chemistry-6-e7,Haloalkanes and Haloarenes,What is the hybridisation of the carbon bonded to the halogen in an alkyl halide?,sp3,sp2,sp,sp3d
+school-12-chemistry-6-m3,Haloalkanes and Haloarenes,Ethyl bromide reacts with AgCN. What is the main product?,Ethyl isocyanide,Ethyl cyanide,Ethylamine,Propanoic acid
+school-12-chemistry-6-m4,Haloalkanes and Haloarenes,"Chlorobenzene, methyl chloride and sodium react in dry ether. What is the product?",Biphenyl,Ethane,Toluene,Chlorotoluene
+school-12-chemistry-6-m5,Haloalkanes and Haloarenes,Which of these is optically active?,2-Bromobutane,2-Bromopropane,1-Bromobutane,Bromoethane
+school-12-chemistry-6-m6,Haloalkanes and Haloarenes,Which alkyl bromide reacts fastest by the SN2 mechanism?,(CH3)2CHBr,CH3CH2Br,CH3Br,(CH3)3CBr
+school-12-chemistry-6-h3,Haloalkanes and Haloarenes,What is the major product when 2-bromopentane is heated with alcoholic KOH?,Pent-2-ene,Pent-1-ene,Pentane,Pentan-2-ol
+school-12-chemistry-6-h4,Haloalkanes and Haloarenes,"Chlorobenzene is treated with Mg in dry ether, then CO2, then dilute acid. What is the final product?",Phenol,Benzaldehyde,Benzoic acid,Toluene
+school-12-chemistry-6-h5,Haloalkanes and Haloarenes,How many stereoisomers does 2-bromo-3-chlorobutane have?,4,2,3,6
+school-12-chemistry-6-h7,Haloalkanes and Haloarenes,"For tert-butyl bromide hydrolysis by SN1, the rate of reaction when the OH- concentration is doubled is how much?",Unchanged,Doubled,Quadrupled,Halved
+school-12-chemistry-7-e3,"Alcohols, Phenols and Ethers",What is the IUPAC name of CH3CH(OH)CH3?,Propan-2-ol,Propan-1-ol,Isopropane,Propanol-2-one
+school-12-chemistry-7-e4,"Alcohols, Phenols and Ethers",Ethanol is oxidised with PCC. What is the product?,Ethanoic acid,Ethene,Ethanal,Ethane
+school-12-chemistry-7-e5,"Alcohols, Phenols and Ethers",Which general formula represents ethers?,R-O-R',R-OH,R-CO-R',R-COOH
+school-12-chemistry-7-e8,"Alcohols, Phenols and Ethers",Which colour is produced when neutral ferric chloride is added to phenol?,Red,Yellow,Violet,Colourless
+school-12-chemistry-7-m3,"Alcohols, Phenols and Ethers",Which alcohol gives turbidity immediately with Lucas reagent at room temperature?,2-Methylpropan-2-ol,Butan-1-ol,Butan-2-ol,Ethanol
+school-12-chemistry-7-m4,"Alcohols, Phenols and Ethers",What is formed when phenol is distilled with zinc dust?,Benzaldehyde,Toluene,Benzene,Cyclohexane
+school-12-chemistry-7-m5,"Alcohols, Phenols and Ethers",Ethanol reacts with thionyl chloride. What is the main product?,Chloroethane,Ethene,Ethanal,Diethyl ether
+school-12-chemistry-7-m8,"Alcohols, Phenols and Ethers",Which two products are formed in the cumene process?,Phenol and ethanal,Benzene and acetone,Phenol and acetone,Toluene and phenol
+school-12-chemistry-7-h3,"Alcohols, Phenols and Ethers",Anisole (methoxybenzene) is heated with HI. What are the products?,Phenol and methyl iodide,Iodobenzene and methanol,Benzene and methanol,Phenol and methanol
+school-12-chemistry-7-h5,"Alcohols, Phenols and Ethers",Which is the correct order of decreasing acidity?,p-Nitrophenol > phenol > p-cresol > ethanol,Phenol > p-nitrophenol > p-cresol > ethanol,p-Cresol > phenol > p-nitrophenol > ethanol,Ethanol > p-cresol > phenol > p-nitrophenol
+school-12-chemistry-7-h6,"Alcohols, Phenols and Ethers",A tertiary alcohol is passed over copper at 573 K. What is formed?,A ketone,An aldehyde,An alkene,A carboxylic acid
+school-12-chemistry-7-h7,"Alcohols, Phenols and Ethers",Propene undergoes hydroboration-oxidation. What is the main product?,Propan-1-ol,Propan-2-ol,Propanal,Propanone
+school-12-chemistry-8-e3,"Aldehydes, Ketones and Carboxylic Acids",What is the IUPAC name of CH3COCH3?,Propanone,Propanal,Ethanone,Propanoic acid
+school-12-chemistry-8-e4,"Aldehydes, Ketones and Carboxylic Acids",Which of these gives a red precipitate with Fehling's solution?,Propanone,Benzophenone,Ethanal,Acetophenone
+school-12-chemistry-8-e5,"Aldehydes, Ketones and Carboxylic Acids",Ethanal is oxidised with a mild oxidant. What is the product?,Ethanoic acid,Ethanol,Ethane,Propanone
+school-12-chemistry-8-e6,"Aldehydes, Ketones and Carboxylic Acids",What is the IUPAC name of HCOOH?,Ethanoic acid,Formaldehyde,Methanoic acid,Methanol
+school-12-chemistry-8-e8,"Aldehydes, Ketones and Carboxylic Acids",Which acid is present in vinegar?,Methanoic acid,Citric acid,Ethanoic acid,Lactic acid
+school-12-chemistry-8-m3,"Aldehydes, Ketones and Carboxylic Acids",Which of these gives a positive iodoform test?,Propanone,Pentan-3-one,Benzaldehyde,Propanal
+school-12-chemistry-8-m4,"Aldehydes, Ketones and Carboxylic Acids",Ethanal reacts with HCN. What is the product?,Propanenitrile,Ethanenitrile,2-Hydroxypropanenitrile,Propan-2-ol
+school-12-chemistry-8-m7,"Aldehydes, Ketones and Carboxylic Acids",Which is a stronger acid?,Methanoic acid,Ethanoic acid,Propanoic acid,Butanoic acid
+school-12-chemistry-8-m8,"Aldehydes, Ketones and Carboxylic Acids",Ethanoic acid reacts with ethanol in the presence of a few drops of conc. H2SO4. What is formed?,Diethyl ether,Ethanal,Ethyl ethanoate,Ethane
+school-12-chemistry-8-h4,"Aldehydes, Ketones and Carboxylic Acids",Which of these does NOT undergo aldol condensation?,Ethanal,Propanone,Benzaldehyde,Butanal
+school-12-chemistry-8-h6,"Aldehydes, Ketones and Carboxylic Acids","A compound C3H6O gives a 2,4-DNP precipitate, a negative Tollens test and a positive iodoform test. What is it?",Propanal,Prop-2-en-1-ol,Propanone,Propan-2-ol
+school-12-chemistry-8-h7,"Aldehydes, Ketones and Carboxylic Acids","Propanoic acid reacts with Br2 and red phosphorus, then water. What is the main product?",2-Bromopropanoic acid,3-Bromopropanoic acid,Bromopropane,Propanoyl bromide
+school-12-chemistry-8-h8,"Aldehydes, Ketones and Carboxylic Acids",Sodium benzoate is heated with soda lime. What is the product?,Benzaldehyde,Phenol,Benzene,Toluene
+school-12-chemistry-9-e3,Amines,What is the IUPAC name of CH3NHCH3?,N-Methylmethanamine,Dimethylamine,Ethanamine,Methylethanamine
+school-12-chemistry-9-e4,Amines,To which class does (CH3)3N belong?,Primary amine,Secondary amine,Tertiary amine,Quaternary salt
+school-12-chemistry-9-e5,Amines,Nitrobenzene is reduced with Sn and HCl. What is the product?,Aniline,Phenol,Benzene,Benzamide
+school-12-chemistry-9-e6,Amines,What is the hybridisation of nitrogen in amines?,sp2,sp,sp3,sp3d
+school-12-chemistry-9-e7,Amines,Which test is used for primary amines?,Carbylamine test,Iodoform test,Lucas test,Tollens test
+school-12-chemistry-9-m3,Amines,Aniline reacts with acetyl chloride. What is formed?,Acetanilide,Acetophenone,Benzamide,Nitrobenzene
+school-12-chemistry-9-m4,Amines,Aniline is treated with bromine water. What is formed?,4-Bromoaniline,2-Bromoaniline,"2,4,6-Tribromoaniline",Bromobenzene
+school-12-chemistry-9-m5,Amines,Which reagent converts benzenediazonium chloride into chlorobenzene?,Cu2Cl2/HCl,KI,H3PO2,H2O
+school-12-chemistry-9-m6,Amines,"Which has the highest boiling point among butan-1-amine, N-methylpropan-1-amine and N,N-dimethylethanamine?",N-Methylpropan-1-amine,"N,N-Dimethylethanamine",Butan-1-amine,All equal
+school-12-chemistry-9-h5,Amines,How many primary amines are isomeric with C4H11N?,4,2,3,5
+school-12-chemistry-9-h6,Amines,What is the order of basicity of methylamines in the gas phase?,NH3 > CH3NH2 > (CH3)2NH > (CH3)3N,(CH3)2NH > (CH3)3N > CH3NH2 > NH3,(CH3)3N > (CH3)2NH > CH3NH2 > NH3,CH3NH2 > (CH3)2NH > (CH3)3N > NH3
+school-12-chemistry-9-h7,Amines,Butanamide is heated with Br2 and aqueous NaOH. What is the main product?,Propan-1-amine,Butan-1-amine,Butanoic acid,Propanamide
+school-12-chemistry-9-h8,Amines,Why is aniline acetylated before nitration?,Acetylation makes it more basic,To increase solubility,"Nitrating mixture protonates -NH2 to -NH3+, giving meta products and oxidation",To make it acidic
+school-12-chemistry-10-e3,Biomolecules,To which class does glucose belong?,Aldohexose,Ketohexose,Aldopentose,Ketopentose
+school-12-chemistry-10-e4,Biomolecules,Which sugar is present in RNA?,Deoxyribose,Glucose,Ribose,Fructose
+school-12-chemistry-10-e6,Biomolecules,Which vitamin is fat-soluble?,Vitamin C,Vitamin B1,Vitamin A,Vitamin B12
+school-12-chemistry-10-e7,Biomolecules,Which of these is a disaccharide?,Lactose,Glucose,Starch,Fructose
+school-12-chemistry-10-e8,Biomolecules,Enzymes are chemically what?,Lipids,Carbohydrates,Proteins,Nucleic acids
+school-12-chemistry-10-m3,Biomolecules,What does hydrolysis of sucrose give?,Glucose and fructose,Two glucose,Glucose and galactose,Fructose and galactose
+school-12-chemistry-10-m4,Biomolecules,How many chiral carbon atoms are there in open-chain D-glucose?,5,3,4,6
+school-12-chemistry-10-m5,Biomolecules,How many hydrogen bonds join guanine and cytosine?,3,2,1,4
+school-12-chemistry-10-m7,Biomolecules,Deficiency of which vitamin causes rickets?,Vitamin D,Vitamin C,Vitamin A,Vitamin K
+school-12-chemistry-10-m8,Biomolecules,Which is a fibrous protein?,Haemoglobin,Albumin,Keratin,Insulin
+school-12-chemistry-10-h4,Biomolecules,What is true at the isoelectric point of an amino acid?,It is a cation,It is an anion,It has no net charge and least solubility,It has maximum solubility
+school-12-chemistry-10-h5,Biomolecules,Which linkage joins glucose units in cellulose?,"Beta-1,4-glycosidic","Alpha-1,4-glycosidic","Alpha-1,6-glycosidic","Beta-1,6-glycosidic"
+school-12-chemistry-10-h6,Biomolecules,What is mutarotation?,Conversion of glucose to fructose,Change in colour,Change in optical rotation of a fresh glucose solution until constant,Oxidation by Tollens
+school-12-chemistry-10-h7,Biomolecules,A DNA sample contains 22% guanine. What percentage of adenine?,28%,22%,56%,44%

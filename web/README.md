@@ -15,7 +15,7 @@ page, its content feed and its app ID), **Arena** (the practice game), plus priv
 cd web
 npm install
 npm run dev        # builds, then serves http://localhost:8888
-npm test           # 12 end-to-end API tests
+npm test           # 19 end-to-end API tests
 ```
 
 ## Put it on Netlify (what the founder plugs in)

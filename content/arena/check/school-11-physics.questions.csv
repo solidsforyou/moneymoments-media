@@ -1,0 +1,253 @@
+qid,chapter,question,A,B,C,D
+school-11-physics-1-e1,Units and Measurement,Which of these is an SI base unit?,newton,kelvin,joule,pascal
+school-11-physics-1-e2,Units and Measurement,How many significant figures does the measurement 0.04050 m have?,2,3,4,5
+school-11-physics-1-e3,Units and Measurement,A light-year is a unit of which physical quantity?,distance,time,speed,energy
+school-11-physics-1-e4,Units and Measurement,A bus moves at 36 km/h. What is its speed in m/s?,36 m/s,10 m/s,3.6 m/s,100 m/s
+school-11-physics-1-e5,Units and Measurement,How many significant figures are there in 6.0200 x 10^3 kg?,3,4,5,6
+school-11-physics-1-e6,Units and Measurement,A small block has volume 2.5 cm^3. What is its volume in m^3?,2.5 x 10^-2 m^3,2.5 x 10^-3 m^3,2.5 x 10^-4 m^3,2.5 x 10^-6 m^3
+school-11-physics-1-m1,Units and Measurement,"What are the dimensions of Planck's constant h, given that the energy of a photon is E = h times frequency?",ML^2 T^-2,ML T^-1,M L^-1 T^-2,ML^2 T^-1
+school-11-physics-1-m2,Units and Measurement,"A rectangle is measured as 12.5 cm by 3.2 cm. Reporting the area with the correct number of significant figures, what is it?",40 cm^2,40.0 cm^2,40.00 cm^2,39.9 cm^2
+school-11-physics-1-m3,Units and Measurement,Which of these has the same dimensions as work?,torque,momentum,power,force
+school-11-physics-1-m4,Units and Measurement,A length of 12.11 m is added to a length of 3.4 m. What is the sum reported with the correct precision?,15.51 m,15.5 m,15.6 m,16 m
+school-11-physics-1-m5,Units and Measurement,"Which formula for the time period of a spring-mass system (mass m, spring constant k) is dimensionally correct?",T = 2 pi sqrt(k/m),T = 2 pi sqrt(mk),T = 2 pi sqrt(m/k),T = 2 pi m k
+school-11-physics-1-m6,Units and Measurement,The density of aluminium is 2.7 g/cm^3. What is it in kg/m^3?,27 kg/m^3,270 kg/m^3,2.7 kg/m^3,2700 kg/m^3
+school-11-physics-1-h1,Units and Measurement,The mass of a cube is measured with a 2% error and its side with a 1% error. What is the maximum percentage error in its density?,3%,5%,4%,2%
+school-11-physics-1-h2,Units and Measurement,The speed v of a wave on a stretched string depends on the tension F and the mass per unit length mu as v = k F^a mu^b. Find a and b.,"a = 1/2, b = 1/2","a = -1/2, b = 1/2","a = 1/2, b = -1/2","a = 1, b = -1"
+school-11-physics-1-h3,Units and Measurement,"The time period of a pendulum is T = 2 pi sqrt(l/g). In a lab, l is measured with 1% error and T with 2% error. What is the maximum percentage error in the value of g found from it?",5%,3%,4%,1.5%
+school-11-physics-1-h4,Units and Measurement,The density of a sphere is found from its mass (3% error) and radius (2% error). What is the maximum percentage error in the density?,5%,9%,7%,12%
+school-11-physics-1-h5,Units and Measurement,"In the van der Waals equation (P + a/V^2)(V - b) = RT, what are the dimensions of the constant a?",ML^-1 T^-2,ML^2 T^-2,ML^5 T^-2,ML^-5 T^2
+school-11-physics-1-h6,Units and Measurement,"A quantity is X = a^2 b^3 / sqrt(c). The percentage errors in a, b and c are 1%, 2% and 4%. What is the maximum percentage error in X?",8%,7%,12%,10%
+school-11-physics-2-e1,Motion in a Straight Line,A car starts from rest and accelerates uniformly at 2 m/s^2 for 5 s. What speed does it reach?,10 m/s,5 m/s,2.5 m/s,25 m/s
+school-11-physics-2-e2,Motion in a Straight Line,"On a velocity-time graph, what does the area under the curve represent?",Acceleration,Displacement,Average speed,Force
+school-11-physics-2-e3,Motion in a Straight Line,A bus covers 120 km in 2 hours. What is its average speed?,120 km/h,60 km/h,240 km/h,30 km/h
+school-11-physics-2-e4,Motion in a Straight Line,A stone is dropped from rest. What is its speed after 3 s? (take g = 10 m/s^2),10 m/s,15 m/s,30 m/s,45 m/s
+school-11-physics-2-e5,Motion in a Straight Line,"On a position-time graph, what does the slope of the line represent?",acceleration,displacement,distance,velocity
+school-11-physics-2-e6,Motion in a Straight Line,A runner completes one 400 m lap of a circular track and returns to the starting point in 80 s. What is her average velocity?,0 m/s,5 m/s,2.5 m/s,400 m/s
+school-11-physics-2-m1,Motion in a Straight Line,A ball is thrown vertically upward at 19.6 m/s (take g = 9.8 m/s^2). What maximum height does it reach?,39.2 m,9.8 m,19.6 m,29.4 m
+school-11-physics-2-m2,Motion in a Straight Line,A train moving at 72 km/h is braked and stops uniformly in 20 s. How far does it travel while braking?,400 m,100 m,1440 m,200 m
+school-11-physics-2-m3,Motion in a Straight Line,A car moving at 90 km/h is braked with a uniform retardation of 5 m/s^2. How far does it travel before stopping?,125 m,62.5 m,25 m,31.25 m
+school-11-physics-2-m4,Motion in a Straight Line,A ball thrown straight up returns to the thrower after 6 s. What maximum height did it reach? (g = 10 m/s^2),90 m,30 m,45 m,180 m
+school-11-physics-2-m5,Motion in a Straight Line,"The position of a particle is x = 3t^2 + 2t (x in metres, t in seconds). What is its velocity at t = 2 s?",16 m/s,8 m/s,12 m/s,14 m/s
+school-11-physics-2-m6,Motion in a Straight Line,"A train starts from rest and accelerates at 4 m/s^2 for 5 s, then moves at constant speed for 10 s. What total distance does it cover?",250 m,200 m,150 m,300 m
+school-11-physics-2-h1,Motion in a Straight Line,A stone dropped from the top of a tower covers 44.1 m in its last second of fall (g = 9.8 m/s^2). What is the height of the tower?,122.5 m,44.1 m,98 m,147 m
+school-11-physics-2-h2,Motion in a Straight Line,"Car A moves at a constant 10 m/s. At the instant it passes car B, which starts from rest, B begins to accelerate at 2 m/s^2 in the same direction. When does B catch up with A?",5 s,10 s,20 s,15 s
+school-11-physics-2-h3,Motion in a Straight Line,A car at 20 m/s sees a truck 100 m ahead moving at 10 m/s in the same direction. What is the minimum constant deceleration the car needs to avoid hitting the truck?,1 m/s^2,0.5 m/s^2,0.25 m/s^2,2 m/s^2
+school-11-physics-2-h4,Motion in a Straight Line,A ball is thrown upward at 20 m/s from the top of a 25 m high building. With what speed does it hit the ground? (g = 10 m/s^2),20 m/s,25 m/s,30 m/s,35 m/s
+school-11-physics-2-h5,Motion in a Straight Line,"A particle starts from rest, accelerates at 2 m/s^2 for 4 s, then decelerates at 4 m/s^2 until it stops. What total distance does it travel?",16 m,32 m,12 m,24 m
+school-11-physics-2-h6,Motion in a Straight Line,A ball is dropped from an 80 m high tower. At the same instant another ball is thrown up from the ground below it at 40 m/s. After how long do they meet? (g = 10 m/s^2),2 s,4 s,1 s,2.5 s
+school-11-physics-3-e1,Motion in a Plane,Which one of these is a vector quantity?,Speed,Distance,Mass,Displacement
+school-11-physics-3-e2,Motion in a Plane,Two forces of 3 N and 4 N act at right angles to each other. What is the magnitude of their resultant?,5 N,7 N,1 N,3.5 N
+school-11-physics-3-e3,Motion in a Plane,Two forces of 5 N and 7 N act on a body in the same direction. What is their resultant?,2 N,35 N,12 N,8.6 N
+school-11-physics-3-e4,Motion in a Plane,"At the highest point of a projectile's path, which component of its velocity is zero?",horizontal component,both components,neither component,vertical component
+school-11-physics-3-e5,Motion in a Plane,A body moves uniformly in a circle with a time period of 4 s. What is its angular speed?,pi/2 rad/s,2 pi rad/s,pi/4 rad/s,4 pi rad/s
+school-11-physics-3-e6,Motion in a Plane,What is the unit vector along the vector 3i + 4j?,3i + 4j,0.6i + 0.8j,0.8i + 0.6j,i + j
+school-11-physics-3-m1,Motion in a Plane,A ball is projected at 45 degrees to the horizontal with speed 20 m/s (g = 9.8 m/s^2). What is its range?,20.4 m,40.8 m,81.6 m,28.8 m
+school-11-physics-3-m2,Motion in a Plane,A stone moves in a circle of radius 2 m at a constant speed of 4 m/s. What is its centripetal acceleration?,2 m/s^2,16 m/s^2,8 m/s^2,4 m/s^2
+school-11-physics-3-m3,Motion in a Plane,A ball is projected at 15 degrees above the horizontal with speed 20 m/s. What is its horizontal range? (g = 10 m/s^2),40 m,10 m,20 m,34.6 m
+school-11-physics-3-m4,Motion in a Plane,A stone is whirled at 120 revolutions per minute in a circle of radius 0.5 m. What is its centripetal acceleration (to the nearest m/s^2)?,39 m/s^2,158 m/s^2,25 m/s^2,79 m/s^2
+school-11-physics-3-m5,Motion in a Plane,"If A = 3i + 4j and B = i - 2j, what is the magnitude of A + B?","sqrt(20), about 4.47",5,"sqrt(10), about 3.16",6
+school-11-physics-3-m6,Motion in a Plane,Car A moves east at 20 m/s and car B moves north at 15 m/s. What is the speed of A relative to B?,35 m/s,25 m/s,5 m/s,17.5 m/s
+school-11-physics-3-h1,Motion in a Plane,"Two projectiles are launched with the same speed, one at 30 degrees and one at 60 degrees. What is the ratio of their maximum heights (30 degrees : 60 degrees)?",3 : 1,1 : 1,1 : root 3,1 : 3
+school-11-physics-3-h2,Motion in a Plane,A boat that can move at 5 m/s in still water heads straight across a 100 m wide river. The river flows at 3 m/s. How far downstream does the boat land from the point directly opposite its start?,60 m,100 m,80 m,20 m
+school-11-physics-3-h3,Motion in a Plane,A ball is thrown horizontally at 15 m/s from a cliff 45 m high. With what speed does it hit the ground? (g = 10 m/s^2),45 m/s,30 m/s,about 33.5 m/s,15 m/s
+school-11-physics-3-h4,Motion in a Plane,"For a projectile, the horizontal range equals 4 times its maximum height. At what angle was it projected?",30 degrees,60 degrees,53 degrees,45 degrees
+school-11-physics-3-h5,Motion in a Plane,An aeroplane heads due north at 200 km/h in air. A wind blows towards the east at 100 km/h. What is the speed of the plane relative to the ground?,about 224 km/h,300 km/h,100 km/h,173 km/h
+school-11-physics-3-h6,Motion in a Plane,A particle moves on a circle of radius 5 m at a constant speed of 10 m/s. What is the magnitude of the change in its velocity after half a revolution?,0 m/s,20 m/s,10 m/s,31.4 m/s
+school-11-physics-4-e1,Laws of Motion,A net force acts on a 5 kg block and gives it an acceleration of 3 m/s^2. What is the net force?,8 N,1.67 N,15 N,2 N
+school-11-physics-4-e2,Laws of Motion,A passenger in a bus lurches forward when the bus brakes suddenly. Which idea explains this?,Action and reaction on the bus floor,Gravitational pull of the road,Centripetal force,Inertia of motion
+school-11-physics-4-e3,Laws of Motion,What is the SI unit of linear momentum?,kg m/s^2,N m,kg/s,kg m/s
+school-11-physics-4-e4,Laws of Motion,A 10 kg block slides on a floor with coefficient of kinetic friction 0.3. What is the friction force? (g = 10 m/s^2),30 N,3 N,100 N,10 N
+school-11-physics-4-e5,Laws of Motion,A rocket rises as hot gases are pushed out downward. Which law of motion explains this best?,Newton's first law,Newton's third law,Law of gravitation,Hooke's law
+school-11-physics-4-e6,Laws of Motion,A 0.2 kg ball moving at 10 m/s is stopped by a wall in 0.01 s. What is the average force on the ball?,2 N,20 N,200 N,2000 N
+school-11-physics-4-m1,Laws of Motion,A 2 kg block on a rough table is pulled by a horizontal force of 10 N. Friction on it is 4 N. What is its acceleration?,3 m/s^2,5 m/s^2,7 m/s^2,2 m/s^2
+school-11-physics-4-m2,Laws of Motion,A 60 kg person stands on a weighing scale in a lift accelerating upward at 2 m/s^2 (g = 9.8 m/s^2). What does the scale read in newtons?,588 N,708 N,468 N,600 N
+school-11-physics-4-m3,Laws of Motion,A 4 kg block slides down a smooth incline of 30 degrees. What is its acceleration? (g = 10 m/s^2),10 m/s^2,8.66 m/s^2,2.5 m/s^2,5 m/s^2
+school-11-physics-4-m4,Laws of Motion,A 50 kg person stands on a scale in a lift that is accelerating downward at 2 m/s^2. What does the scale read in newtons? (g = 10 m/s^2),400 N,500 N,600 N,100 N
+school-11-physics-4-m5,Laws of Motion,A car rounds a flat circular road of radius 40 m. The coefficient of friction is 0.5. What is the maximum safe speed? (g = 10 m/s^2),20 m/s,about 14.1 m/s,10 m/s,about 7.1 m/s
+school-11-physics-4-m6,Laws of Motion,A 5 kg block on a rough floor (mu = 0.2) is pushed by a horizontal force of 20 N. What is its acceleration? (g = 10 m/s^2),4 m/s^2,3 m/s^2,2 m/s^2,1 m/s^2
+school-11-physics-4-h1,Laws of Motion,Masses of 3 kg and 5 kg hang from the two ends of a light string passing over a smooth light pulley (g = 9.8 m/s^2). What is the tension in the string?,29.4 N,49 N,36.75 N,73.5 N
+school-11-physics-4-h2,Laws of Motion,Two blocks of 4 kg and 6 kg touch each other on a smooth floor. A horizontal push of 20 N is applied on the 4 kg block toward the 6 kg block. What contact force does the 4 kg block exert on the 6 kg block?,20 N,8 N,10 N,12 N
+school-11-physics-4-h3,Laws of Motion,"Blocks of 2 kg and 3 kg are joined by a light string on a smooth floor. A horizontal force of 10 N pulls the 3 kg block, which drags the 2 kg block. What is the tension in the string?",6 N,10 N,5 N,4 N
+school-11-physics-4-h4,Laws of Motion,A 4 kg block on a smooth table is joined by a string over a pulley to a 1 kg block hanging off the edge. What is the tension in the string? (g = 10 m/s^2),8 N,10 N,2 N,4 N
+school-11-physics-4-h5,Laws of Motion,A frictionless road is banked at 45 degrees with a radius of 50 m. At what speed can a car take the curve without relying on friction? (g = 10 m/s^2),25 m/s,about 22.4 m/s,50 m/s,about 15.8 m/s
+school-11-physics-4-h6,Laws of Motion,A 5 kg gun fires a 20 g bullet at 300 m/s. What is the recoil speed of the gun?,12 m/s,0.12 m/s,1.2 m/s,6 m/s
+school-11-physics-5-e1,"Work, Energy and Power",A constant force of 10 N acts on a body and moves it 5 m. The force makes an angle of 60 degrees with the displacement. How much work does it do?,50 J,25 J,43.3 J,5 J
+school-11-physics-5-e2,"Work, Energy and Power",What is the kinetic energy of a 2 kg object moving at 3 m/s?,6 J,18 J,9 J,3 J
+school-11-physics-5-e3,"Work, Energy and Power",How much work does the centripetal force do on a body in uniform circular motion?,zero,positive,negative,equal to m v^2
+school-11-physics-5-e4,"Work, Energy and Power",A 1000 kg car moves at 20 m/s. What is its kinetic energy?,2 x 10^4 J,2 x 10^5 J,1 x 10^5 J,4 x 10^5 J
+school-11-physics-5-e5,"Work, Energy and Power",How many joules are there in 1 kilowatt-hour?,3.6 x 10^3 J,6 x 10^4 J,3.6 x 10^6 J,1 x 10^3 J
+school-11-physics-5-e6,"Work, Energy and Power",A 5 kg object is lifted to a height of 4 m. What is its gain in potential energy? (g = 10 m/s^2),20 J,50 J,400 J,200 J
+school-11-physics-5-m1,"Work, Energy and Power",A spring of force constant 200 N/m is compressed by 0.1 m. How much energy is stored in it?,2 J,10 J,20 J,1 J
+school-11-physics-5-m2,"Work, Energy and Power",A pump lifts 50 kg of water through 10 m in 20 s (g = 9.8 m/s^2). What useful power does it deliver?,245 W,490 W,4900 W,24.5 W
+school-11-physics-5-m3,"Work, Energy and Power",A spring is compressed by 0.2 m and stores 4 J of energy. What is its spring constant?,200 N/m,100 N/m,400 N/m,20 N/m
+school-11-physics-5-m4,"Work, Energy and Power",A car engine delivers 20 kW to keep the car at a steady 20 m/s. What is the total resisting force on the car?,400 N,1000 N,4000 N,10000 N
+school-11-physics-5-m5,"Work, Energy and Power",A constant force of 8 N acts on a 4 kg body at rest for a distance of 9 m on a smooth floor. What is the final speed?,3 m/s,8 m/s,6 m/s,4.2 m/s
+school-11-physics-5-m6,"Work, Energy and Power",A block slides from rest down a smooth slope from a height of 1.8 m. What is its speed at the bottom? (g = 10 m/s^2),18 m/s,3.6 m/s,9 m/s,6 m/s
+school-11-physics-5-h1,"Work, Energy and Power",A 1 kg ball is dropped from a height of 20 m (g = 9.8 m/s^2). What is its kinetic energy when it is 5 m above the ground?,49 J,147 J,196 J,98 J
+school-11-physics-5-h2,"Work, Energy and Power",A 2 kg block moving at 6 m/s hits a stationary 4 kg block and the two stick together. How much kinetic energy is lost?,12 J,36 J,24 J,18 J
+school-11-physics-5-h3,"Work, Energy and Power",A 1 kg ball moving at 6 m/s collides head-on and elastically with a stationary 3 kg ball. What is the velocity of the 1 kg ball after the collision (positive = original direction)?,-3 m/s,+3 m/s,0 m/s,-6 m/s
+school-11-physics-5-h4,"Work, Energy and Power",A 0.5 kg bob on a 1 m string is released from the horizontal position. What is the string tension at the lowest point? (g = 10 m/s^2),5 N,15 N,10 N,20 N
+school-11-physics-5-h5,"Work, Energy and Power",A motor lifts a 500 kg load at a steady 2 m/s with 80% efficiency. What electrical power does it draw? (g = 10 m/s^2),10 kW,8 kW,12.5 kW,16 kW
+school-11-physics-5-h6,"Work, Energy and Power",A 20 g bullet moving at 200 m/s stops after penetrating 0.1 m into a wooden block. What is the average resistive force?,400 N,40000 N,2000 N,4000 N
+school-11-physics-6-e1,System of Particles and Rotational Motion,"In rotational motion, which quantity plays the role that mass plays in linear motion?",Moment of inertia,Torque,Angular momentum,Angular velocity
+school-11-physics-6-e2,System of Particles and Rotational Motion,A force of 5 N acts at right angles to a spanner at a distance of 0.4 m from the nut. What torque does it produce?,12.5 N m,2 N m,20 N m,0.8 N m
+school-11-physics-6-e3,System of Particles and Rotational Motion,"What is the moment of inertia of a thin ring of mass M and radius R about an axis through its centre, perpendicular to its plane?",MR^2/2,MR^2,2MR^2/5,MR^2/12
+school-11-physics-6-e4,System of Particles and Rotational Motion,A torque of 10 N m acts on a wheel of moment of inertia 2 kg m^2. What is its angular acceleration?,20 rad/s^2,0.2 rad/s^2,5 rad/s^2,12 rad/s^2
+school-11-physics-6-e5,System of Particles and Rotational Motion,Two equal masses sit at x = 0 and x = 6 m. Where is their centre of mass?,x = 6 m,x = 0,x = 12 m,x = 3 m
+school-11-physics-6-e6,System of Particles and Rotational Motion,A wheel of moment of inertia 0.5 kg m^2 spins at 10 rad/s. What is its angular momentum?,5 kg m^2/s,20 kg m^2/s,0.05 kg m^2/s,50 kg m^2/s
+school-11-physics-6-m1,System of Particles and Rotational Motion,A skater spinning at 2 rad/s has moment of inertia 4 kg m^2. She pulls her arms in so that it becomes 2 kg m^2. What is her new angular speed?,1 rad/s,2 rad/s,4 rad/s,8 rad/s
+school-11-physics-6-m2,System of Particles and Rotational Motion,A 2 kg particle is at x = 0 and a 3 kg particle is at x = 5 m on a line. Where is the centre of mass?,2 m,2.5 m,3.5 m,3 m
+school-11-physics-6-m3,System of Particles and Rotational Motion,A flywheel with moment of inertia 2 kg m^2 rotates at 3 rad/s. What is its rotational kinetic energy?,18 J,9 J,6 J,3 J
+school-11-physics-6-m4,System of Particles and Rotational Motion,"Masses of 1 kg, 2 kg and 3 kg lie on a line at x = 0, 3 m and 6 m. Where is the centre of mass?",x = 3 m,x = 5 m,x = 4 m,x = 2 m
+school-11-physics-6-m5,System of Particles and Rotational Motion,"On a see-saw balanced at its middle, a 40 kg child sits 2 m from the pivot. Where must a 50 kg child sit on the other side to balance?",2.5 m,1.0 m,2.0 m,1.6 m
+school-11-physics-6-m6,System of Particles and Rotational Motion,"A force of 10 N acts at 30 degrees to a spanner of length 0.8 m, measured from the spanner. What is the torque about the nut?",4 N m,8 N m,6.9 N m,2 N m
+school-11-physics-6-h1,System of Particles and Rotational Motion,A solid sphere rolls without slipping on a floor. What fraction of its total kinetic energy is rotational?,2/7,2/5,5/7,1/2
+school-11-physics-6-h2,System of Particles and Rotational Motion,A solid cylinder rolls without slipping down a 30 degree incline (g = 9.8 m/s^2). What is the acceleration of its centre?,4.9 m/s^2,3.27 m/s^2,2.45 m/s^2,6.53 m/s^2
+school-11-physics-6-h3,System of Particles and Rotational Motion,A 2 kg ring rolls without slipping at 3 m/s. What is its total kinetic energy?,9 J,18 J,27 J,4.5 J
+school-11-physics-6-h4,System of Particles and Rotational Motion,A skater has I = 3.0 kg m^2 at 4 rad/s. She pulls in her arms so I = 1.2 kg m^2 and angular speed becomes 10 rad/s. By how much does her kinetic energy increase?,12 J,60 J,36 J,24 J
+school-11-physics-6-h5,System of Particles and Rotational Motion,A uniform disc of mass 4 kg and radius 0.5 m is pulled by a tangential force of 5 N at its rim about its centre axis. What is its angular acceleration?,2.5 rad/s^2,10 rad/s^2,20 rad/s^2,5 rad/s^2
+school-11-physics-6-h6,System of Particles and Rotational Motion,"What is the moment of inertia of a uniform 3 kg rod of length 2 m about an axis through one end, perpendicular to the rod?",4 kg m^2,1 kg m^2,2 kg m^2,12 kg m^2
+school-11-physics-7-e1,Gravitation,The line joining a planet to the Sun sweeps out equal areas in equal times. Which law is this?,Kepler's first law,Kepler's third law,Newton's law of gravitation,Kepler's second law
+school-11-physics-7-e2,Gravitation,The distance between two masses is doubled. What happens to the gravitational force between them?,It becomes one-fourth,It becomes half,It becomes double,It becomes four times
+school-11-physics-7-e3,Gravitation,The distance between two masses is tripled. By what factor does the gravitational force between them change?,it becomes 1/3,it becomes 3 times,it becomes 1/9,it becomes 9 times
+school-11-physics-7-e4,Gravitation,"According to Kepler's third law, the square of a planet's time period is proportional to what?",square of its mass,its mean distance from the Sun,cube of its speed,cube of its mean distance from the Sun
+school-11-physics-7-e5,Gravitation,What is the SI unit of the universal gravitational constant G?,N m^2 kg^-2,N kg m^-2,m s^-2,N m kg^-1
+school-11-physics-7-e6,Gravitation,The acceleration due to gravity on the Moon is one-sixth of that on Earth. What is the weight of a 60 kg person on the Moon? (take g = 10 m/s^2 on Earth),600 N,100 N,10 N,360 N
+school-11-physics-7-m1,Gravitation,The acceleration due to gravity on Earth's surface is 9.8 m/s^2. What is it at a height equal to Earth's radius above the surface?,4.9 m/s^2,2.45 m/s^2,1.09 m/s^2,19.6 m/s^2
+school-11-physics-7-m2,Gravitation,The escape speed from Earth is 11.2 km/s. What is the orbital speed of a satellite just above Earth's surface?,5.6 km/s,15.8 km/s,7.9 km/s,11.2 km/s
+school-11-physics-7-m3,Gravitation,"At a depth equal to half of Earth's radius, what is the acceleration due to gravity? (surface value g = 9.8 m/s^2)",2.45 m/s^2,7.35 m/s^2,4.9 m/s^2,9.8 m/s^2
+school-11-physics-7-m4,Gravitation,A planet has 9 times the mass of Earth and 4 times its radius. Escape speed from Earth is 11.2 km/s. What is it for this planet?,25.2 km/s,11.2 km/s,5.6 km/s,16.8 km/s
+school-11-physics-7-m5,Gravitation,"A planet takes 8 years to orbit the Sun. What is its mean distance from the Sun in astronomical units (Earth = 1 AU, 1 year)?",4 AU,8 AU,2 AU,16 AU
+school-11-physics-7-m6,Gravitation,"Taking R = 6.4 x 10^6 m and g = 9.8 m/s^2, what is the gravitational potential energy of a 1 kg mass on Earth's surface (zero at infinity)?",+6.27 x 10^7 J,-6.27 x 10^7 J,-9.8 J,-3.1 x 10^7 J
+school-11-physics-7-h1,Gravitation,A planet has 8 times the mass of Earth and twice its radius. What is the acceleration due to gravity on its surface (Earth: 9.8 m/s^2)?,39.2 m/s^2,4.9 m/s^2,9.8 m/s^2,19.6 m/s^2
+school-11-physics-7-h2,Gravitation,Satellite A orbits at radius R and satellite B at radius 4R around the same planet. What is T_B / T_A?,8,4,16,2
+school-11-physics-7-h3,Gravitation,"A 100 kg satellite orbits at a distance 2R from Earth's centre (R = 6.4 x 10^6 m, g = 9.8 m/s^2). What is its kinetic energy?",3.14 x 10^9 J,7.84 x 10^8 J,1.57 x 10^9 J,6.27 x 10^9 J
+school-11-physics-7-h4,Gravitation,"Using the approximation for small heights, at what height above Earth's surface does g fall by 1%? (R = 6400 km)",about 64 km,about 16 km,about 640 km,about 32 km
+school-11-physics-7-h5,Gravitation,Satellite A moves at twice the orbital speed of satellite B around the same planet. What is the ratio of their time periods T_A : T_B?,1 : 8,1 : 2,1 : 4,2 : 1
+school-11-physics-7-h6,Gravitation,"A stone is released from rest at a height R above Earth's surface (distance 2R from the centre). Ignoring air, with what speed does it hit the surface? (R = 6.4 x 10^6 m, g = 9.8 m/s^2)",about 11.2 km/s,about 7.9 km/s,about 5.6 km/s,about 15.8 km/s
+school-11-physics-8-e1,Mechanical Properties of Solids,A wire 2 m long stretches by 1 mm under a load. What is the longitudinal strain?,2 x 10^-3,5 x 10^-3,5 x 10^-4,5 x 10^-1
+school-11-physics-8-e2,Mechanical Properties of Solids,Hooke's law is obeyed only when the stress is within which limit?,Breaking point,Yield point,Plastic limit,Elastic limit
+school-11-physics-8-e3,Mechanical Properties of Solids,What is the SI unit of stress?,N m,N,m^2/N,N/m^2
+school-11-physics-8-e4,Mechanical Properties of Solids,A force of 100 N acts on a wire of cross-section 2 x 10^-6 m^2. What is the stress?,5 x 10^7 Pa,2 x 10^-8 Pa,5 x 10^5 Pa,2 x 10^8 Pa
+school-11-physics-8-e5,Mechanical Properties of Solids,A wire is cut to twice its original length. What happens to the Young's modulus of its material?,it doubles,it stays the same,it halves,it becomes four times
+school-11-physics-8-e6,Mechanical Properties of Solids,Which of these materials has the highest Young's modulus?,rubber,glass,steel,copper
+school-11-physics-8-m1,Mechanical Properties of Solids,A steel wire 2 m long with cross-section 1 mm^2 carries a load of 100 N. Young's modulus of steel is 2 x 10^11 N/m^2. What is the extension?,1 mm,0.1 mm,10 mm,2 mm
+school-11-physics-8-m2,Mechanical Properties of Solids,A rod stretched under a force has longitudinal strain 2 x 10^-3 and lateral strain (contraction) 6 x 10^-4. What is Poisson's ratio?,3.3,0.3,0.03,1.2
+school-11-physics-8-m3,Mechanical Properties of Solids,"A steel wire 3 m long, with cross-section 10^-6 m^2, carries a load of 200 N. Young's modulus of steel is 2 x 10^11 Pa. What is the extension?",0.3 mm,6 mm,1.5 mm,3 mm
+school-11-physics-8-m4,Mechanical Properties of Solids,The bulk modulus of water is 2 x 10^9 Pa. By what fractional amount does its volume decrease when pressure is raised by 4 x 10^6 Pa?,2 x 10^-3,5 x 10^2,8 x 10^15,2 x 10^-1
+school-11-physics-8-m5,Mechanical Properties of Solids,"A wire is stretched by 2 mm under a steady, slowly applied load that finally reaches 100 N. How much elastic energy is stored?",0.2 J,0.1 J,0.05 J,100 J
+school-11-physics-8-m6,Mechanical Properties of Solids,Two wires of the same material and length have diameters in the ratio 1 : 2 and carry the same load. What is the ratio of the extension of the thin wire to that of the thick wire?,2 : 1,1 : 4,4 : 1,1 : 2
+school-11-physics-8-h1,Mechanical Properties of Solids,"Two wires of the same material carry the same load. Wire 1 has length L and radius r; wire 2 has length 2L and radius 2r. What is the ratio of extensions, wire 1 : wire 2?",1 : 2,1 : 1,2 : 1,4 : 1
+school-11-physics-8-h2,Mechanical Properties of Solids,"Wire 1 (length L, radius r) and wire 2 (length 2L, radius 2r) are of the same material and carry the same load. What is the ratio of elastic energy stored, wire 2 : wire 1?",2 : 1,1 : 4,4 : 1,1 : 2
+school-11-physics-8-h3,Mechanical Properties of Solids,"A wire of cross-section 2 x 10^-6 m^2 has breaking stress 5 x 10^8 Pa. With a safety factor of 4, what is the largest mass it can safely hold? (g = 10 m/s^2)",100 kg,400 kg,250 kg,25 kg
+school-11-physics-8-h4,Mechanical Properties of Solids,A wire is under a stress of 2 x 10^8 Pa and strain of 10^-3. How much elastic energy is stored per unit volume?,1 x 10^5 J/m^3,2 x 10^5 J/m^3,2 x 10^11 J/m^3,1 x 10^11 J/m^3
+school-11-physics-8-h5,Mechanical Properties of Solids,"A steel wire (Y = 2 x 10^11) and a copper wire (Y = 1 x 10^11), of equal length and cross-section, are fixed side by side and jointly stretched by a total load of 300 N. How much load does the steel wire carry?",150 N,200 N,100 N,300 N
+school-11-physics-8-h6,Mechanical Properties of Solids,"A steel rod is clamped so it cannot expand, then heated by 50 degrees Celsius. Y = 2 x 10^11 Pa and alpha = 1.2 x 10^-5 per degree. What stress develops?",2.4 x 10^6 Pa,1.2 x 10^6 Pa,1.2 x 10^8 Pa,2.4 x 10^8 Pa
+school-11-physics-9-e1,Mechanical Properties of Fluids,"What is the gauge pressure at a depth of 10 m in water (density 1000 kg/m^3, g = 9.8 m/s^2)?","9,800 Pa","98,000 Pa","980,000 Pa","1,000 Pa"
+school-11-physics-9-e2,Mechanical Properties of Fluids,"According to Bernoulli's principle, in a horizontal streamline flow, where the speed of the fluid is higher the pressure is:",higher,the same,lower,zero
+school-11-physics-9-e3,Mechanical Properties of Fluids,A stone weighs 10 N in air and 6 N when fully immersed in water. What is the buoyant force on it?,4 N,16 N,6 N,10 N
+school-11-physics-9-e4,Mechanical Properties of Fluids,A force of 500 N acts normally on an area of 0.25 m^2. What is the pressure?,125 Pa,2000 Pa,500 Pa,20 Pa
+school-11-physics-9-e5,Mechanical Properties of Fluids,What is the SI unit of the coefficient of viscosity?,N/m,kg/m^3,Pa s,N s
+school-11-physics-9-e6,Mechanical Properties of Fluids,"Water rises to height h in a capillary tube. In another tube of half the radius, to what height will it rise?",h/2,4h,h,2h
+school-11-physics-9-m1,Mechanical Properties of Fluids,In a hydraulic lift the small piston has area 0.02 m^2 and the large piston has area 0.8 m^2. A force of 100 N is applied to the small piston. What force acts on the large piston?,2500 N,100 N,400 N,4000 N
+school-11-physics-9-m2,Mechanical Properties of Fluids,Water flows through a pipe. The pipe narrows to half its diameter. By what factor does the speed of water increase?,4,2,8,1/4
+school-11-physics-9-m3,Mechanical Properties of Fluids,Water flows at 2 m/s through a pipe of cross-section 10 cm^2 that narrows to 5 cm^2. What is the speed in the narrow part?,4 m/s,1 m/s,2 m/s,8 m/s
+school-11-physics-9-m4,Mechanical Properties of Fluids,Ice of density 900 kg/m^3 floats in water of density 1000 kg/m^3. What fraction of its volume is submerged?,10%,90%,100%,111%
+school-11-physics-9-m5,Mechanical Properties of Fluids,Water leaks from a small hole 5 m below the free surface of a large open tank. What is the speed of efflux? (g = 10 m/s^2),5 m/s,7.07 m/s,10 m/s,100 m/s
+school-11-physics-9-m6,Mechanical Properties of Fluids,A soap bubble of radius 1 cm has surface tension 0.03 N/m. What is the excess pressure inside it?,6 Pa,3 Pa,24 Pa,12 Pa
+school-11-physics-9-h1,Mechanical Properties of Fluids,Two spheres of the same material but with radii in the ratio 1 : 2 fall through the same viscous liquid. What is the ratio of their terminal speeds?,1 : 2,1 : 4,1 : 8,1 : 1
+school-11-physics-9-h2,Mechanical Properties of Fluids,A wooden block of density 600 kg/m^3 floats in water. It is then placed in a liquid of density 800 kg/m^3. What fraction of the block is submerged in that liquid?,0.6,0.8,0.75,0.4
+school-11-physics-9-h3,Mechanical Properties of Fluids,A 1 kg metal piece of density 8000 kg/m^3 is hung from a spring balance and fully dipped in water (density 1000 kg/m^3). What does the balance read? (g = 10 m/s^2),8.75 N,10 N,1.25 N,7.5 N
+school-11-physics-9-h4,Mechanical Properties of Fluids,"Water rises 3 cm in a vertical capillary tube. If the tube is tilted to 60 degrees from the vertical, what is the length of the water column along the tube?",3 cm,6 cm,5.2 cm,1.5 cm
+school-11-physics-9-h5,Mechanical Properties of Fluids,"In a horizontal pipe the water speed is 2 m/s where the pressure is 2 x 10^5 Pa. Where the pipe narrows, the speed is 6 m/s. What is the pressure there? (density 1000 kg/m^3)",2.16 x 10^5 Pa,1.6 x 10^5 Pa,1.84 x 10^5 Pa,2 x 10^5 Pa
+school-11-physics-9-h6,Mechanical Properties of Fluids,How much work is needed to blow a soap bubble of radius 2 cm? The surface tension is 0.03 N/m (a soap film has two surfaces).,about 1.5 x 10^-4 J,about 6.0 x 10^-4 J,about 7.5 x 10^-5 J,about 3.0 x 10^-4 J
+school-11-physics-10-e1,Thermal Properties of Matter,A temperature of 50 degrees Celsius is equal to how many degrees Fahrenheit?,122,90,82,112
+school-11-physics-10-e2,Thermal Properties of Matter,How much heat is needed to raise the temperature of 2 kg of water by 10 degrees Celsius? (c = 4200 J/kg K),"8,400 J","84,000 J","42,000 J","840,000 J"
+school-11-physics-10-e3,Thermal Properties of Matter,A temperature of 300 K is equal to what temperature in degrees Celsius?,573 degrees C,27 degrees C,-27 degrees C,300 degrees C
+school-11-physics-10-e4,Thermal Properties of Matter,How much heat is needed to melt 2 kg of ice at 0 degrees C? (latent heat of fusion = 3.3 x 10^5 J/kg),1.65 x 10^5 J,3.3 x 10^5 J,6.6 x 10^5 J,6.6 x 10^3 J
+school-11-physics-10-e5,Thermal Properties of Matter,Which mode of heat transfer does not need any material medium?,conduction,convection,evaporation,radiation
+school-11-physics-10-e6,Thermal Properties of Matter,At what temperature do the Celsius and Fahrenheit scales show the same numerical value?,-40 degrees,0 degrees,-32 degrees,40 degrees
+school-11-physics-10-m1,Thermal Properties of Matter,An aluminium rod 2 m long is heated through 50 degrees Celsius. Its coefficient of linear expansion is 2.4 x 10^-5 per degree Celsius. What is the increase in length?,0.24 mm,24 mm,2.4 mm,4.8 mm
+school-11-physics-10-m2,Thermal Properties of Matter,200 g of water at 80 degrees Celsius is mixed with 300 g of water at 20 degrees Celsius. What is the final temperature (no heat loss)?,50 degrees Celsius,56 degrees Celsius,40 degrees Celsius,44 degrees Celsius
+school-11-physics-10-m3,Thermal Properties of Matter,A steel rail is 30 m long. Its temperature rises by 40 degrees C and alpha = 1.2 x 10^-5 per degree C. By how much does it expand?,1.44 mm,14.4 mm,144 mm,3.6 mm
+school-11-physics-10-m4,Thermal Properties of Matter,A 0.5 kg copper block (specific heat 400 J/kg K) cools from 100 degrees C to 30 degrees C. How much heat does it lose?,20000 J,6000 J,14000 J,28000 J
+school-11-physics-10-m5,Thermal Properties of Matter,A metal rod of cross-section 2 x 10^-4 m^2 and length 0.5 m has conductivity 400 W/m K. Its ends are 100 degrees C apart. What is the rate of heat flow?,8 W,32 W,160 W,16 W
+school-11-physics-10-m6,Thermal Properties of Matter,The absolute temperature of a black body is doubled. By what factor does the power it radiates increase?,16,2,4,8
+school-11-physics-10-h1,Thermal Properties of Matter,"How much heat is needed to convert 10 g of ice at 0 degrees Celsius into steam at 100 degrees Celsius? (Latent heat of fusion 80 cal/g, specific heat of water 1 cal/g per degree Celsius, latent heat of vaporisation 540 cal/g)",7200 cal,6200 cal,1800 cal,5400 cal
+school-11-physics-10-h2,Thermal Properties of Matter,Two rods of the same area and length L are joined end to end. Rod A has thermal conductivity 2k and rod B has k. The free end of A is held at 100 degrees Celsius and the free end of B at 0 degrees Celsius. What is the temperature of the junction in steady state?,50 degrees Celsius,66.7 degrees Celsius,33.3 degrees Celsius,75 degrees Celsius
+school-11-physics-10-h3,Thermal Properties of Matter,"100 g of ice at 0 degrees C is added to 400 g of water at 40 degrees C in an insulated container. What is the final temperature? (L = 80 cal/g, c of water = 1 cal/g degree C)",0 degrees C,16 degrees C,20 degrees C,24 degrees C
+school-11-physics-10-h4,Thermal Properties of Matter,A body cools from 80 degrees C to 60 degrees C in 10 minutes in surroundings at 20 degrees C. What will its temperature be after a further 10 minutes?,40 degrees C,about 43.3 degrees C,about 46.7 degrees C,50 degrees C
+school-11-physics-10-h5,Thermal Properties of Matter,The brass pendulum of a clock gets 0.2% longer on a hot day. About how many seconds does the clock lose in 24 hours?,172.8 s,43.2 s,0.2 s,86.4 s
+school-11-physics-10-h6,Thermal Properties of Matter,"50 g of steam at 100 degrees C is passed into 500 g of water at 20 degrees C. What is the final temperature? (L of steam = 540 cal/g, c = 1 cal/g degree C)",about 76.4 degrees C,100 degrees C,about 60 degrees C,about 84 degrees C
+school-11-physics-11-e1,Thermodynamics,A gas absorbs 500 J of heat and does 200 J of work. What is the change in its internal energy?,700 J,-300 J,100 J,300 J
+school-11-physics-11-e2,Thermodynamics,"In an adiabatic process, which quantity is zero?",Heat exchanged with the surroundings,Change in internal energy,Work done,Change in temperature
+school-11-physics-11-e3,Thermodynamics,Which law of thermodynamics leads to the concept of temperature?,first law,second law,zeroth law,third law
+school-11-physics-11-e4,Thermodynamics,How much work does a gas do in a process at constant volume?,P x V,P x T,infinite,zero
+school-11-physics-11-e5,Thermodynamics,An engine takes 1000 J of heat from a source and does 300 J of work. What is its efficiency?,30%,70%,3.3%,300%
+school-11-physics-11-e6,Thermodynamics,What is the change in internal energy of an ideal gas in an isothermal process?,equal to the heat absorbed,zero,equal to the work done,always negative
+school-11-physics-11-m1,Thermodynamics,An ideal gas expands isothermally and absorbs 400 J of heat. How much work does it do?,0 J,400 J,800 J,200 J
+school-11-physics-11-m2,Thermodynamics,A Carnot engine works between a source at 500 K and a sink at 300 K. What is its efficiency?,60%,20%,40%,25%
+school-11-physics-11-m3,Thermodynamics,A gas expands at a constant pressure of 1 x 10^5 Pa from 0.01 m^3 to 0.03 m^3. How much work does it do?,3000 J,1000 J,2000 J,200 J
+school-11-physics-11-m4,Thermodynamics,A Carnot engine works between 600 K and 300 K and absorbs 1200 J from the source. How much work does it do per cycle?,1200 J,300 J,900 J,600 J
+school-11-physics-11-m5,Thermodynamics,"A refrigerator works between 270 K inside and 300 K outside, as an ideal (Carnot) device. What is its coefficient of performance?",9,10,0.1,1.1
+school-11-physics-11-m6,Thermodynamics,300 J of work is done on a gas while it loses 100 J of heat to the surroundings. What is the change in its internal energy?,-200 J,+200 J,+400 J,-400 J
+school-11-physics-11-h1,Thermodynamics,"A Carnot engine with its sink at 300 K has efficiency 40%. To raise the efficiency to 60% with the sink unchanged, what must the source temperature be?",600 K,900 K,500 K,750 K
+school-11-physics-11-h2,Thermodynamics,A gas at constant pressure 2 x 10^5 Pa expands from 0.003 m^3 to 0.005 m^3 while absorbing 1000 J of heat. What is the change in its internal energy?,600 J,1400 J,400 J,1000 J
+school-11-physics-11-h3,Thermodynamics,A monatomic ideal gas (gamma = 5/3) at 300 K is compressed adiabatically to half its volume. What is its new temperature?,600 K,about 424 K,about 476 K,about 520 K
+school-11-physics-11-h4,Thermodynamics,"A gas goes around a rectangular cycle on a P-V diagram: pressure between 1 x 10^5 Pa and 3 x 10^5 Pa, volume between 0.01 m^3 and 0.03 m^3. What is the net work done per cycle?",8000 J,2000 J,6000 J,4000 J
+school-11-physics-11-h5,Thermodynamics,An inventor claims an engine working between 400 K and 300 K takes 1000 J of heat and delivers 300 J of work. Which statement is correct?,"impossible, since the Carnot limit is only 25%","possible, since 30% is below 100%","possible, since the Carnot limit is 75%","impossible, since work must equal heat absorbed"
+school-11-physics-11-h6,Thermodynamics,"2 mol of an ideal gas at 300 K expand isothermally until the volume doubles. How much work does the gas do? (R = 8.314 J/mol K, ln 2 = 0.693)",about 4990 J,about 3460 J,about 1730 J,about 6920 J
+school-11-physics-12-e1,Kinetic Theory,The average translational kinetic energy of a molecule of an ideal gas depends on which quantity?,Pressure only,Volume only,Absolute temperature only,Mass of the gas only
+school-11-physics-12-e2,Kinetic Theory,How many degrees of freedom does a monatomic gas molecule have?,2,5,6,3
+school-11-physics-12-e3,Kinetic Theory,The pressure of a fixed mass of gas is tripled at constant temperature. What happens to its volume?,triples,becomes nine times,stays the same,becomes one-third
+school-11-physics-12-e4,Kinetic Theory,How many molecules are there in 2 mol of a gas? (N_A = 6 x 10^23 per mol),1.2 x 10^24,3 x 10^23,6 x 10^23,1.2 x 10^23
+school-11-physics-12-e5,Kinetic Theory,What happens to the mean free path of gas molecules if the pressure is lowered at constant temperature?,it decreases,it increases,it stays the same,it becomes zero
+school-11-physics-12-e6,Kinetic Theory,How many degrees of freedom does a rigid diatomic molecule have at ordinary temperatures?,3,6,5,7
+school-11-physics-12-m1,Kinetic Theory,"At the same temperature, what is the ratio of the rms speed of hydrogen (molar mass 2) to that of oxygen (molar mass 32)?",4 : 1,16 : 1,2 : 1,1 : 4
+school-11-physics-12-m2,Kinetic Theory,The temperature of a gas is raised from 300 K to 600 K. By what factor does the rms speed of its molecules change?,Doubles,Increases by root 2,Increases by 4 times,Increases by 1.5 times
+school-11-physics-12-m3,Kinetic Theory,What is the average translational kinetic energy of a gas molecule at 300 K? (k = 1.38 x 10^-23 J/K),4.1 x 10^-21 J,9.2 x 10^-21 J,1.2 x 10^-19 J,6.2 x 10^-21 J
+school-11-physics-12-m4,Kinetic Theory,What is the rms speed of nitrogen molecules (molar mass 0.028 kg/mol) at 300 K? (R = 8.314 J/mol K),about 517 m/s,about 267 m/s,about 730 m/s,about 1550 m/s
+school-11-physics-12-m5,Kinetic Theory,A gas occupying 2 litres at 1 atm is compressed isothermally to 0.5 litre. What is the new pressure?,0.25 atm,4 atm,2 atm,1.5 atm
+school-11-physics-12-m6,Kinetic Theory,How many moles of gas are in 0.0249 m^3 at 1 x 10^5 Pa and 300 K? (R = 8.3 J/mol K),0.1 mol,10 mol,1 mol,2 mol
+school-11-physics-12-h1,Kinetic Theory,What is the internal energy of 2 mol of a monatomic ideal gas at 300 K? (R = 8.314 J/mol K),4.99 kJ,14.96 kJ,7.48 kJ,2.49 kJ
+school-11-physics-12-h2,Kinetic Theory,The temperature of an ideal gas is kept constant while its pressure is doubled. What happens to the mean free path of its molecules?,It doubles,It stays the same,It becomes one-fourth,It becomes half
+school-11-physics-12-h3,Kinetic Theory,1 mol of helium at 300 K is mixed in an insulated container with 1 mol of helium at 500 K. What is the final temperature?,800 K,387 K,350 K,400 K
+school-11-physics-12-h4,Kinetic Theory,A container holds 4 g of helium (molar mass 4) and 16 g of oxygen (molar mass 32). The total pressure is 3 atm. What is the partial pressure of helium?,2 atm,1 atm,1.5 atm,2.5 atm
+school-11-physics-12-h5,Kinetic Theory,How much heat is needed to raise the temperature of 2 mol of a diatomic ideal gas by 20 K at constant pressure? (R = 8.314 J/mol K),about 831 J,about 1164 J,about 1663 J,about 582 J
+school-11-physics-12-h6,Kinetic Theory,The rms speed of the molecules of a gas at 27 degrees C is v. At what Celsius temperature will it be 2v?,54 degrees C,600 degrees C,927 degrees C,108 degrees C
+school-11-physics-13-e1,Oscillations,A particle oscillates with a frequency of 5 Hz. What is its time period?,5 s,0.2 s,0.5 s,2 s
+school-11-physics-13-e2,Oscillations,Where is the speed of a particle in SHM zero?,At the mean position,At half the amplitude,At the extreme positions,Nowhere
+school-11-physics-13-e3,Oscillations,A particle moves as x = 0.1 sin(4t) in SI units. What is the amplitude of its motion?,0.1 m,4 m,0.4 m,0.025 m
+school-11-physics-13-e4,Oscillations,Where is the magnitude of acceleration greatest for a particle in SHM?,at the mean position,at the extreme positions,halfway between mean and extreme,it is the same everywhere
+school-11-physics-13-e5,Oscillations,A spring of constant 80 N/m is stretched by 0.05 m. What is the restoring force?,1.6 N,400 N,4 N,0.4 N
+school-11-physics-13-e6,Oscillations,On which of these does the time period of a simple pendulum (small swings) depend?,the mass of the bob,the amplitude of swing,the material of the bob,its length
+school-11-physics-13-m1,Oscillations,A 2 kg mass is attached to a spring of constant 200 N/m. What is its time period?,6.28 s,0.0628 s,1.0 s,0.628 s
+school-11-physics-13-m2,Oscillations,A particle in SHM has amplitude 0.05 m and angular frequency 20 rad/s. What is its maximum speed?,1 m/s,0.0025 m/s,20 m/s,0.25 m/s
+school-11-physics-13-m3,Oscillations,A simple pendulum has a period of 2 s on Earth. What is its period on the Moon where g is one-sixth as large?,about 4.9 s,12 s,about 0.8 s,about 2 s
+school-11-physics-13-m4,Oscillations,A particle in SHM has amplitude 4 cm and period 2 s. What is its speed when 2 cm from the mean position?,about 12.6 cm/s,about 10.9 cm/s,about 6.3 cm/s,about 3.1 cm/s
+school-11-physics-13-m5,Oscillations,A mass on a single spring has period T0. The same mass is hung on two identical springs joined in series. What is the new period?,T0 / sqrt(2),2 T0,sqrt(2) T0,T0 / 2
+school-11-physics-13-m6,Oscillations,A spring system with k = 200 N/m oscillates with amplitude 0.1 m. What is its total mechanical energy?,2 J,20 J,0.5 J,1 J
+school-11-physics-13-h1,Oscillations,At what displacement from the mean position are the kinetic and potential energies of a particle in SHM equal?,A / 2,A / root 2,A / root 3,A / 4
+school-11-physics-13-h2,Oscillations,A mass on a spring oscillates with period 2 s. The spring is cut into two equal halves and the same mass is attached to one half. What is the new period?,1.0 s,2.83 s,1.41 s,4.0 s
+school-11-physics-13-h3,Oscillations,"At a displacement equal to half the amplitude, what fraction of the total energy of a particle in SHM is kinetic?",3/4,1/4,1/2,1/8
+school-11-physics-13-h4,Oscillations,"A mass hung on a vertical spring stretches it by 0.1 m at equilibrium. If pulled down and released, what is its period? (g = 10 m/s^2)",about 0.2 s,about 0.63 s,about 6.3 s,about 1.99 s
+school-11-physics-13-h5,Oscillations,A particle's displacement is x = 3 sin(omega t) + 4 cos(omega t) (in cm). What is its amplitude?,7 cm,1 cm,5 cm,3.5 cm
+school-11-physics-13-h6,Oscillations,Liquid in a U-tube of uniform bore fills a total length of 0.8 m. It is pushed slightly out of equilibrium and oscillates. What is the period? (g = 10 m/s^2),about 1.78 s,about 0.63 s,about 2.51 s,about 1.26 s
+school-11-physics-14-e1,Waves,A sound source has a frequency of 500 Hz and a wavelength of 0.68 m in air. What is the speed of sound?,340 m/s,735 m/s,170 m/s,1360 m/s
+school-11-physics-14-e2,Waves,What kind of wave is a sound wave in air?,Transverse,Longitudinal,Electromagnetic,Both transverse and longitudinal
+school-11-physics-14-e3,Waves,A sound wave of frequency 170 Hz travels at 340 m/s in air. What is its wavelength?,0.5 m,2 m,57800 m,170 m
+school-11-physics-14-e4,Waves,What kind of wave travels along a stretched guitar string when it is plucked?,longitudinal,electromagnetic,transverse,standing
+school-11-physics-14-e5,Waves,"A person hears the echo from a cliff 2 s after clapping. If sound travels at 340 m/s, how far is the cliff?",680 m,170 m,85 m,340 m
+school-11-physics-14-e6,Waves,Two tuning forks of 256 Hz and 260 Hz are sounded together. How many beats per second are heard?,4,2,258,516
+school-11-physics-14-m1,Waves,A string 0.6 m long is fixed at both ends and the speed of waves on it is 120 m/s. What is its fundamental frequency?,200 Hz,50 Hz,100 Hz,150 Hz
+school-11-physics-14-m2,Waves,"An organ pipe open at both ends is 0.5 m long. Taking the speed of sound as 340 m/s, what is its fundamental frequency?",170 Hz,680 Hz,510 Hz,340 Hz
+school-11-physics-14-m3,Waves,A string has tension 100 N and mass per unit length 0.01 kg/m. What is the speed of a transverse wave on it?,10 m/s,100 m/s,1000 m/s,1 m/s
+school-11-physics-14-m4,Waves,A pipe closed at one end is 0.5 m long and the speed of sound is 340 m/s. What is its fundamental frequency?,340 Hz,680 Hz,170 Hz,85 Hz
+school-11-physics-14-m5,Waves,A source of 400 Hz moves towards a stationary listener at 20 m/s. The speed of sound is 340 m/s. What frequency does the listener hear?,400 Hz,377 Hz,420 Hz,425 Hz
+school-11-physics-14-m6,Waves,A standing wave of frequency 500 Hz is set up in air where the speed of sound is 340 m/s. What is the distance between two successive nodes?,0.34 m,0.68 m,1.36 m,0.17 m
+school-11-physics-14-h1,Waves,A pipe closed at one end is 0.85 m long and the speed of sound is 340 m/s. What is the frequency of its first overtone?,300 Hz,200 Hz,400 Hz,100 Hz
+school-11-physics-14-h2,Waves,A tuning fork of 256 Hz gives 4 beats per second with an unknown fork. After loading the unknown fork with wax the beats per second increase. What was its frequency?,260 Hz,252 Hz,250 Hz,262 Hz
+school-11-physics-14-h3,Waves,An organ pipe open at both ends is 0.85 m long. The speed of sound is 340 m/s. What is the frequency of its first overtone?,200 Hz,400 Hz,600 Hz,100 Hz
+school-11-physics-14-h4,Waves,A source of 500 Hz moves towards a listener at 20 m/s while the listener moves towards the source at 10 m/s. The speed of sound is 340 m/s. What frequency is heard?,500 Hz,about 531 Hz,about 547 Hz,about 516 Hz
+school-11-physics-14-h5,Waves,"An unknown tuning fork gives 5 beats per second with a 300 Hz fork. When the unknown fork is filed (its frequency rises), the beats increase to 8 per second. What was its original frequency?",295 Hz,308 Hz,292 Hz,305 Hz
+school-11-physics-14-h6,Waves,"A wire 2 m long has a mass of 20 g and tension 100 N, fixed at both ends. What is the frequency of its third harmonic?",75 Hz,25 Hz,50 Hz,150 Hz

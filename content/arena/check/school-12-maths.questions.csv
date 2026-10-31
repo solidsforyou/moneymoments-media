@@ -1,0 +1,235 @@
+qid,chapter,question,A,B,C,D
+school-12-maths-1-e1,Relations and Functions,"On A = {1, 2, 3}, R = {(1,1), (2,2), (3,3), (1,2)}. Which statement is true?",R is reflexive and transitive but not symmetric,R is symmetric but not reflexive,R is an equivalence relation,R is reflexive and symmetric but not transitive
+school-12-maths-1-m1,Relations and Functions,"How many one-one functions are there from {1, 2, 3} to {1, 2, 3, 4, 5}?",125,10,60,243
+school-12-maths-2-e1,Inverse Trigonometric Functions,What is the principal value of sin^(-1)(1/2)?,pi/3,5pi/6,pi/4,pi/6
+school-12-maths-2-m1,Inverse Trigonometric Functions,What is sin(cos^(-1)(3/5))?,3/5,5/4,4/5,3/4
+school-12-maths-3-e1,Matrices,A is a 2 x 3 matrix and B is a 3 x 4 matrix. What is the order of AB?,3 x 3,2 x 3,4 x 2,2 x 4
+school-12-maths-3-m1,Matrices,"If A = [[1, 2], [0, 1]], what is A^10?","[[1, 10], [0, 1]]","[[1, 20], [0, 1]]","[[1, 1024], [0, 1]]","[[10, 20], [0, 10]]"
+school-12-maths-4-m2,Determinants,A is a 3 x 3 matrix with |A| = -2. What is |adj A|?,4,-4,-8,8
+school-12-maths-5-e1,Continuity and Differentiability,What is d/dx of sin 3x?,cos 3x,-3 cos 3x,3 cos 3x,3 sin 3x
+school-12-maths-5-m1,Continuity and Differentiability,What is d/dx of x^x for x > 0?,x^x (1 + ln x),x x^(x-1),x^x ln x,x^x
+school-12-maths-6-e1,Application of Derivatives,How fast does the area of a circle change with its radius when r = 5?,25 pi,10 pi,5 pi,100 pi
+school-12-maths-6-e2,Application of Derivatives,What is the minimum value of x^2 - 4x + 7?,3,7,2,-3
+school-12-maths-6-m1,Application of Derivatives,What is the slope of the tangent to y = x^3 - 3x + 2 at x = 2?,9,5,12,6
+school-12-maths-8-e1,Application of Integrals,"What is the area bounded by y = x^2, the x-axis, and x = 0 to x = 3?",9 square units,27 square units,3 square units,18 square units
+school-12-maths-13-m1,Probability,A bag has 5 red and 3 black balls. Two are drawn one after the other without replacement. What is the probability that both are red?,5/14,25/64,5/8,4/7
+school-12-maths-1-e3,Relations and Functions,"On A = {1, 2, 3}, R = {(1,2), (2,3), (1,3)}. Which statement about R is true?",R is transitive but neither reflexive nor symmetric,R is reflexive and transitive,R is symmetric and transitive,R is an equivalence relation
+school-12-maths-1-e4,Relations and Functions,"On the integers, a R b means a - b is divisible by 5. Which pair is in R?","(7, 3)","(13, 3)","(9, 2)","(14, 6)"
+school-12-maths-1-e5,Relations and Functions,f: N -> N is defined by f(x) = 2x + 1. Which statement is true?,f is onto but not one-one,f is both one-one and onto,f is one-one but not onto,f is neither one-one nor onto
+school-12-maths-1-e6,Relations and Functions,f(x) = 3x - 2 and g(x) = x^2 on the reals. What is (g o f)(2)?,10,4,36,16
+school-12-maths-1-e8,Relations and Functions,f(x) = (x + 4)/3 is a bijection on the reals. What is f^(-1)(x)?,3x + 4,3x - 4,(x - 4)/3,3/(x + 4)
+school-12-maths-1-m3,Relations and Functions,How many reflexive relations are there on a set with 3 elements?,512,8,64,6
+school-12-maths-1-m5,Relations and Functions,f(x) = 2x + 1 and g(x) = x^2 - 3 on the reals. What is (f o g)(x)?,2x^2 - 5,4x^2 + 4x - 2,2x^2 - 2,x^2 + 2x - 2
+school-12-maths-1-m6,Relations and Functions,"On the integers, a R b means a - b is divisible by 4. How many distinct equivalence classes does R have?",2,4,3,Infinitely many
+school-12-maths-1-m7,Relations and Functions,f: R - {2} -> R - {1} is defined by f(x) = (x + 3)/(x - 2). What is f^(-1)(x)?,(x - 2)/(x + 3),(2x - 3)/(x + 1),(2x + 3)/(x - 1),(3x + 2)/(x - 1)
+school-12-maths-1-m8,Relations and Functions,Which function from R to R is both one-one and onto?,f(x) = x^2 + 1,f(x) = |x|,f(x) = 2^x,f(x) = x^3 + 1
+school-12-maths-1-h3,Relations and Functions,How many equivalence relations are there on a set with 4 elements?,15,24,16,14
+school-12-maths-1-h4,Relations and Functions,How many relations on a 4-element set are both reflexive and symmetric?,1024,64,4096,16
+school-12-maths-1-h5,Relations and Functions,How many onto functions are there from a 5-element set to a 3-element set?,243,120,150,180
+school-12-maths-1-h6,Relations and Functions,f(x) = (2x - 1)/(x + 3) for x not equal to -3. What is (f o f)(x)?,(4x - 2)/(x + 3),(3x + 5)/(5x - 8),(2x - 1)^2/(x + 3)^2,(3x - 5)/(5x + 8)
+school-12-maths-1-h7,Relations and Functions,"R is a relation on {1, 2, ..., 10} with a R b when a - b is divisible by 3. How many ordered pairs are in R?",34,30,36,100
+school-12-maths-1-h8,Relations and Functions,"f(x) = x^2 - 6x + 5 is one-one on [k, infinity). What is the smallest such k?",-3,3,0,5
+school-12-maths-2-e3,Inverse Trigonometric Functions,What is the principal value of tan^(-1)(-1)?,3pi/4,pi/4,-pi/4,-3pi/4
+school-12-maths-2-e4,Inverse Trigonometric Functions,What is the domain of cos^(-1)(3x)?,"[-3, 3]","[-1, 1]","[0, 1/3]","[-1/3, 1/3]"
+school-12-maths-2-e5,Inverse Trigonometric Functions,What is cos^(-1)(cos(7pi/6))?,5pi/6,7pi/6,pi/6,-5pi/6
+school-12-maths-2-e6,Inverse Trigonometric Functions,What is the value of sin^(-1)(0.3) + cos^(-1)(0.3)?,pi,pi/2,0.6,pi/3
+school-12-maths-2-e7,Inverse Trigonometric Functions,What is the range of the principal branch of tan^(-1) x?,"[0, pi]","[-pi/2, pi/2]","(-pi/2, pi/2)","(0, pi)"
+school-12-maths-2-m3,Inverse Trigonometric Functions,What is cos(2 sin^(-1)(1/3))?,7/9,1/3,5/9,1/9
+school-12-maths-2-m4,Inverse Trigonometric Functions,What is tan^(-1)(2) + tan^(-1)(3)?,-pi/4,3pi/4,pi/4,5pi/4
+school-12-maths-2-m5,Inverse Trigonometric Functions,What is sin(tan^(-1)(3/4) + cos^(-1)(5/13))?,33/65,56/65,63/65,16/65
+school-12-maths-2-m6,Inverse Trigonometric Functions,What is the domain of f(x) = sin^(-1)(2x/(1 + x^2))?,"[-1, 1]","(-1, 1)",All real numbers except 0,All real numbers
+school-12-maths-2-m7,Inverse Trigonometric Functions,What is sin^(-1)(sin(2pi/3))?,pi/3,2pi/3,-pi/3,4pi/3
+school-12-maths-2-h3,Inverse Trigonometric Functions,"For 0 < x < pi, what does tan^(-1)(sqrt((1 - cos x)/(1 + cos x))) simplify to?",x,pi/2 - x/2,x/2,2x
+school-12-maths-2-h4,Inverse Trigonometric Functions,"For 1/sqrt(2) <= x <= 1, what does sin^(-1)(2x sqrt(1 - x^2)) simplify to?",2 sin^(-1) x,cos^(-1) x,2pi - 2 cos^(-1) x,2 cos^(-1) x
+school-12-maths-2-h5,Inverse Trigonometric Functions,Which real x satisfies tan^(-1)(x + 1) + tan^(-1)(x - 1) = tan^(-1)(8/31)?,1/4,-8,4,8
+school-12-maths-2-h6,Inverse Trigonometric Functions,What is 2 tan^(-1)(1/3) + tan^(-1)(1/7)?,pi/2,pi/4,pi/3,tan^(-1)(2/3)
+school-12-maths-2-h7,Inverse Trigonometric Functions,What is the value of sec^2(tan^(-1) 2) + cosec^2(cot^(-1) 3)?,13,5,15,10
+school-12-maths-2-h8,Inverse Trigonometric Functions,For which values of x is sin^(-1) x > cos^(-1) x?,0 <= x < 1/sqrt(2),-1 <= x < 1/sqrt(2),0 < x <= 1,1/sqrt(2) < x <= 1
+school-12-maths-3-e3,Matrices,A is a 3 x 4 matrix and B is a 4 x 2 matrix. What is the order of (AB)'?,2 x 3,3 x 2,4 x 4,3 x 4
+school-12-maths-3-e4,Matrices,Every diagonal element of a skew-symmetric matrix is,1,0,-1,equal to each other but not necessarily 0
+school-12-maths-3-e5,Matrices,"If [[x + 2, 3], [4, y - 1]] = [[5, 3], [4, 6]], what is x + y?",8,12,10,9
+school-12-maths-3-e6,Matrices,"If A = [[1, 2], [3, 4]] and B = [[0, 1], [1, 0]], what is AB?","[[3, 4], [1, 2]]","[[0, 2], [3, 0]]","[[1, 3], [2, 4]]","[[2, 1], [4, 3]]"
+school-12-maths-3-e7,Matrices,Which of these is a scalar matrix?,"[[5, 0, 0], [0, 5, 0], [0, 0, 5]]","[[1, 0, 0], [0, 2, 0], [0, 0, 3]]","[[5, 0, 0], [0, 5, 0], [0, 0, 6]]","[[5, 5, 5], [5, 5, 5], [5, 5, 5]]"
+school-12-maths-3-m3,Matrices,"A = [[1, 2], [3, 4]]. What is A^2 - 5A?",0,I,2I,-2I
+school-12-maths-3-m4,Matrices,"What is the inverse of A = [[1, 2], [0, 3]]?","[[1, 2/3], [0, 1/3]]","[[3, -2], [0, 1]]","[[1, 0], [-2/3, 1/3]]","[[1, -2/3], [0, 1/3]]"
+school-12-maths-3-m5,Matrices,"What is the skew-symmetric part (A - A')/2 of A = [[2, -1], [1, 3]]?","[[0, -1], [1, 0]]","[[0, 1], [-1, 0]]","[[2, 0], [0, 3]]","[[0, -1], [-1, 0]]"
+school-12-maths-3-m6,Matrices,"A is symmetric and B is skew-symmetric, both of the same order. The matrix AB - BA is",skew-symmetric,symmetric,a null matrix,an identity matrix
+school-12-maths-3-m8,Matrices,"Using elementary row operations (or the adjoint), what is the inverse of [[1, 2], [2, 5]]?","[[5, 2], [2, 1]]","[[1, -2], [-2, 5]]","[[-5, 2], [2, -1]]","[[5, -2], [-2, 1]]"
+school-12-maths-3-h3,Matrices,"A = [[1, 2], [2, 1]]. Which is A^(-1)?","(1/3)[[-1, 2], [2, -1]]","(1/3)[[1, -2], [-2, 1]]","[[-1, 2], [2, -1]]","(1/3)[[1, 2], [2, 1]]"
+school-12-maths-3-h4,Matrices,A and B are symmetric matrices of the same order. AB is symmetric if and only if,A = B,AB = BA,AB = I,A or B is a null matrix
+school-12-maths-3-h5,Matrices,"How many 3 x 3 skew-symmetric matrices have all entries from {-1, 0, 1}?",9,81,27,729
+school-12-maths-3-h6,Matrices,"A = [[1, -1], [2, -1]]. What is A^2023?","[[1, -1], [2, -1]]","[[-1, 0], [0, -1]]","[[1, 0], [0, 1]]","[[-1, 1], [-2, 1]]"
+school-12-maths-3-h7,Matrices,"A = [[cos t, sin t], [-sin t, cos t]] with t = pi/6. What is the first row of A^4?","(-1/2, sqrt(3)/2)","(1/2, sqrt(3)/2)","(-1/2, -sqrt(3)/2)","(sqrt(3)/2, -1/2)"
+school-12-maths-3-h8,Matrices,How many 2 x 2 matrices with every entry 0 or 1 are invertible?,10,6,8,16
+school-12-maths-4-e3,Determinants,"What is the value of the determinant |[[7, 3], [2, 5]]|?",29,41,-29,35
+school-12-maths-4-e4,Determinants,A is a 3 x 3 matrix with |A| = 4. What is |2A|?,8,32,16,64
+school-12-maths-4-e5,Determinants,"What is the cofactor of the element 4 in [[1, 2, 3], [4, 5, 6], [7, 8, 10]]?",-4,20,4,-20
+school-12-maths-4-e6,Determinants,"What is the area of the triangle with vertices (1, 1), (3, 1) and (1, 5)?",8 square units,2 square units,6 square units,4 square units
+school-12-maths-4-e7,Determinants,"What is the value of |[[2, 5, 2], [3, 1, 3], [7, 4, 7]]|?",0,2,-2,21
+school-12-maths-4-e8,Determinants,"For which value of k is the matrix [[k, 2], [3, 4]] singular?",2/3,3/2,-3/2,6
+school-12-maths-4-m3,Determinants,"What is the value of |[[2, 0, 1], [1, 3, 2], [1, 1, 4]]|?",22,14,18,10
+school-12-maths-4-m4,Determinants,A is a 3 x 3 matrix with |A| = 3. What is |2 adj A|?,18,36,54,72
+school-12-maths-4-m5,Determinants,"What is the area of the triangle with vertices (2, 3), (5, 7) and (-1, 4)?",15/2 square units,15 square units,9/2 square units,5 square units
+school-12-maths-4-m6,Determinants,"The points (1, 2), (3, k) and (5, 8) are collinear. What is k?",4,5,6,-5
+school-12-maths-4-m8,Determinants,"What is the inverse of A = [[3, 1], [5, 2]]?","[[2, 1], [5, 3]]","[[3, -1], [-5, 2]]","[[-2, 1], [5, -3]]","[[2, -1], [-5, 3]]"
+school-12-maths-4-h3,Determinants,"x + y + z = 6, x - y + z = 2 and 2x + y - z = 1. What is x + 2y + 3z?",14,12,10,16
+school-12-maths-4-h4,Determinants,"The system kx + y + z = 1, x + ky + z = 1, x + y + kz = 1 does not have a unique solution exactly when k is",1 only,-2 or 1,-1 or 2,0 or 1
+school-12-maths-4-h5,Determinants,"Which is true for every real x? |[[x+1, x+2, x+3], [x+4, x+5, x+6], [x+7, x+8, x+9]]| equals",x,9x,0,27
+school-12-maths-4-h6,Determinants,A is a 3 x 3 matrix with |A| = 2. What is |adj(adj A)|?,4,8,64,16
+school-12-maths-4-h7,Determinants,"For A = [[1, 2, 3], [0, 1, 4], [5, 6, 0]], what is the (1,1) entry of A^(-1)?",-24,24,18,-5
+school-12-maths-4-h8,Determinants,A is 3 x 3 with |A| = 2. What is |3 A^(-1)|?,3/2,27/2,9/2,54
+school-12-maths-5-e3,Continuity and Differentiability,f(x) = (x^2 - 9)/(x - 3) for x not equal to 3. What value of f(3) makes f continuous at x = 3?,0,3,6,9
+school-12-maths-5-e4,Continuity and Differentiability,What is d/dx of e^(x^2)?,e^(x^2),x e^(x^2 - 1),2 e^(2x),2x e^(x^2)
+school-12-maths-5-e5,Continuity and Differentiability,What is d/dx of x^2 sin x?,2x sin x + x^2 cos x,2x cos x,x^2 cos x,2x sin x - x^2 cos x
+school-12-maths-5-e6,Continuity and Differentiability,What is d/dx of cos^(-1) x for -1 < x < 1?,1/sqrt(1 - x^2),-1/sqrt(1 - x^2),-1/(1 + x^2),1/(1 + x^2)
+school-12-maths-5-e8,Continuity and Differentiability,The function f(x) = |x - 3| at x = 3 is,differentiable but not continuous,both continuous and differentiable,neither continuous nor differentiable,continuous but not differentiable
+school-12-maths-5-m3,Continuity and Differentiability,"If x^3 + y^3 = 3xy, what is dy/dx?",(y - x^2)/(y^2 - x),(x^2 - y)/(y^2 - x),(y - x^2)/(x - y^2),(x^2 + y)/(y^2 + x)
+school-12-maths-5-m4,Continuity and Differentiability,"For x < 1, what is d/dx of tan^(-1)((1 + x)/(1 - x))?",2/(1 + x^2),1/(1 + x^2),0,1/(1 - x^2)
+school-12-maths-5-m5,Continuity and Differentiability,"For x > 0, what is d/dx of x^(sin x)?",sin x x^(sin x - 1),x^(sin x) cos x ln x,x^(sin x) (cos x ln x + (sin x)/x),x^(sin x) (cos x + 1/x)
+school-12-maths-5-m6,Continuity and Differentiability,x = 2 cos t and y = 2 sin t. What is dy/dx at t = pi/3?,sqrt(3),1/sqrt(3),-sqrt(3),-1/sqrt(3)
+school-12-maths-5-m7,Continuity and Differentiability,"If y = x^2 ln x for x > 0, what is d^2y/dx^2?",2 ln x + 3,2 ln x + 1,2/x,2 ln x + x
+school-12-maths-5-h3,Continuity and Differentiability,"f(x) = (1 - cos 4x)/x^2 for x not equal to 0, and f(0) = k. What k makes f continuous at 0?",4,2,8,16
+school-12-maths-5-h4,Continuity and Differentiability,f(x) = x|x| for all real x. Which statement is true?,f is continuous but not differentiable at x = 0,f is not continuous at x = 0,f is differentiable at x = 0 and f'(0) = 1,f is differentiable at x = 0 and f'(0) = 0
+school-12-maths-5-h5,Continuity and Differentiability,"If y = (sin^(-1) x)^2, what is (1 - x^2) y'' - x y'?",2,0,4,2y
+school-12-maths-5-h6,Continuity and Differentiability,x = t^2 and y = t^3. What is d^2y/dx^2 at t = 2?,3/4,3/8,9/4,3/16
+school-12-maths-5-h7,Continuity and Differentiability,"f(x) = x(x - 1)(x - 2) on [0, 2] satisfies Rolle's theorem. At which c in (0, 2) is f'(c) = 0?",1 only,2/3 and 4/3,1 + 1/sqrt(3) and 1 - 1/sqrt(3),1/sqrt(3) only
+school-12-maths-5-h8,Continuity and Differentiability,"f(x) = 2 for x <= 3, ax + b for 3 < x < 5, and 9 for x >= 5 is continuous everywhere. What is a + b?",5,12,-12,-5
+school-12-maths-6-e3,Application of Derivatives,The radius of a circle increases at 2 cm/s. At what rate does its circumference increase?,4 pi cm/s,2 pi cm/s,8 pi cm/s,4 cm/s
+school-12-maths-6-e4,Application of Derivatives,What is the slope of the tangent to y = 3x^2 - 2x at x = 2?,12,10,8,6
+school-12-maths-6-e5,Application of Derivatives,The function f(x) = x^2 - 6x + 4 is strictly decreasing on,"(3, infinity)","(-infinity, -3)","(-infinity, 3)","(-3, 3)"
+school-12-maths-6-e6,Application of Derivatives,What is the minimum value of x^2 - 8x + 3?,3,-8,-16,-13
+school-12-maths-6-m3,Application of Derivatives,The edge of a cube increases at 3 cm/s. How fast is its surface area increasing when the edge is 5 cm?,90 cm^2/s,150 cm^2/s,180 cm^2/s,45 cm^2/s
+school-12-maths-6-m4,Application of Derivatives,f(x) = x^3 - 6x^2 + 9x is decreasing on the interval,"(-infinity, 1)","(3, infinity)","(0, 3)","(1, 3)"
+school-12-maths-6-m5,Application of Derivatives,What is the equation of the tangent to y = x^2 - 3x + 2 at x = 1?,x + y = 1,x - y = 1,x + y = 0,y = x - 1
+school-12-maths-6-m6,Application of Derivatives,"What is the maximum value of sin x + cos x on [0, pi/2]?",1,sqrt(2),2,1/sqrt(2)
+school-12-maths-6-m7,Application of Derivatives,Two positive numbers have a sum of 20. What is the largest possible product?,99,96,100,110
+school-12-maths-6-h3,Application of Derivatives,"What is the absolute maximum of f(x) = 2x^3 - 15x^2 + 36x + 1 on [1, 5]?",56,29,28,24
+school-12-maths-6-h4,Application of Derivatives,A 5 m ladder leans on a wall. Its foot slides away at 2 m/s. How fast does the top slide down when the foot is 3 m from the wall?,2 m/s,1.5 m/s,0.75 m/s,2.5 m/s
+school-12-maths-6-h5,Application of Derivatives,What is the largest area of a rectangle that can be inscribed in a circle of radius 5 cm?,25 cm^2,100 cm^2,50 cm^2,25 pi cm^2
+school-12-maths-6-h6,Application of Derivatives,A closed cylinder of volume 54 pi cm^3 has the least surface area. What is that area?,36 pi cm^2,72 pi cm^2,108 pi cm^2,54 pi cm^2
+school-12-maths-6-h7,Application of Derivatives,"The curves y = x^2 and y = x^3 meet at (1, 1). What is the tangent of the acute angle between them there?",1/7,1,1/6,5
+school-12-maths-6-h8,Application of Derivatives,f(x) = x^3 + kx is increasing on all of R. This holds if and only if,k <= 0,k >= 0,k > 3,k can be any real number
+school-12-maths-7-e3,Integrals,What is the integral of (4x^3 - 6x) dx?,x^4 - 3x^2 + C,12x^2 - 6 + C,4x^4 - 6x^2 + C,x^4 - 6x^2 + C
+school-12-maths-7-e4,Integrals,What is the integral of e^(3x) dx?,3e^(3x) + C,e^(3x)/3 + C,e^(3x) + C,e^(3x)/(3x) + C
+school-12-maths-7-e5,Integrals,What is the value of the integral of 1/x dx from x = 1 to x = e?,e,0,1,e - 1
+school-12-maths-7-e6,Integrals,What is the integral of 1/(1 + x^2) dx from 0 to 1?,pi/2,1,pi/3,pi/4
+school-12-maths-7-e7,Integrals,What is the integral of 2x/(x^2 + 1) dx?,ln(x^2 + 1) + C,2 ln(x^2 + 1) + C,1/(x^2 + 1) + C,tan^(-1)(x^2) + C
+school-12-maths-7-e8,Integrals,What is the integral of x e^(x^2) dx?,2e^(x^2) + C,e^(x^2)/2 + C,x e^(x^2)/2 + C,e^(x^2) + C
+school-12-maths-7-m3,Integrals,What is the integral of x ln x dx for x > 0?,(x^2/2) ln x + x^2/4 + C,x ln x - x + C,(x^2/2) ln x - x^2/4 + C,(x^2/2) ln x - x^2/2 + C
+school-12-maths-7-m4,Integrals,What is the integral of (3x + 1)/(x^2 - 1) dx?,ln|x - 1| + 2 ln|x + 1| + C,3 ln|x^2 - 1| + C,2 ln|x + 1| + ln|x - 1| + C,2 ln|x - 1| + ln|x + 1| + C
+school-12-maths-7-m5,Integrals,What is the value of the integral of 2x e^(x^2) dx from 0 to 1?,e - 1,e,2e - 2,e^2 - 1
+school-12-maths-7-m6,Integrals,What is the integral of 1/sqrt(9 - 4x^2) dx?,sin^(-1)(2x/3) + C,(1/2) sin^(-1)(2x/3) + C,(1/3) sin^(-1)(2x/3) + C,(1/2) sin^(-1)(3x/2) + C
+school-12-maths-7-m7,Integrals,What is the value of the integral of sin x/(sin x + cos x) dx from 0 to pi/2?,pi/2,1,pi/4,1/2
+school-12-maths-7-m8,Integrals,What is the integral of e^x (sin x + cos x) dx?,e^x cos x + C,e^x (sin x - cos x) + C,2e^x sin x + C,e^x sin x + C
+school-12-maths-7-h3,Integrals,What is the integral of e^x (1/x - 1/x^2) dx?,e^x/x + C,e^x ln x + C,e^x/x^2 + C,-e^x/x + C
+school-12-maths-7-h4,Integrals,What is the value of the integral of (x^5 cos x + 1) dx from -pi to pi?,0,2 pi,pi,4 pi
+school-12-maths-7-h5,Integrals,What is the integral of 1/((x + 1)(x + 2)(x + 3)) dx?,ln|x + 1| - ln|x + 2| + ln|x + 3| + C,(1/2) ln|x + 1| + ln|x + 2| + (1/2) ln|x + 3| + C,(1/2) ln|x + 1| - ln|x + 2| + (1/2) ln|x + 3| + C,(1/2) ln|x + 1| - (1/2) ln|x + 2| + ln|x + 3| + C
+school-12-maths-7-h6,Integrals,What is the value of the integral of ln(sin x) dx from 0 to pi/2?,(pi/2) ln 2,0,-pi ln 2,-(pi/2) ln 2
+school-12-maths-7-h7,Integrals,What is the value of the integral of x(1 - x)^10 dx from 0 to 1?,1/132,1/110,1/12,1/121
+school-12-maths-7-h8,Integrals,What is the value of the integral of ln(1 + tan x) dx from 0 to pi/4?,(pi/4) ln 2,(pi/8) ln 2,ln 2,(pi/2) ln 2
+school-12-maths-8-e3,Application of Integrals,What is the area under y = 3x between x = 0 and x = 4?,12 square units,48 square units,24 square units,36 square units
+school-12-maths-8-e4,Application of Integrals,"What is the area bounded by y = x^3, the x-axis and the lines x = 0 and x = 2?",8 square units,2 square units,16 square units,4 square units
+school-12-maths-8-e5,Application of Integrals,What is the area enclosed by the ellipse x^2/25 + y^2/9 = 1?,15 pi square units,8 pi square units,34 pi square units,30 pi square units
+school-12-maths-8-e6,Application of Integrals,What is the area under y = sin x between x = 0 and x = pi?,1 square unit,2 square units,0 square units,pi square units
+school-12-maths-8-e8,Application of Integrals,What is the area under y = 1/x from x = 1 to x = e?,e square units,e - 1 square units,1/e square units,1 square unit
+school-12-maths-8-m3,Application of Integrals,What is the area between the parabola y = x^2 and the line y = 4x?,32/3 square units,16 square units,64/3 square units,8 square units
+school-12-maths-8-m4,Application of Integrals,What is the area between the parabola y^2 = 4x and the line y = x?,16/3 square units,8/3 square units,4 square units,32/3 square units
+school-12-maths-8-m5,Application of Integrals,"What is the area bounded by y = 2x + 1, the x-axis, x = 0 and x = 2?",5 square units,4 square units,6 square units,8 square units
+school-12-maths-8-m6,Application of Integrals,What is the area of the part of the circle x^2 + y^2 = 9 lying in the first quadrant?,9 pi square units,3 pi/4 square units,9 pi/2 square units,9 pi/4 square units
+school-12-maths-8-m7,Application of Integrals,What is the area between the parabola y = x^2 and the line y = x + 6?,125/6 square units,25/2 square units,125/3 square units,20 square units
+school-12-maths-8-m8,Application of Integrals,What is the area under y = sqrt(x) from x = 0 to x = 9?,27 square units,18 square units,9 square units,6 square units
+school-12-maths-8-h3,Application of Integrals,What is the area between the curves y = 2x^2 and y = x + 3?,125/6 square units,25/4 square units,125/24 square units,27/8 square units
+school-12-maths-8-h4,Application of Integrals,What is the smaller area between the circle x^2 + y^2 = 4 and the line x + y = 2?,2 pi - 2 square units,pi - 1 square units,4 - pi square units,pi - 2 square units
+school-12-maths-8-h5,Application of Integrals,What is the area between the parabolas y^2 = 8x and x^2 = 8y?,64/3 square units,16/3 square units,32/3 square units,8 square units
+school-12-maths-8-h6,Application of Integrals,"What is the area bounded by y = cos x, the x-axis, x = 0 and x = pi?",0 square units,2 square units,1 square unit,pi square units
+school-12-maths-8-h7,Application of Integrals,What is the total area enclosed between y = x^3 and y = x?,0 square units,1/4 square unit,1/2 square unit,1 square unit
+school-12-maths-8-h8,Application of Integrals,What is the area of the region bounded by the parabola y^2 = 4x and the line y = 2x - 4?,27/2 square units,18 square units,9/2 square units,9 square units
+school-12-maths-9-e3,Differential Equations,What are the order and degree of (d^3y/dx^3)^2 + (dy/dx)^5 = 0?,"Order 3, degree 2","Order 2, degree 3","Order 3, degree 5","Order 5, degree 2"
+school-12-maths-9-e4,Differential Equations,How many arbitrary constants does the general solution of a third-order differential equation have?,1,3,2,4
+school-12-maths-9-e5,Differential Equations,What is the solution of dy/dx = cos x with y(0) = 2?,y = sin x,y = -sin x + 2,y = sin x + 2,y = cos x + 2
+school-12-maths-9-e6,Differential Equations,What is the integrating factor of dy/dx + 3y = sin x?,3x,e^(-3x),sin x,e^(3x)
+school-12-maths-9-e7,Differential Equations,The family y = Ax (A is an arbitrary constant) has which differential equation?,x dy/dx = y,y dy/dx = x,dy/dx = A,dy/dx = x/y
+school-12-maths-9-e8,Differential Equations,What is the degree of the differential equation dy/dx + sin(dy/dx) = 0?,1,Not defined,2,0
+school-12-maths-9-m3,Differential Equations,What is the general solution of dy/dx = (1 + y^2)/(1 + x^2)?,y = x + C,tan^(-1)(xy) = C,tan^(-1) y - tan^(-1) x = C,(1 + y^2)(1 + x^2) = C
+school-12-maths-9-m4,Differential Equations,What is the general solution of dy/dx + 2y = e^(-x)?,y = e^(-x) + C e^(2x),y = C e^(-x),y = e^(-2x) + C e^(-x),y = e^(-x) + C e^(-2x)
+school-12-maths-9-m5,Differential Equations,Which differential equation represents the family y = a e^(2x) + b e^(-2x)?,d^2y/dx^2 - 4y = 0,d^2y/dx^2 + 4y = 0,dy/dx - 2y = 0,d^2y/dx^2 - 2y = 0
+school-12-maths-9-m6,Differential Equations,What is the general solution of x dy/dx = y + x^2 for x > 0?,y = x + C,y = x^2 + Cx,y = x^2 + C,y = Cx^2
+school-12-maths-9-m7,Differential Equations,The solution of dy/dx = x e^(-y) with y(0) = 0 is,y = ln(1 + x^2),y = e^(x^2/2),y = ln(1 + x^2/2),y = x^2/2
+school-12-maths-9-m8,Differential Equations,What are the order and degree of [1 + (dy/dx)^2]^(3/2) = k d^2y/dx^2?,"Order 2, degree 3/2","Order 2, degree 1","Order 1, degree 2","Order 2, degree 2"
+school-12-maths-9-h3,Differential Equations,What is the general solution of (x^2 + y^2) dx = 2xy dy?,x^2 - y^2 = Cx,x^2 + y^2 = Cx,x^2 - y^2 = C,y^2 = Cx
+school-12-maths-9-h4,Differential Equations,(1 + x^2) dy/dx + 2xy = 4x^2. Which solution passes through the origin?,y = 4x^3/3,y = 4x^3/(3(1 + x^2)),y = 4x^2/(1 + x^2),y = 2x^3/(1 + x^2)
+school-12-maths-9-h5,Differential Equations,Which differential equation represents circles through the origin with centres on the x-axis?,2xy dy/dx = x^2 - y^2,xy dy/dx = x^2 + y^2,2xy dy/dx = y^2 - x^2,y dy/dx = x
+school-12-maths-9-h6,Differential Equations,What is the general solution of dy/dx = 2^(x + y)?,2^x - 2^y = C,2^(x + y) = C,2^x + 2^y = C,2^x + 2^(-y) = C
+school-12-maths-9-h7,Differential Equations,"A curve passes through (1, e) and has slope -y/x^2 at each point (x, y). What is its equation?",y = e^(1/x),y = e^x,y = e^(-1/x),y = e^(x^2)
+school-12-maths-9-h8,Differential Equations,Eliminating c1 and c2 from y = c1 x + c2 x^2 gives,x^2 y'' + 2x y' - 2y = 0,x^2 y'' - 2x y' + 2y = 0,y'' - 2y' + y = 0,x y'' - y' = 0
+school-12-maths-10-e3,Vector Algebra,What is the unit vector in the direction of 3i + 4j + 12k?,(3i + 4j + 12k)/19,(3i + 4j + 12k)/5,(3i + 4j + 12k)/13,(i + j + k)/sqrt(3)
+school-12-maths-10-e4,Vector Algebra,"A is (2, 4, 6) and B is (4, 8, 10). What is the position vector of the midpoint of AB?",6i + 12j + 16k,i + 2j + 2k,2i + 4j + 4k,3i + 6j + 8k
+school-12-maths-10-e5,Vector Algebra,"If a = 2i + j - k and b = i - 3j + 2k, what is a . b?",-3,3,-7,7
+school-12-maths-10-e6,Vector Algebra,What is i x (i + j)?,-k,k,0,i + k
+school-12-maths-10-e7,Vector Algebra,"A line has direction cosines 1/2, 1/sqrt(2) and n. What is n?",1/4,sqrt(3)/2,+1/2 or -1/2,1/2 only
+school-12-maths-10-e8,Vector Algebra,What is the scalar projection of a = 2i + 3j + k on b = i + 2j + 2k?,10,10/9,4,10/3
+school-12-maths-10-m3,Vector Algebra,"A is (1, 2, 3) and B is (7, 8, 9). What are the coordinates of the point P dividing AB internally in the ratio 1 : 2?","(3, 4, 5)","(5, 6, 7)","(4, 5, 6)","(2, 3, 4)"
+school-12-maths-10-m4,Vector Algebra,"|a| = 3, |b| = 4 and a . b = 6. What is the angle between a and b?",30 degrees,60 degrees,45 degrees,90 degrees
+school-12-maths-10-m5,Vector Algebra,For what value of lambda are a = 2i + lambda j + k and b = i - 2j + 3k perpendicular?,-5/2,1/2,5/2,-1/2
+school-12-maths-10-m6,Vector Algebra,What is the area of the parallelogram with adjacent sides a = 2i + k and b = i + j?,sqrt(3) square units,3 square units,6 square units,sqrt(6) square units
+school-12-maths-10-m7,Vector Algebra,"P is (1, 2, 3) and Q is (3, 4, 4). What are the direction cosines of PQ?","2/3, 2/3, 1/3","2, 2, 1","1/3, 1/3, 2/3","2/9, 2/9, 1/9"
+school-12-maths-10-m8,Vector Algebra,"|a| = 2, |b| = 3 and the angle between them is 30 degrees. What is |a x b|?",6,3,3 sqrt(3),3/2
+school-12-maths-10-h3,Vector Algebra,a and b are unit vectors and |a + b| = 1. What is |a - b|?,1,sqrt(2),sqrt(3),2
+school-12-maths-10-h4,Vector Algebra,Which is a unit vector perpendicular to both i + j and j + k?,(i + j + k)/sqrt(3),(i - j - k)/sqrt(3),(-i + j + k)/sqrt(3),(i - j + k)/sqrt(3)
+school-12-maths-10-h5,Vector Algebra,"What is the area of the triangle with vertices A(1, 0, 0), B(0, 1, 0) and C(0, 0, 1)?",sqrt(3)/2 square units,1/2 square unit,sqrt(3) square units,3/2 square units
+school-12-maths-10-h6,Vector Algebra,What is the vector projection of a = i + j + k on b = 2i - j + 3k?,(4/14)(i + j + k),(2/7)(2i - j + 3k),(2i - j + 3k)/sqrt(14),(4/7)(i + j + k)
+school-12-maths-10-h7,Vector Algebra,"A(1, 2, 3), B(2, 3, 5) and C(4, 5, 9) lie on a line. In what ratio does B divide AC?",2 : 1 internally,1 : 3 internally,1 : 2 internally,1 : 2 externally
+school-12-maths-10-h8,Vector Algebra,"|a| = 3, |b| = 4 and a . b = 6. What is |a x b|?",6,12,sqrt(108) / 2,6 sqrt(3)
+school-12-maths-11-e3,Three Dimensional Geometry,"A line has direction ratios 1, 2, 2. What are its direction cosines?","1/3, 2/3, 2/3","1, 2, 2","1/5, 2/5, 2/5","1/9, 2/9, 2/9"
+school-12-maths-11-e4,Three Dimensional Geometry,"Which is the line through (1, 2, 3) parallel to the vector 2i - j + 4k?",(x - 2)/1 = (y + 1)/2 = (z - 4)/3,(x - 1)/2 = (y - 2)/(-1) = (z - 3)/4,(x + 1)/2 = (y + 2)/(-1) = (z + 3)/4,(x - 1)/2 = (y - 2)/1 = (z - 3)/4
+school-12-maths-11-e5,Three Dimensional Geometry,What is the distance of the origin from the plane 3x + 4y + 12z = 26?,26,13,2,1
+school-12-maths-11-e6,Three Dimensional Geometry,"Two lines have direction ratios (1, 1, 0) and (1, 0, 1). What is the angle between them?",30 degrees,45 degrees,90 degrees,60 degrees
+school-12-maths-11-e7,Three Dimensional Geometry,What is the z-intercept of the plane 2x + 3y + 6z = 12?,2,6,4,12
+school-12-maths-11-e8,Three Dimensional Geometry,"What are the direction cosines of the line joining the origin to the point (2, -1, 2)?","2, -1, 2","2/3, -1/3, 2/3","2/9, -1/9, 2/9","1/3, -1/3, 1/3"
+school-12-maths-11-m3,Three Dimensional Geometry,"What is the distance of the point (3, -1, 4) from the plane 2x - y + 2z = 5?",10,5/3,10/3,5
+school-12-maths-11-m4,Three Dimensional Geometry,"Two lines have direction ratios (2, 1, 2) and (1, 1, 0). What is the acute angle between them?",30 degrees,60 degrees,90 degrees,45 degrees
+school-12-maths-11-m5,Three Dimensional Geometry,"What is the equation of the plane through (1, 0, 0), (0, 2, 0) and (0, 0, 3)?",6x + 3y + 2z = 6,x + 2y + 3z = 6,6x + 3y + 2z = 1,x/2 + y/3 + z/6 = 1
+school-12-maths-11-m6,Three Dimensional Geometry,Which point lies on the line (x - 2)/3 = (y + 1)/2 = (z - 5)/(-1)?,"(5, 1, 6)","(5, 1, 4)","(2, -1, -5)","(3, 2, -1)"
+school-12-maths-11-m7,Three Dimensional Geometry,"What is the shortest distance between the parallel lines r = (1, 0, 0) + t(1, 1, 1) and r = (2, 1, -1) + s(1, 1, 1)?",sqrt(3),2,2 sqrt(6)/3,sqrt(6)/3
+school-12-maths-11-m8,Three Dimensional Geometry,What is the distance between the parallel planes 2x - 2y + z = 3 and 2x - 2y + z = 12?,9,1,27,3
+school-12-maths-11-h3,Three Dimensional Geometry,"What is the foot of the perpendicular from (1, 2, 3) to the plane x + y + z = 3?","(0, 1, 2)","(1, 1, 1)","(2, 3, 4)","(0, 0, 3)"
+school-12-maths-11-h4,Three Dimensional Geometry,"L1 passes through (0, 0, 0) with direction (1, 1, 0). L2 passes through (1, 0, 1) with direction (0, 1, 1). What is the shortest distance between them?",1/sqrt(3),2/sqrt(3),sqrt(2),2
+school-12-maths-11-h5,Three Dimensional Geometry,"What is the distance of the point (1, 2, 3) from the line (x - 2)/2 = (y - 1)/1 = z/2?",sqrt(74),8/3,sqrt(74)/3,3
+school-12-maths-11-h6,Three Dimensional Geometry,"A line is perpendicular to both lines with direction ratios (1, 2, 1) and (2, 1, -1). Its direction ratios are proportional to","(1, 1, 1)","(1, -1, -1)","(3, 3, -3)","(1, -1, 1)"
+school-12-maths-11-h7,Three Dimensional Geometry,"A line makes angles a, b and c with the three axes. What is sin^2 a + sin^2 b + sin^2 c?",2,1,3,3/2
+school-12-maths-11-h8,Three Dimensional Geometry,For which k do the lines (x - 1)/2 = (y + 1)/3 = (z - 1)/4 and (x - 3)/1 = (y - k)/2 = z/1 intersect?,2,9/2,9,3/2
+school-12-maths-12-e3,Linear Programming,"The corner points of a feasible region are (0, 0), (5, 0) and (0, 4). What is the maximum of Z = 2x + 3y?",12,10,15,22
+school-12-maths-12-e4,Linear Programming,"The corner points of a feasible region are (1, 2), (3, 1) and (2, 5). What is the minimum of Z = 4x + y?",13,6,7,10
+school-12-maths-12-e5,Linear Programming,The feasible region of a linear programming problem is always,a circle,a non-convex polygon,a convex set,a single point
+school-12-maths-12-e6,Linear Programming,The conditions x >= 0 and y >= 0 in an LPP are called,objective functions,optimal solutions,corner points,non-negative restrictions
+school-12-maths-12-e7,Linear Programming,"Which point lies in the feasible region of x + y <= 6, 2x + y <= 8, x >= 0, y >= 0?","(2, 4)","(3, 3)","(5, 2)","(-1, 3)"
+school-12-maths-12-e8,Linear Programming,"Z = 3x + 2y has corner points (0, 0), (4, 0), (2, 3) and (0, 3) in its feasible region. How many points give the maximum value of Z?",Exactly one,Infinitely many,Exactly two,None
+school-12-maths-12-m3,Linear Programming,"Maximise Z = 3x + 4y subject to x + y <= 6, x <= 4, x >= 0, y >= 0. What is the maximum?",20,18,24,12
+school-12-maths-12-m4,Linear Programming,"Minimise Z = 5x + 2y subject to x + y >= 4, x >= 1, y >= 0. What is the minimum value?",20,8,13,11
+school-12-maths-12-m5,Linear Programming,"Maximise Z = x + 2y subject to x + 2y <= 10, x + y <= 6, x >= 0, y >= 0. What is the maximum?",10,6,12,11
+school-12-maths-12-m6,Linear Programming,"In a shop problem, x notebooks and y pens must together number at least 10. Which constraint expresses this?",x + y <= 10,x + y >= 10,xy >= 10,x - y >= 10
+school-12-maths-12-m7,Linear Programming,"Maximise Z = 2x + 5y subject to 2x + y <= 10, x + 2y <= 10, x >= 0, y >= 0. What is the maximum?",70/3,10,25,20
+school-12-maths-12-m8,Linear Programming,"Minimise Z = 3x + 2y subject to x + y >= 5, x + 3y >= 9, x >= 0, y >= 0. What is the minimum?",13,27,15,10
+school-12-maths-12-h3,Linear Programming,A farmer grows wheat on x acres and rice on y acres. Land: x + y <= 10. Fertiliser: 2x + y <= 16. Profit is Rs 1200 per acre of wheat and Rs 900 per acre of rice. What is the maximum profit?,"Rs 10,800","Rs 9,600","Rs 9,000","Rs 12,000"
+school-12-maths-12-h4,Linear Programming,Food A costs Rs 4 per unit with 3 units of protein and 1 of iron. Food B costs Rs 3 per unit with 1 unit of protein and 2 of iron. A diet needs at least 9 protein and 8 iron. What is the least cost?,Rs 24,Rs 17,Rs 27,Rs 32
+school-12-maths-12-h5,Linear Programming,"Maximise Z = x + y subject to x - y <= 1, x >= 0, y >= 0. Which is correct?",The maximum is 1,The maximum is 0,Z has no maximum because the region is unbounded,"The maximum is at (1, 0)"
+school-12-maths-12-h6,Linear Programming,"A firm makes tables and chairs. A table takes 4 hours and a chair 3 hours of one machine, which has 240 hours. Profit is Rs 60 per table and Rs 45 per chair. What is the maximum profit?","Rs 3,200","Rs 4,000","Rs 2,700","Rs 3,600"
+school-12-maths-12-h7,Linear Programming,"Maximise Z = x + 3y subject to x + y <= 10, x + 2y <= 16, 3x + y <= 24, x >= 0, y >= 0. What is the maximum?",24,22,16,8
+school-12-maths-12-h8,Linear Programming,"Minimise Z = 4x + 5y subject to x + y >= 6, 2x + y >= 8 and x + 3y >= 9, with x, y >= 0. What is the minimum?",24,27,30,28
+school-12-maths-13-e3,Probability,A and B are independent events with P(A) = 0.5 and P(B) = 0.4. What is P(A and B)?,0.2,0.9,0.1,0.45
+school-12-maths-13-e4,Probability,"P(A) = 0.6, P(B) = 0.5 and P(A and B) = 0.3. What is P(A given B)?",0.5,0.6,0.3,0.8
+school-12-maths-13-e5,Probability,A fair die is rolled once. What is the expected value of the number shown?,3,4,3.5,21
+school-12-maths-13-e6,Probability,"A random variable X has P(X = 0) = k, P(X = 1) = 2k and P(X = 2) = 3k. What is k?",1/3,1/5,1/2,1/6
+school-12-maths-13-e7,Probability,"A fair coin is tossed twice. Given that the first toss is a head, what is the probability of two heads?",1/2,1/4,1/3,3/4
+school-12-maths-13-e8,Probability,Box 1 is chosen with probability 0.3 and Box 2 with 0.7. Bulbs from Box 1 are 20% defective and from Box 2 are 10% defective. What is P(defective)?,0.15,0.13,0.30,0.06
+school-12-maths-13-m3,Probability,Two cards are drawn one after another without replacement from a pack of 52. What is the probability that both are aces?,1/169,1/13,1/221,4/663
+school-12-maths-13-m4,Probability,"X takes the values 0, 1 and 2 with probabilities 1/4, 1/2 and 1/4. What is Var(X)?",1,1/4,3/4,1/2
+school-12-maths-13-m5,Probability,"Urn A has 3 red and 2 black balls, and urn B has 1 red and 4 black. An urn is chosen with a fair coin and a red ball is drawn. What is the probability it came from urn A?",3/4,3/5,1/2,1/4
+school-12-maths-13-m6,Probability,A fair coin is tossed 4 times. What is the probability of at least 3 heads?,1/4,5/16,11/16,1/16
+school-12-maths-13-m7,Probability,A and B are independent with P(A) = 1/3 and P(B) = 1/4. What is P(A or B)?,7/12,1/12,1/2,5/12
+school-12-maths-13-h3,Probability,"Two dice are rolled. Given that at least one die shows 4, what is the probability that the sum is 7?",2/11,1/6,2/36,1/11
+school-12-maths-13-h4,Probability,"One of three boxes has two gold coins, one has a gold and a silver coin, and one has two silver coins. A box is picked at random and a coin drawn from it is gold. What is the probability the other coin is gold?",1/2,2/3,1/3,3/4
+school-12-maths-13-h5,Probability,Two balls are drawn without replacement from 3 red and 2 blue balls. X is the number of red balls drawn. What is Var(X)?,3/5,6/5,9/25,1/5
+school-12-maths-13-h6,Probability,1% of people have a disease. A test is positive for 90% of the sick and for 5% of the healthy. A person tests positive. What is the probability that the person is sick?,9/10,1/2,9/100,2/13
+school-12-maths-13-h7,Probability,"P(A) = 0.4, P(B) = 0.5 and P(A or B) = 0.7. Which is correct?",A and B are independent but not mutually exclusive,A and B are mutually exclusive but not independent,A and B are both independent and mutually exclusive,A and B are neither independent nor mutually exclusive
+school-12-maths-13-h8,Probability,A fair die is rolled 4 times. What is the probability of getting at least one 6?,625/1296,671/1296,2/3,1/6

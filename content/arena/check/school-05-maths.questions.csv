@@ -1,0 +1,271 @@
+qid,chapter,question,A,B,C,D
+school-05-maths-1-e1,We the Travellers - I,"Which is the greatest number: 8,765, 18,076, 9,999 or 10,899?","10,899","18,076","9,999","8,765"
+school-05-maths-1-e2,We the Travellers - I,"What is 7,046 in expanded form?",7000 + 40 + 6,7000 + 400 + 6,700 + 40 + 6,7000 + 4 + 6
+school-05-maths-1-m1,We the Travellers - I,"Round 5,468 to the nearest hundred.","5,400","5,470","5,000","5,500"
+school-05-maths-1-m2,We the Travellers - I,Which number gives the same answer when rounded to the nearest hundred and to the nearest thousand?,"4,126","4,540","4,980","4,260"
+school-05-maths-1-h1,We the Travellers - I,"Swap two digits of 24,075 so that the new number is between 40,000 and 50,000. Which number do you get?","20,475","42,075","24,057","25,074"
+school-05-maths-2-e1,Fractions,Which fraction is equal to 1/2?,3/6,2/3,1/3,3/4
+school-05-maths-2-m1,Fractions,How many (1/10)s make 3/5?,3,5,6,15
+school-05-maths-2-m2,Fractions,Fill the box so the fractions are equal: 4/7 = [ ]/35,32,20,28,5
+school-05-maths-3-e1,Angles as Turns,A quarter turn makes which kind of angle?,Acute angle,Obtuse angle,Full circle,Right angle
+school-05-maths-3-e2,Angles as Turns,An angle smaller than a right angle is called a(n) ...,Right angle,Obtuse angle,Acute angle,Straight angle
+school-05-maths-3-m1,Angles as Turns,The minute hand moves from 12 to 6. What turn did it make?,1/4 turn,1/2 turn,3/4 turn,Full turn
+school-05-maths-3-m2,Angles as Turns,"Ravi faces north. He turns a quarter turn clockwise, and then another quarter turn clockwise. Which way does he face now?",South,North,East,West
+school-05-maths-4-e1,We the Travellers - II,"What is 3,456 + 2,344?","5,700","5,790","5,800","6,800"
+school-05-maths-4-e2,We the Travellers - II,"What is 9,000 - 4,265?","5,735","4,735","4,765","5,265"
+school-05-maths-4-m1,We the Travellers - II,"A van can carry 5,000 kg. It has 3,675 kg on it. How much more can it carry?","1,325 kg","1,425 kg","2,325 kg","8,675 kg"
+school-05-maths-4-m2,We the Travellers - II,"Raju has ₹12,000. He spends ₹3,450 on food, gets ₹1,200 as a gift, then pays ₹2,300 for a ticket. How much does he have now?","₹6,250","₹9,750","₹8,550","₹7,450"
+school-05-maths-4-h1,We the Travellers - II,"Ria pays exactly ₹23 using only ₹5 and ₹2 coins, with at least one of each. In how many different ways can she do it?",1,3,2,4
+school-05-maths-4-h2,We the Travellers - II,A torch is off. Each press switches it ON or OFF. Is it ON or OFF after 100 presses?,"ON, because 100 is even","OFF, because 100 is even","OFF, because 100 is odd","ON, because 100 is odd"
+school-05-maths-5-e1,Far and Near,7 km is the same as how many metres?,700 m,"7,000 m",70 m,"70,000 m"
+school-05-maths-5-e2,Far and Near,Which is longer: 350 cm or 3 m?,350 cm,3 m,Both are the same,Cannot tell
+school-05-maths-5-m1,Far and Near,"Write 8,450 m in km and m.",84 km 50 m,8 km 45 m,845 km,8 km 450 m
+school-05-maths-5-m2,Far and Near,What is 3 km 900 m + 2 km 300 m?,6 km 100 m,7 km 200 m,6 km 200 m,5 km 200 m
+school-05-maths-5-h1,Far and Near,A road 15 km 300 m long is built in 3 equal days. How much road is built each day?,5 km 10 m,5 km 100 m,5 km 300 m,4 km 100 m
+school-05-maths-6-e1,The Dairy Farm,A cow gives 12 litres of milk each day. How much milk does it give in 5 days?,60 litres,17 litres,50 litres,120 litres
+school-05-maths-6-e2,The Dairy Farm,What is 30 x 40?,120,"12,000",70,"1,200"
+school-05-maths-6-m1,The Dairy Farm,"Using halving and doubling, what is 25 x 16?",41,"4,000",400,350
+school-05-maths-6-m2,The Dairy Farm,"Using the nearest multiple of 10, what is 9 x 48?",450,432,442,422
+school-05-maths-6-h1,The Dairy Farm,A dairy fills 36 crates with 24 bottles in each. Then 50 bottles break. How many bottles are left?,814,864,914,764
+school-05-maths-6-h2,The Dairy Farm,"A minister gives 2 coins on day 1, and doubles the coins every day for 6 days. How many coins in all?",128,64,62,126
+school-05-maths-7-e1,Shapes and Patterns,How many squares can fit around one point with no gap?,3,5,6,4
+school-05-maths-7-e2,Shapes and Patterns,How many faces does a cube have?,4,8,6,12
+school-05-maths-7-m1,Shapes and Patterns,A corner of a regular hexagon is 120 degrees. How many hexagons fit around a point with no gap? (A full turn is 360 degrees.),4,3,5,6
+school-05-maths-7-m2,Shapes and Patterns,Why can't five squares fit around a point?,Five right angles make more than a full turn,The squares are too small,The squares are too big,Five is an odd number
+school-05-maths-7-h1,Shapes and Patterns,A big 3 x 3 x 3 cube is made of small cubes. The outside is painted. How many small cubes have 3 painted faces?,12,6,1,8
+school-05-maths-7-h2,Shapes and Patterns,A big 3 x 3 x 3 cube is made of small cubes. The outside is painted. How many small cubes have exactly 2 painted faces?,8,6,12,24
+school-05-maths-8-e1,Weight and Capacity,3 kg is the same as how many grams?,300 g,30 g,"3,000 g","30,000 g"
+school-05-maths-8-e2,Weight and Capacity,How many millilitres are in 4 litres?,400 ml,"4,000 ml",40 ml,"40,000 ml"
+school-05-maths-8-m1,Weight and Capacity,What is 5 kg 200 g - 2 kg 700 g?,2 kg 500 g,3 kg 500 g,2 kg 900 g,3 kg 100 g
+school-05-maths-8-h1,Weight and Capacity,"A jug of juice fills 6 glasses of 300 ml each, and 150 ml is left in the jug. How much juice was in the jug at first?",1 l 800 ml,2 l 50 ml,1 l 950 ml,1 l 650 ml
+school-05-maths-8-h2,Weight and Capacity,A shop has 80 kg of rice. It sells 35 kg 500 g in the morning and 28 kg 250 g in the evening. How much rice is left?,15 kg 750 g,16 kg 250 g,16 kg 750 g,17 kg 250 g
+school-05-maths-9-e1,Coconut Farm,What is 96 divided by 8?,11,12,13,10
+school-05-maths-9-e2,Coconut Farm,How many ₹50 notes make ₹600?,12,10,6,60
+school-05-maths-9-m1,Coconut Farm,135 sweets are packed in boxes of 6. How many boxes are needed to pack all of them?,22,24,21,23
+school-05-maths-9-m2,Coconut Farm,250 coconuts are packed in crates of 12. How many full crates are there and how many coconuts are left?,"21 crates, 10 left","20 crates, 1 left","20 crates, 10 left","10 crates, 20 left"
+school-05-maths-9-h1,Coconut Farm,A bus carries 48 people. How many buses are needed for 400 people?,8,9,10,7
+school-05-maths-10-e1,Symmetrical Designs,Which letter has a vertical line of symmetry?,A,F,G,R
+school-05-maths-10-e2,Symmetrical Designs,How many lines of symmetry does a square have?,2,6,8,4
+school-05-maths-10-m1,Symmetrical Designs,Which letter looks the same after a half turn?,F,L,Z,P
+school-05-maths-10-m2,Symmetrical Designs,Which letter has both a vertical and a horizontal line of symmetry?,A,H,B,E
+school-05-maths-11-e1,Grandmother's Quilt,What is the perimeter of a square with side 7 cm?,14 cm,49 cm,21 cm,28 cm
+school-05-maths-11-m1,Grandmother's Quilt,A quilt has 12 rows. Each row has 15 square patches. How many patches are there?,27,180,90,150
+school-05-maths-11-h1,Grandmother's Quilt,A garden is 20 m long and 15 m wide. Fencing the whole boundary costs ₹40 per metre. What is the cost?,"₹12,000","₹1,400","₹1,600","₹2,800"
+school-05-maths-12-e1,Racing Seconds,How many minutes are there in 3 hours?,30 minutes,120 minutes,180 minutes,360 minutes
+school-05-maths-12-m1,Racing Seconds,A train leaves at 6:40 a.m. and the trip takes 3 hours 35 minutes. When does it arrive?,10:15 a.m.,10:05 a.m.,9:15 a.m.,10:25 a.m.
+school-05-maths-12-h1,Racing Seconds,A film starts at 9:50 p.m. and lasts 2 hours 25 minutes. When does it end?,12:15 p.m.,11:15 p.m.,12:15 a.m.,12:25 a.m.
+school-05-maths-12-h2,Racing Seconds,A bus leaves at 10:45 p.m. and reaches at 5:20 a.m. the next day. How long is the journey?,5 hours 25 minutes,6 hours 35 minutes,6 hours 25 minutes,7 hours 35 minutes
+school-05-maths-13-e1,Animal Jumps,Which number is a factor of 20?,6,5,8,12
+school-05-maths-13-m1,Animal Jumps,Which number is a common multiple of 4 and 6?,16,18,20,12
+school-05-maths-13-h1,Animal Jumps,One light blinks every 4 seconds and another every 6 seconds. They blink together now. After how many seconds will they blink together again?,10 seconds,12 seconds,24 seconds,18 seconds
+school-05-maths-14-e1,Maps and Locations,You face the setting Sun. Which direction is behind you?,East,North,South,West
+school-05-maths-14-e2,Maps and Locations,You face north. Which direction does your right hand point to?,North,South,West,East
+school-05-maths-14-m1,Maps and Locations,"On a grid, the first number counts steps east and the second counts steps north. A tree is at (4, 6). What is the spot 3 steps east and 2 steps north of it?","(8, 7)","(6, 4)","(7, 8)","(1, 4)"
+school-05-maths-14-h1,Maps and Locations,Asha faces east. She makes a half turn and then a quarter turn to her right. Which way does she face now?,North,South,East,West
+school-05-maths-15-e1,Data Through Pictures,"In a pictograph, one icon means 2 books. A row has 6 icons. How many books is that?",6,8,4,12
+school-05-maths-15-m1,Data Through Pictures,In a pictograph one icon means 4 cars. Monday has 7 icons and Tuesday has 5 icons. How many cars in all?,12,48,36,28
+school-05-maths-15-h1,Data Through Pictures,"Food waste for 5 days was 4, 7, 6, 9 and 4 kg. Each 1 kg of food can feed 3 children. How many children could be fed?",30,27,120,90
+school-05-maths-1-e3,We the Travellers - I,"Round 6,248 to the nearest ten.","6,240","6,250","6,200","6,300"
+school-05-maths-1-e4,We the Travellers - I,"Which is the smallest number: 52,614; 25,641; 52,164 or 25,416?","25,641","52,164","25,416","52,614"
+school-05-maths-1-e5,We the Travellers - I,"What is the place value of 6 in 36,408?","60,000",600,6,"6,000"
+school-05-maths-1-e7,We the Travellers - I,"You keep adding 1,000 to 18,000. Which number do you reach after two more steps?","19,000","20,000","18,200","28,000"
+school-05-maths-1-m3,We the Travellers - I,"Round 7,396 to the nearest thousand.","7,400","8,000","7,000","7,300"
+school-05-maths-1-m4,We the Travellers - I,"Rohan says 9,990 is greater than 21,005 because 9 is more than 2. What is correct?",Yes. The first digit 9 is greater than 2,"Yes. 9,990 has more tens",No. The two numbers are equal,"No. 21,005 has 5 digits and 9,990 has only 4, so 21,005 is greater"
+school-05-maths-1-m7,We the Travellers - I,"A stadium has 48,650 seats. What is this to the nearest thousand?","48,000","48,700","49,000","50,000"
+school-05-maths-1-m8,We the Travellers - I,Which number gives the same answer when rounded to the nearest ten and to the nearest hundred?,345,412,679,296
+school-05-maths-1-h3,We the Travellers - I,"Swap two digits of 36,518 to make the greatest possible number. Which number do you get?","63,518","56,318","38,516","86,513"
+school-05-maths-1-h4,We the Travellers - I,"Swap two digits of 85,426 to make the smallest possible number. Which number do you get?","25,486","45,826","58,426","65,428"
+school-05-maths-1-h5,We the Travellers - I,"Fill the blank: 37,208 = 2 ten thousand + ___ thousand + 12 hundred + 8 ones.",17,16,15,7
+school-05-maths-1-h6,We the Travellers - I,"A school has 1,236 students going on a trip. Each bus holds 50 students. How many buses are needed?",24,26,25,123
+school-05-maths-1-h7,We the Travellers - I,"Use the digits 3, 0, 8, 5, 2 once each. What is the smallest 5-digit number you can make?","02,358","23,058","20,385","20,358"
+school-05-maths-2-e3,Fractions,Which fraction is equal to 3/6?,1/3,3/5,1/2,2/6
+school-05-maths-2-e4,Fractions,"Which is the greatest: 1/3, 1/5, 1/9 or 1/4?",1/5,1/9,1/4,1/3
+school-05-maths-2-e5,Fractions,Fill in the blank: 1/4 = ___/12.,3,4,2,6
+school-05-maths-2-e7,Fractions,Which of these fractions is greater than one whole?,5/8,8/8,9/8,3/5
+school-05-maths-2-e8,Fractions,Which pair of fractions is equivalent?,2/5 and 3/7,3/4 and 4/5,5/6 and 6/7,1/4 and 2/8
+school-05-maths-2-m3,Fractions,"Which is greater, 4/7 or 4/9?",4/9,They are equal,Cannot tell without a picture,4/7
+school-05-maths-2-m4,Fractions,Fill in the blank: 5/9 = 20/___.,36,29,24,32
+school-05-maths-2-m6,Fractions,"Arrange 2/5, 2/3, 2/9 and 2/7 from greatest to smallest.","2/9, 2/7, 2/5, 2/3","2/3, 2/9, 2/5, 2/7","2/3, 2/5, 2/7, 2/9","2/5, 2/3, 2/7, 2/9"
+school-05-maths-2-m7,Fractions,Which of these fractions is less than half?,5/9,4/7,6/10,3/8
+school-05-maths-2-h3,Fractions,"Arrange 5/4, 3/4, 4/4 and 7/6 from smallest to greatest.","3/4, 4/4, 7/6, 5/4","3/4, 4/4, 5/4, 7/6","4/4, 3/4, 7/6, 5/4","5/4, 7/6, 4/4, 3/4"
+school-05-maths-2-h4,Fractions,You have one 1/2 piece and one 1/6 piece. How many 1/12 pieces do you add to make a whole?,3,4,5,6
+school-05-maths-2-h5,Fractions,Which fraction lies between 2/3 and 5/6?,1/2,7/8,3/4,3/5
+school-05-maths-2-h6,Fractions,Sara says 2/5 is greater than 2/3 because 5 is greater than 3. What is correct?,She is right. A bigger denominator means a bigger fraction,She is wrong. 2/5 and 2/3 are equal,She is right. 2/5 is 25 and 2/3 is 23,"She is wrong. Fifths are smaller pieces than thirds, so 2/5 is less than 2/3"
+school-05-maths-2-h7,Fractions,"Amit ate 3/8 of a pizza and Neha ate 1/2 of the same pizza. Who ate more, and how much more?","Neha, 1/8 of the pizza more","Amit, 1/8 of the pizza more","Neha, 2/8 of the pizza more",They ate the same
+school-05-maths-2-h8,Fractions,Which fraction is NOT equivalent to 2/3?,4/6,10/16,6/9,8/12
+school-05-maths-3-e3,Angles as Turns,What kind of angle is a half turn?,Right angle,Acute angle,Obtuse angle,Straight angle
+school-05-maths-3-e4,Angles as Turns,Which of these turns makes an acute angle?,1/8 turn,1/4 turn,1/2 turn,3/4 turn
+school-05-maths-3-e5,Angles as Turns,How many quarter turns make one full turn?,2,4,3,8
+school-05-maths-3-e6,Angles as Turns,The minute hand moves from 12 to 6. What turn is this?,1/4 turn,3/4 turn,1/2 turn,Full turn
+school-05-maths-3-m4,Angles as Turns,The minute hand starts at 12 and stops at 4. What fraction of a full turn has it made?,1/4,1/3,1/2,2/3
+school-05-maths-3-m5,Angles as Turns,How many 1/8 turns make a right angle?,1,4,2,8
+school-05-maths-3-m7,Angles as Turns,"At 3 o'clock, what kind of angle do the hour hand and minute hand make?",Right angle,Acute angle,Obtuse angle,Straight angle
+school-05-maths-3-m8,Angles as Turns,A wheel makes 3 quarter turns. What part of a full turn is this?,1/3,3/4,1/4,3/8
+school-05-maths-3-h3,Angles as Turns,The minute hand is at 5 (25 minutes). It makes a half turn clockwise. Where does it stop?,At 10,At 11,At 12,At 9
+school-05-maths-3-h4,Angles as Turns,Meera makes a 3/4 turn clockwise. Which is the shortest turn that makes her face the way she started?,1/4 turn anti-clockwise,1/2 turn clockwise,1/4 turn clockwise,3/4 turn clockwise
+school-05-maths-3-h5,Angles as Turns,"Rohan turns 1/2 turn, then 1/4 turn, then 1/8 turn, all clockwise. What fraction of a full turn is this altogether?",3/8,5/8,1,7/8
+school-05-maths-3-h6,Angles as Turns,How many 1/6 turns make a straight angle?,3,2,4,6
+school-05-maths-3-h7,Angles as Turns,The hour hand moves from 12 to 4. What fraction of a full turn is this?,1/4,1/3,1/2,2/3
+school-05-maths-3-h8,Angles as Turns,The minute hand makes a 1/4 turn and then a 1/12 turn. How many minutes have passed?,25 minutes,10 minutes,20 minutes,30 minutes
+school-05-maths-4-e4,We the Travellers - II,"What is 4,578 - 2,222?","2,456","2,356","6,800","2,366"
+school-05-maths-4-e5,We the Travellers - II,"If 56 + 38 = 94, what is 94 - 38?",38,132,56,66
+school-05-maths-4-e6,We the Travellers - II,"What is 46,120 + 12,890?","58,010","59,110","58,910","59,010"
+school-05-maths-4-e8,We the Travellers - II,"A shop sold 1,250 pens in April and 1,375 pens in May. How many pens were sold in all?","2,525","2,625","2,615","3,625"
+school-05-maths-4-m3,We the Travellers - II,"Anita had ₹9,500. She spent ₹2,350 on a bag and ₹1,875 on shoes. How much is left?","₹5,175","₹5,275","₹4,225","₹7,150"
+school-05-maths-4-m5,We the Travellers - II,"A train travels 1,845 km from Delhi to Pune and then 1,962 km from Pune to Chennai. What is the total distance?","3,707 km","3,817 km","4,807 km","3,807 km"
+school-05-maths-4-m6,We the Travellers - II,"What must be added to 6,205 to get 10,000?","3,795","3,805","4,795","3,895"
+school-05-maths-4-m7,We the Travellers - II,"A tank has 15,000 litres. 6,250 litres are used in the morning and 4,875 litres in the evening. How much water is left?","4,775 litres","3,875 litres","2,875 litres","8,750 litres"
+school-05-maths-4-h3,We the Travellers - II,"Ravi has ₹20,000. He pays ₹7,450 rent, gets a ₹3,200 refund, pays ₹5,675 for fees and then ₹1,325 for a bus pass. How much is left?","₹9,750","₹8,850","₹8,750","₹7,750"
+school-05-maths-4-h5,We the Travellers - II,In how many ways can you pay exactly ₹25 using only ₹10 and ₹5 coins?,3,2,4,5
+school-05-maths-4-h7,We the Travellers - II,"What must be added to 23,468 to get 50,000?","26,632","27,532","26,532","26,542"
+school-05-maths-4-h8,We the Travellers - II,The sum of 6 consecutive numbers is 39. What is the sum of the next 6 consecutive numbers (each one more than before)?,40,44,46,45
+school-05-maths-5-e3,Far and Near,Which unit is best for measuring the distance from Delhi to Jaipur?,Millimetre,Kilometre,Centimetre,Metre
+school-05-maths-5-e4,Far and Near,How many centimetres are there in 4 metres?,40,"4,000",400,44
+school-05-maths-5-e5,Far and Near,7 km = ___ m.,700,70,"70,000","7,000"
+school-05-maths-5-e6,Far and Near,Convert 5 m 25 cm into centimetres.,525 cm,"5,025 cm",552 cm,530 cm
+school-05-maths-5-m3,Far and Near,Which sign goes in the box? 3 m 40 cm [ ] 304 cm,<,=,>,Cannot say
+school-05-maths-5-m4,Far and Near,Subtract: 8 km 200 m - 3 km 750 m.,5 km 450 m,4 km 550 m,5 km 50 m,4 km 450 m
+school-05-maths-5-m5,Far and Near,Ravi's school is 850 m from his home. He goes to school and back home for 5 days. How far does he walk in all?,8 km 500 m,4 km 250 m,8 km 50 m,85 km
+school-05-maths-5-m7,Far and Near,A rope is 5 m 60 cm long. A piece of 2 m 85 cm is cut off. How long is the rest?,2 m 85 cm,3 m 25 cm,2 m 75 cm,2 m 25 cm
+school-05-maths-5-h3,Far and Near,"A 4-km race has a water station after every 500 m, and the last station is at the finish line. How many water stations are there?",7,9,4,8
+school-05-maths-5-h5,Far and Near,7 m of cloth costs ₹560. What is the cost of 12 m of the same cloth?,₹840,₹960,₹980,"₹1,120"
+school-05-maths-5-h6,Far and Near,A 2 km rope is cut into pieces of 250 m each. 3 pieces are used. How many metres of rope are still there?,"1,750 m",750 m,"1,250 m","1,500 m"
+school-05-maths-5-h7,Far and Near,Ria runs 6 rounds of a 400 m track and then walks 700 m home. How far does she go in all?,3 km 10 m,2 km 400 m,4 km 100 m,3 km 100 m
+school-05-maths-5-h8,Far and Near,"A road trip has legs of 1,090 km, 500 km and 625 km. How many more km are needed to make 2,500 km?",285 km,215 km,385 km,275 km
+school-05-maths-6-e3,The Dairy Farm,What is 30 x 100?,300,"30,000","3,000",130
+school-05-maths-6-e4,The Dairy Farm,What is double of 45?,80,450,54,90
+school-05-maths-6-e6,The Dairy Farm,A tray holds 24 eggs. How many eggs are there in 3 trays?,62,72,27,82
+school-05-maths-6-e8,The Dairy Farm,What is 4 x 19? (Hint: 4 x 20 is easy.),80,72,84,76
+school-05-maths-6-m3,The Dairy Farm,A shop buys 48 packets of 25 pencils each. How many pencils is that?,"1,100","1,250","1,000","1,200"
+school-05-maths-6-m4,The Dairy Farm,What is 296 x 5?,"1,480","1,500","1,475","1,490"
+school-05-maths-6-m5,The Dairy Farm,What is 49 x 6?,304,294,284,244
+school-05-maths-6-m7,The Dairy Farm,A hall has 27 rows with 36 seats in each row. How many seats are there?,962,912,"1,062",972
+school-05-maths-6-h3,The Dairy Farm,"Use the digits 4, 6 and 3 once each as a two-digit number times a one-digit number. Which gives a product closest to 200?",34 x 6,64 x 3,43 x 6,36 x 4
+school-05-maths-6-h5,The Dairy Farm,A crate holds 24 pouches. A van carries 18 crates. How many pouches do 5 vans carry?,"2,060","2,260","2,160","1,080"
+school-05-maths-6-h6,The Dairy Farm,"Without finding both products, how do 48 x 25 and 50 x 24 compare?",48 x 25 is greater,50 x 24 is greater,Cannot tell,They are equal
+school-05-maths-6-h7,The Dairy Farm,A trader buys 99 notebooks at ₹48 each. What is the total cost?,"₹4,752","₹4,852","₹4,652","₹4,800"
+school-05-maths-7-e4,Shapes and Patterns,How many edges does a cube have?,12,6,8,16
+school-05-maths-7-e5,Shapes and Patterns,How many corners (vertices) does a cube have?,6,8,12,4
+school-05-maths-7-e6,Shapes and Patterns,What is the total angle around a point?,90 degrees,180 degrees,360 degrees,270 degrees
+school-05-maths-7-e8,Shapes and Patterns,What do we call a triangle with all three sides equal?,Equilateral triangle,Isosceles triangle,Scalene triangle,Right-angled triangle
+school-05-maths-7-m4,Shapes and Patterns,Each edge of a cube is 4 cm long. What is the total length of all its edges?,16 cm,48 cm,24 cm,32 cm
+school-05-maths-7-m5,Shapes and Patterns,Which shape has all four sides equal but its angles are not all right angles?,Square,Rectangle,Rhombus,Kite
+school-05-maths-7-m6,Shapes and Patterns,"In a kite, which sides are equal?","Opposite sides, in two pairs",All four sides,Only the top and bottom sides,"The sides next to each other, in two pairs"
+school-05-maths-7-m8,Shapes and Patterns,A big cube has 4 small cubes along each edge. How many small cubes make it?,16,64,48,12
+school-05-maths-7-h3,Shapes and Patterns,A 4 x 4 x 4 cube made of small cubes is painted on the outside. How many small cubes have exactly 2 painted faces?,8,24,12,48
+school-05-maths-7-h4,Shapes and Patterns,A 4 x 4 x 4 cube made of small cubes is painted on the outside. How many small cubes have no paint at all?,4,16,8,24
+school-05-maths-7-h5,Shapes and Patterns,A 5 x 5 x 5 cube made of small cubes is painted red outside. How many small cubes have no red paint?,9,25,45,27
+school-05-maths-7-h8,Shapes and Patterns,Two squares meet at a point with some regular triangles. How many triangles are needed to fill the point exactly?,2,4,3,6
+school-05-maths-8-e3,Weight and Capacity,How many grams are there in 2 kg 500 g?,"2,500 g",250 g,"2,050 g","25,000 g"
+school-05-maths-8-e4,Weight and Capacity,"1,500 ml is the same as which of these?",1 l 50 ml,1 l 500 ml,15 l,5 l 100 ml
+school-05-maths-8-e5,Weight and Capacity,"Which is heavier, 1 kg or 900 g?",900 g,They are equal,1 kg,Cannot tell
+school-05-maths-8-e7,Weight and Capacity,A bottle holds 1 litre. How many glasses of 250 ml can it fill?,4,2,3,5
+school-05-maths-8-m3,Weight and Capacity,Add: 3 kg 650 g + 2 kg 700 g.,5 kg 350 g,6 kg 350 g,6 kg 50 g,5 kg 450 g
+school-05-maths-8-m4,Weight and Capacity,"Which sign fits? 2 kg 40 g [ ] 2,400 g",>,=,<,Cannot say
+school-05-maths-8-m5,Weight and Capacity,A packet of tea weighs 250 g. How many packets weigh 3 kg altogether?,3,10,750,12
+school-05-maths-8-m6,Weight and Capacity,A jug has 2 l 400 ml of milk. 650 ml is poured out. How much milk is left?,1 l 750 ml,1 l 850 ml,1 l 150 ml,2 l 750 ml
+school-05-maths-8-m8,Weight and Capacity,"Write 12,042 g in kilograms and grams.",12 kg 420 g,1 kg 242 g,12 kg 42 g,120 kg 42 g
+school-05-maths-8-h3,Weight and Capacity,A box with 6 identical books weighs 3 kg 400 g. The empty box weighs 400 g. How much does one book weigh?,400 g,600 g,500 g,567 g
+school-05-maths-8-h4,Weight and Capacity,A 5 litre can is used to fill 5 bottles of 750 ml each. How much water is left in the can?,1 l 750 ml,1 l 50 ml,2 l 250 ml,1 l 250 ml
+school-05-maths-8-h5,Weight and Capacity,A shop sells 2 kg 750 g of flour in the morning and three times as much in the evening. How much flour is sold in the whole day?,11 kg,8 kg 250 g,11 kg 250 g,10 kg 500 g
+school-05-maths-8-h7,Weight and Capacity,Sugar costs ₹48 per kg. What is the cost of 3 kg 500 g of sugar?,₹148,₹144,₹168,₹192
+school-05-maths-9-e3,Coconut Farm,What is 450 / 10?,405,45,"4,500",54
+school-05-maths-9-e5,Coconut Farm,"How many ₹100 notes make ₹3,500?",350,53,30,35
+school-05-maths-9-e7,Coconut Farm,A farmer packs 84 coconuts equally in 7 sacks. How many coconuts are in each sack?,11,12,14,588
+school-05-maths-9-e8,Coconut Farm,₹960 is shared equally among 8 children. How much does each child get?,₹12,₹110,₹120,"₹1,200"
+school-05-maths-9-m3,Coconut Farm,"What is 1,212 / 6?",212,22,202,201
+school-05-maths-9-m4,Coconut Farm,"A farm gets 1 litre of oil from every 8 coconuts. How many litres of oil can be made from 3,648 coconuts?",46,406,546,456
+school-05-maths-9-m5,Coconut Farm,Divide 245 by 8. What are the quotient and the remainder?,"Quotient 30, remainder 5","Quotient 30, remainder 7","Quotient 31, remainder 5","Quotient 29, remainder 5"
+school-05-maths-9-m7,Coconut Farm,"₹7,800 is shared equally among 12 workers. How much does each worker get?",₹600,₹750,₹650,₹65
+school-05-maths-9-h3,Coconut Farm,"1,250 students go on a trip. Each bus has 45 seats. How many buses are needed?",27,29,26,28
+school-05-maths-9-h4,Coconut Farm,"A shop packs 500 eggs in trays of 30. How many trays are needed, and how many eggs go in the last tray?","17 trays, 20 eggs in the last","16 trays, 20 eggs in the last","17 trays, 10 eggs in the last","16 trays, 5 eggs in the last"
+school-05-maths-9-h6,Coconut Farm,"A farm picks 2,046 coconuts and sells 586. The rest are packed in bags of 25. How many bags are needed?",58,60,59,82
+school-05-maths-9-h7,Coconut Farm,A number divided by 12 gives quotient 54 and no remainder. What do you get when the same number is divided by 9?,62,70,74,72
+school-05-maths-9-h8,Coconut Farm,"What is 9,648 / 48?",201,210,21,200
+school-05-maths-10-e3,Symmetrical Designs,How many lines of symmetry does the letter H have?,0,1,2,4
+school-05-maths-10-e4,Symmetrical Designs,Which letter has a horizontal line of symmetry but no vertical line of symmetry?,A,T,H,D
+school-05-maths-10-e5,Symmetrical Designs,Which letter has no line of symmetry?,F,A,H,O
+school-05-maths-10-e6,Symmetrical Designs,How many lines of symmetry does a rectangle (that is not a square) have?,0,2,1,4
+school-05-maths-10-m3,Symmetrical Designs,"Which letter has exactly one line of symmetry, and it is vertical?",H,X,F,M
+school-05-maths-10-m4,Symmetrical Designs,A fan has 3 equal blades. After what fraction of a full turn does it look the same?,1/3,1/2,1/4,1/6
+school-05-maths-10-m7,Symmetrical Designs,Which of these shapes has 4 lines of symmetry?,Rectangle,Rhombus,Equilateral triangle,Square
+school-05-maths-10-m8,Symmetrical Designs,A windmill has 8 equal blades. After what fraction of a full turn does it first look the same?,1/8,1/4,1/2,1/16
+school-05-maths-10-h3,Symmetrical Designs,"A design looks the same after every 1/5 turn. How many times in one full turn does it look the same as the start, counting the full turn at the end?",5,4,6,10
+school-05-maths-10-h4,Symmetrical Designs,Which number has both rotational symmetry (half turn) and reflection symmetry (a vertical mirror line)?,6996,8008,2882,4004
+school-05-maths-10-h5,Symmetrical Designs,"A paper is folded in half one way, then in half the other way, and a shape is cut from the folded corner. What symmetry does the opened shape have?",Only a vertical line,Only a horizontal line,Both vertical and horizontal lines of symmetry,No line of symmetry
+school-05-maths-10-h6,Symmetrical Designs,How many lines of symmetry does a regular hexagon have?,3,4,8,6
+school-05-maths-10-h7,Symmetrical Designs,A rhombus that is not a square looks the same after which turn?,1/2 turn,1/4 turn,1/3 turn,1/8 turn
+school-05-maths-10-h8,Symmetrical Designs,Which word looks the same when turned upside down (a half turn)?,MOM,NOON,TOT,NOT
+school-05-maths-11-e3,Grandmother's Quilt,What is the perimeter of an equilateral triangle with each side 9 cm?,18 cm,9 cm,81 cm,27 cm
+school-05-maths-11-e4,Grandmother's Quilt,What is the perimeter of a rectangle 12 cm long and 5 cm wide?,34 cm,17 cm,60 cm,22 cm
+school-05-maths-11-e5,Grandmother's Quilt,What is the area of a square with side 6 cm?,24 square cm,36 square cm,12 square cm,66 square cm
+school-05-maths-11-e6,Grandmother's Quilt,What is the perimeter of a regular hexagon with each side 5 cm?,25 cm,35 cm,30 cm,11 cm
+school-05-maths-11-e7,Grandmother's Quilt,What is the area of a rectangle 9 cm long and 4 cm wide?,26 square cm,13 square cm,18 square cm,36 square cm
+school-05-maths-11-m3,Grandmother's Quilt,A rug is made of 8 rows with 14 square patches in each row. How many patches are there?,112,22,104,122
+school-05-maths-11-m4,Grandmother's Quilt,A rectangle has perimeter 36 cm and length 11 cm. What is its breadth?,25 cm,7 cm,14 cm,9 cm
+school-05-maths-11-m5,Grandmother's Quilt,A square park has a perimeter of 48 m. What is the length of one side?,24 m,8 m,12 m,192 m
+school-05-maths-11-m6,Grandmother's Quilt,Which has the greater area: a rectangle 7 cm by 5 cm or a square of side 6 cm?,The rectangle,They are equal,Cannot tell,The square
+school-05-maths-11-m7,Grandmother's Quilt,A room is 9 m long and 6 m wide. How many square tiles of 1 m side are needed to cover the floor?,54,30,15,45
+school-05-maths-11-h3,Grandmother's Quilt,Rectangle P is 8 cm by 3 cm and rectangle Q is 6 cm by 4 cm. How do they compare?,Same area and same perimeter,"Same area, but P has the longer perimeter",P has greater area and greater perimeter,Q has greater area but shorter perimeter
+school-05-maths-11-h4,Grandmother's Quilt,All these rectangles have perimeter 20 cm. Which has the largest area?,6 cm by 4 cm,7 cm by 3 cm,5 cm by 5 cm,8 cm by 2 cm
+school-05-maths-11-h5,Grandmother's Quilt,A floor 12 m by 10 m is covered with square tiles of side 2 m. How many tiles are needed?,60,120,22,30
+school-05-maths-11-h6,Grandmother's Quilt,A garden is 10 m by 8 m. A flower bed 4 m by 3 m is inside it. What is the area of the garden without the flower bed?,68 square m,92 square m,12 square m,56 square m
+school-05-maths-11-h7,Grandmother's Quilt,Tiles for a 12 m by 8 m floor cost ₹25 per square m. What is the total cost?,"₹1,000","₹2,400","₹4,800","₹2,200"
+school-05-maths-12-e3,Racing Seconds,How many seconds are there in 2 minutes?,120,60,200,100
+school-05-maths-12-e4,Racing Seconds,Write 4:20 p.m. in the 24-hour format.,04:20,16:20,14:20,18:20
+school-05-maths-12-e5,Racing Seconds,How many minutes are there in 2 hours 15 minutes?,215,130,135,75
+school-05-maths-12-e7,Racing Seconds,Morning assembly starts at 8:00 a.m. and ends at 8:35 a.m. How long is it?,35 minutes,25 minutes,45 minutes,85 minutes
+school-05-maths-12-e8,Racing Seconds,Write 14:45 in the 12-hour format.,4:45 p.m.,2:45 p.m.,2:45 a.m.,12:45 p.m.
+school-05-maths-12-m3,Racing Seconds,A film starts at 4:50 p.m. and ends at 7:15 p.m. How long is the film?,2 hours 35 minutes,2 hours 25 minutes,3 hours 25 minutes,2 hours 15 minutes
+school-05-maths-12-m4,Racing Seconds,Write 310 seconds in minutes and seconds.,3 minutes 10 seconds,5 minutes 50 seconds,5 minutes 10 seconds,31 minutes
+school-05-maths-12-m6,Racing Seconds,A bus leaves at 11:25 a.m. and the journey takes 2 hours 50 minutes. When does it arrive?,2:15 p.m.,1:15 p.m.,2:05 p.m.,2:35 p.m.
+school-05-maths-12-m7,Racing Seconds,Each class is 40 minutes long. How long are 5 classes together?,3 hours 40 minutes,3 hours 20 minutes,2 hours 20 minutes,4 hours
+school-05-maths-12-m8,Racing Seconds,A train leaves at 9:35 p.m. What is the time 1 hour 40 minutes later?,11:25 p.m.,10:15 p.m.,11:15 p.m.,11:15 a.m.
+school-05-maths-12-h3,Racing Seconds,A train leaves at 9:40 p.m. and the journey takes 7 hours 35 minutes. When does it arrive?,5:25 a.m. the next day,4:15 a.m. the next day,5:15 a.m. the next day,5:15 p.m. the next day
+school-05-maths-12-h5,Racing Seconds,How many minutes are there from 9:50 a.m. to 1:20 p.m.?,210,270,190,330
+school-05-maths-12-h6,Racing Seconds,A runner takes 52 seconds for one lap. How long does she take for 7 laps?,6 minutes 40 seconds,6 minutes 4 seconds,7 minutes 4 seconds,5 minutes 54 seconds
+school-05-maths-12-h8,Racing Seconds,Ritu painted for 1 hour 35 minutes and Raghav for 1 hour 20 minutes. How long did they paint together?,2 hours 45 minutes,3 hours 5 minutes,2 hours 15 minutes,2 hours 55 minutes
+school-05-maths-13-e3,Animal Jumps,Which number is a factor of 36?,8,9,7,5
+school-05-maths-13-e4,Animal Jumps,Which number is a multiple of 6?,46,52,42,38
+school-05-maths-13-e6,Animal Jumps,Which of these is a prime number?,23,21,27,39
+school-05-maths-13-e7,Animal Jumps,Which number is a factor of every number?,0,1,2,10
+school-05-maths-13-e8,Animal Jumps,A frog jumps 5 steps each time from 0. On which number will it land?,32,28,35,52
+school-05-maths-13-m3,Animal Jumps,What is the smallest common multiple of 6 and 8 (other than 0)?,12,48,24,14
+school-05-maths-13-m4,Animal Jumps,Which number is a factor of both 18 and 30?,4,5,9,6
+school-05-maths-13-m5,Animal Jumps,How many factors does 28 have?,6,4,5,7
+school-05-maths-13-m6,Animal Jumps,Which pair has two multiples of 9?,36 and 56,45 and 72,54 and 80,27 and 38
+school-05-maths-13-m7,Animal Jumps,"A frog jumps 3 steps at a time and a grasshopper jumps 5 steps at a time, both from 0. Where do they first land together after 0?",8,30,15,45
+school-05-maths-13-h3,Animal Jumps,I am a multiple of 6 and a factor of 36. I am greater than 12 and less than 36. Which number am I?,12,24,9,18
+school-05-maths-13-h4,Animal Jumps,Two bells ring together at 8:00. One rings every 12 minutes and the other every 18 minutes. When do they next ring together?,8:36,8:30,9:00,8:06
+school-05-maths-13-h5,Animal Jumps,"Three lamps blink together now. They blink every 2, 3 and 4 seconds. After how many seconds will they blink together again?",24,12,9,6
+school-05-maths-13-h6,Animal Jumps,"What is the sum of the first three common multiples of 4 and 6, not counting 0?",36,60,72,84
+school-05-maths-13-h7,Animal Jumps,Tom visits a bowl every 4th day and Kitty every 10th day. How many days from day 1 to day 60 (including day 60) do both visit?,2,4,6,3
+school-05-maths-14-e3,Maps and Locations,You face north. Which direction is behind you?,East,West,South,North
+school-05-maths-14-e4,Maps and Locations,You face the rising Sun. Which direction is on your left hand?,South,East,West,North
+school-05-maths-14-e6,Maps and Locations,Which tool helps us find directions?,Ruler,Compass,Protractor,Thermometer
+school-05-maths-14-e7,Maps and Locations,"A kite is at (3, 5), where the first number counts steps east. How many steps east is it?",5,8,3,2
+school-05-maths-14-m3,Maps and Locations,Rani faces west. Which direction does her right hand point to?,South,East,West,North
+school-05-maths-14-m4,Maps and Locations,"A boy at (2, 2) walks 3 steps east and 4 steps north. Where does he reach?","(5, 6)","(6, 5)","(5, 2)","(2, 6)"
+school-05-maths-14-m5,Maps and Locations,"A tree is at (6, 3). A well is 2 steps west and 5 steps north of the tree. Where is the well?","(8, 8)","(4, 8)","(4, 5)","(5, 4)"
+school-05-maths-14-m6,Maps and Locations,"Starting at (1, 4), you walk 3 steps east and 2 steps south. Where do you reach?","(4, 6)","(2, 1)","(4, 2)","(3, 2)"
+school-05-maths-14-m8,Maps and Locations,You face south and make a quarter turn to your left. Which way do you face now?,East,West,North,South
+school-05-maths-14-h3,Maps and Locations,"An ant at (1, 1) crawls 4 steps east, 3 steps north and then 2 steps west. Where does it stop?","(3, 4)","(7, 4)","(3, 6)","(5, 3)"
+school-05-maths-14-h4,Maps and Locations,"Moving only along grid lines, what is the fewest number of steps from (2, 2) to (6, 5)?",5,7,9,12
+school-05-maths-14-h5,Maps and Locations,"Home is at (1, 2), the shop at (1, 6) and the temple at (5, 6). Meena walks home to shop, shop to temple, then from the temple back home (first west, then south). How many steps does she walk in all?",12,8,16,20
+school-05-maths-14-h6,Maps and Locations,Asha faces north. She makes a quarter turn to her right and then a half turn. Which way does she face?,North,South,East,West
+school-05-maths-14-h7,Maps and Locations,"Starting at (1, 1), which walk ends at (4, 3)?","3 steps east, then 2 steps north","4 steps east, then 3 steps north","2 steps east, then 3 steps north","3 steps east, then 3 steps north"
+school-05-maths-15-e3,Data Through Pictures,"In a pictograph, 1 icon stands for 3 two-wheelers. Monday shows 8 icons. How many two-wheelers is that?",11,8,38,24
+school-05-maths-15-e4,Data Through Pictures,Which kind of graph uses pictures or symbols to show information?,Pictograph,Bar graph,Clock,Number line
+school-05-maths-15-e5,Data Through Pictures,"In a table, 12 children like tea, 9 like milk and 15 like juice. Which drink do most children like?",Tea,Juice,Milk,All are equal
+school-05-maths-15-e6,Data Through Pictures,"In a pictograph, 1 icon stands for 10 books. A row has 4 icons. How many books is that?",14,4,40,400
+school-05-maths-15-e7,Data Through Pictures,"In a table, 18 children like cricket, 12 like football and 9 like kabaddi. How many more like cricket than kabaddi?",6,3,39,9
+school-05-maths-15-m3,Data Through Pictures,"In a pictograph, 1 icon is 5 kg. Rice has 6 icons and wheat has 9 icons. What is the total weight?",75 kg,15 kg,65 kg,30 kg
+school-05-maths-15-m4,Data Through Pictures,"In a pictograph, 1 icon is 6 books. Class A has 9 icons and Class B has 4 icons. How many more books does Class A have?",5,30,90,24
+school-05-maths-15-m5,Data Through Pictures,"In a survey of 42 children, 15 chose cricket. How many did not choose cricket?",57,17,27,25
+school-05-maths-15-m6,Data Through Pictures,One icon stands for 10 vehicles and half an icon stands for 5. Cars have 3 and a half icons and bikes have 5 icons. How many vehicles in all?,80,90,75,85
+school-05-maths-15-m7,Data Through Pictures,"A pictograph shows 40 items with 1 icon = 5 items. If the scale changes to 1 icon = 10 items, how many icons are needed?",4,8,2,40
+school-05-maths-15-h3,Data Through Pictures,"In a pictograph, 1 icon is 8 pencils. Shop A has 7 icons and Shop B has 5 and a half icons. How many pencils in all?",96,100,104,108
+school-05-maths-15-h4,Data Through Pictures,"Food waste on 5 days was 6, 9, 4, 8 and 3 kg. Each 1 kg of food can feed 4 children. How many children could be fed?",30,24,120,150
+school-05-maths-15-h5,Data Through Pictures,A pictograph uses 1 icon = 12 students and half an icon = 6. How many icons are needed to show 78 students?,6,7,8,6 and a half
+school-05-maths-15-h6,Data Through Pictures,"Raman: sleep 9 h, school 6 h, play 2 h, homework 3 h, other 4 h. Sheela: sleep 8 h, school 7 h, play 3 h, homework 3 h, other 3 h. Who spends more hours on play and homework together, and by how many?","Sheela, by 1 hour","Raman, by 1 hour","Sheela, by 2 hours",Both are the same
+school-05-maths-15-h7,Data Through Pictures,Rice is shown as 9 icons when 1 icon = 4 kg. How many icons show the same rice if 1 icon = 6 kg?,9,6,12,5
