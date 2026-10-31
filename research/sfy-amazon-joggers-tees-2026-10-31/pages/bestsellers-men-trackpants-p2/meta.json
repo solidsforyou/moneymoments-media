@@ -1,0 +1,43 @@
+{
+  "url": "https://www.amazon.in/gp/bestsellers/apparel/25965171031?pg=2",
+  "fetched_at": "2026-10-31T02:09:26.092Z",
+  "status": 200,
+  "final_url": "https://www.amazon.in/gp/bestsellers/apparel/25965171031?pg=2",
+  "blocked": false,
+  "title": "Amazon.in Bestsellers: The most popular items in Men's Track Pants",
+  "canonical": "https://www.amazon.in/gp/bestsellers/apparel/25965171031",
+  "meta": {
+    "description": "Amazon.in Bestsellers: The most popular items in Men's Track Pants"
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "₹500",
+      "₹420.00",
+      "₹498.00",
+      "₹298.00",
+      "₹328.00",
+      "₹649.00",
+      "₹199.00",
+      "₹1,100.00"
+    ],
+    "mrp": [],
+    "ratings": [
+      "4.2 out of 5",
+      "4.1 out of 5",
+      "3.4 out of 5",
+      "3.6 out of 5",
+      "3.9 out of 5",
+      "3.4 out of 5",
+      "3.7 out of 5",
+      "3.8 out of 5"
+    ],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 38,
+  "text_chars": 7549
+}
