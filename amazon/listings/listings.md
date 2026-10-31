@@ -141,15 +141,15 @@ Wear them with a fitted tee or a crop top.
 
 # Product details (every field in Amazon's apparel template)
 
-Values marked **TBC** need the founder. "Est." = estimate from the shipment box weights.
+Values marked **TBC** need the founder. Sizes, weights and stock per SKU: amazon/SFY_Inventory_2026-10-31.xlsx.
 
 ## Same for all 6 listings
 
 | Field | Value |
 |---|---|
 | Brand name | SOLIDS FOR YOU |
-| Manufacturer | **TBC** (factory name and full address, required by Legal Metrology) |
-| Packer | **TBC** (name and address; founder's business name if you pack) |
+| Manufacturer | Ganpati Prints, **address TBC** (required by Legal Metrology) |
+| Packer | Ganpati Prints, **address TBC** |
 | Importer | Not applicable (made in India) |
 | Country / region of origin | India |
 | Condition | New |
@@ -162,8 +162,8 @@ Values marked **TBC** need the founder. "Est." = estimate from the shipment box 
 | Special features | Printed neck label (tagless), Breathable |
 | Occasion | Casual, Daily wear, Lounge |
 | Season | All season (tees); Winter / All season (joggers) |
-| Customer care | **TBC** (email shashwat@solidsforyou.com is on the website; add a phone number?) |
-| Month and year of manufacture | **TBC** (e.g. October 2026) |
+| Customer care | shashwat@solidsforyou.com, phone **TBC** |
+| Month and year of manufacture | October 2026 |
 | GST rate | 5% |
 | Fulfilment | Merchant (Easy Ship), handling time 1 day |
 | Size system / size map | India, S / M / L |
@@ -184,8 +184,8 @@ Values marked **TBC** need the founder. "Est." = estimate from the shipment box 
 | Length, S / M / L (in) | 28 / 29 / 30 | 26 / 27 / 28 | 25.75 / 26.375 / 27.375 | 25.5 / 26.5 / 27.5 |
 | HSN code | 61091000 | 61091000 | 61091000 | 61091000 |
 | Price / MRP | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 | Rs 999 / Rs 1,999 |
-| Item weight | Est. 0.20 kg, **weigh one** | Est. 0.19 kg | Est. 0.19 kg | Est. 0.18 kg |
-| Package size (L x W x H cm) | **TBC** (folded polybag) | **TBC** | **TBC** | **TBC** |
+| Item weight | 200 g | 200 g | 200 g | 200 g |
+| Package size / weight | 30 x 25 x 3 cm, 0.25 kg | same | same | same |
 
 ## Joggers (2 listings)
 
@@ -206,5 +206,5 @@ Values marked **TBC** need the founder. "Est." = estimate from the shipment box 
 | Pocket opening (in) | 6.5 | 6 |
 | HSN code | 61034200 (verify) | 61046200 (verify) |
 | Price / MRP | Rs 1,499 / Rs 2,499 | Rs 1,499 / Rs 2,499 |
-| Item weight | Est. 0.42 kg, **weigh one** | Est. 0.40 kg |
-| Package size (L x W x H cm) | **TBC** | **TBC** |
+| Item weight | 550 g | 550 g |
+| Package size / weight | 33 x 28 x 5 cm, 0.6 kg | same |
