@@ -149,7 +149,7 @@ Values marked **TBC** need the founder. Sizes, weights and stock per SKU: amazon
 |---|---|
 | Brand name | SOLIDS FOR YOU |
 | Manufacturer | Ragom Apparels, Ram Swrup Market, Near Hanuman Mandir, Gurugram, Haryana 122016 |
-| Packer | Ganpati Prints, **address TBC** |
+| Packer | SOLIDS FOR YOU PVT LTD, registered address (as in Seller Central; not stored in this public repo) |
 | Importer | Not applicable (made in India) |
 | Country / region of origin | India |
 | Condition | New |
