@@ -154,7 +154,7 @@ document.addEventListener('click', e => {
   const inApp = /Instagram|FBAN|FBAV|WhatsApp|Line\/|Snapchat|Twitter|; wv\)/i.test(ua);
   if (inApp && android) { location.href = `intent://${location.host}${location.pathname}${location.search}#Intent;scheme=https;package=com.android.chrome;end`; return; }
   const steps = inApp ? `<p>You're inside another app's browser, which can't add apps. Tap the menu (⋯) and choose <b>Open in Safari</b>, then tap <b>Add to Home Screen</b> again.</p>`
-    : ios ? `<ol class="steps"><li>Tap <b>Share</b> <span aria-hidden="true">(the square with an arrow ↑)</span>. In Safari it's at the bottom; in Chrome, top right.</li><li>Tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol><p class="muted small">Apple doesn't let websites add themselves, so it takes these three taps on iPhone.</p>`
+    : ios ? `<ol class="steps"><li>Tap <b>Share</b>. In Safari, tap <b>≡</b> or <b>⋯</b> next to the address bar first if you don't see it; in Chrome it's at the top right.</li><li>Scroll down and tap <b>Add to Home Screen</b> (under <b>More</b> if it isn't in the list).</li><li>Leave <b>Open as Web App</b> on and tap <b>Add</b>.</li></ol><p class="muted small">Apple doesn't let websites add themselves, so it takes these taps on iPhone.</p>`
     : `<p class="checking" role="status">Getting it ready… if nothing opens in a few seconds:</p><ol class="steps"><li>Open the browser menu (⋮, top right).</li><li>Tap <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>`;
   waiting = sheet(`<div class="stack"><h2>Add to your home screen</h2>${steps}<p class="muted small">It opens full screen with its own icon, like any app. Nothing to download from a store.</p></div>`);
 });
