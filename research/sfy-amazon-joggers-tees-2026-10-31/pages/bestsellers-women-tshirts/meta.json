@@ -1,0 +1,43 @@
+{
+  "url": "https://www.amazon.in/gp/bestsellers/apparel/1968545031",
+  "fetched_at": "2026-10-31T02:06:19.509Z",
+  "status": 200,
+  "final_url": "https://www.amazon.in/gp/bestsellers/apparel/1968545031",
+  "blocked": false,
+  "title": "Amazon.in Bestsellers: The most popular items in Women's T-Shirts",
+  "canonical": "https://www.amazon.in/gp/bestsellers/apparel/1968545031",
+  "meta": {
+    "description": "Amazon.in Bestsellers: The most popular items in Women's T-Shirts"
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "₹500",
+      "₹99.00",
+      "₹220.00",
+      "₹366.00",
+      "₹399.00",
+      "₹349.00",
+      "₹275.00",
+      "₹231.00"
+    ],
+    "mrp": [],
+    "ratings": [
+      "4.0 out of 5",
+      "3.6 out of 5",
+      "4.0 out of 5",
+      "4.0 out of 5",
+      "4.2 out of 5",
+      "4.1 out of 5",
+      "3.9 out of 5",
+      "3.9 out of 5"
+    ],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 38,
+  "text_chars": 7081
+}
