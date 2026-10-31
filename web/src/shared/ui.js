@@ -134,20 +134,27 @@ export function ask(title, label, value = '') {
 // one anonymous page-view count per page load (no cookies, no IP, see pulse.mjs)
 try { if (!/^\/admin/.test(location.pathname)) navigator.sendBeacon?.('/api/pulse/view', JSON.stringify({ p: location.pathname.replace(/[^a-z0-9/-]/gi, '').slice(0, 60) || '/' })); } catch {}
 
-// ---- "Add to Home Screen": Android/desktop Chrome get the real install prompt; iPhone and
-// in-app browsers can't be prompted, so they get the steps instead ----
-let installEvt = null;
+// ---- "Add to Home Screen": one tap where the browser allows it (Chrome, Edge, Samsung Internet on
+// Android; Chrome and Edge on computers). iPhone has no way for a site to add itself, so it gets the
+// steps; Instagram/WhatsApp's built-in browser gets a one-tap "Open in Chrome" on Android ----
+let installEvt = null, waiting = null;
 export const installed = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 export const installBtn = (label = 'Add to Home Screen', cls = 'btn quiet small') => installed() ? '' : `<button class="${cls}" data-install>${esc(label)}</button>`;
-addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {}));
+const promptInstall = async () => { const ev = installEvt; installEvt = null; ev.prompt(); try { await ev.userChoice; } catch {} };
+addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); installEvt = e;
+  if (waiting?.open) { const d = waiting; waiting = null; d.close(); promptInstall(); }   // it arrived while the steps were open: go straight to the prompt
+});
 addEventListener('appinstalled', () => { installEvt = null; document.querySelectorAll('[data-install]').forEach(b => b.remove()); toast('Added. Open it from your home screen.'); });
-document.addEventListener('click', async e => {
+document.addEventListener('click', e => {
   const b = e.target.closest('[data-install]'); if (!b) return;
-  if (installEvt) { const ev = installEvt; installEvt = null; ev.prompt(); try { await ev.userChoice; } catch {} return; }
-  const ua = navigator.userAgent, ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const inApp = /Instagram|FBAN|FBAV|WhatsApp|Line\/|Snapchat|Twitter/i.test(ua);
-  const steps = inApp ? `<p>You're inside another app's browser, which can't add apps to your home screen.</p><ol class="steps"><li>Tap the menu (⋯ or ⋮) and choose <b>Open in browser</b>.</li><li>Then tap <b>Add to Home Screen</b> on this page again.</li></ol>`
-    : ios ? `<ol class="steps"><li>Tap the <b>Share</b> button (the square with an arrow). In Safari it's at the bottom; in Chrome it's at the top right.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol>`
-    : `<ol class="steps"><li>Open your browser's menu (⋮ at the top right).</li><li>Tap <b>Add to Home screen</b> or <b>Install app</b>.</li></ol>`;
-  sheet(`<div class="stack"><h2>Add to your home screen</h2>${steps}<p class="muted small">It opens like an app, full screen, with its own icon. Nothing to download from a store.</p></div>`);
+  if (installEvt) return promptInstall();
+  const ua = navigator.userAgent, ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), android = /android/i.test(ua);
+  const inApp = /Instagram|FBAN|FBAV|WhatsApp|Line\/|Snapchat|Twitter|; wv\)/i.test(ua);
+  if (inApp && android) { location.href = `intent://${location.host}${location.pathname}${location.search}#Intent;scheme=https;package=com.android.chrome;end`; return; }
+  const steps = inApp ? `<p>You're inside another app's browser, which can't add apps. Tap the menu (⋯) and choose <b>Open in Safari</b>, then tap <b>Add to Home Screen</b> again.</p>`
+    : ios ? `<ol class="steps"><li>Tap <b>Share</b> <span aria-hidden="true">(the square with an arrow ↑)</span>. In Safari it's at the bottom; in Chrome, top right.</li><li>Tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol><p class="muted small">Apple doesn't let websites add themselves, so it takes these three taps on iPhone.</p>`
+    : `<p class="checking" role="status">Getting it ready… if nothing opens in a few seconds:</p><ol class="steps"><li>Open the browser menu (⋮, top right).</li><li>Tap <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>`;
+  waiting = sheet(`<div class="stack"><h2>Add to your home screen</h2>${steps}<p class="muted small">It opens full screen with its own icon, like any app. Nothing to download from a store.</p></div>`);
 });
