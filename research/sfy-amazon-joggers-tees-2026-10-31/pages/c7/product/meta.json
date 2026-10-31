@@ -1,0 +1,23 @@
+{
+  "url": "https://www.amazon.in/Amazon-Brand-Symbol-Womens-Joggers/dp/B0DPHNNSLY",
+  "fetched_at": "2026-10-31T02:08:26.838Z",
+  "status": 200,
+  "final_url": "https://www.amazon.in/Amazon-Brand-Symbol-Womens-Joggers/dp/B0DPHNNSLY",
+  "blocked": false,
+  "title": "Amazon.in",
+  "canonical": null,
+  "meta": {},
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 0,
+  "text_chars": 149
+}

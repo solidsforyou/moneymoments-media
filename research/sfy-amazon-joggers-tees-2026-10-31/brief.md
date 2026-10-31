@@ -6,7 +6,7 @@
 2. **Our product (us).** SOLIDS FOR YOU (SFY), Indian D2C apparel brand. Stock per the factory
    (Ganpati Prints, 7 Oct 2026, memory #32): men's fitted tee 33, men's oversized tee 33, white
    joggers 15 (men) / 18 (women), black joggers 21 (men) / 15 (women), women's fitted tee 33,
-   women's oversized tee 24. Total 192. Not yet on Amazon.in. Price, fabric, GSM, sizes,
+   women's oversized tee 24. Total 192. Not yet on Amazon.in. Tees Rs 999, 230 GSM pure cotton; joggers Rs 1,499, 320 GSM pure cotton (founder, 31 Oct). Sizes,
    colours (beyond blue tees, black/white joggers seen in footage) and website URL: not found
    in memory, asked from the founder.
 3. **Market.** India, Amazon.in, categories Men's T-shirts, Women's T-shirts, Men's and
