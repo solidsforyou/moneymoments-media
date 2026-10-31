@@ -79,6 +79,40 @@ What they show:
   "100% cotton" title. The founder's "says 100%, sells 80%" is closest to Jockey AM95, whose
   listing doesn't claim 100% but buyers believe it is.
 
+## Jogger recordings (founder, 31 Oct, 09:45-09:48 IST)
+
+4 more recordings in `recordings/out_v11..v14.csv`. Key frames for v13 checked by Claude.
+
+| Jogger | Price (MRP) | Rating (count) | Fabric (Materials & Care) | Rec |
+|---|---|---|---|---|
+| Jockey 9500 (#3 bestseller) | 999 (none shown) | 4.1 (9,251); "600+ bought in past month" | 80% cotton, 20% polyester; title "Cotton Rich"; "Medium Weight"; no GSM | v11 |
+| Van Heusen 50051 | 1,100-1,499 by colour, black 1,301 (MRP 1,499-1,599) | 3.7 (1,027) | 80% cotton, 20% polyester; title "Ultrasoft Cotton Rich"; gallery "Ultra Stretch" vs spec "Non-stretchable"; no GSM | v12 |
+| Bewakoof women's track pants | 999 (MRP 1,849; other colours MRP 2,549) | 4.0 (25) | 60% cotton, 40% poly; "Lightweight" | v13 |
+| U.S. Polo OJ003 "Pure Cotton" lounge joggers | 1,060 (1,459) | 3.2 (23) | title only | v14 |
+| U.S. Polo OJ006 / OR006 cotton lounge | 1,099 / 1,371 (1,549 / 2,249) | 3.6 (53) / 5.0 (1) | title only | v14 |
+| Jockey track pants | 1,399 | 4.1 (6.3K) | not opened | v14 |
+| Snitch joggers / track pants | 855-1,149 (1,789-1,899) | 4.0 (2) | not opened | v14 |
+
+- **The clearest contradiction (verified):** Bewakoof's Top highlights, "Summarized from
+  seller-provided product information", say "Heavy-duty fabric keeps you warm all winter long"
+  and "Thick, quality fabric"; the same page's Materials & Care says "Apparel Fabric Weight Class:
+  Lightweight" and "60% Cotton 40% poly" (frames s_v13/07, s_v13/12).
+- **Both leading joggers in our price range are 80/20 cotton-poly and show no GSM.**
+- **Van Heusen complaints:** AI summary says pants "tear all over within 1.5 months" and
+  "significant shrinkage after just one wash"; reviews: "Shrank a bit after a couple of washes.
+  Buy a size larger", "bubbles appeared with in a week" (v12). Size chart lists S-L while XL and
+  2XL are sold.
+- **Demand anchor:** a top-3 jogger moves 600+ a month (Jockey 9500, v11).
+- **Rs 1,499 is a real price point** (Van Heusen navy/blue at 1,499, Jockey at 1,399), but held
+  by brands with 1,000-9,000 ratings. Pure cotton at Rs 1,060-1,371 (U.S. Polo) is rated 3.2-3.6.
+- **Listing data is sloppy everywhere:** "Sleeveless" and "Team: tennis" on trackpants (Jockey,
+  Van Heusen), "character: Batman" (Van Heusen), "Jeans width" on joggers (Van Heusen, Bewakoof),
+  Regular vs Relaxed fit in one listing (Jockey).
+- **Amazon's Choice on a thin base:** Bewakoof Women's Cotton Super Loose, Rs 973, 43 ratings (v13).
+- Sellers: Cocoblu Retail again (Jockey via "Cocoblu Retail QCom", Van Heusen, Bewakoof).
+- Snitch barely sells joggers on Amazon (2 ratings); most "snitch joggers" results are other
+  brands' sponsored listings (v14).
+
 ## 2. Data limits
 
 - Amazon.in: only Bestseller lists loaded. Every /dp/ page hit a bot check; search pages 503.
