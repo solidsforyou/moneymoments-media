@@ -5,12 +5,12 @@ headlines, short lines, no slang, no exclamation marks); English only; for 18-30
 wear; founder's reason in brand voice, unsigned, no name or face; real factory photos only;
 ends at the brand store. Claims used are all confirmed: 100% cotton, 230/320 GSM, cotton
 fleece joggers, printed neck label, colour holds after 5+ washes (founder tested), made in India.
-Limit: about 75 words per card (founder, 31 Oct 2026); every card is well under. Background: black, matching the listing images.
+Limit: about 75 words per card (founder, 31 Oct 2026); every card is well under. Look: black background, Bluorng-style (founder reference): big clean uppercase type, lots of empty space, moody photos, product as the hero. Only the -cropped factory photos are used: no workers visible.
 
 | # | Module | Image (assets/sfy/photos or clips) | Headline | Text |
 |---|---|---|---|---|
 | 0 | Background + logo + about | white-cut-panels-pattern-paper.jpg (background), sfy logo | SOLIDS FOR YOU | Solid basics in heavy 100% cotton. Cut and stitched in India. |
-| 1 | Image + text | factory-floor-sewing-line.jpg | MADE HERE. MADE RIGHT. | Every piece is cut and stitched in India by people who know the craft. No shortcuts. |
+| 1 | Image + text | factory-floor-sewing-line-cropped.jpg | MADE HERE. MADE RIGHT. | Every piece is cut and stitched in India by people who know the craft. No shortcuts. |
 | 2 | Image + text | cutting-blue-tee-label-scissors-vertical (frame) | WE COULDN'T FIND GOOD BASICS. | Plain tees were thin and lost their shape fast. So we made our own: heavier, and made to last. |
 | 3 | Image + text | label-heat-transfer-on-blue-tee.jpg | FROM FABRIC TO YOU | Cotton fabric. Cut. Stitched. Labelled. Checked. Packed. Then on its way to you. |
 | 4 | Image + text | blue-tee-shoulder-knit-closeup.jpg | 100% COTTON. HEAVY BY DESIGN. | 230 GSM tees. 320 GSM cotton fleece joggers. Thick, soft and made to breathe. |

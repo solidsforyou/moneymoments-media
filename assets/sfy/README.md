@@ -65,3 +65,9 @@ when a reel needs them, named by what they show.
 | `photos/blue-tee-neck-label-closeup-rotated.jpg`, `-closeup-2-rotated.jpg` | Neck label close-ups, sideways (rotate before use) | Tee details |
 | `photos/blue-tee-flatlay-glass-table-rotated.jpg` | Full tee flat lay on glass table, sideways (rotate before use) | Reference only (busy background) |
 | `photos/blue-tee-sofa-dressed-up-fun.png` | Tee "sitting" on a sofa with sunglasses and cap, a bowl and a Monster can | Instagram only, not Amazon (third-party brand visible) |
+
+## Cropped (no people), 31 Oct 2026
+
+Use these instead of the originals anywhere public: `photos/black-joggers-drawstring-metal-tips-factory-cropped.jpg`,
+`photos/black-joggers-drawstring-factory-table-workers-cropped.jpg`, `photos/black-joggers-drawstring-factory-table-cropped.jpg`,
+`photos/factory-floor-sewing-line-cropped.jpg`. Founder rule: factory workers are never shown.
