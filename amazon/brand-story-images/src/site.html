@@ -1,123 +1,133 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<!-- Brand Story as one scrolling page: each <section> is one 2000x2000 card. Render: node build-site.js -->
+<!-- Brand Story, designed as one scrolling page; each <section> is one 2000x2000 card (no web UI in the cards). Render: node build-site.js -->
 <style>
 @font-face{font-family:Barlow;src:url(../../../brand/fonts/BarlowCondensed-900.ttf);font-weight:900}
 @font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-600.ttf);font-weight:600}
 @font-face{font-family:Manrope;src:url(../../../brand/fonts/Manrope-700.ttf);font-weight:700}
-:root{--mute:#9a9aa3;--line:rgba(255,255,255,.16);--blue:#3d6bff;--P:url(../../../assets/sfy/photos/)}
+:root{--mute:#8e8e98;--line:rgba(255,255,255,.16);--blue:#3d6bff}
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:2000px;background:#000;color:#fff;font-family:Manrope;font-weight:600}
 section{position:relative;width:2000px;height:2000px;overflow:hidden;background:#000}
-.bg{position:absolute;background-size:cover;background-position:center}
-h1{font-family:Barlow;font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
-.nav{position:absolute;z-index:5;top:0;left:0;right:0;height:170px;padding:0 110px;display:flex;align-items:center;gap:70px;
-  font-size:28px;letter-spacing:.24em;text-transform:uppercase;color:#d8d8de}
-.nav img{height:96px;margin-right:auto}
-.nav .shop{border:2px solid rgba(255,255,255,.5);padding:20px 40px;border-radius:60px;color:#fff}
-.eb{font-size:30px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:26px}
-.eb b{color:var(--blue);font-weight:700}.eb i{display:block;width:110px;height:2px;background:var(--line)}
-.lede{font-size:50px;line-height:1.32;color:#d2d2d8}
-.foot{position:absolute;z-index:5;left:110px;right:110px;bottom:90px;display:flex;justify-content:space-between;padding-top:40px;
-  border-top:2px solid var(--line);font-size:32px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
-.foot .u{color:var(--blue)}.foot .u span{color:var(--line);margin:0 24px}.foot .x{color:var(--mute);font-weight:600}
 .abs{position:absolute}
-.tile{position:absolute;background-size:cover;background-position:center;overflow:hidden}
-.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,0) 45%)}
-.tile .t{position:absolute;z-index:2;left:44px;bottom:40px}
-.tile .t small{display:block;font-size:28px;letter-spacing:.24em;color:#cfd3ff;margin-bottom:10px}
-.tile .t b{font-family:Barlow;font-weight:900;font-size:110px;line-height:.9;text-transform:uppercase}
+.ph{position:absolute;background-size:cover;background-position:center;filter:contrast(1.12) saturate(.92) brightness(.92)}
+h1{font-family:Barlow;font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.01em}
+.logo{position:absolute;z-index:6;top:120px;left:120px;height:84px}
+.side{position:absolute;z-index:6;top:1000px;right:-330px;width:800px;text-align:center;transform:rotate(90deg);
+  font-size:22px;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.eb{font-size:28px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:24px}
+.eb b{color:var(--blue);font-weight:700}.eb i{display:block;width:100px;height:2px;background:var(--line)}
+.lede{font-size:48px;line-height:1.34;color:#d4d4da}
+.foot{position:absolute;z-index:6;left:120px;right:120px;bottom:100px;display:flex;justify-content:space-between;padding-top:38px;
+  border-top:2px solid var(--line);font-size:30px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.foot .u{color:var(--blue)}.foot .u span{color:var(--line);margin:0 22px}.foot .x{color:var(--mute);font-weight:600}
+.grain{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.tile{position:absolute;overflow:hidden}
+.tile .ph{inset:0}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.8),rgba(0,0,0,0) 50%)}
+.tile .t{position:absolute;z-index:2;left:40px;bottom:40px}
+.tile .t small{display:block;font-size:26px;letter-spacing:.26em;color:#aebdff;margin-bottom:12px}
+.tile .t b{font-family:Barlow;font-weight:900;font-size:104px;line-height:.88;text-transform:uppercase}
+.sw{flex:1;height:120px;background:url(../../../assets/sfy/photos/blue-tee-knit-texture-closeup.jpg) 30% 60%/900px}
+.swl{flex:1;font-size:24px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);padding-top:22px}
 </style></head><body>
 
-<!-- 0 hero: full-bleed photo, centred type -->
+<!-- 0: full-bleed, the logo is the headline -->
 <section id="solids-for-you">
-  <div class="bg" style="inset:0;background-image:var(--P)">
-  </div>
-  <div class="bg" style="inset:0;background-image:url(../../../assets/sfy/photos/white-cut-panels-pattern-paper.jpg);filter:brightness(.55)"></div>
-  <div class="abs" style="inset:0;background:radial-gradient(70% 55% at 50% 52%,rgba(0,0,0,.55),rgba(0,0,0,0) 80%),linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 60%,#000 100%)"></div>
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="abs" style="left:0;right:0;top:640px;text-align:center">
+  <div class="ph" style="inset:0;background-image:url(../../../assets/sfy/photos/white-cut-panels-pattern-paper.jpg);filter:contrast(1.15) saturate(.6) brightness(.5)"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(60% 40% at 50% 50%,rgba(0,0,0,.6),rgba(0,0,0,0) 85%),linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 25%,rgba(0,0,0,0) 55%,#000 96%)"></div>
+  <div class="abs" style="left:0;right:0;top:700px;text-align:center">
     <div class="eb" style="justify-content:center"><i></i>Essentials<i></i></div>
-    <h1 style="font-size:400px;margin-top:50px">Solids<br>for you.</h1>
-    <p class="lede" style="margin-top:70px">Solid basics, nothing extra.<br>100% cotton. Made in India.</p>
+    <img src="logo.png" style="width:1300px;margin-top:40px">
+    <p class="lede" style="margin-top:40px">Solid basics, nothing extra.<br>100% cotton. Made in India.</p>
   </div>
-  <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">Scroll</div></div>
+  <div class="side">Solids for you &mdash; Essentials</div>
+  <div class="grain"></div>
+  <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">The brand</div></div>
 </section>
 
-<!-- 1 editorial: headline + side note, two photos at different sizes -->
+<!-- 1: giant type over a full-width band, overlapping inset -->
 <section id="plain-on-purpose">
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="eb abs" style="left:110px;top:280px"><b>01</b><i></i>Plain</div>
-  <h1 class="abs" style="left:100px;top:360px;font-size:330px">Plain on<br>purpose.</h1>
-  <p class="lede abs" style="left:1330px;top:420px;width:560px;font-size:44px">No prints to hide behind. When it&rsquo;s just the colour, the fabric has to be good.</p>
-  <div class="tile" style="left:110px;top:1020px;width:1150px;height:740px;background-image:url(../../../assets/sfy/photos/factory-floor-sewing-line-cropped.jpg)"></div>
-  <div class="tile" style="left:1290px;top:1020px;width:600px;height:740px;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg)"></div>
+  <img class="logo" src="logo.png">
+  <div class="eb abs" style="left:120px;top:330px"><b>01</b><i></i>Plain</div>
+  <h1 class="abs" style="left:108px;top:410px;font-size:360px;z-index:3">Plain on<br>purpose.</h1>
+  <p class="lede abs" style="left:1440px;top:440px;width:440px;font-size:40px">No prints to hide behind. When it&rsquo;s just the colour, the fabric has to be good.</p>
+  <div class="ph" style="left:0;top:1060px;width:2000px;height:720px;background-image:url(../../../assets/sfy/photos/factory-floor-sewing-line-cropped.jpg);filter:contrast(1.15) saturate(.7) brightness(.7)"></div>
+  <div class="abs" style="left:0;top:1060px;width:2000px;height:720px;background:linear-gradient(180deg,#000,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 70%,#000)"></div>
+  <div class="ph" style="left:1440px;top:900px;width:440px;height:560px;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg);box-shadow:0 40px 80px rgba(0,0,0,.6)"></div>
+  <div class="side">Solids for you &mdash; Essentials</div>
+  <div class="grain"></div>
   <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">01 / 06</div></div>
 </section>
 
-<!-- 2 split: tall photo left, outlined number + story right -->
+<!-- 2: split, outlined number -->
 <section id="good-basics">
-  <div class="bg" style="left:0;top:0;width:1000px;height:2000px;background-image:url(cutting-tee-frame.jpg)"></div>
-  <div class="abs" style="left:0;top:0;width:1000px;height:2000px;background:linear-gradient(90deg,rgba(0,0,0,0) 70%,#000),linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 15%,rgba(0,0,0,0) 80%,#000)"></div>
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="abs" style="left:1090px;top:250px;font-family:Barlow;font-weight:900;font-size:440px;line-height:1;color:transparent;-webkit-text-stroke:3px #2c3a70">02</div>
+  <div class="ph" style="left:0;top:0;width:1000px;height:2000px;background-image:url(cutting-tee-frame.jpg)"></div>
+  <div class="abs" style="left:0;top:0;width:1000px;height:2000px;background:linear-gradient(90deg,rgba(0,0,0,0) 65%,#000),linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 15%,rgba(0,0,0,0) 78%,#000)"></div>
+  <img class="logo" src="logo.png">
+  <div class="abs" style="left:1080px;top:200px;font-family:Barlow;font-weight:900;font-size:480px;line-height:1;color:transparent;-webkit-text-stroke:3px #2f3f80">02</div>
   <div class="eb abs" style="left:1100px;top:720px"><b>02</b><i></i>The reason</div>
   <h1 class="abs" style="left:1090px;top:790px;font-size:190px">We couldn&rsquo;t<br>find good<br>basics.</h1>
-  <p class="lede abs" style="left:1100px;top:1510px;width:800px">Plain tees were thin and lost their shape fast. So we made our own.</p>
+  <p class="lede abs" style="left:1100px;top:1510px;width:760px">Plain tees were thin and lost their shape fast. So we made our own.</p>
+  <div class="grain"></div>
   <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">02 / 06</div></div>
 </section>
 
-<!-- 3 mosaic: three labelled tiles -->
+<!-- 3: three labelled moments -->
 <section id="every-plan">
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="eb abs" style="left:110px;top:280px"><b>03</b><i></i>Everyday</div>
-  <h1 class="abs" style="left:100px;top:360px;font-size:300px">One tee.<br>Every plan.</h1>
-  <p class="lede abs" style="left:1330px;top:420px;width:560px;font-size:44px">Wear it anywhere.</p>
-  <div class="tile" style="left:110px;top:1000px;width:573px;height:760px;background-image:url(../../../assets/sfy/photos/label-heat-transfer-on-blue-tee.jpg)"><div class="t"><small>09:00</small><b>Class</b></div></div>
-  <div class="tile" style="left:713px;top:1000px;width:573px;height:760px;background-image:url(../../../assets/sfy/photos/blue-tee-flatlay-glass-table-rotated.jpg)"><div class="t"><small>14:00</small><b>Work</b></div></div>
-  <div class="tile" style="left:1316px;top:1000px;width:574px;height:760px;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg)"><div class="t"><small>23:30</small><b>The late-night<br>chai run</b></div></div>
+  <img class="logo" src="logo.png">
+  <div class="eb abs" style="left:120px;top:330px"><b>03</b><i></i>Everyday</div>
+  <h1 class="abs" style="left:108px;top:410px;font-size:300px">One tee.<br>Every plan.</h1>
+  <p class="lede abs" style="left:1440px;top:440px;width:440px;font-size:40px">Wear it anywhere.</p>
+  <div class="tile" style="left:120px;top:1000px;width:570px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/label-heat-transfer-on-blue-tee.jpg)"></div><div class="t"><small>09:00</small><b>Class</b></div></div>
+  <div class="tile" style="left:715px;top:1000px;width:570px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/blue-tee-flatlay-glass-table-rotated.jpg)"></div><div class="t"><small>14:00</small><b>Work</b></div></div>
+  <div class="tile" style="left:1310px;top:1000px;width:570px;height:760px"><div class="ph" style="background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg)"></div><div class="t"><small>23:30</small><b>The late-night<br>chai run</b></div></div>
+  <div class="grain"></div>
   <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">03 / 06</div></div>
 </section>
 
-<!-- 4 full-bleed macro, type bottom-left -->
+<!-- 4: full-bleed macro -->
 <section id="feel-it">
-  <div class="bg" style="inset:0;background-image:url(../../../assets/sfy/photos/blue-tee-shoulder-knit-closeup.jpg)"></div>
-  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,.92) 85%)"></div>
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="eb abs" style="left:110px;top:1000px"><b>04</b><i></i>The feel</div>
-  <h1 class="abs" style="left:100px;top:1080px;font-size:340px">You&rsquo;ll<br>feel it.</h1>
-  <p class="lede abs" style="right:110px;top:1500px;width:560px;text-align:right">Pick it up once and you&rsquo;ll know.</p>
+  <div class="ph" style="inset:0;background-image:url(../../../assets/sfy/photos/blue-tee-shoulder-knit-closeup.jpg)"></div>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,.94) 85%)"></div>
+  <img class="logo" src="logo.png">
+  <div class="eb abs" style="left:120px;top:1000px"><b>04</b><i></i>The feel</div>
+  <h1 class="abs" style="left:108px;top:1080px;font-size:350px">You&rsquo;ll<br>feel it.</h1>
+  <p class="lede abs" style="right:120px;top:1520px;width:520px;text-align:right">Pick it up once and you&rsquo;ll know.</p>
+  <div class="side">Solids for you &mdash; Essentials</div>
+  <div class="grain"></div>
   <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">04 / 06</div></div>
 </section>
 
-<!-- 5 wide photo band + wash counter -->
+<!-- 5: photo band + wash strip -->
 <section id="stays-the-same">
-  <div class="bg" style="left:0;top:0;width:2000px;height:1100px;background-image:url(tee-label.jpg);background-position:center 42%"></div>
-  <div class="abs" style="left:0;top:0;width:2000px;height:1100px;background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 55%,#000)"></div>
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="eb abs" style="left:110px;top:1010px"><b>05</b><i></i>The colour</div>
-  <h1 class="abs" style="left:100px;top:1090px;font-size:250px">Stays the<br>same.</h1>
-  <p class="lede abs" style="left:1330px;top:1130px;width:560px;font-size:44px">Wash after wash, the colour holds.</p>
-  <div class="abs" style="left:110px;right:110px;top:1560px;display:flex;gap:20px">
-    <div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div>
+  <div class="ph" style="left:0;top:0;width:2000px;height:1120px;background-image:url(tee-label.jpg);background-position:center 42%"></div>
+  <div class="abs" style="left:0;top:0;width:2000px;height:1120px;background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 55%,#000)"></div>
+  <img class="logo" src="logo.png">
+  <div class="eb abs" style="left:120px;top:1010px"><b>05</b><i></i>The colour</div>
+  <h1 class="abs" style="left:108px;top:1090px;font-size:260px">Stays the<br>same.</h1>
+  <p class="lede abs" style="left:1440px;top:1130px;width:440px;font-size:40px">Wash after wash, the colour holds.</p>
+  <div class="abs" style="left:120px;right:120px;top:1580px">
+    <div style="display:flex;gap:16px"><div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div><div class="sw"></div></div>
+    <div style="display:flex;gap:16px"><div class="swl">Wash 1</div><div class="swl">Wash 2</div><div class="swl">Wash 3</div><div class="swl">Wash 4</div><div class="swl">Wash 5+</div></div>
   </div>
-  <style>.sw{flex:1;height:170px;background:url(../../../assets/sfy/photos/blue-tee-knit-texture-closeup.jpg) 30% 60%/900px;border-radius:6px;position:relative}
-  #stays-the-same .sw:nth-child(1)::after{content:"Wash 1"}#stays-the-same .sw:nth-child(2)::after{content:"Wash 2"}#stays-the-same .sw:nth-child(3)::after{content:"Wash 3"}#stays-the-same .sw:nth-child(4)::after{content:"Wash 4"}#stays-the-same .sw:nth-child(5)::after{content:"Wash 5+"}
-  .sw::after{position:absolute;left:24px;bottom:18px;font-size:26px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff}</style>
-  <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">05 / 06</div></div>
+  <div class="grain"></div>
+  <div class="foot" style="bottom:70px;padding-top:30px"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">05 / 06</div></div>
 </section>
 
-<!-- 6 shop grid + button -->
+<!-- 6: closing brand moment -->
 <section id="essentials">
-  <div class="nav"><img src="logo.png"><span>Tees</span><span>Joggers</span><span>Our story</span><span class="shop">Shop</span></div>
-  <div class="eb abs" style="left:110px;top:280px"><b>06</b><i></i>The range</div>
-  <h1 class="abs" style="left:100px;top:360px;font-size:215px">Every style starts<br>with the essentials.</h1>
-  <div class="prod" style="left:110px;background-image:url(../../../assets/sfy/photos/blue-tee-flatlay-glass-table-rotated.jpg)"><p>Fitted Tee</p></div>
-  <div class="prod" style="left:713px;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg)"><p>Oversized Tee</p></div>
-  <div class="prod" style="left:1316px;background-image:url(../../../assets/sfy/photos/black-joggers-waistband-drawstring-flat.jpg)"><p>Joggers</p></div>
-  <style>.prod{position:absolute;top:820px;width:574px;height:640px;background-size:cover;background-position:center;border-radius:6px}
-  .prod p{position:absolute;top:670px;left:0;font-size:38px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}</style>
-  <div class="abs" style="left:110px;top:1600px;background:var(--blue);padding:30px 64px;border-radius:70px;font-size:36px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">See the full range &rarr;</div>
+  <div class="ph" style="inset:0;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);filter:contrast(1.15) saturate(.85) brightness(.45)"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(65% 45% at 50% 50%,rgba(0,0,0,.55),rgba(0,0,0,0) 85%),linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 25%,rgba(0,0,0,0) 60%,#000 96%)"></div>
+  <img class="logo" src="logo.png">
+  <div class="abs" style="left:0;right:0;top:640px;text-align:center">
+    <div class="eb" style="justify-content:center"><b>06</b><i></i>The range<i></i></div>
+    <h1 style="font-size:250px;margin-top:50px">Every style<br>starts with<br>the essentials.</h1>
+    <div style="margin-top:70px;display:inline-flex;align-items:center;gap:28px;font-size:34px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#cfd8ff">See the full range<span style="display:block;width:120px;height:2px;background:var(--blue)"></span></div>
+  </div>
+  <div class="side">Solids for you &mdash; Essentials</div>
+  <div class="grain"></div>
   <div class="foot"><div class="u">100% Cotton<span>/</span>Made in India</div><div class="x">06 / 06</div></div>
 </section>
 </body></html>
