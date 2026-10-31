@@ -51,3 +51,17 @@ when a reel needs them, named by what they show.
 | `photos/label-transfer-cut-scissors-small.jpg` | Still of the cutting clip, low resolution (568 px) | Reference only |
 | `photos/office-desk-blue-tee-drawstrings.jpg` | Messy office desk, blue tee and drawstrings | Not for listings (cluttered) |
 | `photos/office-desk-wide-window.jpg` | Wide messy office desk, blue curtains | Not for listings (cluttered) |
+
+## Added 31 Oct 2026, set 2
+
+| File | Shows | Use |
+|---|---|---|
+| `photos/black-joggers-drawstring-metal-tips-factory.jpg` | Black joggers, white drawstring with metal tips, factory table, tailor in saree (face cropped), blue tees behind | Jogger listing / Brand Story; best jogger detail shot |
+| `photos/black-joggers-drawstring-factory-table.jpg` | Drawstring loop close-up, tailor blurred behind | Jogger details |
+| `photos/black-joggers-drawstring-factory-table-workers.jpg` | Waistband and drawstring, two workers blurred behind (one face partly visible) | Factory moment; get the factory's OK |
+| `photos/black-joggers-waistband-drawstring-flat.jpg` | Elastic waistband and drawstring, flat, white table | Jogger listing detail |
+| `photos/blue-tee-printed-neck-label-hand-held.jpg` | Hand holding tee, printed neck label with "Every style starts with the essentials", dark background | "No itchy tags" / promise |
+| `photos/blue-tee-neck-label-angle-1.jpg`, `-angle-2.jpg`, `-angle-3-darker.jpg` | Printed neck label (ML) and ribbed collar on a glass table | Tee listing detail, promise card |
+| `photos/blue-tee-neck-label-closeup-rotated.jpg`, `-closeup-2-rotated.jpg` | Neck label close-ups, sideways (rotate before use) | Tee details |
+| `photos/blue-tee-flatlay-glass-table-rotated.jpg` | Full tee flat lay on glass table, sideways (rotate before use) | Reference only (busy background) |
+| `photos/blue-tee-sofa-dressed-up-fun.png` | Tee "sitting" on a sofa with sunglasses and cap, a bowl and a Monster can | Instagram only, not Amazon (third-party brand visible) |

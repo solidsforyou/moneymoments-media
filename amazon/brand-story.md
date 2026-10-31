@@ -14,5 +14,5 @@ Character limits to be checked against Seller Central when building.
 | 2 | Image + text | cutting-blue-tee-label-scissors-vertical (frame) | WE COULDN'T FIND GOOD BASICS. | Plain tees were thin and lost their shape fast. So we made our own: heavier, and made to last. |
 | 3 | Image + text | label-heat-transfer-on-blue-tee.jpg | FROM FABRIC TO YOU | Cotton fabric. Cut. Stitched. Labelled. Checked. Packed. Then on its way to you. |
 | 4 | Image + text | blue-tee-shoulder-knit-closeup.jpg | 100% COTTON. HEAVY BY DESIGN. | 230 GSM tees. 320 GSM cotton fleece joggers. Thick, soft and made to breathe. |
-| 5 | Image + text | blue-tee-ribbed-collar-closeup.jpg | OUR PROMISE | No itchy tags: the label is printed inside. Colours that stay, wash after wash. |
+| 5 | Image + text | blue-tee-printed-neck-label-hand-held.jpg | OUR PROMISE | No itchy tags: the label is printed inside. Colours that stay, wash after wash. |
 | 6 | Store showcase | brand store tile | EVERY STYLE STARTS WITH THE ESSENTIALS. | See the full range. |
