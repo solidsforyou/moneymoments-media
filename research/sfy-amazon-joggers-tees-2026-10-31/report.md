@@ -28,6 +28,57 @@ GSM [c1-035, c3-011, c5-050, c9-100], so our 230 / 320 GSM would be the only sta
 - Founder reports listings claiming "100% pure cotton" while selling about 80% cotton, and a
   possible fake Snitch listing. Not yet evidenced in the ledger; needs the listing screenshots.
 
+## Founder's Amazon.in screen recordings (31 Oct, 09:28-09:36 IST)
+
+10 recordings transcribed into `recordings/out_v1..v10.csv` (342 rows; frames read by
+helpers, key frames checked by Claude). Sources: Drive folder "Amazon research".
+
+| Rec | Screen |
+|---|---|
+| v1 | Bestsellers, Women's T-Shirts #1-38 |
+| v2 | Bestsellers, Women's Track Pants #1-23 |
+| v4 | Bestsellers, Men's T-Shirts #1-21 |
+| v5 | Bestsellers, Men's Track Pants #1-23 |
+| v6 | Search: Sleepynuts tees |
+| v3, v9 | Product pages: The Souled Store oversized tees |
+| v7 | Product page: Veirdo 100% Pure Cotton oversized (plus size) |
+| v8 | Product page: Jockey AM95 |
+| v10 | Product page: Snitch satin shirt + Snitch search (luggage, perfume) |
+
+What they show:
+- **Bestseller price bands are lower than the ranks list suggested.** Men's tees mostly
+  Rs 169-830 (Sleepynuts Rs 944 is the top price, v4); women's tees Rs 215-549 (Amazon's own
+  Symbol brand holds 4 spots, v1); men's track pants from Rs 284, Pepe Jeans #1 at Rs 645,
+  Boldfit wide-leg Rs 898 the top (v5); women's track pants mostly Rs 295-419 (v2). Our Rs 999
+  tee and Rs 1,499 jogger sit above every bestseller list seen.
+- **Rank isn't about review count:** women's tee #1 has 2 ratings (v1).
+- **Baggy / wide-leg joggers recur** in the men's list (v5 #5, #6, #19).
+- **Jockey AM95 (verified by Claude in frame s_v8/12):** Materials & Care says "Fabric Type:
+  80% Cotton, 20% Polyester"; title says "Super Combed Cotton Rich" (not 100%). A 5-star review
+  calls it "100% cotton fabric"; another says "very log GSM product". No GSM listed, only
+  "Medium Weight". The product AI summary notes "several customers reporting that the brand
+  is not genuine". Sold by Cocoblu Retail.
+- **Veirdo:** title "100% Pure Cotton", specs only "Cotton" (no percentage); images claim "Quick
+  Dry" and "Anti-Odour". Rs 479, MRP 1,099, 4.1 (268 reviews). Sold by Cocoblu Retail (v7).
+- **Inflated MRPs are standard:** Veirdo carousel MRPs Rs 4,399 / 3,299 / 1,199 against
+  Rs 1,099 / 849 / 379 (68-75% off) while its own listing uses MRP 1,099 (v7); Sleepynuts
+  Rs 944 against MRP 2,999 (69% off) and Rs 849 against 2,799 (v6); Snitch luggage all
+  anchored on MRP Rs 3,499 (v10).
+- **First demand numbers:** Sleepynuts "100+ bought in past month" on top colours, "50+" on
+  others (v6).
+- **The Souled Store:** Rs 799 (MRP 899, 3.5 stars, 14 ratings) and Rs 539 (MRP 899, 40% off,
+  16 reviews, "Only 1 left"); both "100% Cotton" with consistent specs. Pearl grey page has an
+  XS chest of 44" in the bullet vs 36" in the size chart, a "Car & Motorbike" rank listed
+  first, and an AI review summary about other products (v3, v9). Sold by Cocoblu Retail.
+- **Resellers, not brands, own the Buy Box** on Jockey, Veirdo and The Souled Store (Cocoblu
+  Retail, Ships from Amazon).
+- **Ads everywhere:** Jockey sponsored strips sit on Snitch and Souled Store pages (v3, v10);
+  sponsored carousels on every product page.
+- **Pooled reviews:** Snitch colour variants share one count ("4.0 (446)" on four colours, v10).
+- Not seen: GSM on any listing; star breakdowns; a listing whose own specs contradict a
+  "100% cotton" title. The founder's "says 100%, sells 80%" is closest to Jockey AM95, whose
+  listing doesn't claim 100% but buyers believe it is.
+
 ## 2. Data limits
 
 - Amazon.in: only Bestseller lists loaded. Every /dp/ page hit a bot check; search pages 503.
