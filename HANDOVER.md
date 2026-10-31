@@ -37,13 +37,13 @@ Where things stand:
   content/arena (README there; tools/check.py, tools/blind.py, TOPUP-BRIEF.md, BLIND-BRIEF.md).
   `npm run build` in web/ rebuilds the app data from the CSVs. All 31 courses blind-checked
   (20% samples; `blind.py export <name> 0.2`); 2 wrong keys found earlier and fixed.
-- Site works on the free <name>.netlify.app address: no domain needed, links use the
-  site's own address.
+- Site is connected to Netlify (31 Oct) on the free <name>.netlify.app address; every push
+  to claude/solidsforyou-review-1z8hof deploys live. Links use the site's own address.
 - Left to do (wait for my go on):
   - Some research sheets are generic (class 10 science, English 5-8, CAT QA). Reference
     only; low priority.
-  - Trailers: re-score with the founder's phonk library (money-private/music/, memory #188)
-    after his review notes, one render.
+  - Trailers: music is Welcome To Miami only (memory, 31 Oct); apply the founder's review
+    notes to the v3 trailers in one render.
 - Trailers: Arena trailer in videos/trailer/scene3.html; OpenPrep's trailer comes last.
   Renders and songs are in money-private.
 - Payments: Cashfree will replace Razorpay later (code is Razorpay today, off without keys).
