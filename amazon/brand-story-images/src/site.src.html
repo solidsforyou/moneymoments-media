@@ -7,9 +7,9 @@
 /* Hallmark · shape: Story strip (seven square cards, each one idea) · genre: editorial · theme: brand · redesign: full
  * paper: oklch(13% 0.012 264) · accent: oklch(58% 0.21 264) · display: Barlow Condensed 900 · body: Manrope 600/700 · hero: full-bleed photo, logo as head · nav: none (image cards) · footer: claim rule, kept · signature: the logo set huge over the cutting table
  * axes: dark/condensed caps/brand blue · posture: Restrained · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three cards opened the same way (head over pictures); 03 is now a day list beside one photo, 04 a plate the head wraps, 06 the tagline over a product plate */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three cards opened the same way (head over pictures); 03 is now a day list beside one photo, 04 a plate the head wraps, 06 the tagline over the range, tee beside jogger */
 /* Hallmark · waive 59 · body gap 64px between every card · the story reads as one series of square cards, one gutter throughout, made to export one by one */
-/* Hallmark · waive 23 · .foot .u on every card · the blue cotton and India claim is the thread through the story */
+/* Hallmark · waive 23 · .foot .u on the first and last card · the blue cotton and India claim opens and closes the story */
 :root{
   --paper:oklch(13% 0.012 264);--ink:oklch(96% 0.008 264);--ink-2:oklch(84% 0.012 264);--mute:oklch(66% 0.014 264);
   --rule:oklch(96% 0.008 264 / .16);--accent:oklch(58% 0.21 264);--accent-soft:oklch(80% 0.09 264);--accent-deep:oklch(36% 0.11 264);
@@ -38,13 +38,14 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
 .lede.s{font-size:56px}
 .foot{position:absolute;z-index:6;left:var(--edge);right:var(--edge);bottom:var(--s-3xl);display:flex;justify-content:space-between;padding-top:var(--s-xl);
   border-top:2px solid var(--rule);font-size:44px;font-weight:700}
+.idx{position:absolute;z-index:6;right:var(--edge);bottom:var(--s-3xl);font-size:40px;color:var(--mute);font-variant-numeric:tabular-nums}
 .foot .u{color:var(--accent-soft)}.foot .u span{color:var(--mute);margin:0 var(--s-md)}.foot .x{color:var(--mute);font-weight:600;font-variant-numeric:tabular-nums}
 .grain{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.1;mix-blend-mode:overlay;
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 /* shades on the photographs themselves, all from the paper token */
 .ph::after{content:"";position:absolute;inset:0}
 .ph.v-hero::after{background:radial-gradient(60% 40% at 50% 45%,var(--shade-50),var(--shade-0) 85%),linear-gradient(180deg,var(--shade-50),var(--shade-0) 25%,var(--shade-0) 55%,var(--paper) 96%)}
-.ph.v-band::after{background:linear-gradient(180deg,var(--paper),var(--shade-0) 30%,var(--shade-0) 70%,var(--paper))}
+.ph.v-band01::after{background:linear-gradient(180deg,var(--paper),var(--shade-0) 28%,var(--shade-0) 75%,var(--shade-70))}
 .ph.v-left::after{background:linear-gradient(90deg,var(--shade-0) 65%,var(--paper)),linear-gradient(180deg,var(--shade-70),var(--shade-0) 15%,var(--shade-0) 78%,var(--paper))}
 .ph.v-right::after{background:linear-gradient(270deg,var(--shade-0) 55%,var(--paper)),linear-gradient(0deg,var(--paper),var(--shade-0) 25%)}
 .ph.v-top::after{background:linear-gradient(180deg,var(--shade-70),var(--shade-0) 20%,var(--shade-0) 55%,var(--paper))}
@@ -75,10 +76,9 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
   <img class="logo" src="logo.png" alt="">
   <h1 class="abs" style="left:108px;top:300px;font-size:340px">Plain on<br>purpose.</h1>
   <p class="lede s abs" style="left:1400px;top:340px;width:480px">No prints to hide behind. When it&rsquo;s just the colour, the fabric has to be good.</p>
-  <div class="ph v-band" style="left:0;top:1060px;width:2000px;height:720px;background-image:url(../../../assets/sfy/photos/factory-floor-sewing-line-cropped.jpg);filter:contrast(1.15) saturate(.7) brightness(.7)"></div>
-  <div class="ph inset" style="left:1360px;top:1060px;width:520px;height:720px;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg)"></div>
+  <div class="ph v-band01" style="left:0;top:1040px;width:2000px;height:960px;background-image:url(../../../assets/sfy/photos/blue-tees-pile-closeup.jpg);background-position:center 55%"></div>
   <div class="grain"></div>
-  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">01 / 06</div></div>
+  <div class="idx">01 / 06</div>
 </section>
 
 <section id="good-basics">
@@ -87,7 +87,7 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
   <h1 class="abs" style="left:1090px;top:500px;width:820px;font-size:180px">We couldn&rsquo;t find good basics.</h1>
   <p class="lede abs" style="left:1100px;top:1280px;width:780px">Plain tees were thin and lost their shape fast. So we made our own.</p>
   <div class="grain"></div>
-  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">02 / 06</div></div>
+  <div class="idx">02 / 06</div>
 </section>
 
 <section id="every-plan">
@@ -101,7 +101,7 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
   </ol>
   <p class="lede abs" style="left:120px;top:1610px">Wear it anywhere.</p>
   <div class="grain"></div>
-  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">03 / 06</div></div>
+  <div class="idx">03 / 06</div>
 </section>
 
 <section id="feel-it" class="plate">
@@ -110,7 +110,7 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
   <h1 style="font-size:330px"><span style="left:108px;top:300px">You&rsquo;ll</span><span style="right:120px;top:1290px">feel it.</span></h1>
   <p class="lede abs" style="left:120px;top:1440px;width:560px">Pick it up once<br>and you&rsquo;ll know.</p>
   <div class="grain"></div>
-  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">04 / 06</div></div>
+  <div class="idx">04 / 06</div>
 </section>
 
 <section id="stays-the-same">
@@ -119,13 +119,14 @@ h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line
   <h1 class="abs" style="left:108px;top:1200px;font-size:250px">Stays the<br>same.</h1>
   <p class="lede s abs" style="left:1400px;top:1260px;width:480px">Wash after wash, the colour holds.</p>
   <div class="grain"></div>
-  <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">05 / 06</div></div>
+  <div class="idx">05 / 06</div>
 </section>
 
 <section id="essentials">
-  <div class="ph" style="left:1000px;top:1060px;width:880px;height:660px;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);background-size:260%;background-position:80% 85%"></div>
   <img class="logo" src="logo.png" alt="">
   <h1 class="abs" style="left:108px;top:340px;font-size:220px">Every style<br>starts with<br>the essentials.</h1>
+  <div class="ph" style="left:760px;top:1080px;width:550px;height:640px;background-image:url(../../../assets/sfy/photos/blue-tees-folded-stack.jpg);background-size:320%;background-position:62% 88%"></div>
+  <div class="ph" style="left:1330px;top:1080px;width:550px;height:640px;background-image:url(../../../assets/sfy/photos/black-joggers-drawstring-metal-tips-factory-cropped.jpg);background-size:auto 150%;background-position:45% 60%;filter:contrast(1.1) brightness(1.05)"></div>
   <p class="more abs" style="left:120px;top:1620px">See the full range <i></i></p>
   <div class="grain"></div>
   <div class="foot"><div class="u">100% cotton<span>/</span>Made in India</div><div class="x">06 / 06</div></div>
