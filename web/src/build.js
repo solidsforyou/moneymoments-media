@@ -5,7 +5,7 @@ const card = `{
   "app": "your-app",
   "title": "Riya's mock result",
   "sub": "11/18, free full mock",
-  "url": "https://opensourceeverything.in/openprep/"
+  "url": "${location.origin}/openprep/"
 }`;
 document.getElementById('app').innerHTML = `
 <header class="bar"><div class="wrap"><a class="brand" href="/"><span class="m">${olly()}</span>OpenSource Everything</a></div></header>

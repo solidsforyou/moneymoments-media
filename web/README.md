@@ -30,15 +30,18 @@ npm test           # 19 end-to-end API tests
    | `ADMIN_TOKEN` | 24+ random characters; lets `/admin/` and the content machine publish | Yes, to publish |
    | `TELEGRAM_BOT_TOKEN` | From @BotFather. Switches on "Log in with Telegram" and Telegram notifications | For Telegram |
    | `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | Push notifications. Make a pair once with `npx web-push generate-vapid-keys` | For push |
-   | `VAPID_SUBJECT` | Contact for push services, e.g. `mailto:hello@opensourceeverything.in` | No |
+   | `VAPID_SUBJECT` | Contact for push services, e.g. `mailto:shashwat@solidsforyou.com` | No |
    | `MAX_FILE_MB` | Biggest file Tomorrow accepts (default 100) | No |
    | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` | From Razorpay (Account → API keys). Switches on Arena's free daily minutes and the ₹99 / 30-day unlimited pass. Without them Arena stays free and unlimited | For Arena payments |
    | `ARENA_FREE_MINUTES` | Free minutes of questions a day once payments are on (default 30) | No |
 
-3. **Telegram**: in @BotFather run `/setdomain` for the bot and give it
-   `opensourceeverything.in` (or the Netlify URL while testing). The login button only
+3. **Telegram**: in @BotFather run `/setdomain` for the bot and give it your site's
+   address (the free `<name>.netlify.app` one for now). The login button only
    appears once `TELEGRAM_BOT_TOKEN` is set.
-4. **Domain**: add `opensourceeverything.in` under Domain management.
+4. **Address**: no domain needed. Netlify gives the site a free `<name>.netlify.app`
+   address with HTTPS; rename it under Site configuration → Change site name. Nothing in the
+   app is tied to a domain: links use whatever address the site is on. A custom domain
+   (e.g. `opensourceeverything.in`) can be added later under Domain management.
 5. Netlify Blobs needs no setup; it's on for every site.
 
 That's all; there are no other keys or services. Nothing here sends email yet.

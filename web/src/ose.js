@@ -23,7 +23,7 @@ async function draw() {
         <div class="card stack"><h3>Easy, Medium or Hard</h3><p class="muted">Pick your level. Each question shows how hard it is and how long it should take, and every answer is explained.</p></div>
         <div class="card stack"><h3>Know how ready you are</h3><p class="muted">Unit test readiness, Board readiness for classes 10 and 12, and CAT readiness, chapter by chapter.</p></div>
       </div>
-      <div class="card stack" style="margin-top:16px"><b>Teachers and NGOs</b><p class="muted">Share <b>opensourceeverything.in/arena</b> with your students. They can start on any phone without an account. Accounts are only for saving progress across devices and joining the leaderboards, and children under 18 need a parent's approval for those.</p></div>
+      <div class="card stack" style="margin-top:16px"><b>Teachers and NGOs</b><p class="muted">Share <b>${location.host}/arena</b> with your students. They can start on any phone without an account. Accounts are only for saving progress across devices and joining the leaderboards, and children under 18 need a parent's approval for those.</p></div>
     </section>
     <section class="wrap sec"><h2>OpenPrep, a first look</h2>
       <a class="card row" href="/openprep/" style="text-decoration:none;color:inherit;align-items:center;flex-wrap:nowrap"><span class="av" style="width:72px;height:72px;background:none;flex:none">${buddy()}</span><span class="stack" style="gap:4px"><b>Free CAT mock and Quant lessons</b><span class="muted">A full-length mock on the CAT pattern with every answer explained, six short lessons, and CAT practice in Arena.</span></span></a>

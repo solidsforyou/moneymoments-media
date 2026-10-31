@@ -1,4 +1,4 @@
-# Handover (31 Oct 2026, evening)
+# Handover (31 Oct 2026, late evening)
 
 Paste the prompt below into a new Claude Code session (claude.ai/code) with the repository
 `solidsforyou/moneymoments-media` attached (and `solidsforyou/money-private` if you want the
@@ -32,16 +32,18 @@ Where things stand:
   19 tests pass (cd web && npm install && npm test). NOT deployed yet: I connect Netlify
   myself (base directory web, env SESSION_SECRET + ADMIN_TOKEN; no Razorpay keys = Arena
   free). Plan: launch and start test users.
-- Arena: classes 5-12 + CAT, 5,988 original questions served in 31 courses, chapter by
-  chapter (NCERT order), Easy/Medium/Hard. Question data: content/arena (README there;
-  tools/check.py, tools/blind.py, TOPUP-BRIEF.md, BLIND-BRIEF.md). `npm run build` in web/
-  rebuilds the app data from the CSVs.
+- Arena: classes 5-12 + CAT, 6,300 original questions served in 31 courses (6 per band in
+  every chapter), chapter by chapter (NCERT order), Easy/Medium/Hard. Question data:
+  content/arena (README there; tools/check.py, tools/blind.py, TOPUP-BRIEF.md, BLIND-BRIEF.md).
+  `npm run build` in web/ rebuilds the app data from the CSVs. All 31 courses blind-checked
+  (20% samples; `blind.py export <name> 0.2`); 2 wrong keys found earlier and fixed.
+- Site works on the free <name>.netlify.app address: no domain needed, links use the
+  site's own address.
 - Left to do (wait for my go on):
-  - CAT DILR (5 per band per chapter) and VARC (4) still below 6; top them up.
-  - Blind answer check not yet run on: CAT DILR, CAT VARC, Biology 11 and 12, English 9,
-    11 and 12 (the other 24 courses are checked; 2 wrong keys were found and fixed).
   - Some research sheets are generic (class 10 science, English 5-8, CAT QA). Reference
     only; low priority.
+  - Trailers: re-score with the founder's phonk library (money-private/music/, memory #188)
+    after his review notes, one render.
 - Trailers: Arena trailer in videos/trailer/scene3.html; OpenPrep's trailer comes last.
   Renders and songs are in money-private.
 - Payments: Cashfree will replace Razorpay later (code is Razorpay today, off without keys).

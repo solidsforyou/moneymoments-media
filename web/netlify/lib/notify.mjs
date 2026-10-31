@@ -14,7 +14,7 @@ export async function notifyTelegram(user, text) {
 let wp;
 async function webpush() {
   if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) return null;
-  if (!wp) { wp = (await import('web-push')).default; wp.setVapidDetails(process.env.VAPID_SUBJECT || 'mailto:hello@opensourceeverything.in', process.env.VAPID_PUBLIC_KEY, process.env.VAPID_PRIVATE_KEY); }
+  if (!wp) { wp = (await import('web-push')).default; wp.setVapidDetails(process.env.VAPID_SUBJECT || 'mailto:shashwat@solidsforyou.com', process.env.VAPID_PUBLIC_KEY, process.env.VAPID_PRIVATE_KEY); }
   return wp;
 }
 // skipDevice: don't buzz the device that sent it (for "My devices")
