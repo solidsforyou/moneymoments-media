@@ -35,3 +35,19 @@ with `crop=608:1080:656:0,scale=1080:1920`.
 The full-length clips (vertical .MOV, 20-110 MB each, too big for git) are in the
 founder's Drive folder `1Q3kI0Qqr9yB1W7WPbjOVxVOd-n8cEe8Y`. Add more clean clips here
 when a reel needs them, named by what they show.
+
+## Added 31 Oct 2026 (founder's aesthetic references)
+
+| File | Shows | Use |
+|---|---|---|
+| `clips/cutting-blue-tee-label-scissors-vertical.mp4` | Hands cutting a blue tee panel with the printed SOLIDS label, scissors, watch on wrist (vertical, 3 s; original IMG_2768.mov 4K) | Tee video, "Factory to you" |
+| `photos/white-cut-panels-pattern-paper.jpg` | Cut white jogger panels on brown pattern paper, sewing tables behind | Brand Story hero / cutting |
+| `photos/factory-floor-sewing-line.jpg` | Sewing line with tailors (backs, faces not clear), white cut fabric in front | "Made here. Made right." |
+| `photos/white-cut-fabric-thread-cones.jpg` | Stacked white cut fabric, colour thread cones behind | Fabric / factory |
+| `photos/label-heat-transfer-on-blue-tee.jpg` | SOLIDS FOR YOU heat-transfer labels on blue tee fabric, tagline "Every style starts with the essentials" | "No itchy tags" / label |
+| `photos/blue-tee-ribbed-collar-closeup.jpg` | Ribbed crew collar and shoulder seam close-up | Promise / quality |
+| `photos/blue-tee-shoulder-knit-closeup.jpg` | Shoulder knit texture, collar | Fabric card |
+| `photos/blue-tee-knit-texture-closeup.jpg` | Knit texture with collar, office wall behind (blurred) | Fabric card |
+| `photos/label-transfer-cut-scissors-small.jpg` | Still of the cutting clip, low resolution (568 px) | Reference only |
+| `photos/office-desk-blue-tee-drawstrings.jpg` | Messy office desk, blue tee and drawstrings | Not for listings (cluttered) |
+| `photos/office-desk-wide-window.jpg` | Wide messy office desk, blue curtains | Not for listings (cluttered) |
