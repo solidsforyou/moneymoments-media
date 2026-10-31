@@ -9,7 +9,76 @@ Research date: 30 Oct 2026. Sweep: India D2C, sub-topic Amazon.in fees and opera
 - No official 2026 referral-fee table, closing-fee table, Easy Ship/Self Ship rate card or FBA fee card was retrieved. The fee tables below are therefore built from press releases seen in search results, secondary blogs and one seller-forum post. Treat every number as "verify in Seller Central fee calculator before pricing."
 - Rating key (from RULES.md): A = official, B = reputable press, C = blog/agency/forum.
 
-## Pass 2 status (30 Oct 2026)
+## Pass 2 status (30 Oct 2026), SUPERSEDED by the 31 Oct section below
+
+## Pass 2, 31 Oct 2026 (official pages fetched with curl; supersedes the 30 Oct status above)
+
+Method: curl through the proxy, as in RULES.md "How to fetch pages on pass 2". Rendered text is saved in /tmp/d2c-fetch/. Tags: **Verified in pass 2** = confirmed on an official page, **Corrected** = old claim changed, **Still unverified** = not reached. Official pages: sell.amazon.in/fees-and-pricing, /fees-and-pricing/fee-schedule, /shipping-and-fulfillment/fulfillment-by-amazon, /brand-registry, /seller-blog/a-to-z-gst-guide; press.aboutamazon.com/in/2026/3/...; aboutamazon.in (Karigar/Saheli/Launchpad, Jan 2026); cbic-gst.gov.in.
+
+Blocked: the weight-handling rate tables on the fee schedule are images at m.media-amazon.com. The proxy returns 403 for that host, so those numbers are **Still unverified**. The apparel closing fee for each price band is not cleanly readable from the scraped text, so it is also **Still unverified** except where an official example gives it.
+
+### Verified in pass 2
+1. Zero referral fee on items under Rs 1,000, across 1,800+ categories, over 12.5 crore products, from 16 Mar 2026. Covers t-shirts, shoes, sarees, pet accessories and more. [A, press.aboutamazon.com/in/2026/3/amazon-announces-zero-referral-fees-on-over-12-5-crore-products-sellers-to-save-up-to-70-in-fees, Mar 2026; also fee-schedule page]
+2. The Rs 300 vs Rs 1,000 conflict is resolved. **Corrected.** The 2026 referral threshold is Rs 1,000. Rs 300 belongs to two other rules: the 2025 referral waiver (under Rs 300), and the 2026 Easy Ship cut ("save Rs 15 per order for products under Rs 300 on Easy Ship: Rs 10 lower weight handling across slabs, Rs 5 lower closing fee"; press: Easy Ship fees cut by more than 20% for products under Rs 300). The Outlook Business snippet that said "referral 0% under Rs 300" for apparel is wrong. [A, press release and fee-schedule page, Mar 2026]
+3. Referral fees above Rs 1,000 for apparel are official now, and they vary widely. **Corrected**: the 5-17% range in the earlier notes does not apply to Amazon.in apparel. The fee schedule (A, sell.amazon.in/fees-and-pricing/fee-schedule, current at fetch) gives these rates for price above Rs 1,000:
+
+| Category (fee schedule name) | Referral % above Rs 1,000 |
+|---|---|
+| Apparel - Baby | 7.00 |
+| Apparel - Sarees and Dress Materials | 15.00 (was 23.00 in the "current" column) |
+| Apparel - Men's T-shirts (except polos, tank tops, full-sleeve tops) | 23.00 (23.00 in both columns) |
+| Apparel - Shirts | 21.00 |
+| Apparel - Dress | 19.00 |
+| Apparel - Other products | 19.00 |
+| Apparel - Sweat shirts and jackets | 18.00 |
+| Apparel - Shorts | 24.00 |
+| Apparel - Sleepwear / Other innerwear / Socks / Thermals | 19.00 / 18.50 / 19.00 / 19.00 |
+| Apparel - Ethnic wear | 16.50 |
+| Apparel - Accessories | 19.00 |
+
+   The page's header says referral fees "dropped for products above Rs 1,000 ... 4% to 9.5%" for "select high-demand categories, including Apparel". The table shows cuts for some apparel rows (e.g. sarees) but not for T-shirts. Check the exact category in Seller Central before pricing. [A]
+4. Closing fee change from **7 Sep 2026**. **Corrected**: the page says products up to Rs 500 get +Rs 1, and products above Rs 500 get +Rs 3. The change applies to **FC, Easy Ship and Seller Flex**. It is not stated for Self Ship. The page gives the reason as rising logistics costs. [A, fee-schedule page]
+5. Official closing-fee examples (A, fees page and fee-schedule page):
+   - FC: Beverages Rs 249 gives Rs 27 (0-300 band). Shorts Rs 450 gives Rs 15 (301-500 band, Group D).
+   - Easy Ship: sandals Rs 299 gives Rs 2. Sandals Rs 450 gives Rs 23.
+   - Self Ship: facewash Rs 299 gives Rs 20. Shirt (apparel) Rs 499 gives Rs 26. The page's "Self Ship closing fee" change shows Rs 45 to Rs 20 (under Rs 300) and Rs 35 to Rs 26 (Rs 300-500). The forum figure of Rs 26 for Rs 300-500 is confirmed for Self Ship. [A]
+6. FC pick and pack: Rs 17 per unit for standard items up to 1 kg, Rs 5 for each extra kg up to 5 kg, Rs 2 for each further 5 kg. Heavy and bulky: Rs 26 per unit. Storage: Rs 50 per cubic foot per month. FC removal: Rs 10 standard, Rs 30 expedited, Rs 100 heavy and bulky (per unit). [A, fees page]
+7. Easy Ship weight handling, text examples (A, fees page; date not shown): 800 g to a regional zone = Rs 68 (Rs 51 for the first 500 g + Rs 17 for the next 500 g). 350 g flat shipping = Rs 55 (example headphone). 3.5 kg = Rs 180 (Rs 112 + 2 x Rs 34). Self Ship has no Amazon shipping fee. [A, fees page]
+8. Worked totals from Amazon's own press release, after 16 Mar 2026, all fees, under 500 g: T-shirt Rs 299 on Easy Ship, total fees Rs 71 to Rs 56. Necklace set Rs 999 on Easy Ship, Rs 324 to Rs 100. Earphones Rs 798 on FC, Rs 248 to Rs 109. [A]
+9. FBA illustration (A, FBA page, Nokia 105, Rs 1,000, 300 g, national): referral Rs 50 (5%). Closing: Easy Ship Rs 30, FBA Rs 18. Weight handling: Easy Ship Rs 72, FBA Rs 61. FBA pick and pack Rs 11. FBA storage Rs 3 per unit (Rs 33 per cubic foot per month). Total: Easy Ship Rs 152 (15.2%), FBA Rs 153 (15.3%). An FBA offer waives inbound, storage and removal fees for the first 3 months or 100 units. [A, illustrative]
+10. Payment cycle (A, fees page): "eligible to get paid for the order 7 days after the order is delivered", and deposits every 7 days, including Pay on Delivery orders. Faster cycles are available to eligible sellers. This applies to new sellers joining the "Standard" level of Amazon STEP. **Corrected**: the 14-day first payment in the earlier notes does not match this page. The DD+7 reserve reported from 12 Mar 2026 is consistent with "7 days after delivery", but the 2026 reserve wording did not appear on the page. [A for the 7-day rule; DD+7 still unverified]
+11. Brand Registry eligibility (A, sell.amazon.in/brand-registry): you need "an active, registered trademark or a pending trademark application for your brand name or logo" issued by a designated government trademark office of a country with an Amazon store. You must be the trademark owner. The trademark text must match the brand name. You need the application or registration number. Enrolment is free, and you do not need to sell on Amazon.in first. Word or design marks are accepted. **Verified in pass 2** that a pending application is sufficient. The anecdote that a registered mark entered as "pending" is refused is **Still unverified**. [A]
+12. GST composition and TCS. The CBIC-hosted text of the CGST Bill (as introduced in Lok Sabha, Bill No. 57 of 2017; https://cbic-gst.gov.in/pdf/CGST-bill-e.pdf) contains the clause that a person is not eligible for the composition scheme if "he is not engaged in making any supply of goods through an electronic commerce operator who is required to collect tax at source under section 52". This matches the earlier notes that cite Section 10. **Partly verified**: the enacted Act text was not reached (the CBIC pages for it returned 404). The CBIC composition-levy FAQ page has nothing on e-commerce. The TCS rate under s.52 is **Still unverified**. [A for the Bill text, a 2017 document]
+13. Karigar, Saheli, Launchpad (A, aboutamazon.in, 16 Jan 2026): Karigar, launched 2017, supports artisan sellers (over 18 lakh artisans, 24 states and UTs). Saheli enables women entrepreneurs (70+ government, NGO and not-for-profit partners). Saheli Accelerate offers structured onboarding and mentorship for women-led startups. Launchpad offers assisted onboarding, optimised listings and brand consultation for emerging brands. **Still unverified**: enrolment criteria, and the "2.5x" and "1.7x" growth figures. [A]
+14. Amazon Bazaar: the fee schedule notes a Rs 8 cut in Easy Ship weight handling for Bazaar sellers, up to 2 kg. [A]
+15. Amazon GST guide page (A, sell.amazon.in/seller-blog/a-to-z-gst-guide) lists GST registration, returns, and invoicing for Easy Ship and Self Ship. It says nothing on composition. [A]
+
+### Still unverified (not reached in this pass)
+- Weight-handling rate cards (ES, FC, SF) as tables. Images blocked by the proxy.
+- Closing-fee slab for each apparel price band on FC, Easy Ship and Self Ship (only the examples above are confirmed).
+- Returns and cancellation fees for sellers (no fee text found on the fee pages).
+- Prime badge criteria for India, Amazon Now and Bazaar seller terms, and seller count (20 lakh, 8 Sep 2026).
+- DD+7 reserve wording (2026).
+- Enacted CGST Act s.10(2)(d) and s.52 TCS rate.
+
+### Fee table: Rs 499, Rs 799, Rs 1,299 apparel (inputs stated; calc script /tmp/d2c-fetch/fees_calc.py)
+
+Assumptions: the item is an apparel item in a category named in the fee schedule. Buyer pays no shipping. GST is ignored. The Self Ship channel is used because it has the most confirmed closing-fee numbers. The example product for Rs 1,299 is a men's T-shirt (23%).
+
+| Line | Rs 499 | Rs 799 | Rs 1,299 |
+|---|---|---|---|
+| Referral | 0 (official) | 0 (official) | 23% = Rs 298.77 (official rate, men's T-shirt). Range across apparel categories: Rs 90.93 (7%) to Rs 311.76 (24%) |
+| Closing, Self Ship | Rs 26 (official example, shirt at Rs 499) | Not retrieved | Not retrieved |
+| Closing, FC / Easy Ship from 7 Sep 2026 | Not retrieved for apparel group; +Rs 1 | Not retrieved; +Rs 3 | Not retrieved; +Rs 3 |
+| Weight handling | Not retrieved (image blocked). Text example: Easy Ship 500 g regional = Rs 51 | Not retrieved | Not retrieved |
+| Net after referral and Self Ship closing, before shipping | Rs 473.00 | Not computable (closing unknown) | Rs 1,000.23 before closing (closing not retrieved) |
+| Press-release anchor | T-shirt Rs 299 on Easy Ship, all fees Rs 56 (under 500 g) | | |
+
+Read the table this way: at Rs 499 and below, the fee cost is small and the sharpest cut is the zero referral. At Rs 1,000 and above, the category referral rate applies to the whole price, so the Rs 999 vs Rs 1,000 boundary matters. At Rs 1,299, a T-shirt pays about Rs 299 in referral alone. Only the Seller Central calculator can give the final closing and weight-handling figures for each SKU.
+
+### Next step
+Pass 2 is partly complete. Add sell.amazon.in/shipping-and-fulfillment/... and the weight-handling image host (m.media-amazon.com) to the session allow-list, and any Seller Central fee-calculator page that is public. Then fill the blocked rows.
+
 
 Verification attempt: WebFetch returned DNS failure ("getaddrinfo ENOTFOUND") for sell.amazon.in,
 press.aboutamazon.com, www.aboutamazon.in, cbic-gst.gov.in, yourstory.com, indiaseatradenews.com and
