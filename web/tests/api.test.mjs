@@ -215,6 +215,9 @@ test('arena: under-18 players need a parent to approve', async () => {
 });
 
 test('pulse: interest taps and page views are counted, nothing else', async () => {
+  { const { createHash } = await import('node:crypto'); const k = createHash('sha256').update('ose-stats:' + ADMIN).digest('hex').slice(0, 32);
+    assert.equal((await fetch(BASE + '/api/pulse/csv?of=views&key=wrong')).status, 401);
+    const r = await fetch(BASE + `/api/pulse/csv?of=interest&key=${k}`); assert.equal(r.status, 200); assert.match(await r.text(), /^app,taps\n/); }
   const x = new Agent();
   assert.equal((await x.req('/api/pulse/interest', { method: 'POST', body: { app: 'nope' } })).status, 400);
   assert.equal((await x.req('/api/pulse/interest', { method: 'POST', body: { app: 'tomorrow' } })).data.count, null);   // hidden until 50
