@@ -1,0 +1,25 @@
+{
+  "url": "https://web.sensibull.com/virtual-trading",
+  "fetched_at": "2026-10-29T06:31:57.950Z",
+  "status": 200,
+  "final_url": "https://web.sensibull.com/login?redirect=/login?redirect=/draft-portfolios",
+  "blocked": false,
+  "title": "Trade Options with India’s Largest Brokers - Sensibull",
+  "canonical": "https://web.sensibull.com/login",
+  "meta": {
+    "description": "Trade options using Zerodha, Upstox, Angel Broking, 5Paisa, IIFL and ICICI Direct. Get Draft Portfolios, Option Chain, Strategy Builder, Screener, and more."
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 1,
+  "text_chars": 646
+}

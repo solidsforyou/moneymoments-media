@@ -1,0 +1,253 @@
+qid,chapter,question,A,B,C,D
+school-10-maths-1-e1,Real Numbers,What is the HCF of 72 and 120?,12,24,36,48
+school-10-maths-1-e2,Real Numbers,What is the LCM of 12 and 18?,36,6,72,216
+school-10-maths-1-e5,Real Numbers,Which fraction has a terminating decimal expansion?,5/12,7/15,11/18,9/80
+school-10-maths-1-e6,Real Numbers,Which is the prime factorisation of 360?,2^3 x 3^2 x 5,2^3 x 3 x 5^2,2^2 x 3^3 x 5,2^4 x 3 x 5
+school-10-maths-1-e7,Real Numbers,The sum of the rational number 3 and the irrational number root 2 is,rational,an integer,irrational,sometimes rational
+school-10-maths-1-e8,Real Numbers,What is the smallest prime that divides 7 x 11 x 13 + 13?,7,11,13,2
+school-10-maths-1-m2,Real Numbers,"Three temple bells ring every 18, 24 and 30 minutes. They ring together at 8:00 a.m. When will they next ring together?",2:00 p.m.,12:00 noon,11:00 a.m.,4:00 p.m.
+school-10-maths-1-m3,Real Numbers,What is the largest number that divides 245 and 1029 leaving remainder 5 in each case?,8,32,16,5
+school-10-maths-1-m4,Real Numbers,The decimal expansion of 129 / (2^2 x 5^7 x 7^5) is,terminating after 7 places,terminating after 5 places,non-terminating and non-repeating,non-terminating and repeating
+school-10-maths-1-m5,Real Numbers,"What is the smallest number that leaves remainder 5 when divided by 12, 15 and 20?",60,65,125,5
+school-10-maths-1-m6,Real Numbers,"For the numbers 2^3 x 3^2 x 5 and 2^2 x 3^3 x 7, what is LCM divided by HCF?",7560,210,105,6
+school-10-maths-1-m7,Real Numbers,Which of these numbers is irrational?,(root 5 + root 2)(root 5 - root 2),(3 + root 7)(3 - root 7),(root 5 + root 2) squared,root 12 divided by root 3
+school-10-maths-1-h1,Real Numbers,"What is the largest 4-digit number divisible by 12, 15 and 20?",9900,9960,9980,9948
+school-10-maths-1-h2,Real Numbers,"What is the smallest 3-digit number that leaves remainder 3 when divided by 8, 12 and 18?",147,75,219,144
+school-10-maths-1-h5,Real Numbers,The decimal expansion of 29 / (2^3 x 5^5) terminates after how many decimal places?,3,8,15,5
+school-10-maths-1-h6,Real Numbers,"In proving that root 3 is irrational, we assume root 3 = p/q in lowest terms and reach 3 divides p and 3 divides q. Why is this a contradiction?",p and q then share a common factor 3,p and q are both even,q turns out to be zero,p squared becomes a prime
+school-10-maths-1-h7,Real Numbers,"What is the largest number that divides 398, 436 and 542 leaving remainders 7, 11 and 15 respectively?",34,11,17,7
+school-10-maths-1-h8,Real Numbers,Which of the following is a rational number?,(2 + root 3) x root 3,(2 + root 3) divided by root 3,root 3 + root 5 - root 5 + root 7,(2 + root 3) + (2 - root 3)
+school-10-maths-2-e2,Polynomials,The graph of a polynomial p(x) cuts the x-axis at exactly 4 points. How many zeroes does p(x) have?,4,3,2,0
+school-10-maths-2-e3,Polynomials,What are the sum and product of the zeroes of 2x^2 - 8x + 6?,"Sum -4, product 3","Sum 4, product 6","Sum 4, product 3","Sum 8, product 6"
+school-10-maths-2-e4,Polynomials,Which quadratic polynomial has zeroes with sum -3 and product 2?,x^2 - 3x + 2,x^2 + 3x - 2,x^2 - 3x - 2,x^2 + 3x + 2
+school-10-maths-2-e5,Polynomials,What is the zero of the linear polynomial 5x - 15?,-3,15,5,3
+school-10-maths-2-e6,Polynomials,"If 2 is a zero of x^2 - 5x + k, what is k?",-6,6,10,3
+school-10-maths-2-e7,Polynomials,What is the maximum number of zeroes a cubic polynomial can have?,3,2,1,4
+school-10-maths-2-m1,Polynomials,What are the zeroes of 6x^2 - 7x - 3?,1/3 and -3/2,-1/3 and 3/2,1/2 and -3,7/6 and -1/2
+school-10-maths-2-m2,Polynomials,"If a and b are the zeroes of x^2 - 7x + 10, what is a^2 + b^2?",29,49,69,9
+school-10-maths-2-m3,Polynomials,For what value of k is the sum of the zeroes of kx^2 + 2x + 3k equal to their product?,2/3,-3/2,3/2,-2/3
+school-10-maths-2-m4,Polynomials,Which quadratic has zeroes 2 + root 3 and 2 - root 3?,x^2 + 4x + 1,x^2 - 4x - 1,x^2 - 4x + 1,x^2 - 4x + 7
+school-10-maths-2-m5,Polynomials,"If a and b are the zeroes of 2x^2 - 5x + 3, what is 1/a + 1/b?",5/3,3/5,5/2,2/3
+school-10-maths-2-m8,Polynomials,The graph of y = x^2 - 4x + 5 is drawn. How many zeroes does the polynomial have?,1,2,0,3
+school-10-maths-2-h2,Polynomials,"If a and b are the zeroes of x^2 - 6x + 5, which quadratic has zeroes 1/a and 1/b?",5x^2 - 6x + 1,5x^2 + 6x + 1,x^2 - 6x + 5,5x^2 - 6x - 1
+school-10-maths-2-h3,Polynomials,"If a and b are the zeroes of 2x^2 - 7x + 3, what is a^2 b + a b^2?",21/2,7/2,21/4,3/2
+school-10-maths-2-h4,Polynomials,For what value of k is the sum of the squares of the zeroes of x^2 - 6x + k equal to 20?,4,16,28,8
+school-10-maths-2-h5,Polynomials,"If a and b are the zeroes of 3x^2 - x - 4, what is a/b + b/a?",25/12,-25/36,-5/12,-25/12
+school-10-maths-2-h6,Polynomials,"If one zero of 4x^2 - 8kx - 9 is the negative of the other, what is k?",2,0,-2,9/8
+school-10-maths-2-h7,Polynomials,"If a and b are the zeroes of x^2 + 7x + 10, what is (a - b)^2?",9,3,29,49
+school-10-maths-3-e2,Pair of Linear Equations in Two Variables,The pair 2x + 3y = 7 and 4x - y = 5 has,exactly one solution,no solution,infinitely many solutions,exactly two solutions
+school-10-maths-3-e3,Pair of Linear Equations in Two Variables,"If x + y = 9 and x - y = 3, what is x?",3,12,9,6
+school-10-maths-3-e4,Pair of Linear Equations in Two Variables,The pair 2x + 3y = 5 and 4x + 6y = 7 represents,intersecting lines,coincident lines,parallel lines,perpendicular lines
+school-10-maths-3-e5,Pair of Linear Equations in Two Variables,The lines x = 3 and y = -2 meet at which point?,"(-2, 3)","(3, -2)","(3, 2)","(0, 0)"
+school-10-maths-3-e7,Pair of Linear Equations in Two Variables,Two numbers add up to 25 and differ by 7. What is the larger number?,9,18,14,16
+school-10-maths-3-e8,Pair of Linear Equations in Two Variables,Two lines that never meet when drawn on the same graph represent a pair of equations that is,consistent with one solution,dependent,inconsistent,consistent with two solutions
+school-10-maths-3-m1,Pair of Linear Equations in Two Variables,What is the solution of 2x + y = 13 and x - y = -1?,"x = 5, y = 3","x = 3, y = 7","x = 5, y = 6","x = 4, y = 5"
+school-10-maths-3-m2,Pair of Linear Equations in Two Variables,For what value of k does the pair 3x + ky = 9 and 6x + 8y = 18 have infinitely many solutions?,4,2,8,16
+school-10-maths-3-m3,Pair of Linear Equations in Two Variables,For what value of k does the pair 2x + ky = 5 and 4x + 6y = 7 have no solution?,3,6,1.5,2
+school-10-maths-3-m4,Pair of Linear Equations in Two Variables,A taxi charges a fixed fare plus a rate per km. An 8 km ride costs Rs 140 and a 14 km ride costs Rs 230. What is the fare for 20 km?,Rs 300,Rs 320,Rs 350,Rs 290
+school-10-maths-3-m6,Pair of Linear Equations in Two Variables,The sum of the ages of a mother and her daughter is 56 years. Four years ago the mother was 7 times as old as the daughter. How old is the mother now?,42 years,48 years,46 years,50 years
+school-10-maths-3-m7,Pair of Linear Equations in Two Variables,"If 5x - 3y = 9 and 2x + 3y = 12, what is x + y?",7,5,3,6
+school-10-maths-3-h2,Pair of Linear Equations in Two Variables,A boat goes 30 km downstream in 3 hours and 24 km upstream in 6 hours. What is its speed in still water?,7 km/h,3 km/h,10 km/h,5.5 km/h
+school-10-maths-3-h3,Pair of Linear Equations in Two Variables,For what value of k does kx + 3y = k - 3 and 12x + ky = k have no solution?,6,12,-12,-6
+school-10-maths-3-h4,Pair of Linear Equations in Two Variables,Five years ago A was 3 times as old as B. Ten years from now A will be twice as old as B. How old is A now?,45 years,40 years,50 years,60 years
+school-10-maths-3-h5,Pair of Linear Equations in Two Variables,"Rs 10,000 is invested partly at 8% and partly at 10% per year, and the yearly interest is Rs 920. How much is invested at 10%?","Rs 4,000","Rs 6,000","Rs 5,000","Rs 7,000"
+school-10-maths-3-h6,Pair of Linear Equations in Two Variables,"If 2x + 3y = 11 and 2x - 4y = -24, and also y = px - 4, what is p?",-9/2,9/2,-1,2
+school-10-maths-3-h8,Pair of Linear Equations in Two Variables,"If 2/x + 3/y = 2 and 4/x - 9/y = -1, what is x + y?",5/6,6,5,1
+school-10-maths-4-e1,Quadratic Equations,What are the roots of x^2 - 7x + 12 = 0?,3 and 4,-3 and -4,2 and 6,-3 and 4
+school-10-maths-4-e3,Quadratic Equations,What is the discriminant of 2x^2 - 5x + 3 = 0?,49,25,-1,1
+school-10-maths-4-e4,Quadratic Equations,What is the nature of the roots of x^2 + 4x + 4 = 0?,Real and distinct,Real and equal,No real roots,Cannot be found
+school-10-maths-4-e5,Quadratic Equations,What are the roots of x^2 + 2x - 8 = 0?,-2 and 4,2 and 4,2 and -4,-2 and -4
+school-10-maths-4-e6,Quadratic Equations,"If x = 3 is a root of x^2 + kx - 15 = 0, what is k?",-2,5,2,-5
+school-10-maths-4-e7,Quadratic Equations,What is the sum of the roots of 3x^2 - 12x + 5 = 0?,-4,5/3,12,4
+school-10-maths-4-m1,Quadratic Equations,What are the roots of 2x^2 - 7x + 3 = 0?,-1/2 and -3,2 and 3/2,1/3 and 2,1/2 and 3
+school-10-maths-4-m2,Quadratic Equations,For what value of k does kx^2 + 4x + 1 = 0 have equal roots?,2,16,4,8
+school-10-maths-4-m3,Quadratic Equations,What is the nature of the roots of 3x^2 - 4 root 3 x + 4 = 0?,Real and distinct,Not real,Real and equal,Cannot say
+school-10-maths-4-m4,Quadratic Equations,The product of two consecutive positive integers is 156. What is the smaller integer?,13,11,14,12
+school-10-maths-4-m5,Quadratic Equations,The length of a rectangle is 3 m more than its breadth and its area is 70 square metres. What is its perimeter?,17 m,34 m,28 m,40 m
+school-10-maths-4-m8,Quadratic Equations,"If x = -2 is a root of 3x^2 + 7x + p = 0, what is the other root?",1/3,-1/3,-3,3
+school-10-maths-4-h1,Quadratic Equations,A park 30 m long and 20 m wide has a uniform path of width w inside along its edge. The remaining area is 336 square metres. What is w?,3 m,22 m,2 m,5 m
+school-10-maths-4-h3,Quadratic Equations,A motorboat goes 24 km upstream and 24 km downstream in a total of 5 hours. The stream flows at 2 km/h. What is the boat speed in still water?,8 km/h,12 km/h,5 km/h,10 km/h
+school-10-maths-4-h5,Quadratic Equations,The product of two consecutive positive odd numbers is 143. What is their sum?,22,26,24,12
+school-10-maths-4-h6,Quadratic Equations,For which value of k does 2x^2 + kx + 3 = 0 have two distinct real roots?,4,-4,5,0
+school-10-maths-4-h7,Quadratic Equations,The sum of the ages of two friends is 20 years. Four years ago the product of their ages was 32. How old is the elder friend now?,8 years,10 years,14 years,12 years
+school-10-maths-4-h8,Quadratic Equations,One root of x^2 - 6x + k = 0 is twice the other. What is k?,4,8,12,9
+school-10-maths-5-e1,Arithmetic Progressions,"What is the common difference of the AP 12, 7, 2, -3, ...?",5,-3,-5,2
+school-10-maths-5-e2,Arithmetic Progressions,Which of these sequences is an AP?,"1, 4, 9, 16, ...","3, 6, 9, 12, ...","2, 4, 8, 16, ...","1, 3, 7, 13, ..."
+school-10-maths-5-e3,Arithmetic Progressions,"What is the 20th term of the AP 4, 9, 14, ...?",99,94,104,95
+school-10-maths-5-e4,Arithmetic Progressions,"Which term of the AP 5, 11, 17, ... is 59?",9th,10th,11th,8th
+school-10-maths-5-e5,Arithmetic Progressions,What is the sum of the first 5 terms of the AP with first term 3 and common difference 2?,35,25,30,45
+school-10-maths-5-e6,Arithmetic Progressions,"What is the nth term of the AP 6, 10, 14, ...?",4n + 6,6n + 4,4n - 2,4n + 2
+school-10-maths-5-m1,Arithmetic Progressions,In an AP the 3rd term is 9 and the 7th term is 21. What is the 10th term?,30,33,27,36
+school-10-maths-5-m2,Arithmetic Progressions,"How many terms are there in the AP 8, 13, 18, ..., 98?",19,18,20,17
+school-10-maths-5-m3,Arithmetic Progressions,What is the sum 3 + 7 + 11 + ... + 99?,1300,2550,1250,1275
+school-10-maths-5-m4,Arithmetic Progressions,What is the sum of all multiples of 6 that are less than 100?,850,822,900,816
+school-10-maths-5-m7,Arithmetic Progressions,Three numbers in AP add up to 27 and their product is 693. What is the largest?,13,9,11,14
+school-10-maths-5-m8,Arithmetic Progressions,"The yearly salary of a clerk is Rs 30,000 in year 1 and rises by Rs 1,500 every year. What is the total salary earned in the first 8 years?","Rs 2,70,000","Rs 3,00,000","Rs 2,82,000","Rs 2,52,000"
+school-10-maths-5-h1,Arithmetic Progressions,The sum of the first n terms of an AP is 4n^2 - n. What is the 20th term?,1580,159,155,151
+school-10-maths-5-h2,Arithmetic Progressions,"In an AP, S5 + S7 = 167 and S10 = 235. What is S20?",1020,970,940,500
+school-10-maths-5-h3,Arithmetic Progressions,What is the sum of all integers from 1 to 200 that are NOT divisible by 5?,16000,4100,20100,15900
+school-10-maths-5-h4,Arithmetic Progressions,The 11th term of an AP is 38 and the 16th term is 73. What is the 31st term?,171,178,185,150
+school-10-maths-5-h5,Arithmetic Progressions,"Logs are stacked with 20 in the bottom row and one fewer in each higher row. If there are 200 logs in all, how many rows are there?",16,25,20,10
+school-10-maths-5-h6,Arithmetic Progressions,Houses on a road are numbered 1 to 49. A house numbered x has the sum of the numbers before it equal to the sum after it. What is x?,25,36,34,35
+school-10-maths-6-e2,Triangles,Two triangles are similar and their corresponding sides are in the ratio 3 : 4. What is the ratio of their perimeters?,9 : 16,3 : 4,3 : 7,6 : 8 : 12
+school-10-maths-6-e3,Triangles,Two similar triangles have corresponding sides 5 cm and 15 cm. What is the ratio of their areas?,1 : 3,1 : 6,1 : 9,3 : 1
+school-10-maths-6-e4,Triangles,A right triangle has legs 9 cm and 12 cm. What is the hypotenuse?,21 cm,13 cm,17 cm,15 cm
+school-10-maths-6-e5,Triangles,"One triangle has angles 40, 60, 80 degrees. Another has angles 60, 80, 40 degrees. Which criterion shows they are similar?",AAA (AA),SSS,SAS,RHS
+school-10-maths-6-e7,Triangles,A 6 m pole casts a shadow 4 m long. At the same time a tree casts a shadow 12 m long. How tall is the tree?,8 m,24 m,16 m,18 m
+school-10-maths-6-e8,Triangles,"In triangle ABC, DE is parallel to BC and AD : DB = 2 : 3. What is AE : AC?",2 : 3,2 : 5,3 : 5,1 : 2
+school-10-maths-6-m1,Triangles,"Two similar triangles have areas in the ratio 16 : 25. If a median of the smaller triangle is 8 cm, how long is the matching median of the larger one?",12.5 cm,6.4 cm,10 cm,9 cm
+school-10-maths-6-m2,Triangles,Two similar triangles have areas 81 cm^2 and 49 cm^2. A side of the larger triangle is 18 cm. What is the matching side of the smaller one?,14 cm,9 cm,12 cm,10.5 cm
+school-10-maths-6-m3,Triangles,"A 25 m ladder reaches a window with its foot 7 m from the wall. If the top slides down 4 m, how far does the foot move out?",4 m,7 m,15 m,8 m
+school-10-maths-6-m5,Triangles,The diagonals of a rhombus are 24 cm and 10 cm. What is its perimeter?,34 cm,26 cm,48 cm,52 cm
+school-10-maths-6-m6,Triangles,"In a right triangle ABC with the right angle at B, BD is perpendicular to AC. If AD = 4 cm and DC = 9 cm, what is BD?",6 cm,13 cm,36 cm,5 cm
+school-10-maths-6-m7,Triangles,What is the altitude of an equilateral triangle of side 12 cm?,6 cm,6 root 3 cm,12 root 3 cm,6 root 2 cm
+school-10-maths-6-h2,Triangles,"In triangle ABC the angle B is a right angle, AB = 6 cm and BC = 8 cm. BD is perpendicular to AC. What is the length of BD?",5 cm,4.8 cm,6 cm,3.6 cm
+school-10-maths-6-h3,Triangles,DE is parallel to BC in triangle ABC. The area of triangle ADE is 4/9 of the area of triangle ABC. What is AD : DB?,4 : 5,2 : 3,2 : 1,4 : 9
+school-10-maths-6-h4,Triangles,"A lamp post is 5.4 m high. A 1.8 m tall girl stands 4 m from its foot, and her shadow lies directly away from the post. How long is her shadow?",3 m,1.2 m,4 m,2 m
+school-10-maths-6-h5,Triangles,"A point O lies inside rectangle ABCD with OA = 3, OB = 4 and OC = 5. What is OD?",3 root 2,2 root 3,6,4.5
+school-10-maths-6-h7,Triangles,"In triangle ABC, AD is perpendicular to BC with BD = 3 CD. If BC = 16 cm and AC = 5 cm, what is AB^2?",169,144,160,153
+school-10-maths-6-h8,Triangles,Two vertical poles of heights 9 m and 14 m have their tops 13 m apart. How far apart are their feet?,13 m,12 m,5 m,15 m
+school-10-maths-7-e1,Coordinate Geometry,"What is the distance between the points (2, 3) and (5, 7)?",5 units,7 units,25 units,root 7 units
+school-10-maths-7-e2,Coordinate Geometry,"What is the distance of the point (-6, 8) from the origin?",14 units,10 units,2 units,root 28 units
+school-10-maths-7-e3,Coordinate Geometry,"What is the midpoint of the segment joining (4, -2) and (-6, 8)?","(5, -5)","(-1, 3)","(-2, 6)","(1, -3)"
+school-10-maths-7-e4,Coordinate Geometry,"Which point divides the segment joining (1, 2) and (7, 8) internally in the ratio 1 : 2?","(5, 6)","(4, 5)","(3, 4)","(2, 3)"
+school-10-maths-7-e5,Coordinate Geometry,What is the x-coordinate of any point on the y-axis?,1,Any real number,0,The same as its y-coordinate
+school-10-maths-7-e7,Coordinate Geometry,"What is the centroid of the triangle with vertices (0, 0), (6, 0) and (0, 9)?","(3, 4.5)","(6, 9)","(2, 4.5)","(2, 3)"
+school-10-maths-7-m1,Coordinate Geometry,"The distance between the points (2, -3) and (k, 1) is 5. What are the values of k?",7 and -3,5 and -1,3 and -1,5 only
+school-10-maths-7-m2,Coordinate Geometry,"Which point on the x-axis is equidistant from (2, -5) and (-2, 9)?","(7, 0)","(0, -7)","(-2, 0)","(-7, 0)"
+school-10-maths-7-m3,Coordinate Geometry,"In what ratio does the y-axis divide the segment joining (-4, 5) and (6, 3)?",2 : 3,3 : 2,1 : 1,4 : 5
+school-10-maths-7-m5,Coordinate Geometry,"The vertices of a triangle are (0, 0), (4, 0) and (2, 2 root 3). The triangle is",isosceles but not equilateral,scalene,equilateral,right-angled
+school-10-maths-7-m7,Coordinate Geometry,"What is the area of the triangle with vertices (2, 3), (-1, 0) and (2, -4)?",21 square units,12 square units,7.5 square units,10.5 square units
+school-10-maths-7-m8,Coordinate Geometry,"For what value of k are the points (1, 2), (3, 6) and (k, 14) collinear?",6,7,8,5
+school-10-maths-7-h1,Coordinate Geometry,"The vertices (0, 0), (6, 0) and (0, 8) are joined to form a right triangle. What are the coordinates of the centre of the circle through all three?","(3, 4)","(6, 8)","(2, 8/3)","(4, 3)"
+school-10-maths-7-h2,Coordinate Geometry,"Which point of trisection of the segment from (2, -2) to (-7, 4) is nearer to (2, -2)?","(-4, 2)","(-1, 0)","(-3, 1)","(-5, 3)"
+school-10-maths-7-h3,Coordinate Geometry,"A(1, 2) and C(5, 6) are opposite vertices of a square. What are the other two vertices?","(1, 4) and (5, 4)","(1, 6) and (5, 2)","(2, 1) and (6, 5)","(3, 2) and (3, 6)"
+school-10-maths-7-h4,Coordinate Geometry,"At which point does the x-axis cut the segment joining (2, -3) and (5, 6)?","(4, 0)","(2, 0)","(3, 0)","(3.5, 0)"
+school-10-maths-7-h5,Coordinate Geometry,"For what values of k does the triangle with vertices (k, 0), (4, 0) and (0, 2) have area 5 square units?",9 only,5 and -5,9 and -1,1 and 9
+school-10-maths-7-h7,Coordinate Geometry,"Triangle ABC has A(2, 3), B(8, 1) and C(4, 9). What is the length of the median from A?",5 units,4 units,2 root 10 units,2 root 5 units
+school-10-maths-8-e1,Introduction to Trigonometry,What is the value of sin 30 degrees + cos 60 degrees?,1/2,root 3,3/2,1
+school-10-maths-8-e2,Introduction to Trigonometry,What is tan 45 degrees + cot 45 degrees?,1,2,0,root 2
+school-10-maths-8-e3,Introduction to Trigonometry,"In a right triangle ABC, the right angle is at B, AB = 3 and BC = 4. What is sin A?",4/5,3/5,4/3,5/4
+school-10-maths-8-e5,Introduction to Trigonometry,What is the value of sec 60 degrees?,1/2,2,2/root 3,root 3
+school-10-maths-8-e6,Introduction to Trigonometry,"If tan theta = 1 and theta is acute, what is theta?",30 degrees,60 degrees,90 degrees,45 degrees
+school-10-maths-8-e7,Introduction to Trigonometry,Which of these equals sin 35 degrees?,cos 35 degrees,sin 55 degrees,cos 55 degrees,tan 55 degrees
+school-10-maths-8-m1,Introduction to Trigonometry,"If tan theta = 5/12 and theta is acute, what is sin theta + cos theta?",7/13,5/13,17/13,13/17
+school-10-maths-8-m2,Introduction to Trigonometry,"If cosec theta = 5/4 and theta is acute, what is cot theta?",4/3,3/4,3/5,5/3
+school-10-maths-8-m4,Introduction to Trigonometry,What does (1 + tan^2 A)(1 - sin^2 A) simplify to?,sin^2 A,tan^2 A,sec^2 A,1
+school-10-maths-8-m5,Introduction to Trigonometry,"If sin(A + B) = 1 and cos(A - B) = root 3/2 with A and B acute, A greater than B, what is A?",45 degrees,30 degrees,75 degrees,60 degrees
+school-10-maths-8-m7,Introduction to Trigonometry,"If 15 cot A = 8 and A is acute, what is sin A?",15/17,8/17,17/15,8/15
+school-10-maths-8-m8,Introduction to Trigonometry,What is the value of cosec 62 degrees - sec 28 degrees?,1,2,0,-1
+school-10-maths-8-h1,Introduction to Trigonometry,The expression (sec A + tan A)(1 - sin A) is equal to,sin A,sec A,tan A,cos A
+school-10-maths-8-h2,Introduction to Trigonometry,"If tan theta + cot theta = 3, what is tan^2 theta + cot^2 theta?",9,7,5,3
+school-10-maths-8-h3,Introduction to Trigonometry,"If sin theta + cos theta = root 2, what is tan theta + cot theta?",2,root 2,1,4
+school-10-maths-8-h4,Introduction to Trigonometry,"If cosec theta - cot theta = 1/3 and theta is acute, what is sin theta?",4/5,5/3,3/5,3/4
+school-10-maths-8-h6,Introduction to Trigonometry,"If tan theta = 1/2, what is (1 + tan^2 theta)/(1 + cot^2 theta)?",4,5/4,1/2,1/4
+school-10-maths-8-h7,Introduction to Trigonometry,"What is the value of sin^2 5 + sin^2 10 + sin^2 15 + ... + sin^2 90 (angles in degrees, in steps of 5)?",9,10,19/2,17/2
+school-10-maths-9-e1,Some Applications of Trigonometry,The angle of elevation of the top of a tower from a point 20 m from its foot is 45 degrees. How tall is the tower?,10 m,20 root 3 m,20 m,20/root 3 m
+school-10-maths-9-e2,Some Applications of Trigonometry,A 10 m ladder leans against a wall and makes 60 degrees with the ground. How high up the wall does it reach?,5 m,10 root 3 m,5 root 3 m,10/root 3 m
+school-10-maths-9-e3,Some Applications of Trigonometry,"When the sun is at 45 degrees elevation, a 6 m pole casts a shadow of length",3 m,6 root 3 m,12 m,6 m
+school-10-maths-9-e4,Some Applications of Trigonometry,A kite is flying at a height of 50 m and the thread makes 30 degrees with the ground. What is the length of the thread?,100 m,50 m,50 root 3 m,25 m
+school-10-maths-9-e6,Some Applications of Trigonometry,From the top of a 20 m building the angle of depression of a car on level ground is 30 degrees. How far is the car from the building?,20 m,20/root 3 m,10 root 3 m,20 root 3 m
+school-10-maths-9-e8,Some Applications of Trigonometry,The angle of elevation of the sun is 45 degrees. A flagpole and its shadow are then,in the ratio 1 : 2,equal in length,in the ratio root 3 : 1,unrelated
+school-10-maths-9-m1,Some Applications of Trigonometry,From a point on the ground the angle of elevation of a tower top is 30 degrees. After walking 40 m towards the tower it is 60 degrees. How tall is the tower?,20 root 3 m,40 root 3 m,20 m,40/root 3 m
+school-10-maths-9-m2,Some Applications of Trigonometry,From the top of a 30 m building the angles of depression of the top and bottom of a tower are 30 degrees and 60 degrees. How tall is the tower?,10 m,30 m,10 root 3 m,20 m
+school-10-maths-9-m4,Some Applications of Trigonometry,Two poles of equal height stand on opposite sides of a road 80 m wide. From a point on the road between them the angles of elevation of the tops are 30 and 60 degrees. What is the height of each pole?,40 m,20 m,20 root 3 m,40 root 3 m
+school-10-maths-9-m6,Some Applications of Trigonometry,A 20 m ladder first makes 45 degrees with the ground and is then moved so it makes 60 degrees. How much higher does it now reach on the wall?,10(root 3 + root 2) m,10(root 3 - root 2) m,20(root 3 - 1) m,10 m
+school-10-maths-9-m7,Some Applications of Trigonometry,The shadow of a pole is 20 m shorter when the sun is at 60 degrees elevation than when it is at 30 degrees. How tall is the pole?,20 root 3 m,10 m,20/root 3 m,10 root 3 m
+school-10-maths-9-m8,Some Applications of Trigonometry,From the top of a 15 m building the angle of elevation of the top of a taller building is 30 degrees and the angle of depression of its foot is 60 degrees. How tall is the taller building?,20 m,25 m,30 m,15 + 5 root 3 m
+school-10-maths-9-h1,Some Applications of Trigonometry,A car moves at constant speed towards a tower. The angle of elevation of the top changes from 30 degrees to 60 degrees in 12 seconds. How much longer will the car take to reach the foot of the tower?,12 seconds,3 seconds,6 seconds,9 seconds
+school-10-maths-9-h2,Some Applications of Trigonometry,An aeroplane flies horizontally at height 1500 root 3 m. Its angle of elevation from a point on the ground changes from 60 to 30 degrees in 15 seconds. What is its speed?,360 km/h,200 km/h,720 km/h,1440 km/h
+school-10-maths-9-h3,Some Applications of Trigonometry,"A flagstaff is fixed on top of a tower. From a point 30 m from the foot of the tower, the angle of elevation of the tower top is 30 degrees and of the flagstaff top is 45 degrees. How long is the flagstaff?",10(3 + root 3) m,30 m,10 root 3 m,10(3 - root 3) m
+school-10-maths-9-h4,Some Applications of Trigonometry,"From two points 16 m and 36 m from the foot of a tower, on the same straight line, the angles of elevation of its top are complementary. How tall is the tower?",24 m,20 m,26 m,30 m
+school-10-maths-9-h6,Some Applications of Trigonometry,"A balloon is seen at 45 degrees elevation. After it rises 50 m vertically, it is seen at 60 degrees. What was its original height?",25(root 3 - 1) m,50(root 3 + 1) m,50 m,25(root 3 + 1) m
+school-10-maths-9-h8,Some Applications of Trigonometry,A 3 m tall statue stands on a pedestal. From a point on the ground the angle of elevation of the statue top is 60 degrees and of the pedestal top is 45 degrees. How high is the pedestal?,3(root 3 - 1)/2 m,3(root 3 + 1)/2 m,3(root 3 + 1) m,3 root 3 m
+school-10-maths-10-e2,Circles,What is the angle between a tangent to a circle and the radius through the point of contact?,60 degrees,45 degrees,180 degrees,90 degrees
+school-10-maths-10-e3,Circles,How many tangents can be drawn to a circle from a point lying on the circle?,Exactly two,Exactly one,None,Infinitely many
+school-10-maths-10-e4,Circles,"Two tangents PA and PB are drawn from an external point P to a circle. If PA = 7.5 cm, what is PB?",15 cm,3.75 cm,Cannot be found,7.5 cm
+school-10-maths-10-e6,Circles,"Tangents from P touch a circle at A and B with angle APB = 80 degrees. What is angle AOB, where O is the centre?",100 degrees,80 degrees,160 degrees,40 degrees
+school-10-maths-10-e7,Circles,What is the maximum number of tangents a circle can have that are parallel to a given line?,1,4,2,Infinitely many
+school-10-maths-10-e8,Circles,A line that touches a circle at exactly one point is called a,secant,tangent,chord,diameter
+school-10-maths-10-m1,Circles,"Tangents PA and PB from an external point P touch a circle at A and B, and angle APB = 50 degrees. What is angle OAB?",50 degrees,65 degrees,130 degrees,25 degrees
+school-10-maths-10-m4,Circles,"A quadrilateral ABCD circumscribes a circle with AB = 10, CD = 7 and BC = 9. What is AD?",6,12,8,9
+school-10-maths-10-m5,Circles,"PQ is a tangent at Q to a circle with centre O and radius 6 cm. If OP = 10 cm, what is the area of triangle OPQ?",30 cm^2,24 cm^2,48 cm^2,60 cm^2
+school-10-maths-10-m6,Circles,The distance of a point Q from the centre of a circle is 25 cm and the tangent from Q is 24 cm long. What is the radius?,1 cm,49 cm,7 cm,23.5 cm
+school-10-maths-10-m7,Circles,Tangents at A and B (the ends of a diameter) are parallel. A third tangent at C meets them at P and Q with AP = 5 cm and BQ = 7 cm. What is PQ?,35 cm,2 cm,6 cm,12 cm
+school-10-maths-10-m8,Circles,"A circle touches the sides of triangle ABC with AB = 12, BC = 10 and CA = 8 cm. What is the length of the tangent from A?",7 cm,5 cm,3 cm,15 cm
+school-10-maths-10-h3,Circles,"A circle of radius 3 cm touches side BC of triangle ABC at D, with BD = 6 cm and DC = 9 cm. What is AC?",9 cm,12 cm,10 cm,13 cm
+school-10-maths-10-h4,Circles,Two circles of radii 4 cm and 9 cm touch externally. What is the length of a direct common tangent?,13 cm,5 cm,6 cm,12 cm
+school-10-maths-10-h5,Circles,What is the radius of the circle inscribed in an equilateral triangle of side 12 cm?,4 root 3 cm,6 cm,2 root 3 cm,3 cm
+school-10-maths-10-h6,Circles,Concentric circles have radii 5 cm and 3 cm. A chord AB of the larger circle touches the smaller one. What is the area of triangle OAB?,12 cm^2,24 cm^2,15 cm^2,10 cm^2
+school-10-maths-10-h7,Circles,"A circle is inscribed in quadrilateral ABCD with AB = 9, AD = 7 and CD = 12. What is BC?",10,16,14,5
+school-10-maths-10-h8,Circles,"Tangents PA and PB from P touch a circle at A and B, and angle APB = 40 degrees. What is angle PAB?",20 degrees,70 degrees,40 degrees,140 degrees
+school-10-maths-11-e1,Areas Related to Circles,What is the area of a circle of radius 14 cm? (Use pi = 22/7.),308 cm^2,88 cm^2,616 cm^2,196 cm^2
+school-10-maths-11-e3,Areas Related to Circles,What is the length of an arc of angle 60 degrees in a circle of radius 21 cm? (Use pi = 22/7.),44 cm,22 cm,132 cm,11 cm
+school-10-maths-11-e4,Areas Related to Circles,What is the area of a quadrant of a circle of radius 7 cm? (Use pi = 22/7.),77 cm^2,154 cm^2,19.25 cm^2,38.5 cm^2
+school-10-maths-11-e6,Areas Related to Circles,Two concentric circles have radii 14 cm and 7 cm. What is the area of the ring between them? (Use pi = 22/7.),462 cm^2,154 cm^2,616 cm^2,308 cm^2
+school-10-maths-11-e7,Areas Related to Circles,The minute hand of a clock is 21 cm long. What area does it sweep in 20 minutes? (Use pi = 22/7.),1386 cm^2,231 cm^2,462 cm^2,154 cm^2
+school-10-maths-11-e8,Areas Related to Circles,A wheel has radius 35 cm. How far does it travel in one complete turn? (Use pi = 22/7.),110 cm,3850 cm,440 cm,220 cm
+school-10-maths-11-m1,Areas Related to Circles,A sector has radius 21 cm and arc length 22 cm. What is its area?,462 cm^2,1386 cm^2,231 cm^2,115.5 cm^2
+school-10-maths-11-m2,Areas Related to Circles,What is the area of the minor segment of a circle of radius 14 cm cut off by a chord that makes a right angle at the centre? (Use pi = 22/7.),56 cm^2,98 cm^2,154 cm^2,252 cm^2
+school-10-maths-11-m3,Areas Related to Circles,A horse is tied with a 7 m rope at the corner of a square field of side 20 m. What area can it graze? (Use pi = 22/7.),154 m^2,38.5 m^2,77 m^2,49 m^2
+school-10-maths-11-m4,Areas Related to Circles,What is the perimeter of a quadrant of a circle of radius 14 cm? (Use pi = 22/7.),44 cm,50 cm,28 cm,72 cm
+school-10-maths-11-m5,Areas Related to Circles,A wheel of diameter 70 cm moves 1.1 km. How many complete turns does it make? (Use pi = 22/7.),500,250,1000,50
+school-10-maths-11-m8,Areas Related to Circles,Two concentric circles have radii 21 cm and 14 cm. What is the area between the arcs for an angle of 90 degrees? (Use pi = 22/7.),154 cm^2,385 cm^2,96.25 cm^2,192.5 cm^2
+school-10-maths-11-h1,Areas Related to Circles,What is the area of the minor segment cut off by a chord that subtends 120 degrees at the centre of a circle of radius 12 cm?,48 pi - 72 root 3 cm^2,48 pi + 36 root 3 cm^2,48 pi - 36 root 3 cm^2,144 pi - 36 root 3 cm^2
+school-10-maths-11-h3,Areas Related to Circles,A circular park has radius 35 m and a 7 m wide path runs around it outside. What is the cost of paving the path at Rs 50 per square metre? (Use pi = 22/7.),"Rs 1,92,500","Rs 84,700","Rs 42,350","Rs 77,000"
+school-10-maths-11-h4,Areas Related to Circles,The minute hand of a clock is 14 cm long. What area does it sweep from 6:05 to 6:40? (Use pi = 22/7.),616 cm^2,308 cm^2,410.67 cm^2,359.33 cm^2
+school-10-maths-11-h5,Areas Related to Circles,On each side of a square of side 14 cm a semicircle is drawn inwards. What is the area of the four overlapping petals (the region covered by two semicircles)? (Use pi = 22/7.),196 cm^2,112 cm^2,154 cm^2,308 cm^2
+school-10-maths-11-h6,Areas Related to Circles,A running track has two straight parts of 90 m each and two semicircular ends with inner radius 35 m. The track is 7 m wide everywhere. What is its area? (Use pi = 22/7.),2954 m^2,1694 m^2,1260 m^2,3500 m^2
+school-10-maths-11-h7,Areas Related to Circles,A chord subtends 90 degrees at the centre of a circle of radius 10 cm. What is the area of the major segment? (Use pi = 3.14.),28.5 cm^2,235.5 cm^2,285.5 cm^2,314 cm^2
+school-10-maths-12-e1,Surface Areas and Volumes,What is the volume of a cylinder of radius 7 cm and height 10 cm? (Use pi = 22/7.),1540 cm^3,770 cm^3,440 cm^3,3080 cm^3
+school-10-maths-12-e2,Surface Areas and Volumes,What is the curved surface area of a cone of radius 7 cm and slant height 25 cm? (Use pi = 22/7.),1100 cm^2,175 cm^2,704 cm^2,550 cm^2
+school-10-maths-12-e3,Surface Areas and Volumes,What is the volume of a sphere of radius 21 cm? (Use pi = 22/7.),19404 cm^3,38808 cm^3,5544 cm^3,116424 cm^3
+school-10-maths-12-e4,Surface Areas and Volumes,What is the total surface area of a solid hemisphere of radius 7 cm? (Use pi = 22/7.),462 cm^2,308 cm^2,616 cm^2,154 cm^2
+school-10-maths-12-e5,Surface Areas and Volumes,What is the total surface area of a cube of side 5 cm?,125 cm^2,100 cm^2,30 cm^2,150 cm^2
+school-10-maths-12-e8,Surface Areas and Volumes,What is the curved surface area of a cylinder of radius 7 cm and height 5 cm? (Use pi = 22/7.),154 cm^2,110 cm^2,220 cm^2,440 cm^2
+school-10-maths-12-m1,Surface Areas and Volumes,A solid metal sphere of radius 6 cm is melted to make small spheres of radius 2 cm. How many spheres are formed?,9,3,27,18
+school-10-maths-12-m2,Surface Areas and Volumes,A toy is a cone of radius 7 cm and height 24 cm joined to a hemisphere of the same radius on its base. What is the total surface area? (Use pi = 22/7.),1166 cm^2,858 cm^2,550 cm^2,1012 cm^2
+school-10-maths-12-m3,Surface Areas and Volumes,A cuboid of size 44 cm x 21 cm x 12 cm is melted and recast into a cylinder of radius 14 cm. What is the height of the cylinder? (Use pi = 22/7.),18 cm,12 cm,24 cm,9 cm
+school-10-maths-12-m6,Surface Areas and Volumes,What is the volume of a hemispherical bowl of radius 10.5 cm? (Use pi = 22/7.),2425.5 cm^3,4851 cm^3,1212.75 cm^3,3638.25 cm^3
+school-10-maths-12-m7,Surface Areas and Volumes,A solid cylinder of radius 7 cm and height 12 cm is melted and recast into a cone of base radius 7 cm. What is the height of the cone?,4 cm,36 cm,12 cm,24 cm
+school-10-maths-12-m8,Surface Areas and Volumes,A cylinder of radius 14 cm and height 20 cm has a cone of the same base and height hollowed out. What volume is left? (Use pi = 22/7.),4106.67 cm^3,12320 cm^3,3080 cm^3,8213.33 cm^3
+school-10-maths-12-h1,Surface Areas and Volumes,A solid metal sphere of radius 6 cm is drawn into a wire of uniform circular cross-section of radius 0.2 cm. How long is the wire?,72 m,36 m,7.2 m,144 m
+school-10-maths-12-h2,Surface Areas and Volumes,A cone is cut by a plane parallel to its base at half the height. What is the ratio of the volume of the small cone to that of the whole cone?,1 : 2,1 : 4,1 : 6,1 : 8
+school-10-maths-12-h3,Surface Areas and Volumes,A tent is a cylinder of radius 7 m and height 6 m surmounted by a cone of height 24 m with the same radius. Canvas costs Rs 50 per square metre. What is the cost of canvas for the tent (no floor)? (Use pi = 22/7.),"Rs 27,500","Rs 40,700","Rs 13,200","Rs 55,000"
+school-10-maths-12-h4,Surface Areas and Volumes,Sand from a cylindrical bucket of radius 14 cm and height 18 cm is emptied to form a conical heap of height 24 cm. What is the radius of the heap?,21 cm,14 cm,18 cm,42 cm
+school-10-maths-12-h5,Surface Areas and Volumes,A hemisphere of radius 7 cm of the largest possible size is placed on top of a cube of side 14 cm. What is the total surface area of the solid? (Use pi = 22/7.),1176 cm^2,1484 cm^2,1022 cm^2,1330 cm^2
+school-10-maths-12-h8,Surface Areas and Volumes,A solid cylinder of radius 7 cm and height 14 cm has a hemispherical hollow of radius 7 cm scooped out of its top. What is the total surface area of the remaining solid? (Use pi = 22/7.),924 cm^2,770 cm^2,1078 cm^2,1232 cm^2
+school-10-maths-13-e2,Statistics,For a grouped data the sum of f x (class mark) is 480 and the sum of frequencies is 24. What is the mean?,24,480,20,12
+school-10-maths-13-e3,Statistics,"A table gives frequencies 5, 12 and 9 for classes 0-10, 10-20 and 20-30. What is the modal class?",0 - 10,20 - 30,12,10 - 20
+school-10-maths-13-e4,Statistics,"For grouped data with total frequency 50, which cumulative frequency value is used to find the median class?",50,25,12.5,100
+school-10-maths-13-e6,Statistics,"What is the mean of 6, 8, 10, 12 and 14?",10,12,8,50
+school-10-maths-13-e7,Statistics,"What is the median of 3, 9, 5, 7 and 11?",5,9,7.5,7
+school-10-maths-13-e8,Statistics,"If every observation in a data set is increased by 5, the mean",stays the same,is multiplied by 5,increases by 5,decreases by 5
+school-10-maths-13-m1,Statistics,"In a table, class 0-10 has frequency 4, class 10-20 has 6 and class 20-30 has 10. What is the mean?",15,18,20,22
+school-10-maths-13-m2,Statistics,"Frequencies for classes 10-20, 20-30, 30-40, 40-50, 50-60 are 4, 8, 10, 6 and 2. What is the median?",35,30,33,32.5
+school-10-maths-13-m4,Statistics,"Classes 0-10, 10-20 and 20-30 have frequencies 6, x and 4, and the mean is 14. What is x?",10,8,12,6
+school-10-maths-13-m5,Statistics,A data set has mean 25 and median 24. What is its mode by the empirical relation?,22,23,26,27
+school-10-maths-13-m6,Statistics,The mean of 15 observations is 20. A new observation 36 is added. What is the new mean?,20,22,21,18
+school-10-maths-13-m8,Statistics,40 students in a class average 60 marks and 60 students in another class average 70. What is the combined average?,65,64,68,66
+school-10-maths-13-h2,Statistics,"Classes 10-20, 20-30 and 30-40 have frequencies 6, x and 9, and 20-30 is the modal class with mode 26. What is x?",12,18,15,9
+school-10-maths-13-h3,Statistics,The mean of 40 numbers is 38. It is later found that 80 was misread in place of 30. What is the correct mean?,37.25,38,39.25,36.75
+school-10-maths-13-h4,Statistics,"Classes 0-10, 10-20, 20-30, 30-40, 40-50 have frequencies 5, 10, 20, 25, 20. What is the median?",35,32,30,31
+school-10-maths-13-h6,Statistics,"Mean = 40 and median = 38 for a distribution. Using the empirical relation, what is the mode?",34,36,42,40
+school-10-maths-13-h7,Statistics,"Using the step-deviation method with assumed mean 50 and class width 20, the sum of f u is -12 and the sum of f is 60. What is the mean?",54,49,38,46
+school-10-maths-13-h8,Statistics,The mean of a data set is 12. Every value is multiplied by 3 and then increased by 2. What is the new mean?,36,14,38,34
+school-10-maths-14-e1,Probability,A fair die is rolled once. What is the probability of getting a multiple of 3?,1/2,1/6,2/3,1/3
+school-10-maths-14-e4,Probability,A bag has 5 red and 3 blue balls. One ball is drawn at random. What is the probability that it is red?,3/8,5/8,5/3,1/5
+school-10-maths-14-e5,Probability,Which of these cannot be the probability of an event?,0,1,0.5,7/5
+school-10-maths-14-e6,Probability,A spinner has numbers 1 to 8. What is the probability that it stops at a prime number?,1/2,3/8,5/8,1/4
+school-10-maths-14-e7,Probability,A month of the year is chosen at random. What is the probability that its name starts with J?,1/12,1/4,1/6,1/3
+school-10-maths-14-e8,Probability,A letter is chosen at random from the word MATHEMATICS. What is the probability that it is M?,1/11,2/13,2/11,1/13
+school-10-maths-14-m2,Probability,Two dice are thrown together. What is the probability that the sum is 8?,1/6,1/9,1/12,5/36
+school-10-maths-14-m3,Probability,One card is drawn from a pack of 52. What is the probability that it is a red face card?,3/26,6/13,1/13,3/13
+school-10-maths-14-m4,Probability,A lot of 144 pens has 20 defective ones. A pen is picked at random. What is the probability that it is good?,5/36,20/124,124/20,31/36
+school-10-maths-14-m5,Probability,A card is chosen from cards numbered 1 to 25. What is the probability that the number is a multiple of 3 or 5?,13/25,12/25,8/25,11/25
+school-10-maths-14-m6,Probability,Three coins are tossed together. What is the probability of exactly two heads?,1/4,3/8,1/2,1/8
+school-10-maths-14-m8,Probability,A bag has 3 white balls and x black balls. The probability of black is twice the probability of white. What is x?,6,3,9,5
+school-10-maths-14-h1,Probability,Two dice are thrown together. What is the probability that the product of the numbers is a perfect square?,1/6,1/4,5/18,2/9
+school-10-maths-14-h4,Probability,Two dice are thrown together. What is the probability that the sum is less than 5?,5/36,1/6,1/9,1/4
+school-10-maths-14-h5,Probability,"A bag has 4 red, 5 black and 6 green balls. Two red balls are removed. A ball is then drawn at random. What is the probability that it is green?",6/15,2/5,1/2,6/13
+school-10-maths-14-h6,Probability,A disc is chosen at random from discs numbered 1 to 90. What is the probability that it is a two-digit perfect square?,1/15,1/10,9/10,1/9
+school-10-maths-14-h7,Probability,"A bag has 4 red balls and some blue balls. When 6 more blue balls are added, the probability of drawing blue doubles. How many blue balls were there at first?",3,2,4,6
+school-10-maths-14-h8,Probability,Two dice are thrown together. What is the probability of getting a doublet or a sum of 9?,2/9,1/3,5/18,5/36

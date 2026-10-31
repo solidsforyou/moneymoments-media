@@ -1,0 +1,110 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+#bg,#st,#top{position:absolute;inset:0}
+#st{perspective:2200px;perspective-origin:540px 960px}
+.chip{position:absolute;left:64px;top:96px;display:flex;align-items:center;gap:18px;font:700 34px "Inter";letter-spacing:-.01em}
+.chip .m{width:64px;height:64px}
+.bars{position:absolute;left:64px;right:64px;top:50px;display:flex;gap:10px}
+.bars i{flex:1;height:7px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.25)}
+.bars i b{display:block;height:100%;background:#fff}
+.big{font-weight:800;letter-spacing:-.045em;line-height:1.02}
+.mask{display:block;overflow:hidden;padding-bottom:.08em}.mask>span{display:inline-block}
+.cap{position:absolute;left:64px;right:64px;top:1440px;font:500 30px/1.4 "Inter";opacity:.8}
+.ph{position:absolute;width:390px;height:844px;transform-style:preserve-3d}
+.ph .slab{position:absolute;inset:-12px;border-radius:56px;background:#1b1c20}
+.ph .scr{position:absolute;inset:0;border-radius:44px;overflow:hidden;background:#fff;box-shadow:0 0 0 12px #111214}
+.ph .scr img{position:absolute;inset:0;width:390px;height:844px}
+.crop{position:absolute;background-repeat:no-repeat;border-radius:14px;background-size:390px 844px}
+.card{border-radius:36px;padding:44px 48px}
+svg{overflow:visible}
+</style></head><body>
+<div id="bg"></div><div id="st"></div><div id="top"></div>
+<script src="data/scripts.js"></script><script src="data/nifty.js"></script>
+<script>
+// One reel, picked by ?id=..., drawn frame by frame for videos/render.cjs.
+const Q = new URLSearchParams(location.search);
+const R = JSON.parse(JSON.stringify(window.REELS[Q.get('id')]));
+// cut on the beat: with ?bpm=, every scene lasts a whole number of half-bars (2 beats),
+// so each cut lands on a beat of the track (the track is trimmed to start on its downbeat)
+if (Q.get('bpm')) { const half = 2 * 60 / +Q.get('bpm'); for (const s of R.scenes) s.d = Math.max(2, Math.round(s.d / half)) * half; }
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), lerp = (a, b, k) => a + (b - a) * k;
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }, eout = x => 1 - Math.pow(1 - clamp(x), 3);
+const eback = x => { x = clamp(x); const c = 1.8; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ---- the crew (original drawings, same as the apps) ----
+let gid = 0;
+const MASCOT = {
+  olly: () => `<svg viewBox="0 0 120 120"><text x="60" y="26" text-anchor="middle" font-family="monospace" font-size="20" font-weight="700" fill="#5B6CFF">&lt;/&gt;</text><path d="M24 52l-12-16h44l12 16z" fill="#8E9BFF"/><path d="M96 52l12-16H64l-12 16z" fill="#7C8BFF"/><path d="M24 52h72v46a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8z" fill="#5B6CFF"/><ellipse cx="47" cy="74" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="74" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="75" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="75" r="3.4" fill="#1A1A1A"/><path d="M51 88q9 7 18 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+  sunny: () => { const id = 'sg' + (++gid); return `<svg viewBox="0 0 120 120"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC24A"/><stop offset="1" stop-color="#FF4F6D"/></linearGradient></defs><g stroke="#FFB020" stroke-width="6" stroke-linecap="round"><path d="M60 10v12M24 26l8 9M96 26l-8 9M10 60h12M98 60h12"/></g><path d="M16 94a44 44 0 0 1 88 0z" fill="url(#${id})"/><ellipse cx="47" cy="68" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="68" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="69" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="69" r="3.4" fill="#1A1A1A"/><path d="M51 81q9 7 18 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="8" y="94" width="104" height="8" rx="4" fill="#3A3D44"/></svg>`; },
+  buddy: (arm = 0) => `<svg viewBox="0 0 120 150"><line x1="60" y1="6" x2="60" y2="20" stroke="#3FA9FF" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="6" r="5" fill="#FFD36A"/><rect x="34" y="92" width="52" height="46" rx="18" fill="#3FA9FF"/><circle cx="60" cy="116" r="11" fill="#fff"/><text x="60" y="121" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="14" fill="#3FA9FF">B</text><path d="M36 102 q-14 10 -10 26" stroke="#3FA9FF" stroke-width="9" fill="none" stroke-linecap="round"/><g transform="rotate(${arm} 84 102)"><path d="M84 102 q16 -6 20 -22" stroke="#3FA9FF" stroke-width="9" fill="none" stroke-linecap="round"/></g><circle cx="60" cy="56" r="40" fill="#3FA9FF"/><ellipse cx="60" cy="60" rx="31" ry="27" fill="#fff"/><ellipse cx="48" cy="54" rx="6" ry="8" fill="#1A1A2E"/><ellipse cx="72" cy="54" rx="6" ry="8" fill="#1A1A2E"/><path d="M47 63 q13 12 26 0" stroke="#1A1A2E" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+  goodguy: () => `<svg viewBox="0 0 120 120"><path d="M48 96l-6 14M72 96l6 14" stroke="#B7791F" stroke-width="6" stroke-linecap="round"/><path d="M34 112h14M72 112h14" stroke="#7A5210" stroke-width="7" stroke-linecap="round"/><path d="M22 58q-14 4-12 18M98 58q14-6 12-20" stroke="#B7791F" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="60" cy="56" r="42" fill="#E8A317"/><circle cx="60" cy="56" r="34" fill="#FFCF4D"/><ellipse cx="47" cy="58" rx="6" ry="7" fill="#fff"/><ellipse cx="73" cy="58" rx="6" ry="7" fill="#fff"/><circle cx="48" cy="59" r="3.3" fill="#1A1A1A"/><circle cx="74" cy="59" r="3.3" fill="#1A1A1A"/><path d="M50 72q10 8 20 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+};
+const BRAND = {
+  ose: { name: 'OpenSource Everything', m: 'olly', ink: '#fff', accent: '#9DA8FF', bg: 'radial-gradient(90% 70% at 50% 30%,#2a1f6b 0%,#0d0a26 60%,#05040d 100%)', card: 'rgba(255,255,255,.08)' },
+  goodhabit: { name: 'GoodHabit', m: 'goodguy', ink: '#fff', accent: '#7CF0A0', bg: 'radial-gradient(90% 70% at 50% 30%,#0E3A24 0%,#04140C 70%,#010604 100%)', card: 'rgba(255,255,255,.07)' },
+  openprep: { name: 'OpenPrep', m: 'buddy', ink: '#fff', accent: '#9DB7FF', bg: 'radial-gradient(90% 80% at 50% 25%,#1B3BFF 0%,#0A1F99 45%,#030820 100%)', card: 'rgba(255,255,255,.09)' },
+  tomorrow: { name: 'Tomorrow', m: 'sunny', ink: '#fff', accent: '#FFE1B0', bg: 'radial-gradient(90% 70% at 50% 85%,#FFD8A8 0%,#FF9A8B 50%,#6B2E5A 100%)', card: 'rgba(255,255,255,.14)' },
+};
+const B = BRAND[R.app];
+
+// ---- timeline ----
+const T = []; let acc = 0; for (const s of R.scenes) { T.push([acc, s]); acc += s.d; }
+window.DURATION = acc;
+window.SFX = [];   // [seconds, kind], read by sfx.py
+T.forEach(([a, s], i) => { if (i) window.SFX.push([a, 'whoosh']); (s.items || []).forEach((_, k) => window.SFX.push([a + .5 + k * (s.step || .8), 'pop'])); if (s.type === 'quiz') window.SFX.push([a + s.d * .55, 'click']); if (s.type === 'stat') window.SFX.push([a + Math.min(1.6, s.d * .5), 'pop']); });
+
+const reveal = (u, a, html, st = '', dur = .45) => { const k = eout((u - a) / dur); return u < a ? '' : `<span class="mask" style="${st}"><span style="transform:translateY(${(1 - k) * 105}%)">${html}</span></span>`; };
+const abs = (x, y, html, st = '') => `<div style="position:absolute;left:${x}px;top:${y}px;${st}">${html}</div>`;
+const fmt = (v, d = 0) => v.toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// real Nifty closes, loaded from data/sim.json
+let NIFTY = null;
+NIFTY = window.NIFTY_ALL;
+const imgs = [...new Set(R.scenes.filter(s => s.img).map(s => s.img))];
+window.READY = Promise.all(imgs.map(n => new Promise(r => { const i = new Image(); i.onload = r; i.onerror = r; i.src = `cap/${n}.png`; })));
+
+function phone(x, y, s, ry, rx, img, kids = '', blur = 0) {
+  return `<div class="ph" style="left:0;top:0;transform:translate3d(${x - 195}px,${y - 422}px,0) rotateX(${rx}deg) rotateY(${ry}deg) scale(${s})"><div class="slab" style="transform:translateZ(-14px)"></div><div class="scr"><img src="cap/${img}.png" style="filter:blur(${blur}px)"></div>${kids}</div>`;
+}
+const crop = (img, b, z, k, st = '') => `<div class="crop" style="left:${b[0]}px;top:${b[1]}px;width:${b[2]}px;height:${b[3]}px;background-image:url(cap/${img}.png);background-position:${-b[0]}px ${-b[1]}px;transform:translateZ(${z}px) scale(${k});box-shadow:0 ${z / 7}px ${z / 2.5}px rgba(0,0,0,${clamp(z / 900, 0, .4)});${st}"></div>`;
+
+const SCENE = {
+  hook(s, u) { return abs(64, 560, s.lines.map((l, i) => reveal(u, .1 + i * .35, esc(l))).join(''), `width:952px;color:${B.ink};font-size:${s.size || 104}px`, 'big') .replace('style="', 'class="big" style="') + (s.sub ? abs(64, 1180, reveal(u, .2 + s.lines.length * .35, esc(s.sub)), `width:952px;color:${B.ink};opacity:.8;font:500 40px/1.35 Inter`) : '') + mascotPeek(u, s); },
+  stat(s, u) { const k = ease(u / Math.min(1.6, s.d * .5)), v = lerp(s.from || 0, s.value, k); return abs(64, 520, reveal(u, 0, esc(s.label)), `width:952px;color:${B.accent};font:700 40px Inter`) + abs(64, 620, `${s.prefix || ''}${fmt(v, s.decimals || 0)}${s.suffix || ''}`, `width:952px;color:${B.ink};font-size:${s.size || 180}px;font-weight:800;letter-spacing:-.05em;font-variant-numeric:tabular-nums`) + (s.sub ? abs(64, 880, reveal(u, 1.0, esc(s.sub)), `width:952px;color:${B.ink};opacity:.85;font:500 44px/1.35 Inter`) : ''); },
+  chart(s, u) {
+    if (!NIFTY) return '';
+    const pts = NIFTY.filter(p => p[0] >= s.from && p[0] <= s.to), n = pts.length, lo = Math.min(...pts.map(p => p[1])), hi = Math.max(...pts.map(p => p[1]));
+    const X0 = 64, X1 = 1016, Y0 = 700, Y1 = 1300, cx = i => X0 + (X1 - X0) * i / (n - 1), cy = v => Y1 - (Y1 - Y0) * (v - lo) / (hi - lo || 1);
+    const prog = ease(u / (s.d * .85)), m = Math.max(2, Math.round(prog * n));
+    let svg = `<svg width="1080" height="1920" style="position:absolute;left:0;top:0"><line x1="${X0}" x2="${X1}" y1="${cy(pts[0][1])}" y2="${cy(pts[0][1])}" stroke="rgba(255,255,255,.3)" stroke-dasharray="8 12" stroke-width="2"/><path d="M${pts.slice(0, m).map((p, i) => cx(i).toFixed(1) + ' ' + cy(p[1]).toFixed(1)).join('L')}" stroke="${B.accent}" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round" style="filter:drop-shadow(0 0 16px ${B.accent})"/>`;
+    const last = pts[m - 1]; svg += `<circle cx="${cx(m - 1)}" cy="${cy(last[1])}" r="13" fill="#fff"/></svg>`;
+    let marks = ''; for (const [d, label] of s.marks || []) { const i = pts.findIndex(p => p[0] >= d); if (i < 0 || i >= m) continue; const k = eout((m - i) / (n * .06)); marks += `<div style="position:absolute;left:${Math.min(cx(i), 760) - 10}px;top:${cy(pts[i][1]) + (cy(pts[i][1]) > 1100 ? -120 : 30)}px;width:300px;opacity:${k};transform:translateY(${(1 - k) * 20}px);color:#fff;font:700 34px/1.2 Inter;text-shadow:0 2px 12px rgba(0,0,0,.6)"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#fff;margin-right:10px"></span>${esc(label)}</div>`; }
+    const nice = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    return svg + marks + abs(64, 400, reveal(u, 0, esc(s.title)), `width:952px;color:${B.ink};font-size:72px`).replace('style="', 'class="big" style="') + abs(64, 560, `<span style="font:700 34px Inter;color:${B.accent}">Nifty 50 on ${nice(last[0])}</span><br><span style="font-size:88px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums">${fmt(last[1], 2)}</span>`, `color:${B.ink}`);
+  },
+  phone(s, u) {
+    const k = eout(u / .8), lift = s.zoom ? ease((u - s.d * .38) / .7) : 0, ry = lerp(s.ry ?? -18, s.ry2 ?? 8, ease(u / s.d));
+    const kids = s.zoom ? crop(s.img, s.zoom, 380 * lift, 1 + .55 * lift, 'background-color:#fff') : '';
+    return phone(540, lerp(1700, 1080, k), s.scale || 1.25, ry, 6, s.img, kids, 4 * lift) + abs(64, 260, reveal(u, .15, esc(s.title)), `width:952px;color:${B.ink};font-size:72px`).replace('style="', 'class="big" style="');
+  },
+  steps(s, u) { const st = s.step || .8; return abs(64, 380, reveal(u, 0, esc(s.title)), `width:952px;color:${B.ink};font-size:76px`).replace('style="', 'class="big" style="') + s.items.map((it, i) => { const k = eback((u - .5 - i * st) / .45); if (u < .5 + i * st) return ''; return abs(64, 700 + i * 190, `<div class="card" style="background:${B.card};color:${B.ink};font:600 42px/1.3 Inter;display:flex;gap:28px;align-items:center"><b style="font-size:56px;color:${B.accent}">${i + 1}</b><span>${esc(it)}</span></div>`, `width:952px;transform:scale(${k});transform-origin:0 50%;opacity:${clamp(k)}`); }).join(''); },
+  quiz(s, u) { const at = s.d * .55, shown = u >= at; return abs(64, 360, reveal(u, 0, esc(s.q)), `width:952px;color:${B.ink};font-size:64px`).replace('style="', 'class="big" style="') + s.o.map((o, i) => { const k = eout((u - .4 - i * .2) / .4), right = shown && i === s.a; return abs(64, 820 + i * 150, `<div class="card" style="padding:30px 40px;background:${right ? '#34C759' : B.card};color:#fff;font:600 44px Inter;box-shadow:${right ? '0 0 0 6px #fff' : 'none'}">${'ABCD'[i]}. ${esc(o)}</div>`, `width:952px;opacity:${k * (shown && !right ? .45 : 1)};transform:translateY(${(1 - k) * 30}px) scale(${right ? 1 + .04 * Math.sin(clamp((u - at) / .35) * Math.PI) : 1})`); }).join('') + (shown ? abs(64, 1440, reveal(u, at + .3, esc(s.why)), `width:952px;color:${B.ink};font:500 38px/1.35 Inter`) : ''); },
+  compare(s, u) { const card = (c, i) => { const k = eback((u - .3 - i * .5) / .45); return abs(64, 620 + i * 400, `<div class="card" style="background:${i ? B.accent : B.card};color:${i ? '#0B0B0F' : B.ink}"><div style="font:600 38px Inter;opacity:.8">${esc(c.label)}</div><div style="font-size:110px;font-weight:800;letter-spacing:-.04em;margin-top:8px">${esc(c.value)}</div></div>`, `width:952px;transform:scale(${k});transform-origin:0 50%;opacity:${clamp(k)}`); }; return abs(64, 380, reveal(u, 0, esc(s.title)), `width:952px;color:${B.ink};font-size:72px`).replace('style="', 'class="big" style="') + card(s.left, 0) + card(s.right, 1) + (s.note ? abs(64, 1440, reveal(u, 1.4, esc(s.note)), `width:952px;color:${B.ink};font:500 38px/1.35 Inter;opacity:.9`) : ''); },
+  end(s, u) { const k = eback(u / .6); return abs(340, 420, MASCOT[B.m](-50), `width:400px;height:${B.m === 'buddy' ? 500 : 400}px;transform:scale(${k})`) + abs(0, 980, reveal(u, .3, esc(s.line)), `width:1080px;text-align:center;color:${B.ink};font-size:84px`).replace('style="', 'class="big" style="') + abs(0, 1240, reveal(u, .7, esc(s.url || 'opensourceeverything.in')), `width:1080px;text-align:center;color:${B.accent};font:800 52px Inter`) + abs(0, 1330, reveal(u, 1, 'Free. No ads.'), `width:1080px;text-align:center;color:${B.ink};opacity:.8;font:500 38px Inter`); },
+};
+function mascotPeek(u, s) { if (s.mascot === false) return ''; const k = eback((u - .3) / .6); return abs(760, 1330, MASCOT[B.m](-40), `width:240px;height:${B.m === 'buddy' ? 300 : 240}px;transform:translateY(${(1 - k) * 260}px) rotate(${(1 - k) * 15}deg)`); }
+
+function renderFrame(t) {
+  let i = 0; while (i < T.length - 1 && t >= T[i + 1][0]) i++;
+  const [a, s] = T[i], u = t - a;
+  $('bg').style.background = s.bg || B.bg;
+  $('st').innerHTML = SCENE[s.type](s, u) + (s.cap ? `<div class="cap" style="color:${B.ink}">${esc(s.cap)}</div>` : '');
+  $('top').innerHTML = `<div class="bars">${T.map(([aa, ss], j) => `<i><b style="width:${j < i ? 100 : j > i ? 0 : clamp((t - aa) / ss.d) * 100}%"></b></i>`).join('')}</div><div class="chip" style="color:${B.ink}"><span class="m">${MASCOT[B.m]()}</span>${B.name}</div>`;
+  const w = Math.max(0, 1 - u / .18); $('st').style.filter = i && w > .05 ? `blur(${w * 18}px)` : 'none'; $('st').style.transform = i && w > .05 ? `translateY(${w * 60}px)` : 'none';
+}
+window.renderFrame = renderFrame;
+</script></body></html>

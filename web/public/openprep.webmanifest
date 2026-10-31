@@ -1,0 +1,17 @@
+{
+ "name": "OpenPrep",
+ "short_name": "OpenPrep",
+ "start_url": "/openprep/",
+ "scope": "/openprep/",
+ "display": "standalone",
+ "background_color": "#F2F2F7",
+ "theme_color": "#1B4DFF",
+ "icons": [
+  {
+   "src": "/icons/buddy.svg",
+   "sizes": "any",
+   "type": "image/svg+xml",
+   "purpose": "any"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+id,competitor_id,field,value,unit,source_url,captured_at,method,quote,confidence,verified
+c4-001,c4,price_selling,399,INR,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,1 month ₹399 Charged monthly,high,
+c4-002,c4,pack_qty,1,month,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,1 month ₹399,high,
+c4-003,c4,offer,"3 months: ₹300 /monthly, ₹899 billed every 3 months",INR,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,3 months ₹300 /monthly ₹899 billed every 3 months,high,
+c4-004,c4,offer,"12 months: ₹250 per month list, ₹200 /month with coupon UPGRADE20, ₹2399.2 billed yearly (Flat 20% off)",INR,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,12 months ₹250 ₹200 /month ₹2399.2 billed yearly UPGRADE20 Flat 20% off when you upgrade to Pro today!,high,
+c4-005,c4,positioning,Elevate your investing potential with a Pro membership,,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,Elevate your investing potential with a Pro membership,high,
+c4-006,c4,claim,60L+ Trusted Users; 4.2 Google Play Store (own page; Play shows a different value),,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,"60L+ Trusted Users 60,500Cr Assets Tracked 4.2 Google Play Store",medium,
+c4-007,c4,note,"Per-stock ""Sentiment Analysis: Crisp summary & key insights to decode earnings calls instantly"" and a live news-and-events feed; not described as an explainer of why a stock moved; whether AI-generated: not stated",,https://www.tickertape.in/stocks/reliance-industries-RELI,2026-10-29T06:36:49Z,page,RELIANCE Sentiment Analysis Crisp summary & key insights to decode earnings calls instantly,medium,
+c4-008,c4,note,"Virtual trading, SEBI registration claim, data delay: not found on pricing/home/stock pages",,https://www.tickertape.in/pricing,2026-10-29T06:31:30Z,page,Pro membership page,medium,
+c4-009,c4,rating,4.44,stars,https://play.google.com/store/apps/details?id=in.tickertape&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,json_ld,"""ratingValue"":""4.443000793457031",high,
+c4-010,c4,ratings_count,70144,,https://play.google.com/store/apps/details?id=in.tickertape&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,json_ld,"""ratingCount"":""70144",high,
+c4-011,c4,note,Play downloads 1Cr+,downloads,https://play.google.com/store/apps/details?id=in.tickertape&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,page,1Cr+ Downloads,high,

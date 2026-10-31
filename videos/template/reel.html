@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Data-driven horizontal reel (1920x1080). Load with ?story=<path to story .js>, which sets
+  window.STORY = { theme: {accent, accent2, name}, music: {beat, beat0, drop}, scenes: [...] }.
+  Scene types: line, counter, compare, cards, chain, ring, end. Each scene has `dur` (seconds)
+  and optional `light: true` (paper background) and `source` (small line at the bottom).
+  All motion comes from renderFrame(t).
+-->
+<style>
+  :root { --accent: #8b3dff; --accent2: #ff3e9a; --red: #ff5a5a; --paper: #f6f5f2; --ink: #111114; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #09080c; }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: #f5f5f7; }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  #paper { position: absolute; inset: 0; background: var(--paper); opacity: 0; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(60px); }
+  #g1 { width: 1300px; height: 1300px; left: 310px; top: -140px; }
+  #g2 { width: 900px; height: 900px; left: 950px; top: 320px; }
+  #flash { position: absolute; inset: 0; opacity: 0; }
+  #fx { position: absolute; inset: 0; }
+  #cam { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+  #stage { perspective: 1600px; }
+  #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 50px; display: flex; gap: 14px; align-items: center; z-index: 5; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 22px; font-weight: 600; letter-spacing: .08em; border: 2px solid var(--accent); color: var(--accent); }
+  .handle { font-size: 22px; font-weight: 500; }
+  .scene { position: absolute; inset: 0; display: none; }
+  .row { position: absolute; left: 80px; right: 80px; display: flex; justify-content: center; align-items: center; gap: 22px; flex-wrap: wrap; text-align: center; }
+  .w { display: inline-block; white-space: pre; }
+  .pill { display: inline-block; padding: 4px 26px 12px; border-radius: 18px; background: var(--accent); color: #fff; font-weight: 700; }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .chip { display: inline-block; padding: 12px 28px; border-radius: 999px; font-size: 32px; font-weight: 600; background: rgba(127,127,127,.12); border: 2px solid rgba(127,127,127,.25); }
+  .card { position: absolute; border-radius: 30px; }
+  .dark .card { background: rgba(24,20,32,.78); border: 2px solid rgba(255,255,255,.12); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .light { color: var(--ink); }
+  .light .card { background: #fff; border: 1px solid #e6e4df; box-shadow: 0 30px 80px rgba(20,20,30,.12); }
+  .src { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; font-size: 30px; opacity: .6; }
+  .strike { position: absolute; height: 8px; background: var(--red); border-radius: 4px; box-shadow: 0 0 18px rgba(255,90,90,.8); }
+  .node { padding: 26px 44px; border-radius: 22px; font-size: 48px; font-weight: 700; background: #111; color: #fff; }
+  .arrow { width: 92px; height: 92px; border-radius: 22px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 48px; font-weight: 800; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="glow" id="g1"></div>
+  <div class="glow" id="g2"></div>
+  <div id="paper"></div>
+  <canvas id="fx" width="1920" height="1080"></canvas>
+  <div id="cam"><div id="scenes"></div></div>
+  <div id="tag"><span class="tpill" id="series">STARTUP MATH</span><span class="handle" id="hdl">@unicornkahisab</span></div>
+  <div id="flash"></div>
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+document.write(`<script src="${params.get("story")}"><\/script>`);
+</script>
+<script>
+const S = window.STORY;
+const T = S.theme;
+document.documentElement.style.setProperty("--accent", T.accent);
+document.documentElement.style.setProperty("--accent2", T.accent2 || T.accent);
+if (T.series) $("series").textContent = T.series;
+const hex = (h, a) => { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+$("g1").style.background = `radial-gradient(circle, ${hex(T.accent, .48)}, ${hex(T.accent, .1)} 45%, transparent 70%)`;
+$("g2").style.background = `radial-gradient(circle, ${hex(T.accent2 || T.accent, .3)}, transparent 65%)`;
+$("flash").style.background = `radial-gradient(circle at 50% 50%, rgba(255,250,240,.9), ${hex(T.accent, .5)} 40%, transparent 72%)`;
+window.MOTION = { fps: 30, beat: S.music.beat, beat0: S.music.beat0, drop: S.music.drop };
+// Scenes may give `to` (absolute end time) instead of `dur`, so cuts can sit exactly on the music.
+S.scenes.reduce((start, c) => { if (c.to != null) c.dur = +(c.to - start).toFixed(3); return start + c.dur; }, 0);
+const DURATION = S.scenes.reduce((s, c) => s + c.dur, 0);
+
+// Build scene DOM and cue windows.
+let acc = 0;
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+// "Text with [pill] words": square brackets mark the highlighted word(s).
+// Spaces are explicit (rows have no gap), so punctuation right after a pill stays attached.
+const wordsHTML = (text) => {
+  const toks = text.split(/(\[[^\]]+\])/).filter(Boolean).flatMap((part) =>
+    part.startsWith("[") ? [{ pill: true, s: part.slice(1, -1) }]
+      : part.split(/(\s+)/).filter((x) => x !== "").map((x) => ({ s: x })));
+  let html = "";
+  toks.forEach((tk) => {
+    if (!tk.pill && !tk.s.trim()) { html += `<span class="w">&nbsp;</span>`; return; }
+    html += tk.pill ? `<span class="w pill">${esc(tk.s)}</span>` : `<span class="w">${esc(tk.s)}</span>`;
+  });
+  return html;
+};
+S.scenes.forEach((c, i) => {
+  c.cue = [acc, acc + c.dur]; acc += c.dur;
+  const el = document.createElement("div");
+  el.className = "scene " + (c.light ? "light" : "dark");
+  el.id = "sc" + i;
+  const color = c.color === "red" ? "#ff5a5a" : c.color === "accent" ? T.accent : "";
+  let h = "";
+  if (c.type === "line") {
+    h += c.kicker ? `<div class="row" style="top:${c.top || 330}px; font-size:52px; font-weight:600; opacity:.75">${esc(c.kicker)}</div>` : "";
+    h += `<div class="row lineA" style="gap:0; top:${(c.top || 330) + (c.kicker ? 110 : 0)}px; font-size:${c.size || 92}px; font-weight:800; letter-spacing:-3px">${wordsHTML(c.text)}</div>`;
+    if (c.text2) h += `<div class="row lineB" style="gap:0; top:${(c.top || 330) + (c.kicker ? 110 : 0) + (c.size || 92) * 1.35}px; font-size:${c.size2 || 60}px; font-weight:600; opacity:.85">${wordsHTML(c.text2)}</div>`;
+  } else if (c.type === "counter") {
+    h += `<div class="row" style="top:230px; font-size:58px; font-weight:600; opacity:.75">${esc(c.label)}</div>`;
+    h += `<div class="row big num" style="top:330px; font-size:${c.size || 220}px; color:${color}; text-shadow:0 0 40px ${color ? hex(c.color === "red" ? "#ff5a5a" : T.accent, .5) : "transparent"}">0</div>`;
+    if (c.chip) h += `<div class="row chipr" style="top:${330 + (c.size || 220) + 70}px"><span class="chip">${esc(c.chip)}</span></div>`;
+  } else if (c.type === "compare") {
+    h += `<div class="row" style="top:140px; font-size:62px; font-weight:700">${esc(c.title)}</div>`;
+    c.bars.forEach((b, j) => {
+      const x = 960 - 450 + j * 600;
+      h += `<div class="bar" style="position:absolute; left:${x}px; bottom:230px; width:300px; height:0; border-radius:24px 24px 0 0; background:${j ? (b.red ? "linear-gradient(180deg,#ff8f8f,#ff5a5a)" : `linear-gradient(180deg,${hex(T.accent2 || T.accent, .8)},${T.accent2 || T.accent})`) : `linear-gradient(180deg,${hex(T.accent, .7)},${T.accent})`}; box-shadow:0 0 50px ${hex(T.accent, .45)}"></div>`;
+      h += `<div class="barv" style="position:absolute; left:${x - 100}px; width:500px; text-align:center; font-size:80px; font-weight:800">${esc(b.text)}</div>`;
+      h += `<div class="barl" style="position:absolute; left:${x - 100}px; top:870px; width:500px; text-align:center; font-size:36px; opacity:.75">${esc(b.label)}</div>`;
+    });
+  } else if (c.type === "cards") {
+    h += `<div class="row" style="top:150px; font-size:66px; font-weight:700">${esc(c.title)}</div>`;
+    c.cards.forEach((k, j) => {
+      const x = 160 + j * 550;
+      h += `<div class="card cd" style="left:${x}px; top:330px; width:500px; height:340px"></div>`;
+      h += `<div class="cdt" style="position:absolute; left:${x + 50}px; top:380px; width:400px"><div style="font-size:30px; color:${T.accent}; font-weight:700; letter-spacing:.04em">${esc(k.kicker)}</div><div style="font-size:52px; font-weight:800; margin-top:14px; line-height:1.15">${esc(k.text).replace(/\n/g, "<br>")}</div></div>`;
+      if (k.strike) h += `<div class="strike" data-w="400" style="left:${x + 45}px; top:545px; width:0"></div>`;
+    });
+  } else if (c.type === "chain") {
+    h += `<div class="row" style="top:250px; font-size:60px; font-weight:600">${esc(c.title)}</div>`;
+    h += `<div class="row" style="top:470px; gap:30px">` + c.nodes.map((n, j) =>
+      (j ? `<div class="arrow ch">→</div>` : "") + `<div class="node ch" style="${j === c.nodes.length - 1 ? `background:${T.accent}` : ""}">${esc(n)}</div>`).join("") + `</div>`;
+  } else if (c.type === "ring") {
+    h += `<svg class="ring" style="position:absolute; left:660px; top:240px" width="600" height="600" viewBox="0 0 600 600"><circle cx="300" cy="300" r="260" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="12"/><circle class="arc" cx="300" cy="300" r="260" fill="none" stroke="${T.accent}" stroke-width="12" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1634" stroke-dashoffset="1634" style="filter: drop-shadow(0 0 14px ${hex(T.accent, .9)})"/></svg>`;
+    h += `<div class="row lineA" style="gap:0; top:470px; font-size:84px; font-weight:800; letter-spacing:-2px">${wordsHTML(c.text)}</div>`;
+  } else if (c.type === "end") {
+    h += `<div class="row" style="top:400px; gap:26px"><span class="e1" style="font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></span><span class="e2" style="font-size:130px; font-weight:800; letter-spacing:-5px; padding:0 30px 12px; border:4px solid ${T.accent}; background:${hex(T.accent, .2)}; box-shadow:0 0 40px ${hex(T.accent, .5)}">Hisab</span></div>`;
+    h += `<div class="row e3" style="top:640px; font-size:44px; opacity:.8">${esc(c.text || "Follow for the next one")}</div>`;
+  }
+  if (c.source) h += `<div class="src">${esc(c.source)}</div>`;
+  el.innerHTML = h;
+  $("scenes").appendChild(el);
+});
+
+// Centre of the first word (or the counter's label) in the opening scene, for the opening camera move.
+const FOCUS = (() => {
+  const el = $("sc0"); el.style.display = "block";
+  const w = el.querySelector(".lineA .w") || el.querySelector(".row");
+  if (!w) return null;
+  let r = w.getBoundingClientRect();
+  if (w.classList.contains("row")) {   // a label row spans the width: use the text itself
+    const range = document.createRange(); range.selectNodeContents(w); r = range.getBoundingClientRect();
+    return { x: r.left + Math.min(r.width, 220) / 2, y: r.top + r.height / 2 };
+  }
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+})();
+const R = rng(9);
+const STARS = Array.from({ length: 90 }, () => ({ x: R() * 1920, y: R() * 1080, r: 1 + R() * 2.5, sp: 20 + R() * 60, ph: R() * 6.28 }));
+const ctx = $("fx").getContext("2d");
+
+// Virtual camera: each scene gets its own slow move; cuts get a fast whip-pan with motion blur.
+const MOVES = [
+  { x: [60, -60], y: [0, 0], rx: [0, 0], ry: [-7, 5], s: [1.06, 1.0] },     // orbit right
+  { x: [0, 0], y: [30, -20], rx: [6, -2], ry: [0, 0], s: [1.12, 1.02] },    // tilt up, push in
+  { x: [-80, 40], y: [0, 0], rx: [0, 0], ry: [5, -4], s: [1.0, 1.08] },     // pan left to right
+  { x: [0, 0], y: [0, 0], rx: [-4, 3], ry: [4, -4], s: [1.16, 1.0] },       // pull back
+  { x: [40, -40], y: [-20, 20], rx: [3, -3], ry: [-3, 3], s: [1.02, 1.1] }, // drift and push
+];
+function camera(t) {
+  const i = Math.max(0, S.scenes.findIndex((c) => t >= c.cue[0] && t < c.cue[1]));
+  const c = S.scenes[i] || S.scenes[0];
+  const m = MOVES[i % MOVES.length];
+  const k = ease.inOutCubic(clamp((t - c.cue[0]) / c.dur, 0, 1));
+  if (i === 0 && FOCUS) {
+    // Opening move: start tight on the first word, then turn right and pull out as the line appears.
+    const z = ease.inOutCubic(clamp(t / (c.dur * 0.8), 0, 1));
+    const sc = 3.2 - 2.2 * z, ry = 14 * Math.sin(z * Math.PI * 0.9), tx = (960 - FOCUS.x) * (1 - z), ty = (540 - FOCUS.y) * (1 - z);
+    $("cam").style.transformOrigin = `${FOCUS.x}px ${FOCUS.y}px`;
+    $("cam").style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateY(${ry}deg) scale(${sc})`;
+    $("cam").style.filter = "none";
+    return { px: -tx * 0.2, py: -ty * 0.2 };
+  }
+  $("cam").style.transformOrigin = "50% 50%";
+  const L = (r) => r[0] + (r[1] - r[0]) * k;
+  // Whip-pan: 0.22 s centred on each cut, alternating direction.
+  let wx = 0, blur = 0;
+  S.scenes.forEach((sc, j) => {
+    if (j === 0 || sc.type === "end") return;
+    const d = t - sc.cue[0];
+    if (d > -0.11 && d < 0.11) {
+      const u = (d + 0.11) / 0.22;                 // 0..1 through the whip
+      const dir = j % 2 ? 1 : -1;
+      wx = dir * (u < 0.5 ? -ease.inCubic(u * 2) : ease.outCubic(1 - (u - 0.5) * 2)) * 220;
+      blur = Math.sin(u * Math.PI) * 16;
+    }
+  });
+  $("cam").style.transform = `translate3d(${L(m.x) + wx}px, ${L(m.y)}px, 0) rotateX(${L(m.rx)}deg) rotateY(${L(m.ry)}deg) scale(${L(m.s)})`;
+  $("cam").style.filter = blur > 0.3 ? `blur(${blur}px)` : "none";
+  // Parallax: the background glows drift against the camera.
+  return { px: -L(m.x) * 0.6, py: -L(m.y) * 0.6 };
+}
+
+function renderFrame(t) {
+  const p = pulse(t);
+  const par = camera(t);
+  const cur = S.scenes.find((c) => t >= c.cue[0] && t < c.cue[1]) || S.scenes[S.scenes.length - 1];
+  const light = !!cur.light;
+  $("paper").style.opacity = String(light ? 1 : 0);
+  $("hdl").style.color = light ? "#555" : "#bbb";
+  $("g1").style.opacity = String(light ? 0.25 : 1);
+  $("g1").style.transform = `translate(${Math.sin(t * .4) * 90 + par.px}px, ${Math.cos(t * .3) * 50 + par.py}px) scale(${1 + 0.07 * p})`;
+  $("g2").style.transform = `translate(${Math.cos(t * .5) * 70 + par.px * 1.6}px, ${Math.sin(t * .35) * 60 + par.py * 1.6}px)`;
+  const drop = window.MOTION.drop;
+  $("flash").style.opacity = String(t >= drop ? tween(t, drop, frames(14), 0.85, 0) : 0);
+  const shake = t >= drop && t < drop + 0.35 ? (1 - (t - drop) / 0.35) * 12 : 0;
+  $("stage").style.transform = `translate(${Math.sin(t * 90) * shake}px, ${Math.cos(t * 77) * shake}px)`;
+  ctx.clearRect(0, 0, 1920, 1080);
+  if (!light) for (const s of STARS) {
+    const x = (s.x - t * s.sp + 1920 * 8) % 1920;
+    ctx.fillStyle = hex(T.accent, (0.12 + 0.12 * Math.sin(t * 1.3 + s.ph) + 0.3 * p));
+    ctx.beginPath(); ctx.arc(x, s.y, s.r, 0, 6.28); ctx.fill();
+  }
+
+  S.scenes.forEach((c, i) => {
+    const el = $("sc" + i);
+    if (!scene("sc" + i, t, c.cue)) return;
+    const a = c.cue[0];
+    const q = (sel) => el.querySelector(sel), qa = (sel) => [...el.querySelectorAll(sel)];
+    if (c.type === "line" || c.type === "ring") {
+      const k = q(".row:not(.lineA):not(.lineB)");
+      if (k && c.type === "line") enter(k, t, a + frames(2), { dy: 24 });
+      words(q(".lineA"), t, a + (c.kicker ? 0.35 : frames(2)), frames(4));
+      if (q(".lineB")) words(q(".lineB"), t, a + (c.delay2 || 0.9), frames(3));
+      if (c.type === "ring") {
+        enter(q(".ring"), t, a, { dy: 0, scaleFrom: 0.85 });
+        q(".arc").setAttribute("stroke-dashoffset", String(1634 * (1 - tween(t, a, c.dur, 0, 1, ease.inCubic))));
+      }
+    } else if (c.type === "counter") {
+      enter(q(".row"), t, a === 0 ? -1 : a + frames(2));   // first scene: label already on frame 0
+      const n = q(".num");
+      const st = a + (c.at != null ? c.at : 0.35);   // at: when the number starts (negative = already racing on frame 0)
+      enter(n, t, st, { dy: 30, scaleFrom: 0.9 });
+      const v = count(t, st, c.countDur || 2.0, c.value);
+      n.textContent = `${c.prefix || ""}${c.format === "plain" ? v : inr(v)}${c.suffix || ""}`;
+      if (t > a + 2.5) n.style.transform = `scale(${1 + 0.04 * p})`;
+      if (q(".chipr")) enter(q(".chipr"), t, a + (c.chipAt || 2.3), { dy: 24 });
+    } else if (c.type === "compare") {
+      enter(q(".row"), t, a + frames(2));
+      const max = Math.max(...c.bars.map((b) => b.value));
+      qa(".bar").forEach((b, j) => {
+        const st = a + 0.6 + j * 1.6, hgt = tween(t, st, 1.5, 0, 520 * c.bars[j].value / max);
+        b.style.height = `${hgt}px`;
+        const v = qa(".barv")[j]; v.style.top = `${1080 - 230 - hgt - 105}px`; v.style.opacity = String(tween(t, st + 1.0, frames(8), 0, 1));
+        enter(qa(".barl")[j], t, st + 0.2, { dy: 20 });
+      });
+    } else if (c.type === "cards") {
+      enter(q(".row"), t, a + frames(2));
+      const step = (c.dur - 1.6) / c.cards.length;
+      qa(".cd").forEach((cd, j) => { enter(cd, t, a + 0.5 + j * step, { dy: 80 }); enter(qa(".cdt")[j], t, a + 0.5 + j * step + frames(4), { dy: 40 }); });
+      qa(".strike").forEach((s) => (s.style.width = `${tween(t, a + 0.5 + step * 0.7, frames(10), 0, 400, ease.inOutCubic)}px`));
+    } else if (c.type === "chain") {
+      enter(q(".row"), t, a + frames(2));
+      qa(".ch").forEach((n, j) => enter(n, t, a + 0.5 + j * window.MOTION.beat, { dx: -60, dy: 0, scaleFrom: n.classList.contains("arrow") ? 0.5 : 1 }));
+    } else if (c.type === "end") {
+      enter(q(".e1"), t, a + frames(3), { dx: -40, dy: 0 });
+      enter(q(".e2"), t, a + 0.4, { scaleFrom: 0.8, e: ease.outBack });
+      enter(q(".e3"), t, a + 1.0, { dy: 20 });
+    }
+    if (q(".src")) enter(q(".src"), t, a + Math.min(2.5, c.dur * 0.5), { dy: 10 });
+  });
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "url": "https://kavkrishapps.in/about",
+  "fetched_at": "2026-10-29T06:33:17.762Z",
+  "status": 200,
+  "final_url": "https://kavkrishapps.in/about",
+  "blocked": false,
+  "title": "About | Virtual Trading 2.0",
+  "canonical": "https://kavkrishapps.in/about",
+  "meta": {
+    "description": "Learn about Virtual Trading 2.0 — the free paper trading app helping Indian traders practice on NSE, BSE & MCX with virtual money. Zero financial risk, real skill building.",
+    "og:title": "About | Virtual Trading 2.0",
+    "og:description": "Learn about Virtual Trading 2.0 — the free paper trading app helping Indian traders practice on NSE, BSE & MCX with virtual money.",
+    "og:url": "https://kavkrishapps.in/about",
+    "og:image": "https://kavkrishapps.in/og-image.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "twitter:title": "About | Virtual Trading 2.0",
+    "twitter:description": "Learn about Virtual Trading 2.0 — the free paper trading app helping Indian traders practice on NSE, BSE & MCX with virtual money."
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 2,
+  "text_chars": 3172
+}

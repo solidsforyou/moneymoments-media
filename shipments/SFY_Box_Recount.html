@@ -1,0 +1,159 @@
+<title>SFY Box Recount</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap">
+<style>
+/* Same look as the Shipment 1 checklist. One card per box, products already filled in; the founder types S/M/L counts. */
+:root{--bg:#f6f7fa;--fg:#111216;--muted:#5d6370;--card:#ffffff;--line:#e2e5ec;--accent:#1f3fd1;--accent-ink:#ffffff;--soft:#eef1fb;--good:#1d7a3e;--good-bg:#e6f4ea;--warn:#8a4b00;--warn-bg:#fff3df;--bad:#b42318;
+--display:'Archivo Black',Impact,'Arial Black',sans-serif;--body:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0c0e;--fg:#f2f3f6;--muted:#9aa1ad;--card:#15171b;--line:#272a31;--accent:#5b82ff;--accent-ink:#0b0c0e;--soft:#1a2036;--good:#6fd391;--good-bg:#12291a;--warn:#ffcf8a;--warn-bg:#2a1d0c;--bad:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0c0e;--fg:#f2f3f6;--muted:#9aa1ad;--card:#15171b;--line:#272a31;--accent:#5b82ff;--accent-ink:#0b0c0e;--soft:#1a2036;--good:#6fd391;--good-bg:#12291a;--warn:#ffcf8a;--warn-bg:#2a1d0c;--bad:#ff8a80;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+main{max-width:620px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+h1{font:26px/1.1 var(--display);margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.progress{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;display:grid;gap:6px;box-shadow:0 6px 16px -12px rgba(0,0,0,.35)}
+.progress .row{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-variant-numeric:tabular-nums;font-size:15px}
+.progress .row span:last-child{color:var(--muted);font-weight:600}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;min-width:0}
+.box>*{min-width:0}
+.box>header{display:flex;align-items:center;gap:12px}
+.n{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:17px/40px var(--display);text-align:center;flex:none}
+.box.done .n{background:var(--good)}
+.box h2{font-size:18px;margin:0;flex:1}
+.box h2 small{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.btot{font:22px var(--display);font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,54px) 40px;gap:6px 6px;align-items:center}
+.grid .hd{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:center}
+.grid .hd:first-child{text-align:left}
+.prod{min-width:0;font-size:15px;line-height:1.2}.prod b{display:block}.prod span{color:var(--muted);font-size:13px}
+.prod em{display:block;font-style:normal;font-size:11px;color:var(--muted);opacity:.8}
+.prod .rm{appearance:none;border:0;background:none;color:var(--muted);font:600 12px var(--body);text-decoration:underline;padding:2px 0;cursor:pointer}
+.grid input{width:100%;height:46px;font:700 19px var(--body);text-align:center;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font-variant-numeric:tabular-nums;padding:0}
+.grid input::placeholder{color:var(--muted);opacity:.45;font-weight:600}
+.grid input:focus-visible,select:focus-visible,button:focus-visible,.dims input:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.rt{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.sep{grid-column:1/-1;height:1px;background:var(--line)}
+.add{display:flex;gap:8px}
+select{flex:1;min-width:0;font:15px var(--body);padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.dims label{font-size:12px;color:var(--muted);display:grid;gap:3px}
+.dims input{width:100%;font:16px var(--body);padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.btn{appearance:none;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font:700 16px var(--body);padding:13px 20px;width:100%;cursor:pointer;min-height:48px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);width:auto;padding:8px 14px;min-height:40px;font-size:14px}
+.sum{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
+.sum th,.sum td{padding:8px 4px;border-bottom:1px solid var(--line);text-align:center}
+.sum th:first-child,.sum td:first-child{text-align:left}
+.sum th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.sum tr.ok td.st{color:var(--good);font-weight:700}.sum tr.off td.st{color:var(--warn);font-weight:700}
+.sum tfoot td{font-weight:700;border-top:2px solid var(--line)}
+.tw{overflow-x:auto}
+textarea{width:100%;height:150px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 var(--mono)}
+.ok{color:var(--accent);font-weight:700;margin:0;min-height:1.5em}
+.saved{font-size:12px;color:var(--muted);text-align:right;margin:0}
+@media (max-width:380px){.grid{grid-template-columns:minmax(0,1fr) repeat(3,50px) 36px}.dims{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+
+<main>
+  <h1>Shipment 1: box recount</h1>
+  <p class="lead">Open each box and type what you find, size by size. Products are already filled in from the labels; each line shows what the old label said. Check every size tag for men's or women's.</p>
+
+  <div class="progress" aria-live="polite">
+    <div class="row"><span>Counted <span id="pc">0</span> / 180</span><span id="pb">0 / 7 boxes</span></div>
+    <div class="bar"><i id="pbar"></i></div>
+  </div>
+
+  <div id="boxes"></div>
+
+  <section class="box" id="summary">
+    <header><div class="n">✓</div><h2>Tally against the factory<small>Factory made 192 · 12 taken out · 180 should be in boxes</small></h2></header>
+    <div class="tw"><table class="sum"><thead><tr><th>Product</th><th>S</th><th>M</th><th>L</th><th>Counted</th><th>Should be</th><th></th></tr></thead><tbody id="sumb"></tbody><tfoot><tr><td>Total</td><td colspan=3></td><td id="sumc">0</td><td>180</td><td id="sums"></td></tr></tfoot></table></div>
+    <button class="btn" id="copy" type="button">Copy the recount</button>
+    <p class="ok" id="ok" aria-live="polite"></p>
+    <textarea id="out" readonly aria-label="Recount text"></textarea>
+    <p class="saved" id="saved"></p>
+  </section>
+</main>
+
+<script>
+const SKU={
+ FM:["Fitted Tee","Men's · Blue"],OM:["Oversized Tee","Men's · Blue"],MW:["Joggers","Men's · White"],MB:["Joggers","Men's · Black"],
+ FW:["Fitted Tee","Women's · Blue"],OW:["Oversized Tee","Women's · Blue"],WW:["Joggers","Women's · White"],WB:["Joggers","Women's · Black"]};
+const ORDER=["FM","OM","MW","MB","FW","OW","WW","WB"];
+// should be in boxes = factory inventory (7 Oct) minus the 12 pieces taken out
+const TARGET={FM:31,OM:29,MW:14,MB:17,FW:33,OW:24,WW:18,WB:14};
+// products per box and what the old label said (S/M/L), as hints only
+const PLAN={1:{FM:[4,4,4],MB:[4,4,4]},2:{FW:[4,4,4],WW:[4,4,4]},3:{OM:[4,4,4],MW:[5,5,5]},4:{OW:[4,4,4],WB:[4,4,4]},
+ 5:{OM:[5,5,4],FM:[7,5,5],MB:[1,0,2]},6:{FW:[6,6,6],OW:[3,3,3],WB:[0,0,1],WW:[0,1,1]},
+ 7:{FW:[1,1,1],OW:[1,1,1],WW:[1,1,1],OM:[1,1,1],FM:[0,1,1],MB:[1,1,1],MW:[null,null,null]}};
+const SZ=["S","M","L"];const KEY="sfy-recount1";const $=id=>document.getElementById(id);
+// st.boxes[n] = {skus:[...], q:{sku:[s,m,l]}, dims:{L,W,H,kg}}
+let st=null;
+function fresh(){const b={};for(const n in PLAN)b[n]={skus:Object.keys(PLAN[n]),q:{},dims:{}};return {boxes:b}}
+try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||!st.boxes)st=fresh();
+let db=null,saveT=null,writing=false,dirty=false;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+  if(!db)return;dirty=true;clearTimeout(saveT);saveT=setTimeout(flush,900)}
+async function flush(){if(writing||!dirty)return;writing=true;dirty=false;
+  try{await db.doc("recount/state").set({boxes:st.boxes,at:new Date().toISOString()});$('saved').textContent='Saved for Claude · '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}
+  catch(e){$('saved').textContent='Saved on this phone only'}
+  writing=false;if(dirty)flush()}
+const num=v=>v===''||v==null?null:Math.max(0,parseInt(v,10)||0);
+
+function draw(){
+  const wrap=$('boxes');wrap.innerHTML='';
+  for(const n of Object.keys(PLAN)){
+    const bx=st.boxes[n];const el=document.createElement('section');el.className='box';el.id='box'+n;
+    let rows=`<div class="hd">Product</div>${SZ.map(z=>`<div class="hd">${z}</div>`).join('')}<div class="hd">Tot</div>`;
+    bx.skus.forEach((k,i)=>{const hint=(PLAN[n][k]||[]);const q=bx.q[k]||[];
+      const extra=!PLAN[n][k];
+      rows+=(i?'<div class="sep"></div>':'')+`<div class="prod"><b>${SKU[k][0]}</b><span>${SKU[k][1]}</span>${hint.length?`<em>old label ${hint.map(v=>v==null?'?':v).join('/')}</em>`:''}${extra?` <button class="rm" type="button" data-rm="${k}">remove</button>`:''}</div>`+
+        SZ.map((z,j)=>`<input type="number" inputmode="numeric" min="0" data-k="${k}" data-j="${j}" value="${q[j]??''}" aria-label="Box ${n} ${SKU[k][0]} ${SKU[k][1]} size ${z}">`).join('')+
+        `<div class="rt" data-rt="${k}"></div>`});
+    const missing=ORDER.filter(k=>!bx.skus.includes(k));
+    el.innerHTML=`<header><div class="n">${n}</div><h2>Box ${n}<small data-sub></small></h2><div class="btot" data-bt>0</div></header>
+      <div class="grid">${rows}</div>
+      ${missing.length?`<div class="add"><select aria-label="Add a product to box ${n}"><option value="">Found something else?</option>${missing.map(k=>`<option value="${k}">${SKU[k][0]} · ${SKU[k][1]}</option>`).join('')}</select><button class="btn ghost" type="button" data-add>Add</button></div>`:''}
+      <div class="dims">${[['L','L cm'],['W','W cm'],['H','H cm'],['kg','Weight kg']].map(([f,l])=>`<label>${l}<input type="number" inputmode="decimal" data-d="${f}" value="${bx.dims[f]??''}"></label>`).join('')}</div>`;
+    el.addEventListener('input',e=>{const t=e.target;
+      if(t.dataset.k){const q=bx.q[t.dataset.k]||(bx.q[t.dataset.k]=[null,null,null]);q[+t.dataset.j]=num(t.value)}
+      else if(t.dataset.d){bx.dims[t.dataset.d]=t.value}
+      save();refresh()});
+    el.addEventListener('click',e=>{
+      if(e.target.dataset.add!==undefined){const v=el.querySelector('select').value;if(!v)return;bx.skus.push(v);save();draw()}
+      if(e.target.dataset.rm){const k=e.target.dataset.rm;bx.skus=bx.skus.filter(x=>x!==k);delete bx.q[k];save();draw()}});
+    wrap.appendChild(el)}
+  refresh()}
+
+function refresh(){
+  const tot={};ORDER.forEach(k=>tot[k]=[0,0,0]);let all=0,doneBoxes=0;
+  for(const n of Object.keys(PLAN)){const bx=st.boxes[n];const el=$('box'+n);let bt=0,filled=0,cells=0;
+    bx.skus.forEach(k=>{const q=bx.q[k]||[];let rt=0;q.forEach((v,j)=>{if(v!=null){rt+=v;tot[k][j]+=v}});
+      cells+=3;filled+=q.filter(v=>v!=null).length;el.querySelector(`[data-rt="${k}"]`).textContent=rt;bt+=rt});
+    el.querySelector('[data-bt]').textContent=bt;all+=bt;
+    const done=filled===cells&&cells>0;el.classList.toggle('done',done);if(done)doneBoxes++;
+    el.querySelector('[data-sub]').textContent=done?'All sizes filled':`${filled} of ${cells} sizes filled`}
+  $('pc').textContent=all;$('pb').textContent=doneBoxes+' / 7 boxes';$('pbar').style.width=Math.min(100,all/180*100)+'%';
+  const sb=$('sumb');sb.innerHTML='';let off=0;
+  ORDER.forEach(k=>{const c=tot[k].reduce((a,b)=>a+b,0),d=c-TARGET[k];if(d)off++;
+    const tr=document.createElement('tr');tr.className=d?'off':'ok';
+    tr.innerHTML=`<td><b>${SKU[k][0]}</b><br><span style="color:var(--muted);font-size:12px">${SKU[k][1]}</span></td>${tot[k].map(v=>`<td>${v}</td>`).join('')}<td><b>${c}</b></td><td>${TARGET[k]}</td><td class="st">${d?(d>0?'+':'')+d:'✓'}</td>`;sb.appendChild(tr)});
+  $('sumc').textContent=all;$('sums').textContent=all===180&&!off?'✓':(all-180>0?'+':'')+(all-180||'');
+  const L=['SOLIDS FOR YOU · Shipment 1 recount · '+all+' pcs in boxes (should be 180)',''];
+  for(const n of Object.keys(PLAN)){const bx=st.boxes[n];const d=bx.dims;let bt=0;const lines=[];
+    bx.skus.forEach(k=>{const q=(bx.q[k]||[]).map(v=>v??'?');const s=(bx.q[k]||[]).reduce((a,v)=>a+(v||0),0);bt+=s;lines.push(`  ${SKU[k][0]} ${SKU[k][1]}: S ${q[0]??'?'} M ${q[1]??'?'} L ${q[2]??'?'} = ${s}`)});
+    L.push(`BOX ${n} (${bt} pcs) ${d.L||'?'}×${d.W||'?'}×${d.H||'?'} cm, ${d.kg||'?'} kg`,...lines,'')}
+  L.push('BY PRODUCT (counted / should be)');ORDER.forEach(k=>{const c=tot[k].reduce((a,b)=>a+b,0);L.push(`  ${SKU[k][0]} ${SKU[k][1]}: ${tot[k].join('/')} = ${c} / ${TARGET[k]}`)});
+  $('out').value=L.join('\n')}
+
+draw();
+const ok=$('ok'),ta=$('out');
+$('copy').addEventListener('click',()=>{const fb=()=>{ta.focus();ta.select();let r=false;try{r=document.execCommand('copy')}catch(e){}ok.textContent=r?'Copied. Paste it to Claude.':'Text selected. Tap Copy.'};
+  try{navigator.clipboard.writeText(ta.value).then(()=>ok.textContent='Copied. Paste it to Claude.',fb)}catch(e){fb()}});
+(async()=>{db=await (window.claude?.use?.('db')??null);if(!db){$('saved').textContent='Saved on this phone. Use Copy to send it.';return}
+  try{const d=await db.doc('recount/state').get();if(d.exists&&d.data().boxes){st.boxes=d.data().boxes;draw();$('saved').textContent='Loaded the last saved count'}}catch(e){}})();
+</script>

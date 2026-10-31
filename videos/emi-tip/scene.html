@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: finance tip, "raise the EMI or stretch the loan?" (27 Oct 2026, 9 PM, the
+  follow-up teased in the 7 PM inflation reel), about 60 s, timed so every panel can be read.
+  One continuous camera move (videos/lib/hisab.js), twelve panels. Soundtrack: the 60 s mix from
+  public/reels/2026-10-26-1300-zerodha.mp4 (drop 20.25 s); panel changes on its whooshes.
+  Worked example (computed in code, 27 Oct 2026): ₹30 lakh, 20 years, 8.50% -> 8.75% (the RBI's
+  0.25% hike passed on in full). EMI ₹26,035 -> ₹26,511 (+₹477/month, ₹1.14 lakh over the loan).
+  Keeping the EMI instead stretches it from 240 to about 252 months: ₹3.24 lakh more paid.
+  Difference about ₹2 lakh. Rates are illustrative.
+  Rule: RBI circular RBI/2023-24/55 (18 Aug 2023): at a floating-rate reset, borrowers can choose a
+  higher EMI, a longer tenure, or both; lenders must tell them of any change.
+  Hook photo: toy house and keys by advokatsmart.no (Flickr), CC BY 2.0, via Openverse (cropped).
+  All motion comes from renderFrame(t).
+-->
+<style>
+  :root { --bg: #07070a; --amber: #ffb02e; --orange: #ff7a00; --red: #ff5a5a; --white: #f5f5f7;
+    --muted: rgba(245,245,247,.62); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  #world { position: absolute; left: 0; top: 0; height: 1920px; will-change: transform; }
+  .panel { position: absolute; top: 0; width: 1080px; height: 1920px; }
+  .abs { position: absolute; }
+  .center { left: 60px; right: 60px; text-align: center; }
+  #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
+    filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 150px; display: flex; gap: 14px; align-items: center; z-index: 6; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
+    border: 2px solid var(--amber); color: var(--amber); }
+  .handle { font-size: 24px; font-weight: 500; color: #bbb; }
+  .title { font-size: 72px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
+  .body { font-size: 46px; font-weight: 600; line-height: 1.3; color: rgba(245,245,247,.86); }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .label { font-size: 44px; font-weight: 600; color: var(--muted); }
+  .chip { display: inline-block; padding: 14px 28px; border-radius: 999px; font-size: 38px; font-weight: 600;
+    background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.16); }
+  .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
+  .opt { display: inline-block; padding: 8px 18px; border-radius: 10px; font-size: 28px; font-weight: 800;
+    letter-spacing: .1em; color: #07070a; background: var(--amber); }
+  .note { font-size: 28px; color: var(--muted); }
+  .row { display: flex; justify-content: center; align-items: flex-start; gap: 18px; }
+  .iv { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 44px; font-weight: 700; }
+  .iv small { font-size: 32px; color: var(--muted); font-weight: 600; }
+  .ih { display: flex; align-items: center; gap: 22px; font-size: 48px; font-weight: 700; }
+  .arr { font-size: 64px; font-weight: 800; color: var(--amber); margin-top: 60px; }
+  .xmark { position: absolute; left: 0; top: 0; }
+
+  #p0 { overflow: hidden; }
+  #hookBg { position: absolute; inset: -80px; background: url("stock/house-keys-1-crop.jpg") center / cover;
+    filter: blur(34px) brightness(.4); }
+  #hookImg { position: absolute; left: 0; top: 560px; width: 1080px; height: 704px;
+    background: url("stock/house-keys-1-crop.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+  .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.06; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
+  #credit { position: absolute; left: 40px; top: 1278px; font-size: 22px; color: rgba(255,255,255,.55); }
+
+  .bar { position: absolute; width: 300px; border-radius: 24px 24px 0 0; }
+  .barv { position: absolute; width: 460px; text-align: center; font-size: 76px; font-weight: 800; letter-spacing: -3px; }
+  .barl { position: absolute; width: 460px; text-align: center; font-size: 38px; font-weight: 700; color: var(--muted); }
+
+  #lineSvg, #fxSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #fxSvg { z-index: 5; }
+  #coin { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; z-index: 5; }
+  #coinFace { position: absolute; inset: 0; }
+  #coin .face { position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 45%, #ff7a00 100%);
+    box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
+  #coin .rs { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; font-weight: 800; color: #3a1d00; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="glow"></div>
+  <div id="world">
+
+    <div class="panel" id="p0">
+      <div id="hookBg"></div>
+      <div id="hookImg"></div>
+      <div class="abs center hookTxt" id="h1" style="top:230px; font-size:100px">Your loan rate <span data-icon="up" data-size="90" data-color="#ff6b6b" style="display:inline-block; vertical-align:middle"></span><br><span style="color:#ff6b6b">just went up.</span></div>
+      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:96px">Did your bank <span data-icon="calendar" data-size="90" style="display:inline-block; vertical-align:middle"></span><br><span class="hl">add a year?</span></div>
+      <div id="credit">Photo: advokatsmart.no, CC BY 2.0</div>
+    </div>
+
+    <div class="panel" id="p1">
+      <div class="abs center title" id="a1" style="top:290px">Floating rate?</div>
+      <div class="abs center row" id="a2" style="top:440px; gap:30px">
+        <div class="iv"><span data-icon="bank" data-size="180"></span>RBI rate <span style="color:#ff6b6b">↑</span></div><div class="arr" style="margin-top:70px">→</div>
+        <div class="iv"><span data-icon="home" data-size="180"></span>Your loan <span style="color:#ff6b6b">↑</span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p2">
+      <div class="abs center row" id="b1" style="top:260px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="home" data-size="70"></span>₹30 lakh · 20 years</div></div>
+      <div class="abs center big" id="b2" style="top:350px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+0.25%</div>
+      <div class="abs center" id="b3" style="top:610px"><span class="chip">8.50% → 8.75%</span></div>
+      <div class="abs center note" id="b4" style="top:1600px">Example. Assumes the full hike is passed on.</div>
+    </div>
+
+    <div class="panel" id="p3">
+      <div class="abs center title" id="c1" style="top:290px">Two ways to pay it</div>
+      <div class="abs center row" id="c2" style="top:440px; gap:90px">
+        <div class="iv"><span data-icon="rupee" data-size="180"></span>Pay more<small>each month</small></div>
+        <div class="iv"><span data-icon="calendar" data-size="180" data-color="#ff6b6b"></span>Pay longer<small>more months</small></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p4">
+      <div class="abs center" id="d0" style="top:340px"><span class="opt">OPTION 1</span></div>
+      <div class="abs center row" id="d1" style="top:420px"><div class="iv"><span data-icon="rupee" data-size="200"></span><span style="font-size:64px">Pay more</span></div></div>
+    </div>
+
+    <div class="panel" id="p5"><div class="abs center row" id="e1" style="top:380px"><div class="iv"><span data-icon="question" data-size="200"></span><span style="font-size:64px">How much?</span></div></div></div>
+
+    <div class="panel" id="p6">
+      <div class="abs center big" id="f1" style="top:330px; font-size:180px; color:var(--amber); text-shadow:0 0 50px rgba(255,176,46,.5)">+₹0</div>
+      <div class="abs center label" id="f2" style="top:530px">a month · ₹26,035 → ₹26,511</div>
+      <div class="abs center row" id="f3" style="top:630px"><div class="ih"><span data-icon="calendar" data-size="80"></span>Still 20 years <span style="color:#7be08f">✓</span></div></div>
+      <div class="abs center row" id="f4" style="top:1500px"><div class="ih"><span data-icon="moneybag" data-size="90"></span>Extra: <b style="color:var(--amber)">₹1.14 lakh</b></div></div>
+    </div>
+
+    <div class="panel" id="p7">
+      <div class="abs center" id="g0" style="top:280px"><span class="opt" style="background:var(--red)">OPTION 2</span></div>
+      <div class="abs center row" id="g1" style="top:350px"><div class="ih" style="font-size:60px"><span data-icon="calendar" data-size="110" data-color="#ff6b6b"></span>Pay longer</div></div>
+      <div class="abs center big" id="g2" style="top:560px; font-size:170px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">+1 year</div>
+      <div class="abs center label" id="g3" style="top:740px">240 → 252 months</div>
+      <div class="abs center row" id="g4" style="top:1500px"><div class="ih"><span data-icon="moneybag" data-size="90" data-color="#ff6b6b"></span>Extra: <b style="color:var(--red)">₹3.24 lakh</b></div></div>
+    </div>
+
+    <div class="panel" id="p8">
+      <div class="abs center title" id="i1" style="top:280px">Same loan.<br><span style="color:var(--amber)">About ₹2 lakh</span> apart.</div>
+      <div class="abs center row" id="i2" style="top:520px"><div class="ih" style="font-size:44px"><span data-icon="clock" data-size="80" data-color="#ff6b6b"></span>Longer = more interest</div></div>
+      <div class="bar" id="bb1" style="left:150px; background:linear-gradient(180deg,#ffd27a,#ffb02e); box-shadow:0 0 50px rgba(255,176,46,.45)"></div>
+      <div class="bar" id="bb2" style="left:630px; background:linear-gradient(180deg,#ff8f8f,#ff5a5a); box-shadow:0 0 50px rgba(255,90,90,.45)"></div>
+      <div class="barv" id="v1" style="left:70px; color:var(--amber)">₹1.14L</div>
+      <div class="barv" id="v2" style="left:550px; color:#ff8f8f">₹3.24L</div>
+      <div class="barl" style="left:70px; top:1490px">Higher EMI</div>
+      <div class="barl" style="left:550px; top:1490px">Longer loan</div>
+    </div>
+
+    <div class="panel" id="p9">
+      <div class="abs center row" id="j1" style="top:280px; gap:20px">
+        <div class="iv"><span data-icon="person" data-size="150" data-color="#8a8a90"></span>Do nothing</div><div class="arr">→</div>
+        <div class="iv"><span data-icon="calendar" data-size="150" data-color="#ff6b6b"></span><span style="color:#ff6b6b">Loan stretched</span></div>
+      </div>
+      <div class="abs center row" id="j2" style="top:1440px; gap:60px">
+        <div class="iv" style="font-size:38px"><span data-icon="check" data-size="110" data-color="#7be08f"></span>You can choose<small>RBI rules, Aug 2023</small></div>
+        <div class="iv" style="font-size:38px"><span data-icon="phone" data-size="110"></span>Bank must tell you</div>
+      </div>
+    </div>
+
+    <div class="panel" id="p10">
+      <div class="abs center title" id="t5" style="top:280px; font-size:64px">The tip</div>
+      <div class="abs center row" id="t6" style="top:400px; gap:90px">
+        <div class="iv"><span data-icon="rupee" data-size="170"></span>Higher EMI <span style="color:#7be08f">✓</span></div>
+        <div class="iv" style="position:relative"><span data-icon="calendar" data-size="170" data-color="#8a8a90"></span>Longer loan <span style="color:var(--red)">✗</span><span class="xmark" data-icon="cross" data-size="170" data-color="#ff5a5a"></span></div>
+      </div>
+      <div class="abs center note" id="t7" style="top:1560px">If your budget allows. Example only. Check your lender's terms. Not financial advice.</div>
+    </div>
+
+    <div class="panel" id="p11">
+      <div class="abs center" id="k1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+      <div class="abs center" id="k2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+      <div class="abs center" id="k3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+      <div class="abs center" id="k4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
+    </div>
+  </div>
+
+  <svg id="lineSvg" width="1080" height="1920"><path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
+    <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#ff7a00"/><stop offset=".5" stop-color="#ffb02e"/><stop offset="1" stop-color="#fff1d6"/></linearGradient></defs></svg>
+  <svg id="fxSvg" width="1080" height="1920"><g id="ticks"></g>
+    <path id="ext" fill="none" stroke="#ff5a5a" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 14" style="filter: drop-shadow(0 0 10px rgba(255,90,90,.8))"/></svg>
+  <div id="coin"><div id="coinFace"><div class="face"></div><div class="rs">₹</div></div></div>
+  <div id="tag"><span class="tpill">MONEY TIP</span><span class="handle">@unicornkahisab</span></div>
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script src="../lib/icons.js"></script>
+<script src="../lib/hisab.js"></script>
+<script>
+window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
+const DURATION = 60;
+const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0, 55.9, 60.0];
+const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
+const at = (i, off = 0) => CUES[i][0] + off;
+const mid = (i) => (CUES[i][0] + CUES[i][1]) / 2;
+Icons.mount();
+const pop = (els, t, start, gap) => [...els].forEach((el, j) => slam(el, t, start + j * gap, 1.4));
+const SHAPES = [
+  (u) => 1350,                                                // P0 hook
+  (u) => 1320 - 40 * u,                                       // P1 floating rate
+  (u) => 1300 - 110 / (1 + Math.exp(-(u - 0.5) * 60)),        // P2 the step (the 7 PM reel's hike)
+  (u) => 1190 + 40 * Math.sin(u * 6.28),                      // P3 two ways: the line forks in spirit
+  (u) => 1230 - 60 * u,                                       // P4 option 1
+  (u) => 1170,                                                // P5 how much
+  (u) => 1250 - 120 * u,                                      // P6 a steeper, shorter climb
+  (u) => 1250,                                                // P7 20 yearly ticks + a red extra year
+  (u) => 1474,                                                // P8 the bars' baseline
+  (u) => 1300,                                                // P9 rules
+  (u) => 1300 - 140 * u * u,                                  // P10 the tip
+  (u) => 1250,                                                // P11 end
+];
+Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - mid(2)) / 0.2, 2)) });
+
+function slam(el, t, start, from = 1.2) {
+  const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
+  el.style.opacity = t < start ? 0 : 1;
+  el.style.transform = `scale(${from + (1 - from) * k})`;
+}
+
+function renderFrame(t) {
+  const p = pulse(t);
+  const { camX } = Hisab.frame(t);
+  $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));
+  $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
+
+  // P7 overlay, in screen space: 20 yearly ticks on the loan line, then a red dashed 21st year grows.
+  const P7 = 7 * 1080, y7 = 1250, x0 = P7 + 40 - camX, step = 36;
+  const tk = tween(t, at(7, 0.2), 0.8, 0, 1);
+  let ticks = "";
+  if (tk > 0 && t < CUES[7][1] + 0.6) for (let k = 0; k <= 20; k++) {
+    const x = x0 + k * step; ticks += `<line x1="${x}" x2="${x}" y1="${y7 - 16}" y2="${y7 + 16}" stroke="rgba(255,255,255,${0.5 * tk})" stroke-width="3"/>`;
+  }
+  $("ticks").innerHTML = ticks;
+  const grow = tween(t, at(7, 1.4), 1.6, 0, 1, ease.outCubic);
+  const xe = x0 + 20 * step;
+  $("ext").setAttribute("d", grow > 0 ? `M${xe} ${y7}L${xe + 160 * grow} ${y7}` : "");
+
+  $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 3.0, 0, 1)})`;
+  slam($("h1"), t, 0, 1.1);
+  slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
+
+  slam($("a1"), t, at(1, -0.3), 1.08);
+  pop($("a2").children, t, at(1, 0.3), 0.5);
+
+  slam($("b1"), t, at(2, -0.3), 1.05);
+  slam($("b2"), t, at(2, 0.2), 1.3);
+  slam($("b3"), t, at(2, 1.4), 1.1);
+  slam($("b4"), t, at(2, 2.2), 1.0);
+
+  slam($("c1"), t, at(3, -0.3), 1.08);
+  pop($("c2").children, t, at(3, 0.6), 1.0);
+
+  slam($("d0"), t, at(4, -0.3), 1.2); slam($("d1"), t, at(4, -0.3), 1.08);
+  slam($("e1"), t, at(5, -0.3), 1.1);
+
+  $("f1").textContent = `+₹${Math.round(tween(t, at(6, 0), 1.0, 0, 477, ease.outExpo))}`;
+  $("f1").style.opacity = t < at(6, 0) ? 0 : 1;
+  slam($("f2"), t, at(6, 0.8), 1.05);
+  slam($("f3"), t, at(6, 2.0), 1.04);
+  slam($("f4"), t, at(6, 3.6), 1.1);
+
+  slam($("g0"), t, at(7, -0.3), 1.2); slam($("g1"), t, at(7, -0.3), 1.08);
+  slam($("g2"), t, at(7, 2.6), 1.3);
+  slam($("g3"), t, at(7, 3.0), 1.05);
+  slam($("g4"), t, at(7, 4.0), 1.1);
+
+  slam($("i1"), t, at(8, -0.3), 1.08);
+  slam($("i2"), t, at(8, 3.0), 1.04);
+  const H = 520, base = 1470;
+  const h1 = tween(t, at(8, 0.6), 0.8, 0, H * 1.14 / 3.24), h2 = tween(t, at(8, 1.3), 1.0, 0, H);
+  $("bb1").style.top = `${base - h1}px`; $("bb1").style.height = `${h1}px`;
+  $("bb2").style.top = `${base - h2}px`; $("bb2").style.height = `${h2}px`;
+  $("v1").style.top = `${base - h1 - 100}px`; $("v1").style.opacity = tween(t, at(8, 1.2), frames(6), 0, 1);
+  $("v2").style.top = `${base - h2 - 100}px`; $("v2").style.opacity = tween(t, at(8, 2.1), frames(6), 0, 1);
+
+  pop($("j1").children, t, at(9, -0.3), 0.6);
+  pop($("j2").children, t, at(9, 3.0), 1.0);
+
+  slam($("t5"), t, at(10, -0.3), 1.08);
+  pop($("t6").children, t, at(10, 0.3), 0.9);
+  slam($("t7"), t, at(10, 1.6), 1.0);
+
+  slam($("k1"), t, at(11, 0.1), 1.1);
+  slam($("k2"), t, at(11, 0.4), 1.3);
+  slam($("k3"), t, at(11, 1.0), 1.1);
+  slam($("k4"), t, at(11, 1.3), 1.1);
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>

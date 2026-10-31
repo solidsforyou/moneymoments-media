@@ -1,0 +1,5 @@
+id,competitor_id,field,value,unit,source_url,captured_at,method,quote,confidence,verified
+us-001,us,price_selling,500,INR,/home/user/moneymoments-media/app-kit/brief.md,2026-10-29T00:00:00Z,user,Proposed price Rs 500/month (also testing Rs 199-299). Not launched; no reviews.,high,
+us-002,us,pack_qty,1,month,/home/user/moneymoments-media/app-kit/brief.md,2026-10-29T00:00:00Z,user,GoodGuy ... paid AI (Rs 500 a month),high,
+us-003,us,note,Price test range Rs 199 to Rs 299 per month,INR,/home/user/moneymoments-media/app-kit/brief.md,2026-10-29T00:00:00Z,user,Proposed price Rs 500/month (also testing Rs 199-299).,high,
+us-004,us,note,"SEBI May 2024 circular allows education price data only with one-day lag, no prizes; plan is yesterday replayed; securities lawyer opinion before launch",,/home/user/moneymoments-media/app-kit/brief.md,2026-10-29T00:00:00Z,user,"SEBI's May 2024 circular allows price data for education only with a one-day lag and no prizes, so plan on yesterday's market replayed.",high,

@@ -1,0 +1,43 @@
+/* Hallmark · shape: app screen · system: OSE, locked, Tomorrow variant · posture: restrained · hero: split, words left and Sunny right · nav: wordmark only · footer: one line and links · job: join, then send a file · signature: a file sent on one device landing on another */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, shares the OSE system on purpose; the sunrise accent and Sunny carry Tomorrow's own look */
+html:root { --accent: #D2382C; --accent-ink: #FFFFFF; --bg: #FFF7F2; --fill: #FBE9E0; }
+@media (prefers-color-scheme: dark) { html:root:not([data-theme="light"]) { --accent: #FF7A6B; --accent-ink: #0B0706; --bg: #0B0706; --fill: #2A1D19; } }
+.tm-name { color: var(--accent); font-weight: 800; }
+.drop { border: 2px dashed var(--sep); border-radius: var(--r1); padding: 40px 20px; text-align: center; background: var(--card); cursor: pointer; display: block; }
+.drop.over { border-color: var(--accent); background: var(--fill); }
+.drop b { display: block; font-size: 22px; margin-bottom: var(--s2); }
+.thread { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 140px; }
+.msg { max-width: 78%; padding: var(--s2) var(--s4); border-radius: 20px; background: var(--card); align-self: flex-start; box-shadow: var(--shadow); overflow-wrap: anywhere; }
+.msg.me { align-self: flex-end; background: var(--accent); color: var(--accent-ink); }
+.msg.me a { color: inherit; }
+.msg small { display: block; font-size: 12px; opacity: .7; margin-top: 4px; }
+.file { display: flex; align-items: center; gap: var(--s3); text-decoration: none; color: inherit; }
+.file .ic { width: 38px; height: 38px; border-radius: 10px; background: var(--fill); color: var(--label); display: grid; place-items: center; font-weight: 700; font-size: 12px; flex: none; }
+.composer { position: fixed; inset: auto 0 calc(58px + env(safe-area-inset-bottom)) 0; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(16px); border-top: 1px solid var(--sep); padding: var(--s3) var(--gut); }
+.composer form { display: flex; gap: 8px; max-width: var(--wrap); margin: 0 auto; }
+.composer input[type=text] { border-radius: var(--pill); }
+.post { background: var(--card); border-radius: var(--r1); padding: var(--s4); box-shadow: var(--shadow); }
+.post header { display: flex; align-items: center; gap: var(--s3); margin-bottom: var(--s3); }
+.post p { white-space: pre-wrap; font-size: 18px; }
+.heart { background: none; border: 0; padding: var(--s2); cursor: pointer; color: var(--label); border-radius: 50%; }
+.heart svg { width: 28px; height: 28px; }
+.heart[aria-pressed="true"] { color: var(--like); }
+.heart.pop svg { animation: pop .35s ease; }
+@keyframes pop { 40% { transform: scale(1.35); } }
+.seg { display: inline-flex; background: var(--fill); border-radius: var(--pill); padding: var(--s1); }
+.seg button { border: 0; background: none; padding: 8px 16px; border-radius: var(--pill); font: 600 15px var(--font); color: var(--label2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--label); box-shadow: var(--shadow); }
+.progress { height: 6px; border-radius: 3px; background: var(--fill); overflow: hidden; } .progress i { display: block; height: 100%; background: var(--accent); width: 0; }
+
+.heart:active, .seg button:active, .drop:active { transform: scale(.96); }
+.heart:hover, .seg button:hover { opacity: .85; }
+.seg button[disabled] { color: var(--label2); cursor: not-allowed; opacity: .6; }
+:where(.heart, .seg button, .drop):focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; transition: none; }
+@media (prefers-reduced-motion: reduce) { .heart.pop svg { animation: none; } .heart:active, .seg button:active, .drop:active { transform: none; } }
+.mediabtn { display: block; position: relative; padding: 0; border: 0; background: none; cursor: pointer; border-radius: var(--r2); overflow: hidden; margin-bottom: var(--s1); max-width: 260px; }
+.mediabtn img { display: block; width: 100%; height: auto; }
+.playmark { position: absolute; inset: 0; display: grid; place-items: center; color: var(--on-color); }
+.playmark svg { width: 44px; height: 44px; filter: drop-shadow(0 2px 6px var(--scrim)); }
+.linkish { background: none; border: 0; padding: 0; font: inherit; font-size: 13px; color: inherit; text-decoration: underline; cursor: pointer; }
+button.file { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.composer .progress { max-width: var(--wrap); margin: 0 auto var(--s2); }

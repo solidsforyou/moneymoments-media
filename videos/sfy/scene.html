@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SFY fabric edit</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: #fff; }
+  #stage { position: absolute; inset: 0; perspective: 1800px; overflow: hidden; }
+  /* #cam stays flat: each shot carries its own perspective, so blurs are never clipped by a 3D context */
+  #cam { position: absolute; inset: 0; }
+  .shot { position: absolute; inset: 0; display: none; overflow: hidden; will-change: transform, opacity; }
+  .shot img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  #grade { position: absolute; inset: -20%; pointer-events: none; mix-blend-mode: screen;
+    background: radial-gradient(ellipse 40% 55% at 50% 50%, rgba(255,190,120,0.55), rgba(255,150,90,0) 70%); }
+  .shot.collage { background: #f2efe9; }
+  .panel { position: absolute; overflow: hidden; background: #fff; border: 12px solid #fff;
+    box-shadow: 0 24px 60px rgba(40,30,20,0.28); }
+  .panel img { position: absolute; left: -12.5%; top: -12.5%; width: 125%; height: 125%; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  .word { position: absolute; left: 120px; bottom: 120px; font-weight: 900; font-size: 210px; line-height: 0.9;
+    letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; display: none;
+    text-shadow: 0 2px 0 #d4d4d4, 0 4px 0 #bdbdbd, 0 6px 0 #a6a6a6, 0 8px 0 #8f8f8f, 0 10px 0 #787878, 0 22px 40px rgba(0,0,0,0.55); perspective: 900px; }
+  .word span { display: inline-block; transform-origin: 50% 100%; }
+  #lyr { position: absolute; inset: 0; perspective: 1300px; pointer-events: none; }
+  #lyr .grp { position: absolute; inset: 0; transform-style: preserve-3d; display: none; }
+  .lw { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+  .lw div { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); font-weight: 900; line-height: 1;
+    letter-spacing: -0.045em; text-transform: uppercase; white-space: nowrap; }
+  .lw .face { color: #fff; text-shadow: 0 0 30px rgba(255,255,255,0.25); }
+  .lw .ghost { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.8); }
+  .lw.mote div { font-weight: 800; }
+  .word.small { font-size: 120px; font-weight: 800; letter-spacing: -0.03em; }
+  .word.center { left: 0; right: 0; bottom: auto; top: 50%; text-align: center; }
+  #end { position: absolute; inset: 0; display: none; background: #f2efe9; color: #111; }
+  #end .mark { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-weight: 900; font-size: 190px;
+    letter-spacing: -0.04em; text-transform: uppercase; }
+  #end .mark span { display: inline-block; }
+  #end .url { position: absolute; left: 0; right: 0; top: 640px; text-align: center; font-weight: 500; font-size: 46px;
+    letter-spacing: 0.08em; color: #444; }
+  #end .rule { position: absolute; left: 50%; top: 610px; height: 2px; width: 600px; margin-left: -300px; background: #111; }
+  #grain { position: absolute; inset: -50%; width: 200%; height: 200%; opacity: 0.06; pointer-events: none; mix-blend-mode: overlay; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="cam"></div></div>
+<svg id="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div id="grade"></div>
+<div id="lyr"></div>
+<div id="end">
+  <div class="mark" id="mark"></div>
+  <div class="rule" id="rule"></div>
+  <div class="url" id="url">WWW.SOLIDSFORYOU.COM</div>
+</div>
+<div id="flash"></div>
+<script src="../lib/motion.js"></script>
+<script src="edit.js"></script>
+<script>
+// Real SFY workshop footage cut to the track from 2:16.4. Shots and words live in edit.js,
+// timed in beats from the drop (the first kick, 6.18 s). Frames come from extract.py.
+const { beat: BEAT, drop: DROP } = window.EDIT;
+const K = (n) => DROP + n * BEAT;
+window.MOTION = { fps: 30, beat: BEAT, beat0: DROP % BEAT, drop: DROP };
+window.DURATION = 30;
+const END = K(window.EDIT.end_beats);
+const TR = 0.36;   // every transition is centred on its cut and lasts this long
+
+const SHOTS = window.EDIT.shots.map((s, i) => ({ ...s, a: i === 0 ? 0 : K(s.a), b: K(s.b), i }));
+const WORDS = window.EDIT.words.map((w, i) => ({ ...w, a: i === 0 ? 0.15 : K(w.a) + ((w.cls || "").includes("small") ? 0.1 : 0), b: K(w.b) - 0.05 }));
+// Frame 1 of each shot sits half a transition before its cut (shot 0 starts at 0).
+SHOTS.forEach((s) => { s.t0 = s.i === 0 ? 0 : s.a - TR / 2; s.t1 = s.b + TR / 2; });
+
+const cam = $("cam");
+SHOTS.forEach((s) => {
+  const d = document.createElement("div");
+  d.className = "shot"; d.id = "s" + s.i;
+  if (s.collage) {
+    d.classList.add("collage");
+    d.innerHTML = s.panels.map((p) => `<div class="panel" style="left:${p.rect[0]}px;top:${p.rect[1]}px;width:${p.rect[2]}px;height:${p.rect[3]}px"><img></div>`).join("");
+  } else d.innerHTML = "<img>";
+  cam.appendChild(d);
+});
+WORDS.forEach((w, i) => {
+  const d = document.createElement("div");
+  d.className = "word " + (w.cls || ""); d.id = "w" + i;
+  d.innerHTML = [...w.text].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
+  document.body.insertBefore(d, $("grain"));
+});
+$("mark").innerHTML = [..."Solids for you"].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
+
+const lerp = (a, b, k) => a + (b - a) * k;
+const sine = (x) => -(Math.cos(Math.PI * x) - 1) / 2;
+const pending = [];
+
+// Shows the clip frame for time t; a shot shorter than its slot holds its last frame.
+function setFrame(s, el, t, dir = s.i) {
+  const img = el.querySelector("img");
+  const f = clamp(Math.floor((t - s.t0) * 30) + 1, 1, s.frames || 9999);
+  const src = `frames/${dir}/${String(f).padStart(4, "0")}.jpg`;
+  if (img.getAttribute("src") === src) return;
+  img.setAttribute("src", src);
+  pending.push(img.decode().catch(() => {
+    s.frames = f - 1;
+    img.setAttribute("src", `frames/${dir}/${String(f - 1).padStart(4, "0")}.jpg`);
+    return img.decode();
+  }));
+}
+
+// Transition progress around a cut: 0 before, 1 after, smooth in between.
+const trK = (t, cut) => sine(clamp((t - (cut - TR / 2)) / TR, 0, 1));
+
+function renderShot(s, t) {
+  const el = $("s" + s.i);
+  const next = SHOTS[s.i + 1];
+  const until = next ? s.t1 : END + TR / 2;
+  if (t < s.t0 || t >= until) { el.style.display = "none"; return; }
+  el.style.display = "block";
+  if (s.collage) renderPanels(s, el, t); else setFrame(s, el, t);
+
+  // Camera: a slow eased move across the whole shot, plus a gentle handheld float.
+  const p = sine(clamp((t - s.t0) / (s.t1 - s.t0), 0, 1));
+  let [sc, x, y] = s.mv[0].map((v, j) => lerp(v, s.mv[1][j], p));
+  x += 14 * Math.sin(t * 0.8 + s.i); y += 9 * Math.sin(t * 1.1 + 2 * s.i);
+  const rz = 0.5 * Math.sin(t * 0.6 + s.i);
+  let op = 1, blur = s.i === 0 ? 0 : 6 * (1 - ease.outCubic(clamp((t - s.a) / 0.45, 0, 1)));
+  if (t >= DROP) sc *= 1 + 0.014 * Math.exp(-((t - DROP) % BEAT) * 6);
+
+  const kin = s.i === 0 ? 1 : trK(t, s.a);     // cut into this shot
+  const kout = next ? trK(t, next.a) : 0;      // cut out of this shot
+  const dir = s.i % 2 ? 1 : -1;
+  if (kin < 1) {
+    if (s.tr === "push") { x += (1 - kin) * 1920 * dir; blur += 10 * Math.sin(Math.PI * kin); }
+    if (s.tr === "zoom") { sc *= lerp(0.88, 1, kin); }
+    if (s.tr === "fade" || s.tr === "flash") op = kin;
+  }
+  if (kout > 0) {
+    if (next.tr === "push") { x += kout * 1920 * dir; blur += 10 * Math.sin(Math.PI * kout); }
+    if (next.tr === "zoom") { sc *= 1 + 0.45 * kout; op = 1 - kout; blur += 12 * kout; }
+    if (next.tr === "fade" || next.tr === "flash") op = 1 - kout;
+  }
+  if (!s.collage) sc = Math.max(sc, 1.04);   // never smaller than the frame
+  // A shot zooming out of frame sits on top so it dissolves forward into the next one.
+  el.style.zIndex = next && next.tr === "zoom" && kout > 0 ? 3 : 2;
+  el.style.transform = `translate(${x}px, ${y}px) rotateZ(${rz}deg) scale(${sc})`;
+  el.style.opacity = op;
+  el.style.filter = (s.collage ? "" : "brightness(1.12) contrast(0.95) saturate(1.08)") + (blur > 0.3 ? ` blur(${blur}px)` : "");
+}
+
+// Collage: panels slide in on their beats and each one slowly pushes in on its own clip.
+function renderPanels(s, el, t) {
+  [...el.children].forEach((pe, pi) => {
+    const p = s.panels[pi];
+    const at = s.a + p.at * BEAT;
+    const k = ease.outExpo(clamp((t - at + 0.05) / 0.5, 0, 1));
+    pe.style.display = t < at - 0.05 ? "none" : "block";
+    pe.style.transform = `translate(${p.from[0] * (1 - k)}px, ${p.from[1] * (1 - k)}px) rotate(${p.rz * k + 8 * (1 - k) * Math.sign(p.rz)}deg)`;
+    if (!p.state) p.state = { i: `${s.i}-${pi}`, t0: s.t0 };
+    setFrame(p.state, pe, t, p.state.i);
+    pe.firstChild.style.transform = `scale(${1 + 0.08 * clamp((t - at) / (s.b - at + 0.3), 0, 1)})`;
+    pe.firstChild.style.filter = "brightness(1.1) contrast(0.96) saturate(1.08)";
+  });
+}
+
+// Warm light leak that drifts across the frame and blooms on every cut.
+function renderLeak(t) {
+  let bloom = 0;
+  SHOTS.forEach((s) => { if (s.i > 0) bloom = Math.max(bloom, Math.exp(-Math.pow((t - s.a) / 0.18, 2))); });
+  const g = $("grade");
+  g.style.opacity = t >= END ? 0 : 0.18 + 0.5 * bloom;
+  g.style.transform = `translate(${380 * Math.sin(t * 0.35)}px, ${160 * Math.sin(t * 0.5 + 1)}px)`;
+}
+
+function renderWord(w, i, t) {
+  const el = $("w" + i);
+  if (t < w.a || t >= w.b) { el.style.display = "none"; return; }
+  el.style.display = "block";
+  const spans = el.children;
+  const big = !(w.cls || "").includes("small");
+  for (let j = 0; j < spans.length; j++) {
+    const kk = tween(t, w.a + j * (big ? 0.025 : 0.03), big ? 0.22 : 0.36, 0, 1, ease.outCubic);
+    spans[j].style.opacity = kk;
+    spans[j].style.transform = `translateY(${(1 - kk) * (big ? 80 : 40)}px) rotateX(${(1 - kk) * -95}deg)`;
+    spans[j].style.filter = kk < 1 ? `blur(${(1 - kk) * 10}px)` : "none";
+  }
+  el.style.opacity = 1 - tween(t, w.b - 0.14, 0.14, 0, 1, ease.inCubic);
+  const center = (w.cls || "").includes("center");
+  el.style.transformOrigin = center ? "50% 50%" : "0% 100%";
+  if (!w.first) el.style.transform = (center ? "translateY(-50%) " : "") + `scale(${1 + 0.035 * (t - w.a)})`;
+}
+
+// Opening move: start zoomed into the first word, turn right and pull out.
+function openingCam(t) {
+  const dur = (SHOTS[0].b - SHOTS[0].a) * 0.8;
+  const k = ease.inOutCubic(clamp(t / dur, 0, 1));
+  const tf = `rotateY(${14 * Math.sin(k * Math.PI)}deg) scale(${lerp(3.2, 1, k)})`;
+  cam.style.transform = t < SHOTS[0].b ? tf : "none";
+  if (t < WORDS[0].b) $("w0").style.transform = `translateY(-50%) perspective(1600px) ${tf}`;
+}
+
+function renderEnd(t) {
+  const end = $("end");
+  if (t < END - TR / 2) { end.style.display = "none"; return; }
+  end.style.display = "block";
+  end.style.opacity = trK(t, END) * (1 - tween(t, 29.3, 0.7, 0, 1, ease.inCubic));
+  const spans = $("mark").children;
+  for (let j = 0; j < spans.length; j++) {
+    const kk = tween(t, END + 0.05 + j * 0.035, 0.45, 0, 1, ease.outCubic);
+    spans[j].style.opacity = kk;
+    spans[j].style.transform = `translateY(${(1 - kk) * 60}px)`;
+    spans[j].style.filter = kk < 1 ? `blur(${(1 - kk) * 12}px)` : "none";
+  }
+  $("mark").style.transform = `scale(${1.06 - 0.06 * sine(clamp((t - END) / 4.5, 0, 1))})`;
+  $("rule").style.transform = `scaleX(${tween(t, END + 0.6, 0.7, 0, 1, ease.outExpo)})`;
+  const u = tween(t, END + 0.9, 0.5, 0, 1);
+  $("url").style.opacity = u;
+  $("url").style.transform = `translateY(${(1 - u) * 20}px)`;
+}
+
+// 3D lyrics: each word is an extruded block that flies up out of depth,
+// hangs in space with outline echoes behind it, then flies through the lens on the group's exit.
+const DEPTH = 11, ECHOES = 3, LIN = 0.5, LOUT = 0.32;
+const lyr = $("lyr"), rand = rng(7);
+const GROUPS = window.EDIT.lyrics.map((g, gi) => {
+  const el = document.createElement("div");
+  el.className = "grp"; lyr.appendChild(el);
+  const t0 = g.words[0].t;
+  // Small outlined "promise" motes scattered through the space around each hook.
+  const motes = Array.from({ length: 9 }, (_, m) => ({ text: g.words.some((w) => w.text === "addiction") ? (m % 2 ? "addiction" : "believe") : (m % 3 === 2 ? "you" : "promise"), t: t0 + 0.12 * m,
+    x: (rand() - 0.5) * 1900, y: (rand() - 0.5) * 1000, z: -300 - rand() * 900, size: 46 + rand() * 50, ry: (rand() - 0.5) * 60, mote: true }));
+  const words = [...g.words, ...motes].map((w) => {
+    const d = document.createElement("div");
+    d.className = "lw" + (w.mote ? " mote" : "");
+    const layers = w.mote ? [`<div class="ghost" style="font-size:${w.size}px">${w.text}</div>`] : [
+      ...Array.from({ length: ECHOES }, (_, e) => `<div class="ghost" style="font-size:${w.size}px"></div>`),
+      `<div class="face" style="font-size:${w.size}px">${w.text}</div>`];
+    d.innerHTML = layers.join("");
+    if (!w.mote) d.querySelectorAll(".ghost").forEach((e) => { e.textContent = w.text; });
+    el.appendChild(d);
+    return { ...w, el: d };
+  });
+  return { ...g, el, words, t0 };
+});
+
+function renderLyrics(t) {
+  GROUPS.forEach((g) => {
+    const on = t >= g.t0 - 0.05 && t < g.out + 0.05;
+    g.el.style.display = on ? "block" : "none";
+    if (!on) return;
+    // The whole lyric space sways slowly, so the words feel placed in the scene.
+    g.el.style.transform = `rotateY(${7 * Math.sin(t * 0.7)}deg) rotateX(${4 * Math.sin(t * 0.5 + 1)}deg)`;
+    const out = ease.inCubic(clamp((t - (g.out - LOUT)) / LOUT, 0, 1));
+    g.words.forEach((w, wi) => {
+      const k = ease.outExpo(clamp((t - w.t) / (w.mote ? 0.8 : LIN), 0, 1));
+      if (t < w.t) { w.el.style.display = "none"; return; }
+      w.el.style.display = "block";
+      const z = lerp(w.mote ? w.z - 1200 : -1500, w.z || 0, k) + 70 * (t - w.t) + out * (w.mote ? 1400 : 1300 + 120 * wi);
+      const rx = lerp(w.mote ? 0 : 78, 0, k) + 3 * Math.sin(t * 1.3 + wi);
+      const ry = w.ry + (1 - k) * 45 + 5 * Math.sin(t * 0.9 + wi);
+      const y = w.y + 8 * Math.sin(t * 1.6 + wi * 2);
+      w.el.style.transform = `translate3d(${w.x}px, ${y}px, ${z}px) rotateY(${ry}deg) rotateX(${rx}deg)`;
+      // Opacity and blur go on the layers: on the word itself they would flatten its depth.
+      const op = clamp(k * 3, 0, 1) * (w.mote ? 0.45 : 1) * (1 - out * 0.9);
+      const blur = out > 0.05 ? `blur(${out * 14}px)` : "";
+      [...w.el.children].forEach((e) => {
+        if (e.className !== "face") return;
+        e.style.opacity = op; e.style.filter = blur;
+        // Extrusion drawn as stacked shadows that lean away from the way the word is turned.
+        const lean = -Math.sin(ry * Math.PI / 180) * 2.4, sh = [];
+        for (let d = 1; d <= DEPTH; d++) { const c = Math.round(205 - d * 12); sh.push(`${(lean * d).toFixed(1)}px ${(1.5 * d).toFixed(1)}px 0 rgb(${c},${c},${c + 4})`); }
+        sh.push(`${(lean * DEPTH).toFixed(1)}px ${DEPTH * 2 + 14}px 40px rgba(0,0,0,0.55)`);
+        e.style.textShadow = sh.join(", ");
+      });
+      if (w.mote) { w.el.firstChild.style.opacity = op; return; }
+      // Echo outlines trail behind the word and settle into it.
+      w.el.querySelectorAll(".ghost").forEach((e, ei) => {
+        const lag = clamp((t - w.t - 0.06 * (ei + 1)) / 0.5, 0, 1);
+        e.style.transform = `translate(-50%, -50%) translateZ(${-(ei + 1) * 120 * (1 - ease.outCubic(lag)) - 40}px)`;
+        e.style.opacity = op * 0.5 * (1 - lag * 0.6) / (ei + 1);
+      });
+    });
+  });
+}
+
+window.renderFrame = (t) => {
+  pending.length = 0;
+  SHOTS.forEach((s) => renderShot(s, t));
+  WORDS.forEach((w, i) => renderWord(w, i, t));
+  renderLyrics(t);
+  renderLeak(t);
+  openingCam(t);
+  renderEnd(t);
+  // One soft flash on the drop.
+  $("flash").style.opacity = t >= DROP - 0.03 ? 0.75 * Math.exp(-Math.max(0, t - DROP) * 6) : 0;
+  $("grain").style.transform = `translate(${(Math.floor(t * 30) * 37) % 200 - 100}px, ${(Math.floor(t * 30) * 53) % 200 - 100}px)`;
+  return Promise.all(pending);
+};
+window.renderFrame(0);
+</script>
+</body>
+</html>

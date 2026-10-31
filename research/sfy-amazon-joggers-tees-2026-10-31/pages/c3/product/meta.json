@@ -1,0 +1,23 @@
+{
+  "url": "https://www.amazon.in/XYXX-Combed-Cotton-T-Shirt-Regular/dp/B0GVTTB4B6",
+  "fetched_at": "2026-10-31T02:08:16.115Z",
+  "status": 200,
+  "final_url": "https://www.amazon.in/XYXX-Combed-Cotton-T-Shirt-Regular/dp/B0GVTTB4B6",
+  "blocked": false,
+  "title": "Amazon.in",
+  "canonical": null,
+  "meta": {},
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 0,
+  "text_chars": 149
+}

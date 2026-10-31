@@ -1,0 +1,253 @@
+qid,chapter,question,A,B,C,D
+school-09-maths-1-e1,Orienting Yourself: The Use of Coordinates,"In which quadrant does the point (−4, 7) lie?",Quadrant I,Quadrant II,Quadrant III,Quadrant IV
+school-09-maths-1-e2,Orienting Yourself: The Use of Coordinates,"How far is the point (−6, 9) from the y-axis?",9 units,−6 units,6 units,15 units
+school-09-maths-1-e3,Orienting Yourself: The Use of Coordinates,"A point lies on the x-axis, 5 units to the left of the origin. What are its coordinates?","(0, −5)","(5, 0)","(0, 5)","(−5, 0)"
+school-09-maths-1-e4,Orienting Yourself: The Use of Coordinates,Which of these points lies on the y-axis?,"(0, −3)","(−3, 0)","(3, 3)","(−3, −3)"
+school-09-maths-1-e5,Orienting Yourself: The Use of Coordinates,"Find the midpoint of the segment joining A(2, 8) and B(10, 4).","(12, 12)","(6, 6)","(4, −2)","(6, 12)"
+school-09-maths-1-e6,Orienting Yourself: The Use of Coordinates,"What is the distance of the point (6, 8) from the origin?",14 units,7 units,10 units,100 units
+school-09-maths-1-m1,Orienting Yourself: The Use of Coordinates,A point has x-coordinate −7. In which of these places can it NOT lie?,Quadrant II,Quadrant I,Quadrant III,On the x-axis
+school-09-maths-1-m2,Orienting Yourself: The Use of Coordinates,"Find the distance between A(−3, 2) and B(5, −4).",14 units,100 units,10 units,12 units
+school-09-maths-1-m3,Orienting Yourself: The Use of Coordinates,"The midpoint of AB is M(4, −1). If A is (2, 5), what are the coordinates of B?","(3, 2)","(6, −3)","(−2, −7)","(6, −7)"
+school-09-maths-1-m4,Orienting Yourself: The Use of Coordinates,Which set of three points lies on one straight line?,"(1, 1), (3, 4), (5, 7)","(0, 0), (2, 3), (4, 7)","(−1, 2), (1, 5), (3, 7)","(2, 0), (4, 2), (6, 5)"
+school-09-maths-1-m5,Orienting Yourself: The Use of Coordinates,"In triangle PQR, P = (2, 1), Q = (6, 1) and R = (6, 4). How long is side PR?",7 units,5 units,3 units,4 units
+school-09-maths-1-m8,Orienting Yourself: The Use of Coordinates,"a is negative and b is positive. In which quadrant does the point (−a, −b) lie?",Quadrant IV,Quadrant II,Quadrant III,Quadrant I
+school-09-maths-1-h1,Orienting Yourself: The Use of Coordinates,"For what value of k are the points (1, 2), (3, 5) and (7, k) on one straight line?",8,11,9,10
+school-09-maths-1-h2,Orienting Yourself: The Use of Coordinates,"A circle with centre at the origin passes through (5, 12). Which point lies strictly inside it?","(13, 1)","(12, 5)","(9, 9)","(10, 10)"
+school-09-maths-1-h4,Orienting Yourself: The Use of Coordinates,"OPQR is a square with O at the origin and P(3, 1) as the next vertex. What is its area?",10 square units,4 square units,16 square units,3 square units
+school-09-maths-1-h5,Orienting Yourself: The Use of Coordinates,"Triangle ABC has A(−2, 1), B(1, 5) and C(4, 1). Which statement is true?",It is equilateral,"It is isosceles, with AB = BC",It is scalene,It is right-angled at B
+school-09-maths-1-h6,Orienting Yourself: The Use of Coordinates,"Find the point P on the x-axis that is equally far from A(2, 3) and B(6, 5).","(4, 0)","(8, 0)","(6, 0)","(3, 0)"
+school-09-maths-1-h7,Orienting Yourself: The Use of Coordinates,A circle has its centre at the origin and radius 10. Which pair lists all its points with x-coordinate −6?,"Only (−6, 8)","(−6, 4) and (−6, −4)","(−6, 6) and (−6, −6)","(−6, 8) and (−6, −8)"
+school-09-maths-2-e1,Introduction to Linear Polynomials,What is the degree of the polynomial 5x³ − 2x + 9?,1,9,3,5
+school-09-maths-2-e2,Introduction to Linear Polynomials,What is the coefficient of x in 7x³ − 4x² + 6x − 1?,7,−4,−1,6
+school-09-maths-2-e4,Introduction to Linear Polynomials,Find the value of 4x − 7 when x = −2.,−1,−15,1,−11
+school-09-maths-2-e5,Introduction to Linear Polynomials,Which of these is a linear polynomial?,x² + 1,7,3x + 2,2x³ − x
+school-09-maths-2-e6,Introduction to Linear Polynomials,Find the value of t² − 3t + 2 when t = 3.,8,−2,11,2
+school-09-maths-2-e7,Introduction to Linear Polynomials,Rohan has ₹50 and saves ₹30 every week. How much will he have after n weeks?,₹(50 + 30n),₹(30 + 50n),₹80n,₹(50n − 30)
+school-09-maths-2-m1,Introduction to Linear Polynomials,A father is 4 times as old as his son. In 6 years their ages will add up to 62. How old is the father now?,10 years,44 years,40 years,20 years
+school-09-maths-2-m3,Introduction to Linear Polynomials,A 180 m rope is cut into two pieces. The longer is 5 times the shorter. How long is the longer piece?,150 m,30 m,36 m,90 m
+school-09-maths-2-m5,Introduction to Linear Polynomials,An auto fare is y = 15x + 40 rupees for x km. How many km can you travel for ₹280?,17 km,14 km,16 km,21 km
+school-09-maths-2-m6,Introduction to Linear Polynomials,Where does the graph of y = −3x + 6 cut the axes?,"(0, 2) and (6, 0)","(0, −3) and (6, 0)","(0, 6) and (−2, 0)","(0, 6) and (2, 0)"
+school-09-maths-2-m7,Introduction to Linear Polynomials,"A line y = ax + b passes through (0, 4) and (2, 10). What is its equation?",y = 3x + 4,y = 4x + 3,y = 6x + 4,y = 3x − 4
+school-09-maths-2-m8,Introduction to Linear Polynomials,Which line is the steepest?,y = 3x + 10,y = −5x + 1,y = 4x − 2,y = −2x
+school-09-maths-2-h1,Introduction to Linear Polynomials,A mobile plan bill is y = ax + b rupees for x minutes. 100 minutes cost ₹340 and 250 minutes cost ₹640. What is the bill for 400 minutes?,₹1360,₹800,₹940,₹1140
+school-09-maths-2-h2,Introduction to Linear Polynomials,A linear polynomial p(x) has p(1) = 5 and p(3) = 11. Where does its graph cut the x-axis?,"(2/3, 0)","(−3/2, 0)","(0, 2)","(−2/3, 0)"
+school-09-maths-2-h3,Introduction to Linear Polynomials,"Matchsticks make stages: 5, 9, 13, … (each stage adds 4). Which stage uses exactly 101 sticks?",25th,24th,26th,20th
+school-09-maths-2-h4,Introduction to Linear Polynomials,"A phone bought at ₹48,000 loses ₹4,000 in value every year. After how many years is it worth ₹12,000?",12 years,9 years,8 years,10 years
+school-09-maths-2-h5,Introduction to Linear Polynomials,"A positive number is 4 times another. If 18 is added to both, the larger becomes twice the smaller. What is the larger number?",9,18,36,27
+school-09-maths-2-h8,Introduction to Linear Polynomials,"Meera has ₹800 and adds ₹250 each month. After how many months will she first have more than ₹5,000?",16,17,18,21
+school-09-maths-3-e1,The World of Numbers,"Using Brahmagupta’s rule (debt × debt = fortune), find (−9) × (−4).",−36,13,−13,36
+school-09-maths-3-e2,The World of Numbers,The temperature at Leh is 3°C at noon and falls by 11°C by night. What is the night temperature?,−8°C,8°C,−14°C,14°C
+school-09-maths-3-e3,The World of Numbers,Which of these is an irrational number?,√49,√17,0.25,22/7
+school-09-maths-3-e4,The World of Numbers,Which fraction is equal to 3/5?,12/15,9/20,12/20,6/20
+school-09-maths-3-e5,The World of Numbers,Are the natural numbers closed under subtraction? Choose the correct reason.,"Yes, since 7 − 3 = 4","Yes, every answer is whole","Yes, since subtraction always gives a smaller number","No, since 3 − 7 = −4 is not a natural number"
+school-09-maths-3-e6,The World of Numbers,Which decimal is rational?,0.454545…,0.1010010001…,√0.5 as a decimal,π
+school-09-maths-3-m1,The World of Numbers,Find 3/5 + 1/10.,4/15,4/10,1/2,7/10
+school-09-maths-3-m3,The World of Numbers,Which of these gives a terminating decimal?,5/12,7/40,2/15,4/21
+school-09-maths-3-m5,The World of Numbers,Which is a rational number strictly between −1/2 and 1/4?,−3/4,1/2,−1,0
+school-09-maths-3-m6,The World of Numbers,Which of the following numbers is irrational?,√20,√36,0.363636…,−5/8
+school-09-maths-3-m7,The World of Numbers,Which fraction has a repeating decimal?,7/25,5/18,3/16,9/20
+school-09-maths-3-m8,The World of Numbers,How many rational numbers lie between 0.2 and 0.3?,Exactly 9,Exactly 10,Infinitely many,None
+school-09-maths-3-h1,The World of Numbers,Write 0.272727… as a fraction in lowest terms.,27/100,27/10,9/11,3/11
+school-09-maths-3-h2,The World of Numbers,Write 0.4 + 0.0333… as a fraction (0.0333… = 1/30).,13/30,7/30,43/100,2/5
+school-09-maths-3-h3,The World of Numbers,Which statement is correct?,The sum of two irrational numbers is always irrational,The sum of √2 and −√2 is rational,The product of √2 and √8 is irrational,√2 + 3 is rational
+school-09-maths-3-h4,The World of Numbers,To prove √7 is irrational we assume √7 = p/q in lowest terms. What do we find from 7q² = p²?,7 divides q only,p and q are both odd,"7 divides p, so 7 divides q too, which contradicts lowest terms",p² = 7 so p is irrational
+school-09-maths-3-h5,The World of Numbers,Which of these is a rational number strictly between 3.1415 and 3.1416?,3.1417,3.1414,3.1416,3.14155
+school-09-maths-3-h8,The World of Numbers,For which values of x is (2/5)(x + 5/4) = (2/5)x + 1/2 true?,Only x = 0,Only x = 5/4,Every value of x,No value of x
+school-09-maths-4-e1,Exploring Algebraic Identities,Expand (x + 5)².,x² + 10x + 25,x² + 25,x² + 5x + 25,x² + 10x + 10
+school-09-maths-4-e2,Exploring Algebraic Identities,Expand (p − 4)².,p² − 16,p² − 8p + 16,p² + 8p + 16,p² − 4p + 16
+school-09-maths-4-e3,Exploring Algebraic Identities,Find (x + 7)(x − 7).,x² + 49,x² − 14x + 49,x² − 49,x² − 7
+school-09-maths-4-e4,Exploring Algebraic Identities,Use an identity to find 52².,2504,2604,2740,2704
+school-09-maths-4-e5,Exploring Algebraic Identities,Factorise x² + 6x + 9.,(x + 3)²,(x + 9)²,(x + 3)(x − 3),(x − 3)²
+school-09-maths-4-e6,Exploring Algebraic Identities,Find 98² using an identity.,9804,9604,9404,9996
+school-09-maths-4-m1,Exploring Algebraic Identities,Expand (3x − 2y)².,9x² − 12xy + 4y²,9x² − 4y²,9x² + 12xy + 4y²,3x² − 12xy + 2y²
+school-09-maths-4-m2,Exploring Algebraic Identities,Factorise 25p² + 40pq + 16q².,(5p + 16q)²,(5p + 4q)²,(25p + 16q)²,(5p − 4q)²
+school-09-maths-4-m3,Exploring Algebraic Identities,Find 103 × 97 using an identity.,9909,10009,9991,9999
+school-09-maths-4-m4,Exploring Algebraic Identities,Expand (x + 3)(x + 8).,x² + 24x + 11,x² + 11x + 11,x² + 5x + 24,x² + 11x + 24
+school-09-maths-4-m5,Exploring Algebraic Identities,Factorise x² − 49y².,(x − 7y)(x + 7y),(x − 7y)²,(x − 49y)(x + y),(x + 7y)²
+school-09-maths-4-m7,Exploring Algebraic Identities,Simplify (a + b)² − (a − b)².,2ab,2a² + 2b²,4ab,0
+school-09-maths-4-h1,Exploring Algebraic Identities,Factorise 6x² + 17x + 12.,(3x + 4)(2x + 3),(6x + 3)(x + 4),(2x + 4)(3x + 3),(3x + 2)(2x + 6)
+school-09-maths-4-h3,Exploring Algebraic Identities,Evaluate 6.4² − 3.6² using an identity.,2.8,56,28,14
+school-09-maths-4-h4,Exploring Algebraic Identities,"If x − y = 4 and xy = 21, what is x² + y²?",37,16,100,58
+school-09-maths-4-h5,Exploring Algebraic Identities,Simplify (2x − 3)² − (2x + 3)².,−24x,24x,−18,8x² − 18
+school-09-maths-4-h6,Exploring Algebraic Identities,Simplify (a + 2b)² + (a − 2b)².,2a² + 4b²,2a² + 8b²,2a²,8ab
+school-09-maths-4-h8,Exploring Algebraic Identities,Find 299 × 301 using an identity.,90001,89099,90000,89999
+school-09-maths-5-e1,"I'm Up and Down, and Round and Round",Which is the longest chord of a circle?,The radius,The diameter,A chord of length equal to the radius,Any chord through the arc’s midpoint
+school-09-maths-5-e2,"I'm Up and Down, and Round and Round",What is the angle subtended by a diameter at any point on the circle?,180°,45°,90°,60°
+school-09-maths-5-e3,"I'm Up and Down, and Round and Round",An arc subtends 80° at the centre. What angle does it subtend at a point on the remaining part of the circle?,80°,160°,100°,40°
+school-09-maths-5-e4,"I'm Up and Down, and Round and Round",ABCD is a cyclic quadrilateral and ∠A = 95°. What is ∠C?,85°,95°,105°,275°
+school-09-maths-5-e5,"I'm Up and Down, and Round and Round",A circle has radius 10 cm. A chord is 6 cm from the centre. How long is the chord?,8 cm,16 cm,12 cm,20 cm
+school-09-maths-5-e6,"I'm Up and Down, and Round and Round",The perpendicular drawn from the centre of a circle to a chord does what?,It equals the radius,It doubles the chord,It bisects the chord,It is parallel to the chord
+school-09-maths-5-m1,"I'm Up and Down, and Round and Round",A circle has radius 17 cm and a chord of length 30 cm. How far is the chord from the centre?,15 cm,8 cm,7 cm,13 cm
+school-09-maths-5-m2,"I'm Up and Down, and Round and Round",A circle has diameter 50 cm and a chord of 48 cm. How far is the chord from the centre?,14 cm,24 cm,7 cm,25 cm
+school-09-maths-5-m3,"I'm Up and Down, and Round and Round",A chord of length 24 cm is 9 cm from the centre. What is the radius?,21 cm,17 cm,13 cm,15 cm
+school-09-maths-5-m4,"I'm Up and Down, and Round and Round",The angle at the centre standing on an arc is 130°. What is the angle at a point on the major arc?,65°,130°,260°,50°
+school-09-maths-5-m6,"I'm Up and Down, and Round and Round",A chord AB makes an angle of 40° at a point C on the major arc. What angle does AB make at the centre?,40°,140°,80°,160°
+school-09-maths-5-m8,"I'm Up and Down, and Round and Round","In cyclic quadrilateral ABCD, ∠A = 110° and ∠B = 70°. Find ∠C and ∠D.","∠C = 70°, ∠D = 110°","∠C = 110°, ∠D = 70°","∠C = 70°, ∠D = 70°","∠C = 90°, ∠D = 90°"
+school-09-maths-5-h1,"I'm Up and Down, and Round and Round",ABCD is cyclic with ∠A = (6x − 4)° and ∠C = (3x + 4)°. What is ∠A?,64°,116°,20°,100°
+school-09-maths-5-h2,"I'm Up and Down, and Round and Round",A chord of length 10 cm is in a circle with radius 13 cm. What is the area of the triangle formed by the chord and the centre?,120 cm²,65 cm²,60 cm²,130 cm²
+school-09-maths-5-h4,"I'm Up and Down, and Round and Round","A triangle has sides 6 cm, 8 cm and 10 cm. What is the radius of its circumcircle?",5 cm,4 cm,6 cm,10 cm
+school-09-maths-5-h5,"I'm Up and Down, and Round and Round",ABCD is cyclic with ∠ADC = 100°. Side AB is extended to E. What is ∠CBE?,80°,100°,50°,260°
+school-09-maths-5-h6,"I'm Up and Down, and Round and Round","In a circle of radius 6 cm, a chord subtends 90° at the centre. What is its length?",6 cm,12 cm,6√2 cm,3√2 cm
+school-09-maths-5-h8,"I'm Up and Down, and Round and Round",AB is a diameter of a circle and C lies on the circle with ∠BAC = 35°. What is ∠ABC?,55°,35°,90°,145°
+school-09-maths-6-e1,Measuring Space: Perimeter and Area,Find the circumference of a circle of radius 21 cm. (Use π = 22/7.),66 cm,1386 cm,132 cm,44 cm
+school-09-maths-6-e2,Measuring Space: Perimeter and Area,The circumference of a circle is 88 cm. What is its radius? (π = 22/7),28 cm,7 cm,44 cm,14 cm
+school-09-maths-6-e3,Measuring Space: Perimeter and Area,Find the area of a triangle with base 12 cm and height 9 cm.,54 cm²,108 cm²,21 cm²,36 cm²
+school-09-maths-6-e4,Measuring Space: Perimeter and Area,Find the area of a circle of radius 7 cm. (π = 22/7),44 cm²,154 cm²,308 cm²,49 cm²
+school-09-maths-6-e5,Measuring Space: Perimeter and Area,A rhombus has diagonals 10 cm and 24 cm. What is its area?,240 cm²,34 cm²,120 cm²,60 cm²
+school-09-maths-6-e6,Measuring Space: Perimeter and Area,A trapezium has parallel sides 8 cm and 12 cm and height 5 cm. Find its area.,100 cm²,25 cm²,60 cm²,50 cm²
+school-09-maths-6-m1,Measuring Space: Perimeter and Area,"Find the area of a triangle with sides 13 cm, 14 cm and 15 cm.",91 cm²,105 cm²,84 cm²,42 cm²
+school-09-maths-6-m3,Measuring Space: Perimeter and Area,Find the area of a sector of radius 21 cm with angle 60°. (π = 22/7),231 cm²,462 cm²,1386 cm²,77 cm²
+school-09-maths-6-m4,Measuring Space: Perimeter and Area,The minute hand of a clock is 21 cm long. What area does it sweep in 20 minutes? (π = 22/7),1386 cm²,462 cm²,231 cm²,154 cm²
+school-09-maths-6-m5,Measuring Space: Perimeter and Area,Find the perimeter of a sector of radius 14 cm and angle 90°. (π = 22/7),22 cm,78 cm,50 cm,36 cm
+school-09-maths-6-m7,Measuring Space: Perimeter and Area,A right-angled triangle has area 96 cm² and one leg 12 cm. What is its perimeter?,48 cm,44 cm,28 cm,56 cm
+school-09-maths-6-m8,Measuring Space: Perimeter and Area,A diagonal splits a parallelogram with base 15 cm and height 8 cm into two triangles. What is the area of each?,120 cm²,60 cm²,30 cm²,23 cm²
+school-09-maths-6-h1,Measuring Space: Perimeter and Area,"One diagonal of a rhombus is twice the other, and its area is 81 cm². What is the length of the shorter diagonal?",18 cm,4.5 cm,9 cm,40.5 cm
+school-09-maths-6-h2,Measuring Space: Perimeter and Area,A square is inscribed in a circle of radius 7 cm. What is the area of the circle outside the square? (π = 22/7),98 cm²,154 cm²,28 cm²,56 cm²
+school-09-maths-6-h3,Measuring Space: Perimeter and Area,A trapezium has parallel sides 30 cm and 14 cm and equal slant sides of 10 cm. What is its area?,132 cm²,220 cm²,264 cm²,66 cm²
+school-09-maths-6-h5,Measuring Space: Perimeter and Area,"A triangle has sides 26 cm, 28 cm and 30 cm. What is its area?",84 cm²,168 cm²,336 cm²,672 cm²
+school-09-maths-6-h7,Measuring Space: Perimeter and Area,A bicycle wheel has diameter 70 cm. How far does it travel in 100 full turns? (π = 22/7),220 m,110 m,440 m,2200 m
+school-09-maths-6-h8,Measuring Space: Perimeter and Area,A sector has radius 14 cm and arc length 11 cm. What is its area?,154 cm²,77 cm²,38.5 cm²,308 cm²
+school-09-maths-7-e1,The Mathematics of Maybe: Introduction to Probability,A coin is tossed and a die is rolled together. How many outcomes are possible?,8,6,36,12
+school-09-maths-7-e2,The Mathematics of Maybe: Introduction to Probability,A fair die is rolled once. What is the probability of getting a 5?,1/6,1/5,5/6,1/3
+school-09-maths-7-e3,The Mathematics of Maybe: Introduction to Probability,A bag has 4 red and 6 blue marbles. One is picked at random. What is the probability it is red?,2/3,2/5,3/5,1/4
+school-09-maths-7-e4,The Mathematics of Maybe: Introduction to Probability,What is the probability of getting a 7 when a normal die is rolled?,1/6,1,0,7/6
+school-09-maths-7-e5,The Mathematics of Maybe: Introduction to Probability,A card is picked from cards numbered 1 to 20. What is the probability that it shows a multiple of 5?,1/4,1/20,4/5,1/5
+school-09-maths-7-e6,The Mathematics of Maybe: Introduction to Probability,A die is rolled. What is the probability of getting a prime number?,1/2,1/3,2/3,1/6
+school-09-maths-7-m1,The Mathematics of Maybe: Introduction to Probability,Two fair coins are tossed. What is the probability of exactly one head?,1/4,1/3,3/4,1/2
+school-09-maths-7-m2,The Mathematics of Maybe: Introduction to Probability,Two fair dice are rolled. What is the probability that the sum is 8?,5/36,1/6,2/9,1/8
+school-09-maths-7-m3,The Mathematics of Maybe: Introduction to Probability,"A box has 5 red, 3 green and 2 white balls. What is the probability that a ball picked at random is not green?",3/10,7/10,7/3,1/2
+school-09-maths-7-m6,The Mathematics of Maybe: Introduction to Probability,Three fair coins are tossed. What is the probability of at least two heads?,1/2,3/8,1/4,5/8
+school-09-maths-7-m7,The Mathematics of Maybe: Introduction to Probability,A number is picked at random from 1 to 12. What is the probability it is prime?,1/2,5/12,1/3,1/4
+school-09-maths-7-m8,The Mathematics of Maybe: Introduction to Probability,A spinner has 8 equal sectors numbered 1 to 8. What is the probability that it stops on a number greater than 5?,5/8,1/8,3/8,3/5
+school-09-maths-7-h1,The Mathematics of Maybe: Introduction to Probability,A bag has 5 red and 3 blue balls. Two are drawn one after another without replacement. What is the probability that both are red?,25/64,5/8,2/7,5/14
+school-09-maths-7-h2,The Mathematics of Maybe: Introduction to Probability,A bag has 5 red and 3 blue balls. Two are drawn without replacement. What is the probability that they are different colours?,15/28,15/64,15/56,3/8
+school-09-maths-7-h3,The Mathematics of Maybe: Introduction to Probability,Two fair dice are rolled. What is the probability that the product of the numbers is 12?,1/12,1/9,1/6,2/9
+school-09-maths-7-h5,The Mathematics of Maybe: Introduction to Probability,"In a test of 100 batteries, 12 lasted under 200 hours, 48 lasted 200 to 400 hours and 40 lasted over 400 hours. What is the probability a battery lasts at least 200 hours?",0.12,0.48,0.40,0.88
+school-09-maths-7-h7,The Mathematics of Maybe: Introduction to Probability,A fair coin is tossed 4 times. What is the probability of at least one tail?,1/16,15/16,7/8,3/4
+school-09-maths-7-h8,The Mathematics of Maybe: Introduction to Probability,Two fair dice are rolled. What is the probability that the sum is at most 4?,1/9,1/12,1/6,1/4
+school-09-maths-8-e1,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the next term of 4, 9, 14, 19, …?",24,23,25,29
+school-09-maths-8-e2,Predicting What Comes Next: Exploring Sequences and Progressions,"Find the 10th term of the AP 5, 8, 11, …",35,32,30,29
+school-09-maths-8-e3,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the common difference of the AP 100, 92, 84, …?",8,−92,−8,12
+school-09-maths-8-e4,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the next term of the GP 3, 6, 12, …?",18,15,48,24
+school-09-maths-8-e5,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the nth term of the AP 2, 5, 8, 11, …?",3n − 1,3n + 2,2n + 1,n + 3
+school-09-maths-8-e8,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the common ratio of the GP 2, 6, 18, …?",4,2,1/3,3
+school-09-maths-8-m1,Predicting What Comes Next: Exploring Sequences and Progressions,"Which term of the AP 7, 13, 19, … is 151?",25th,24th,26th,23rd
+school-09-maths-8-m2,Predicting What Comes Next: Exploring Sequences and Progressions,"Which term of the AP 40, 36, 32, … is −8?",12th,13th,14th,11th
+school-09-maths-8-m3,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the nth term of the GP 3, 12, 48, …?",3 × 4ⁿ,4 × 3ⁿ⁻¹,3 × 4ⁿ⁻¹,12n − 9
+school-09-maths-8-m4,Predicting What Comes Next: Exploring Sequences and Progressions,"Asha earns ₹6,00,000 a year and gets a rise of ₹15,000 every year. After how many rises does she earn ₹7,50,000?",11,9,50,10
+school-09-maths-8-m5,Predicting What Comes Next: Exploring Sequences and Progressions,In an AP the 3rd term is 14 and the 8th term is 39. What is the 10th term?,49,44,54,50
+school-09-maths-8-m6,Predicting What Comes Next: Exploring Sequences and Progressions,The 5th term of a GP is 48 and its common ratio is 2. What is the first term?,6,3,24,1.5
+school-09-maths-8-h1,Predicting What Comes Next: Exploring Sequences and Progressions,The 5th term of a GP is 162 and the common ratio is 3. What is its 8th term?,4374,486,1458,3402
+school-09-maths-8-h2,Predicting What Comes Next: Exploring Sequences and Progressions,What is the sum of all two-digit multiples of 7?,700,728,742,1274
+school-09-maths-8-h3,Predicting What Comes Next: Exploring Sequences and Progressions,What is the smallest n for which 1 + 2 + … + n is greater than 500?,31,33,32,30
+school-09-maths-8-h4,Predicting What Comes Next: Exploring Sequences and Progressions,"Which term of the GP 3, 12, 48, … is 12288?",6th,8th,12th,7th
+school-09-maths-8-h6,Predicting What Comes Next: Exploring Sequences and Progressions,"What is the sum of the first 20 terms of the AP 5, 9, 13, …?",430,860,800,880
+school-09-maths-8-h8,Predicting What Comes Next: Exploring Sequences and Progressions,A ball dropped from 80 m bounces back to ¾ of its previous height each time. How high does it rise after the third bounce?,45 m,60 m,25.3 m,33.75 m
+school-09-maths-9-e1,Propositions and their Converses,"What is the converse of “If a number is divisible by 6, then it is divisible by 3”?","If a number is not divisible by 6, then it is not divisible by 3","If a number is divisible by 3, then it is divisible by 6","If a number is not divisible by 3, then it is not divisible by 6","If a number is divisible by 3, then it is divisible by 2"
+school-09-maths-9-e2,Propositions and their Converses,"In “If it rains, the match is cancelled”, what is the hypothesis?",The match is cancelled,It does not rain,It rains,The match is played
+school-09-maths-9-e3,Propositions and their Converses,"The converse of “If x = 3, then x² = 9” is “If x² = 9, then x = 3”. Is the converse true?","Yes, always","Yes, because 3² = 9","No, because x² = 9 has no solution","No, because x could be −3"
+school-09-maths-9-e4,Propositions and their Converses,Which number is a counterexample to “All odd numbers are prime”?,9,7,3,11
+school-09-maths-9-e5,Propositions and their Converses,Which value of n is a counterexample to “n² > n for every natural number n”?,2,1,3,10
+school-09-maths-9-e6,Propositions and their Converses,"The statement is “If a quadrilateral is a rectangle, then it is a parallelogram”. Is its converse true?","Yes, every parallelogram has a right angle","Yes, since both have four sides","No, a rhombus is a parallelogram that is not a rectangle","No, since a rectangle has no parallel sides"
+school-09-maths-9-m1,Propositions and their Converses,Which value of n shows that “6n + 1 is prime for every natural number n” is false?,3,4,5,6
+school-09-maths-9-m2,Propositions and their Converses,Which value of n shows that “n² + n + 17 is prime for every natural n” is false?,2,5,17,10
+school-09-maths-9-m3,Propositions and their Converses,"The converse of “If a and b are both even, then a + b is even” is false. Which pair shows this?","a = 2, b = 4","a = 4, b = 6","a = 2, b = 6","a = 3, b = 5"
+school-09-maths-9-m4,Propositions and their Converses,"“If a number is divisible by 10, then it is divisible by 5.” Which number shows its converse is false?",15,20,30,40
+school-09-maths-9-m5,Propositions and their Converses,"Which number is a counterexample to “If n is prime, then n is odd”?",3,2,5,9
+school-09-maths-9-m7,Propositions and their Converses,Which if-then sentence expresses “A number is a multiple of 9 if the sum of its digits is a multiple of 9”?,"If a number is a multiple of 9, then its digits are all 9","If a number is odd, then the sum of its digits is 9","If the digits of a number are 9, then it is a multiple of 3","If the sum of the digits of a number is a multiple of 9, then the number is a multiple of 9"
+school-09-maths-9-h1,Propositions and their Converses,Which value of n shows that “n² − n + 41 is prime for every natural n” is false?,10,41,20,40
+school-09-maths-9-h2,Propositions and their Converses,"Which odd number n is a counterexample to “If n is odd, then n² + 2 is prime”?",1,3,7,9
+school-09-maths-9-h3,Propositions and their Converses,"Which number a is a counterexample to “If a² is divisible by 4, then a is divisible by 4”?",4,8,12,6
+school-09-maths-9-h4,Propositions and their Converses,"Consider “If n² is odd, then n is odd” and its converse. Which is correct?",Both the statement and its converse are true,The statement is true and its converse is false,The statement is false and its converse is true,Both are false
+school-09-maths-9-h5,Propositions and their Converses,"Why is checking n = 1, 2, 3, 4, 5 not enough to prove that “n² + n is even for every natural n”?","Five examples are too few, but ten would be a proof",A finite list of examples cannot cover all natural numbers; a general argument is needed,Examples can never support a statement,Natural numbers start from zero
+school-09-maths-9-h8,Propositions and their Converses,Which natural number n shows that “n² + 3n + 1 is prime for every n” is false?,6,3,4,5
+school-09-maths-10-e1,How Quantities Combine: Understanding Data,"Find the mean of 12, 15, 18, 20 and 25.",15,20,18,19
+school-09-maths-10-e2,How Quantities Combine: Understanding Data,"The marks of a student in three tests are 70, 80 and 90. What is the mean mark?",70,90,240,80
+school-09-maths-10-e3,How Quantities Combine: Understanding Data,A team scores 90 runs in 15 overs. What is its run rate per over?,6,5,7.5,1350
+school-09-maths-10-e4,How Quantities Combine: Understanding Data,A school has 500 students and 60% travel by bus. How many travel by bus?,60,300,200,30
+school-09-maths-10-e5,How Quantities Combine: Understanding Data,The mean of 4 numbers is 12. What is their sum?,3,16,48,12
+school-09-maths-10-e7,How Quantities Combine: Understanding Data,"Find the mean of 55, 65, 75 and 85.",70,65,75,280
+school-09-maths-10-m1,How Quantities Combine: Understanding Data,A student scores 40 in a test of weight 1 and 80 in a test of weight 3. What is the weighted average?,60,55,70,65
+school-09-maths-10-m2,How Quantities Combine: Understanding Data,"A cafe is rated food 8, ambience 6 and service 5, with weights 5 : 3 : 2. What is the weighted rating?",6.33,6.5,7.2,6.8
+school-09-maths-10-m3,How Quantities Combine: Understanding Data,Class A has 30 students with mean marks 60 and class B has 20 students with mean 80. What is the mean of all 50?,68,70,64,72
+school-09-maths-10-m4,How Quantities Combine: Understanding Data,"The mean of 5 numbers is 14. A sixth number, 20, is added. What is the new mean?",17,15,14,16
+school-09-maths-10-m6,How Quantities Combine: Understanding Data,"A pond is dug in three sections of lengths 2, 3 and 5 m and depths 10, 6 and 4 m. What is its mean depth?",6.67 m,5 m,6.2 m,5.8 m
+school-09-maths-10-m7,How Quantities Combine: Understanding Data,Eight players weigh 480 kg in total. A player of 53 kg leaves. What is the mean weight of the remaining 7?,61 kg,60 kg,62 kg,59 kg
+school-09-maths-10-h1,How Quantities Combine: Understanding Data,In a weighted average every weight is doubled. What happens to the answer?,It doubles,It halves,It stays the same,It depends on the values
+school-09-maths-10-h2,How Quantities Combine: Understanding Data,A shop sells 12 shuttlecocks at ₹20 each and 8 at ₹30 each. What is the average price per shuttlecock?,₹25,₹20,₹30,₹24
+school-09-maths-10-h3,How Quantities Combine: Understanding Data,In one class 8 of 40 students wear spectacles. In another 36 of 60 do. What percentage of all 100 students wear spectacles?,44%,40%,36%,80%
+school-09-maths-10-h5,How Quantities Combine: Understanding Data,The mean of 10 numbers is 25. One number was copied as 42 instead of 24. What is the correct mean?,25,26.8,23.2,24.8
+school-09-maths-10-h6,How Quantities Combine: Understanding Data,A final grade is 30% homework and 70% exam. A student gets 90 in homework and 60 in the exam. What is the grade?,75,66,72,69
+school-09-maths-10-h7,How Quantities Combine: Understanding Data,"Five workers earn a mean of ₹400 a day. When a manager joins, the mean of all six is ₹500. What does the manager earn?","₹1,000",₹500,₹900,"₹1,100"
+school-09-maths-11-e1,The World of Algorithms,What is the gcd of 24 and 36?,6,24,72,12
+school-09-maths-11-e2,The World of Algorithms,"What is 100 mod 7, that is, the remainder when 100 is divided by 7?",2,14,7,0
+school-09-maths-11-e4,The World of Algorithms,"In column addition of 478 + 356, the units column gives 8 + 6 = 14. What does the algorithm write and carry?","Write 14, carry 0","Write 1, carry 4","Write 4, carry 1","Write 4, carry 0"
+school-09-maths-11-e5,The World of Algorithms,What is the lcm of 4 and 6?,24,2,10,12
+school-09-maths-11-e6,The World of Algorithms,"Use Euclid’s method to find gcd(48, 18).",6,12,18,3
+school-09-maths-11-e8,The World of Algorithms,"Use Euclid’s method to find gcd(17, 5).",2,5,1,17
+school-09-maths-11-m1,The World of Algorithms,"Find gcd(1071, 462) using Euclid’s method.",7,3,42,21
+school-09-maths-11-m2,The World of Algorithms,"What is gcd(4620, 2310)?",2310,1155,2,4620
+school-09-maths-11-m3,The World of Algorithms,What is the lcm of 18 and 24?,6,72,432,36
+school-09-maths-11-m5,The World of Algorithms,"To add 12345 and 678 column by column, what must the algorithm do when 678 runs out of digits?",Stop and write the answer,Skip the remaining columns,Copy the digits of 678 again,Treat the missing digits as 0
+school-09-maths-11-m6,The World of Algorithms,"Which pair has the same gcd as (91, 35)?","(35, 21)","(35, 11)","(56, 13)","(91, 13)"
+school-09-maths-11-m7,The World of Algorithms,"How many division steps does Euclid’s method need for gcd(120, 84)?",2,3,4,12
+school-09-maths-11-h1,The World of Algorithms,"Find gcd(1573, 1001).",11,13,1001,143
+school-09-maths-11-h2,The World of Algorithms,"What is gcd(2024, 2025)?",1,2024,2025,5
+school-09-maths-11-h3,The World of Algorithms,"What is gcd(5040, 120)?",42,120,60,5040
+school-09-maths-11-h5,The World of Algorithms,"Using prime-factor records, 180 = 2² × 3² × 5 and 150 = 2 × 3 × 5². What is their gcd?",15,60,900,30
+school-09-maths-11-h7,The World of Algorithms,"To find gcd(48, 36) a student checks numbers from 36 down to 1 and stops at the first common divisor. How many numbers are checked?",24,25,12,36
+school-09-maths-11-h8,The World of Algorithms,Three numbers are added column by column. What is the largest carry that can move to the next column?,1,3,2,9
+school-09-maths-12-e1,Quadrilaterals,What is the sum of the four angles of any quadrilateral?,360°,180°,720°,270°
+school-09-maths-12-e2,Quadrilaterals,"In a parallelogram ABCD, ∠A = 70°. What is ∠B?",70°,110°,290°,20°
+school-09-maths-12-e3,Quadrilaterals,What is true about the diagonals of every parallelogram?,They are equal,They are perpendicular,They bisect each other,They bisect the angles
+school-09-maths-12-e4,Quadrilaterals,Which quadrilateral always has equal diagonals that bisect each other at right angles?,Rectangle,Rhombus,Parallelogram,Square
+school-09-maths-12-e5,Quadrilaterals,A parallelogram has sides 8 cm and 5 cm. What is its perimeter?,26 cm,13 cm,40 cm,18 cm
+school-09-maths-12-e6,Quadrilaterals,A rhombus has a perimeter of 40 cm. How long is each side?,4 cm,10 cm,20 cm,8 cm
+school-09-maths-12-m1,Quadrilaterals,"In parallelogram ABCD, ∠A = (3x + 10)° and ∠B = (2x + 10)°. What is ∠A?",106°,74°,90°,96°
+school-09-maths-12-m4,Quadrilaterals,A triangle has perimeter 30 cm. A new triangle is formed by joining the midpoints of its sides. What is its perimeter?,10 cm,30 cm,60 cm,15 cm
+school-09-maths-12-m5,Quadrilaterals,The diagonals of parallelogram ABCD meet at O. AC = 14 cm and BD = 10 cm. What is OA + OB?,12 cm,24 cm,17 cm,7 cm
+school-09-maths-12-m6,Quadrilaterals,"ABCD is a rhombus with ∠A = 70°. What is ∠BAC, where AC is a diagonal?",70°,35°,55°,110°
+school-09-maths-12-m7,Quadrilaterals,A parallelogram has one right angle. What must it be?,A rhombus,A kite,A rectangle,A trapezium
+school-09-maths-12-m8,Quadrilaterals,A parallelogram has perimeter 56 cm and one side is 4 cm longer than the adjacent side. What is the longer side?,12 cm,14 cm,18 cm,16 cm
+school-09-maths-12-h1,Quadrilaterals,"In triangle ABC, D, E and F are midpoints of the sides. If the area of ABC is 48 cm², what is the area of triangle DEF?",12 cm²,24 cm²,16 cm²,6 cm²
+school-09-maths-12-h2,Quadrilaterals,"P, Q, R and S are the midpoints of the sides of quadrilateral ABCD, with diagonals AC = 10 cm and BD = 6 cm. What is the perimeter of PQRS?",32 cm,16 cm,8 cm,30 cm
+school-09-maths-12-h4,Quadrilaterals,The diagonals of rectangle ABCD meet at O and ∠AOB = 100°. What is ∠OAB?,50°,80°,100°,40°
+school-09-maths-12-h5,Quadrilaterals,A rhombus has side 13 cm and one diagonal 10 cm. What is its area?,120 cm²,130 cm²,60 cm²,156 cm²
+school-09-maths-12-h7,Quadrilaterals,Which property is NOT always true for a rhombus?,All four sides are equal,The diagonals are perpendicular,The diagonals are equal,Opposite angles are equal
+school-09-maths-12-h8,Quadrilaterals,"P is any point on side DC of parallelogram ABCD, whose area is 80 cm². What is the area of triangle APB?",80 cm²,20 cm²,160 cm²,40 cm²
+school-09-maths-13-e1,"Two Variables, One Line",Write 3y = 4x − 9 in the form ax + by + c = 0.,4x − 3y + 9 = 0,4x − 3y − 9 = 0,4x + 3y − 9 = 0,3x − 4y − 9 = 0
+school-09-maths-13-e2,"Two Variables, One Line","Which pair (x, y) is a solution of x + 2y = 7?","(2, 3)","(3, 3)","(1, 3)","(7, 2)"
+school-09-maths-13-e3,"Two Variables, One Line","What is the slope of the line through (0, 0) and (2, 6)?",1/3,6,2,3
+school-09-maths-13-e4,"Two Variables, One Line",What is the y-intercept of the line y = 2x − 5?,−5,5,2,−5/2
+school-09-maths-13-e6,"Two Variables, One Line",What is the equation of the x-axis?,x = 0,y = x,y = 0,x + y = 0
+school-09-maths-13-e7,"Two Variables, One Line",How many solutions does a linear equation in two variables have?,Exactly one,Exactly two,None,Infinitely many
+school-09-maths-13-m1,"Two Variables, One Line","If (3, 2) is a solution of 4x + ky = 20, what is k?",2,4,8,6
+school-09-maths-13-m4,"Two Variables, One Line",The sum of two numbers is 54 and one is five times the other. What is the larger?,45,9,27,50
+school-09-maths-13-m5,"Two Variables, One Line",A ramp rises 3 m over a horizontal run of 12 m. What is its slope?,4,1/4,3/4,15
+school-09-maths-13-m6,"Two Variables, One Line","A line passes through (1, 3) and (4, 12). What is its equation?",y = 4x − 1,y = x + 2,y = 3x,y = 9x − 6
+school-09-maths-13-m7,"Two Variables, One Line",Which line passes through the origin?,2x − 5y = 3,x + y = 1,y = x + 1,2x − 5y = 0
+school-09-maths-13-m8,"Two Variables, One Line",Where does the line 3x + 4y = 24 meet the x-axis?,"(8, 0)","(6, 0)","(0, 8)","(0, 6)"
+school-09-maths-13-h1,"Two Variables, One Line",Four years ago A was thrice as old as B. Six years from now A will be twice as old as B. How old is A today?,14 years,34 years,30 years,40 years
+school-09-maths-13-h3,"Two Variables, One Line","A two-digit number’s digits add up to 9, and the number is 9 more than the number with digits reversed. What is the number?",45,63,36,54
+school-09-maths-13-h4,"Two Variables, One Line","Half the perimeter of a field is 40 m, and its length is 6 m more than its width. What is the width?",17 m,23 m,20 m,14 m
+school-09-maths-13-h5,"Two Variables, One Line",Where does the line y = (2/3)x − 4 cross the x-axis?,"(−6, 0)","(6, 0)","(4, 0)","(0, −4)"
+school-09-maths-13-h7,"Two Variables, One Line",Where do the lines 2x + y = 11 and x − y = 1 meet?,"(3, 4)","(5, 1)","(6, −1)","(4, 3)"
+school-09-maths-13-h8,"Two Variables, One Line",Which ski hill is the steepest?,Rises 7 m over a run of 14 m,Rises 15 m over a run of 40 m,Rises 12 m over a run of 30 m,Rises 9 m over a run of 20 m
+school-09-maths-14-e1,Math of Space: Surface Area and Volume,Find the total surface area of a cube of side 5 cm.,125 cm²,100 cm²,150 cm²,25 cm²
+school-09-maths-14-e2,Math of Space: Surface Area and Volume,Find the volume of a cuboid measuring 8 cm × 5 cm × 3 cm.,158 cm³,16 cm³,240 cm³,120 cm³
+school-09-maths-14-e3,Math of Space: Surface Area and Volume,Find the curved surface area of a cone with radius 7 cm and slant height 10 cm. (π = 22/7),220 cm²,154 cm²,70 cm²,440 cm²
+school-09-maths-14-e4,Math of Space: Surface Area and Volume,Find the surface area of a sphere of radius 7 cm. (π = 22/7),154 cm²,616 cm²,1437 cm²,308 cm²
+school-09-maths-14-e5,Math of Space: Surface Area and Volume,Find the volume of a cylinder with radius 7 cm and height 10 cm. (π = 22/7),440 cm³,154 cm³,1540 cm³,3080 cm³
+school-09-maths-14-e6,Math of Space: Surface Area and Volume,How many cubes of side 2 cm fit in a cube of side 10 cm?,5,25,1000,125
+school-09-maths-14-m1,Math of Space: Surface Area and Volume,A cone has radius 7 cm and height 24 cm. What is its total surface area? (π = 22/7),550 cm²,858 cm²,704 cm²,1100 cm²
+school-09-maths-14-m2,Math of Space: Surface Area and Volume,Find the volume of a sphere of radius 21 cm. (π = 22/7),5544 cm³,19404 cm³,12936 cm³,38808 cm³
+school-09-maths-14-m3,Math of Space: Surface Area and Volume,Find the total surface area of a solid hemisphere of radius 7 cm. (π = 22/7),462 cm²,308 cm²,616 cm²,154 cm²
+school-09-maths-14-m4,Math of Space: Surface Area and Volume,A godown measures 20 m × 15 m × 10 m. How many boxes of 2 m × 1.5 m × 1 m can be packed in it?,100,1000,3000,500
+school-09-maths-14-m5,Math of Space: Surface Area and Volume,Two cubes of side 4 cm are joined face to face to form a cuboid. What is the surface area of the cuboid?,192 cm²,96 cm²,160 cm²,128 cm²
+school-09-maths-14-m8,Math of Space: Surface Area and Volume,The surface area of a sphere is 5544 cm². What is its radius? (π = 22/7),42 cm,21 cm,14 cm,7 cm
+school-09-maths-14-h1,Math of Space: Surface Area and Volume,The radius of a sphere is increased by 30%. By about what percentage does its volume increase?,30%,90%,119.7%,69%
+school-09-maths-14-h2,Math of Space: Surface Area and Volume,A right triangle with legs 7 cm and 24 cm is rotated about the 24 cm leg. What is the volume of the solid formed? (π = 22/7),3696 cm³,616 cm³,1100 cm³,1232 cm³
+school-09-maths-14-h3,Math of Space: Surface Area and Volume,A solid metal sphere of radius 6 cm is melted and recast into small spheres of radius 2 cm. How many are made?,27,9,3,81
+school-09-maths-14-h4,Math of Space: Surface Area and Volume,What is the volume of the largest cylinder that can be cut from a cube of edge 14 cm? (π = 22/7),616 cm³,2156 cm³,4312 cm³,2744 cm³
+school-09-maths-14-h7,Math of Space: Surface Area and Volume,A hemispherical bowl has radius 21 cm. How many litres of water can it hold? (π = 22/7; 1000 cm³ = 1 L),19.404 L,38.808 L,9.702 L,1.9404 L
+school-09-maths-14-h8,Math of Space: Surface Area and Volume,The radii of two spheres are in the ratio 2 : 3. What is the ratio of their volumes?,4 : 9,8 : 27,2 : 3,6 : 9

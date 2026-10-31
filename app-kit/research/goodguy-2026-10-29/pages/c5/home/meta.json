@@ -1,0 +1,55 @@
+{
+  "url": "https://univest.in/",
+  "fetched_at": "2026-10-29T06:31:38.172Z",
+  "status": 200,
+  "final_url": "https://univest.in/",
+  "blocked": false,
+  "title": "Univest: Stock Advisory & Investment by SEBI-Reg. Analysts",
+  "canonical": "https://univest.in/",
+  "meta": {
+    "description": "Univest is a stock market advisory and SEBI-registered investment platform offering stock research, trade ideas and Pro plans for Indian stock market investors. Free to start.",
+    "twitter:title": "Univest: Stock Advisory & Investment by SEBI-Reg. Analysts",
+    "twitter:description": "Univest is a stock market advisory and SEBI-registered investment platform offering stock research, trade ideas and Pro plans for Indian stock market investors. Free to start.",
+    "og:locale": "en_IN",
+    "og:url": "https://univest.in/",
+    "og:type": "website",
+    "og:image": "https://assets.univest.in/website-assets/UnivestLogo.jpg",
+    "og:site_name": "Univest",
+    "og:title": "Univest: Stock Advisory & Investment by SEBI-Reg. Analysts",
+    "og:description": "Univest is a stock market advisory and SEBI-registered investment platform offering stock research, trade ideas and Pro plans for Indian stock market investors. Free to start.",
+    "og:updated_time": "2026-10-29T00:00:00.000Z",
+    "og:image:secure_url": "https://assets.univest.in/website-assets/UnivestLogo.jpg",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Univest: Stock Advisory & Investment by SEBI-Reg. Analysts | Univest",
+    "og:image:type": "image/jpeg"
+  },
+  "products": [
+    {
+      "name": "Stock Advisory service In India",
+      "brand": "Univest",
+      "sku": null,
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "rating": "4.4",
+      "rating_count": "230120"
+    }
+  ],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "₹0",
+      "₹5",
+      "₹ 50,000"
+    ],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 38,
+  "text_chars": 12487
+}

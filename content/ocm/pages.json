@@ -1,0 +1,24 @@
+{
+  "ramp": {"start_per_day": 1, "step_every_days": 4, "step": 1},
+  "repost_after_days": 90,
+  "pages": [
+    {"id": "ose", "app": "OSE", "handle": "TBD", "target_per_day": 1,
+     "pillars": ["Product showcase", "Founder-led"]},
+    {"id": "goodhabit", "app": "GoodHabit", "handle": "TBD", "target_per_day": 4,
+     "pillars": ["Market case study", "Knowledge", "Indian current affairs", "Personal finance"]},
+    {"id": "openprep", "app": "OpenPrep", "handle": "TBD", "target_per_day": 3,
+     "pillars": ["Lesson", "CAT tip", "Career option"]},
+    {"id": "tomorrow", "app": "Tomorrow", "handle": "TBD", "target_per_day": 2,
+     "pillars": ["Product showcase", "Seamless transfer", "Telegram-connected", "Creators on Tomorrow"]},
+    {"id": "gh-clips-1", "app": "GoodHabit", "clip_of": "goodhabit", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "gh-clips-2", "app": "GoodHabit", "clip_of": "goodhabit", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "gh-clips-3", "app": "GoodHabit", "clip_of": "goodhabit", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "gh-clips-4", "app": "GoodHabit", "clip_of": "goodhabit", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "gh-clips-5", "app": "GoodHabit", "clip_of": "goodhabit", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "op-clips-1", "app": "OpenPrep", "clip_of": "openprep", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "op-clips-2", "app": "OpenPrep", "clip_of": "openprep", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "op-clips-3", "app": "OpenPrep", "clip_of": "openprep", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "op-clips-4", "app": "OpenPrep", "clip_of": "openprep", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]},
+    {"id": "op-clips-5", "app": "OpenPrep", "clip_of": "openprep", "handle": "TBD", "target_per_day": 4, "pillars": ["Clip"]}
+  ]
+}

@@ -1,0 +1,253 @@
+qid,chapter,question,A,B,C,D
+school-08-maths-1-e1,A Square and A Cube,Which of these numbers cannot be a perfect square?,1764,2038,2025,3136
+school-08-maths-1-e2,A Square and A Cube,What is the value of 35 squared?,1125,1215,1225,1325
+school-08-maths-1-e3,A Square and A Cube,How many whole numbers lie strictly between 12^2 and 13^2?,25,23,26,24
+school-08-maths-1-e4,A Square and A Cube,What is the cube root of 2744?,14,12,16,18
+school-08-maths-1-e6,A Square and A Cube,What is the last digit of 27 cubed?,7,9,3,1
+school-08-maths-1-e7,A Square and A Cube,What is the smallest number by which 12 must be multiplied to get a perfect square?,2,6,12,3
+school-08-maths-1-m1,A Square and A Cube,What is the sum of the first 15 odd numbers?,215,225,150,240
+school-08-maths-1-m2,A Square and A Cube,"What is the smallest perfect square divisible by 6, 8 and 10?",120,900,3600,1200
+school-08-maths-1-m3,A Square and A Cube,A square floor measures 30 tiles by 30 tiles. How many tiles are in the single outer border row?,120,112,104,116
+school-08-maths-1-m4,A Square and A Cube,What is the cube root of 17576?,26,24,28,36
+school-08-maths-1-m6,A Square and A Cube,What is 10 cubed minus 9 cubed?,19,81,271,361
+school-08-maths-1-m7,A Square and A Cube,What is the smallest number by which 252 must be multiplied to get a perfect square?,2,3,14,7
+school-08-maths-1-h1,A Square and A Cube,How many perfect squares lie between 200 and 1000?,16,17,18,15
+school-08-maths-1-h2,A Square and A Cube,5 x 6 x 7 x 8 + 1 is the square of which number?,40,42,41,43
+school-08-maths-1-h3,A Square and A Cube,How many two-digit numbers have a square ending in the digit 9?,9,20,16,18
+school-08-maths-1-h4,A Square and A Cube,A four-digit perfect cube ends in 8. What is its cube root?,12,22,18,8
+school-08-maths-1-h6,A Square and A Cube,What is 1^3 + 2^3 + 3^3 + ... + 10^3?,385,2025,3025,3355
+school-08-maths-1-h7,A Square and A Cube,What is the smallest number greater than 1 that is both a perfect square and a perfect cube?,36,216,8,64
+school-08-maths-2-e1,Power Play,What is 2^5 x 2^3 written as a single power of 2?,2^15,4^8,2^8,2^2
+school-08-maths-2-e2,Power Play,What is the value of (-3)^4?,-81,12,-12,81
+school-08-maths-2-e3,Power Play,What is 5^6 divided by 5^2?,5^4,5^3,5^8,1^4
+school-08-maths-2-e4,Power Play,What is the value of 10^-2?,0.001,0.01,-100,0.1
+school-08-maths-2-e5,Power Play,What is 7^0 + 3^0?,0,1,2,10
+school-08-maths-2-e7,Power Play,"How is 45,000 written in scientific notation?",4.5 x 10^4,45 x 10^3,0.45 x 10^5,4.5 x 10^3
+school-08-maths-2-m1,Power Play,Simplify (3^2)^4.,3^6,3^2,3^8,3^16
+school-08-maths-2-m2,Power Play,What is 2^6 x 5^6?,10^12,7^6,10^36,10^6
+school-08-maths-2-m4,Power Play,What is the value of (1/2)^-3?,1/8,8,-8,6
+school-08-maths-2-m5,Power Play,Simplify 10^-3 x 10^5 divided by 10^-1.,10,100,1000,0.001
+school-08-maths-2-m7,Power Play,What is (6.2 x 10^5) x (3 x 10^2) in scientific notation?,1.86 x 10^8,18.6 x 10^10,9.2 x 10^7,1.86 x 10^7
+school-08-maths-2-m8,Power Play,Light travels 3 x 10^5 km every second. How far does it travel in 5 x 10^2 seconds?,1.5 x 10^7 km,1.5 x 10^8 km,8 x 10^7 km,1.5 x 10^10 km
+school-08-maths-2-h1,Power Play,Which is correct?,3^60 is larger than 2^100,They are equal,2^100 is larger than 3^60,It cannot be decided without a calculator
+school-08-maths-2-h2,Power Play,Simplify (4^3 x 8^2) / 2^5.,64,256,512,128
+school-08-maths-2-h3,Power Play,3^n + 3^n + 3^n equals which of these?,3^(n+1),9^n,3^(3n),3^(n+3)
+school-08-maths-2-h4,Power Play,A code has 3 letters (A to Z) followed by 2 digits (0 to 9). How many codes are possible?,"17,676","1,757,600","1,560","11,881,376"
+school-08-maths-2-h5,Power Play,What is (2^-1 + 3^-1)^-1?,5/6,1/5,6/5,5
+school-08-maths-2-h7,Power Play,Earth's mass is about 6 x 10^24 kg and the Moon's about 7.35 x 10^22 kg. Earth is about how many times heavier?,80,8,800,0.08
+school-08-maths-3-e1,A Story of Numbers,What number does the Roman numeral XLIV stand for?,46,36,64,44
+school-08-maths-3-e2,A Story of Numbers,Which Roman numeral stands for 90?,XC,CX,XL,LXL
+school-08-maths-3-e3,A Story of Numbers,Which feature makes the Hindu-Arabic system better than Roman numerals for big numbers?,It uses more symbols,Place value and a symbol for zero,It repeats symbols many times,It has no fixed order of digits
+school-08-maths-3-e5,A Story of Numbers,What is the base-5 number 23 in decimal?,23,10,17,13
+school-08-maths-3-e6,A Story of Numbers,What is the binary number 1011 in decimal?,11,13,9,1011
+school-08-maths-3-e8,A Story of Numbers,What is decimal 9 in binary?,1010,1100,1001,101
+school-08-maths-3-m1,A Story of Numbers,"In Egyptian numerals, the symbol for 10 appears 3 times and the symbol for 1 appears 4 times. What number is it?",43,7,340,34
+school-08-maths-3-m2,A Story of Numbers,What number is the Roman numeral MCMXCIV?,1994,2094,1894,1964
+school-08-maths-3-m3,A Story of Numbers,What is XXIX + XIV written in Roman numerals?,XXXXIII,XLIII,XLIV,LXIII
+school-08-maths-3-m5,A Story of Numbers,What is decimal 25 in binary?,10011,11010,10101,11001
+school-08-maths-3-m6,A Story of Numbers,What is the largest decimal value of a 3-digit base-8 number?,511,512,777,343
+school-08-maths-3-m8,A Story of Numbers,"In base 5, what is 4 x 3?",12,17,22,32
+school-08-maths-3-h2,A Story of Numbers,What is MCMLXXXVII - MDCCCXLV written in Roman numerals?,CXLII,CXXXII,CXLI,CLII
+school-08-maths-3-h3,A Story of Numbers,In which base does the numeral 100 stand for decimal 49?,9,7,14,49
+school-08-maths-3-h4,A Story of Numbers,What is the base-4 number 333 in decimal?,64,333,63,27
+school-08-maths-3-h5,A Story of Numbers,How many numbers can be written with exactly 5 binary digits (first digit 1)?,32,31,5,16
+school-08-maths-3-h6,A Story of Numbers,What is the binary sum 1101 + 1011?,11000,10110,11010,11100
+school-08-maths-3-h8,A Story of Numbers,What is the binary product 101 x 11?,1011,1101,1111,10001
+school-08-maths-4-e1,Quadrilaterals,A quadrilateral has all four sides equal but its angles are not right angles. What is it?,Rhombus,Rectangle,Trapezium,Square
+school-08-maths-4-e2,Quadrilaterals,What is the sum of the four angles of any quadrilateral?,180 degrees,360 degrees,270 degrees,540 degrees
+school-08-maths-4-e3,Quadrilaterals,"Three angles of a quadrilateral are 80, 100 and 90 degrees. What is the fourth?",80 degrees,100 degrees,90 degrees,110 degrees
+school-08-maths-4-e4,Quadrilaterals,Which is always true for the diagonals of a rectangle?,They are perpendicular,They are unequal,They do not bisect each other,They are equal and bisect each other
+school-08-maths-4-e6,Quadrilaterals,The diagonals of a rhombus are 12 cm and 16 cm. What is the side length?,14 cm,10 cm,20 cm,28 cm
+school-08-maths-4-e7,Quadrilaterals,One angle of a parallelogram is 70 degrees. What is an adjacent angle?,70 degrees,290 degrees,110 degrees,20 degrees
+school-08-maths-4-m1,Quadrilaterals,The angles of a quadrilateral are in the ratio 1:2:3:4. What is the largest angle?,144 degrees,120 degrees,108 degrees,160 degrees
+school-08-maths-4-m2,Quadrilaterals,In a parallelogram one angle is three times its adjacent angle. What is the smallest angle?,60 degrees,45 degrees,135 degrees,30 degrees
+school-08-maths-4-m3,Quadrilaterals,"In trapezium ABCD, AB is parallel to CD, angle A = 72 and angle B = 85 degrees. What is angle C + angle D?",180 degrees,157 degrees,203 degrees,360 degrees
+school-08-maths-4-m4,Quadrilaterals,Which statement is true?,Every rhombus is a square,Every rectangle is a square,Every trapezium is a parallelogram,Every square is a rhombus
+school-08-maths-4-m6,Quadrilaterals,A rhombus has side 8 cm and one angle of 60 degrees. What is its shorter diagonal?,16 cm,8 cm,4 cm,8 root 3 cm
+school-08-maths-4-m7,Quadrilaterals,A rectangle has perimeter 36 cm and its length is twice its breadth. What is the breadth?,12 cm,9 cm,6 cm,18 cm
+school-08-maths-4-h1,Quadrilaterals,What is the angle between the bisectors of two adjacent angles of a parallelogram?,90 degrees,180 degrees,60 degrees,45 degrees
+school-08-maths-4-h2,Quadrilaterals,A rhombus has perimeter 52 cm and one diagonal of 24 cm. What is the other diagonal?,5 cm,10 cm,20 cm,14 cm
+school-08-maths-4-h3,Quadrilaterals,What shape do you get by joining the midpoints of the sides of a rectangle that is not a square?,Rectangle,Square,Rhombus,Trapezium
+school-08-maths-4-h4,Quadrilaterals,"The angles of a quadrilateral are x, x+10, x+20 and x+30 degrees. What is the largest angle?",75 degrees,95 degrees,100 degrees,105 degrees
+school-08-maths-4-h6,Quadrilaterals,A parallelogram has equal diagonals. What must it be?,Rhombus,Rectangle,Trapezium,Kite
+school-08-maths-4-h7,Quadrilaterals,In rectangle ABCD the diagonals meet at O and angle AOB = 64 degrees. What is angle OAB?,64 degrees,116 degrees,58 degrees,32 degrees
+school-08-maths-5-e1,Number Play,The sum of three odd numbers is always...,even,odd,a multiple of 3,a multiple of 4
+school-08-maths-5-e2,Number Play,Which of these numbers is divisible by 9?,3466,3467,3465,3468
+school-08-maths-5-e3,Number Play,Which of these numbers is divisible by 6?,4235,4237,4238,4236
+school-08-maths-5-e4,Number Play,What is the remainder when 47 is divided by 5?,2,3,7,9
+school-08-maths-5-e5,Number Play,23 leaves remainder 3 and 34 leaves remainder 4 when divided by 5. What remainder does 23 + 34 leave?,7,2,1,3
+school-08-maths-5-e7,Number Play,What is the digital root of 4567?,22,2,7,4
+school-08-maths-5-m1,Number Play,The sum of four consecutive whole numbers leaves what remainder when divided by 4?,0,2,1,3
+school-08-maths-5-m2,Number Play,n x n + n is always...,odd,a multiple of 3,even,a multiple of 4
+school-08-maths-5-m4,Number Play,What is the smallest 3-digit number divisible by both 4 and 9?,108,100,117,144
+school-08-maths-5-m5,Number Play,"For which digit A is 6A8 (a three-digit number 6 hundreds, A tens, 8 units) divisible by 9?",1,4,2,9
+school-08-maths-5-m6,Number Play,What is the smallest number greater than 10 that leaves remainder 2 on division by both 3 and 4?,26,6,14,12
+school-08-maths-5-m7,Number Play,What remainder does 123 x 456 leave when divided by 5?,1,0,4,3
+school-08-maths-5-h1,Number Play,The greatest number that always divides the product of any three consecutive whole numbers is...,12,6,8,9
+school-08-maths-5-h4,Number Play,"What is the smallest number greater than 1 that leaves remainder 1 on division by 2, 3, 4, 5 and 6?",61,60,121,31
+school-08-maths-5-h5,Number Play,What is the smallest number that leaves remainder 4 on division by 9 and remainder 5 on division by 7?,31,40,49,94
+school-08-maths-5-h6,Number Play,The difference between a two-digit number and its reversal is always divisible by...,11,10,9,18
+school-08-maths-5-h7,Number Play,What is the largest 4-digit number divisible by 18?,9996,9972,9981,9990
+school-08-maths-5-h8,Number Play,A two-digit number has digit sum 11. Reversing its digits increases it by 27. What is the number?,47,74,38,56
+school-08-maths-6-e1,"We Distribute, Yet Things Multiply",What is 5(x + 4) after expansion?,5x + 4,x + 20,5x + 20,5x + 9
+school-08-maths-6-e2,"We Distribute, Yet Things Multiply",What is 12 x 99 worked out as 12 x 100 - 12?,1288,1198,1088,1188
+school-08-maths-6-e3,"We Distribute, Yet Things Multiply",What is the expansion of (x + 3)^2?,x^2 + 6x + 9,x^2 + 9,x^2 + 3x + 9,2x + 6
+school-08-maths-6-e5,"We Distribute, Yet Things Multiply",Simplify 2x(x + 5) - 3x.,2x^2 + 13x,2x^2 + 10x - 3,2x^2 + 7x,2x^2 + 8x
+school-08-maths-6-e6,"We Distribute, Yet Things Multiply",What is the expansion of (x - 4)^2?,x^2 - 16,x^2 + 8x + 16,x^2 - 4x + 16,x^2 - 8x + 16
+school-08-maths-6-e8,"We Distribute, Yet Things Multiply",What is 23 x 11?,233,253,2323,263
+school-08-maths-6-m1,"We Distribute, Yet Things Multiply",What is 98 squared?,9804,9404,9604,9640
+school-08-maths-6-m2,"We Distribute, Yet Things Multiply",What is 103 x 97?,10009,9901,9999,9991
+school-08-maths-6-m3,"We Distribute, Yet Things Multiply",What is the expansion of (2x + 3y)^2?,4x^2 + 12xy + 9y^2,4x^2 + 9y^2,2x^2 + 6xy + 3y^2,4x^2 + 6xy + 9y^2
+school-08-maths-6-m5,"We Distribute, Yet Things Multiply",What is 15 squared minus 7 squared?,64,304,176,8
+school-08-maths-6-m6,"We Distribute, Yet Things Multiply",Step n of a tile pattern uses n^2 + 3n + 2 tiles. How many tiles are in step 5?,40,32,50,42
+school-08-maths-6-m8,"We Distribute, Yet Things Multiply","If x + 1/x = 5, what is x^2 + 1/x^2?",25,23,27,21
+school-08-maths-6-h1,"We Distribute, Yet Things Multiply",What is 998 squared?,994004,998004,996004,996400
+school-08-maths-6-h2,"We Distribute, Yet Things Multiply",What is (3.5 + 2.5)^2 - (3.5 - 2.5)^2?,36,6,9,35
+school-08-maths-6-h3,"We Distribute, Yet Things Multiply","If a + b = 10 and ab = 21, what is a^2 + b^2?",58,79,100,42
+school-08-maths-6-h5,"We Distribute, Yet Things Multiply",A rectangular park measures (x + 8) by (x + 6) metres. A square flowerbed x by x is inside. What is the area of the park outside the flowerbed?,2x^2 + 14x + 48,14x + 14,14x + 48,48x + 14
+school-08-maths-6-h6,"We Distribute, Yet Things Multiply",Which expression equals 2(a^2 + b^2)?,(a + b)^2 - (a - b)^2,(a + b)^2,(a - b)^2 + 2ab,(a + b)^2 + (a - b)^2
+school-08-maths-6-h8,"We Distribute, Yet Things Multiply",A rectangle has sides (3x + 2) and (2x - 1). What is its area?,6x^2 - x - 2,6x^2 + x - 2,6x^2 + 7x - 2,5x^2 + x - 2
+school-08-maths-7-e1,Proportional Reasoning-1,What is 24:36 in simplest form?,3:2,4:6,6:9,2:3
+school-08-maths-7-e2,Proportional Reasoning-1,Which ratio is equal to 3:5?,9:15,6:8,5:3,12:15
+school-08-maths-7-e3,Proportional Reasoning-1,Rohan divides Rs 500 between two friends in the ratio 2:3. How much does the larger share get?,Rs 200,Rs 300,Rs 250,Rs 400
+school-08-maths-7-e4,Proportional Reasoning-1,What is the ratio of 40 minutes to 2 hours?,1:2,3:1,1:3,2:3
+school-08-maths-7-e6,Proportional Reasoning-1,On a map 1 cm stands for 5 km. How far apart are two towns that are 7 cm apart on the map?,35 km,12 km,70 km,1.4 km
+school-08-maths-7-e7,Proportional Reasoning-1,Find the missing term: 4:7 = 20:__,28,35,24,32
+school-08-maths-7-m1,Proportional Reasoning-1,"Rs 1,200 is shared by A, B and C in the ratio 2:3:5. What does C get?",Rs 360,Rs 240,Rs 500,Rs 600
+school-08-maths-7-m3,Proportional Reasoning-1,Two numbers add up to 84 and are in the ratio 4:3. What is their difference?,7,12,24,36
+school-08-maths-7-m4,Proportional Reasoning-1,A car travels 150 km in 3 hours. How far does it go in 5 hours at the same speed?,200 km,450 km,250 km,300 km
+school-08-maths-7-m5,Proportional Reasoning-1,Rice costs Rs 48 per kg. What do 2.5 kg cost?,Rs 96,Rs 110,Rs 130,Rs 120
+school-08-maths-7-m6,Proportional Reasoning-1,A rectangle 6 cm by 4 cm is scaled so that its width becomes 10 cm. What is the new length (keeping the shape)?,15 cm,12 cm,14 cm,20 cm
+school-08-maths-7-m7,Proportional Reasoning-1,Which is the better buy: 250 g for Rs 45 or 400 g for Rs 68?,250 g for Rs 45,400 g for Rs 68,Both cost the same per gram,It cannot be decided
+school-08-maths-7-h1,Proportional Reasoning-1,"A father and son have ages in the ratio 7:2, and the father is 35 years older. In how many years will the ratio be 2:1?",14,35,7,21
+school-08-maths-7-h3,Proportional Reasoning-1,"Rs 9,000 profit is shared in the ratio 1/2 : 1/3 : 1/6. What is the largest share?","Rs 3,000","Rs 4,500","Rs 4,000","Rs 1,500"
+school-08-maths-7-h4,Proportional Reasoning-1,A bridge model is built at 1:50. The model is 18 cm long. How long is the real bridge?,90 m,0.9 m,9 m,900 m
+school-08-maths-7-h5,Proportional Reasoning-1,8 parathas need 600 g of atta. Five people each eat 3 parathas. How much atta is needed?,1000 g,900 g,1200 g,1125 g
+school-08-maths-7-h6,Proportional Reasoning-1,Red and blue pens are in the ratio 3:4. After adding 6 red pens the numbers are equal. How many pens were there at first?,42,28,14,48
+school-08-maths-7-h7,Proportional Reasoning-1,A:B = 2:3 and B:C = 4:5. What is A:C?,2:5,8:15,8:12,15:8
+school-08-maths-8-e1,Fractions in Disguise,What is 3/4 as a percentage?,75%,34%,43%,60%
+school-08-maths-8-e2,Fractions in Disguise,What is 20% of 350?,7,70,17.5,175
+school-08-maths-8-e3,Fractions in Disguise,Anil scored 45 out of 60. What is his percentage?,45%,15%,75%,25%
+school-08-maths-8-e4,Fractions in Disguise,Meena buys a bag for Rs 200 and sells it for Rs 250. What is her profit percentage?,20%,50%,250%,25%
+school-08-maths-8-e6,Fractions in Disguise,A price rises from Rs 80 to Rs 100. What is the percentage increase?,20%,25%,100%,125%
+school-08-maths-8-e7,Fractions in Disguise,"What is the simple interest on Rs 2,000 at 5% per year for 2 years?",Rs 100,"Rs 2,200",Rs 200,Rs 20
+school-08-maths-8-m1,Fractions in Disguise,After a 20% discount a shirt costs Rs 600. What was its marked price?,Rs 750,Rs 720,Rs 800,Rs 620
+school-08-maths-8-m2,Fractions in Disguise,30% of a number is 63. What is the number?,189,210,19,21
+school-08-maths-8-m3,Fractions in Disguise,"Ravi buys a fan for Rs 1,500 and sells it for Rs 1,350. What is his loss percentage?",11.1%,15%,10%,150%
+school-08-maths-8-m4,Fractions in Disguise,"A shop sells 'buy 3, get 1 free' on Rs 40 items. What is the effective discount on 4 items?",33.3%,20%,30%,25%
+school-08-maths-8-m6,Fractions in Disguise,"What is the compound interest on Rs 10,000 at 10% per year for 2 years?","Rs 2,000","Rs 2,100","Rs 2,200","Rs 2,110"
+school-08-maths-8-m7,Fractions in Disguise,A shopkeeper marks goods 40% above cost and gives a 10% discount. What is his profit percentage?,30%,50%,26%,14%
+school-08-maths-8-h1,Fractions in Disguise,"In a class of 50, 60% are girls. 20% of the girls and 25% of the boys wear glasses. How many students wear glasses?",11,12,10,9
+school-08-maths-8-h2,Fractions in Disguise,"Priya earns Rs 40,000. She spends 30% on rent and then 25% of the remainder on food. How much is left?","Rs 18,000","Rs 21,000","Rs 20,000","Rs 22,000"
+school-08-maths-8-h4,Fractions in Disguise,"A trader sells two articles at Rs 1,200 each, one at 20% gain and one at 20% loss. What is the overall result?","No profit, no loss",Gain of 4%,Loss of 2%,Loss of 4%
+school-08-maths-8-h6,Fractions in Disguise,A price is raised by 20% and then by 30%. What is the total percentage increase?,50%,56%,60%,36%
+school-08-maths-8-h7,Fractions in Disguise,"What is the difference between compound and simple interest on Rs 8,000 at 10% per year for 3 years?",Rs 240,Rs 331,Rs 248,Rs 200
+school-08-maths-8-h8,Fractions in Disguise,"A town of 20,000 people grows 10% every year. What is its population after 2 years?","24,000","22,000","24,400","24,200"
+school-08-maths-9-e1,The Baudhayana-Pythagoras Theorem,The legs of a right triangle are 6 cm and 8 cm. What is the hypotenuse?,14 cm,10 cm,12 cm,7 cm
+school-08-maths-9-e2,The Baudhayana-Pythagoras Theorem,A right triangle has hypotenuse 13 cm and one leg 5 cm. What is the other leg?,8 cm,18 cm,12 cm,144 cm
+school-08-maths-9-e3,The Baudhayana-Pythagoras Theorem,Which set of numbers is a Pythagorean triple?,"5, 6, 7","7, 8, 9","6, 7, 10","9, 12, 15"
+school-08-maths-9-e5,The Baudhayana-Pythagoras Theorem,A 5 m ladder leans on a wall with its foot 3 m from the wall. How high does it reach?,8 m,4 m,2 m,5 m
+school-08-maths-9-e6,The Baudhayana-Pythagoras Theorem,What is the longest side of a right triangle called?,Altitude,Median,Hypotenuse,Base
+school-08-maths-9-e8,The Baudhayana-Pythagoras Theorem,Which sides form a right triangle?,"7, 24, 25","6, 9, 12","5, 7, 9","8, 9, 12"
+school-08-maths-9-m1,The Baudhayana-Pythagoras Theorem,The hypotenuse of an isosceles right triangle is 10 root 2 cm. What is each equal side?,20 cm,10 cm,5 root 2 cm,10 root 2 cm
+school-08-maths-9-m2,The Baudhayana-Pythagoras Theorem,A rectangle is 9 cm by 12 cm. What is its diagonal?,21 cm,108 cm,15 cm,225 cm
+school-08-maths-9-m3,The Baudhayana-Pythagoras Theorem,"Using the triple (2n+1, 2n^2+2n, 2n^2+2n+1), which triple has 9 as its smallest number?","9, 12, 15","9, 41, 42","9, 20, 21","9, 40, 41"
+school-08-maths-9-m5,The Baudhayana-Pythagoras Theorem,A 17 m wire is tied to the top of a pole and fixed 8 m from its base. How tall is the pole?,9 m,15 m,25 m,12 m
+school-08-maths-9-m6,The Baudhayana-Pythagoras Theorem,What is the height of an equilateral triangle of side 8 cm?,8 root 3 cm,4 cm,4 root 3 cm,6 cm
+school-08-maths-9-m8,The Baudhayana-Pythagoras Theorem,Two friends leave a spot. One walks 9 km east and the other 12 km north. How far apart are they?,15 km,21 km,3 km,108 km
+school-08-maths-9-h1,The Baudhayana-Pythagoras Theorem,Which of these triples is primitive (cannot be reduced to a smaller triple)?,"10, 24, 26","5, 12, 13","15, 36, 39","20, 48, 52"
+school-08-maths-9-h2,The Baudhayana-Pythagoras Theorem,A rhombus has diagonals 30 cm and 16 cm. What is its perimeter?,46 cm,34 cm,68 cm,17 cm
+school-08-maths-9-h3,The Baudhayana-Pythagoras Theorem,A right triangle has legs a and 8 and hypotenuse a + 2. What is a?,6,17,12,15
+school-08-maths-9-h5,The Baudhayana-Pythagoras Theorem,Squares on the two legs of a right triangle have areas 144 and 81 square cm. What is the area of the square on the hypotenuse?,63 square cm,225 square cm,15 square cm,195 square cm
+school-08-maths-9-h6,The Baudhayana-Pythagoras Theorem,"Using (2n+1, 2n^2+2n, 2n^2+2n+1), what is the largest number of the triple whose smallest is 11?",60,121,61,65
+school-08-maths-9-h8,The Baudhayana-Pythagoras Theorem,A right triangle has hypotenuse 13 cm and perimeter 30 cm. What is its area?,30 square cm,60 square cm,65 square cm,78 square cm
+school-08-maths-10-e1,Proportional Reasoning-2,Which pair of quantities varies inversely?,Cost and number of pens,Side and perimeter of a square,Speed and time for a fixed distance,Distance and time at constant speed
+school-08-maths-10-e2,Proportional Reasoning-2,6 workers finish a job in 10 days. How many days do 12 workers take?,20,10,8,5
+school-08-maths-10-e3,Proportional Reasoning-2,"x and y are inversely proportional. When x = 4, y = 15. What is y when x = 6?",10,22.5,9,12
+school-08-maths-10-e4,Proportional Reasoning-2,"In a pie chart, what angle does a 25% sector have?",25 degrees,90 degrees,45 degrees,180 degrees
+school-08-maths-10-e6,Proportional Reasoning-2,A tap fills a tank in 6 hours. What fraction does it fill in 1 hour?,6,1/60,1/3,1/6
+school-08-maths-10-e7,Proportional Reasoning-2,A can finish a job in 10 days. What fraction of it does he finish in 4 days?,2/5,5/2,1/4,3/5
+school-08-maths-10-m1,Proportional Reasoning-2,8 men build a wall in 15 days. How long do 10 men take?,18.75 days,10 days,12 days,20 days
+school-08-maths-10-m2,Proportional Reasoning-2,Food for 40 students lasts 12 days. How long does it last for 60 students?,18 days,16 days,6 days,8 days
+school-08-maths-10-m3,Proportional Reasoning-2,A car at 60 km/h takes 4 hours for a trip. How long at 80 km/h?,3 hours,5.33 hours,3.5 hours,2 hours
+school-08-maths-10-m4,Proportional Reasoning-2,"In a survey of 180 students, 54 choose football. What is its sector angle?",54 degrees,108 degrees,90 degrees,120 degrees
+school-08-maths-10-m6,Proportional Reasoning-2,A can finish a job in 6 days and B in 3 days. How long do they take together?,4.5 days,3 days,9 days,2 days
+school-08-maths-10-m7,Proportional Reasoning-2,5 workers finish a job in 12 days. How many workers are needed to finish it in 4 days?,15,10,3,20
+school-08-maths-10-h1,Proportional Reasoning-2,"Food for 30 students lasts 20 days. After 5 days, 10 more students join. How many more days will the food last?",15,10,11.25,12
+school-08-maths-10-h2,Proportional Reasoning-2,Pipe A fills a tank in 12 hours and pipe B in 8 hours. How long do they take together?,10 hours,4 h 30 min,5 hours,4 h 48 min
+school-08-maths-10-h3,Proportional Reasoning-2,"Pipe A fills a tank in 6 hours and an outlet empties it in 10 hours. With both open, how long to fill the tank?",15 hours,4 hours,16 hours,8 hours
+school-08-maths-10-h4,Proportional Reasoning-2,"A family's monthly budget of Rs 48,000 is drawn as a pie chart. Savings take 150 degrees. How much is saved?","Rs 12,000","Rs 20,000","Rs 16,000","Rs 24,000"
+school-08-maths-10-h6,Proportional Reasoning-2,12 workers finish a job in 15 days. How many extra workers are needed to finish it in 9 days?,20,5,12,8
+school-08-maths-10-h7,Proportional Reasoning-2,A and B together finish a job in 12 days. A alone takes 20 days. How long does B alone take?,30 days,32 days,8 days,24 days
+school-08-maths-11-e1,Exploring Some Geometric Themes,"In the Sierpinski triangle, stage 1 has 3 filled triangles. How many are there at stage 2?",6,8,12,9
+school-08-maths-11-e2,Exploring Some Geometric Themes,How many squares make a net of a cube?,6,4,8,12
+school-08-maths-11-e3,Exploring Some Geometric Themes,How many edges does a cube have?,6,12,8,10
+school-08-maths-11-e4,Exploring Some Geometric Themes,A 3 x 3 x 3 cube is built from unit cubes. How many unit cubes is that?,9,18,27,81
+school-08-maths-11-e5,Exploring Some Geometric Themes,"A stack has 4 cubes in the bottom layer, 3 in the middle and 1 on top. How many cubes in all?",7,12,10,8
+school-08-maths-11-e7,Exploring Some Geometric Themes,"On a dice, opposite faces add up to 7. What is opposite the face showing 2?",4,5,6,3
+school-08-maths-11-m1,Exploring Some Geometric Themes,A unit square has its middle ninth removed. The same is done to each of the 8 remaining squares. What area is left?,7/9,8/9,16/81,64/81
+school-08-maths-11-m2,Exploring Some Geometric Themes,How many filled triangles does the Sierpinski triangle have at stage 4?,81,64,12,27
+school-08-maths-11-m4,Exploring Some Geometric Themes,A cuboid is 4 cm by 3 cm by 2 cm. What is the total area of its net?,24 square cm,26 square cm,52 square cm,48 square cm
+school-08-maths-11-m6,Exploring Some Geometric Themes,"A tower on a 2 x 2 base has column heights 3, 2, 1 and 2. How many cubes in all?",8,4,12,6
+school-08-maths-11-m7,Exploring Some Geometric Themes,"A solid has a 3 x 3 bottom layer, a 2 x 2 layer above, and one cube on top. How many cubes in all?",12,14,9,16
+school-08-maths-11-m8,Exploring Some Geometric Themes,How many polygons make the net of a triangular prism?,6,4,5,3
+school-08-maths-11-h1,Exploring Some Geometric Themes,"The Sierpinski triangle starts with area 1, and each stage keeps 3/4 of the area. What area remains at stage 3?",9/16,3/8,81/256,27/64
+school-08-maths-11-h2,Exploring Some Geometric Themes,A Koch curve starts as a segment of length 1 and each stage multiplies length by 4/3. What is the length after 2 stages?,16/9,8/3,4/3,64/27
+school-08-maths-11-h4,Exploring Some Geometric Themes,"How many different nets does a cube have, if rotations and flips are treated as the same?",6,12,11,10
+school-08-maths-11-h5,Exploring Some Geometric Themes,A 4 x 4 x 4 cube is painted outside and cut into 64 unit cubes. How many have exactly one face painted?,8,12,32,24
+school-08-maths-11-h6,Exploring Some Geometric Themes,A 5 x 5 x 5 cube is built from unit cubes. How many cubes are not on the surface?,27,125,9,36
+school-08-maths-11-h7,Exploring Some Geometric Themes,"Heights of columns on a 3 x 3 base are, row by row: 3,1,2 / 1,1,1 / 2,0,1. How many cubes are there?",9,12,15,10
+school-08-maths-12-e1,Tales by Dots and Lines,"What is the mean of 4, 6, 8, 10 and 12?",8,7,10,6
+school-08-maths-12-e2,Tales by Dots and Lines,The mean of 5 numbers is 12. What is their sum?,17,60,7,12
+school-08-maths-12-e3,Tales by Dots and Lines,"What is the median of 3, 9, 5, 7, 1?",7,9,5,1
+school-08-maths-12-e5,Tales by Dots and Lines,Which display is best to show how temperature changed over a week?,Line graph,List of names,Pie chart of one day,A single number
+school-08-maths-12-e6,Tales by Dots and Lines,"Temperatures Mon to Fri are 28, 30, 29, 31, 32. What is the biggest rise from one day to the next?",3,2,1,4
+school-08-maths-12-e8,Tales by Dots and Lines,"What is the median of 12, 15, 11, 18, 14?",15,12,11,14
+school-08-maths-12-m1,Tales by Dots and Lines,"The mean of 6 numbers is 15. When one number, 10, is removed, what is the mean of the rest?",16,15,14,18
+school-08-maths-12-m2,Tales by Dots and Lines,"The mean of 8 scores is 72. Two more scores, 80 and 90, are added. What is the new mean?",76,74.6,72,74
+school-08-maths-12-m3,Tales by Dots and Lines,Every one of 20 readings was recorded 2 too high and the mean came out as 50. What is the true mean?,52,50,48,49
+school-08-maths-12-m5,Tales by Dots and Lines,"In the data 4, 8, 10, 14, 20, the 20 is replaced by 200. What happens?","The mean changes, the median stays 10",Both change,The median becomes 200,Neither changes
+school-08-maths-12-m6,Tales by Dots and Lines,"Number of siblings: 0 (3 students), 1 (5), 2 (4), 3 (2). What is the median?",2,1,1.5,0
+school-08-maths-12-m8,Tales by Dots and Lines,"For that rainfall data, what is the difference between the wettest and driest month?",90 mm,10 mm,50 mm,80 mm
+school-08-maths-12-h1,Tales by Dots and Lines,"The mean of 5 numbers is 20. When one is removed, the mean of the rest is 18. Which was removed?",28,18,20,22
+school-08-maths-12-h2,Tales by Dots and Lines,30 students average 60. 20 of them average 55. What is the average of the other 10?,65,70,75,60
+school-08-maths-12-h3,Tales by Dots and Lines,Class A has 25 students with mean 40. Class B has 15 with mean 48. What is the combined mean?,44,42,43,45
+school-08-maths-12-h5,Tales by Dots and Lines,Seven values in order have median 20. The smallest value is replaced by 100. What is the new median?,At least 20,Exactly 20,100,Less than 20
+school-08-maths-12-h6,Tales by Dots and Lines,Six values have median 15. The two middle values are 12 and x. What is x?,15,18,3,27
+school-08-maths-12-h8,Tales by Dots and Lines,The monthly mean rainfall is 40 mm in year 1 and 45 mm in year 2. What is the total over the two years?,85 mm,510 mm,960 mm,1020 mm
+school-08-maths-13-e1,Algebra Play,A two-digit number has tens digit a and units digit b. How do you write its reversal?,10a + b,10b + a,a + b,ab
+school-08-maths-13-e2,Algebra Play,What is 10a + b added to its reversal?,10a + 10b,a + b,11a + 11b,9a + 9b
+school-08-maths-13-e3,Algebra Play,Solve x + 7 = 15.,x = 22,x = 7,x = 9,x = 8
+school-08-maths-13-e4,Algebra Play,Solve 3x - 5 = 16.,x = 7,x = 3,x = 5,x = 21
+school-08-maths-13-e6,Algebra Play,The nth term of a pattern is 3n. What is the 10th term?,13,33,30,27
+school-08-maths-13-e7,Algebra Play,n squares in a row need 3n + 1 matchsticks. How many for 6 squares?,18,24,21,19
+school-08-maths-13-m1,Algebra Play,"Think of n, multiply by 3, add 12, divide by 3 and subtract n. What is the result?",12,4,n,0
+school-08-maths-13-m3,Algebra Play,"Add all three rotations of the digits 3, 4, 5: 345, 453 and 534. What is the sum?",1212,1221,1443,1332
+school-08-maths-13-m4,Algebra Play,Sunita spends Rs 40 and has one third of her money left. How much did she start with?,Rs 60,Rs 120,Rs 80,Rs 40
+school-08-maths-13-m5,Algebra Play,A father is 3 times his son's age. In 10 years the sum of their ages will be 80. How old is the son now?,10,15,20,12
+school-08-maths-13-m6,Algebra Play,A cart sells 40 dosas for a total profit of Rs 800. Each dosa costs Rs 30 to make. What is the selling price?,Rs 45,Rs 60,Rs 50,Rs 20
+school-08-maths-13-m7,Algebra Play,The nth term of a pattern is 5n - 2. What is the 12th term?,60,62,57,58
+school-08-maths-13-h1,Algebra Play,"For every odd number n, n^2 - 1 is divisible by...",16,8,12,10
+school-08-maths-13-h3,Algebra Play,A pilgrim's flowers double at each of two ponds. After each pond she offers 16 flowers at a shrine and ends with none. How many did she start with?,16,8,24,12
+school-08-maths-13-h4,Algebra Play,Two pens and three notebooks cost Rs 75. A notebook costs Rs 5 more than a pen. What does a notebook cost?,Rs 17,Rs 12,Rs 15,Rs 22
+school-08-maths-13-h5,Algebra Play,Three consecutive even numbers add up to 114. What is the middle number?,36,38,40,34
+school-08-maths-13-h6,Algebra Play,Step n of a tile pattern has (n + 2)^2 - 4 tiles. Which simplified expression is the same?,n^2 - 4n,n^2 + 4,n^2 + 4n,n^2
+school-08-maths-13-h7,Algebra Play,"A four-row pyramid has base 2, 1, 3, 2, and each cell is the sum of the two below. What is the top?",14,18,8,16
+school-08-maths-14-e1,Area,What is the area of a rectangle 14 m by 9 m?,46 square m,23 square m,126 square m,252 square m
+school-08-maths-14-e2,Area,A rectangle has area 96 square m and length 12 m. What is its width?,84 m,12 m,6 m,8 m
+school-08-maths-14-e3,Area,A triangle has base 10 cm and height 7 cm. What is its area?,35 square cm,70 square cm,17 square cm,25 square cm
+school-08-maths-14-e4,Area,A triangle has area 48 square cm and base 12 cm. What is its height?,4 cm,8 cm,16 cm,576 cm
+school-08-maths-14-e5,Area,A parallelogram has base 15 cm and height 8 cm. What is its area?,60 square cm,23 square cm,120 square cm,240 square cm
+school-08-maths-14-e7,Area,A square park's side is doubled. Its area becomes...,4 times,2 times,8 times,the same
+school-08-maths-14-m1,Area,A garden is 20 m by 15 m. A 2 m wide path runs inside all around it. What is the area of the path?,140 square m,120 square m,124 square m,176 square m
+school-08-maths-14-m2,Area,"A frame measures 30 cm by 20 cm outside, with a border 3 cm wide. What is the area of the border?",336 square cm,300 square cm,240 square cm,264 square cm
+school-08-maths-14-m4,Area,A right triangle has legs 6 cm and 8 cm. What is the height drawn to the hypotenuse?,5 cm,4.8 cm,4 cm,6 cm
+school-08-maths-14-m5,Area,Joining the midpoints of the sides of a triangle makes a smaller triangle. What fraction of the original area is it?,1/2,1/3,1/4,1/8
+school-08-maths-14-m6,Area,"A parallelogram has sides 12 cm and 8 cm, and the height on the 12 cm side is 6 cm. What is the height on the 8 cm side?",6 cm,8 cm,12 cm,9 cm
+school-08-maths-14-m7,Area,A 12 m by 8 m rectangle has a 4 m by 3 m rectangle cut from one corner. What area is left?,84 square m,108 square m,96 square m,72 square m
+school-08-maths-14-h1,Area,A path 3 m wide runs round the outside of a 50 m by 40 m field. What is the area of the path?,540 square m,600 square m,576 square m,546 square m
+school-08-maths-14-h3,Area,A triangle PQR has PQ = PR = 10 cm and QR = 12 cm. What is its area?,48 square cm,60 square cm,96 square cm,120 square cm
+school-08-maths-14-h4,Area,D is on BC with BD:DC = 2:3 in triangle ABC of area 100 square cm. What is the area of ABD?,60 square cm,40 square cm,20 square cm,50 square cm
+school-08-maths-14-h5,Area,P is the midpoint of AB in parallelogram ABCD of area 80 square cm. What is the area of triangle PCD?,20 square cm,80 square cm,40 square cm,60 square cm
+school-08-maths-14-h7,Area,The midpoints of the sides of a square of side 12 cm are joined. What is the area of the inner square?,72 square cm,36 square cm,96 square cm,48 square cm
+school-08-maths-14-h8,Area,A rhombus has diagonals 16 cm and 30 cm. What is its area?,480 square cm,240 square cm,46 square cm,120 square cm

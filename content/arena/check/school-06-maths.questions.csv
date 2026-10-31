@@ -1,0 +1,181 @@
+qid,chapter,question,A,B,C,D
+school-06-maths-1-e1,Patterns in Mathematics,"What is the next number in the sequence 5, 10, 15, 20, 25, ...?",28,30,35,26
+school-06-maths-1-e2,Patterns in Mathematics,"What is the next number in the triangular sequence 1, 3, 6, 10, 15, ...?",20,22,21,25
+school-06-maths-1-e3,Patterns in Mathematics,What is the 6th square number?,12,25,49,36
+school-06-maths-1-e4,Patterns in Mathematics,Which of these is a cube number?,125,120,150,200
+school-06-maths-1-e5,Patterns in Mathematics,"What is the next number in 100, 93, 86, 79, ...?",73,72,71,70
+school-06-maths-1-e6,Patterns in Mathematics,What is the value of 1 + 3 + 5 + 7 + 9?,24,20,25,35
+school-06-maths-1-m1,Patterns in Mathematics,What is the 10th triangular number?,45,55,50,60
+school-06-maths-1-m2,Patterns in Mathematics,What is the sum of the first 12 odd numbers?,24,132,144,156
+school-06-maths-1-m3,Patterns in Mathematics,The 6th and 7th triangular numbers are 21 and 28. What do you get when you add them?,"49, a cube number","47, a prime number","49, a triangular number","49, a square number"
+school-06-maths-1-m4,Patterns in Mathematics,"A staircase has 1 tile in step 1, 3 tiles in step 2, 6 in step 3 and 10 in step 4. How many tiles are in step 8?",36,28,32,64
+school-06-maths-1-m5,Patterns in Mathematics,"In the sequence 1, 3, 7, 15, 31, ... each term is double the previous one plus 1. What is the next term?",62,63,47,93
+school-06-maths-1-m6,Patterns in Mathematics,Which number is both a square number and a cube number?,8,16,64,125
+school-06-maths-1-h1,Patterns in Mathematics,What is 1 + 2 + 3 + ... + 49 + 50 + 49 + ... + 3 + 2 + 1?,1275,2500,2550,5000
+school-06-maths-1-h2,Patterns in Mathematics,Which of these numbers can be arranged as a triangle of dots and also as a square of dots?,28,49,36,45
+school-06-maths-1-h3,Patterns in Mathematics,What is 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1?,1023,512,2048,1024
+school-06-maths-1-h4,Patterns in Mathematics,"The hexagonal numbers 1, 7, 19, 37, 61, 91 grow by 6, 12, 18, 24, 30. What is the next number?",127,121,128,122
+school-06-maths-1-h7,Patterns in Mathematics,What do you get when you add the 20th and the 21st triangular numbers?,420,462,400,441
+school-06-maths-1-h8,Patterns in Mathematics,What is 1 + 2 + 3 + ... + 40?,820,800,840,1640
+school-06-maths-2-e1,Lines and Angles,How many straight lines can be drawn through two different points?,Exactly two,Infinitely many,Exactly one,None
+school-06-maths-2-e2,Lines and Angles,Which figure has one starting point and goes on forever in one direction?,Line segment,Line,Angle,Ray
+school-06-maths-2-e3,Lines and Angles,An angle measures 120°. What type of angle is it?,Obtuse,Acute,Right,Reflex
+school-06-maths-2-e4,Lines and Angles,An angle measures 200°. What type of angle is it?,Obtuse,Reflex,Straight,Acute
+school-06-maths-2-e5,Lines and Angles,How many degrees does a straight angle have?,90°,360°,180°,100°
+school-06-maths-2-e8,Lines and Angles,Which of these is an acute angle?,90°,85°,120°,180°
+school-06-maths-2-m1,Lines and Angles,What is the angle between the hands of a clock at 4 o'clock?,90°,100°,120°,150°
+school-06-maths-2-m2,Lines and Angles,An angle has one arm along the 20° mark of a protractor scale and the other along the 115° mark of the same scale. How big is the angle?,135°,115°,85°,95°
+school-06-maths-2-m3,Lines and Angles,Two angles of a triangle are 50° and 60°. What is the third angle?,70°,80°,60°,110°
+school-06-maths-2-m4,Lines and Angles,A wheel has 12 equally spaced spokes. What is the angle between two neighbouring spokes?,12°,30°,36°,60°
+school-06-maths-2-m5,Lines and Angles,Two angles 65° and 40° are placed side by side. What type of angle do they make together?,Acute,Right,Obtuse,Straight
+school-06-maths-2-m6,Lines and Angles,A straight line is cut by a ray into two angles. One angle is 128°. How big is the other angle?,62°,128°,232°,52°
+school-06-maths-2-h1,Lines and Angles,What is the smaller angle between the hands of a clock at 3:30?,90°,60°,75°,105°
+school-06-maths-2-h2,Lines and Angles,Six points are marked so that no three are on one straight line. How many different lines can be drawn through pairs of points?,12,30,36,15
+school-06-maths-2-h3,Lines and Angles,The angles of a triangle are in the ratio 2 : 3 : 4. How big is the largest angle?,80°,60°,90°,100°
+school-06-maths-2-h4,Lines and Angles,What is the smaller angle between the hands of a clock at 10:20?,190°,170°,150°,160°
+school-06-maths-2-h6,Lines and Angles,"Rays OB, OC and OD lie on one side of the straight line AOD. ∠AOB = 40°, and ∠BOC is 25° more than ∠AOB. What is ∠COD?",85°,105°,65°,75°
+school-06-maths-2-h8,Lines and Angles,The clock shows exactly 6:00. How big is the smaller angle between the hands at 6:40?,20°,40°,60°,140°
+school-06-maths-3-e1,Number Play,What is the digit sum of 6482?,18,22,26,20
+school-06-maths-3-e2,Number Play,Which number reads the same forwards and backwards?,4554,4545,4455,4544
+school-06-maths-3-e3,Number Play,"What is the largest 4-digit number you can make with the digits 3, 8, 1, 5, using each once?",8513,8531,1358,8351
+school-06-maths-3-e4,Number Play,"What is the smallest 3-digit number you can make with the digits 4, 0, 7, using each once?",047,470,407,704
+school-06-maths-3-e5,Number Play,Estimate 4897 + 3102 by rounding each number to the nearest hundred.,7000,8100,9000,8000
+school-06-maths-3-e6,Number Play,Which of these clock times is a palindrome (ignoring the colon)?,12:21,12:34,11:12,10:20
+school-06-maths-3-m1,Number Play,How many times is the digit 7 written when you write all numbers from 1 to 100?,10,19,21,20
+school-06-maths-3-m2,Number Play,Make the largest and the smallest number from the digits of 5264. What is largest minus smallest?,4086,4188,3086,4096
+school-06-maths-3-m3,Number Play,What is the smallest 3-digit number whose digits add up to 15?,168,159,195,249
+school-06-maths-3-m4,Number Play,"Start with 57. Add its reverse. If you do not get a palindrome, repeat with the new number. How many additions give a palindrome?",1,3,2,4
+school-06-maths-3-m5,Number Play,"A digital clock shows 12:21, a palindrome. How many minutes later is the next palindromic time, 13:31?",60,10,110,70
+school-06-maths-3-m6,Number Play,"Using the digits 7, 2, 9, 0 once each (no number may start with 0), what is the largest number minus the smallest number?",7641,9441,7731,5641
+school-06-maths-3-h1,Number Play,How many times is the digit 7 written when you write all numbers from 1 to 1000?,271,280,310,300
+school-06-maths-3-h2,Number Play,Take 3524. Repeat: largest rearrangement minus smallest rearrangement (4 digits). After how many steps do you reach 6174?,3,2,4,5
+school-06-maths-3-h3,Number Play,What is the smallest 5-digit palindrome that is greater than 23456?,23432,23532,23632,24342
+school-06-maths-3-h4,Number Play,How many 4-digit palindromes have digits that add up to 14?,6,8,7,14
+school-06-maths-3-h5,Number Play,"What is the largest 5-digit number between 40,000 and 80,000 that has only odd digits, with no digit repeated?",97531,79351,75931,79531
+school-06-maths-3-h7,Number Play,"Start with 78. Add its reverse, and keep repeating with each new number until you get a palindrome. How many additions are needed?",3,4,5,2
+school-06-maths-4-e1,Data Handling and Presentation,In a tally chart one bundle of five and three single marks are drawn. What is the frequency?,8,7,5,53
+school-06-maths-4-e2,Data Handling and Presentation,In a pictograph one symbol stands for 20 kites. The symbols for Tuesday are 5. How many kites were sold on Tuesday?,25,100,5,120
+school-06-maths-4-e3,Data Handling and Presentation,"In a bar graph, the bar for Monday is taller than the bar for Tuesday. What does this tell you?",Monday has a smaller value,Both days have the same value,Monday has a larger value,Monday has more bars
+school-06-maths-4-e4,Data Handling and Presentation,Which of these needs you to collect data by asking people?,The number of days in June,The boiling point of water,The number of letters in INDIA,The favourite ice-cream flavour of your class
+school-06-maths-4-e5,Data Handling and Presentation,"A table shows marks and number of students: 3 marks: 4 students, 4 marks: 6 students, 5 marks: 5 students. How many students are there in all?",15,12,14,18
+school-06-maths-4-e6,Data Handling and Presentation,One symbol stands for 10 apples. How many symbols are needed to show 60 apples?,10,6,60,600
+school-06-maths-4-m1,Data Handling and Presentation,"Shoe sizes of 10 students are 5, 6, 6, 7, 5, 6, 8, 7, 6, 5. How many students wear size 6 or bigger?",7,4,6,10
+school-06-maths-4-m2,Data Handling and Presentation,In a pictograph one symbol stands for 40 cycles. Monday shows 3 symbols and Tuesday shows 5 symbols. How many cycles were sold on both days together?,160,320,200,280
+school-06-maths-4-m3,Data Handling and Presentation,"A die is rolled 20 times. The faces 1 to 6 show 3, 4, 2, 5, 3, 3 times. On how many rolls did the die show 5 or 6?",3,8,6,11
+school-06-maths-4-m4,Data Handling and Presentation,"On a bar graph, 1 unit of height stands for 5 students. A bar is 7 units tall. How many students does it show?",12,7,40,35
+school-06-maths-4-m5,Data Handling and Presentation,"A table shows wickets taken and matches: 0 wickets in 4 matches, 1 wicket in 6 matches, 2 wickets in 5 matches, 3 wickets in 2 matches. How many wickets in total?",22,17,12,24
+school-06-maths-4-m6,Data Handling and Presentation,"Votes for class monitor: Asha 14, Bilal 9, Chitra 17, Dev 10. By how many votes did the winner beat the runner-up?",5,3,7,8
+school-06-maths-4-h1,Data Handling and Presentation,"A table shows wickets and matches: 0 wickets in 6 matches, 1 in 9, 2 in 7, 3 in 5, 4 in 3. How many wickets in total?",50,25,30,45
+school-06-maths-4-h2,Data Handling and Presentation,In a pictograph 1 symbol stands for 6 students. Meena has 13 symbols and Kabir has 6 and a half symbols. Meena says she has more than double Kabir's number. Is she right?,"Yes, because 13 is more than 6","No, she has exactly double","Yes, because 78 is more than 39","No, because 6 and a half is more than half of 13"
+school-06-maths-4-h3,Data Handling and Presentation,"75 students chose a sport: cricket 24, football 18, hockey 15 and the rest kabaddi. On a bar graph 1 cm stands for 3 students. How tall is the kabaddi bar?",18 cm,5 cm,6 cm,7 cm
+school-06-maths-4-h4,Data Handling and Presentation,"40 students scored marks: 5 marks: 6 students, 6 marks: 11, 7 marks: x, 8 marks: 9, 9 marks: 4. What is x?",9,11,14,10
+school-06-maths-4-h5,Data Handling and Presentation,"A pictograph with 1 symbol = 30 books has rows of 4, 6, 2 and 8 symbols. The scale is changed to 1 symbol = 60 books. How many symbols are there in all now?",10,20,40,5
+school-06-maths-4-h7,Data Handling and Presentation,"A bar graph on a 1 cm = 4 students scale shows cricket 9 cm, football 7 cm and hockey 5 cm. 120 students were asked and the rest chose kabaddi. How tall is the kabaddi bar?",36 cm,6 cm,9 cm,12 cm
+school-06-maths-5-e1,Prime Time,Which of these is a prime number?,27,29,33,39
+school-06-maths-5-e2,Prime Time,How many factors does 12 have?,4,5,6,8
+school-06-maths-5-e3,Prime Time,What is the greatest number that divides both 8 and 12?,2,6,8,4
+school-06-maths-5-e4,Prime Time,Which is the prime factorisation of 36?,2 x 2 x 3 x 3,6 x 6,2 x 3 x 6,4 x 9
+school-06-maths-5-e5,Prime Time,Which pair of numbers is co-prime?,6 and 9,8 and 15,12 and 18,14 and 21
+school-06-maths-5-e6,Prime Time,Which is the only even prime number?,4,0,2,1
+school-06-maths-5-m1,Prime Time,How many prime numbers are there between 20 and 40?,3,4,5,6
+school-06-maths-5-m2,Prime Time,What is the smallest number that both 12 and 18 divide into?,6,72,36,216
+school-06-maths-5-m3,Prime Time,Which digit can replace * in 52* to make the number divisible by 3?,3,4,6,2
+school-06-maths-5-m4,Prime Time,"I am a 2-digit odd number. I am divisible by both 5 and 7, and my digits add up to 8. Who am I?",35,70,15,21
+school-06-maths-5-m5,Prime Time,What is the total number of prime factors in the prime factorisation of 72 (counting repeats)?,2,5,3,6
+school-06-maths-5-m6,Prime Time,What is the smallest number that has three different prime factors?,6,60,30,105
+school-06-maths-5-h1,Prime Time,What is the smallest number that is divisible by every number from 1 to 8?,420,840,1680,336
+school-06-maths-5-h2,Prime Time,"Two bells ring every 12 minutes and 18 minutes, and a third rings every 20 minutes. They all ring together at 8:00 am. When do they next ring together?",8:36 am,10:00 am,11:00 am,12:00 noon
+school-06-maths-5-h3,Prime Time,The number 7*58 is divisible by 11. Which digit is *?,3,5,6,4
+school-06-maths-5-h4,Prime Time,How many prime numbers are there between 90 and 130?,7,6,8,9
+school-06-maths-5-h5,Prime Time,What is the smallest multiple of 6 that has exactly 8 factors?,12,24,36,48
+school-06-maths-5-h7,Prime Time,What is the largest 4-digit number that is divisible by 12?,9999,9990,9984,9996
+school-06-maths-6-e1,Perimeter and Area,A rectangle is 12 cm long and 8 cm wide. What is its perimeter?,20 cm,96 cm,40 cm,48 cm
+school-06-maths-6-e2,Perimeter and Area,A square park has sides of 9 m. What is the distance around it?,18 m,81 m,27 m,36 m
+school-06-maths-6-e3,Perimeter and Area,What is the area of a rectangle 15 m long and 6 m wide?,90 sq m,42 sq m,21 sq m,900 sq m
+school-06-maths-6-e4,Perimeter and Area,What is the perimeter of an equilateral triangle with side 7 cm?,14 cm,21 cm,49 cm,28 cm
+school-06-maths-6-e5,Perimeter and Area,What is the area of a square with side 11 cm?,44 sq cm,22 sq cm,121 sq cm,111 sq cm
+school-06-maths-6-e7,Perimeter and Area,A rectangle has area 72 sq cm and length 9 cm. What is its breadth?,8 cm,63 cm,81 cm,18 cm
+school-06-maths-6-m1,Perimeter and Area,A field is 45 m long and 30 m wide. Fencing costs ₹20 per metre. What is the cost of fencing all around?,"₹1,500","₹27,000","₹3,000","₹6,000"
+school-06-maths-6-m2,Perimeter and Area,A wire is bent into a rectangle 18 cm by 12 cm. It is straightened and bent into a square. What is the side of the square?,30 cm,12 cm,60 cm,15 cm
+school-06-maths-6-m3,Perimeter and Area,A rectangular track is 80 m long and 50 m wide. Ravi runs 3 rounds. How far does he run?,780 m,260 m,390 m,"1,560 m"
+school-06-maths-6-m4,Perimeter and Area,A rectangle is 10 m by 6 m. A 4 m by 3 m corner is cut out. What is the area left?,72 sq m,48 sq m,30 sq m,60 sq m
+school-06-maths-6-m5,Perimeter and Area,A floor is 12 m by 8 m. Tiles cost ₹50 per sq m. What is the cost of tiling the floor?,"₹2,000",₹960,"₹4,800",₹96
+school-06-maths-6-m6,Perimeter and Area,A 48 cm string forms a square. What is the side of the square?,16 cm,8 cm,24 cm,12 cm
+school-06-maths-6-h1,Perimeter and Area,A rectangle has area 96 sq cm and perimeter 40 cm. What is its longer side?,16 cm,10 cm,12 cm,8 cm
+school-06-maths-6-h2,Perimeter and Area,A garden is 24 m by 18 m. A path 2 m wide runs inside along all four sides. What is the area of the path?,168 sq m,280 sq m,144 sq m,152 sq m
+school-06-maths-6-h3,Perimeter and Area,A rectangular park is 250 m by 150 m. Rakhi walks 2 km along its edge. How many rounds does she make?,2 and a half,3,8,5
+school-06-maths-6-h5,Perimeter and Area,A square park of side 40 m has a path 5 m wide all around it outside. What is the area of the path?,800 sq m,"1,000 sq m",900 sq m,200 sq m
+school-06-maths-6-h6,Perimeter and Area,"A rectangle is 14 m by 6 m. A square has the same perimeter. Which has the larger area, and by how much?","The rectangle, by 16 sq m","The square, by 4 sq m",They have the same area,"The square, by 16 sq m"
+school-06-maths-6-h7,Perimeter and Area,An equilateral triangle of side 12 cm and a square have the same perimeter. What is the area of the square?,81 sq cm,144 sq cm,36 sq cm,108 sq cm
+school-06-maths-7-e1,Fractions,What is 3/8 + 2/8?,5/16,1/8,6/8,5/8
+school-06-maths-7-e3,Fractions,Which fraction is equal to 1/2?,3/8,4/8,1/4,2/3
+school-06-maths-7-e4,Fractions,Write 2 1/3 as an improper fraction.,5/3,6/3,7/3,3/7
+school-06-maths-7-e5,Fractions,Write 9/4 as a mixed number.,2 1/2,1 1/4,9 1/4,2 1/4
+school-06-maths-7-e6,Fractions,What is 6/8 in its simplest form?,3/4,2/3,6/4,1/2
+school-06-maths-7-e7,Fractions,3 rotis are shared equally among 4 children. How much does each child get?,4/3 of a roti,3/4 of a roti,1/4 of a roti,3/7 of a roti
+school-06-maths-7-m1,Fractions,What is 2/3 + 1/4?,3/7,3/12,2/12,11/12
+school-06-maths-7-m2,Fractions,"Which list shows 1/2, 2/3 and 3/8 from smallest to largest?","3/8, 1/2, 2/3","1/2, 3/8, 2/3","2/3, 1/2, 3/8","3/8, 2/3, 1/2"
+school-06-maths-7-m3,Fractions,What is 5/6 - 1/4?,4/2,7/12,4/12,6/12
+school-06-maths-7-m4,Fractions,Write 3 2/5 as an improper fraction.,11/5,32/5,17/5,5/17
+school-06-maths-7-m5,Fractions,Ravi paints 1/3 of a wall and Sia paints 1/4 of the same wall. What part of the wall is not painted?,7/12,2/7,2/12,5/12
+school-06-maths-7-m6,Fractions,Which fraction is equal to 3/5?,12/20,12/15,6/15,9/20
+school-06-maths-7-h2,Fractions,What is 2 1/2 + 1 3/4?,4 1/4,3 3/4,4 1/2,3 1/4
+school-06-maths-7-h3,Fractions,A box has a missing number: box - 2/9 = 1/3. What number goes in the box?,1/9,5/9,2/3,3/6
+school-06-maths-7-h4,Fractions,A tank is 3/4 full. In the morning 1/6 of the tank is used and in the evening 1/3 of the tank is used. What part of the tank is left?,5/12,7/12,1/4,1/6
+school-06-maths-7-h5,Fractions,"Which list shows 2/3, 3/4, 5/6 and 7/9 from largest to smallest?","5/6, 3/4, 7/9, 2/3","2/3, 3/4, 7/9, 5/6","7/9, 5/6, 3/4, 2/3","5/6, 7/9, 3/4, 2/3"
+school-06-maths-7-h6,Fractions,Rani reads 1/4 of a 200-page book on Monday and 2/5 of it on Tuesday. How many pages are left?,70,130,120,50
+school-06-maths-7-h7,Fractions,What is the smallest fraction that must be added to 5/6 to make 1 1/2?,1/2,2/3,1/3,5/3
+school-06-maths-8-e1,Playing with Constructions,Which tool do you use to draw a circle of radius 4 cm?,Compass,Protractor,Set square,Eraser
+school-06-maths-8-e2,Playing with Constructions,A circle has radius 5.5 cm. What is its diameter?,2.75 cm,11 cm,5.5 cm,16.5 cm
+school-06-maths-8-e3,Playing with Constructions,How big is each corner angle of a rectangle?,60°,180°,90°,45°
+school-06-maths-8-e4,Playing with Constructions,The four angles of a rectangle add up to how many degrees?,180°,270°,90°,360°
+school-06-maths-8-e5,Playing with Constructions,A rectangle has sides 7 cm and 4 cm. What is the length of the side opposite the 7 cm side?,7 cm,4 cm,11 cm,14 cm
+school-06-maths-8-e7,Playing with Constructions,Which statement is true for a square?,Only opposite sides are equal,It has no right angles,All four sides are equal,Its angles are all 60°
+school-06-maths-8-m1,Playing with Constructions,In rectangle ABCD one diagonal AC is 10 cm. What is the other diagonal BD?,10 cm,5 cm,20 cm,Cannot be found
+school-06-maths-8-m3,Playing with Constructions,A rectangle is made from three identical squares of side 4 cm placed side by side. What is its perimeter?,48 cm,24 cm,32 cm,36 cm
+school-06-maths-8-m4,Playing with Constructions,A circle's diameter AB is 14 cm and O is the centre. How far is O from A?,14 cm,28 cm,3.5 cm,7 cm
+school-06-maths-8-m5,Playing with Constructions,In a rectangle the diagonal makes an angle of 35° with one side. What angle does it make with the adjacent side at the same corner?,55°,35°,145°,65°
+school-06-maths-8-m6,Playing with Constructions,The diagonals of rectangle ABCD meet at O. Diagonal AC = 14 cm. What is OA?,14 cm,7 cm,28 cm,3.5 cm
+school-06-maths-8-m7,Playing with Constructions,Which statement is true?,Every rectangle is a square,A rectangle has four equal sides,Every square is a rectangle,A square has unequal diagonals
+school-06-maths-8-h1,Playing with Constructions,Circle A has radius 5 cm and circle B has radius 3 cm. Their centres are 8 cm apart. How many points do the two circles have in common?,1,0,2,Infinitely many
+school-06-maths-8-h2,Playing with Constructions,A rectangle 20 cm by 12 cm is divided into the biggest possible equal squares. How many squares are there?,8,15,5,60
+school-06-maths-8-h3,Playing with Constructions,In a rectangle the diagonal splits one corner into two angles in the ratio 5 : 4. What is the bigger angle?,45°,40°,50°,54°
+school-06-maths-8-h4,Playing with Constructions,A four-sided figure has all sides equal but its angles are not 90°. What is it called?,Square,Rectangle,Triangle,Rhombus
+school-06-maths-8-h6,Playing with Constructions,Rectangle ABCD has diagonals that meet at O and AC = 18 cm. What is OA + OB + OC + OD?,18 cm,36 cm,27 cm,72 cm
+school-06-maths-8-h7,Playing with Constructions,"To construct rectangle ABCD with AB = 7 cm and diagonal AC = 9 cm, you draw AB and a perpendicular at B. How do you find C with a compass?","Centre B, radius 9 cm","Centre A, radius 7 cm","Centre A, radius 9 cm","Centre B, radius 7 cm"
+school-06-maths-9-e1,Symmetry,How many lines of symmetry does a square have?,2,4,1,8
+school-06-maths-9-e2,Symmetry,How many lines of symmetry does an equilateral triangle have?,1,2,3,6
+school-06-maths-9-e3,Symmetry,How many lines of symmetry does a rectangle that is not a square have?,4,1,0,2
+school-06-maths-9-e4,Symmetry,Which letter has a vertical line of symmetry?,A,F,G,R
+school-06-maths-9-e6,Symmetry,What is the order of rotational symmetry of a square?,2,1,4,8
+school-06-maths-9-e7,Symmetry,What is the smallest angle by which a regular hexagon can be turned to look the same?,30°,90°,120°,60°
+school-06-maths-9-m1,Symmetry,What is the smallest angle by which an equilateral triangle can be turned to fit onto itself?,60°,120°,90°,180°
+school-06-maths-9-m2,Symmetry,How many lines of symmetry does the capital letter H have?,1,0,2,4
+school-06-maths-9-m3,Symmetry,"A paper is folded in half and a hole is punched 3 cm from the fold. After unfolding, how far apart are the two holes?",3 cm,12 cm,1.5 cm,6 cm
+school-06-maths-9-m4,Symmetry,A square paper is folded in half and then in half again. One hole is punched away from the folds. How many holes show after unfolding?,4,2,3,8
+school-06-maths-9-m5,Symmetry,How many lines of symmetry does a regular octagon have?,4,8,16,2
+school-06-maths-9-m6,Symmetry,Which letter has both a vertical and a horizontal line of symmetry?,A,B,H,E
+school-06-maths-9-h1,Symmetry,"A paper is folded in half. Two holes are punched, 2 cm and 5 cm from the fold. After unfolding, how far apart are the two farthest holes?",7 cm,10 cm,14 cm,3 cm
+school-06-maths-9-h2,Symmetry,"A regular polygon can be turned by 40° to look the same, and no smaller turn works. How many sides has the polygon?",8,10,9,12
+school-06-maths-9-h3,Symmetry,Think of plain capital letters A to J. How many have a horizontal line of symmetry?,5,7,8,6
+school-06-maths-9-h4,Symmetry,A circle is divided into 8 equal sectors. They are coloured alternately red and blue. What is the smallest angle by which it can be turned to look the same?,90°,45°,180°,60°
+school-06-maths-9-h5,Symmetry,A figure has 6 lines of symmetry and looks the same after turns of equal size. What is its smallest angle of rotation?,30°,60°,90°,120°
+school-06-maths-9-h6,Symmetry,Which capital letter has rotational symmetry of order 2 but no line of symmetry?,H,O,S,A
+school-06-maths-10-e1,The Other Side of Zero,"Which is greater, -3 or -7?",-7,They are equal,-3,Cannot be said
+school-06-maths-10-e2,The Other Side of Zero,What is 5 + (-8)?,3,13,-13,-3
+school-06-maths-10-e3,The Other Side of Zero,What number added to -9 gives 0?,9,-9,0,1
+school-06-maths-10-e4,The Other Side of Zero,A lift is on floor 4 and goes down 6 floors. Which floor is it on now?,2,-2,-10,10
+school-06-maths-10-e5,The Other Side of Zero,"Which list shows -5, 2, -1, 0 in order from smallest to largest?","-1, -5, 0, 2","2, 0, -1, -5","-5, -1, 0, 2","0, -1, -5, 2"
+school-06-maths-10-e6,The Other Side of Zero,What is (-6) + (-3)?,-3,9,3,-9
+school-06-maths-10-m1,The Other Side of Zero,Meena has ₹500 in her account and withdraws ₹750 using an overdraft. What is her balance?,₹250,"-₹1,250",-₹250,"₹1,250"
+school-06-maths-10-m2,The Other Side of Zero,What is 7 - (-5)?,2,-2,-12,12
+school-06-maths-10-m3,The Other Side of Zero,What is -8 - 6?,-14,-2,2,14
+school-06-maths-10-m4,The Other Side of Zero,What is -3 + 9 - 10?,4,-4,-22,16
+school-06-maths-10-m5,The Other Side of Zero,How many integers lie strictly between -4 and 3?,5,7,6,8
+school-06-maths-10-m6,The Other Side of Zero,A submarine is at -30 m. It rises 12 m and then dives 25 m. Where is it now?,-17 m,-7 m,-67 m,-43 m
+school-06-maths-10-h1,The Other Side of Zero,What is -12 - (-7) + (-9)?,-10,4,-14,-28
+school-06-maths-10-h2,The Other Side of Zero,Which three integers add up to -6?,"-10, 7 and 3","10, -7 and -3","-10, -7 and 3","-10, 7 and -3"
+school-06-maths-10-h3,The Other Side of Zero,"A lift starts at floor -2, goes up 9 floors, then down 14 floors, then up 5 floors. On which floor does it stop?",-2,0,2,-6
+school-06-maths-10-h6,The Other Side of Zero,What is -18 - {(-6) - (-2) + 5} + 3?,-14,-20,-10,-16
+school-06-maths-10-h7,The Other Side of Zero,"At night Leh is at -15°C. By noon the temperature rises 9°C, and by the next night it falls 14°C. What is the temperature then?",-20°C,-8°C,-38°C,-10°C
+school-06-maths-10-h8,The Other Side of Zero,What is -20 - (-5) + (-15) - 10?,-30,-40,-20,-10

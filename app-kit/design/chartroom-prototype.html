@@ -1,0 +1,643 @@
+<title>Chartroom Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one phone-sized app centred on a dark stage; every screen and sheet lives inside the phone. Single dark theme by choice (Chartroom launches dark-first). */
+:root{
+  --bg:#0B0D10; --stage:#050608; --surface:#15181D; --surface-2:#1A1E25; --chip:#232831;
+  --line:#2A2F38; --hair:#1E222A; --fg:#F2F4F7; --soft:#C3C9D3; --muted:#A3ABB8;
+  --accent:#FFB020; --accent-hi:#FFC75A; --accent-wash:#2B2414; --on-accent:#0B0D10;
+  --up:#4ADE9B; --down:#FF8A7A; --warn:#FFB020;
+  --font:'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--fg);font-family:var(--font);font-size:15px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:16px;
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+button,input,textarea{font-family:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--accent)}
+.tag{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.tag b{color:var(--accent)}
+.restart{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--soft);letter-spacing:.04em;text-transform:none}
+
+.phone{position:relative;width:min(412px,100%);height:min(915px, calc(100dvh - 76px));min-height:640px;background:var(--bg);
+  border-radius:28px;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.screens{position:relative;flex:1;min-height:0}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.pad{padding:12px 16px 24px;display:flex;flex-direction:column;gap:14px}
+h1{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+h2{margin:0;font-size:15px;font-weight:700}
+.sub{font-size:14px;color:var(--muted);font-weight:600}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+.up{color:var(--up)} .down{color:var(--down)}
+.row{display:flex;align-items:center;gap:10px}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.icon-btn{width:48px;height:48px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--fg);border-radius:12px;flex:none}
+.icon-btn:active{background:var(--surface-2)}
+.btn{height:52px;border:0;border-radius:14px;background:var(--accent);color:var(--on-accent);font-size:16px;font-weight:800;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:0;white-space:pre}
+.btn:active{background:var(--accent-hi)}
+.btn[disabled]{background:var(--chip);color:var(--muted);cursor:not-allowed}
+.btn.sm{height:44px;font-size:15px;border-radius:12px}
+.btn.ghost{background:var(--chip);color:var(--fg)}
+.btn.outline{background:transparent;border:1px solid var(--fg);color:var(--fg);height:36px;border-radius:999px;font-size:14px;padding:0 16px}
+.btn.outline.on{border-color:var(--line);color:var(--muted)}
+.link-btn{border:0;background:transparent;color:var(--accent);font-weight:700;font-size:15px;min-height:44px;padding:0 4px}
+.link-btn.dim{color:var(--muted)}
+.chip{padding:5px 10px;border-radius:999px;background:var(--chip);font-size:13px;font-weight:700;border:0;color:var(--fg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.avatar{width:40px;height:40px;border-radius:999px;background:var(--line);flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--fg)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:700;color:var(--muted)}
+.input{height:50px;border-radius:12px;border:1px solid var(--line);background:var(--surface);padding:0 14px;font-size:16px;width:100%}
+textarea.input{height:auto;min-height:120px;padding:12px 14px;line-height:1.5;resize:none}
+.input:focus{border-color:var(--accent);outline:none}
+.help{font-size:13px;color:var(--muted);line-height:1.4}
+.err{font-size:13px;color:var(--down);font-weight:600}
+.risk{font-size:12px;line-height:1.5;color:var(--muted);margin:0}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:4px;border-radius:12px;background:var(--surface)}
+.seg button{height:40px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:15px;font-weight:700}
+.seg button[aria-selected="true"]{background:var(--line);color:var(--fg)}
+
+/* tab bar */
+.tabbar{height:68px;flex:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--hair);background:var(--bg)}
+.tabbar button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;font-weight:600}
+.tabbar button[aria-current="page"]{color:var(--fg);font-weight:800}
+.tabbar button[aria-current="page"] svg{color:var(--accent)}
+
+/* feed */
+#feed{overflow:hidden}
+.reels{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none}
+.reels::-webkit-scrollbar{display:none}
+.reel{position:relative;height:100%;scroll-snap-align:start;overflow:hidden}
+.reel .art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:110px 76px 320px 24px;gap:14px}
+.reel .art .kicker{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.reel .art .big{font-size:34px;line-height:1.08;font-weight:800;letter-spacing:-.02em;max-width:300px;text-wrap:balance}
+.reel .art svg{width:100%;max-width:300px;height:90px}
+.reel .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:none}
+.feed-top{position:absolute;top:0;left:0;right:0;z-index:3;padding:8px 4px 0 16px;background:rgba(11,13,16,.72)}
+.feed-tabs{display:flex;gap:20px}
+.feed-tabs button{height:40px;border:0;background:transparent;color:var(--muted);font-size:15px;font-weight:700;padding:0;border-bottom:2px solid transparent}
+.feed-tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.rail{position:absolute;right:6px;bottom:310px;display:flex;flex-direction:column;gap:8px;z-index:2}
+.rail button{width:58px;border:0;background:transparent;color:var(--fg);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700}
+.rail .ring{width:48px;height:48px;border-radius:999px;background:rgba(11,13,16,.62);display:flex;align-items:center;justify-content:center}
+.rail button[aria-pressed="true"] .ring{background:var(--accent);color:var(--on-accent)}
+.rail button.liked[aria-pressed="true"] .ring{background:rgba(11,13,16,.62);color:var(--down)}
+.reel-info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:12px 16px 14px;background:rgba(11,13,16,.88);display:flex;flex-direction:column;gap:9px}
+.approved-by{font-size:13px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+.coinbar{display:flex;align-items:center;gap:12px;padding:8px 8px 8px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.coinbar .btn{height:46px;font-size:15px;border-radius:12px;padding:0 14px}
+
+/* lists */
+.list{list-style:none;margin:0;padding:0}
+.list li{border-bottom:1px solid var(--hair)}
+.coin-row{width:100%;min-height:62px;display:flex;align-items:center;gap:12px;border:0;background:transparent;text-align:left;padding:0}
+.coin-badge{width:38px;height:38px;border-radius:999px;background:var(--chip);flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+.story{width:100%;display:flex;gap:12px;padding:12px 0;border:0;background:transparent;text-align:left}
+.thumb{width:72px;height:72px;border-radius:12px;flex:none}
+.post-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--chip);margin-top:10px}
+.post-actions button{height:44px;border:0;background:transparent;color:var(--soft);font-size:13px;font-weight:700}
+.post-actions button[aria-pressed="true"]{color:var(--accent)}
+
+/* overlays */
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);z-index:20;display:flex;flex-direction:column;justify-content:flex-end}
+.sheet{background:var(--surface);border-radius:24px 24px 0 0;padding:10px 16px 22px;display:flex;flex-direction:column;gap:14px;max-height:92%;overflow-y:auto;animation:up .22s ease-out}
+.sheet .grab{align-self:center;width:40px;height:4px;border-radius:4px;background:#3A404B;flex:none}
+@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+.full{position:absolute;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;animation:fade .2s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.pick{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;border-radius:14px;background:var(--surface-2);border:2px solid var(--line);text-align:left}
+.pick[aria-checked="true"]{border-color:var(--accent)}
+.pick .dot{width:20px;height:20px;border-radius:999px;border:2px solid #6B7380;flex:none}
+.pick[aria-checked="true"] .dot{border:6px solid var(--accent)}
+.toast{position:absolute;left:16px;right:16px;bottom:84px;z-index:40;background:var(--fg);color:var(--bg);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.35;box-shadow:0 10px 30px rgba(0,0,0,.4);animation:up .2s ease-out}
+.warn-box{display:flex;gap:10px;padding:10px 12px;border-radius:12px;background:var(--accent-wash);color:var(--accent);font-size:13px;font-weight:700;line-height:1.4}
+.amount{height:58px;border-radius:14px;border:2px solid var(--line);background:transparent;font-size:20px;font-weight:800}
+.amount[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-wash);color:var(--accent)}
+.otp{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.otp input{height:56px;text-align:center;font-size:22px;font-weight:800;padding:0}
+.topic{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:15px;font-weight:700}
+.topic[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.tile{aspect-ratio:3/4;max-width:100%;background:var(--surface-2);display:flex;align-items:flex-end;padding:8px;font-size:12px;font-weight:700;color:var(--soft);line-height:1.3}
+.empty{padding:36px 16px;text-align:center;color:var(--muted);font-size:14px;line-height:1.5}
+.msg{max-width:80%;padding:10px 12px;border-radius:14px;font-size:15px;line-height:1.45}
+.msg.them{background:var(--surface-2);align-self:flex-start}
+.msg.me{background:var(--accent);color:var(--on-accent);align-self:flex-end;font-weight:600}
+.flag{display:flex;gap:8px;align-items:flex-start;margin-top:6px;padding:8px 10px;border-radius:10px;background:#2A1614;color:var(--down);font-size:12.5px;font-weight:700;line-height:1.4}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:460px){body{padding-block:8px}.phone{border-radius:20px;height:calc(100dvh - 54px);min-height:560px}}
+</style>
+
+<div class="tag"><span>Chartroom · <b>clickable prototype</b> · sample data</span><button class="restart" id="restart" type="button">Restart from onboarding</button></div>
+<div class="phone" id="phone">
+  <div class="screens" id="screens">
+
+    <!-- FEED -->
+    <section class="screen" id="feed" aria-label="Feed">
+      <div class="feed-top">
+        <div class="spread"><strong style="font-size:22px;letter-spacing:-.02em">Chartroom</strong>
+          <div class="row" style="gap:0">
+            <button class="icon-btn" data-act="open-create" aria-label="Create" type="button" data-i="plus"></button>
+            <button class="icon-btn" data-act="go" data-to="dms" aria-label="Messages" type="button" data-i="send"></button>
+          </div>
+        </div>
+        <div class="feed-tabs" role="tablist" aria-label="Feed tabs" id="feed-tabs"></div>
+      </div>
+      <div class="reels" id="reels"></div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="screen" id="news" aria-label="News" hidden>
+      <div class="pad">
+        <div style="padding-top:6px"><h1>News</h1><div class="sub">Today · checked by the Chartroom team</div></div>
+        <div id="news-list" style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <section class="screen" id="article" aria-label="Article" hidden></section>
+
+    <!-- BORING STUFF -->
+    <section class="screen" id="boring" aria-label="Boring Stuff" hidden>
+      <div class="pad">
+        <div class="spread" style="padding-top:6px"><div><h1>Boring Stuff</h1><div class="sub">Long reads and serious takes</div></div>
+          <button class="icon-btn" data-act="open-write" data-kind="post" aria-label="Write" type="button" data-i="plus"></button></div>
+        <button class="card row" data-act="open-write" data-kind="post" type="button" style="min-height:54px;padding:0 14px;color:var(--muted);font-size:15px;font-weight:600;text-align:left"><span class="avatar" style="width:32px;height:32px;font-size:12px">You</span>Write something worth reading…</button>
+        <div id="boring-list" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+    </section>
+
+    <!-- TRADE -->
+    <section class="screen" id="trade" aria-label="Trade" hidden>
+      <div class="pad">
+        <div class="spread" style="padding-top:2px"><h1>Trade</h1>
+          <button class="chip row" data-act="pick-exchange" type="button" style="height:40px;padding:0 12px;gap:6px;background:var(--surface-2);border:1px solid var(--line)"><span class="muted" style="font-weight:600">Exchange:</span><span data-exchange>Mudrex</span><span data-i="chev"></span></button></div>
+        <div class="field"><label for="coin-search">Find a coin</label><input class="input" id="coin-search" placeholder="Bitcoin, ETH, Solana…" autocomplete="off"></div>
+        <div><h2 style="margin-bottom:8px">Talked about on Chartroom today</h2><div class="row" id="talked"></div></div>
+        <div class="seg" role="tablist" aria-label="Coin lists" id="coin-tabs"></div>
+        <ul class="list" id="coin-list"></ul>
+        <p class="risk">Sample prices for the prototype. In the app, prices come from your exchange and trades happen in its app.</p>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="screen" id="profile" aria-label="Profile" hidden></section>
+
+    <!-- DMS -->
+    <section class="screen" id="dms" aria-label="Messages" hidden></section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main" id="tabbar">
+    <button type="button" data-act="tab" data-to="feed" aria-current="page"><span data-i="feed"></span>Feed</button>
+    <button type="button" data-act="tab" data-to="news"><span data-i="news"></span>News</button>
+    <button type="button" data-act="tab" data-to="boring"><span data-i="doc"></span>Boring Stuff</button>
+    <button type="button" data-act="tab" data-to="trade"><span data-i="trend"></span>Trade</button>
+    <button type="button" data-act="tab" data-to="profile"><span data-i="user"></span>Profile</button>
+  </nav>
+    <!-- ONBOARDING -->
+    <section class="full" id="onboarding" aria-label="Welcome" style="z-index:30;overflow-y:auto">
+      <div class="pad" style="flex:1;padding:12px 24px 28px;display:flex;flex-direction:column">
+        <div class="spread" style="height:48px"><strong style="font-size:20px;letter-spacing:-.02em">Chartroom</strong><button class="link-btn dim" data-act="ob-skip" type="button">Skip</button></div>
+        <div id="ob-body" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px"></div>
+        <div id="ob-foot" style="display:flex;flex-direction:column;gap:18px"></div>
+      </div>
+    </section>
+
+  <div id="overlay"></div>
+  <div id="toast-slot" aria-live="polite"></div>
+</div>
+
+<script>
+(function(){
+const I = {
+  plus:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M12 8v8M8 12h8"/></svg>',
+  send:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L10 14"/><path d="M21 4l-7 17-4-7-7-4z"/></svg>',
+  feed:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>',
+  news:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5"/></svg>',
+  doc:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h3"/></svg>',
+  trend:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>',
+  user:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 20c1.5-4 4.5-5 8-5s6.5 1 8 5"/></svg>',
+  heart:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+  heartFill:'<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+  comment:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+  approve:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></svg>',
+  approveSm:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></svg>',
+  share:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7h16v-7"/><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/></svg>',
+  back:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+  close:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  chev:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+  menu:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+  flag:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h11l-2 4 2 4H5"/></svg>',
+  ig:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  video:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10l5-3v10l-5-3z"/></svg>',
+  pen:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>',
+  text:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9"/></svg>',
+  onNews:'<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5"/></svg>',
+  onTrade:'<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>',
+  onSocial:'<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.6 3.6-5 6.5-5s5.5 1.4 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 15c1.8.6 3 2 3.5 5"/></svg>'
+};
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr = (n) => '₹' + n.toLocaleString('en-IN', {maximumFractionDigits: n < 100 ? 2 : 0});
+function paintIcons(root){ $$('[data-i]', root).forEach((el) => { if (!el.dataset.painted) { el.insertAdjacentHTML('afterbegin', I[el.dataset.i] || ''); el.dataset.painted = '1'; } }); }
+
+/* ---------- sample data (clearly fake, for the prototype) ---------- */
+const COINS = [
+  {sym:'BTC', name:'Bitcoin', price:9180000, chg:1.8, watch:true, talked:14},
+  {sym:'ETH', name:'Ethereum', price:332000, chg:-0.9, watch:true, talked:6},
+  {sym:'SOL', name:'Solana', price:15400, chg:3.2, watch:true, talked:4},
+  {sym:'XRP', name:'XRP', price:212, chg:-1.4, watch:false, talked:0},
+  {sym:'BNB', name:'BNB', price:57800, chg:0.6, watch:false, talked:0},
+  {sym:'DOGE', name:'Dogecoin', price:16.4, chg:-2.1, watch:false, talked:0}
+];
+const coin = (s) => COINS.find((c) => c.sym === s);
+const EXCHANGES = ['Mudrex','CoinDCX','CoinSwitch'];
+const REELS = [
+  {id:'r1', handle:'@arjun.charts', name:'Arjun (sample)', headline:'Crypto analyst · Bengaluru', kicker:'Crypto', big:'Why Bitcoin moved this week', caption:'Three things that moved BTC this week, in under a minute. Sources linked.', topic:'Crypto', sources:2, coin:'BTC', approvedBy:'@meera.fin', hue:'#16233A', line:'#FFB020', tabs:['top','foryou','following']},
+  {id:'r2', handle:'@taxwithtanvi', name:'Tanvi (sample)', headline:'CA · crypto tax', kicker:'Tax', big:'1% TDS, explained in 45 seconds', caption:'You sell ₹10,000 of crypto, ₹100 is cut as TDS. Here is what that means at filing time.', topic:'Tax', sources:3, coin:'ETH', approvedBy:null, hue:'#2A1E10', line:'#4ADE9B', tabs:['top','foryou']},
+  {id:'r3', handle:'@unicornkahisab', name:'Unicorn Ka Hisab', headline:'Startup numbers, explained', kicker:'Economy', big:'Startup ka hisab: where the money went', caption:'Revenue, losses and what it means for listed startups. Hinglish, with sources.', topic:'Economy', sources:2, coin:'BTC', approvedBy:'@arjun.charts', hue:'#1D1630', line:'#FFC75A', tabs:['top','foryou','following']},
+  {id:'r4', handle:'@desi.macro', name:'Kabir (sample)', headline:'Economist · Delhi', kicker:'Markets', big:'Rupee vs dollar: should you care?', caption:'What a weaker rupee does to your crypto, your phone bill and your EMIs.', topic:'Markets', sources:1, coin:'SOL', approvedBy:null, hue:'#0F2A26', line:'#4ADE9B', tabs:['foryou']}
+];
+const NEWS = [
+  {id:'n1', topic:'Tax', mins:5, top:true, coin:'BTC', title:'Selling crypto in India? What the 1% TDS and 30% tax mean for you',
+   summary:'The 2026 Budget kept both rules. Here is how they hit a small trade.',
+   body:['When you sell crypto in India, 1% of the sale value is deducted as TDS. Your exchange cuts it and reports it against your PAN, and you can claim it when you file your return.',
+         'Gains are taxed at a flat 30%, plus cess, whatever your income slab. Losses on one coin cannot be set off against gains on another, and they cannot be carried forward.',
+         'The Union Budget for 2026-27 left both rules unchanged and added penalties for reporting failures. So a small, frequent trader pays TDS on every sale, which matters more than the headline 30%.'],
+   sources:[['Decrypt · India retains crypto tax in Budget 2026','https://decrypt.co/356601/no-relief-for-crypto-investors-as-india-retains-current-crypto-tax-in-budget-2026'],['Business Today · Budget 2026 and crypto tax','https://www.businesstoday.in/personal-finance/investment/story/budget-2026-data-flags-misalignment-in-indias-crypto-tax-rules-calls-grow-for-reform-513754-2026-01-30']]},
+  {id:'n2', topic:'Rules', mins:4, coin:'BTC', title:'Is your crypto exchange registered? How to check FIU-IND status',
+   summary:'Exchanges serving Indians must register with India\'s Financial Intelligence Unit.',
+   body:['Since 2023, crypto platforms serving Indian users have to register with FIU-IND under anti-money-laundering law. Apps of unregistered exchanges were pulled from Indian app stores in 2024.','Before you deposit, check the exchange on FIU-IND\'s list of registered reporting entities.'],
+   sources:[['CryptoSlate · Binance returns after FIU-IND registration','https://cryptoslate.com/binance-reappears-on-indian-app-stores-after-securing-key-fiu-ind-registration/']]},
+  {id:'n3', topic:'Basics', mins:3, coin:'ETH', title:'Why the same coin shows a different price on two Indian exchanges',
+   summary:'INR order books are separate, so prices drift apart. Here is what to watch.',
+   body:['Each Indian exchange runs its own INR order book. When buyers on one exchange outnumber sellers, its price drifts above the others for a while.','Compare the final amount after fees and TDS, not the headline price.'],
+   sources:[]}
+];
+let POSTS = [
+  {id:'p1', kind:'Article', name:'Tanvi (sample)', headline:'CA · crypto tax', title:'How crypto tax actually works for a ₹5,000 trader', meta:'Tax · 8 min read', body:'', approvedBy:null, cover:true},
+  {id:'p2', kind:'Post', name:'Kabir (sample)', headline:'Economist · Delhi', title:'', meta:'Markets', body:'Everyone is watching the price. Watch the volume. A move on thin volume in INR markets usually fades within a day. Chart below is from my notes this week.', approvedBy:'@meera.fin', chart:true}
+];
+const CHATS = [
+  {id:'c1', name:'Meera (sample)', handle:'@meera.fin', msgs:[['them','Saw your BTC reel. Where did you get the ETF flow numbers?'],['me','Second source in the list, the daily flow report.']]},
+  {id:'c2', name:'Unknown account', handle:'@quick.profit.signals', msgs:[['them','Join my VIP group, 10x guaranteed. Pay here: bit.ly/x10-vip', true]]}
+];
+
+/* ---------- state ---------- */
+const S = {
+  tab:'feed', feedTab:'top', exchange:'Mudrex', remember:true, liked:{}, approved:{}, following:{}, seen:{}, reminders:true,
+  reminderShown:false, coinTab:'watch', search:'', profileTab:'reels', myReels:[], myWriting:[], comments:{r1:[['@meera.fin','The second source is solid. Thanks for linking it.']]},
+  topics:[], ob:0, phone:'', otp:''
+};
+function load(){ try { const v = JSON.parse(localStorage.getItem('chartroom-proto') || 'null'); if (v) { S.exchange = v.exchange || S.exchange; S.reminders = v.reminders !== false; } } catch(e){} }
+function save(){ try { localStorage.setItem('chartroom-proto', JSON.stringify({exchange:S.exchange, reminders:S.reminders})); } catch(e){} }
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg){ const slot = $('#toast-slot'); slot.innerHTML = '<div class="toast" role="status">' + esc(msg) + '</div>'; clearTimeout(toastTimer); toastTimer = setTimeout(() => { slot.innerHTML = ''; }, 2600); }
+
+/* ---------- navigation ---------- */
+const TABS = ['feed','news','boring','trade','profile'];
+function show(id){
+  $$('#screens > .screen').forEach((s) => { s.hidden = s.id !== id; });
+  if (TABS.includes(id)) { S.tab = id; $$('#tabbar button').forEach((b) => b.setAttribute('aria-current', b.dataset.to === id ? 'page' : 'false')); }
+  const scr = $('#' + id); if (scr) scr.scrollTop = 0;
+  if (id === 'profile') renderProfile();
+  if (id === 'dms') renderDMs();
+}
+function syncExchange(){ $$('[data-exchange]').forEach((el) => { el.textContent = S.exchange; }); }
+
+/* ---------- onboarding ---------- */
+const OB = [
+  {k:'News', icon:'onNews', t:'Market ki khabar, checked.', b:'Our team posts the day’s big finance and crypto stories, with every source linked.'},
+  {k:'Crypto', icon:'onTrade', t:'Dekho, samjho, phir trade karo.', b:'Watch a video about a coin, tap it, and trade on the exchange you already use.'},
+  {k:'Social', icon:'onSocial', t:'Serious log. Serious baatein.', b:'Post reels, write in Boring Stuff, and Approve the posts you’d stand behind.'}
+];
+function renderOB(){
+  const body = $('#ob-body'), foot = $('#ob-foot');
+  if (S.ob < 3) {
+    const p = OB[S.ob];
+    body.innerHTML = '<div style="width:120px;height:120px;border-radius:32px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent)">' + I[p.icon] + '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:14px;font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase">' + p.k + '</span>' +
+      '<h1 style="font-size:34px;line-height:1.12">' + esc(p.t) + '</h1><p style="margin:0;font-size:17px;line-height:1.5;color:var(--soft)">' + esc(p.b) + '</p></div>';
+    foot.innerHTML = '<div class="row" aria-label="Step ' + (S.ob + 1) + ' of 3">' + [0,1,2].map((i) => '<span style="height:8px;border-radius:8px;' + (i === S.ob ? 'width:28px;background:var(--accent)' : 'width:8px;background:#3A404B') + '"></span>').join('') + '</div>' +
+      '<button class="btn" data-act="ob-next" type="button">' + (S.ob < 2 ? 'Next' : 'Get started') + '</button>';
+  } else if (S.ob === 3) {
+    body.innerHTML = '<h1 style="font-size:30px">Your phone number</h1><p class="help" style="font-size:16px;margin:0">We’ll send a 6-digit code. No KYC needed to watch, post or write.</p>' +
+      '<div class="field"><label for="ob-phone">Mobile number</label><div class="row" style="gap:8px"><span class="input row" style="width:auto;flex:none;font-weight:700">+91</span><input class="input num" id="ob-phone" inputmode="numeric" maxlength="10" placeholder="98765 43210" value="' + esc(S.phone) + '"></div><div class="err" id="ob-phone-err" hidden>Enter a 10-digit mobile number.</div></div>';
+    foot.innerHTML = '<button class="btn" data-act="ob-send" type="button">Send OTP</button>';
+    setTimeout(() => { const f = $('#ob-phone'); f && f.focus(); }, 50);
+  } else if (S.ob === 4) {
+    body.innerHTML = '<h1 style="font-size:30px">Enter the code</h1><p class="help" style="font-size:16px;margin:0">Sent to +91 ' + esc(S.phone) + '. For the prototype, any 6 digits work.</p>' +
+      '<div class="field"><label for="otp0">6-digit code</label><div class="otp">' + [0,1,2,3,4,5].map((i) => '<input class="input num" id="otp' + i + '" inputmode="numeric" maxlength="1" aria-label="Digit ' + (i+1) + '">').join('') + '</div><div class="err" id="otp-err" hidden>Enter all 6 digits.</div></div>';
+    foot.innerHTML = '<button class="btn" data-act="ob-verify" type="button">Verify</button>';
+    setTimeout(() => { $('#otp0') && $('#otp0').focus(); }, 50);
+  } else {
+    const all = ['Crypto','Markets','Economy','Tax','Personal finance','World','Startups'];
+    body.innerHTML = '<h1 style="font-size:30px">Pick up to 3 topics</h1><p class="help" style="font-size:16px;margin:0">They shape your For you tab and show on your profile.</p>' +
+      '<div class="row" style="flex-wrap:wrap;gap:8px">' + all.map((t) => '<button class="topic" type="button" data-act="ob-topic" data-t="' + t + '" aria-pressed="' + S.topics.includes(t) + '">' + t + '</button>').join('') + '</div>';
+    foot.innerHTML = '<button class="btn" data-act="ob-done" type="button"' + (S.topics.length ? '' : ' disabled') + '>' + (S.topics.length ? 'Start watching' : 'Pick at least 1') + '</button>';
+  }
+}
+function finishOB(){ $('#onboarding').hidden = true; show('feed'); }
+
+/* ---------- feed ---------- */
+function sparkline(color, seed){
+  let y = 60, d = 'M0 ' + y; for (let i = 1; i <= 12; i++) { y = Math.max(12, Math.min(80, y + Math.sin(i * 1.7 + seed) * 14 - 3)); d += ' L' + (i * 25) + ' ' + y.toFixed(1); }
+  return '<svg viewBox="0 0 300 90" aria-hidden="true"><path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 86 H300" stroke="rgba(255,255,255,.15)"/></svg>';
+}
+function renderFeedTabs(){
+  $('#feed-tabs').innerHTML = [['following','Following'],['top','Top stories'],['foryou','For you']].map(([id,l]) => '<button role="tab" type="button" data-act="feed-tab" data-t="' + id + '" aria-selected="' + (S.feedTab === id) + '">' + l + '</button>').join('');
+}
+function reelHTML(r, i){
+  const c = coin(r.coin), liked = !!S.liked[r.id], appr = !!S.approved[r.id], fol = !!S.following[r.handle];
+  return '<article class="reel" data-reel="' + r.id + '" style="background:' + r.hue + '">' +
+    '<div class="art"><span class="kicker" style="color:' + r.line + '">' + esc(r.kicker) + '</span><div class="big">' + esc(r.big) + '</div>' + sparkline(r.line, i * 2.3) + '<span class="sub" style="color:var(--soft)">Sample reel · real videos play here</span></div>' +
+    '<div class="rail">' +
+      '<button type="button" class="liked" data-act="like" data-id="' + r.id + '" aria-pressed="' + liked + '"><span class="ring">' + (liked ? I.heartFill : I.heart) + '</span>Like</button>' +
+      '<button type="button" data-act="comments" data-id="' + r.id + '"><span class="ring">' + I.comment + '</span>Comment</button>' +
+      '<button type="button" data-act="approve" data-id="' + r.id + '" aria-pressed="' + appr + '"><span class="ring">' + I.approve + '</span>' + (appr ? 'Approved' : 'Approve') + '</button>' +
+      '<button type="button" data-act="share" data-id="' + r.id + '"><span class="ring">' + I.share + '</span>Share</button>' +
+    '</div>' +
+    '<div class="reel-info">' +
+      (r.approvedBy ? '<div class="approved-by">' + I.approveSm + 'Approved by ' + esc(r.approvedBy) + '</div>' : '') +
+      '<div class="row"><span class="avatar">' + esc(r.name.charAt(0)) + '</span><div style="flex:1;min-width:0;display:flex;flex-direction:column"><strong>' + esc(r.handle) + '</strong><span class="sub" style="font-size:13px">' + esc(r.headline) + '</span></div>' +
+      '<button type="button" class="btn outline' + (fol ? ' on' : '') + '" data-act="follow" data-h="' + esc(r.handle) + '">' + (fol ? 'Following' : 'Follow') + '</button></div>' +
+      '<p style="margin:0;font-size:15px;line-height:1.45">' + esc(r.caption) + '</p>' +
+      '<div class="row" style="gap:8px"><span class="chip">' + esc(r.topic) + '</span><button type="button" class="chip" data-act="sources" data-id="' + r.id + '">' + r.sources + ' source' + (r.sources > 1 ? 's' : '') + '</button></div>' +
+      '<div class="coinbar"><div style="flex:1;min-width:0;display:flex;flex-direction:column"><span class="sub" style="font-size:13px">' + c.name + ' · ' + c.sym + '</span><span class="num" style="font-size:17px;font-weight:800">' + inr(c.price) + ' <span class="' + (c.chg >= 0 ? 'up' : 'down') + '" style="font-size:14px">' + (c.chg >= 0 ? '▲ ' : '▼ ') + Math.abs(c.chg).toFixed(1) + '%</span></span></div>' +
+      '<button type="button" class="btn" data-act="trade" data-coin="' + c.sym + '">Trade on <span data-exchange>' + S.exchange + '</span></button></div>' +
+    '</div></article>';
+}
+function renderReels(){
+  const list = REELS.filter((r) => r.tabs.includes(S.feedTab));
+  const box = $('#reels');
+  box.innerHTML = list.length ? list.map(reelHTML).join('') : '<div class="empty" style="padding-top:200px">Follow a few creators and their reels show up here.</div>';
+  box.scrollTop = 0; observeReels();
+}
+let io;
+function observeReels(){
+  if (io) io.disconnect();
+  io = new IntersectionObserver((ents) => { ents.forEach((e) => { if (e.isIntersecting && e.intersectionRatio > 0.6) { S.seen[e.target.dataset.reel] = true; maybeReminder(); } }); }, {root:$('#reels'), threshold:[0.6]});
+  $$('.reel').forEach((r) => io.observe(r));
+}
+function maybeReminder(){
+  if (!S.reminders || S.reminderShown) return;
+  if (Object.keys(S.seen).length >= 3) { S.reminderShown = true; setTimeout(openReminder, 700); }
+}
+function rerenderReel(id){ const el = $('[data-reel="' + id + '"]'); if (!el) return; const r = REELS.find((x) => x.id === id); const i = REELS.indexOf(r); el.outerHTML = reelHTML(r, i); observeReels(); }
+
+/* ---------- overlays ---------- */
+function openOverlay(html, opts){
+  const o = $('#overlay');
+  o.innerHTML = (opts && opts.full) ? '<div class="full" role="dialog" aria-modal="true">' + html + '</div>' : '<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><span class="grab"></span>' + html + '</div></div>';
+  paintIcons(o); const f = o.querySelector('[autofocus]'); if (f) setTimeout(() => f.focus(), 60);
+}
+function closeOverlay(){ $('#overlay').innerHTML = ''; }
+
+function openTrade(sym, amount){
+  const c = coin(sym);
+  const rows = EXCHANGES.map((x) => '<button type="button" class="pick" role="radio" aria-checked="' + (x === S.exchange) + '" data-act="ex" data-x="' + x + '"><span class="coin-badge" style="border-radius:10px;font-size:15px">' + x.charAt(0) + '</span><span style="flex:1;display:flex;flex-direction:column"><strong style="font-size:16px">' + x + '</strong><span class="sub" style="font-size:13px">Opens ' + c.sym + ' in the ' + x + ' app</span></span><span class="dot"></span></button>').join('');
+  openOverlay(
+    '<div class="spread" style="align-items:flex-start"><div><h1 style="font-size:22px">' + (amount ? 'Invest ₹' + amount + ' in ' + c.name : 'Trade ' + c.name) + '</h1><span class="num" style="font-size:17px;font-weight:800">' + inr(c.price) + ' <span class="' + (c.chg >= 0 ? 'up' : 'down') + '" style="font-size:14px">' + (c.chg >= 0 ? '▲ ' : '▼ ') + Math.abs(c.chg).toFixed(1) + '% today</span></span></div><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div>' +
+    '<div role="radiogroup" aria-label="Your exchange" style="display:flex;flex-direction:column;gap:8px"><span class="sub">Your exchange</span>' + rows + '</div>' +
+    '<label class="row" style="min-height:44px;font-weight:600"><input type="checkbox" id="remember" ' + (S.remember ? 'checked' : '') + ' style="width:20px;height:20px;accent-color:var(--accent)"> Remember my exchange</label>' +
+    '<button class="btn" type="button" data-act="open-exchange" data-coin="' + c.sym + '" data-amount="' + (amount || '') + '" style="height:56px;font-size:17px">Open ' + c.sym + ' in <span data-exchange>' + S.exchange + '</span></button>' +
+    '<p class="help" style="margin:0">You buy and sell inside <span data-exchange>' + S.exchange + '</span>’s app. Sign-up, KYC, deposits and tax (1% TDS) are handled there.</p>' +
+    '<p class="risk">Crypto products and NFTs are unregulated and can be highly risky. There may be no regulatory recourse for any loss from such transactions.</p>');
+}
+function openReminder(){
+  let amt = 10;
+  const draw = () => {
+    openOverlay('<div style="flex:1;display:flex;flex-direction:column;padding:16px 12px 12px"><article class="card" style="flex:1;border-radius:24px;padding:26px 20px 18px;display:flex;flex-direction:column;gap:18px" aria-labelledby="rem-t">' +
+      '<div class="spread sub" style="font-size:13px"><span>Chartroom reminder</span><span class="num">15 min of scrolling</span></div>' +
+      '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px"><h1 id="rem-t" style="font-size:38px;line-height:1.08">Thoda break.<br>Thoda invest?</h1><p style="margin:0;font-size:17px;line-height:1.5;color:var(--soft)">Small amounts, often. That’s how a habit starts.</p>' +
+      '<div role="group" aria-label="Amount" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">' + [10,20].map((v) => '<button type="button" class="amount num" data-act="rem-amt" data-v="' + v + '" aria-pressed="' + (v === amt) + '">₹' + v + '</button>').join('') + '</div>' +
+      '<div class="spread card" style="min-height:48px;padding:0 14px;border-radius:12px;background:var(--surface-2)"><span><span class="muted">Investing in</span> <strong>Bitcoin</strong></span><span class="sub" style="font-size:13px">picked once</span></div></div>' +
+      '<div style="display:flex;flex-direction:column;gap:4px"><button class="btn" type="button" data-act="rem-invest" style="height:56px;font-size:17px">Invest ₹' + amt + ' on <span data-exchange>' + S.exchange + '</span></button>' +
+      '<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr))"><button class="link-btn" style="color:var(--fg)" type="button" data-act="close">Not now</button><button class="link-btn dim" type="button" data-act="rem-off">Turn off reminders</button></div></div>' +
+      '<p class="risk">Crypto products and NFTs are unregulated and can be highly risky. There may be no regulatory recourse for any loss from such transactions.</p></article></div>', {full:true});
+    $('#overlay').dataset.amt = amt;
+  };
+  draw();
+  openReminder.set = (v) => { amt = v; draw(); };
+}
+function openComments(id){
+  const r = REELS.find((x) => x.id === id); const list = S.comments[id] || [];
+  openOverlay('<div class="spread"><h1 style="font-size:20px">Comments</h1><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div>' +
+    (list.length ? list.map((c, i) => '<div class="row" style="align-items:flex-start"><span class="avatar" style="width:32px;height:32px;font-size:12px">' + esc(c[0].charAt(1).toUpperCase()) + '</span><div style="flex:1;min-width:0"><strong style="font-size:14px">' + esc(c[0]) + '</strong><p style="margin:2px 0 0;font-size:15px;line-height:1.45">' + esc(c[1]) + '</p></div><button class="icon-btn" type="button" data-act="report" aria-label="Report comment" style="width:44px;height:44px;color:var(--muted)">' + I.flag + '</button></div>').join('') : '<div class="empty">No comments yet. Start a serious one.</div>') +
+    '<form class="row" data-form="comment" data-id="' + id + '" style="gap:8px"><label for="c-in" class="sr" style="position:absolute;left:-9999px">Add a comment</label><input class="input" id="c-in" placeholder="Add a comment on ' + esc(r.handle) + '…" autocomplete="off"><button class="btn sm" type="submit">Post</button></form>');
+}
+function openSources(id){
+  const r = REELS.find((x) => x.id === id);
+  const items = ['Official data or filing','News report','Creator’s own notes'].slice(0, r.sources);
+  openOverlay('<div class="spread"><h1 style="font-size:20px">Sources for this reel</h1><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div><p class="help" style="margin:0">Added by the creator. Chartroom doesn’t check user posts before they go live; report anything misleading.</p>' +
+    items.map((s, i) => '<div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:4px"><span class="sub" style="font-size:12px">Source ' + (i+1) + ' · at 0:' + String(12 + i * 19).padStart(2,'0') + '</span><strong>' + s + ' (sample)</strong></div>').join('') +
+    '<button class="btn ghost sm" type="button" data-act="report">Report this reel</button>');
+}
+function openCreate(){
+  const opt = (act, icon, t, d, kind) => '<button class="pick" type="button" data-act="' + act + '"' + (kind ? ' data-kind="' + kind + '"' : '') + ' style="border-width:1px"><span class="coin-badge" style="border-radius:12px;color:var(--accent)">' + I[icon] + '</span><span style="flex:1;display:flex;flex-direction:column"><strong style="font-size:16px">' + t + '</strong><span class="sub" style="font-size:13px">' + d + '</span></span></button>';
+  openOverlay('<div class="spread"><h1 style="font-size:22px">Create</h1><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div>' +
+    opt('make-reel','video','Reel','Record or upload a short vertical video') +
+    opt('open-import','ig','Import from Instagram','Paste a link to one of your own reels') +
+    opt('open-write','pen','Article','A long read for Boring Stuff','article') +
+    opt('open-write','text','Text post','A few serious lines, with an image or chart','post') +
+    '<p class="help" style="margin:0">Every post needs a finance topic. Paid coin promotions aren’t allowed.</p>');
+}
+function openImport(){
+  openOverlay('<div class="row"><button class="icon-btn" type="button" data-act="open-create" aria-label="Back">' + I.back + '</button><h1 style="font-size:20px">Import from Instagram</h1></div>' +
+    '<div class="warn-box" style="background:var(--surface-2);color:var(--soft)"><span style="color:var(--accent)">' + I.ig + '</span><span>Connected as <strong style="color:var(--fg)">@unicornkahisab</strong>. Only your own reels can be imported.</span></div>' +
+    '<form data-form="import" style="display:flex;flex-direction:column;gap:12px"><div class="field"><label for="ig-link">Reel link</label><input class="input" id="ig-link" placeholder="https://www.instagram.com/reel/…" autocomplete="off" autofocus><div class="err" id="ig-err" hidden></div><span class="help">Try any instagram.com/reel/ link. Other links are rejected.</span></div>' +
+    '<div class="field"><label for="ig-topic">Topic</label><select class="input" id="ig-topic"><option>Economy</option><option>Crypto</option><option>Markets</option><option>Tax</option></select></div>' +
+    '<button class="btn" type="submit">Import reel</button></form>');
+}
+function openWrite(kind){
+  const art = kind === 'article';
+  openOverlay('<div class="spread" style="padding:8px 4px 0 4px"><button class="icon-btn" type="button" data-act="close" aria-label="Cancel">' + I.close + '</button><strong>' + (art ? 'New article' : 'New post') + '</strong><button class="btn sm" type="submit" form="write-form" style="height:40px">Post</button></div>' +
+    '<form id="write-form" data-form="write" data-kind="' + (art ? 'Article' : 'Post') + '" style="flex:1;padding:8px 16px 16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto">' +
+    '<div class="seg" role="tablist" aria-label="Type"><button type="button" role="tab" data-act="write-kind" data-kind="article" aria-selected="' + art + '">Article</button><button type="button" role="tab" data-act="write-kind" data-kind="post" aria-selected="' + !art + '">Text post</button></div>' +
+    (art ? '<div class="field"><label for="w-title">Title</label><input class="input" id="w-title" placeholder="e.g. What I learned from my first crypto tax filing" autofocus></div>' : '') +
+    '<div class="field"><label for="w-body">' + (art ? 'Article' : 'Post') + '</label><textarea class="input" id="w-body" placeholder="' + (art ? 'Write it like you’d explain it to a smart friend.' : 'A few serious lines.') + '"' + (art ? '' : ' autofocus') + '></textarea></div>' +
+    '<div class="field"><label for="w-topic">Topic</label><select class="input" id="w-topic"><option>Crypto</option><option>Markets</option><option>Economy</option><option>Tax</option><option>Personal finance</option></select></div>' +
+    '<div class="err" id="w-err" hidden></div></form>', {full:true});
+}
+function openSettings(){
+  openOverlay('<div class="spread"><h1 style="font-size:22px">Settings</h1><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div>' +
+    '<label class="spread card" style="min-height:56px;padding:0 14px"><span><strong>Invest-habit reminders</strong><br><span class="sub" style="font-size:13px">Every 15 to 30 minutes of scrolling</span></span><input type="checkbox" id="set-rem" ' + (S.reminders ? 'checked' : '') + ' style="width:22px;height:22px;accent-color:var(--accent)"></label>' +
+    '<button class="spread card" type="button" data-act="pick-exchange" style="min-height:56px;padding:0 14px;text-align:left;width:100%"><span><strong>Your exchange</strong><br><span class="sub" style="font-size:13px" data-exchange>' + S.exchange + '</span></span>' + I.chev + '</button>' +
+    '<details class="card" style="padding:14px"><summary style="font-weight:800;cursor:pointer;min-height:24px">How Chartroom makes money</summary><p class="help" style="margin:10px 0 0;font-size:14px;line-height:1.55">No ads. When you open a coin on your exchange from Chartroom, the exchange may pay us a share of its trading fee (an affiliate commission). You pay the exchange’s normal fee, nothing extra. Creators aren’t paid to promote coins, and paid promotions aren’t allowed.</p></details>');
+}
+function openExchangePicker(){
+  openOverlay('<div class="spread"><h1 style="font-size:22px">Your exchange</h1><button class="icon-btn" type="button" data-act="close" aria-label="Close">' + I.close + '</button></div>' +
+    '<div role="radiogroup" aria-label="Your exchange" style="display:flex;flex-direction:column;gap:8px">' + EXCHANGES.map((x) => '<button type="button" class="pick" role="radio" aria-checked="' + (x === S.exchange) + '" data-act="ex" data-x="' + x + '" data-close="1"><span class="coin-badge" style="border-radius:10px;font-size:15px">' + x.charAt(0) + '</span><strong style="flex:1;font-size:16px">' + x + '</strong><span class="dot"></span></button>').join('') + '</div>' +
+    '<p class="help" style="margin:0">Trade buttons across Chartroom open this exchange’s app.</p>');
+}
+
+/* ---------- news ---------- */
+function renderNews(){
+  const top = NEWS.find((n) => n.top), rest = NEWS.filter((n) => !n.top);
+  const c = coin(top.coin);
+  $('#news-list').innerHTML =
+    '<button type="button" class="card" data-act="article" data-id="' + top.id + '" style="padding:0;overflow:hidden;text-align:left;display:flex;flex-direction:column">' +
+      '<div style="height:150px;background:#1D2430;display:flex;align-items:flex-end;padding:14px">' + sparkline('#FFB020', 4) + '</div>' +
+      '<div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:800;color:var(--accent)">Top story · ' + top.topic + ' · ' + top.mins + ' min read</span><span style="font-size:20px;line-height:1.25;font-weight:800;text-wrap:balance">' + esc(top.title) + '</span><span style="font-size:15px;line-height:1.45;color:var(--soft)">' + esc(top.summary) + '</span>' +
+      '<span class="row" style="gap:8px"><span class="chip num">' + c.sym + ' <span class="' + (c.chg >= 0 ? 'up' : 'down') + '">' + (c.chg >= 0 ? '▲ ' : '▼ ') + Math.abs(c.chg).toFixed(1) + '%</span></span><span class="sub" style="font-size:13px">' + top.sources.length + ' sources</span></span></div></button>' +
+    '<ul class="list">' + rest.map((n, i) => '<li><button type="button" class="story" data-act="article" data-id="' + n.id + '"><span style="flex:1;display:flex;flex-direction:column;gap:4px"><span class="sub" style="font-size:12px">' + n.topic + ' · ' + n.mins + ' min read</span><span style="font-size:16px;line-height:1.3;font-weight:700">' + esc(n.title) + '</span><span class="sub" style="font-size:12px">' + (n.sources.length || 'No') + ' source' + (n.sources.length === 1 ? '' : 's') + '</span></span><span class="thumb" style="background:' + ['#1D1630','#0F2A26'][i % 2] + '"></span></button></li>').join('') + '</ul>' +
+    '<p class="risk">Sample stories written for the prototype. The team posts 3 to 5 checked articles a day.</p>';
+}
+function openArticle(id){
+  const n = NEWS.find((x) => x.id === id), c = coin(n.coin);
+  $('#article').innerHTML = '<div class="spread" style="position:sticky;top:0;background:var(--bg);padding:4px;z-index:2"><button class="icon-btn" type="button" data-act="tab" data-to="news" aria-label="Back to News">' + I.back + '</button><div class="row" style="gap:0"><button class="icon-btn" type="button" data-act="toast" data-msg="Approved. It’s on your profile and your followers’ feeds." aria-label="Approve">' + I.approve + '</button><button class="icon-btn" type="button" data-act="share" aria-label="Share">' + I.share + '</button></div></div>' +
+    '<article style="padding:0 20px 28px;display:flex;flex-direction:column;gap:14px"><span style="font-size:13px;font-weight:800;color:var(--accent)">' + n.topic + ' · ' + n.mins + ' min read</span><h1 style="font-size:27px;line-height:1.2">' + esc(n.title) + '</h1>' +
+    '<div class="row sub" style="font-size:13px"><span class="avatar" style="width:28px;height:28px;font-size:13px;background:var(--accent);color:var(--on-accent)">C</span>Chartroom News · checked by our team</div>' +
+    n.body.map((p) => '<p style="margin:0;font-size:17px;line-height:1.6;color:#D9DDE4">' + esc(p) + '</p>').join('') +
+    '<h2 class="muted" style="font-size:14px">Coins in this story</h2><div class="coinbar"><div style="flex:1;display:flex;flex-direction:column"><span class="sub" style="font-size:13px">' + c.name + ' · ' + c.sym + '</span><span class="num" style="font-size:17px;font-weight:800">' + inr(c.price) + '</span></div><button class="btn" type="button" data-act="trade" data-coin="' + c.sym + '">Trade on <span data-exchange>' + S.exchange + '</span></button></div>' +
+    '<h2 class="muted" style="font-size:14px">Sources</h2>' + (n.sources.length ? '<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.4">' + n.sources.map((s) => '<li><a href="' + s[1] + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a></li>').join('') + '</ol>' : '<p class="help" style="margin:0">Explainer from the Chartroom team; no outside sources.</p>') +
+    '</article>';
+  show('article');
+}
+
+/* ---------- boring stuff ---------- */
+function postHTML(p){
+  const liked = !!S.liked[p.id], appr = !!S.approved[p.id];
+  return '<article class="card" style="overflow:hidden">' +
+    (p.approvedBy ? '<div class="approved-by" style="padding:10px 14px 0;font-size:12px">' + I.approveSm + 'Approved by ' + esc(p.approvedBy) + '</div>' : '') +
+    '<div class="row" style="padding:10px 14px 0"><span class="avatar" style="width:36px;height:36px">' + esc(p.name.charAt(0)) + '</span><div style="flex:1;display:flex;flex-direction:column"><strong style="font-size:14px">' + esc(p.name) + '</strong><span class="sub" style="font-size:12px">' + esc(p.headline) + '</span></div><span class="sub" style="font-size:12px">' + p.kind + '</span></div>' +
+    (p.cover ? '<div style="margin:12px 14px 0;height:110px;border-radius:12px;background:#1D2430;display:flex;align-items:flex-end;padding:8px">' + sparkline('#4ADE9B', 1) + '</div>' : '') +
+    (p.title ? '<div style="padding:12px 14px 0;display:flex;flex-direction:column;gap:4px"><strong style="font-size:18px;line-height:1.3">' + esc(p.title) + '</strong><span class="sub" style="font-size:13px">' + esc(p.meta) + '</span></div>' : '') +
+    (p.body ? '<p style="margin:0;padding:10px 14px 0;font-size:15px;line-height:1.5">' + esc(p.body) + '</p>' : '') +
+    (p.chart ? '<div style="margin:10px 14px 0;height:100px;border-radius:12px;background:#1D1630;display:flex;align-items:flex-end;padding:8px">' + sparkline('#FFC75A', 7) + '</div>' : '') +
+    '<div class="post-actions"><button type="button" data-act="like-post" data-id="' + p.id + '" aria-pressed="' + liked + '">' + (liked ? 'Liked' : 'Like') + '</button><button type="button" data-act="toast" data-msg="Comments open here in the app.">Comment</button><button type="button" data-act="approve-post" data-id="' + p.id + '" aria-pressed="' + appr + '">' + (appr ? 'Approved' : 'Approve') + '</button><button type="button" data-act="share">Share</button></div></article>';
+}
+function renderBoring(){ $('#boring-list').innerHTML = POSTS.map(postHTML).join(''); }
+
+/* ---------- trade ---------- */
+function renderTrade(){
+  $('#talked').innerHTML = COINS.filter((c) => c.talked).map((c) => '<button type="button" class="card" data-act="trade" data-coin="' + c.sym + '" style="flex:1;padding:10px 12px;text-align:left;display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px">' + c.sym + '</strong><span class="sub num" style="font-size:12px">' + c.talked + ' videos</span></button>').join('');
+  $('#coin-tabs').innerHTML = [['watch','Watchlist'],['all','All coins']].map(([id,l]) => '<button type="button" role="tab" data-act="coin-tab" data-t="' + id + '" aria-selected="' + (S.coinTab === id) + '">' + l + '</button>').join('');
+  const q = S.search.trim().toLowerCase();
+  let list = COINS.filter((c) => S.coinTab === 'all' || c.watch);
+  if (q) list = COINS.filter((c) => c.name.toLowerCase().includes(q) || c.sym.toLowerCase().includes(q));
+  $('#coin-list').innerHTML = list.length ? list.map((c) => '<li><button type="button" class="coin-row" data-act="trade" data-coin="' + c.sym + '"><span class="coin-badge">' + c.sym + '</span><span style="flex:1;display:flex;flex-direction:column"><strong style="font-size:16px">' + c.name + '</strong><span class="sub" style="font-size:13px">' + c.sym + '</span></span><span class="num" style="display:flex;flex-direction:column;align-items:flex-end"><strong style="font-size:16px">' + inr(c.price) + '</strong><span class="' + (c.chg >= 0 ? 'up' : 'down') + '" style="font-size:13px;font-weight:700">' + (c.chg >= 0 ? '▲ ' : '▼ ') + Math.abs(c.chg).toFixed(1) + '%</span></span></button></li>').join('') : '<li class="empty">No coin matches “' + esc(S.search) + '”. Only coins your exchange lists show here.</li>';
+}
+
+/* ---------- profile ---------- */
+function renderProfile(){
+  const approvedItems = REELS.filter((r) => S.approved[r.id]).map((r) => r.big).concat(POSTS.filter((p) => S.approved[p.id]).map((p) => p.title || p.body.slice(0, 40) + '…'));
+  const reels = S.myReels.concat(['Startup ka hisab: Swiggy','Inflation in one coin','EMI tip: prepay or invest?']);
+  const writing = S.myWriting;
+  const tiles = S.profileTab === 'reels' ? reels : S.profileTab === 'writing' ? writing : approvedItems;
+  const emptyMsg = {reels:'No reels yet.', writing:'Nothing written yet. Tap + to write in Boring Stuff.', approved:'Approve a reel or post and it shows here for your followers.'}[S.profileTab];
+  const topics = S.topics.length ? S.topics : ['Economy','Startups'];
+  $('#profile').innerHTML = '<div class="spread" style="padding:4px 4px 0 16px"><strong style="font-size:18px">@unicornkahisab</strong><button class="icon-btn" type="button" data-act="settings" aria-label="Settings">' + I.menu + '</button></div>' +
+    '<div class="pad" style="padding-top:4px;gap:12px"><div class="row" style="gap:16px"><span class="avatar" style="width:80px;height:80px;font-size:26px;background:var(--accent);color:var(--on-accent)">U</span><div class="num" style="flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center">' +
+    [[reels.length + writing.length,'Posts'],[Object.keys(S.following).length ? 1 : 0,'Followers'],[Object.keys(S.following).length,'Following']].map((x) => '<div style="display:flex;flex-direction:column"><strong style="font-size:18px">' + x[0] + '</strong><span class="sub" style="font-size:12px">' + x[1] + '</span></div>').join('') + '</div></div>' +
+    '<div><strong style="font-size:17px">Unicorn Ka Hisab</strong><div style="font-size:15px;color:var(--soft)">Startup numbers, explained · India</div></div>' +
+    '<div class="row" style="gap:8px;flex-wrap:wrap">' + topics.map((t) => '<span class="chip">' + esc(t) + '</span>').join('') + '</div>' +
+    '<div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px"><span class="sub" style="font-size:13px">Experience</span><strong>Founder · Unicorn Ka Hisab</strong><span class="sub" style="font-size:13px">Shows only when filled in</span><div class="row" style="gap:16px;font-weight:700;font-size:14px"><a href="https://www.instagram.com/unicornkahisab/" target="_blank" rel="noopener">Instagram</a><span class="muted">+ add links</span></div></div>' +
+    '<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px"><button class="btn ghost sm" type="button" data-act="toast" data-msg="Edit name, headline, photo, topics, work history and links.">Edit profile</button><button class="btn ghost sm" type="button" data-act="share">Share profile</button></div></div>' +
+    '<div class="seg" role="tablist" aria-label="Profile posts" style="margin:0 16px 8px">' + [['reels','Reels'],['writing','Writing'],['approved','Approved']].map(([id,l]) => '<button type="button" role="tab" data-act="profile-tab" data-t="' + id + '" aria-selected="' + (S.profileTab === id) + '">' + l + '</button>').join('') + '</div>' +
+    (tiles.length ? '<div class="grid3" style="padding:0 2px 16px">' + tiles.map((t, i) => '<div class="tile" style="background:' + ['#16233A','#2A1E10','#1D1630','#0F2A26'][i % 4] + '">' + esc(t) + '</div>').join('') + '</div>' : '<div class="empty">' + emptyMsg + '</div>');
+}
+
+/* ---------- DMs ---------- */
+let openChat = null;
+function renderDMs(){
+  if (!openChat) {
+    $('#dms').innerHTML = '<div class="row" style="padding:4px"><button class="icon-btn" type="button" data-act="tab" data-to="feed" aria-label="Back">' + I.back + '</button><h1 style="font-size:22px">Messages</h1></div><ul class="list" style="padding:0 16px">' +
+      CHATS.map((c) => '<li><button type="button" class="story" data-act="chat" data-id="' + c.id + '" style="align-items:center"><span class="avatar">' + esc(c.name.charAt(0)) + '</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><strong>' + esc(c.name) + '</strong><span class="sub" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(c.msgs[c.msgs.length - 1][1]) + '</span></span></button></li>').join('') + '</ul>';
+  } else {
+    const c = CHATS.find((x) => x.id === openChat);
+    $('#dms').innerHTML = '<div class="spread" style="padding:4px;border-bottom:1px solid var(--hair)"><div class="row"><button class="icon-btn" type="button" data-act="chat-back" aria-label="Back">' + I.back + '</button><div style="display:flex;flex-direction:column"><strong>' + esc(c.name) + '</strong><span class="sub" style="font-size:12px">' + esc(c.handle) + '</span></div></div><button class="link-btn dim" type="button" data-act="report" style="font-size:14px">Report · Block</button></div>' +
+      '<div style="padding:16px;display:flex;flex-direction:column;gap:8px">' + c.msgs.map((m) => '<div class="msg ' + m[0] + '">' + esc(m[1]) + (m[2] ? '<div class="flag">' + I.flag + '<span>Suspicious link hidden. Chartroom flags “guaranteed returns” and payment links in messages.</span></div>' : '') + '</div>').join('') + '</div>' +
+      '<form data-form="dm" data-id="' + c.id + '" class="row" style="gap:8px;padding:0 16px 16px"><label for="dm-in" style="position:absolute;left:-9999px">Message</label><input class="input" id="dm-in" placeholder="Message…" autocomplete="off"><button class="btn sm" type="submit">Send</button></form>';
+  }
+  paintIcons($('#dms'));
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-act]'); if (!t) return;
+  const a = t.dataset.act;
+  if (a === 'scrim') { if (e.target === t) closeOverlay(); return; }
+  switch (a) {
+    case 'ob-skip': finishOB(); break;
+    case 'ob-next': S.ob++; renderOB(); break;
+    case 'ob-send': { const v = ($('#ob-phone').value || '').replace(/\D/g, ''); if (v.length !== 10) { $('#ob-phone-err').hidden = false; return; } S.phone = v; S.ob = 4; renderOB(); break; }
+    case 'ob-verify': { const code = $$('.otp input').map((i) => i.value).join(''); if (!/^\d{6}$/.test(code)) { $('#otp-err').hidden = false; return; } S.ob = 5; renderOB(); break; }
+    case 'ob-topic': { const v = t.dataset.t; if (S.topics.includes(v)) S.topics = S.topics.filter((x) => x !== v); else if (S.topics.length < 3) S.topics.push(v); else { toast('Up to 3 topics. Remove one first.'); return; } renderOB(); break; }
+    case 'ob-done': if (S.topics.length) { finishOB(); toast('Welcome to Chartroom. Swipe up for the next reel.'); } break;
+    case 'tab': closeOverlay(); show(t.dataset.to); break;
+    case 'go': show(t.dataset.to); break;
+    case 'feed-tab': S.feedTab = t.dataset.t; renderFeedTabs(); renderReels(); break;
+    case 'like': S.liked[t.dataset.id] = !S.liked[t.dataset.id]; rerenderReel(t.dataset.id); break;
+    case 'approve': { const id = t.dataset.id; S.approved[id] = !S.approved[id]; rerenderReel(id); toast(S.approved[id] ? 'Approved. It’s on your profile and in your followers’ feeds.' : 'Approval removed.'); break; }
+    case 'follow': { const h = t.dataset.h; S.following[h] = !S.following[h]; REELS.filter((r) => r.handle === h).forEach((r) => rerenderReel(r.id)); break; }
+    case 'share': toast('Share to WhatsApp, Instagram or copy link.'); break;
+    case 'comments': openComments(t.dataset.id); break;
+    case 'sources': openSources(t.dataset.id); break;
+    case 'report': closeOverlay(); toast('Reported. We’ll tell you what happened to it.'); break;
+    case 'trade': openTrade(t.dataset.coin); break;
+    case 'ex': S.exchange = t.dataset.x; save(); syncExchange(); $$('.pick[data-act="ex"]').forEach((b) => b.setAttribute('aria-checked', b.dataset.x === S.exchange)); if (t.dataset.close) { closeOverlay(); toast('Trade buttons now open ' + S.exchange + '.'); } break;
+    case 'open-exchange': { const r = $('#remember'); S.remember = !r || r.checked; closeOverlay(); toast('In the app, this opens ' + t.dataset.coin + ' in ' + S.exchange + (t.dataset.amount ? ' with ₹' + t.dataset.amount + ' ready to invest.' : '. Trading happens there.')); break; }
+    case 'pick-exchange': openExchangePicker(); break;
+    case 'close': closeOverlay(); break;
+    case 'rem-amt': openReminder.set(Number(t.dataset.v)); break;
+    case 'rem-invest': { const amt = Number($('#overlay').dataset.amt || 10); closeOverlay(); openTrade('BTC', amt); break; }
+    case 'rem-off': S.reminders = false; save(); closeOverlay(); toast('Reminders off. Turn them back on in Settings.'); break;
+    case 'open-create': openCreate(); break;
+    case 'make-reel': closeOverlay(); toast('Opens the camera or your gallery. Not in the prototype.'); break;
+    case 'open-import': openImport(); break;
+    case 'open-write': openWrite(t.dataset.kind || 'post'); break;
+    case 'write-kind': openWrite(t.dataset.kind); break;
+    case 'settings': openSettings(); break;
+    case 'article': openArticle(t.dataset.id); break;
+    case 'like-post': S.liked[t.dataset.id] = !S.liked[t.dataset.id]; renderBoring(); break;
+    case 'approve-post': { const id = t.dataset.id; S.approved[id] = !S.approved[id]; renderBoring(); toast(S.approved[id] ? 'Approved. It’s on your profile now.' : 'Approval removed.'); break; }
+    case 'coin-tab': S.coinTab = t.dataset.t; renderTrade(); break;
+    case 'profile-tab': S.profileTab = t.dataset.t; renderProfile(); break;
+    case 'chat': openChat = t.dataset.id; renderDMs(); break;
+    case 'chat-back': openChat = null; renderDMs(); break;
+    case 'toast': toast(t.dataset.msg); break;
+  }
+});
+document.addEventListener('change', (e) => { if (e.target.id === 'set-rem') { S.reminders = e.target.checked; if (S.reminders) S.reminderShown = false; save(); toast(S.reminders ? 'Reminders on.' : 'Reminders off.'); } });
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'coin-search') { S.search = e.target.value; renderTrade(); }
+  if (e.target.id === 'ob-phone') { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); $('#ob-phone-err').hidden = true; }
+  if (e.target.closest('.otp')) { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1); const n = e.target.nextElementSibling; if (e.target.value && n) n.focus(); }
+});
+document.addEventListener('submit', (e) => {
+  const f = e.target.closest('[data-form]'); if (!f) return; e.preventDefault();
+  const kind = f.dataset.form;
+  if (kind === 'comment') { const v = $('#c-in').value.trim(); if (!v) return; (S.comments[f.dataset.id] = S.comments[f.dataset.id] || []).push(['@unicornkahisab', v]); openComments(f.dataset.id); toast('Comment posted.'); }
+  if (kind === 'dm') { const v = $('#dm-in').value.trim(); if (!v) return; CHATS.find((c) => c.id === f.dataset.id).msgs.push(['me', v]); renderDMs(); }
+  if (kind === 'import') {
+    const v = $('#ig-link').value.trim(), err = $('#ig-err');
+    if (!/^https?:\/\/(www\.)?instagram\.com\/(reel|reels|p)\/[A-Za-z0-9_-]+/i.test(v)) { err.textContent = 'That isn’t an Instagram reel link. It should look like instagram.com/reel/…'; err.hidden = false; return; }
+    S.myReels.unshift('Imported reel · ' + $('#ig-topic').value); closeOverlay(); toast('Reel imported from @unicornkahisab. It’s on your profile.');
+  }
+  if (kind === 'write') {
+    const title = $('#w-title') ? $('#w-title').value.trim() : '', body = $('#w-body').value.trim(), err = $('#w-err');
+    if (f.dataset.kind === 'Article' && !title) { err.textContent = 'Add a title for your article.'; err.hidden = false; return; }
+    if (!body) { err.textContent = 'Write something first.'; err.hidden = false; return; }
+    const p = {id:'u' + Date.now(), kind:f.dataset.kind, name:'Unicorn Ka Hisab', headline:'Startup numbers, explained', title:title, meta:$('#w-topic').value + (title ? ' · ' + Math.max(1, Math.round(body.split(/\s+/).length / 200)) + ' min read' : ''), body: title ? body.slice(0, 160) + (body.length > 160 ? '…' : '') : body, approvedBy:null};
+    POSTS.unshift(p); S.myWriting.unshift(title || body.slice(0, 40)); closeOverlay(); renderBoring(); show('boring'); toast('Posted to Boring Stuff.');
+  }
+});
+$('#restart').addEventListener('click', () => { S.ob = 0; S.topics = []; S.seen = {}; S.reminderShown = false; closeOverlay(); $('#onboarding').hidden = false; renderOB(); });
+
+/* ---------- boot ---------- */
+load(); paintIcons(document); renderOB(); renderFeedTabs(); renderReels(); renderNews(); renderBoring(); renderTrade(); syncExchange();
+})();
+</script>

@@ -3,3 +3,23 @@
 __pycache__/
 *.pyc
 .venv/
+
+# Intermediate video renders
+videos/**/*-draft.mp4
+videos/**/*-mix.wav
+videos/out/*.log
+videos/sfy/frames/
+outbox/
+videos/d2c/sfy/
+videos/d2c/sfy/
+videos/explainer/out/*WITH-SONG*
+videos/trailer/out/*WITH-SONG*
+videos/reels/out/
+videos/reels/music/*.mp3
+videos/reels/music/*.wav
+videos/trailer/music/
+videos/trailer/cap3/
+videos/trailer/out/v3/
+videos/trailer/out/*.log
+videos/trailer/out/*v3*
+videos/trailer/out/soon/

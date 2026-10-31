@@ -1,0 +1,2 @@
+qid,key,checker,confidence,question,a,b,c,d,why
+school-12-maths-3-m1,B,A,high,"If A = [[1, 2], [0, 1]], what is A^10?","[[1, 10], [0, 1]]","[[1, 20], [0, 1]]","[[1, 1024], [0, 1]]","[[10, 20], [0, 10]]","A^n = [[1, 2n], [0, 1]], by multiplying A^2 = [[1,4],[0,1]], and so on."

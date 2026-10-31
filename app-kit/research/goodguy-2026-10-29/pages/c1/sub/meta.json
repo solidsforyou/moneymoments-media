@@ -1,0 +1,44 @@
+{
+  "url": "https://www.stockgro.club/subscription/",
+  "fetched_at": "2026-10-29T06:28:57.756Z",
+  "status": 200,
+  "final_url": "https://www.stockgro.club/subscription/",
+  "blocked": false,
+  "title": "Subscribe to StockGro - Your Stock Research App",
+  "canonical": "https://www.stockgro.club/subscription/",
+  "meta": {
+    "description": "Subscribe to StockGro for research-backed stock ideas, SEBI-registered advisory insights, and the tools to make sharper investment decisions.",
+    "og:title": "Subscribe to StockGro - Your Stock Research App",
+    "og:description": "Subscribe to StockGro for research-backed stock ideas, SEBI-registered advisory insights, and the tools to make sharper investment decisions.",
+    "og:url": "https://www.stockgro.club/subscription/",
+    "og:site_name": "StockGro",
+    "og:image": "https://www.stockgro.club/static/favicon.png",
+    "og:type": "article",
+    "twitter:title": "Subscribe to StockGro - Your Stock Research App",
+    "twitter:description": "Subscribe to StockGro for research-backed stock ideas, SEBI-registered advisory insights, and the tools to make sharper investment decisions."
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [
+      "₹499",
+      "₹200",
+      "₹699",
+      "₹450",
+      "₹999",
+      "₹550"
+    ],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": [
+      "20% Off",
+      "20% Off",
+      "20% Off"
+    ]
+  },
+  "image_tags": 323,
+  "text_chars": 12006
+}

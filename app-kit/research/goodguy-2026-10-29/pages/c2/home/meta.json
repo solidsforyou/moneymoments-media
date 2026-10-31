@@ -1,0 +1,34 @@
+{
+  "url": "https://zerodha.com/varsity/",
+  "fetched_at": "2026-10-29T06:31:21.682Z",
+  "status": 200,
+  "final_url": "https://zerodha.com/varsity/",
+  "blocked": false,
+  "title": "Zerodha Varsity: Free Stock Market & Trading Courses Online",
+  "canonical": "https://zerodha.com/varsity/",
+  "meta": {
+    "description": "Learn stock market trading and investing online for free with Zerodha Varsity. In-depth lessons for beginners to advanced learners — no ads, no sign-ups.",
+    "og:locale": "en_US",
+    "og:type": "website",
+    "og:title": "Zerodha Varsity: Free Stock Market & Trading Courses Online",
+    "og:description": "Learn stock market trading and investing online for free with Zerodha Varsity. In-depth lessons for beginners to advanced learners — no ads, no sign-ups.",
+    "og:url": "https://zerodha.com/varsity/",
+    "og:image": "https://zerodha.com/varsity/wp-content/uploads/2021/02/varsity_og.png",
+    "og:image:width": "600",
+    "og:image:height": "350",
+    "og:image:type": "image/png"
+  },
+  "products": [],
+  "amazon": null,
+  "hints": {
+    "prices": [],
+    "mrp": [],
+    "ratings": [],
+    "counts": [],
+    "bought": [],
+    "best_sellers_rank": [],
+    "discount": []
+  },
+  "image_tags": 32,
+  "text_chars": 2127
+}

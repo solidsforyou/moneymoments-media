@@ -1,0 +1,289 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+#bg,#world,#ui,#fx{position:absolute;inset:0}
+#world{perspective:2000px;perspective-origin:960px 540px;overflow:hidden}
+.ph{position:absolute;left:0;top:0;width:390px;height:844px;transform-style:preserve-3d}
+.ph .slab{position:absolute;inset:-12px;border-radius:56px;background:#1b1c20}
+.ph .scr{position:absolute;inset:0;border-radius:44px;overflow:hidden;background:#fff;box-shadow:0 0 0 12px #111214}
+.ph .scr img{position:absolute;inset:0;width:390px;height:844px}
+.ph .sheen{position:absolute;inset:0;border-radius:44px;pointer-events:none;mix-blend-mode:screen}
+.crop{position:absolute;background-repeat:no-repeat;border-radius:12px}
+.panel{position:absolute;background-repeat:no-repeat;border-radius:22px}
+.fing{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(255,255,255,.35);border:3px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.dot{position:absolute;border-radius:50%}
+.mask{display:block;overflow:hidden;padding-bottom:.08em}
+.mask>span{display:inline-block}
+.big{font-weight:800;letter-spacing:-.05em;line-height:.96}
+.lab{font:700 22px "Inter";letter-spacing:.14em;text-transform:uppercase}
+.pill{position:absolute;padding:16px 26px;border-radius:999px;font:600 30px "Inter";white-space:nowrap}
+.mono{font-family:ui-monospace,"DejaVu Sans Mono",Menlo,monospace}
+svg{overflow:visible;width:100%;height:100%}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="hb" x="-20%" y="0" width="140%" height="100%"><feGaussianBlur id="hbv" stdDeviation="0 0"/></filter></svg>
+<div id="bg"></div><div id="world"></div><div id="ui"></div><div id="fx"></div>
+<script src="cap/data.js"></script><script src="cap/nifty.js"></script>
+<script>
+// "Welcome To Miami (Slowed)" from 36.695 s (a downbeat): 110 BPM, breakdown at beat 32, drop at beat 40.
+const BEAT = 60 / 110, NB = 80.6; window.DURATION = NB * BEAT;
+const $ = id => document.getElementById(id);
+const IM = ['store','signup','signup2','feed','feed2','story','lesson2','question','answer','sim3','markets','hissab','chat0','chat1','mock','build0','privacy0','privacy1'];
+window.READY = Promise.all(IM.map(n => new Promise(r => { const i = new Image(); i.onload = r; i.onerror = r; i.src = `cap/${n}.png`; })));
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const eout = x => 1 - Math.pow(1 - clamp(x), 3);
+const eback = x => { x = clamp(x); const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const ein = x => Math.pow(clamp(x), 3);
+const seg = (b, a, z) => clamp((b - a) / (z - a));
+const BX = (n, k) => BOXES[n][k];
+const grow = (b, d) => [b[0] - d, b[1] - d, b[2] + 2 * d, b[3] + 2 * d];
+const rnd = s => { const x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); };
+
+// ---------- the crew: drawn here so their parts can move ----------
+function olly(lid = 0){ const L = lid * 118; return `<svg viewBox="0 0 120 120"><text x="60" y="${26 - lid * 14}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="20" font-weight="700" fill="#5B6CFF" opacity="${.4 + lid * .6}">&lt;/&gt;</text><path d="M24 52l-12-16h44l12 16z" fill="#8E9BFF" transform="rotate(${-L} 24 52)"/><path d="M96 52l12-16H64l-12 16z" fill="#7C8BFF" transform="rotate(${L} 96 52)"/><path d="M24 52h72v46a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8z" fill="#5B6CFF"/><ellipse cx="47" cy="74" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="74" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="75" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="75" r="3.4" fill="#1A1A1A"/><path d="M51 88q9 ${7 + lid * 3} 18 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`; }
+let gid = 0;
+function sunny(rise = 1, rot = 0){ const id = 'sg' + (++gid), y = (1 - rise) * 62; return `<svg viewBox="0 0 120 120"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC24A"/><stop offset="1" stop-color="#FF4F6D"/></linearGradient><clipPath id="${id}c"><rect x="-40" y="-60" width="200" height="154"/></clipPath></defs><g clip-path="url(#${id}c)"><g transform="translate(0 ${y})"><g transform="rotate(${rot} 60 94)" stroke="#FFB020" stroke-width="6" stroke-linecap="round" opacity="${rise}"><path d="M60 10v12M24 26l8 9M96 26l-8 9M10 60h12M98 60h12"/></g><path d="M16 94a44 44 0 0 1 88 0z" fill="url(#${id})"/><ellipse cx="47" cy="68" rx="6.5" ry="7.5" fill="#fff"/><ellipse cx="73" cy="68" rx="6.5" ry="7.5" fill="#fff"/><circle cx="48" cy="69" r="3.4" fill="#1A1A1A"/><circle cx="74" cy="69" r="3.4" fill="#1A1A1A"/><path d="M51 81q9 7 18 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="38" cy="80" r="4" fill="#FF8FA3" opacity=".7"/><circle cx="82" cy="80" r="4" fill="#FF8FA3" opacity=".7"/></g></g><rect x="8" y="94" width="104" height="8" rx="4" fill="#3A3D44"/></svg>`; }
+function buddy(arm = 0, blink = 0, tint = '#3FA9FF'){ const ey = 8 * (1 - blink) + .6; return `<svg viewBox="0 0 120 150"><line x1="60" y1="6" x2="60" y2="20" stroke="${tint}" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="6" r="5" fill="#FFD36A"/><rect x="34" y="92" width="52" height="46" rx="18" fill="${tint}"/><circle cx="60" cy="116" r="11" fill="#fff"/><text x="60" y="121" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="14" fill="${tint}">B</text><path d="M36 102 q-14 10 -10 26" stroke="${tint}" stroke-width="9" fill="none" stroke-linecap="round"/><g transform="rotate(${arm} 84 102)"><path d="M84 102 q16 -6 20 -22" stroke="${tint}" stroke-width="9" fill="none" stroke-linecap="round"/></g><circle cx="60" cy="56" r="40" fill="${tint}"/><ellipse cx="60" cy="60" rx="31" ry="27" fill="#fff"/><ellipse cx="48" cy="54" rx="6" ry="${ey}" fill="#1A1A2E"/><ellipse cx="72" cy="54" rx="6" ry="${ey}" fill="#1A1A2E"/><path d="M47 63 q13 12 26 0" stroke="#1A1A2E" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`; }
+function goodguy(){ return `<svg viewBox="0 0 120 120"><path d="M48 96l-6 14M72 96l6 14" stroke="#B7791F" stroke-width="6" stroke-linecap="round"/><path d="M34 112h14M72 112h14" stroke="#7A5210" stroke-width="7" stroke-linecap="round"/><path d="M22 58q-14 4-12 18M98 58q14-6 12-20" stroke="#B7791F" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="60" cy="56" r="42" fill="#E8A317"/><circle cx="60" cy="56" r="34" fill="#FFCF4D"/><ellipse cx="47" cy="58" rx="6" ry="7" fill="#fff"/><ellipse cx="73" cy="58" rx="6" ry="7" fill="#fff"/><circle cx="48" cy="59" r="3.3" fill="#1A1A1A"/><circle cx="74" cy="59" r="3.3" fill="#1A1A1A"/><path d="M50 72q10 8 20 0" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`; }
+const coinBack = `<svg viewBox="0 0 120 120"><circle cx="60" cy="56" r="42" fill="#E8A317"/><circle cx="60" cy="56" r="34" fill="#FFCF4D"/><text x="60" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="44" fill="#B7791F">₹</text></svg>`;
+function coin(angle){ const c = Math.cos(angle * Math.PI / 180); return `<div style="width:100%;height:100%;transform:scaleX(${Math.max(.04, Math.abs(c))})">${c >= 0 ? goodguy() : coinBack}</div>`; }
+
+// ---------- building blocks ----------
+const crop = (img, b, st = '') => `<div class="crop" style="left:${b[0]}px;top:${b[1]}px;width:${b[2]}px;height:${b[3]}px;background-image:url(cap/${img}.png);background-size:390px 844px;background-position:${-b[0]}px ${-b[1]}px;${st}"></div>`;
+// a crop shown as a big floating panel in screen space (scale k)
+const panel = (img, b, x, y, k, tr = '', st = '') => `<div class="panel" style="left:${x - b[2] * k / 2}px;top:${y - b[3] * k / 2}px;width:${b[2] * k}px;height:${b[3] * k}px;background-image:url(cap/${img}.png);background-size:${390 * k}px ${844 * k}px;background-position:${-b[0] * k}px ${-b[1] * k}px;transform:${tr};${st}"></div>`;
+// the 3D phone. o: {x,y,s,rx,ry,rz,z,img,blur,dim,kids,sheen}
+function phone(o){
+  const { x = 960, y = 540, s = 1, rx = 0, ry = 0, rz = 0, z = 0, img, blur = 0, dim = 0, kids = '', sheen = 0 } = o;
+  const sh = `linear-gradient(${115 + ry * .6}deg, transparent ${30 + sheen * 40}%, rgba(255,255,255,.22) ${38 + sheen * 40}%, transparent ${48 + sheen * 40}%)`;
+  return `<div class="ph" style="transform:translate3d(${x - 195}px,${y - 422}px,${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${s})">
+    <div class="slab" style="transform:translateZ(-14px)"></div><div class="slab" style="transform:translateZ(-7px);background:#2a2c31"></div>
+    <div class="scr"><img src="cap/${img}.png" style="filter:blur(${blur}px) brightness(${1 - dim})"></div>
+    <div class="sheen" style="background:${sh};transform:translateZ(1px)"></div>${kids}</div>`;
+}
+// lift a piece of the screen toward the camera (a child of the phone, so it starts exactly in place)
+const lift = (img, b, z, k = 1, st = '') => crop(img, b, `transform:translateZ(${z}px) scale(${k});box-shadow:0 ${z / 7}px ${z / 2.5}px rgba(0,0,0,${clamp(z / 900, 0, .38)});${st}`);
+const finger = (x, y, z, press) => `<div class="fing" style="left:${x}px;top:${y}px;transform:translateZ(${z}px) scale(${press ? .78 : 1})"></div>`;
+function burst(x, y, z, d, col, n = 18, spread = 120){ let h = ''; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + rnd(i) * .4, r = eout(d) * spread * (.6 + rnd(i + 9) * .6), sz = 6 + rnd(i + 3) * 8; h += `<div class="dot" style="left:${x + Math.cos(a) * r - sz / 2}px;top:${y + Math.sin(a) * r - sz / 2}px;width:${sz}px;height:${sz}px;background:${col};opacity:${1 - d};transform:translateZ(${z}px)"></div>`; } return h; }
+// masked text that slides up into view at beat a
+const reveal = (b, a, html, st = '', dur = .45) => { const k = eout((b - a) / dur); return b < a ? '' : `<span class="mask" style="${st}"><span style="transform:translateY(${(1 - k) * 105}%)">${html}</span></span>`; };
+const abs = (x, y, html, st = '') => `<div style="position:absolute;left:${x}px;top:${y}px;${st}">${html}</div>`;
+const sweep = (b, a, dur = 1) => { const k = seg(b, a, a + dur); return k <= 0 || k >= 1 ? '' : `<div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent ${k * 140 - 30}%,rgba(255,255,255,.35) ${k * 140 - 15}%,transparent ${k * 140}%);mix-blend-mode:overlay"></div>`; };
+
+// ---------- the Nifty, Jan to Apr 2020 (real closes) ----------
+const NF = window.NIFTY, N0 = NF[0][1], iOf = d => NF.findIndex(x => x[0] === d);
+const I11 = iOf('2020-03-11'), I12 = iOf('2020-03-12'), ILOW = NF.reduce((m, x, i) => x[1] < NF[m][1] ? i : m, 0), IEND = NF.length - 1;
+const CH = { x0: 180, x1: 1740, y0: 330, y1: 930, lo: 7000, hi: 12800 };
+const cx = i => CH.x0 + (CH.x1 - CH.x0) * i / IEND, cy = v => CH.y1 - (CH.y1 - CH.y0) * (v - CH.lo) / (CH.hi - CH.lo);
+const inr = v => '₹' + Math.round(v).toLocaleString('en-IN');
+const fdate = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+function chart(upto, b, red){
+  const n = Math.floor(upto), f = upto - n, pts = NF.slice(0, n + 1).map((p, i) => [cx(i), cy(p[1])]);
+  if (n < IEND && f > 0) pts.push([lerp(cx(n), cx(n + 1), f), lerp(cy(NF[n][1]), cy(NF[n + 1][1]), f)]);
+  const path = (from, to, col, w) => { const P = pts.slice(from, to + 1); if (P.length < 2) return ''; return `<path d="M${P.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L')}" stroke="${col}" stroke-width="${w}" fill="none" stroke-linejoin="round" stroke-linecap="round" style="filter:drop-shadow(0 0 14px ${col})"/>`; };
+  const cut = red ? Math.min(I11, pts.length - 1) : pts.length - 1;
+  const lowEnd = Math.min(pts.length - 1, ILOW);
+  let s = `<svg width="1920" height="1080" style="position:absolute;left:0;top:0">`;
+  for (let k = 0; k <= 4; k++) { const v = CH.lo + (CH.hi - CH.lo) * k / 4; s += `<line x1="${CH.x0}" x2="${CH.x1}" y1="${cy(v)}" y2="${cy(v)}" stroke="rgba(255,255,255,.07)"/>`; }
+  s += `<line x1="${CH.x0}" x2="${CH.x1}" y1="${cy(N0)}" y2="${cy(N0)}" stroke="rgba(255,255,255,.25)" stroke-dasharray="6 10"/>`;
+  s += path(0, cut, '#7CF0A0', 6);
+  if (red) { s += path(cut, lowEnd, '#FF453A', 7); if (pts.length - 1 > ILOW) s += path(ILOW, pts.length - 1, '#7CF0A0', 6); }
+  const L = pts[pts.length - 1]; s += `<circle cx="${L[0]}" cy="${L[1]}" r="11" fill="${red && pts.length - 1 <= ILOW && pts.length - 1 > I11 ? '#FF453A' : '#7CF0A0'}"/><circle cx="${L[0]}" cy="${L[1]}" r="${22 + Math.sin(b * Math.PI * 2) * 4}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>`;
+  return s + '</svg>';
+}
+const valAt = u => { const n = Math.min(IEND, Math.floor(u)), f = u - n; return n < IEND ? lerp(NF[n][1], NF[n + 1][1], f) : NF[IEND][1]; };
+
+// ---------- sound cues (beat, kind), read by sfx.py ----------
+window.SFX = [[0,'tick'],[1,'tick'],[2,'tick'],[3,'tick'],[4,'pop'],[4.5,'whoosh'],[5,'pop'],[5.5,'pop'],[6,'pop'],[6.5,'pop'],[7.4,'whoosh'],[8,'whoosh'],[9.4,'rise'],[10,'click'],[10.8,'whoosh'],[12,'whoosh'],[13.2,'pop'],[13.5,'pop'],[13.8,'pop'],[14,'whoosh'],[15.2,'rise'],[16,'click'],[16,'pop'],[18,'whoosh'],[20,'whoosh'],[22,'whoosh'],[25,'whoosh'],[27,'click'],[28,'pop'],[30,'whoosh'],[32,'riser'],[40,'impact'],[42,'whoosh'],[44,'whoosh'],[46,'whoosh'],[48,'whoosh'],[48.5,'tick'],[49,'tick'],[49.5,'tick'],[50,'whoosh'],[50.5,'pop'],[51,'pop'],[51.5,'pop'],[52,'whoosh'],[53,'whoosh'],[54,'pop'],[56.5,'click'],[57,'whoosh'],[58,'whoosh'],[60,'whoosh'],[62.5,'tick'],[66,'whoosh'],[67.6,'click'],[68.4,'click'],[70,'whoosh'],[72,'pop'],[72.5,'pop'],[73,'pop'],[73.5,'pop'],[74,'whoosh'],[76.5,'tick']];
+
+// ---------- the film ----------
+function renderFrame(t){
+  const b = t / BEAT; let bg = '#000', W = '', U = '', FX = '', whip = 0, shake = 0;
+  // 0-8 · intro: words, then Olly opens and the apps fly out
+  if (b < 8) {
+    bg = 'radial-gradient(70% 70% at 50% 45%,#2a1f6b 0%,#0d0a26 60%,#05040d 100%)';
+    if (b < 4) { const w = ['Free.', 'Open.', 'Ad-free.', 'Yours.'][Math.floor(b)]; U += abs(0, 330, reveal(b, Math.floor(b), w, 'text-align:center;width:1920px', .3), 'width:1920px;color:#fff;font-size:260px;font-weight:800;letter-spacing:-.05em;line-height:1'); U += `<div style="position:absolute;left:0;right:0;top:680px;text-align:center;color:rgba(255,255,255,.5)" class="lab">OpenSource Everything</div>`; }
+    else {
+      const k = eback(seg(b, 4, 4.6)), lid = ease(seg(b, 4.5, 5.2)), dive = ein(seg(b, 7.3, 8)), size = 380 * k * (1 + dive * 7);
+      U += `<div style="position:absolute;left:${960 - size / 2}px;top:${700 - size / 2 + dive * 200}px;width:${size}px;height:${size}px;opacity:${1 - seg(b, 7.8, 8)}">${olly(lid)}</div>`;
+      const apps = [['Tomorrow', 'linear-gradient(135deg,#FFE1B0,#FFC2CC)', sunny(1, 0)], ['OpenPrep', 'linear-gradient(135deg,#1B4DFF,#06115A)', buddy(0, 0)], ['GoodHabit', 'linear-gradient(135deg,#1E3A2B,#0B7A3B)', goodguy()], ['The Good Stuff', 'linear-gradient(135deg,#FFC93C,#FF8A3D)', '<svg viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#fff"/></svg>']];
+      apps.forEach(([n, g, art], i) => { const d = seg(b, 5 + i * .5, 5.9 + i * .5); if (d <= 0) return; const e = eout(d), tx = lerp(960, 330 + i * 420, e), ty = lerp(560, 330, e) - Math.sin(d * Math.PI) * 160, sc = lerp(.2, 1, e) * (1 + dive * 4), rot = (1 - e) * (i % 2 ? 260 : -260);
+        U += `<div style="position:absolute;left:${tx - 110 * sc}px;top:${ty - 110 * sc}px;width:${220 * sc}px;text-align:center;transform:rotateY(${rot}deg);opacity:${1 - dive}"><div style="width:${220 * sc}px;height:${220 * sc}px;border-radius:${56 * sc}px;background:${g};display:grid;place-items:center;box-shadow:0 30px 80px rgba(0,0,0,.5)"><div style="width:62%;height:62%">${art}</div></div><div style="color:#fff;font-weight:700;font-size:${34 * sc}px;margin-top:${12 * sc}px">${n}</div></div>`; });
+      U += abs(0, 920, reveal(b, 6.6, 'One home for all of it.', 'text-align:center;width:1920px'), 'width:1920px;color:#fff;font-size:64px;font-weight:800;letter-spacing:-.03em');
+      FX += sweep(b, 6.8, 1.2);
+    }
+  }
+  // 8-14 · one OpenID, with Telegram
+  else if (b < 14) {
+    bg = 'radial-gradient(90% 90% at 70% 40%,#FFFFFF 0%,#E7ECF7 70%,#D9E0F0 100%)';
+    if (b < 12) {
+      const fly = eout(seg(b, 8, 9)), ry = lerp(-34, -14, ease(seg(b, 8, 9.6))) + seg(b, 10.8, 12) * 8, l1 = ease(seg(b, 9.3, 9.9)) * (1 - ease(seg(b, 10.3, 10.8))), l2 = ease(seg(b, 10.8, 11.4));
+      const img = b < 10.2 ? 'signup' : 'signup2', tg = BX('signup', 'tg'), nm = [18, 486, 354, 132];
+      let kids = lift('signup', tg, 260 * l1, 1 + .18 * l1 - (Math.abs(b - 10) < .12 ? .06 : 0), 'border-radius:26px') ;
+      if (b > 9.2 && b < 10.6) kids += finger(tg[0] + tg[2] * .62, tg[1] + tg[3] / 2, 270 * l1 + 10, Math.abs(b - 10) < .12);
+      if (b >= 10 && b < 10.9) kids += burst(tg[0] + tg[2] * .62, tg[1] + tg[3] / 2, 280 * l1, seg(b, 10, 10.9), '#2AABEE', 14, 140);
+      if (l2 > 0) kids += lift('signup2', nm, 320 * l2, 1 + .12 * l2, 'border-radius:16px;background-color:#fff');
+      W += phone({ x: 1290, y: 560, s: 1.02, rx: 6, ry, z: lerp(-900, 0, fly), img, blur: 5 * Math.max(l1, l2), dim: .12 * Math.max(l1, l2), kids, sheen: seg(b, 8, 12) });
+      U += abs(150, 380, reveal(b, 8.2, '<span class="lab" style="color:#007AFF">One OpenID</span>'), '') + abs(150, 420, reveal(b, 8.4, 'Sign up once.') + reveal(b, 8.7, 'Use every app.'), 'font-size:96px;font-weight:800;letter-spacing:-.045em;line-height:1.02;color:#0B0B0F');
+      U += abs(150, 650, reveal(b, 10.4, 'Log in with Telegram. We get your name and photo,<br>never your number or chats.'), 'font:500 28px Inter;color:#55575E;line-height:1.4');
+    } else {
+      const wipe = eout(seg(b, 12, 12.4));
+      bg = `linear-gradient(90deg,#007AFF ${wipe * 100}%,#E7ECF7 ${wipe * 100}%)`;
+      U += abs(0, 300, reveal(b, 12.15, 'One OpenID.') + reveal(b, 13, 'Every app.'), 'width:1920px;text-align:center;color:#fff;font-size:170px;font-weight:800;letter-spacing:-.05em;line-height:1');
+      [['PrepID', 13.2], ['GoodID', 13.5], ['Tomorrow ID', 13.8]].forEach(([n, a], i) => { const k = eback(seg(b, a, a + .4)); if (k > 0) U += `<div class="pill" style="left:${640 + i * 250 - (n.length > 7 ? 20 : 0)}px;top:${720 - (1 - k) * 60}px;background:#fff;color:#007AFF;opacity:${clamp(k)};transform:scale(${k})">${n}</div>`; });
+    }
+  }
+  // 14-22 · Tomorrow
+  else if (b < 22) {
+    const rise = eout(seg(b, 14, 15.6));
+    bg = `radial-gradient(80% 70% at 50% ${100 - rise * 20}%,#FFD8A8 0%,#FF9A8B 55%,#6B2E5A 100%)`;
+    if (b < 20) {
+      W += `<div style="position:absolute;left:${960 - 520}px;top:${200 + (1 - rise) * 500}px;width:1040px;height:1040px;opacity:.95">${sunny(rise, b * 6)}</div>`;
+      const story = b >= 18, whipK = Math.sin(seg(b, 17.75, 18.25) * Math.PI); whip = whipK * 60;
+      const hl = ease(seg(b, 15.1, 15.9)) * (1 - ease(seg(b, 17.2, 17.9))), pop = b >= 16 && b < 16.6 ? Math.sin(seg(b, 16, 16.6) * Math.PI) * .45 : 0, hb = grow(BX('feed', 'heart'), 4);
+      let kids = '';
+      if (!story) {
+        kids += lift(b < 16 ? 'feed' : 'feed2', hb, 420 * hl, 1 + 1.6 * hl + pop, 'border-radius:50%;background-color:#fff');
+        if (b > 15 && b < 16.5) kids += finger(hb[0] + hb[2] / 2, hb[1] + hb[3] / 2, 430 * hl + 10, Math.abs(b - 16) < .12);
+        if (b >= 16 && b < 17.2) kids += burst(hb[0] + hb[2] / 2, hb[1] + hb[3] / 2, 440 * hl, seg(b, 16, 17.2), '#1ED760', 22, 260);
+      } else {
+        const tb = BX('story', 'text'), pr = seg(b, 18, 20);
+        kids += `<div style="position:absolute;left:8px;top:6px;width:${(374 / 2 - 4)}px;height:3px;border-radius:2px;background:rgba(255,255,255,.4);transform:translateZ(2px)"><i style="display:block;height:100%;width:${pr * 100}%;background:#fff"></i></div>`;
+        kids += lift('story', grow(tb, 10), 260 * ease(seg(b, 18.6, 19.3)), 1 + .3 * ease(seg(b, 18.6, 19.3)), 'border-radius:18px');
+      }
+      W += phone({ x: 960, y: 560 + (1 - rise) * 120, s: 1.0, rx: 4, ry: story ? lerp(16, -8, seg(b, 18, 20)) : lerp(-18, 10, seg(b, 14, 18)), img: story ? 'story' : b < 16 ? 'feed' : 'feed2', blur: 5 * hl, dim: .1 * hl, kids, sheen: seg(b, 14, 20) });
+      U += abs(110, 140, reveal(b, 14.3, '<span class="lab" style="color:#fff">Tomorrow</span>'), '') + abs(110, 176, reveal(b, 14.5, 'The social app<br>for driven people.'), 'font-size:64px;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.02');
+      if (b >= 16.8 && b < 18) U += abs(1290, 720, reveal(b, 16.8, 'Likes are hidden.'), 'font-size:64px;font-weight:800;letter-spacing:-.04em;color:#fff');
+      if (story) U += abs(1290, 720, reveal(b, 18.4, 'Stories from friends.'), 'font-size:64px;font-weight:800;letter-spacing:-.04em;color:#fff');
+    } else {
+      bg = 'linear-gradient(135deg,#FFC24A,#FF4F6D)';
+      U += abs(0, 330, reveal(b, 20, 'No ads.') + reveal(b, 21, 'No fake numbers.'), 'width:1920px;text-align:center;color:#fff;font-size:170px;font-weight:800;letter-spacing:-.05em;line-height:1.02');
+    }
+  }
+  // 22-32 · OpenPrep
+  else if (b < 32) {
+    bg = 'radial-gradient(80% 80% at 50% 30%,#1B3BFF 0%,#0A1F99 45%,#030820 100%)';
+    if (b < 30) {
+      const grid = `<div style="position:absolute;inset:-200px;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;transform:perspective(900px) rotateX(60deg) translateY(${(b * 40) % 80}px);transform-origin:50% 100%;top:500px"></div>`;
+      U += grid;
+      if (b < 25) {
+        const k = eout(seg(b, 22, 22.8)), cam = BX('lesson2', 'tv'), zoom = lerp(3.6, 3.9, seg(b, 22, 25));
+        U += panel('lesson2', cam, 1150, 580, zoom * lerp(.6, 1, k), `perspective(1600px) rotateY(${lerp(-24, 6, ease(seg(b, 22, 25)))}deg)`, `box-shadow:0 60px 140px rgba(0,0,0,.6);opacity:${k}`);
+        const bk = eback(seg(b, 22.4, 23));
+        U += `<div style="position:absolute;left:${120}px;top:${400 + (1 - bk) * 400}px;width:340px;height:425px">${buddy(-50 * ease(seg(b, 23, 23.5)) + Math.sin(b * Math.PI) * 6, rnd(Math.floor(b * 2)) > .85 ? .9 : 0)}</div>`;
+        U += abs(120, 120, reveal(b, 22.3, '<span class="lab" style="color:#9DB7FF">OpenPrep · Buddy</span>'), '') + abs(120, 156, reveal(b, 22.5, 'Explains every step.'), 'font-size:72px;font-weight:800;letter-spacing:-.04em;color:#fff');
+      } else {
+        const ans = b >= 27, qb = [26, 325, 338, 320], k = eout(seg(b, 25, 25.7)), img = ans ? 'answer' : 'question';
+        U += panel(img, qb, 960, 600, 2.4 * lerp(.7, 1, k), `perspective(1600px) rotateX(${lerp(24, 0, k)}deg) rotateY(${Math.sin(b * .7) * 4}deg)`, `box-shadow:0 60px 140px rgba(0,0,0,.6);opacity:${k}`);
+        const rb = BX('answer', 'right'), fx = 960 + (rb[0] + rb[2] * .7 - (qb[0] + qb[2] / 2)) * 2.4, fy = 600 + (rb[1] + rb[3] / 2 - (qb[1] + qb[3] / 2)) * 2.4;
+        if (b > 26.2 && b < 27.6) FX += `<div class="fing" style="left:${fx}px;top:${fy}px;width:70px;height:70px;margin:-35px 0 0 -35px;transform:scale(${Math.abs(b - 27) < .12 ? .78 : 1})"></div>`;
+        if (b >= 27 && b < 28.2) FX += burst(fx, fy, 0, seg(b, 27, 28.2), '#34C759', 24, 320);
+        if (b >= 28) { const r = ease(seg(b, 28, 29.6)), txt = '100 → 120 → 96', nch = Math.round(r * txt.length); U += abs(0, 985, txt.slice(0, nch) + (b < 29.6 ? '<span style="opacity:.6">|</span>' : ''), 'width:1920px;text-align:center;color:#fff;font-size:64px;font-weight:700'); U += abs(0, 70, reveal(b, 28.2, 'So the net change is −4%.'), 'width:1920px;text-align:center;color:#fff;font-size:72px;font-weight:800;letter-spacing:-.04em'); }
+        else U += abs(0, 70, reveal(b, 25.2, 'Unlimited practice. Free.'), 'width:1920px;text-align:center;color:#fff;font-size:72px;font-weight:800;letter-spacing:-.04em');
+      }
+    } else {
+      bg = '#1B4DFF';
+      U += abs(0, 330, reveal(b, 30, 'Free CAT prep.') + reveal(b, 31, 'No ads.'), 'width:1920px;text-align:center;color:#fff;font-size:170px;font-weight:800;letter-spacing:-.05em;line-height:1.02');
+    }
+  }
+  // 32-46 · GoodHabit: the real 2020 crash, drop at 40
+  else if (b < 46) {
+    const red = b >= 40, flash = red ? Math.max(0, 1 - (b - 40) * 2.2) : 0;
+    bg = red ? `radial-gradient(80% 80% at 60% 60%,rgba(255,59,48,${.35 + flash * .4}) 0%,#1a0505 55%,#070101 100%)` : 'radial-gradient(80% 80% at 50% 40%,#0E3A24 0%,#04140C 70%,#010604 100%)';
+    if (b < 44) {
+      let upto;
+      if (b < 40) upto = lerp(0, I11, ease(seg(b, 33, 39.4)));
+      else if (b < 42) upto = I12 + (ILOW - I12) * eout(seg(b, 40.15, 42));
+      else upto = ILOW + (IEND - ILOW) * ease(seg(b, 42, 43.6));
+      if (b >= 40 && b < 40.15) upto = I12;
+      const push = 1 + seg(b, 32, 40) * .05 + (red ? .02 : 0);
+      W += `<div style="position:absolute;inset:0;transform:scale(${push});opacity:${b < 38 ? eout(seg(b, 32.6, 33.4)) : b < 40 ? lerp(1, .35, seg(b, 38, 38.4)) : 1}">${chart(upto, b, red)}</div>`;
+      const v = valAt(upto), d = NF[Math.min(IEND, Math.round(upto))][0], mine = 100000 * v / N0;
+      const ck = eout(seg(b, 33, 33.6)); const col = red && upto <= ILOW + .01 ? '#FF6B61' : '#fff';
+      U += `<div style="position:absolute;left:180px;top:120px;opacity:${b < 38 || b >= 40 ? ck : .35}"><div class="lab" style="color:#7CF0A0">GoodHabit · trading simulator</div><div style="font-size:52px;font-weight:800;letter-spacing:-.03em;color:#fff;margin-top:10px">${fdate(d)}</div></div>`;
+      U += `<div style="position:absolute;right:180px;top:120px;text-align:right;opacity:${b < 38 || b >= 40 ? ck : .35}"><div class="lab" style="color:rgba(255,255,255,.55)">₹1,00,000 in the Nifty on 1 Jan</div><div style="font-size:72px;font-weight:800;letter-spacing:-.03em;color:${col};font-variant-numeric:tabular-nums">${inr(mine)}</div><div style="font:600 24px Inter;color:rgba(255,255,255,.6)">Nifty 50 · ${v.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</div></div>`;
+      if (b < 38) U += abs(0, 960, reveal(b, 33.4, 'Real market history. Pretend money.'), 'width:1920px;text-align:center;color:rgba(255,255,255,.75);font-size:34px;font-weight:600');
+      if (b >= 38 && b < 40) U += abs(0, 380, reveal(b, 38, 'Then') + reveal(b, 39, 'March 2020.'), 'width:1920px;text-align:center;color:#fff;font-size:170px;font-weight:800;letter-spacing:-.05em;line-height:1');
+      if (b >= 40 && b < 42) { const p = eback(seg(b, 40, 40.35)); U += `<div style="position:absolute;left:${cx(I12) - 20}px;top:${cy(NF[I12][1]) - 250}px;transform:scale(${p});transform-origin:0 100%;color:#FF453A;font-size:150px;font-weight:800;letter-spacing:-.05em;text-shadow:0 0 40px rgba(255,69,58,.6)">−8.3%</div>`; U += abs(180, 960, reveal(b, 40.3, '12 Mar 2020 · The WHO calls Covid-19 a pandemic. Markets crash worldwide.'), 'color:#fff;font:600 32px Inter'); }
+      if (b >= 42) U += abs(180, 960, reveal(b, 42.1, `The low: ${fdate(NF[ILOW][0])}, ${Math.round((1 - NF[ILOW][1] / N0) * 1000) / 10}% down from 1 Jan. Then it climbed back.`), 'color:#fff;font:600 32px Inter');
+      if (red && b < 41) shake = 26 * Math.exp(-(b - 40) * 4);
+      if (flash > 0) FX += `<div style="position:absolute;inset:0;background:rgba(255,59,48,${flash * .5})"></div>`;
+    } else {
+      const k = eout(seg(b, 44, 44.8)), ev = [32, 332, 326, 75], l = ease(seg(b, 44.6, 45.3));
+      W += phone({ x: 960, y: lerp(1300, 600, k), s: 1.05, rx: lerp(30, 8, k), ry: lerp(-10, 6, seg(b, 44, 46)), img: 'sim3', blur: 4 * l, dim: .15 * l, kids: lift('sim3', ev, 380 * l, 1 + .5 * l, 'border-radius:16px;background-color:#fff'), sheen: seg(b, 44, 46) });
+      U += abs(0, 90, reveal(b, 44.2, 'Every big day, explained.'), 'width:1920px;text-align:center;color:#fff;font-size:72px;font-weight:800;letter-spacing:-.04em');
+    }
+  }
+  // 46-52 · practise money: markets and Hissab
+  else if (b < 52) {
+    if (b < 48) { bg = '#0B7A3B'; U += abs(0, 330, reveal(b, 46, 'Practise money') + reveal(b, 47, 'before it\'s real.'), 'width:1920px;text-align:center;color:#fff;font-size:160px;font-weight:800;letter-spacing:-.05em;line-height:1.02'); }
+    else if (b < 50) {
+      bg = 'radial-gradient(80% 80% at 50% 40%,#1c1d22,#000)';
+      ['r0', 'r1', 'r2', 'r3'].forEach((r, i) => { const rb = BX('markets', r), row = [16, rb[1] - 10, 358, 64], k = eout(seg(b, 48 + i * .5, 48.6 + i * .5)); if (k <= 0) return; U += panel('markets', row, 1180, 240 + i * 170, 1.9, `perspective(1400px) rotateX(${(1 - k) * 80}deg) translateZ(${(1 - k) * -400}px)`, `opacity:${k};box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:24px`); });
+      U += abs(120, 380, reveal(b, 48.1, '<span class="lab" style="color:#30D158">GoodHabit · Markets</span>'), '') + abs(120, 420, reveal(b, 48.3, 'Watch the market<br>like the weather.'), 'font-size:76px;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.02') + abs(120, 620, reveal(b, 48.8, 'Explained. Never tips.'), 'font:600 32px Inter;color:rgba(255,255,255,.7)');
+    } else {
+      bg = 'radial-gradient(80% 80% at 50% 40%,#FFF7E6,#F2E6CC)';
+      ['m0', 'm1', 'm2', 'm3'].forEach((m, i) => { const mb = BX('hissab', m), k = eback(seg(b, 50.2 + i * .45, 50.7 + i * .45)); if (seg(b, 50.2 + i * .45, 51) <= 0) return; U += panel('hissab', grow(mb, 2), 1180 + (mb[0] + mb[2] / 2 - 195) * 2.2, 200 + (mb[1] - 267) * 2.2 + mb[3], 2.2, `scale(${k})`, `border-radius:${mb[3] > 50 ? 30 : 40}px;box-shadow:0 20px 50px rgba(0,0,0,.15)`); });
+      U += abs(120, 380, reveal(b, 50.1, '<span class="lab" style="color:#B7791F">GoodHabit · Hissab</span>'), '') + abs(120, 420, reveal(b, 50.3, 'Split bills<br>with friends.'), 'font-size:84px;font-weight:800;letter-spacing:-.04em;color:#1A1A1A;line-height:1.02') + abs(120, 640, reveal(b, 50.7, 'Who owes whom, right in the chat.'), 'font:600 32px Inter;color:#7A5210');
+      U += `<div style="position:absolute;left:150px;top:150px;width:180px;height:180px;transform:rotateY(${(1 - eout(seg(b, 50, 50.8))) * 720}deg)">${goodguy()}</div>`;
+    }
+  }
+  // 52-60 · one inbox
+  else if (b < 60) {
+    if (b < 58) {
+      bg = 'radial-gradient(90% 90% at 65% 40%,#FFFFFF,#E9EDF5)';
+      const card = BX('chat1', 'sent'), opn = BX('chat1', 'open'), zt = seg(b, 56.9, 57.4), back = seg(b, 57.4, 58);
+      const img = b < 54 ? 'chat0' : b < 57.15 ? 'chat1' : 'mock';
+      const s = b < 57.15 ? 1 + ein(zt) * 4 : 1 + (1 - eout(back)) * 3.2, inK = b < 57.15 ? zt : 1 - eout(back);
+      let kids = '';
+      if (b > 55.6 && b < 57.1) kids += finger(opn[0] + opn[2] / 2, opn[1] + opn[3] / 2, 30, Math.abs(b - 56.5) < .12);
+      if (b >= 56.5 && b < 57.2) kids += burst(opn[0] + opn[2] / 2, opn[1] + opn[3] / 2, 20, seg(b, 56.5, 57.2), '#007AFF', 14, 90);
+      W += phone({ x: 1250, y: 560, s, rx: 4, ry: lerp(-16, -6, seg(b, 52, 57)) * (1 - inK), img, blur: inK * 8, kids, sheen: seg(b, 52, 58) });
+      // the card flies in from the left and lands in the chat
+      const fl = seg(b, 52.8, 54);
+      if (fl > 0 && fl < 1) { const e = ease(fl), tx = lerp(2200, 1250 + (card[0] + card[2] / 2 - 195), e), ty = lerp(1250, 560 + (card[1] + card[3] / 2 - 422), e) - Math.sin(fl * Math.PI) * 300, sc = lerp(2.2, 1, e); U += panel('chat1', card, tx, ty, sc, `perspective(1400px) rotateY(${(1 - e) * -50}deg) rotateZ(${(1 - e) * 12}deg)`, 'box-shadow:0 40px 90px rgba(0,0,0,.3);border-radius:22px'); }
+      if (b < 57) { U += abs(120, 360, reveal(b, 52.2, '<span class="lab" style="color:#007AFF">One inbox</span>'), '') + abs(120, 400, reveal(b, 52.4, 'Talk to anyone,<br>from any app.'), 'font-size:84px;font-weight:800;letter-spacing:-.04em;color:#0B0B0F;line-height:1.02') + abs(120, 620, reveal(b, 54.2, 'Cards from every app, live in your chats.<br>Tap one and it opens in its app.'), 'font:500 30px Inter;color:#55575E;line-height:1.4'); }
+    } else { bg = '#34C759'; U += abs(0, 330, reveal(b, 58, 'One inbox.') + reveal(b, 59, 'Every app.'), 'width:1920px;text-align:center;color:#fff;font-size:170px;font-weight:800;letter-spacing:-.05em;line-height:1.02'); }
+  }
+  // 60-66 · build, in the open
+  else if (b < 66) {
+    bg = 'radial-gradient(70% 80% at 30% 40%,#24145a 0%,#0b0b14 60%,#050508 100%)';
+    const k = eout(seg(b, 60, 60.8));
+    U += panel('build0', BX('build0', 'list'), 560, 560, 1.9 * lerp(.8, 1, k), `perspective(1600px) rotateY(${lerp(40, 18, ease(seg(b, 60, 66)))}deg)`, `opacity:${k};box-shadow:0 60px 140px rgba(0,0,0,.6);border-radius:26px`);
+    const code = '{\n  "app": "your-app",\n  "title": "Riya\'s mock result",\n  "subtitle": "11/18 · free full mock",\n  "button": {\n    "label": "Take the same mock",\n    "opens": "openprep://mock"\n  }\n}';
+    const n = Math.round(ease(seg(b, 62.3, 65.2)) * code.length), ck = eout(seg(b, 62, 62.6));
+    U += `<div class="mono" style="position:absolute;left:1050px;top:330px;width:760px;padding:40px 44px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#E6E6F0;font-size:30px;line-height:1.5;white-space:pre;opacity:${ck};transform:translateY(${(1 - ck) * 40}px)">${code.slice(0, n).replace(/"([^"]*)"/g, '<span style="color:#9DB7FF">"$1"</span>')}<span style="opacity:${Math.floor(b * 2) % 2 ? 1 : .2}">▍</span></div>`;
+    U += abs(1050, 140, reveal(b, 60.2, '<span class="lab" style="color:#B9A6FF">Build</span>'), '') + abs(1050, 176, reveal(b, 60.4, 'Everything we make<br>is open.'), 'font-size:72px;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1.02');
+    U += abs(1050, 880, reveal(b, 63, 'Code public at launch · AGPL licence · build your own app on OpenID'), 'font:600 26px Inter;color:rgba(255,255,255,.7)');
+  }
+  // 66-70 · privacy
+  else if (b < 70) {
+    bg = 'radial-gradient(80% 80% at 50% 40%,#F4F1FF,#E3DDF7)';
+    const tb = grow(BX('privacy0', 'toggles'), 6), k = eout(seg(b, 66, 66.7)), on = b >= 68 ? 'privacy1' : 'privacy0', glow = b >= 68 && b < 68.8 ? 1 - seg(b, 68, 68.8) : 0;
+    U += panel(on, tb, 1180, 560, 2.3 * lerp(.85, 1, k), `perspective(1600px) rotateX(${lerp(30, 4, k)}deg) rotateY(${Math.sin(b * .8) * 3}deg)`, `opacity:${k};box-shadow:0 50px 120px rgba(60,40,140,.25),0 0 0 ${glow * 18}px rgba(52,199,89,${glow * .35});border-radius:30px`);
+    const tx = 1180 + (tb[2] / 2 - 46) * 2.3, ty = 560 + (-tb[3] / 2 + 34) * 2.3;
+    if (b > 66.8 && b < 68.6) FX += `<div class="fing" style="left:${tx}px;top:${ty + (b > 68 ? 125 : 0)}px;width:70px;height:70px;margin:-35px 0 0 -35px;transform:scale(${Math.abs(b - 67.6) < .12 || Math.abs(b - 68.4) < .12 ? .78 : 1})"></div>`;
+    U += abs(130, 400, reveal(b, 66.2, '<span class="lab" style="color:#5856D6">Privacy</span>'), '') + abs(130, 440, reveal(b, 66.4, 'You decide<br>who sees what.'), 'font-size:84px;font-weight:800;letter-spacing:-.04em;color:#0B0B0F;line-height:1.02');
+  }
+  // 70-72 · learn, build, grow
+  else if (b < 72) { bg = '#05040d'; U += abs(0, 300, reveal(b, 70, 'Learn.') + reveal(b, 70.5, 'Build.') + reveal(b, 71, 'Grow your money.'), 'width:1920px;text-align:center;color:#fff;font-size:150px;font-weight:800;letter-spacing:-.05em;line-height:1.02'); }
+  // 72-end · the crew and the address
+  else {
+    bg = 'radial-gradient(90% 90% at 50% 40%,#FFFFFF,#EEF0F6)';
+    const fade = 1 - clamp((t - (NB * BEAT - .9)) / .9);
+    const crew = [olly(ease(seg(b, 72.3, 73))), sunny(eout(seg(b, 72.5, 73.4)), b * 8), buddy(-60 + Math.sin(seg(b, 73, 76) * Math.PI * 6) * 30, 0), null];
+    crew.forEach((svg, i) => { const k = eback(seg(b, 72 + i * .5, 72.5 + i * .5)); if (seg(b, 72 + i * .5, 72.5 + i * .5) <= 0) return; const x = 960 + (i - 1.5) * 240; U += `<div style="position:absolute;left:${x - 90}px;top:${230 + (1 - k) * 80}px;width:180px;height:${i === 2 ? 225 : 180}px;transform:scale(${k});opacity:${fade}">${svg || coin((1 - eout(seg(b, 73.5, 74.4))) * 900)}</div>`; });
+    U += `<div style="position:absolute;inset:0;opacity:${fade}">` + abs(0, 470, reveal(b, 74, 'Built in the open.'), 'width:1920px;text-align:center;color:#0B0B0F;font-size:140px;font-weight:800;letter-spacing:-.05em') + abs(0, 660, reveal(b, 75.5, 'OpenPrep · GoodHabit · The Good Stuff · Tomorrow'), 'width:1920px;text-align:center;color:#6E6E73;font:500 34px Inter') + abs(0, 740, reveal(b, 76.5, 'opensourceeverything.in'), 'width:1920px;text-align:center;color:#007AFF;font-size:60px;font-weight:800;letter-spacing:-.02em') + '</div>';
+    FX += sweep(b, 77, 1.4);
+  }
+  // section cuts get a short whip
+  for (const c of [8, 14, 22, 32, 46, 52, 60, 66]) { const d = b - c; if (d > -.18 && d < .18) whip = Math.max(whip, (1 - Math.abs(d) / .18) * 70); }
+  $('bg').style.background = bg; $('world').innerHTML = W; $('ui').innerHTML = U; $('fx').innerHTML = FX;
+  const sx = shake ? Math.sin(t * 97) * shake : 0, sy = shake ? Math.cos(t * 71) * shake : 0;
+  for (const id of ['world', 'ui']) { $(id).style.transform = `translate(${sx}px,${sy}px)`; $(id).style.filter = whip > 1 ? 'url(#hb)' : 'none'; }
+  $('hbv').setAttribute('stdDeviation', `${whip} 0`);
+}
+window.renderFrame = renderFrame;
+</script></body></html>

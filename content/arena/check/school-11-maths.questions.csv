@@ -1,0 +1,253 @@
+qid,chapter,question,A,B,C,D
+school-11-maths-1-e1,Sets,A set has 5 elements. How many subsets does it have?,32,25,10,31
+school-11-maths-1-e2,Sets,"A = {1, 2, 3, 4, 5, 6} and B = {4, 5, 6, 7, 8}. What is n(A U B)?",11,3,7,8
+school-11-maths-1-h1,Sets,"In a group, n(A) = 40, n(B) = 35, n(C) = 30, n(A and B) = 12, n(B and C) = 10, n(A and C) = 8 and n(A and B and C) = 5. How many belong to exactly one of the three sets?",80,60,65,55
+school-11-maths-2-e1,Relations and Functions,"If n(A) = 4 and n(B) = 3, how many elements does A x B have?",7,64,81,12
+school-11-maths-2-e2,Relations and Functions,"If f(x) = x^2 - 3x + 2, what is f(4)?",4,10,6,8
+school-11-maths-2-h1,Relations and Functions,What is the range of f(x) = x / (1 + x^2)?,"[-1/2, 1/2]","[-1, 1]","[0, 1/2]","(-1/2, 1/2)"
+school-11-maths-3-e1,Trigonometric Functions,150 degrees equals how many radians?,2pi/3,3pi/4,5pi/3,5pi/6
+school-11-maths-3-e2,Trigonometric Functions,What is the value of sin 150 degrees?,-1/2,sqrt(3)/2,1/2,-sqrt(3)/2
+school-11-maths-3-m1,Trigonometric Functions,tan x = 3/4 and x lies in the third quadrant. What is sin x?,3/5,-3/5,-4/5,4/5
+school-11-maths-3-h2,Trigonometric Functions,What is the minimum value of 8 sin x - 6 cos x + 4?,-10,-2,-4,-6
+school-11-maths-4-e1,Complex Numbers and Quadratic Equations,What is i^23 equal to?,i,1,-i,-1
+school-11-maths-4-e2,Complex Numbers and Quadratic Equations,What is the modulus of 5 + 12i?,17,13,7,sqrt(17)
+school-11-maths-4-h1,Complex Numbers and Quadratic Equations,What is (1 + i)^8 / (1 - i)^6?,2i,2,-2,-2i
+school-11-maths-5-e1,Linear Inequalities,Solve 3x - 5 < 7 for real x.,x > 4,x < 12,x < 4,x < 2
+school-11-maths-5-e2,Linear Inequalities,Which interval is the solution of |x| <= 2?,"(-2, 2)","[-2, 2]","(-infinity, -2] U [2, infinity)","(-infinity, 2]"
+school-11-maths-5-h2,Linear Inequalities,Solve (x - 1)(x - 3)/(x - 2) >= 0.,"[1, 3]","(-infinity, 1] U (2, 3]","[1, 2) U [3, infinity)","[1, 2) U (3, infinity)"
+school-11-maths-6-e1,Permutations and Combinations,In how many ways can 6 friends sit on a bench in a row?,36,720,120,5040
+school-11-maths-6-e2,Permutations and Combinations,In how many ways can 3 students be chosen from 8?,56,336,24,112
+school-11-maths-7-e1,Binomial Theorem,How many terms are there in the expansion of (x + y)^12?,12,13,11,14
+school-11-maths-7-e2,Binomial Theorem,What is the coefficient of x^2 in the expansion of (1 + x)^6?,15,6,20,30
+school-11-maths-7-h1,Binomial Theorem,What is the remainder when 7^103 is divided by 25?,7,24,18,8
+school-11-maths-8-e1,Sequences and Series,"What is the 10th term of the AP 3, 7, 11, ...?",39,43,40,37
+school-11-maths-8-e2,Sequences and Series,What is the sum of the first 20 natural numbers?,200,420,190,210
+school-11-maths-9-e1,Straight Lines,"What is the slope of the line through (2, 3) and (5, 9)?",2,1/2,3,-2
+school-11-maths-9-e2,Straight Lines,"What is the distance of (3, 4) from the line 3x + 4y - 5 = 0?",5,20,4/5,4
+school-11-maths-9-h1,Straight Lines,What is the distance between the parallel lines 3x + 4y = 10 and 6x + 8y + 5 = 0?,3/2,5/2,5,5/4
+school-11-maths-10-e1,Conic Sections,What is the radius of the circle x^2 + y^2 - 6x + 8y - 11 = 0?,36,11,5,6
+school-11-maths-10-e2,Conic Sections,What are the coordinates of the focus of y^2 = 16x?,"(16, 0)","(8, 0)","(4, 0)","(0, 4)"
+school-11-maths-10-h1,Conic Sections,"A circle passes through (0, 0), (4, 0) and (0, 6). What is its equation?",x^2 + y^2 - 4x - 6y = 0,x^2 + y^2 + 4x + 6y = 0,x^2 + y^2 - 4x - 6y + 13 = 0,x^2 + y^2 - 8x - 12y = 0
+school-11-maths-11-e1,Introduction to Three Dimensional Geometry,"What is the distance between (1, 2, 3) and (4, 6, 15)?",9,sqrt(133),17,13
+school-11-maths-11-e2,Introduction to Three Dimensional Geometry,"What is the image of (2, 3, -4) in the yz-plane?","(2, -3, -4)","(2, 3, 4)","(-2, 3, -4)","(-2, -3, 4)"
+school-11-maths-11-m1,Introduction to Three Dimensional Geometry,"What is the midpoint of the segment joining (2, -4, 6) and (8, 2, -2)?","(10, -2, 4)","(5, -1, 2)","(3, 3, -4)","(5, -1, 4)"
+school-11-maths-11-h1,Introduction to Three Dimensional Geometry,"A point on the y-axis is equidistant from (3, 1, 2) and (5, 5, 6). What is its y-coordinate?",13/2,7,6,5
+school-11-maths-11-h2,Introduction to Three Dimensional Geometry,"In what ratio does the xy-plane divide the segment joining (2, -3, 4) and (5, 6, -2)?",1 : 2 internally,2 : 1 externally,3 : 2 internally,2 : 1 internally
+school-11-maths-12-e1,Limits and Derivatives,What is the limit of (x^2 - 4)/(x - 2) as x tends to 2?,0,2,4,does not exist
+school-11-maths-12-e2,Limits and Derivatives,What is the limit of sin 3x / x as x tends to 0?,1,3,1/3,0
+school-11-maths-13-e1,Statistics,"What is the mean deviation about the mean of 4, 8, 12, 16, 20?",12,24,4.8,4
+school-11-maths-13-e2,Statistics,"What is the variance of 2, 4, 6, 8, 10?",10,8,6,16
+school-11-maths-14-e1,Probability,Two dice are thrown. What is the probability that the sum is 7?,1/12,1/6,7/36,1/9
+school-11-maths-14-e2,Probability,Two fair coins are tossed. What is the probability of at least one head?,3/4,1/2,1/4,2/3
+school-11-maths-1-e3,Sets,Which of these is the empty set?,{x : x is a natural number and 3 < x < 4},{0},{x : x is an even prime number},{x : x is a natural number and x < 2}
+school-11-maths-1-e4,Sets,A set has 64 subsets. How many elements does the set have?,8,6,32,7
+school-11-maths-1-e5,Sets,"A = {2, 3, 5, 7, 11, 13} and B = {3, 5, 8, 13}. What is A - B?",{8},"{3, 5, 13}","{2, 7, 11}","{2, 7, 8, 11}"
+school-11-maths-1-e6,Sets,"n(A) = 18, n(B) = 14 and n(A and B) = 6. What is n(A U B)?",32,38,20,26
+school-11-maths-1-m3,Sets,"In a hostel of 120 students, 70 like tea, 55 like coffee and 20 like both. How many like neither?",15,35,25,45
+school-11-maths-1-m4,Sets,"Of 30 teachers who teach Maths or Physics, 18 teach Maths and 7 teach both. How many teach only Physics?",19,12,23,5
+school-11-maths-1-m5,Sets,"In a group of 65 people, everyone likes cricket or tennis. 40 like cricket and 10 like both. How many like only tennis?",15,35,25,30
+school-11-maths-1-m6,Sets,"U = {1, 2, ..., 20}, A is the set of multiples of 4 and B is the set of multiples of 5. What is n(A' and B')?",8,11,13,12
+school-11-maths-1-m7,Sets,"How many subsets of {1, 2, 3, 4, 5} contain both 1 and 2?",8,32,16,10
+school-11-maths-1-m8,Sets,"n(A U B) = 50, n(A) = 30 and n(B) = 35. How many elements are in exactly one of A and B?",15,35,65,50
+school-11-maths-1-h3,Sets,"Among 80 people, n(A) = 25, n(B) = 30, n(C) = 20, n(A and B) = 10, n(B and C) = 8, n(A and C) = 6 and n(A and B and C) = 4. How many belong to exactly two of the sets?",24,16,20,12
+school-11-maths-1-h4,Sets,"In a survey of 200 people, 120 read paper A, 90 read B, 70 read C, 50 read A and B, 40 read B and C, 30 read A and C, and 20 read all three. How many read none of them?",20,80,40,60
+school-11-maths-1-h6,Sets,"How many subsets of {1, 2, 3, 4} contain at least one even number?",14,8,12,10
+school-11-maths-1-h7,Sets,"From 1 to 30, how many numbers are divisible by 3 or 5 but not by both?",14,16,10,12
+school-11-maths-1-h8,Sets,"In a class of 100, 70 play cricket and 55 play football. What is the least possible number who play both?",25,15,30,0
+school-11-maths-2-e3,Relations and Functions,"If n(A) = 4 and n(A x B) = 28, how many elements does B have?",7,24,32,112
+school-11-maths-2-e4,Relations and Functions,"A x B = {(1, p), (1, q), (2, p), (2, q), (3, p), (3, q)}. What is A?","{p, q}","{1, 2, 3}","{1, 2, 3, p, q}","{1, 2}"
+school-11-maths-2-e5,Relations and Functions,"If f(x) = 2x^2 - 5, what is f(-3)?",31,-11,13,1
+school-11-maths-2-e8,Relations and Functions,How many relations are there from a set with 2 elements to a set with 3 elements?,6,64,9,36
+school-11-maths-2-m3,Relations and Functions,"f(x) = x^2 - 4x + 7 is defined on A = {0, 1, 2, 3, 4}. What is its range?","{3, 4, 7}","{3, 4, 7, 8}","{7, 4, 3, 4, 7}","{0, 3, 4, 7}"
+school-11-maths-2-m4,Relations and Functions,What is the domain of f(x) = sqrt(16 - x^2)?,"(-4, 4)","[-4, 4]",x >= 4,"(-infinity, -4] U [4, infinity)"
+school-11-maths-2-m5,Relations and Functions,How many relations are there from a set with 3 elements to a set with 4 elements?,12,81,4096,64
+school-11-maths-2-m6,Relations and Functions,What is the domain of f(x) = sqrt(x - 3) + 1/(x^2 - 25)?,"[3, infinity)","(3, infinity) except 5","[3, infinity) except -5 and 5","[3, infinity) except 5"
+school-11-maths-2-m7,Relations and Functions,What is the range of f(x) = (x^2 - 9)/(x - 3)?,all real numbers except 6,all real numbers,all real numbers except 3,{6}
+school-11-maths-2-m8,Relations and Functions,f(x) = ax + b with f(1) = 5 and f(3) = 11. What is f(5)?,15,17,14,19
+school-11-maths-2-h3,Relations and Functions,How many one-one functions are there from a set with 3 elements to a set with 4 elements?,64,81,12,24
+school-11-maths-2-h4,Relations and Functions,How many onto functions are there from a set with 4 elements onto a set with 2 elements?,14,16,8,12
+school-11-maths-2-h5,Relations and Functions,"f(x) = ax^2 + bx + c has f(0) = 4, f(1) = 9 and f(2) = 18. What is f(3)?",28,31,27,36
+school-11-maths-2-h6,Relations and Functions,What is the domain of f(x) = sqrt((x - 1)/(x - 4))?,"[1, 4]","(-infinity, 1) U (4, infinity)","(-infinity, 1] U (4, infinity)","(-infinity, 1] U [4, infinity)"
+school-11-maths-2-h8,Relations and Functions,"On A = {1, 2, 3, 4, 5, 6}, R = {(a, b) : a divides b}. How many ordered pairs are in R?",14,12,15,21
+school-11-maths-3-e3,Trigonometric Functions,72 degrees equals how many radians?,2pi/5,3pi/5,pi/5,5pi/2
+school-11-maths-3-e4,Trigonometric Functions,pi/12 radians equals how many degrees?,12 degrees,15 degrees,30 degrees,60 degrees
+school-11-maths-3-e5,Trigonometric Functions,What is the length of an arc of a circle of radius 6 cm that subtends an angle of 60 degrees at the centre?,6pi cm,12pi cm,2pi cm,pi cm
+school-11-maths-3-e6,Trigonometric Functions,What is the value of tan 135 degrees?,1,sqrt(3),-sqrt(3),-1
+school-11-maths-3-m3,Trigonometric Functions,cos x = -5/13 and x is in the third quadrant. What is tan x?,12/5,-12/5,5/12,-5/12
+school-11-maths-3-m4,Trigonometric Functions,What is the general solution of tan x = sqrt(3)?,x = n pi + pi/6,x = n pi + pi/3,x = 2n pi + pi/3,x = n pi - pi/3
+school-11-maths-3-m5,Trigonometric Functions,What is the value of sin 15 degrees?,(sqrt(6) + sqrt(2))/4,(sqrt(3) - 1)/2,(sqrt(6) - sqrt(2))/4,(sqrt(3) + 1)/4
+school-11-maths-3-m6,Trigonometric Functions,"A and B are acute, sin A = 3/5 and cos B = 12/13. What is sin(A + B)?",33/65,16/65,63/65,56/65
+school-11-maths-3-m7,Trigonometric Functions,"How many solutions does 2cos^2 x - 3cos x + 1 = 0 have in [0, 2pi)?",3,2,4,1
+school-11-maths-3-h3,Trigonometric Functions,What is the difference between the greatest and least values of 5 sin x + 12 cos x + 4?,13,22,30,26
+school-11-maths-3-h4,Trigonometric Functions,What is the angle between the hour and minute hands of a clock at 4:30?,pi/4,pi/6,pi/3,5pi/12
+school-11-maths-3-h5,Trigonometric Functions,What is the value of tan 20 degrees x tan 40 degrees x tan 80 degrees?,1,sqrt(3),1/sqrt(3),3 sqrt(3)
+school-11-maths-3-h6,Trigonometric Functions,What is the value of cos 36 degrees - cos 72 degrees?,1/4,sqrt(5)/4,1/2,1/3
+school-11-maths-3-h7,Trigonometric Functions,"If tan x + cot x = 4, what is sin 2x?",1/4,2,sqrt(3)/2,1/2
+school-11-maths-4-e3,Complex Numbers and Quadratic Equations,What is the modulus of -6 + 8i?,10,14,2,sqrt(14)
+school-11-maths-4-e4,Complex Numbers and Quadratic Equations,What is the conjugate of 3 - 7i?,-3 + 7i,3 + 7i,-3 - 7i,7 - 3i
+school-11-maths-4-e5,Complex Numbers and Quadratic Equations,What is i^58 equal to?,1,i,-1,-i
+school-11-maths-4-e6,Complex Numbers and Quadratic Equations,(3 + 2i) + (5 - 6i) equals,8 + 4i,2 + 8i,8 - 8i,8 - 4i
+school-11-maths-4-m3,Complex Numbers and Quadratic Equations,(3 + 4i)/(1 - 2i) in the form a + ib is,-1 + 2i,1 + 2i,-1 - 2i,7/5 + 2i
+school-11-maths-4-m4,Complex Numbers and Quadratic Equations,What is the multiplicative inverse of 3 - 4i?,(3 - 4i)/25,(3 + 4i)/25,(-3 + 4i)/25,(3 + 4i)/5
+school-11-maths-4-m5,Complex Numbers and Quadratic Equations,What is the polar form of -1 + i?,sqrt(2)(cos pi/4 + i sin pi/4),2(cos 3pi/4 + i sin 3pi/4),sqrt(2)(cos 3pi/4 + i sin 3pi/4),sqrt(2)(cos 5pi/4 + i sin 5pi/4)
+school-11-maths-4-m6,Complex Numbers and Quadratic Equations,What are the roots of x^2 - 2x + 5 = 0?,-1 + 2i and -1 - 2i,2 + i and 2 - i,1 + 4i and 1 - 4i,1 + 2i and 1 - 2i
+school-11-maths-4-m7,Complex Numbers and Quadratic Equations,What is the modulus of (2 + i)(1 - 3i)?,5 sqrt(2),5,10,7
+school-11-maths-4-m8,Complex Numbers and Quadratic Equations,"If z = 2 - 3i, what is z x (conjugate of z) + z + (conjugate of z)?",13,17,9,21
+school-11-maths-4-h3,Complex Numbers and Quadratic Equations,What is the least positive integer n for which ((1 + i)/(1 - i))^n = 1?,2,8,1,4
+school-11-maths-4-h4,Complex Numbers and Quadratic Equations,Which of these is a square root of -5 + 12i?,2 + 3i,3 + 2i,2 - 3i,-3 + 2i
+school-11-maths-4-h5,Complex Numbers and Quadratic Equations,"On the Argand plane, what is the locus of z with |z - 3| = |z + 3i|?",the line y = x,the line y = -x,a circle through the origin,the line x + y = 3
+school-11-maths-4-h6,Complex Numbers and Quadratic Equations,What is 1 + i + i^2 + ... + i^2026?,1,0,i,-1 + i
+school-11-maths-4-h7,Complex Numbers and Quadratic Equations,A quadratic with real coefficients has 3 - 2i as a root and leading coefficient 1. What is it?,x^2 + 6x + 13 = 0,x^2 - 6x - 13 = 0,x^2 - 6x + 5 = 0,x^2 - 6x + 13 = 0
+school-11-maths-5-e3,Linear Inequalities,Solve 2x + 7 > 3x - 1 for real x.,x < 8,x > 8,x < 6,x > 6
+school-11-maths-5-e4,Linear Inequalities,Solve 5 - 2x >= 11 for real x.,x >= -3,x <= -3,x <= 3,x >= 3
+school-11-maths-5-e5,Linear Inequalities,How many integers x satisfy -2 <= x < 3?,4,6,5,3
+school-11-maths-5-e8,Linear Inequalities,Solve x/3 - 2 >= 1 for real x.,x >= 3,x >= 9,x <= 9,x >= -3
+school-11-maths-5-m3,Linear Inequalities,Solve 3 <= 2x - 5 <= 9 for real x.,4 <= x <= 7,4 < x < 7,1 <= x <= 2,8 <= x <= 14
+school-11-maths-5-m4,Linear Inequalities,Meena scored 62 and 71 in two tests. What is the least score in the third test that gives her an average of at least 70?,70,77,75,80
+school-11-maths-5-m5,Linear Inequalities,Solve the system 2x - 1 > 3 and 4 - x >= 1.,"[2, 3)","(2, 3)","(2, 3]","(3, infinity)"
+school-11-maths-5-m6,Linear Inequalities,Rohan has Rs 500. A geometry box costs Rs 80 and a pen costs Rs 12. What is the greatest number of pens he can buy along with the box?,36,42,41,35
+school-11-maths-5-m7,Linear Inequalities,Solve |3x + 2| >= 7.,"(-infinity, -3] U [5/3, infinity)","[-3, 5/3]","(-infinity, -3) U (5/3, infinity)","[5/3, infinity)"
+school-11-maths-5-m8,Linear Inequalities,How many integers x satisfy -3 < 2x + 1 <= 9?,5,6,7,4
+school-11-maths-5-h3,Linear Inequalities,The length of a rectangle is 4 cm more than its breadth. Its perimeter is less than 48 cm and the breadth is at least 5 cm. How many whole-number breadths are possible?,6,4,3,5
+school-11-maths-5-h4,Linear Inequalities,Solve (x - 2)/(x + 3) < 1.,x > -3,x < -3,x > -5,all real x except -3
+school-11-maths-5-h5,Linear Inequalities,Solve x^2 - 4x - 5 <= 0 and |x - 1| > 2 together.,"[-1, 3)","(3, 5]","[-1, 5]","(3, 5)"
+school-11-maths-5-h7,Linear Inequalities,How many integers satisfy both |2x - 3| <= 9 and x^2 > 4?,4,6,9,5
+school-11-maths-5-h8,Linear Inequalities,The sum of three consecutive odd positive integers is more than 20 but less than 40. How many such triples exist?,4,3,5,6
+school-11-maths-6-e3,Permutations and Combinations,What is the value of 7!/5!?,42,2,21,35
+school-11-maths-6-e4,Permutations and Combinations,"If nP2 = 56, what is n?",7,8,9,14
+school-11-maths-6-e5,Permutations and Combinations,What is the value of 10C8?,90,80,45,10
+school-11-maths-6-e7,Permutations and Combinations,In how many ways can the letters of the word TRAIN be arranged?,120,24,25,60
+school-11-maths-6-m3,Permutations and Combinations,A group of 5 girls and 6 boys must pick a team of 2 girls and 3 boys. How many teams are possible?,200,462,30,110
+school-11-maths-6-m4,Permutations and Combinations,How many different arrangements of the letters of the word BANANA are there?,120,60,720,30
+school-11-maths-6-m5,Permutations and Combinations,"How many 4-digit even numbers can be formed from the digits 1, 2, 3, 4, 5, 6 with no digit repeated?",360,120,180,216
+school-11-maths-6-m6,Permutations and Combinations,In how many ways can 6 people sit in a row if two particular people must sit together?,120,720,480,240
+school-11-maths-6-m7,Permutations and Combinations,A team of 4 is to be chosen from 7 boys and 5 girls with exactly 2 girls. How many ways?,210,330,35,420
+school-11-maths-6-m8,Permutations and Combinations,How many 3-digit numbers have all three digits different?,720,648,504,729
+school-11-maths-6-h3,Permutations and Combinations,In how many arrangements of the letters of the word LEADER do the vowels stay together?,144,120,36,72
+school-11-maths-6-h4,Permutations and Combinations,"How many 5-digit numbers divisible by 4 can be formed from digits 1, 2, 3, 4, 5 with no digit repeated?",24,18,30,12
+school-11-maths-6-h5,Permutations and Combinations,A polygon has 44 diagonals. How many sides does it have?,10,11,12,9
+school-11-maths-6-h6,Permutations and Combinations,In how many ways can 5 boys and 3 girls stand in a row so that no two girls are together?,40320,2400,14400,7200
+school-11-maths-6-h7,Permutations and Combinations,In how many ways can 4 cards be chosen from a pack of 52 so that all four are from different suits?,270725,52,17160,28561
+school-11-maths-6-h8,Permutations and Combinations,In how many ways can 3 different numbers be chosen from 1 to 20 so that their sum is even?,570,1140,450,600
+school-11-maths-7-e3,Binomial Theorem,The expansion of (a + b)^14 has how many terms?,15,14,13,16
+school-11-maths-7-e4,Binomial Theorem,What is the sum of the binomial coefficients in the expansion of (1 + x)^9?,81,512,18,511
+school-11-maths-7-e5,Binomial Theorem,What is the coefficient of x^2 in the expansion of (x + 2)^4?,6,12,24,48
+school-11-maths-7-e7,Binomial Theorem,What is the last term in the expansion of (x - y)^5?,-y^5,y^5,-5xy^4,5xy^4
+school-11-maths-7-m3,Binomial Theorem,What is the coefficient of x^3 in the expansion of (3 + 2x)^6?,4320,540,1080,2160
+school-11-maths-7-m4,Binomial Theorem,What is the constant term in the expansion of (x - 2/x)^6?,160,-160,-80,240
+school-11-maths-7-m5,Binomial Theorem,What is the middle term in the expansion of (1 + x)^10?,210 x^5,120 x^5,252 x^5,252 x^6
+school-11-maths-7-m6,Binomial Theorem,What is the coefficient of x^5 in (1 + x)^2 (1 + x)^6?,21,28,15,56
+school-11-maths-7-m7,Binomial Theorem,"Using the first three terms of the binomial expansion, what is the approximate value of (1.02)^6?",1.126,1.12,1.132,1.06
+school-11-maths-7-m8,Binomial Theorem,What is the sum of all the coefficients in the expansion of (2x + 1)^5?,32,243,64,11
+school-11-maths-7-h3,Binomial Theorem,What is the remainder when 5^99 is divided by 13?,5,12,1,8
+school-11-maths-7-h4,Binomial Theorem,"Which is larger, (1.2)^4000 or 800?",(1.2)^4000,800,they are equal,cannot be decided
+school-11-maths-7-h5,Binomial Theorem,What is the term independent of x in the expansion of (2x^2 - 3/x)^9?,145152,489888,244944,-489888
+school-11-maths-7-h6,Binomial Theorem,What is the coefficient of x^3 in the expansion of (1 + x + x^2)^4?,12,20,16,24
+school-11-maths-7-h7,Binomial Theorem,What is the value of 1 x 10C1 + 2 x 10C2 + 3 x 10C3 + ... + 10 x 10C10?,10240,1024,5110,5120
+school-11-maths-8-e3,Sequences and Series,"What is the 15th term of the AP 5, 9, 13, ...?",61,65,57,59
+school-11-maths-8-e4,Sequences and Series,"What is the sum of the first 15 terms of the AP 2, 5, 8, ...?",315,345,360,690
+school-11-maths-8-e7,Sequences and Series,What is the geometric mean of 4 and 25?,10,14.5,100,12.5
+school-11-maths-8-e8,Sequences and Series,What is the sum of the first 12 natural numbers?,72,78,156,66
+school-11-maths-8-m3,Sequences and Series,Three arithmetic means are inserted between 4 and 20. What is the sum of the three means?,36,24,48,32
+school-11-maths-8-m4,Sequences and Series,In a GP the 3rd term is 12 and the 6th term is 96. What is the sum of the first 6 terms?,192,189,96,378
+school-11-maths-8-m5,Sequences and Series,Three numbers in AP have sum 21 and product 315. What is the largest of them?,11,10,9,8
+school-11-maths-8-m6,Sequences and Series,"How many terms of the AP 9, 17, 25, ... give a sum of 636?",11,13,14,12
+school-11-maths-8-m7,Sequences and Series,What is the value of 1^2 + 2^2 + ... + 12^2?,650,78,6084,625
+school-11-maths-8-m8,Sequences and Series,An infinite GP has first term 3 and sum 9. What is its second term?,6,2,1,2/3
+school-11-maths-8-h3,Sequences and Series,What is the sum of 3 + 33 + 333 + 3333?,3699,3996,3333,3702
+school-11-maths-8-h4,Sequences and Series,The nth term of a series is n(n + 2). What is the sum of the first 10 terms?,495,440,385,550
+school-11-maths-8-h5,Sequences and Series,The AM of two positive numbers is 25 and their GM is 15. What is the larger number?,40,45,35,30
+school-11-maths-8-h6,Sequences and Series,Three numbers in GP have sum 39 and product 729. What is the largest?,33,13,27,9
+school-11-maths-8-h7,Sequences and Series,The sum of the first n terms of an AP is 3n^2 + 5n. What is its 20th term?,128,125,118,122
+school-11-maths-8-h8,Sequences and Series,What is the sum of the first 8 terms of 1 + 3 + 7 + 15 + 31 + ...?,502,510,512,247
+school-11-maths-9-e3,Straight Lines,What is the slope of the line 3x - 4y + 12 = 0?,3/4,-3/4,4/3,3
+school-11-maths-9-e4,Straight Lines,"What is the equation of the line through (2, -3) parallel to the x-axis?",x = 2,y = -3,y = 2,x = -3
+school-11-maths-9-e5,Straight Lines,What are the x-intercept and y-intercept of 2x + 3y = 12?,2 and 3,12 and 12,6 and 4,4 and 6
+school-11-maths-9-e6,Straight Lines,"What is the distance of the point (1, 2) from the line 3x + 4y - 10 = 0?",1,5,21/5,1/5
+school-11-maths-9-m3,Straight Lines,"Which is the equation of the line through (-2, 3) with slope -4?",4x + y + 5 = 0,4x - y + 5 = 0,x + 4y - 10 = 0,4x + y - 5 = 0
+school-11-maths-9-m4,Straight Lines,"Which is the equation of the line through (1, -1) and (3, 5)?",3x - y + 4 = 0,3x - y - 4 = 0,x - 3y - 4 = 0,3x + y - 2 = 0
+school-11-maths-9-m5,Straight Lines,"What is the equation of the line through (2, 1) perpendicular to 3x - 2y + 5 = 0?",3x - 2y - 4 = 0,2x - 3y - 1 = 0,2x + 3y - 7 = 0,2x + 3y + 7 = 0
+school-11-maths-9-m6,Straight Lines,For which value of k are the lines kx + 3y = 7 and 2x - y = 4 perpendicular?,6,-6,2/3,3/2
+school-11-maths-9-m7,Straight Lines,What is the acute angle between two lines with slopes 2 and 1/3?,45 degrees,30 degrees,60 degrees,15 degrees
+school-11-maths-9-m8,Straight Lines,What is the distance between the parallel lines 5x - 12y + 10 = 0 and 5x - 12y - 3 = 0?,13,1,1/13,7/13
+school-11-maths-9-h3,Straight Lines,"What is the image (reflection) of the point (1, 2) in the line x - y - 1 = 0?","(0, 3)","(2, 1)","(-1, 2)","(3, 0)"
+school-11-maths-9-h4,Straight Lines,"What is the area of the triangle formed by the lines y = x, y = 2x and x + y = 6?",3,6,12,9
+school-11-maths-9-h5,Straight Lines,"What is the orthocentre of the triangle with vertices (0, 0), (4, 0) and (1, 3)?","(2, 1)","(1, 1)","(1, 2)","(5/3, 1)"
+school-11-maths-9-h7,Straight Lines,"How far is the origin from the line passing through (3, 0) and (0, 4)?",5,12/7,3/5,12/5
+school-11-maths-9-h8,Straight Lines,Two opposite sides of a square lie on 3x - 4y + 5 = 0 and 3x - 4y - 15 = 0. What is its area?,16,20,4,8
+school-11-maths-10-e3,Conic Sections,What is the equation of the circle with centre at the origin and radius 7?,x^2 + y^2 = 49,x^2 + y^2 = 7,x^2 + y^2 = 14,(x - 7)^2 + (y - 7)^2 = 49
+school-11-maths-10-e4,Conic Sections,What is the centre of the circle x^2 + y^2 - 8x + 6y = 0?,"(-4, 3)","(4, -3)","(8, -6)","(4, 3)"
+school-11-maths-10-e5,Conic Sections,What are the coordinates of the focus of x^2 = 12y?,"(3, 0)","(0, 6)","(0, 3)","(0, 12)"
+school-11-maths-10-e7,Conic Sections,What is the length of the major axis of x^2/49 + y^2/25 = 1?,14,7,10,5
+school-11-maths-10-m3,Conic Sections,"A circle has a diameter with end points (2, 3) and (6, 7). What is its equation?",(x - 4)^2 + (y - 5)^2 = 8,(x - 4)^2 + (y - 5)^2 = 32,(x - 2)^2 + (y - 3)^2 = 8,(x + 4)^2 + (y + 5)^2 = 8
+school-11-maths-10-m4,Conic Sections,What is the eccentricity of the ellipse 9x^2 + 16y^2 = 144?,3/4,sqrt(7)/4,5/4,7/16
+school-11-maths-10-m5,Conic Sections,"What is the equation of the parabola with vertex at the origin and focus at (0, -3)?",x^2 = 12y,y^2 = -12x,x^2 = -12y,x^2 = -3y
+school-11-maths-10-m6,Conic Sections,What is the eccentricity of the hyperbola x^2/9 - y^2/16 = 1?,4/3,5/4,3/5,5/3
+school-11-maths-10-m7,Conic Sections,"An ellipse has foci (+3, 0) and (-3, 0) and eccentricity 3/5. What is its equation?",x^2/25 + y^2/16 = 1,x^2/16 + y^2/25 = 1,x^2/25 + y^2/9 = 1,x^2/9 + y^2/16 = 1
+school-11-maths-10-m8,Conic Sections,A point on y^2 = 12x is at a distance 7 from the focus. What is its x-coordinate?,7,4,10,3
+school-11-maths-10-h3,Conic Sections,"An ellipse has foci (+4, 0) and (-4, 0) and passes through (0, 3). What is its equation?",x^2/9 + y^2/25 = 1,x^2/16 + y^2/9 = 1,x^2/25 + y^2/16 = 1,x^2/25 + y^2/9 = 1
+school-11-maths-10-h4,Conic Sections,"A hyperbola has foci (0, +13) and (0, -13) and conjugate axis of length 24. What is its equation?",y^2/25 - x^2/144 = 1,y^2/144 - x^2/25 = 1,x^2/25 - y^2/144 = 1,y^2/169 - x^2/144 = 1
+school-11-maths-10-h5,Conic Sections,"A circle passes through (1, 2) and (3, 4) and its centre lies on the x-axis. What is its equation?",(x - 3)^2 + y^2 = 20,(x - 5)^2 + y^2 = 20,(x - 5)^2 + y^2 = 25,(x + 5)^2 + y^2 = 20
+school-11-maths-10-h6,Conic Sections,"A circle with centre (2, -1) touches the line 3x + 4y - 5 = 0. What is its equation?",(x - 2)^2 + (y + 1)^2 = 9,(x - 2)^2 + (y + 1)^2 = 3/5,(x - 2)^2 + (y + 1)^2 = 9/25,(x - 2)^2 + (y + 1)^2 = 25/9
+school-11-maths-10-h7,Conic Sections,A point on y^2 = 8x is at distance 6 from the focus. What is the absolute value of its y-coordinate?,4,2 sqrt(2),8,4 sqrt(2)
+school-11-maths-11-e3,Introduction to Three Dimensional Geometry,A point lies on the z-axis at height 5. What are its coordinates?,"(0, 0, 5)","(5, 0, 0)","(0, 5, 0)","(5, 5, 5)"
+school-11-maths-11-e4,Introduction to Three Dimensional Geometry,"What is the distance of (2, 3, 6) from the origin?",11,7,5,sqrt(7)
+school-11-maths-11-e5,Introduction to Three Dimensional Geometry,"What is the perpendicular distance of (3, -4, 5) from the xz-plane?",3,5,4,-4
+school-11-maths-11-e8,Introduction to Three Dimensional Geometry,A point lies in the yz-plane. What is its x-coordinate?,1,0,equal to y,equal to z
+school-11-maths-11-m3,Introduction to Three Dimensional Geometry,"What is the distance between (2, -1, 3) and (-2, 3, -1)?",4 sqrt(3),12,4 sqrt(2),16
+school-11-maths-11-m4,Introduction to Three Dimensional Geometry,"Which point divides the segment from (1, -2, 3) to (6, 3, -2) internally in the ratio 2 : 3?","(4, 1, 0)","(3, 0, 1)","(7/2, 1/2, 1/2)","(2, -1, 2)"
+school-11-maths-11-m5,Introduction to Three Dimensional Geometry,"The distance between (a, 0, 1) and (2, 2, -1) is 3. What is the sum of all possible values of a?",2,3,4,6
+school-11-maths-11-m6,Introduction to Three Dimensional Geometry,"What is the centroid of the triangle with vertices (1, 2, 3), (4, 5, 6) and (-2, 2, 0)?","(3, 9, 9)","(3, 3, 1)","(1, 3, 9)","(1, 3, 3)"
+school-11-maths-11-m7,Introduction to Three Dimensional Geometry,"What is the foot of the perpendicular from (3, 7, 9) to the y-axis?","(0, 7, 0)","(3, 0, 0)","(0, 0, 9)","(3, 7, 0)"
+school-11-maths-11-h3,Introduction to Three Dimensional Geometry,"The vertices of a triangle are A(1, 1, 0), B(3, 1, 2) and C(1, 3, 2). What type of triangle is it?",isosceles but not equilateral,right-angled,scalene,equilateral
+school-11-maths-11-h4,Introduction to Three Dimensional Geometry,"In what ratio does the xz-plane divide the segment joining (2, -4, 5) and (-1, 2, 7)?",2 : 1 internally,1 : 2 internally,2 : 1 externally,4 : 1 internally
+school-11-maths-11-h5,Introduction to Three Dimensional Geometry,"ABCD is a parallelogram with A(1, 0, 2), B(3, 1, 5) and C(4, 3, 3). What are the coordinates of D?","(6, 4, 6)","(2, 2, 0)","(0, -2, 4)","(2, 2, 6)"
+school-11-maths-11-h8,Introduction to Three Dimensional Geometry,"Planes parallel to the coordinate planes are drawn through (1, 2, 3) and (3, 6, 7). What is the length of the diagonal of the box formed?",6,10,4 sqrt(3),12
+school-11-maths-12-e3,Limits and Derivatives,What is the limit of (x^2 + 2x) as x tends to 3?,15,9,6,12
+school-11-maths-12-e4,Limits and Derivatives,What is the limit of (x^2 - 9)/(x - 3) as x tends to 3?,0,6,3,9
+school-11-maths-12-e5,Limits and Derivatives,What is the limit of sin 5x / x as x tends to 0?,1,1/5,5,0
+school-11-maths-12-e6,Limits and Derivatives,What is the derivative of 3x^4 - 2x + 7?,12x^3 - 2x,3x^3 - 2,12x^3 + 5,12x^3 - 2
+school-11-maths-12-m3,Limits and Derivatives,What is the limit of (x^3 - 8)/(x - 2) as x tends to 2?,12,8,4,0
+school-11-maths-12-m4,Limits and Derivatives,What is the limit of (sqrt(x + 4) - 2)/x as x tends to 0?,0,1/4,1/2,4
+school-11-maths-12-m5,Limits and Derivatives,What is the derivative of (x + 1)(x^2 - 2) at x = 1?,2,-1,3,4
+school-11-maths-12-m6,Limits and Derivatives,What is the derivative of x/(x + 1) at x = 1?,1/2,1,2,1/4
+school-11-maths-12-m7,Limits and Derivatives,What is the limit of (1 - cos 2x)/x^2 as x tends to 0?,2,1,4,0
+school-11-maths-12-m8,Limits and Derivatives,What is the derivative of tan x at x = pi/4?,1,2,1/2,sqrt(2)
+school-11-maths-12-h3,Limits and Derivatives,What is the limit of (tan 2x - sin 2x)/x^3 as x tends to 0?,2,1,8,4
+school-11-maths-12-h4,Limits and Derivatives,What is the limit of (x^7 - 128)/(x - 2) as x tends to 2?,448,896,14,128
+school-11-maths-12-h5,Limits and Derivatives,What is the limit of (sqrt(1 + x) - sqrt(1 - x))/x as x tends to 0?,0,1,1/2,2
+school-11-maths-12-h6,Limits and Derivatives,What is the derivative of (x^2 + 1)(x^3 - x) at x = 2?,24,55,79,66
+school-11-maths-12-h7,Limits and Derivatives,What is the limit of (cos x - cos 3x)/x^2 as x tends to 0?,2,8,-4,4
+school-11-maths-12-h8,Limits and Derivatives,"If y = (x^2 + 1)/(x - 2), what is dy/dx at x = 3?",-4,4,-10,-2
+school-11-maths-13-e3,Statistics,"What is the mean deviation about the mean of 3, 5, 7, 9, 11?",2.4,2,2.8,3
+school-11-maths-13-e4,Statistics,"What is the variance of 1, 2, 3, 4, 5?",2.5,2,sqrt(2),3
+school-11-maths-13-e7,Statistics,A data set has mean 40 and standard deviation 6. What is its coefficient of variation?,15%,6.67%,24%,0.15%
+school-11-maths-13-e8,Statistics,The standard deviation of a data set is 7. What is its variance?,14,49,sqrt(7),3.5
+school-11-maths-13-m3,Statistics,Group A has mean 60 and SD 9. Group B has mean 40 and SD 8. Which is more consistent?,"A, because its CV is 15% against 20%","B, because its SD is smaller","B, because its CV is 20%",both are equally consistent
+school-11-maths-13-m4,Statistics,"What is the mean deviation about the median of 3, 6, 7, 11, 14?",3.8,3.2,4,3
+school-11-maths-13-m5,Statistics,Eight observations have mean 10 and variance 9. What is the sum of their squares?,800,728,872,792
+school-11-maths-13-m6,Statistics,"Five observations have mean 12. When one observation, 20, is removed, what is the mean of the other four?",12,8,9,10
+school-11-maths-13-m7,Statistics,Data x have mean 25 and standard deviation 5. What is the variance of the data 2x + 3?,100,53,10,25
+school-11-maths-13-m8,Statistics,Two groups have coefficients of variation 15% and 20%. The second group has mean 40. What is its standard deviation?,6,8,0.8,5
+school-11-maths-13-h3,Statistics,Ten observations have mean 15 and variance 9. An observation 12 is replaced by 18. What is the new variance?,9,9.36,8.4,8.64
+school-11-maths-13-h4,Statistics,"Five observations have mean 6 and variance 9.2. Three of them are 2, 4 and 7. What is the larger of the other two?",11,10,12,9
+school-11-maths-13-h5,Statistics,A group of 20 has mean 10 and variance 4. Another group of 30 has mean 20 and variance 9. What is the variance of the combined 50?,7,31,6.5,36
+school-11-maths-13-h6,Statistics,Ten observations have mean 8 and standard deviation 3. Each is multiplied by 5 and then 2 is subtracted. What is the sum of the squares of the new values?,16500,15000,16690,1669
+school-11-maths-13-h7,Statistics,What is the variance of the first 11 natural numbers?,11,sqrt(10),9.5,10
+school-11-maths-13-h8,Statistics,A data set has five values equal to 7 and five values equal to 13. What is its standard deviation?,3,6,9,10
+school-11-maths-14-e3,Probability,A fair die is thrown once. What is the probability of getting a prime number?,1/2,1/3,2/3,1/6
+school-11-maths-14-e4,Probability,One card is drawn from a well-shuffled pack of 52. What is the probability that it is an ace?,1/4,1/13,4/13,1/52
+school-11-maths-14-e5,Probability,A number is chosen at random from 1 to 20. What is the probability that it is a multiple of 5?,1/4,1/20,1/5,3/10
+school-11-maths-14-e7,Probability,P(E) = 0.35. What is the probability that E does not happen?,0.65,0.35,0.55,1.35
+school-11-maths-14-m3,Probability,"In a class of 40, 22 play chess, 18 play carrom and 7 play both. What is the probability that a random student plays at least one of the two games?",33/40,1,29/40,11/40
+school-11-maths-14-m4,Probability,Two dice are thrown. What is the probability that the sum is a multiple of 5?,1/6,7/36,5/36,1/5
+school-11-maths-14-m5,Probability,Two cards are drawn together from a pack of 52. What is the probability that both are aces?,1/169,1/13,1/221,1/26
+school-11-maths-14-m6,Probability,"P(A) = 0.6, P(B) = 0.5 and P(A or B) = 0.8. What is the probability that exactly one of A and B happens?",0.3,0.8,0.7,0.5
+school-11-maths-14-m7,Probability,"A bag has 4 red, 3 blue and 2 yellow balls. Two balls are drawn together. What is the probability that both are red?",1/6,16/81,1/3,2/9
+school-11-maths-14-m8,Probability,A number is chosen from 1 to 50. What is the probability that it is a multiple of 4 or of 6?,2/5,8/25,6/25,4/25
+school-11-maths-14-h3,Probability,"In a leap year, what is the probability of 53 Mondays or 53 Tuesdays?",2/7,4/7,1/7,3/7
+school-11-maths-14-h4,Probability,The letters of BANANA are arranged at random. What is the probability that all three A's are together?,1/5,1/10,1/6,1/3
+school-11-maths-14-h5,Probability,"Out of 10 points in a plane, 6 are collinear. Three points are chosen at random. What is the probability that they form a triangle?",1/6,5/6,3/4,7/10
+school-11-maths-14-h6,Probability,Three dice are thrown. What is the probability that the sum is 10?,1/6,25/216,1/8,5/36
+school-11-maths-14-h7,Probability,Two different numbers are chosen from 1 to 10. What is the probability that their sum is even?,1/2,5/9,2/5,4/9
+school-11-maths-14-h8,Probability,P(A) = 3/5 and P(B) = 1/2. What is the least possible value of P(A and B)?,1/10,0,3/10,1/5

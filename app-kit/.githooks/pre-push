@@ -1,0 +1,13 @@
+#!/bin/sh
+# Blocks any `git push` while the auditor's ledger shows unaudited commits or an open FAIL.
+# Enabled by `audit.py init` (git config core.hooksPath .githooks). Skipping it with
+# --no-verify is a decision for the founder, never for Claude.
+root="$(git rev-parse --show-toplevel)" || exit 1
+script="$root/.claude/skills/auditor/scripts/audit.py"
+[ -f "$root/audit/ledger.csv" ] || exit 0
+[ -f "$script" ] || { echo "pre-push: auditor script missing at $script" >&2; exit 1; }
+# git passes "<local ref> <local sha> <remote ref> <remote sha>" lines on stdin; check exactly those commits.
+CLAUDE_PROJECT_DIR="$root" python3 "$script" check --pushing-to "$1" >&2 || {
+  echo "pre-push: push blocked by the auditor. Run: python3 .claude/skills/auditor/scripts/audit.py brief" >&2
+  exit 1
+}

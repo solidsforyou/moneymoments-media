@@ -30,3 +30,11 @@ Next:
 4. Before any automatic posting: check whether the API can set Meta's AI
    label. Until then the founder posts by hand with the label on.
 5. Publishing needs the video at a public HTTPS URL Instagram can fetch.
+
+## Hosting reels (verified 27 Oct 2026)
+The repo is public, so Instagram can fetch a pushed reel straight from GitHub:
+`https://raw.githubusercontent.com/solidsforyou/moneymoments-media/<branch>/public/reels/<file>.mp4`.
+Commit and push the file first. This container's proxy blocks raw.githubusercontent.com, so
+`curl` from here returns 403, but Instagram's own fetch works (sfy-fabric-30s dry run processed).
+No Cloudinary or S3 needed. Captions can only be set when the container is created; the API
+cannot add one after publishing.

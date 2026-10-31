@@ -1,0 +1,281 @@
+for iPhone 
+Search
+Today
+Games
+Apps
+Arcade
+Categories
+Categories
+Photo & Video
+Health & Fitness
+Productivity
+Entertainment
+Action
+Adventure
+Puzzle
+Indie
+Virtual Trading India
+
+Paper Trading Simulator
+
+Free · In-App Purchases · Designed for iPad. Not verified for macOS.
+
+17 RATINGS
+4.6
+AGE RATING
+4+
+Years
+CATEGORY
+Finance
+DEVELOPER
+Promila Devi
+LANGUAGE
+EN
+English
+SIZE
+86.4
+MB
+iPhone, iPad
+
+Practice F&O, options, futures and commodities on live NSE, BSE and MCX prices. No real money at risk. Strategy Builder*, Basket Orders, Option Chain, SL, TGT, TSL*.
+
+Practice the Indian stock market, F&O, options, futures and commodity trading with virtual funds, without placing real-money orders.
+
+ZeroStake is a paper trading and virtual trading simulator for Indian markets. Explore stocks, options, futures and commodities across NSE, BSE and MCX while practicing orders, strategies and market analysis in a simulated environment.
+
+PAPER TRADING WITH VIRTUAL FUNDS
+
+Practice intraday, delivery, F&O and commodity trading with virtual money. Set custom virtual capital up to Rs. 10 Crore.*
+
+ADVANCED ORDERS & TRADE SIMULATION
+
+Practice with:
+
+* Market and Limit Orders*
+* Stop Loss (SL) and Target (TGT)
+* Trailing Stop Loss (TSL)*
+* GTT Orders with advanced trigger controls*
+* AMO Orders*
+* Intraday and Delivery simulation
+* Basket Orders*
+* Exit All for simulated positions*
+
+TRADE DIRECTLY FROM CHARTS
+
+Place simulated trades from charts across stocks, indices and commodities. Set Stop Loss and Target visually. Faster chart updates and additional chart-trading controls are available with ZeroStake PRO.*
+
+OPTION CHAIN
+
+Explore CE and PE Option Chain data for Nifty 50, Bank Nifty, Sensex and FinNifty. Analyze Open Interest, OI Change, LTP, Implied Volatility (IV), Volume and strike-wise market data.
+
+OPTIONS STRATEGY BUILDER*
+
+Build and simulate multi-leg options strategies including Iron Condor, Bull Call Spread, Bear Put Spread, Straddle and Strangle. Review legs, payoff, breakeven and risk before placing a simulated Basket Order.
+
+MARKET ANALYSIS
+
+View Market Heatmap across NSE, BSE and MCX instruments. Track FII/DII activity and Advance-Decline Ratio. Detailed Market Depth* shows bid, ask, available quantity and liquidity.
+
+TRADE JOURNAL & P&L REVIEW
+
+Review simulated activity with Trade Journal, trade history, P&L statements, and position and order history.
+
+REPLAY TRADING
+
+Practice with historical market sessions. Replay past price action, place simulated trades and explore different decisions.
+
+BUILT FOR INDIAN MARKET PRACTICE
+
+ZeroStake combines Paper Trading, Virtual Trading, F&O Trading, Options Trading, Futures Trading, Commodity Trading, Option Chain, Strategy Builder*, Basket Orders*, GTT Orders*, Chart Trading, Market Heatmap, FII/DII Data, Market Depth*, Trade Journal, Replay Trading and Virtual P&L for NSE, BSE and MCX markets.
+
+IMPORTANT SIMULATION & RISK DISCLOSURE
+
+ZeroStake is a virtual trading simulation tool. No real securities or commodity orders are transmitted to or executed on an exchange through ZeroStake. Virtual funds and simulated profits have no cash value.
+
+ZeroStake does not provide investment advice, research recommendations, trading calls, stock tips, price targets, guaranteed returns or portfolio-management services. ZeroStake is not registered with SEBI as a stock broker, Investment Adviser or Research Analyst.
+
+Simulated fills, P&L and results may differ from real-market execution due to liquidity, spreads, slippage, latency, partial fills, rejected orders, brokerage, taxes and margin requirements. Simulated performance is hypothetical and is not indicative of future results.
+
+Information in ZeroStake is for simulation and informational purposes only and is not a recommendation to buy, sell or hold any security. ZeroStake is not affiliated with or endorsed by SEBI, NSE, BSE or MCX.
+
+* Certain features, advanced controls and higher usage limits require ZeroStake PRO. Some starred features may also be available with limited functionality on the free plan.
+
+ZeroStake is free to download and use. ZeroStake PRO is optional. The monthly plan is auto-renewable; the yearly plan is one-time and non-renewing. Prices are shown before purchase. Payment is charged to your Apple ID at confirmation. Manage or cancel the monthly plan in your App Store account settings. The yearly plan does not renew automatically.
+
+Terms of Use (EULA):
+https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
+Privacy Policy:
+https://zerostake.app/privacy/
+
+more
+
+Ratings & Reviews
+4.6
+out of 5
+17 Ratings
+Best ever
+15 Sept
+N!cknamw
+
+I'm thankful to the devs working on this app i have never come across something this complete charts option chain strategy builder and such a clean UI and support actually works they talk nicely and have always resolved every minor thing i came across thanks a lot to everyone behind this app 🇮🇳
+
+more
+Developer Response
+
+Thank you so much for this, it genuinely made our day. Charts, the option chain and the strategy builder are the parts we have poured the most work into, so hearing that they feel complete means a lot. If you ever spot anything, even the smallest thing, keep telling us, that feedback is what keeps the app improving. Thanks again for being part of this journey with us!
+
+more
+Best one I have used for
+4 Aug
+#SRK
+
+Excellent app for virtual equity delivery trading. The interface is clean, easy to use, and perfect for practicing trading strategies without risking real money. Highly recommended for beginners and experienced traders alike!
+
+Developer Response
+
+Thank you so much for the wonderful review! We are really glad ZeroStake is helping you practice your strategies risk free. Making the app clean and beginner friendly has always been our goal, so this truly made our day. Happy trading, and lots more features are on the way!
+
+more
+Best one I’ve used so far
+10 Sept
+apex 936
+
+Great app, I love that I’m not forced into signing in or giving any personal information, well done! My only complaint is the ads and I’m not a fan of the subscription model, should add a one time fee to remove all ads completely without having to repay each year/month.
+
+more
+Developer Response
+
+Thank you so much for the kind words and feedback! We completely understand the preference for a one-time purchase. Unfortunately, that model isn’t sustainable for us because we have ongoing costs for servers, real-time market infrastructure, data processing, app development, maintenance, support, and continuous updates. We’ve tried to keep Pro as affordable as possible. Our yearly plan is a one-time non-recurring purchase that works out to only about ₹83/month with no autopay or mandate. We hope you understand it from our perspective as well, and we truly appreciate your support!
+
+more
+We need Advance order placement
+28 Jul
+pawanyan
+
+Everything is good but there is no option to placw orders in advance like if price is running 150 and Want to place order at 160 for buy the there is no option , you can only buy at market price or less than LTP
+
+Developer Response
+
+Hi Pawan, thank you for your feedback and suggestion regarding advance order placement. We have now introduced GTT orders you can update the app and try them out, Thanks!
+
+more
+What’s New
+
+• Updated market timings for the new SEBI Closing Auction Session (CAS).
+• GTT orders are here. Set a trigger and place limit or market orders, with Target, Stoploss and Trailing Stoploss.
+• Trade Journal has been added.
+• Basket Orders are now live on Option Chain.
+• Build and check trades faster with Strategy Builder.
+• Price updates are now up to 12x faster.
+• Exit All is now up to 50x faster.
+• Detailed Market Depth is now live for Pro users.
+• Customize Quick Access on Option Chain and Ticker Tape.
+• Improved MCX trading experience.
+• Added a Restore Purchases option to the subscription screens.
+• Strategy Builder, GTT and detailed Market Depth require ZeroStake PRO, an optional paid subscription.
+more
+
+Version 1.0.121
+5 days ago
+App Privacy
+
+The developer, Promila Devi, indicated that the app’s privacy practices may include handling of data as described below. For more information, see the developer’s privacy policy .
+
+Data Used to Track You
+
+The following data may be used to track you across apps and websites owned by other companies:
+
+Contact Info
+Identifiers
+Data Linked to You
+
+The following data may be collected and linked to your identity:
+
+Contact Info
+Identifiers
+Data Not Linked to You
+
+The following data may be collected but it is not linked to your identity:
+
+Usage Data
+Diagnostics
+
+Privacy practices may vary based, for example, on the features you use or your age. Learn More
+
+Accessibility
+
+The developer indicated that this app supports the following accessibility features. Learn More
+
+Supported Features
+Larger Text
+Dark Interface
+Information
+Provider
+Promila Devi
+Size
+86.4 MB
+Category
+Finance
+Compatibility
+Requires iOS 15.0 or later. 
+Languages
+English
+Age Rating
+4+ 
+In-App Purchases
+Yes 
+Copyright
+© 2026 ZeroStake
+Developer Website
+Privacy Policy
+You Might Also Like
+View
+FLATTRADE - Share Trading App
+Zero Brokerage Trading App
+View
+Lemonn: Share Market App
+Demat, Stock, FnO, Mutual Fund
+View
+Traders Circuit: Trade Smart
+SEBI Registered Advisory App
+View
+Trading Journal
+Track Trades, Analyze & Export
+View
+NiftyTrader
+Stock Screener, NSE BSE Market
+View
+NSEIndia
+Portfolio | WatchList
+View
+Alpari: Investment Trading App
+Trade Stocks | Shares | Gold
+View
+FYERS: Stocks & Option Trading
+FYERS: Stock, Demat, Trade App
+View
+StockGro: Trade with Experts
+SEBI Regd. Experts for Trading
+View
+Bigul: Stocks, Algos, Options
+Finance
+India
+हिंदी
+ਪੰਜਾਬੀ
+मराठी
+বাংলা
+ଓଡ଼ିଆ
+اردو
+తెలుగు
+தமிழ்
+ગુજરાતી
+ಕನ್ನಡ
+മലയാളം
+
+Copyright © 2026 Apple Inc. All rights reserved.
+
+Internet Service Terms
+App Store & Privacy
+Cookie Warning
+Support

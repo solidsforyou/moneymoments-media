@@ -1,0 +1,1195 @@
+<title>GoodHabits Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one phone-sized app centred on a quiet stage; every screen, sheet and overlay lives inside the phone.
+   Direction: bright and bold (founder's approved taste), calm spacing. Cobalt = actions and investing, pink = social moments (like, Approve). */
+:root{
+  --stage:#E8EBF5; --bg:#F6F7FC; --surface:#FFFFFF; --surface-2:#EEF0F8; --line:#DFE3EF; --hair:#EBEEF6;
+  --fg:#121633; --soft:#383E62; --muted:#5D6488;
+  --accent:#2448FF; --accent-hi:#1534D9; --accent-ink:#FFFFFF; --accent-wash:#E5EAFF;
+  --pink:#C8155E; --pink-wash:#FFE6EF; --pink-ink:#FFFFFF;
+  --up:#06774A; --down:#C02634; --warn-wash:#FFF3D6; --warn-ink:#7A4E00;
+  --shadow:rgba(18,22,51,.14); --scrim:rgba(13,16,36,.48);
+  --display:'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
+  --body:'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --stage:#05060F; --bg:#0D1024; --surface:#151A33; --surface-2:#1C2242; --line:#2B3259; --hair:#20264A;
+  --fg:#F2F4FF; --soft:#C9CEEB; --muted:#A1A8CC;
+  --accent:#7F95FF; --accent-hi:#9AABFF; --accent-ink:#0B0E22; --accent-wash:#18205A;
+  --pink:#FF5C9E; --pink-wash:#3D1631; --pink-ink:#1A0712;
+  --up:#3CD69A; --down:#FF7F89; --warn-wash:#3A2D0E; --warn-ink:#FFD27A;
+  --shadow:rgba(0,0,0,.5); --scrim:rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --stage:#05060F; --bg:#0D1024; --surface:#151A33; --surface-2:#1C2242; --line:#2B3259; --hair:#20264A;
+  --fg:#F2F4FF; --soft:#C9CEEB; --muted:#A1A8CC;
+  --accent:#7F95FF; --accent-hi:#9AABFF; --accent-ink:#0B0E22; --accent-wash:#18205A;
+  --pink:#FF5C9E; --pink-wash:#3D1631; --pink-ink:#1A0712;
+  --up:#3CD69A; --down:#FF7F89; --warn-wash:#3A2D0E; --warn-ink:#FFD27A;
+  --shadow:rgba(0,0,0,.5); --scrim:rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.4;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:12px;
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+button,input,textarea,select{font-family:inherit;color:inherit;font-size:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-weight:500}
+
+/* stage bar */
+.stagebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--muted);font-weight:600}
+.stagebar strong{color:var(--fg)}
+.pillbtn{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 14px;font-size:13px;font-weight:700;color:var(--soft)}
+
+/* phone */
+.phone{position:relative;width:min(400px,100%);height:min(860px, calc(100dvh - 70px));min-height:600px;background:var(--bg);
+  border-radius:30px;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 70px var(--shadow)}
+.screens{position:relative;flex:1;min-height:0}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 8px 6px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.brand .mark{width:28px;height:28px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:16px}
+h1{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h3{font-size:16px;font-weight:800;margin:0}
+p{margin:0}
+.muted{color:var(--muted)} .soft{color:var(--soft)}
+.small{font-size:13px} .tiny{font-size:12px}
+.pad{padding:4px 16px 24px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;align-items:center;gap:10px}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.stack{display:flex;flex-direction:column;gap:8px}
+.icon-btn{position:relative;width:44px;height:44px;border:0;background:transparent;border-radius:12px;display:grid;place-items:center;color:var(--fg);flex:none}
+.icon-btn:active{background:var(--surface-2)}
+.icon-btn .dot{position:absolute;top:9px;right:9px;width:9px;height:9px;border-radius:9px;background:var(--pink);border:2px solid var(--bg)}
+.btn{min-height:50px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:16px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:active{background:var(--accent-hi)}
+.btn[disabled]{background:var(--surface-2);color:var(--muted);cursor:not-allowed}
+.btn.ghost{background:var(--surface-2);color:var(--fg)}
+.btn.pink{background:var(--pink);color:var(--pink-ink)}
+.btn.sm{min-height:44px;font-size:14px;border-radius:12px;padding:0 14px}
+.btn.block{width:100%}
+.link{border:0;background:transparent;color:var(--accent);font-weight:800;min-height:44px;padding:0 6px;font-size:14px}
+.chip{flex:none;min-height:44px;min-width:48px;padding:0 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:700;color:var(--soft);white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 6px}
+.chips::-webkit-scrollbar{display:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px}
+.badge{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:800;background:var(--surface-2);color:var(--soft)}
+.badge.house{background:var(--accent-wash);color:var(--accent)}
+.badge.news{background:var(--accent-wash);color:var(--accent)}
+.badge.gov{background:var(--warn-wash);color:var(--warn-ink)}
+.badge.brand{background:var(--pink-wash);color:var(--pink)}
+.badge.sci{background:var(--surface-2);color:var(--up)}
+.avatar{width:40px;height:40px;border-radius:999px;flex:none;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff}
+.avatar.lg{width:84px;height:84px;font-size:30px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:700;color:var(--soft)}
+.input{min-height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);padding:0 14px;font-size:16px;width:100%}
+.input:focus{border-color:var(--accent);outline:none}
+textarea.input{padding:12px 14px;min-height:90px;resize:none;line-height:1.45}
+.help{font-size:13px;color:var(--muted);line-height:1.45}
+.err{font-size:13px;color:var(--down);font-weight:700}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.divider{height:1px;background:var(--hair);margin:4px 0}
+
+/* tab bar */
+.tabbar{flex:none;height:66px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--surface);border-top:1px solid var(--line)}
+.tabbar button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:700}
+.tabbar button[aria-current="page"]{color:var(--fg)}
+.tabbar button[aria-current="page"] svg{color:var(--accent)}
+
+/* stories */
+.stories{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 16px 10px}
+.stories::-webkit-scrollbar{display:none}
+.story{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:5px;width:70px;flex:none;font-size:12px;font-weight:600;color:var(--soft)}
+.story .ring{width:64px;height:64px;border-radius:999px;padding:3px;background:conic-gradient(var(--pink),var(--accent),var(--pink))}
+.story .ring.seen{background:var(--line)}
+.story .ring .avatar{width:100%;height:100%;border:3px solid var(--bg);font-size:18px}
+.story .name{max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* posts */
+.post{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column}
+.post + .post{margin-top:10px}
+.post-head{display:flex;align-items:center;gap:10px;padding:10px 6px 10px 14px}
+.post-head .who{flex:1;min-width:0}
+.post-head .name{font-weight:800;font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.post-head .meta{font-size:12px;color:var(--muted);font-weight:600}
+.post-text{padding:0 14px 12px;font-size:15px;line-height:1.5;color:var(--fg)}
+.media{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:10px;color:#fff}
+.media.wide{aspect-ratio:16/11}
+.media .kicker{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.media .big{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.02;letter-spacing:-.02em;text-wrap:balance;max-width:320px}
+.media .play{position:absolute;top:14px;right:14px;height:28px;padding:0 10px;border-radius:999px;background:rgba(0,0,0,.45);font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px}
+.media svg.chart{position:absolute;left:0;right:0;top:18%;width:100%;height:42%;opacity:.95}
+.actions{display:flex;align-items:center;gap:2px;padding:4px 6px}
+.actions .grow{flex:1}
+.act{min-height:44px;min-width:44px;border:0;background:transparent;border-radius:12px;display:inline-flex;align-items:center;gap:6px;padding:0 8px;font-weight:800;font-size:14px;color:var(--fg)}
+.act[aria-pressed="true"].like{color:var(--pink)}
+.act.approve{color:var(--pink)}
+.act.approve[aria-pressed="true"]{background:var(--pink);color:var(--pink-ink)}
+.post-foot{padding:0 14px 12px;font-size:14px;line-height:1.45}
+.post-foot .approvedby{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:4px;display:flex;gap:6px;align-items:center}
+.flexcard{margin:0 14px 12px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;background:var(--surface-2)}
+.flexcard .proud{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+
+/* reminder */
+.top{flex-wrap:wrap}
+.top > :first-child{flex:1 1 0;min-width:0}
+.top > :not(:first-child):not(.nudge-row){flex:none}
+.brand{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nudge-row{flex-basis:100%;display:flex;justify-content:flex-end;padding:2px 2px 4px}
+.nudge{display:flex;align-items:center;gap:6px;padding:6px 6px 6px 12px;border-radius:999px;background:var(--fg);color:var(--bg);box-shadow:0 10px 26px var(--shadow);font-size:13px;font-weight:800;animation:pop .25s ease-out}
+.nudge button{border:0;background:transparent;color:inherit;font-weight:800;min-height:36px;padding:0 8px;border-radius:999px}
+.nudge .go{background:var(--accent);color:var(--accent-ink)}
+@keyframes pop{from{transform:translateY(-6px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+
+/* overlays */
+.scrim{position:absolute;inset:0;background:var(--scrim);z-index:30;display:flex;flex-direction:column;justify-content:flex-end}
+.sheet{background:var(--surface);border-radius:24px 24px 0 0;padding:8px 16px 20px;display:flex;flex-direction:column;gap:14px;max-height:90%;overflow-y:auto;animation:up .22s ease-out}
+.sheet .grab{align-self:center;width:40px;height:4px;border-radius:4px;background:var(--line);flex:none}
+@keyframes up{from{transform:translateY(26px);opacity:.5}to{transform:none;opacity:1}}
+.full{position:absolute;inset:0;z-index:25;background:var(--bg);display:flex;flex-direction:column;animation:fade .18s ease-out}
+.full .body{flex:1;overflow-y:auto;min-height:0}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.toast{position:absolute;left:14px;right:14px;bottom:80px;z-index:50;background:var(--fg);color:var(--bg);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;box-shadow:0 14px 30px var(--shadow);animation:up .2s ease-out}
+
+/* onboarding */
+.onb{position:absolute;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column}
+.onb .body{flex:1;overflow-y:auto;padding:20px 20px 10px;display:flex;flex-direction:column;gap:16px}
+.onb .foot{padding:12px 20px 20px;display:flex;flex-direction:column;gap:8px}
+.dots{display:flex;gap:6px}
+.dots i{width:7px;height:7px;border-radius:7px;background:var(--line)}
+.dots i.on{width:22px;background:var(--accent)}
+.hero-art{border-radius:24px;aspect-ratio:1/1;max-width:100%;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:20px;color:#fff}
+.tourcard{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.tourcard .ico{width:40px;height:40px;border-radius:12px;background:var(--accent-wash);color:var(--accent);display:grid;place-items:center;flex:none}
+.amounts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.amt{min-height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-weight:800;font-size:15px}
+.amt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-wash);color:var(--accent)}
+.opt{width:100%;min-height:56px;display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);text-align:left;font-weight:700}
+.opt[aria-checked="true"]{border-color:var(--accent);background:var(--accent-wash)}
+.opt .radio{width:20px;height:20px;border-radius:20px;border:2px solid var(--muted);flex:none}
+.opt[aria-checked="true"] .radio{border:6px solid var(--accent)}
+.switch{position:relative;width:52px;height:32px;border-radius:32px;border:0;background:var(--line);flex:none}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:24px;background:var(--surface);transition:transform .15s}
+.switch[aria-checked="true"]{background:var(--accent)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+
+/* news */
+.search{display:flex;gap:8px;align-items:center;padding:0 6px 0 14px;min-height:54px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface)}
+.search:focus-within{border-color:var(--accent)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;outline:none;min-height:50px}
+.result{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-bottom:1px solid var(--hair)}
+.result button.title{border:0;background:transparent;text-align:left;padding:0;font-size:16px;font-weight:800;line-height:1.3;color:var(--fg)}
+.stars{display:inline-flex;gap:1px;color:#F5A524}
+.stars .off{color:var(--line)}
+.rate{display:flex;gap:6px}
+.rate button{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-size:22px;color:var(--line)}
+.rate button.on{color:#F5A524;border-color:#F5A524}
+.skeleton{height:14px;border-radius:8px;background:var(--surface-2);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5}}
+.reader p{font-size:17px;line-height:1.65;color:var(--fg);max-width:65ch}
+
+/* money */
+.swap{border-radius:22px;padding:18px;background:var(--accent);color:var(--accent-ink);display:flex;flex-direction:column;gap:12px}
+.swap .from{display:flex;align-items:center;gap:10px;font-weight:700}
+.swap .strike{text-decoration:line-through;opacity:.85}
+.swap .btn{background:var(--accent-ink);color:var(--accent)}
+.stock{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;border:0;background:transparent;text-align:left;padding:8px 0;border-bottom:1px solid var(--hair)}
+.stock .tick{width:44px;height:44px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--soft);flex:none}
+.up{color:var(--up)} .down{color:var(--down)}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{padding:12px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.stat .v{font-family:var(--display);font-weight:800;font-size:22px}
+.disclaimer{font-size:12px;color:var(--muted);line-height:1.5;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:4px;border-radius:12px;background:var(--surface-2)}
+.seg button{min-height:44px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-weight:800;font-size:14px}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 4px var(--shadow)}
+
+/* profile */
+.ptabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);padding:0 10px;position:sticky;top:0;background:var(--bg);z-index:3}
+.ptabs::-webkit-scrollbar{display:none}
+.ptabs button{min-height:46px;border:0;background:transparent;color:var(--muted);font-weight:800;font-size:14px;padding:0 10px;border-bottom:3px solid transparent;white-space:nowrap}
+.ptabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}
+.tile{aspect-ratio:4/5;max-width:100%;display:flex;align-items:flex-end;padding:8px;font-size:12px;font-weight:800;color:#fff;line-height:1.25;border:0;text-align:left}
+.apptile{border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;text-align:left;padding:0}
+.apptile .tile{aspect-ratio:1/1;font-size:13px;padding:10px}
+.apptile .cm{padding:8px 10px 10px;font-size:12.5px;line-height:1.4;color:var(--soft)}
+.apptile .cm b{color:var(--pink)}
+.habit{display:grid;grid-template-rows:repeat(7,10px);grid-auto-flow:column;grid-auto-columns:10px;gap:3px;overflow:hidden}
+.habit i{border-radius:3px;background:var(--surface-2)}
+.habit i.l1{background:color-mix(in srgb, var(--up) 30%, var(--surface-2))}
+.habit i.l2{background:color-mix(in srgb, var(--up) 60%, var(--surface-2))}
+.habit i.l3{background:var(--up)}
+.legend{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--muted)}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+/* hissab */
+.bal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.bal .stat .v.owe{color:var(--down)} .bal .stat .v.owed{color:var(--up)}
+.person{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;border:0;background:transparent;text-align:left;padding:8px 0;border-bottom:1px solid var(--hair)}
+.who-pick{display:flex;flex-wrap:wrap;gap:8px}
+
+/* dms */
+.gg{border-radius:22px;padding:16px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.gg .who{display:flex;align-items:center;gap:10px}
+.ggmark{width:40px;height:40px;border-radius:12px;background:var(--accent-wash);color:var(--accent);display:grid;place-items:center;flex:none}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg .src{display:block;margin-top:6px;font-size:12px;color:var(--muted);font-weight:700}
+.prow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--hair)}
+.prow .btn{min-width:64px}
+.clock{font-family:var(--mono);font-weight:700}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);width:0}
+.msg{max-width:80%;padding:10px 12px;border-radius:16px;font-size:15px;line-height:1.45}
+.msg.them{background:var(--surface);border:1px solid var(--line);align-self:flex-start}
+.msg.me{background:var(--accent);color:var(--accent-ink);align-self:flex-end;font-weight:600}
+.flag{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--warn-wash);color:var(--warn-ink);font-size:13px;font-weight:700;line-height:1.45;max-width:90%}
+
+/* reel viewer + story viewer */
+.viewer{position:absolute;inset:0;z-index:35;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;padding:16px;gap:12px}
+.viewer .bars{position:absolute;top:10px;left:12px;right:12px;display:flex;gap:4px}
+.viewer .bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.35);overflow:hidden}
+.viewer .bars i b{display:block;height:100%;width:0;background:#fff}
+.viewer .close{position:absolute;top:22px;right:8px;color:#fff}
+.viewer .big{font-family:var(--display);font-weight:800;font-size:36px;line-height:1.02;letter-spacing:-.02em;max-width:300px}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:440px){body{padding-block:6px}.phone{border-radius:22px;height:calc(100dvh - 58px);min-height:540px}}
+</style>
+
+<div class="stagebar" role="group" aria-label="Preview controls">
+  <span><strong>GoodHabits</strong> · clickable preview · sample data, nothing here is real</span>
+  <button class="pillbtn" id="theme-btn" type="button">Switch light or dark</button>
+  <button class="pillbtn" id="restart-btn" type="button">Restart from sign-up</button>
+</div>
+
+<div class="phone" id="phone">
+  <div class="screens">
+    <section class="screen" id="s-feed" aria-label="Feed"></section>
+    <section class="screen" id="s-news" aria-label="News" hidden></section>
+    <section class="screen" id="s-money" aria-label="Money Machine" hidden></section>
+    <section class="screen" id="s-profile" aria-label="Profile" hidden></section>
+    <section class="screen" id="s-hissab" aria-label="Hissab" hidden></section>
+  </div>
+  <nav class="tabbar" id="tabbar" aria-label="Main"></nav>
+  <div id="layer"></div>
+  <div id="toast-slot" aria-live="polite"></div>
+</div>
+
+<script>
+(() => {
+"use strict";
+
+/* ---------- icons ---------- */
+const I = {
+  feed:'<path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+  news:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  money:'<path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/>',
+  profile:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+  hissab:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+  heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+  approve:'<path d="M5 12.5 10 17l9-10"/><path d="M3 5h7M3 9h4" opacity=".5"/>',
+  comment:'<path d="M4 5h16v11H9l-5 4z"/>',
+  share:'<path d="M4 12v7h16v-7"/><path d="M12 3v12M7 8l5-5 5 5"/>',
+  dm:'<path d="M3 11 21 3l-6 18-3-8z"/><path d="m12 13 9-10"/>',
+  bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  back:'<path d="M15 5l-7 7 7 7"/>',
+  close:'<path d="M6 6l12 12M18 6 6 18"/>',
+  play:'<path d="M8 5v14l11-7z" fill="currentColor"/>',
+  settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor" stroke="none"/>',
+  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v5M12 16h.01"/>',
+  bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  check:'<path d="M5 12.5 10 17l9-10"/>',
+  link:'<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 15c2.5 0 4.5 1.5 5.5 4.5"/>',
+};
+const ico = (n, s = 22, w = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr = paise => '₹' + (paise / 100).toLocaleString('en-IN', {minimumFractionDigits: paise % 100 ? 2 : 0, maximumFractionDigits: 2});
+const $ = sel => document.querySelector(sel);
+
+/* ---------- sample data ---------- */
+const GRADS = ['linear-gradient(150deg,#1E3BEA,#5B25D9)','linear-gradient(150deg,#B5134F,#C2410C)','linear-gradient(150deg,#06683F,#0E6B63)',
+  'linear-gradient(150deg,#121633,#1E3BEA)','linear-gradient(150deg,#C2410C,#B5134F)','linear-gradient(150deg,#5B25D9,#B5134F)'];
+const people = {
+  me:{name:'You', id:'good/you', bg:'#2448FF'},
+  ananya:{name:'Ananya Rao', id:'good/ananya', bg:'#B5134F'},
+  kabir:{name:'Kabir Shah', id:'good/kabir', bg:'#06683F'},
+  studio:{name:'GoodHabits Studio', id:'good/studio', bg:'#1E3BEA', house:true},
+  meera:{name:'Meera Iyer', id:'good/meera', bg:'#5A22D6'},
+  rohan:{name:'Rohan Das', id:'good/rohan', bg:'#A8470A'},
+  zoya:{name:'Zoya Khan', id:'good/zoya', bg:'#0E6B63'},
+  tinkerlab:{name:'Tinker Lab', id:'good/tinkerlab', bg:'#4A3F8F'},
+  stranger:{name:'Help Desk 24x7', id:'good/helpdesk.24x7', bg:'#5D6488'},
+};
+const initials = p => p.name.split(' ').map(w => w[0]).slice(0,2).join('');
+const av = (k, cls='') => { const p = people[k]; return `<span class="avatar ${cls}" style="background:${p.bg}" aria-hidden="true">${esc(initials(p))}</span>`; };
+
+const state = {
+  tab:'feed', theme:null,
+  user:{name:'', contact:'', monthly:null, goodId:'', topics:new Set(['Personal finance','Startups','Tech'])},
+  reminders:{on:false, every:'15 scrolls'}, scrolled:0, nudgeShown:false, snoozeUntil:0,
+  liked:new Set(), approved:[], filter:'All', zerodha:false,
+  posts:[], ratings:{}, reviews:{}, news:{q:'', loading:false, results:null},
+  moneyTab:'Stocks', profileTab:'Flexes', ggPlus:false,
+  hissab:null,
+};
+
+state.posts = [
+  {id:'p1', who:'studio', kind:'reel', mins:'0:48', topic:'Personal finance', time:'2h', kicker:'60-second money', big:'Your ₹180 coffee habit is a ₹65,000 year', grad:0, chart:true,
+   text:'House account · AI voice. What small daily spends add up to, and what the same money looks like invested monthly instead.', likes:1284, comments:96},
+  {id:'p2', who:'ananya', kind:'flex', topic:'Tech', time:'5h', approvedBy:'kabir',
+   text:'Shipped something I\'m proud of this week.', flex:{proud:'Open source', title:'Built an invoice reader for small shops', detail:'Reads a photo of a bill and fills the accounts sheet. 1,240 stars on GitHub, used by 300+ kirana stores.'}, likes:842, comments:57},
+  {id:'p3', who:'kabir', kind:'post', topic:'Startups', time:'8h', kicker:'What I learnt', big:'We cut ad spend by 40% and sales went up', grad:3,
+   text:'Thread from running growth for a D2C skincare brand: the 3 things that actually moved ROAS from 1.8x to 4.3x.', likes:2210, comments:143},
+  {id:'p4', who:'tinkerlab', kind:'post', topic:'Startups', time:'1d', brand:true, kicker:'Our journey', big:'Year 2: from a garage to 18 people', grad:5,
+   text:'Brand account. What went wrong, what we fixed and what we\'re building next. No offers, just the story.', likes:640, comments:38},
+  {id:'p5', who:'meera', kind:'reel', mins:'1:12', topic:'Science', time:'1d', kicker:'Explained', big:'Why your phone battery hates 100%', grad:2,
+   text:'Lithium-ion chemistry in 70 seconds, with the actual numbers.', likes:3105, comments:211},
+  {id:'p6', who:'studio', kind:'post', topic:'Personal finance', time:'2d', kicker:'Habit of the week', big:'Invest before you spend, not after', grad:1,
+   text:'House account. Set a monthly amount on salary day; whatever is left is yours to spend, guilt-free.', likes:976, comments:64},
+];
+state.approved = [
+  {pid:'p6', note:'Good advice. Did this from my first salary.', big:'Invest before you spend, not after', grad:1},
+  {pid:'p5', note:'Finally understood charging limits.', big:'Why your phone battery hates 100%', grad:2},
+];
+
+const STOCKS = [
+  {sym:'NIFTYBEES', short:'N50', name:'Nippon India Nifty 50 ETF', price:28145, chg:0.42},
+  {sym:'HDFCBANK', short:'HDFC', name:'HDFC Bank', price:174210, chg:-0.31},
+  {sym:'ITC', short:'ITC', name:'ITC', price:46335, chg:0.87},
+  {sym:'INFY', short:'INFY', name:'Infosys', price:158920, chg:1.12},
+  {sym:'GOLDBEES', short:'GOLD', name:'Nippon India Gold ETF', price:8960, chg:0.15},
+];
+
+const SOURCES = {
+  'The Hindu BusinessLine':{type:'News', avg:4.4, n:2381}, 'Reserve Bank of India':{type:'Government', avg:4.8, n:1902},
+  'Mint':{type:'News', avg:4.2, n:3120}, 'PIB India':{type:'Government', avg:4.5, n:1288},
+  'Zerodha Varsity':{type:'Brand', avg:4.6, n:870}, 'Nature':{type:'Science', avg:4.7, n:640},
+  'Reuters':{type:'News', avg:4.5, n:4410}, 'NSE India':{type:'Government', avg:4.6, n:990},
+};
+const ARTICLES = [
+  {k:['rbi','repo','rate','interest','emi'], title:'RBI keeps the repo rate unchanged, signals room to cut later this year', src:'Reserve Bank of India', age:'3h'},
+  {k:['rbi','repo','rate','loan','emi'], title:'What the RBI decision means for your home loan EMI', src:'Mint', age:'2h'},
+  {k:['budget','tax','income','slab'], title:'New tax regime 2026: the slab changes, explained with examples', src:'PIB India', age:'1d'},
+  {k:['budget','tax','capital','gains'], title:'Capital gains after the Budget: what changes for long-term investors', src:'The Hindu BusinessLine', age:'1d'},
+  {k:['nifty','sensex','market','stocks'], title:'Nifty ends higher as banks and IT recover; mid-caps lag', src:'Reuters', age:'40m'},
+  {k:['nifty','market','index','etf'], title:'Index funds vs ETFs: a plain guide to costs and tracking error', src:'Zerodha Varsity', age:'5d'},
+  {k:['upi','payment','limit','rules'], title:'New UPI limits for tax and hospital payments come into effect', src:'PIB India', age:'2d'},
+  {k:['sleep','health','study','science','phone'], title:'Late-night screen use and sleep: what a 9,000-person study found', src:'Nature', age:'4d'},
+  {k:['ipo','listing','market'], title:'IPO calendar: four listings this week and how allotment works', src:'NSE India', age:'6h'},
+];
+
+const H = state.hissab = {
+  friends:{ananya:'Ananya Rao', kabir:'Kabir Shah', rohan:'Rohan Das', zoya:'Zoya Khan'},
+  groups:[{id:'g1', name:'Goa trip', members:['me','ananya','kabir','rohan']}, {id:'g2', name:'Flat 302', members:['me','zoya']}],
+  expenses:[
+    {id:'e1', g:'g1', what:'Villa booking', paid:'me', amt:2400000, split:['me','ananya','kabir','rohan']},
+    {id:'e2', g:'g1', what:'Scooter rent', paid:'kabir', amt:360000, split:['me','ananya','kabir','rohan']},
+    {id:'e3', g:'g1', what:'Dinner at Thalassa', paid:'ananya', amt:520000, split:['me','ananya','kabir','rohan']},
+    {id:'e4', g:'g2', what:'Electricity, October', paid:'zoya', amt:286000, split:['me','zoya']},
+    {id:'e5', g:'g2', what:'Groceries', paid:'me', amt:174000, split:['me','zoya']},
+  ],
+  payments:[], // {k, amt}: amt in paise, positive when they paid you, negative when you paid them
+};
+// "₹1,200.50" -> 120050 paise; anything else -> NaN
+function parsePaise(str){
+  const t = String(str).replace(/[\s,₹]/g, '');
+  const m = /^(\d{1,9})(?:\.(\d{1,2}))?$/.exec(t);
+  return m ? +m[1] * 100 + +((m[2] || '0') + '0').slice(0, 2) : NaN;
+}
+const remLabel = x => x === 'Once a day' ? 'Once a day' : 'Every ' + x;
+
+/* ---------- toast / layers ---------- */
+let toastTimer;
+function toast(msg){ const s = $('#toast-slot'); s.innerHTML = `<div class="toast" role="status">${esc(msg)}</div>`; clearTimeout(toastTimer); toastTimer = setTimeout(() => s.innerHTML = '', 2600); }
+const layer = () => $('#layer');
+function sheet(html, label){ layer().innerHTML = `<div class="scrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(label)}" data-stop><div class="grab"></div>${html}</div></div>`; focusFirst(); }
+function full(html, label){
+  // redrawing the same screen keeps its scroll and skips the fade, so taps don't flicker
+  const prev = layer().querySelector('.full'), same = prev && prev.getAttribute('aria-label') === label, top = same ? prev.querySelector('.body')?.scrollTop : 0;
+  layer().innerHTML = `<div class="full" role="dialog" aria-modal="true" aria-label="${esc(label)}" ${same ? 'style="animation:none"' : ''}>${html}</div>`;
+  if (same) { const b = layer().querySelector('.full .body'); if (b) b.scrollTop = top; } else focusFirst(); }
+function closeLayer(){ layer().innerHTML = ''; stopTimers(); }
+function focusFirst(){ requestAnimationFrame(() => { const el = layer().querySelector('input,textarea,button'); el && el.focus({preventScroll:true}); }); }
+const header = (title, extra='') => `<div class="top" style="padding-left:6px">${`<button class="icon-btn" data-act="close" aria-label="Back">${ico('back')}</button>`}<h2 style="flex:1;font-size:18px">${title}</h2>${extra}</div>`;
+let timers = [];
+function stopTimers(){ timers.forEach(clearTimeout); timers = []; }
+
+/* ---------- tab bar ---------- */
+const TABS = [['feed','Feed'],['news','News'],['money','Money'],['profile','Profile'],['hissab','Hissab']];
+function renderTabbar(){
+  $('#tabbar').innerHTML = TABS.map(([k, label]) => `<button data-act="tab" data-tab="${k}" aria-label="${k==='money'?'Money Machine':label}" ${state.tab===k?'aria-current="page"':''}>${ico(k, 24)}<span>${label}</span></button>`).join('');
+}
+function go(tab){
+  state.tab = tab; closeLayer(); state.nudgeShown = false;
+  TABS.forEach(([k]) => $('#s-'+k).hidden = k !== tab);
+  renderTabbar(); render[tab]();
+  $('#s-'+tab).scrollTop = 0;
+}
+
+/* ---------- FEED ---------- */
+function postHTML(p){
+  const who = people[p.who];
+  const liked = state.liked.has(p.id), approved = state.approved.some(a => a.pid === p.id);
+  const badge = who.house ? '<span class="badge house">House account</span>' : p.brand ? '<span class="badge brand">Brand · journey only</span>' : '';
+  let media = '';
+  if (p.kind === 'reel' || p.kind === 'post') {
+    const chart = p.chart ? `<svg class="chart" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 105 L40 98 L80 92 L120 80 L160 70 L200 52 L240 38 L300 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M0 105 L40 98 L80 92 L120 80 L160 70 L200 52 L240 38 L300 12 L300 120 L0 120Z" fill="rgba(255,255,255,.16)"/></svg>` : '';
+    media = `<button class="media ${p.kind==='post'?'wide':''}" data-act="${p.kind==='reel'?'reel':'none'}" data-id="${p.id}" style="background:${GRADS[p.grad]};border:0;text-align:left;cursor:${p.kind==='reel'?'pointer':'default'}" aria-label="${p.kind==='reel'?'Play reel: ':''}${esc(p.big)}">
+      ${chart}${p.kind==='reel'?`<span class="play">${ico('play',12)} Reel · ${p.mins}</span>`:''}
+      <span class="kicker">${esc(p.kicker)}</span><span class="big">${esc(p.big)}</span></button>`;
+  }
+  const flex = p.flex ? `<div class="flexcard"><span class="proud">Flex · ${esc(p.flex.proud)}</span><h3>${esc(p.flex.title)}</h3><p class="small soft">${esc(p.flex.detail)}</p></div>` : '';
+  return `<article class="post" data-post="${p.id}">
+    <div class="post-head"><button class="icon-btn" style="width:44px;height:44px" data-act="open-profile" data-who="${p.who}" aria-label="Open ${esc(who.name)}'s profile">${av(p.who)}</button>
+      <div class="who"><div class="name">${esc(who.name)} ${badge}</div><div class="meta"><span class="mono">${esc(who.id)}</span> · ${p.time} · ${esc(p.topic)}</div></div></div>
+    ${p.kind==='flex' || p.kind==='post' ? `<p class="post-text">${esc(p.text)}</p>` : ''}
+    ${flex}${media}
+    <div class="actions">
+      <button class="act like" data-act="like" data-id="${p.id}" aria-pressed="${liked}" aria-label="Like">${ico('heart',22)}<span class="num">${(p.likes + (liked?1:0)).toLocaleString('en-IN')}</span></button>
+      <button class="act" data-act="comments" data-id="${p.id}" aria-label="Comments">${ico('comment',22)}<span class="num">${p.comments}</span></button>
+      <button class="act" data-act="share" data-id="${p.id}" aria-label="Share">${ico('share',22)}</button>
+      <span class="grow"></span>
+      <button class="act approve" data-act="approve" data-id="${p.id}" aria-pressed="${approved}">${ico('approve',20)}${approved?'Approved':'Approve'}</button>
+    </div>
+    <div class="post-foot">${p.approvedBy?`<div class="approvedby">${ico('approve',14)} Approved by ${esc(people[p.approvedBy].name)}</div>`:''}${p.kind==='reel'?`<span class="soft">${esc(p.text)}</span>`:''}</div>
+  </article>`;
+}
+const STORIES = ['ananya','kabir','studio','meera','rohan','zoya'];
+const render = {};
+render.feed = () => {
+  if (state.filter !== 'All' && !state.user.topics.has(state.filter)) state.filter = 'All';
+  const list = state.posts.filter(p => state.filter === 'All' || p.topic === state.filter);
+  $('#s-feed').innerHTML = `
+    <div class="top"><div class="brand"><span class="mark">${ico('check',18,3)}</span>GoodHabits</div>
+      <div class="row" style="gap:0"><button class="icon-btn" data-act="create" aria-label="Create">${ico('plus',24)}</button>
+      <button class="icon-btn" data-act="activity" aria-label="Recent activity">${ico('bell',24)}<span class="dot"></span></button>
+      <button class="icon-btn" data-act="dms" aria-label="Messages">${ico('dm',24)}<span class="dot"></span></button></div></div>
+    <div class="stories" role="list" aria-label="Stories">
+      <button class="story" data-act="create" role="listitem"><span class="ring seen"><span class="avatar" style="background:var(--surface-2);color:var(--accent)">${ico('plus',22,2.5)}</span></span><span class="name">Your story</span></button>
+      ${STORIES.map((k,i) => `<button class="story" data-act="story" data-who="${k}" role="listitem"><span class="ring ${i>3?'seen':''}">${av(k)}</span><span class="name">${esc(people[k].name.split(' ')[0])}</span></button>`).join('')}
+    </div>
+    <div class="chips" role="group" aria-label="Show only">${['All', ...state.user.topics].map(f => `<button class="chip" data-act="filter" data-f="${f}" aria-pressed="${state.filter===f}">${f}</button>`).join('')}</div>
+    <div id="feed-list">${list.map(postHTML).join('') || `<p class="pad muted">Nothing in ${esc(state.filter)} from people you follow yet. Our house accounts post here soon.</p>`}</div>
+    <p class="note" style="padding:16px 16px 28px;text-align:center">You're all caught up. Close the app, or learn one more thing in News.</p>`;
+};
+
+function onFeedScroll(e){
+  const el = e.target;
+  if (!state.reminders.on || state.nudgeShown || Date.now() < state.snoozeUntil) return;
+  state.scrolled = Math.max(state.scrolled, Math.floor(el.scrollTop / 380));
+  // In the app: every 15 scrolls or 10 minutes, as the user set it. Here after 3 posts so the preview shows it.
+  if (state.scrolled >= 3) { state.scrolled = 0; showNudge(); }
+}
+function showNudge(){
+  state.nudgeShown = true;
+  // A row inside the sticky header, top right: it never covers what the user is reading or tapping.
+  const top = document.querySelector(`#s-${state.tab} .top`); if (!top) return;
+  top.querySelector('.nudge-row')?.remove();
+  top.insertAdjacentHTML('beforeend', `<div class="nudge-row"><div class="nudge" role="status">Up for some investing?<button class="go" data-act="nudge-go">Yes</button><button data-act="nudge-x" aria-label="Not now">${ico('close',16)}</button></div></div>`);
+}
+
+/* ---------- NEWS ---------- */
+const SUGGEST = ['RBI repo rate','Budget tax changes','Nifty today','UPI rules','Screens and sleep'];
+const typeClass = t => ({News:'news', Government:'gov', Brand:'brand', Science:'sci'}[t]);
+function starsHTML(avg){ let h = '<span class="stars" aria-hidden="true">'; for (let i=1;i<=5;i++) h += `<span class="${avg >= i - .25 ? '' : 'off'}">${ico('star',14)}</span>`; return h + '</span>'; }
+function srcScore(name){ const s = SOURCES[name], r = state.ratings[name]; if (!r) return s; const n = s.n + 1; return {...s, avg:(s.avg * s.n + r.stars) / n, n}; }
+render.news = () => {
+  const n = state.news;
+  let body;
+  if (n.loading) body = `<div class="stack" aria-label="Searching">${[90,70,80,60].map(w=>`<div class="skeleton" style="width:${w}%"></div>`).join('')}<p class="note">Our AI is picking credible articles from the GoodHabits index…</p></div>`;
+  else if (n.results) body = n.results.length ? `<p class="note">Picked by our AI from the GoodHabits index of approved sources. No ads, ever. Tap one to read.</p>` + n.results.map((a,i) => {
+      const s = srcScore(a.src);
+      return `<div class="result"><button class="title" data-act="article" data-i="${i}">${esc(a.title)}</button>
+        <div class="row small" style="flex-wrap:wrap;gap:8px"><span class="soft" style="font-weight:700">${esc(a.src)}</span><span class="badge ${typeClass(s.type)}">${s.type}</span><span class="muted">${a.age} ago</span></div>
+        <div class="spread small"><span class="row" style="gap:6px">${starsHTML(s.avg)}<span class="num" style="font-weight:800">${s.avg.toFixed(1)}</span><span class="muted num">(${s.n.toLocaleString('en-IN')} trust ratings)</span></span>
+        <button class="link" data-act="rate" data-src="${esc(a.src)}">${state.ratings[a.src]?'Rated':'Rate source'}</button></div></div>`; }).join('')
+      : `<p class="muted">No credible articles for "${esc(n.q)}" in our index yet. Try fewer words.</p>`;
+  else body = `<div class="stack"><h3>Try</h3><div class="row" style="flex-wrap:wrap;gap:8px">${SUGGEST.map(s=>`<button class="chip" data-act="suggest" data-q="${esc(s)}">${esc(s)}</button>`).join('')}</div></div>
+    <div class="card" style="padding:14px 16px"><h3>How News works</h3><p class="small soft" style="margin-top:6px;line-height:1.55">You search, our AI finds credible articles from sources in our index, and you pick what to read. Every source shows its type and how much readers trust it, from 1 to 5. You can rate sources and review articles too.</p></div>`;
+  $('#s-news').innerHTML = `<div class="top"><h1 style="font-size:26px">News</h1><span class="badge">Ad-free</span></div>
+    <div class="pad"><form id="news-form" class="search" role="search"><span class="muted">${ico('news',20)}</span>
+      <label for="news-q" class="sr" style="position:absolute;left:-9999px">Search the news</label>
+      <input id="news-q" type="search" autocomplete="off" placeholder="Search the news, without the ads" value="${esc(n.q)}"><button class="btn sm" type="submit">Search</button></form>
+      ${body}</div>`;
+};
+function runSearch(q){
+  const n = state.news; n.q = q.trim(); if (!n.q) return;
+  n.loading = true; n.results = null; render.news();
+  const words = n.q.toLowerCase().split(/\W+/).filter(Boolean);
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    const scored = ARTICLES.map(a => ({a, s:a.k.filter(k => words.some(w => k.startsWith(w) || w.startsWith(k))).length})).filter(x => x.s).sort((x,y) => y.s - x.s);
+    n.results = scored.map(x => x.a); n.loading = false; render.news();
+  }, 800);
+}
+let searchTimer;
+
+/* ---------- MONEY MACHINE ---------- */
+render.money = () => {
+  const t = state.moneyTab;
+  const holdings = !state.zerodha ? `<div class="card" style="padding:12px 14px"><h3>Your holdings show up here</h3><p class="small soft" style="margin-top:4px">Connect Zerodha to see what you own and how it's doing.</p></div>` : `<div class="statgrid"><div class="stat"><div class="small muted">Invested</div><div class="v num">₹48,600</div></div><div class="stat"><div class="small muted">Current value</div><div class="v num up">₹52,140</div></div></div>`;
+  let list = '';
+  if (t === 'Stocks') list = STOCKS.map(s => `<button class="stock" data-act="stock" data-sym="${s.sym}"><span class="tick">${s.short}</span><span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(s.name)}</span><span class="small muted mono">${s.sym}</span></span><span style="text-align:right"><span class="num" style="display:block;font-weight:800">${inr(s.price)}</span><span class="small num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}%</span></span></button>`).join('');
+  if (t === 'Mutual funds') list = `<div class="card" style="padding:14px 16px"><h3>Mutual funds open in Zerodha Coin</h3><p class="small soft" style="margin-top:6px;line-height:1.55">Zerodha's API can show your funds and SIPs here, but buying a fund or starting a SIP happens in Coin. We'll take you there in one tap.</p><button class="btn sm" style="margin-top:12px" data-act="coin">Open Coin</button></div>`;
+  if (t === 'FDs') list = `<div class="card" style="padding:14px 16px"><h3>Fixed deposits are coming</h3><p class="small soft" style="margin-top:6px;line-height:1.55">We're working out the safest way to offer FDs. Until then, Stocks and ETFs are here.</p></div>`;
+  $('#s-money').innerHTML = `<div class="top"><h1 style="font-size:26px">Money Machine</h1>${state.zerodha?'<span class="badge" style="color:var(--up)">Zerodha connected</span>':'<button class="link" data-act="connect">Connect Zerodha</button>'}</div>
+    <div class="pad">
+      <div class="swap"><div class="small" style="font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.9">Impulse swap</div>
+        <div class="from"><span>About to buy</span><span class="strike">Sneakers · ₹6,499</span></div>
+        <h2 style="color:inherit">Put ₹6,499 into your future instead?</h2>
+        <button class="btn" data-act="swap">Invest ₹6,499</button></div>
+      <div class="gg"><div class="who"><span class="ggmark">${ico('bolt',22)}</span><span><h3>Practise with GoodGuy</h3><p class="small muted">Pretend ₹1 lakh. Yesterday's market, replayed.</p></span></div>
+        <p class="small soft" style="line-height:1.5">Trade without risking a rupee. GoodGuy watches how you trade and coaches your habits.</p>
+        <button class="btn ghost sm" data-act="practice">Open practice account</button></div>
+      ${holdings}
+      <div class="seg" role="tablist">${['Stocks','Mutual funds','FDs'].map(x=>`<button role="tab" data-act="mtab" data-t="${x}" aria-selected="${t===x}">${x}</button>`).join('')}</div>
+      <div>${list}</div>
+      <p class="disclaimer">Sample prices. Not investment advice. Investments in the securities market are subject to market risks; read all related documents carefully before investing. Orders are placed with Zerodha, a SEBI-registered broker.</p>
+    </div>`;
+};
+function stockSheet(sym, presetPaise){
+  const s = STOCKS.find(x => x.sym === sym);
+  const amounts = [100000, 200000, 500000, 1000000];
+  let amt = presetPaise || 200000;
+  const calc = () => { const qty = Math.floor(amt / s.price); return {qty, cost:qty * s.price, left:amt - qty * s.price}; };
+  const draw = () => {
+    const c = calc();
+    sheet(`<div class="spread"><div><h2>${esc(s.name)}</h2><p class="small muted mono">${s.sym} · NSE</p></div><div style="text-align:right"><div class="num" style="font-weight:800;font-size:18px">${inr(s.price)}</div><div class="small num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}% today</div></div></div>
+      <svg viewBox="0 0 300 80" width="100%" height="80" aria-hidden="true"><path d="M0 60 C40 55 60 66 90 50 S150 30 180 38 S240 20 300 14" fill="none" stroke="var(--accent)" stroke-width="3"/></svg>
+      <button class="btn ghost sm block" data-act="gg-ask" data-sym="${s.sym}">${ico('bolt',18)} Ask GoodGuy why it moved</button>
+      <div class="field"><label>How much do you want to invest?</label><div class="amounts" style="grid-template-columns:repeat(4,minmax(0,1fr))">${amounts.map(a=>`<button class="amt" data-act="amt" data-a="${a}" aria-pressed="${a===amt}">${inr(a)}</button>`).join('')}</div></div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <div class="spread"><span class="soft">Shares you get</span><span class="num" style="font-weight:800">${c.qty}</span></div>
+        <div class="spread"><span class="soft">Share cost (before charges)</span><span class="num" style="font-weight:800">${inr(c.cost)}</span></div>
+        <div class="spread small muted"><span>Brokerage</span><span>₹0 (Zerodha, delivery)</span></div>
+        <div class="spread small muted"><span>Stays in your account</span><span class="num">${inr(c.left)}</span></div>
+        <p class="note">Taxes and exchange charges are shown by Zerodha before you confirm.</p></div>
+      ${c.qty === 0 ? `<p class="err">${inr(amt)} is less than one share. Pick a bigger amount or try an ETF.</p>` : ''}
+      ${state.zerodha ? `<button class="btn block" data-act="buy" ${c.qty===0?'disabled':''}>Buy ${c.qty} share${c.qty===1?'':'s'}</button>` : `<button class="btn block" data-act="connect">Connect Zerodha to buy</button>`}
+      <p class="note">Sample prices. Not investment advice. Investments in the securities market are subject to market risks; read all related documents carefully before investing.</p>`, 'Buy '+s.name);
+  };
+  stockSheetState = {sym, set:a => { amt = a; draw(); }, get:() => calc()};
+  draw();
+}
+let stockSheetState = null;
+
+/* ---------- PROFILE ---------- */
+const FLEXES = [
+  {proud:'Work', title:'Product designer at a fintech startup', detail:'Redesigned onboarding: sign-ups finishing KYC went from 41% to 63%.'},
+  {proud:'Side project', title:'Weekend Python club for 12 school kids', detail:'Six Saturdays, every kid shipped a small game. Code on GitHub.'},
+  {proud:'Community', title:'Ran a free money-basics class at my old college', detail:'40 students, one hour, everyone left with a budget sheet.'},
+];
+function habitGrid(){ let h = ''; let seed = 7; for (let i=0;i<7*22;i++){ seed = (seed * 9301 + 49297) % 233280; const r = seed / 233280; const l = r > .82 ? 3 : r > .6 ? 2 : r > .38 ? 1 : 0; h += `<i class="${l?'l'+l:''}"></i>`; } return h; }
+render.profile = () => {
+  const u = state.user, t = state.profileTab;
+  const name = u.name || 'Riya Sharma', gid = u.goodId || 'good/riya';
+  let content = '';
+  if (t === 'Flexes') content = `<div class="pad" style="padding-top:12px">${FLEXES.map(f => `<div class="flexcard" style="margin:0"><span class="proud">${esc(f.proud)}</span><h3>${esc(f.title)}</h3><p class="small soft">${esc(f.detail)}</p></div>`).join('')}<button class="btn ghost" data-act="add-flex">${ico('plus',18)} Add something you're proud of</button></div>`;
+  if (t === 'Approved') content = state.approved.length ? `<p class="note" style="padding:10px 16px 0">Advice you vouched for, with your note. Only you decide what goes here.</p><div class="grid2">${state.approved.map(a => `<div class="apptile"><span class="tile" style="background:${GRADS[a.grad]}">${esc(a.big)}</span><span class="cm"><b>Approved:</b> ${esc(a.note || 'Good advice')}</span></div>`).join('')}</div>` : `<p class="pad muted">Approve a post in the feed and it lands here with your note.</p>`;
+  if (t === 'Posts' || t === 'Reels' || t === 'Tagged') {
+    const items = t === 'Posts' ? ['My first ₹1 lakh invested','3 tools I use for budgeting','What I learnt from 100 days of SIP'] : t === 'Reels' ? ['Budget in 60 seconds','UPI tricks I wish I knew','My desk setup'] : ['Tagged by Ananya: class photos','Tagged by Kabir: hackathon'];
+    content = `<div class="grid3" style="padding-top:2px">${items.map((x,i) => `<span class="tile" style="background:${GRADS[(i+2)%6]}">${esc(x)}</span>`).join('')}</div>`;
+  }
+  $('#s-profile').innerHTML = `<div class="top"><span class="mono soft" style="font-weight:700">${esc(gid)}</span><button class="icon-btn" data-act="settings" aria-label="Settings">${ico('settings',24)}</button></div>
+    <div class="pad" style="padding-bottom:12px">
+      <div class="row" style="gap:16px"><span class="avatar lg" style="background:var(--accent);color:var(--accent-ink)" aria-hidden="true">${esc(name.split(' ').map(w=>w[0]).slice(0,2).join(''))}</span>
+        <div class="statgrid" style="flex:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;text-align:center">
+          ${[['24','posts'],['1,208','followers'],['310','following']].map(([v,l])=>`<div><div class="num" style="font-weight:800;font-size:18px">${v}</div><div class="tiny muted">${l}</div></div>`).join('')}</div></div>
+      <div><h2>${esc(name)}</h2><p class="soft" style="margin-top:4px;line-height:1.5">Designing calmer money apps. Learning Rust on weekends. Investing ₹10,000 a month since 2024.</p></div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <div class="spread"><h3>Good habits graph</h3><span class="small muted">last 22 weeks</span></div>
+        <div class="habit" aria-label="Days you learnt something or invested, darker means more">${habitGrid()}</div>
+        <div class="legend">Less <i style="background:var(--surface-2)"></i><i class="l1" style="background:color-mix(in srgb, var(--up) 30%, var(--surface-2))"></i><i style="background:color-mix(in srgb, var(--up) 60%, var(--surface-2))"></i><i style="background:var(--up)"></i> More · learnt or invested</div></div>
+      <div class="row"><button class="btn ghost sm" style="flex:1" data-act="edit-profile">Edit profile</button><button class="btn ghost sm" style="flex:1" data-act="share-profile">Share profile</button></div>
+    </div>
+    <div class="ptabs" role="tablist" aria-label="Profile sections">${['Posts','Reels','Flexes','Tagged','Approved'].map(x=>`<button role="tab" data-act="ptab" data-t="${x}" aria-selected="${t===x}">${x}</button>`).join('')}</div>
+    ${content}`;
+};
+
+/* ---------- HISSAB ---------- */
+function balances(){
+  const bal = {}; // positive: they owe you; negative: you owe them (paise)
+  for (const e of H.expenses){
+    const share = Math.floor(e.amt / e.split.length), rem = e.amt - share * e.split.length;
+    e.split.forEach((p, i) => {
+      const owed = share + (i < rem ? 1 : 0);
+      if (p === e.paid) return;
+      if (e.paid === 'me') bal[p] = (bal[p] || 0) + owed;
+      else if (p === 'me') bal[e.paid] = (bal[e.paid] || 0) - owed;
+    });
+  }
+  for (const pay of H.payments) bal[pay.k] = (bal[pay.k] || 0) - pay.amt;
+  return bal;
+}
+render.hissab = () => {
+  const bal = balances();
+  const owed = Object.values(bal).filter(v => v > 0).reduce((a,b)=>a+b,0), owe = -Object.values(bal).filter(v => v < 0).reduce((a,b)=>a+b,0);
+  $('#s-hissab').innerHTML = `<div class="top"><h1 style="font-size:26px">Hissab</h1><button class="btn sm" data-act="add-exp">${ico('plus',18)} Add expense</button></div>
+    <div class="pad">
+      <div class="bal"><div class="stat"><div class="small muted">You're owed</div><div class="v num owed">${inr(owed)}</div></div><div class="stat"><div class="small muted">You owe</div><div class="v num owe">${inr(owe)}</div></div></div>
+      <div class="card spread" style="padding:12px 14px"><span><span class="small muted" style="display:block">Your spending, your share only</span><span class="num" style="font-weight:800;font-size:20px">${inr(myShare())}</span></span><span class="small muted" style="text-align:right">Includes things<br>you paid just for you</span></div>
+      <div class="spread"><h3>Friends</h3><button class="link" data-act="add-friend">${ico('plus',16)} Add friend</button></div><div>${Object.keys(H.friends).map(k => { const v = bal[k] || 0; return `<button class="person" data-act="friend" data-k="${k}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(H.friends[k])}</span><span class="small muted mono">${esc(people[k].id)}</span></span>
+        <span style="text-align:right">${v === 0 ? '<span class="small muted">Settled up</span>' : v > 0 ? `<span class="small muted" style="display:block">owes you</span><span class="num up" style="font-weight:800">${inr(v)}</span>` : `<span class="small muted" style="display:block">you owe</span><span class="num down" style="font-weight:800">${inr(-v)}</span>`}</span></button>`; }).join('')}</div>
+      <h3>Groups</h3>${H.groups.map(g => { const total = H.expenses.filter(e=>e.g===g.id).reduce((a,e)=>a+e.amt,0); return `<div class="card" style="padding:12px 14px;display:flex;align-items:center;gap:12px"><span class="avatar" style="background:var(--surface-2);color:var(--accent)">${ico('users',20)}</span><span style="flex:1"><span style="display:block;font-weight:800">${esc(g.name)}</span><span class="small muted">${g.members.length} people · ${inr(total)} spent</span></span></div>`; }).join('')}
+      <h3>Recent</h3>${H.expenses.slice().reverse().slice(0,5).map(e => `<div class="spread" style="padding:6px 0;border-bottom:1px solid var(--hair)"><span><span style="display:block;font-weight:700">${esc(e.what)}</span><span class="small muted">${e.paid==='me'?'You':esc(H.friends[e.paid])} paid · ${e.split.length === 1 ? (e.split[0]==='me' ? 'just you' : 'for ' + esc(H.friends[e.split[0]].split(' ')[0])) : 'split ' + e.split.length + ' ways'}${e.g ? ' · ' + esc(H.groups.find(g=>g.id===e.g).name) : ''}</span></span><span class="num" style="font-weight:800">${inr(e.amt)}</span></div>`).join('')}
+      <p class="note">Settling up by UPI inside GoodHabits is coming later. For now, mark it settled after you pay.</p>
+    </div>`;
+};
+function myShare(){
+  let t = 0;
+  for (const e of H.expenses){ const i = e.split.indexOf('me'); if (i < 0) continue; const share = Math.floor(e.amt / e.split.length); t += share + (i < e.amt - share * e.split.length ? 1 : 0); }
+  return t;
+}
+function splitHelp(a, n){
+  if (Number.isNaN(a)) return '<span class="err">Type an amount like 1200 or 1,200.50</span>';
+  if (!n || !a) return 'Pick at least one person and an amount.';
+  if (n === 1 && sel1()) return 'Just for you: it counts in your spending, nobody owes anything.';
+  const each = Math.floor(a / n);
+  return `${inr(each)} each${a % n ? ` (the extra paise go to the first ${a % n})` : ''}`;
+}
+const sel1 = () => expState && expState.sel.size === 1 && expState.sel.has('me');
+function expenseSheet(){
+  const sel = new Set(['me','ananya','kabir','rohan']); let paid = 'me', group = 'g1';
+  const draw = (desc='', amt='') => {
+    const n = sel.size, a = amt.trim() ? parsePaise(amt) : 0;
+    sheet(`<h2>Add an expense</h2>
+      <div class="field"><label for="ex-what">What was it?</label><input class="input" id="ex-what" placeholder="Dinner, cab, groceries" value="${esc(desc)}"></div>
+      <div class="field"><label for="ex-amt">Amount (₹)</label><input class="input num" id="ex-amt" inputmode="decimal" placeholder="1200" value="${esc(amt)}"></div>
+      <div class="field"><label>Group</label><div class="who-pick">${[...H.groups.map(g=>[g.id,g.name]), ['', 'No group']].map(([id,nm])=>`<button class="chip" data-act="ex-group" data-g="${id}" aria-pressed="${group===id}">${esc(nm)}</button>`).join('')}<button class="chip" data-act="ex-justme" aria-pressed="${sel.size===1&&sel.has('me')&&paid==='me'}">Just me</button></div></div>
+      <div class="field"><label>Paid by</label><div class="who-pick">${['me',...Object.keys(H.friends)].map(k=>`<button class="chip" data-act="ex-paid" data-k="${k}" aria-pressed="${paid===k}">${k==='me'?'You':esc(H.friends[k].split(' ')[0])}</button>`).join('')}</div></div>
+      <div class="field"><label>Split equally between</label><div class="who-pick">${['me',...Object.keys(H.friends)].map(k=>`<button class="chip" data-act="ex-split" data-k="${k}" aria-pressed="${sel.has(k)}">${k==='me'?'You':esc(H.friends[k].split(' ')[0])}</button>`).join('')}</div>
+        <p class="help num" id="ex-help">${splitHelp(a, n)}</p></div>
+      <button class="btn block" id="ex-save-btn" data-act="ex-save" ${n && a > 0 ? '' : 'disabled'}>Save expense</button>`, 'Add an expense');
+  };
+  const refresh = () => { const raw = $('#ex-amt').value, a = raw.trim() ? parsePaise(raw) : 0; $('#ex-help').innerHTML = splitHelp(a, sel.size); $('#ex-save-btn').disabled = !(sel.size && a > 0); };
+  expState = {sel, draw, refresh, get paid(){ return paid; }, set paid(v){ paid = v; }, get group(){ return group; }, set group(v){ group = v; }};
+  draw();
+}
+let expState = null;
+
+/* ---------- ONBOARDING ---------- */
+let onbStep = 0;
+const TOUR = [
+  ['feed','Feed','Posts and reels from people you follow, and things they Approved. No ads, no promotions.'],
+  ['news','News','Search the news without the ads. See how much readers trust each source.'],
+  ['money','Money Machine','Turn the urge to buy into a small investment, through Zerodha.'],
+  ['profile','Profile','Show your Flexes: work, projects and good you\'ve done. No job titles needed.'],
+  ['hissab','Hissab','Split bills with friends by Good ID or phone. Sorted.'],
+];
+function onboarding(){
+  const u = state.user;
+  const foot = (primary, act, extra='') => `<div class="foot">${extra}<button class="btn block" data-act="${act}">${primary}</button></div>`;
+  const dots = i => `<div class="dots" aria-hidden="true">${[0,1,2,3,4].map(d=>`<i class="${d===i?'on':''}"></i>`).join('')}</div>`;
+  let html = '';
+  if (onbStep === 0) html = `<div class="body"><div class="hero-art" style="background:${GRADS[0]}"><div><p style="font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:12px;opacity:.9">GoodHabits</p><h1 style="color:#fff;font-size:38px;margin-top:8px">Guilt-tripped on doom-scrolling? Here's the fix.</h1></div></div>
+      <p class="soft" style="font-size:16px;line-height:1.55">A calm social app with no ads and no promotions. Learn something, show work you're proud of, and invest a little instead of impulse-buying.</p>
+      <p class="soft" style="font-size:15px;font-weight:700">Scroll kam, seekho zyada. Aur thoda invest bhi.</p>${dots(0)}</div>
+      ${foot("Let's fix some habits",'onb-next')}`;
+  if (onbStep === 1) html = `<div class="body"><h1>Everything, in five tabs</h1><div class="stack" style="gap:10px">${TOUR.map(([k,t,d])=>`<div class="tourcard"><span class="ico">${ico(k,22)}</span><span><h3>${t}</h3><p class="small soft" style="margin-top:3px;line-height:1.5">${d}</p></span></div>`).join('')}</div>${dots(1)}</div>${foot('Continue','onb-next')}`;
+  if (onbStep === 2) html = `<div class="body"><h1>Some details before we start</h1>
+      <div class="field"><label for="u-name">Your name</label><input class="input" id="u-name" autocomplete="name" placeholder="Riya Sharma" value="${esc(u.name)}"></div>
+      <div class="field"><label for="u-contact">Email or phone number</label><input class="input" id="u-contact" autocomplete="email" placeholder="riya@example.com or 98xxxxxx10" value="${esc(u.contact)}"><p class="help">We send a one-time code to sign you in. We never ask for it again by DM.</p></div>
+      <div class="field"><label>How much do you invest each month right now?</label><div class="amounts">${['₹0','Under ₹2k','₹2k–10k','₹10k–25k','₹25k+','Skip'].map(a=>`<button class="amt" data-act="monthly" data-v="${a}" aria-pressed="${u.monthly===a}">${a}</button>`).join('')}</div><p class="help">Optional. We'll help you grow this, whatever it is today.</p></div>
+      <p class="err" id="onb-err" hidden>Add your name and an email or phone number to continue.</p>${dots(2)}</div>${foot('Sign up','onb-signup')}`;
+  if (onbStep === 3) { const sug = (u.name || 'riya').toLowerCase().split(' ')[0].replace(/[^a-z0-9]/g,'') || 'riya';
+    html = `<div class="body"><h1>Pick your Good ID</h1><p class="soft">This is how friends find you, split bills and tag you. No usernames, no job titles.</p>
+      <div class="field"><label for="u-gid">Good ID</label><div class="search" style="min-height:52px"><span class="mono muted">good/</span><input id="u-gid" class="mono" style="font-size:16px" value="${esc(u.goodId.replace('good/','') || sug)}" autocapitalize="off" spellcheck="false"></div><p class="help">Letters, numbers and dots. You can change it once a month.</p></div>
+      <div class="field"><label>What do you want to learn about?</label><div class="row" style="flex-wrap:wrap;gap:8px">${['Personal finance','Startups','Tech','Science','Design','Careers','Health','Climate'].map(x=>`<button class="chip" data-act="topic" data-t="${x}" aria-pressed="${u.topics.has(x)}">${x}</button>`).join('')}</div></div>${dots(3)}</div>${foot('Continue','onb-gid')}`; }
+  if (onbStep === 4) html = `<div class="body"><h1>Want a nudge to invest?</h1><p class="soft" style="line-height:1.55">While you scroll Feed or News, we can show a small "Up for some investing?" at the top. It's off unless you turn it on, and you choose how often.</p>
+      <div class="spread card" style="padding:12px 14px"><span><h3>Invest reminders</h3><p class="small muted">Off by default</p></span><button class="switch" role="switch" data-act="rem-toggle" aria-checked="${state.reminders.on}" aria-label="Invest reminders"></button></div>
+      <div class="stack" ${state.reminders.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${state.reminders.every===x}"><span class="radio"></span>${remLabel(x)}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>${dots(4)}</div>${foot('Start scrolling, the good way','onb-done')}`;
+  layer().innerHTML = `<div class="onb" role="dialog" aria-modal="true" aria-label="Sign up">${html}</div>`;
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const scrim = e.target.closest('.scrim');
+  if (scrim && !e.target.closest('[data-stop]')) { closeLayer(); return; }
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const a = b.dataset.act, id = b.dataset.id;
+  const post = id && state.posts.find(p => p.id === id);
+  switch (a) {
+    case 'tab': go(b.dataset.tab); break;
+    case 'close': case 'close-sheet': closeLayer(); break;
+    case 'filter': state.filter = b.dataset.f; render.feed(); break;
+    case 'like': state.liked.has(id) ? state.liked.delete(id) : state.liked.add(id); render.feed(); break;
+    case 'approve': {
+      if (state.approved.some(x => x.pid === id)) { state.approved = state.approved.filter(x => x.pid !== id); render.feed(); toast('Removed from your Approved tab'); break; }
+      sheet(`<h2>Approve this?</h2><p class="soft">It goes to your followers' feeds as "Approved by you" and onto your Approved tab, with your note.</p>
+        <div class="field"><label for="ap-note">Your note (optional)</label><textarea class="input" id="ap-note" placeholder="Good advice: why it helped you"></textarea></div>
+        <button class="btn pink block" data-act="approve-save" data-id="${id}">${ico('approve',20)} Approve</button>`, 'Approve');
+      break; }
+    case 'approve-save': {
+      const p = state.posts.find(x => x.id === id), note = $('#ap-note').value.trim();
+      state.approved.unshift({pid:id, note, big:p.big || (p.flex && p.flex.title) || p.text, grad:p.grad ?? 3});
+      closeLayer(); render.feed(); toast('Approved. It\'s on your profile now.'); break; }
+    case 'comments': {
+      const cs = [['meera','This is the clearest explanation I\'ve seen.'],['rohan','Saving this for salary day.'],['zoya','Can you do one on index funds next?']];
+      sheet(`<h2>Comments</h2><div class="stack" id="clist">${cs.map(([k,t])=>`<div class="row" style="align-items:flex-start">${av(k)}<p class="small" style="line-height:1.5"><b>${esc(people[k].name)}</b> ${esc(t)}</p></div>`).join('')}</div>
+        <form class="row" id="cform"><label for="c-in" style="position:absolute;left:-9999px">Add a comment</label><input class="input" id="c-in" placeholder="Add a comment" style="flex:1"><button class="btn sm" type="submit">Post</button></form>`, 'Comments');
+      break; }
+    case 'share': toast('Link copied. Opens in GoodHabits, or on the web without an account.'); break;
+    case 'reel': openReel(post); break;
+    case 'story': openStory(b.dataset.who); break;
+    case 'open-profile': toast(`${people[b.dataset.who].name} · ${people[b.dataset.who].id}`); break;
+    case 'create': sheet(`<h2>Create</h2><div class="stack">${[['Post','Photo and text, like LinkedIn'],['Reel','Short video, like Instagram'],['Flex','Something you\'re proud of'],['Story','Gone in 24 hours']].map(([t,d])=>`<button class="opt" data-act="create-pick" data-t="${t}"><span class="ico" style="width:36px;height:36px;border-radius:10px;background:var(--accent-wash);color:var(--accent);display:grid;place-items:center">${ico('plus',18)}</span><span><b style="display:block">${t}</b><span class="small muted">${d}</span></span></button>`).join('')}</div><p class="note">No promotions, offers or "buy now". Brands can share their journey and work.</p>`, 'Create'); break;
+    case 'create-pick': closeLayer(); toast(`The ${b.dataset.t.toLowerCase()} composer comes in the full build.`); break;
+    case 'activity': full(header('Recent activity') + `<div class="body"><div class="pad">${[['ananya','liked your post "3 tools I use for budgeting"','2m'],['kabir','Approved your reel "Budget in 60 seconds"','1h'],['meera','started following you','3h'],['zoya','added "Groceries" in Flat 302 · Hissab','5h'],['rohan','commented: "Saving this for salary day."','1d']].map(([k,t,w])=>`<div class="row" style="align-items:flex-start">${av(k)}<p class="small" style="line-height:1.5;flex:1"><b>${esc(people[k].name)}</b> ${esc(t)} <span class="muted">${w}</span></p></div>`).join('')}</div></div>`, 'Recent activity'); break;
+    case 'dms': openDMs(); break;
+    case 'chat': openChat(); break;
+    // In the app the snooze is the user's own interval; 30 seconds here so the preview shows it coming back.
+    case 'nudge-x': document.querySelectorAll('.nudge-row').forEach(n => n.remove()); state.nudgeShown = false; state.snoozeUntil = Date.now() + 30000; toast('Okay. We\'ll ask again later, on your schedule.'); break;
+    case 'nudge-go': document.querySelectorAll('.nudge-row').forEach(n => n.remove()); go('money'); stockSheet('NIFTYBEES', 100000); break;
+    case 'suggest': $('#news-q') && ($('#news-q').value = b.dataset.q); runSearch(b.dataset.q); break;
+    case 'article': openArticle(state.news.results[+b.dataset.i]); break;
+    case 'rate': rateSheet(b.dataset.src); break;
+    case 'review': { const t = b.dataset.title, r0 = state.reviews[t] || {v:'', text:''};
+      sheet(`<h2>Review this article</h2><p class="small muted">${esc(t)}</p><div class="field"><label>Was it accurate and fair?</label><div class="who-pick" role="radiogroup">${['Yes','Partly','No'].map(v=>`<button class="chip" role="radio" data-act="rv-pick" data-v="${v}" aria-checked="${r0.v===v}" aria-pressed="${r0.v===v}">${v}</button>`).join('')}</div></div>
+        <div class="field"><label for="arv">What should other readers know? (optional)</label><textarea class="input" id="arv" placeholder="A missing fact, a good source, a fair point">${esc(r0.text)}</textarea></div>
+        <p class="note">Reviews are public after a quick check. Be fair to the writer.</p><button class="btn block" data-act="review-save" data-title="${esc(t)}">Post review</button>`, 'Review article'); break; }
+    case 'rv-pick': b.parentElement.querySelectorAll('[data-act=rv-pick]').forEach(x => { const on = x === b; x.setAttribute('aria-checked', on); x.setAttribute('aria-pressed', on); }); break;
+    case 'review-save': { const sel = layer().querySelector('[data-act=rv-pick][aria-pressed=true]'); if (!sel) { toast('Pick Yes, Partly or No first.'); break; } state.reviews[b.dataset.title] = {v:sel.dataset.v, text:$('#arv').value.trim()}; closeLayer(); toast('Thanks. Your review goes public after a quick check.'); break; }
+    case 'star': { const src = b.dataset.src, v = +b.dataset.v; rateState.stars = v; drawRate(src); break; }
+    case 'rate-save': { state.ratings[b.dataset.src] = {stars:rateState.stars, review:$('#rv').value.trim()}; closeLayer(); render.news(); toast('Thanks. Your rating is public and counts now.'); break; }
+    case 'mtab': state.moneyTab = b.dataset.t; render.money(); break;
+    case 'gg-ask': needPlus(() => openGoodGuy(b.dataset.sym)); break;
+    case 'gg-q': ggAnswer(b.dataset.q); break;
+    case 'practice': needPlus(openPractice); break;
+    case 'plus-start': state.ggPlus = true; { const next = plusNext; plusNext = null; closeLayer(); toast('GoodGuy trial started (preview, nothing charged)'); next && next(); } break;
+    case 'pr-mode': if (b.dataset.m === 'story') { stopTimers(); rpPicker(); break; } PR.mode = b.dataset.m; prReset(); drawPractice(); break;
+    case 'rp-pick': rpStart(b.dataset.who); break;
+    case 'rp-buy': rpBuy(b.dataset.a, +b.dataset.v); break;
+    case 'rp-sell': rpSell(b.dataset.a); break;
+    case 'rp-choice': rpChoose(+b.dataset.i); break;
+    case 'rp-next': rpNext(); break;
+    case 'rp-mod': rpMod(b.dataset.m); break;
+    case 'rp-back': rpPicker(); break;
+    case 'rp-day': PR.mode = 'yesterday'; prReset(); drawPractice(); break;
+    case 'pr-play': prToggle(); break;
+    case 'pr-buy': prBuy(b.dataset.sym); break;
+    case 'pr-sell': prSell(b.dataset.sym); break;
+    case 'pr-stop': prStop(b.dataset.sym); break;
+    case 'pr-again': prReset(); drawPractice(); break;
+    case 'stock': stockSheet(b.dataset.sym); break;
+    case 'amt': stockSheetState.set(+b.dataset.a); break;
+    case 'connect': sheet(`<h2>Connect Zerodha</h2><p class="soft" style="line-height:1.55">You'll log in on Kite, Zerodha's own page. We never see your password. Zerodha asks you to log in again each morning; that's their safety rule, not ours.</p>
+        <div class="card" style="padding:12px 14px" ><p class="small soft">No Zerodha account? Open one with Zerodha first, then come back.</p></div>
+        <button class="btn block" data-act="connect-ok">Log in with Kite</button><p class="note">Preview: this pretends to connect. Nothing is linked.</p>`, 'Connect Zerodha'); break;
+    case 'connect-ok': state.zerodha = true; closeLayer(); render.money(); toast('Zerodha connected (preview)'); break;
+    case 'buy': { const c = stockSheetState.get(); closeLayer(); toast(`Order sent to Zerodha for ${c.qty} share${c.qty===1?'':'s'} (preview, nothing was bought)`); break; }
+    case 'swap': go('money'); stockSheet('NIFTYBEES', 649900); break;
+    case 'coin': toast('Opens Zerodha Coin (preview)'); break;
+    case 'ptab': state.profileTab = b.dataset.t; render.profile(); break;
+    case 'add-flex': sheet(`<h2>Add a Flex</h2><div class="field"><label for="fx-t">What are you proud of?</label><input class="input" id="fx-t" placeholder="Shipped, built, helped, solved…"></div><div class="field"><label for="fx-d">Tell the story</label><textarea class="input" id="fx-d" placeholder="What you did and what changed because of it"></textarea></div><p class="note">No job titles needed. We take your word for it, so keep it true.</p><button class="btn block" data-act="flex-save">Add Flex</button>`, 'Add a Flex'); break;
+    case 'flex-save': { const t = $('#fx-t').value.trim(); if (!t) { toast('Give your Flex a title first.'); break; } FLEXES.unshift({proud:'New', title:t, detail:$('#fx-d').value.trim() || 'Added just now.'}); closeLayer(); render.profile(); toast('Flex added'); break; }
+    case 'edit-profile': case 'share-profile': toast(a === 'edit-profile' ? 'Profile editing comes in the full build.' : 'Profile link copied'); break;
+    case 'settings': openSettings(); break;
+    case 'rem-toggle': state.reminders.on = !state.reminders.on; state.nudgeShown = false; state.scrolled = 0; layer().querySelector('.onb') ? onboarding() : openSettings(); break;
+    case 'rem-every': state.reminders.every = b.dataset.v; layer().querySelector('.onb') ? onboarding() : openSettings(); break;
+    case 'add-exp': expenseSheet(); break;
+    case 'ex-paid': { const d = $('#ex-what').value, m = $('#ex-amt').value; expState.paid = b.dataset.k; expState.draw(d, m); break; }
+    case 'ex-split': { const d = $('#ex-what').value, m = $('#ex-amt').value, k = b.dataset.k; expState.sel.has(k) ? expState.sel.delete(k) : expState.sel.add(k); expState.draw(d, m); break; }
+    case 'ex-group': { const d = $('#ex-what').value, m = $('#ex-amt').value, g = H.groups.find(x => x.id === b.dataset.g); expState.group = b.dataset.g; if (g) { expState.sel.clear(); g.members.forEach(k => expState.sel.add(k)); } expState.draw(d, m); break; }
+    case 'ex-justme': { const d = $('#ex-what').value, m = $('#ex-amt').value; expState.group = ''; expState.paid = 'me'; expState.sel.clear(); expState.sel.add('me'); expState.draw(d, m); break; }
+    case 'ex-save': { const what = $('#ex-what').value.trim() || 'Expense', amt = parsePaise($('#ex-amt').value); if (!(amt > 0) || !expState.sel.size) break; H.expenses.push({id:'e'+Date.now(), g:expState.group || null, what, paid:expState.paid, amt, split:[...expState.sel]}); closeLayer(); render.hissab(); toast('Expense added'); break; }
+    case 'add-friend': sheet(`<h2>Add a friend</h2><div class="field"><label for="fr-name">Name</label><input class="input" id="fr-name" placeholder="Arjun Mehta"></div><div class="field"><label for="fr-id">Good ID or phone number</label><input class="input" id="fr-id" placeholder="good/arjun or 98xxxxxx10" autocapitalize="off"><p class="help">Not on GoodHabits yet? Add their phone number; we'll keep the hissab until they join.</p></div><p class="err" id="fr-err" hidden>Add a name and a Good ID or phone number.</p><button class="btn block" data-act="friend-save">Add friend</button>`, 'Add a friend'); break;
+    case 'friend-save': { const nm = $('#fr-name').value.trim(), raw = $('#fr-id').value.trim(); if (!nm || !raw) { $('#fr-err').hidden = false; break; } const k = 'f' + Date.now(), phone = /^[+\d][\d\s-]{6,}$/.test(raw); people[k] = {name:nm, id: phone ? raw : (raw.startsWith('good/') ? raw : 'good/' + raw).toLowerCase(), bg:'#4A3F8F'}; H.friends[k] = nm; closeLayer(); render.hissab(); toast(`${nm.split(' ')[0]} added`); break; }
+    case 'friend': friendSheet(b.dataset.k); break;
+    case 'settle': { const k = b.dataset.k, v = balances()[k] || 0; if (v) H.payments.push({k, amt:v}); closeLayer(); render.hissab(); toast('Marked as settled'); break; }
+    case 'monthly': state.user.monthly = b.dataset.v; onboarding(); break;
+    case 'topic': { const t = b.dataset.t; const gid = $('#u-gid').value; state.user.goodId = 'good/' + gid; state.user.topics.has(t) ? state.user.topics.delete(t) : state.user.topics.add(t); onboarding(); break; }
+    case 'onb-next': onbStep++; onboarding(); break;
+    case 'onb-signup': { const n = $('#u-name').value.trim(), c = $('#u-contact').value.trim(); state.user.name = n; state.user.contact = c; if (!n || !c) { onboarding(); $('#onb-err').hidden = false; break; } onbStep++; onboarding(); break; }
+    case 'onb-gid': { const v = ($('#u-gid').value || '').toLowerCase().replace(/[^a-z0-9.]/g,''); if (!v) { toast('Pick a Good ID with letters or numbers.'); break; } state.user.goodId = 'good/' + v; onbStep++; onboarding(); break; }
+    case 'onb-done': closeLayer(); go('feed'); toast(`Welcome, ${state.user.name.split(' ')[0] || 'friend'}. Your feed is ad-free.`); break;
+  }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (e.target.id === 'news-form') runSearch($('#news-q').value);
+  if (e.target.id === 'cform') { const v = $('#c-in').value.trim(); if (!v) return; $('#clist').insertAdjacentHTML('beforeend', `<div class="row" style="align-items:flex-start">${av('me')}<p class="small" style="line-height:1.5"><b>You</b> ${esc(v)}</p></div>`); $('#c-in').value = ''; }
+  if (e.target.id === 'dm-form') { const v = $('#dm-in').value.trim(); if (!v) return; $('#thread').insertAdjacentHTML('beforeend', `<div class="msg me">${esc(v)}</div>`); $('#dm-in').value = ''; }
+});
+document.addEventListener('input', e => {
+  // keep typed values when a tap redraws the step
+  const t = e.target;
+  if (t.id === 'u-name') state.user.name = t.value;
+  if (t.id === 'u-contact') state.user.contact = t.value;
+  if (t.id === 'u-gid') state.user.goodId = 'good/' + t.value;
+  if (t.id === 'ex-amt' && expState) expState.refresh();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && layer().innerHTML && !layer().querySelector('.onb')) closeLayer(); });
+$('#s-feed').addEventListener('scroll', onFeedScroll, {passive:true});
+$('#s-news').addEventListener('scroll', e => { if (state.reminders.on && !state.nudgeShown && Date.now() >= state.snoozeUntil && e.target.scrollTop > 600) showNudge(); }, {passive:true});
+
+/* ---------- overlays: reel, story, dms, article, rating, settings, friend ---------- */
+function openReel(p){
+  layer().innerHTML = `<div class="viewer" role="dialog" aria-modal="true" aria-label="Reel" style="background:${GRADS[p.grad]}">
+    <div class="bars"><i><b id="rb"></b></i></div><button class="icon-btn close" data-act="close" aria-label="Close">${ico('close',26)}</button>
+    <span style="font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:12px">${esc(p.kicker)}</span><span class="big">${esc(p.big)}</span>
+    <p style="max-width:320px;line-height:1.5">${esc(p.text)}</p><div class="row">${av(p.who)}<b>${esc(people[p.who].name)}</b>${people[p.who].house?'<span class="badge house">House account · AI voice</span>':''}</div></div>`;
+  const bar = $('#rb'); bar.style.transition = 'width 6s linear'; requestAnimationFrame(() => bar.style.width = '100%');
+}
+function openStory(k){
+  const p = people[k];
+  layer().innerHTML = `<div class="viewer" role="dialog" aria-modal="true" aria-label="Story" style="background:${GRADS[Object.keys(people).indexOf(k) % 6]}">
+    <div class="bars"><i><b id="sb"></b></i></div><button class="icon-btn close" data-act="close" aria-label="Close">${ico('close',26)}</button>
+    <div class="row" style="position:absolute;top:24px;left:14px;right:64px;flex-wrap:wrap">${av(k)}<b>${esc(p.name)}</b>${p.house?'<span class="badge house">House account · AI voice</span>':''}</div>
+    <span class="big">${k==='studio'?'Today\'s habit: 10 minutes of reading before your phone':'Day 47 of investing before spending'}</span></div>`;
+  const bar = $('#sb'); bar.style.transition = 'width 5s linear'; requestAnimationFrame(() => bar.style.width = '100%');
+  timers.push(setTimeout(closeLayer, 5200));
+}
+function openDMs(){
+  full(header('Messages') + `<div class="body"><div class="pad">${[['ananya','Sending the invoice repo link now','2m',true],['kabir','Goa photos are up!','1h',false],['stranger','Hi, I am from GoodHabits support…','3h',true]].map(([k,t,w,u])=>`<button class="person" data-act="${k==='stranger'?'chat':'none'}">${av(k)}<span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(people[k].name)}</span><span class="small ${u?'':'muted'}" style="${u?'font-weight:700':''}">${esc(t)}</span></span><span class="small muted">${w}</span></button>`).join('')}<p class="note">DMs are back where they were. Messages from people you don't follow land in Requests; tap Help Desk 24x7 to see how we flag scams.</p></div></div>`, 'Messages');
+}
+function openChat(){
+  full(header(esc(people.stranger.name)) + `<div class="body"><div class="pad" id="thread" style="gap:10px">
+    <p class="small muted">Message request · you don't follow this account · joined 2 days ago</p>
+    <div class="msg them">Hi, I am from GoodHabits support. Your Zerodha link will be blocked today.</div>
+    <div class="msg them">Share the OTP you received to keep it active.</div>
+    <div class="flag" role="note">${ico('shield',18)}<span>This looks like a scam. GoodHabits and Zerodha never ask for codes or passwords in DMs. Don't share it.</span></div>
+    <div class="row"><button class="btn ghost sm" data-act="close">Block and report</button></div></div></div>
+    <form class="row" id="dm-form" style="padding:10px 12px;border-top:1px solid var(--line)"><label for="dm-in" style="position:absolute;left:-9999px">Message</label><input class="input" id="dm-in" placeholder="Message" style="flex:1"><button class="btn sm" type="submit">Send</button></form>`, 'Chat');
+}
+function openArticle(a){
+  const s = srcScore(a.src);
+  full(header('Reading', `<button class="link" data-act="rate" data-src="${esc(a.src)}">Rate source</button>`) + `<div class="body"><div class="pad reader">
+    <div class="row small" style="flex-wrap:wrap;gap:8px"><b>${esc(a.src)}</b><span class="badge ${typeClass(s.type)}">${s.type}</span><span class="muted">${a.age} ago</span></div>
+    <h1 style="font-size:28px">${esc(a.title)}</h1>
+    <div class="row small">${starsHTML(s.avg)}<b class="num">${s.avg.toFixed(1)}</b><span class="muted num">reader trust · ${s.n.toLocaleString('en-IN')} ratings</span></div>
+    <p>Sample article text for the preview. In the app, the article opens in a clean reader with no ads, or at the source's own page with a short summary in our words.</p>
+    <p>Every result comes from our index of approved sources, so you see where it's from and how readers rate that source before you trust it.</p>
+    <div class="card" style="padding:12px 14px"><h3>Review this article</h3><p class="small muted" style="margin-top:4px">Was it accurate and fair? Reviews are public and moderated.</p><button class="btn ghost sm" style="margin-top:10px" data-act="review" data-title="${esc(a.title)}">${state.reviews[a.title] ? 'Edit your review' : 'Write a review'}</button></div>
+  </div></div>`, 'Article');
+}
+let rateState = {stars:0};
+function rateSheet(src){ rateState = {stars:(state.ratings[src] || {}).stars || 0}; drawRate(src); }
+function drawRate(src){
+  const review = $('#rv') ? $('#rv').value : '';
+  sheet(`<h2>How much do you trust ${esc(src)}?</h2><p class="small muted">One rating per person, shown publicly. You can change it anytime.</p>
+    <div class="rate" role="radiogroup" aria-label="Trust rating">${[1,2,3,4,5].map(v=>`<button role="radio" aria-checked="${rateState.stars===v}" class="${rateState.stars>=v?'on':''}" data-act="star" data-src="${esc(src)}" data-v="${v}" aria-label="${v} out of 5">${ico('star',24)}</button>`).join('')}</div>
+    <div class="field"><label for="rv">Review (optional)</label><textarea class="input" id="rv" placeholder="What makes this source trustworthy or not?">${esc(review)}</textarea></div>
+    <button class="btn block" data-act="rate-save" data-src="${esc(src)}" ${rateState.stars?'':'disabled'}>Save rating</button>`, 'Rate source');
+}
+function openSettings(){
+  const r = state.reminders;
+  full(header('Settings') + `<div class="body"><div class="pad">
+    <div class="spread card" style="padding:12px 14px"><span><h3>Invest reminders</h3><p class="small muted">In Feed and News only</p></span><button class="switch" role="switch" data-act="rem-toggle" aria-checked="${r.on}" aria-label="Invest reminders"></button></div>
+    <div class="stack" ${r.on?'':'hidden'}>${['15 scrolls','10 minutes','Once a day'].map(x=>`<button class="opt" role="radio" data-act="rem-every" data-v="${x}" aria-checked="${r.every===x}"><span class="radio"></span>${remLabel(x)}</button>`).join('')}<p class="help">Never late at night, and never right after a loss.</p></div>
+    <div class="card" style="padding:12px 14px"><h3>How GoodHabits earns</h3><p class="small soft" style="margin-top:6px;line-height:1.55">No ads and no promotions, ever. How we earn is being finalised with our broker partner, and we'll show it here in plain words.</p></div>
+    <div class="card" style="padding:12px 14px"><h3>Your Good ID</h3><p class="mono soft" style="margin-top:6px">${esc(state.user.goodId || 'good/riya')}</p></div>
+  </div></div>`, 'Settings');
+}
+function friendSheet(k){
+  const v = balances()[k] || 0;
+  sheet(`<div class="row">${av(k)}<span><h2>${esc(H.friends[k])}</h2><p class="small muted mono">${esc(people[k].id)}</p></span></div>
+    <p class="soft" style="font-size:16px">${v === 0 ? 'You\'re all settled up.' : v > 0 ? `${esc(H.friends[k].split(' ')[0])} owes you <b class="num up">${inr(v)}</b>` : `You owe ${esc(H.friends[k].split(' ')[0])} <b class="num down">${inr(-v)}</b>`}</p>
+    ${v !== 0 ? `<button class="btn block" data-act="settle" data-k="${k}">Mark as settled</button><p class="note">Paid outside the app? Mark it settled. UPI settle-up inside GoodHabits comes later.</p>` : ''}`, H.friends[k]);
+}
+
+/* ---------- GOODGUY ---------- */
+let plusNext = null;
+function needPlus(fn){
+  if (state.ggPlus) return fn();
+  plusNext = fn;
+  sheet(`<div class="who row"><span class="ggmark">${ico('bolt',22)}</span><h2>GoodGuy</h2></div>
+    <p class="soft" style="line-height:1.55">An AI teacher on every company page and in your practice account.</p>
+    <div class="stack" style="gap:8px">${['Why a stock moved, in plain words, with every source linked','A practice account: yesterday\'s market replayed, plus classic days like the 2020 crash','Coaching on how you trade: position size, stop-losses, panic selling','An end-of-day review with one habit for tomorrow'].map(t=>`<div class="row" style="align-items:flex-start;gap:10px"><span style="color:var(--up)">${ico('check',18,3)}</span><span class="small">${t}</span></div>`).join('')}</div>
+    <div class="spread card" style="padding:12px 14px"><span><b>GoodGuy</b><span class="small muted" style="display:block">7 days free, cancel anytime</span></span><span class="num" style="font-weight:800;font-size:18px">₹500<span class="small muted">/month</span></span></div>
+    <button class="btn block" data-act="plus-start">Start 7-day free trial</button>
+    <p class="note">Education only. GoodGuy never tells you what to buy or sell in your real account, and never predicts prices. Preview: nothing is charged.</p>`, 'GoodGuy');
+}
+const GG_WHY = {
+  NIFTYBEES:['The Nifty 50 rose 0.4% today, so this ETF did too: it simply holds those 50 companies.','Banks and IT led the gains after better-than-expected quarterly results from two large IT firms.'],
+  HDFCBANK:['HDFC Bank slipped 0.3% after its quarterly results showed loan growth slower than last quarter.','Deposit growth was strong, which is why the fall stayed small.'],
+  ITC:['ITC rose 0.9% after its results showed cigarette volumes holding steady and hotel revenue growing.','The FMCG business grew slower than last year, which some reports flagged.'],
+  INFY:['Infosys rose 1.1% after it raised its revenue forecast for the year in its quarterly results.','Large deal wins were the other reason reports gave.'],
+  GOLDBEES:['Gold ETFs rose 0.15% as global gold prices edged up overnight.','A weaker dollar usually makes gold a little dearer in rupees.'],
+};
+let ggSym = null;
+function openGoodGuy(sym){
+  ggSym = sym; const s = STOCKS.find(x => x.sym === sym), w = GG_WHY[sym];
+  full(header('GoodGuy') + `<div class="body"><div class="pad"><div class="row small" style="gap:8px"><span class="tick" style="width:36px;height:36px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-weight:800">${s.short}</span><b>${esc(s.name)}</b><span class="num ${s.chg>=0?'up':'down'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}% today</span></div>
+    <div class="chat" id="ggchat"><div class="msg them"><b>Why it moved</b><br>${esc(w[0])} ${esc(w[1])}<span class="src">Sources: NSE filing · Mint · Reuters</span></div></div>
+    <div class="row" style="flex-wrap:wrap;gap:8px">${['What is a quarterly result?','Should I buy it?','Will it go up tomorrow?','Practise trading it'].map(q=>`<button class="chip" data-act="gg-q" data-q="${q}">${q}</button>`).join('')}</div>
+    <p class="disclaimer">Sample explanation for the preview. In the app every line links to its source. GoodGuy explains what already happened; it doesn't predict prices or tell you what to buy. Not investment advice.</p></div></div>`, 'GoodGuy');
+}
+function ggAnswer(q){
+  const c = $('#ggchat'); if (!c) return;
+  const A = {
+    'What is a quarterly result?':'Every three months, listed companies publish how much they sold, spent and earned. Prices often jump or drop that day because people compare the numbers with what they expected, not with last year.',
+    'Should I buy it?':'I won\'t tell you that, for your real money or anyone\'s. What I can do is show you how people judge a stock: what it earns, how much debt it has, and how much of your money you\'d be putting in one place. Want that lesson?',
+    'Will it go up tomorrow?':'Nobody knows, and anyone who says they do is guessing or selling something. I only explain what already happened. Try it in your practice account instead: you\'ll learn more from yesterday\'s market than from a prediction.',
+  };
+  if (q === 'Practise trading it') { openPractice(); return; }
+  c.insertAdjacentHTML('beforeend', `<div class="msg me">${esc(q)}</div><div class="msg them">${esc(A[q])}</div>`);
+  c.lastElementChild.scrollIntoView({block:'nearest'});
+}
+
+/* practice account: yesterday replayed (75 five-minute bars, 9:15 to 3:30), or a classic day */
+const PR = {mode:'yesterday'};
+function seeded(n){ let x = n; return () => { x = (x * 9301 + 49297) % 233280; return x / 233280 - .5; }; }
+function pathFor(open, shape, seed){ const rnd = seeded(seed), out = []; for (let t = 0; t <= 75; t++) out.push(Math.round(open * (1 + shape(t / 75) + rnd() * 0.002))); return out; }
+const PR_SETS = {
+  yesterday:{label:"Yesterday's market", note:"Replays yesterday's full session, sped up. In this preview the prices are samples.", stocks:[
+    {sym:'NIFTYBEES', short:'N50', name:'Nifty 50 ETF', path:pathFor(28030, f => .004 * f, 3)},
+    {sym:'ITC', short:'ITC', name:'ITC', path:pathFor(45930, f => .009 * Math.sin(f * 2.4), 5)},
+    {sym:'INFY', short:'INFY', name:'Infosys', path:pathFor(157160, f => f < .35 ? -.07 * f : -.0245 + .035 * (f - .35), 11)},
+  ]},
+  classic:{label:'Classic: 2020 crash day', note:'A replay shaped like a crash day in March 2020 (sample prices). Old data, so GoodGuy can walk you through it step by step.', stocks:[
+    {sym:'NIFTYBEES', short:'N50', name:'Nifty 50 ETF', path:pathFor(9120, f => -.08 - .05 * f, 7)},
+    {sym:'GOLDBEES', short:'GOLD', name:'Gold ETF', path:pathFor(3900, f => .012 * f, 9)},
+    {sym:'HDFCBANK', short:'HDFC', name:'HDFC Bank', path:pathFor(88000, f => -.09 - .04 * f, 13)},
+  ]},
+};
+const CLASSIC_SCRIPT = {0:'Prices opened far down. Rule one on a day like this: don\'t sell everything in the first hour. Big falls make big swings.', 12:'Notice gold is up while shares fall. That\'s why people keep a small part of their money in gold.', 30:'Try this: buy ₹10,000 of the Nifty ETF now, then again later. Buying in parts on a falling day means you don\'t need to guess the bottom.', 60:'Almost at close. Whatever you did today, look at how much of your ₹1 lakh you still have in cash. Keeping some is what lets you buy on days like this.'};
+function prReset(){
+  stopTimers();
+  const set = PR_SETS[PR.mode];
+  Object.assign(PR, {t:0, playing:false, cash:10000000, hold:{}, avg:{}, stop:{}, trades:0, coached:new Set(), events:[], set});
+}
+function prPrice(sym){ return PR.set.stocks.find(x => x.sym === sym).path[PR.t]; }
+function prValue(){ return PR.cash + Object.entries(PR.hold).reduce((a,[k,q]) => a + q * prPrice(k), 0); }
+function prClock(){ const m = 9 * 60 + 15 + PR.t * 5; return `${Math.floor(m / 60) > 12 ? Math.floor(m / 60) - 12 : Math.floor(m / 60)}:${String(m % 60).padStart(2,'0')} ${m >= 720 ? 'pm' : 'am'}`; }
+function coach(key, text){ if (key && PR.coached.has(key)) return; key && PR.coached.add(key); const c = $('#prchat'); if (!c) return; const html = `<div class="msg them" style="max-width:100%"><b>GoodGuy</b> · <span class="clock small">${prClock()}</span><br>${text}</div>`;
+  // newest note stays pinned above the stocks so the trade buttons never scroll away
+  $('#pr-latest').innerHTML = html; c.insertAdjacentHTML('afterbegin', html); $('#pr-count').textContent = c.children.length; }
+function openPractice(){ prReset(); drawPractice(); }
+function drawPractice(){
+  const set = PR.set;
+  full(header('Practice account', `<span class="badge">Pretend money</span>`) + `<div class="body"><div class="pad">
+    <div class="seg" role="tablist">${[['yesterday','Yesterday'],['classic','Classic day'],['story','Stories']].map(([m,l])=>`<button role="tab" data-act="pr-mode" data-m="${m}" aria-selected="${PR.mode===m}">${l}</button>`).join('')}</div>
+    <p class="small muted">${set.note}</p>
+    <div class="statgrid"><div class="stat"><div class="small muted">Account value</div><div class="v num" id="pr-val" style="font-size:18px"></div></div><div class="stat"><div class="small muted">Cash</div><div class="v num" id="pr-cash" style="font-size:18px"></div></div></div>
+    <div class="spread"><span class="clock" id="pr-clock"></span><button class="btn sm" data-act="pr-play" id="pr-play">${ico('play',14)} Start the day</button></div>
+    <div class="bar" aria-hidden="true"><i id="pr-bar"></i></div>
+    <div id="pr-latest" class="chat" aria-live="polite"></div>
+    <div id="pr-rows"></div>
+    <h3>GoodGuy's notes (<span id="pr-count">0</span>)</h3>
+    <div class="chat" id="prchat"></div>
+    <p class="disclaimer">Practice only: pretend money, no prizes, prices at least a day old. Coaching is about your habits, not what to buy in your real account. Not investment advice.</p>
+  </div></div>`, 'Practice account');
+  prDraw();
+  coach('hello', PR.mode === 'classic' ? 'This is an old crash day. I\'ll walk you through it as it happens. ' + CLASSIC_SCRIPT[0] : 'You have ₹1 lakh of pretend money. Trade the way you really would; I\'ll point out habits as I see them.');
+}
+function prDraw(){
+  if (!$('#pr-rows')) return;
+  $('#pr-val').textContent = inr(prValue()); $('#pr-cash').textContent = inr(PR.cash);
+  $('#pr-clock').textContent = PR.t >= 75 ? 'Market closed' : prClock();
+  $('#pr-bar').style.width = (PR.t / 75 * 100) + '%';
+  $('#pr-rows').innerHTML = PR.set.stocks.map(s => { const p = s.path[PR.t], chg = (p / s.path[0] - 1) * 100, q = PR.hold[s.sym] || 0, done = PR.t >= 75;
+    return `<div class="prow"><span class="tick" style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none">${s.short}</span>
+      <span style="flex:1;min-width:0"><span style="display:block;font-weight:800">${esc(s.name)}</span><span class="small num ${chg>=0?'up':'down'}">${inr(p)} · ${chg>=0?'+':''}${chg.toFixed(2)}%</span>${q?`<span class="small muted" style="display:block">You own ${q}${PR.stop[s.sym]?` · stop at ${inr(PR.stop[s.sym])}`:''}</span>`:''}</span>
+      <button class="btn sm" data-act="pr-buy" data-sym="${s.sym}" ${done?'disabled':''} aria-label="Buy ₹10,000 of ${esc(s.name)}">+₹10k</button>
+      ${q ? `<button class="btn ghost sm" data-act="pr-sell" data-sym="${s.sym}" ${done?'disabled':''} aria-label="Sell all ${esc(s.name)}">Sell</button>` : ''}</div>`; }).join('');
+  const pb = $('#pr-play'); if (pb) { pb.innerHTML = PR.t >= 75 ? 'Try again' : PR.playing ? 'Pause' : `${ico('play',14)} ${PR.t ? 'Resume' : 'Start the day'}`; pb.dataset.act = PR.t >= 75 ? 'pr-again' : 'pr-play'; }
+}
+function prToggle(){
+  if (PR.playing) { PR.playing = false; stopTimers(); prDraw(); return; }
+  PR.playing = true; prDraw();
+  timers.push(setInterval(prTick, 650));
+}
+function prTick(){
+  if (!$('#pr-rows')) { stopTimers(); return; }
+  PR.t++;
+  for (const [k, stop] of Object.entries(PR.stop)) if (PR.hold[k] && prPrice(k) <= stop) { const q = PR.hold[k]; prSell(k, true); coach(null, `Your stop-loss sold ${q} ${esc(k)} at ${inr(prPrice(k))}. That's the stop doing its job: a small, planned loss instead of a big surprise.`); }
+  if (PR.mode === 'classic' && CLASSIC_SCRIPT[PR.t]) coach('c' + PR.t, CLASSIC_SCRIPT[PR.t]);
+  for (const e of PR.events) { const now = prPrice(e.sym); if (!e.told && PR.t - e.t >= 10 && now > e.price * 1.005) { e.told = true; coach(null, `Remember selling ${esc(PR.set.stocks.find(x => x.sym === e.sym).name)} at ${inr(e.price)} after a dip? It's ${inr(now)} now. Short dips are normal; selling in fear locks the loss in.`); } }
+  if (PR.t >= 75) { PR.playing = false; stopTimers(); prDraw(); prReview(); return; }
+  prDraw();
+}
+function prBuy(sym){
+  const p = prPrice(sym), q = Math.floor(Math.min(1000000, PR.cash) / p);
+  if (!q) { coach('nocash', 'You\'re out of cash. On a real account that means you can\'t act when a chance comes. Keeping some cash is a habit too.'); return; }
+  const old = PR.hold[sym] || 0; PR.avg[sym] = Math.round(((PR.avg[sym] || 0) * old + p * q) / (old + q));
+  PR.hold[sym] = old + q; PR.cash -= q * p; PR.trades++;
+  const s = PR.set.stocks.find(x => x.sym === sym), dayUp = p / s.path[0] - 1;
+  prDraw();
+  if (PR.hold[sym] * p / prValue() > .5) coach('conc' + sym, `More than half your account is now in ${esc(s.name)}. If it falls 10%, your whole account falls 5%. Most careful investors keep any one stock well under a quarter.`);
+  else if (!PR.stop[sym]) coach('stop' + sym, `You bought ${q} ${esc(s.name)} with no stop-loss. A stop-loss sells automatically if the price falls to a level you pick. <button class="btn ghost sm" style="margin-top:8px" data-act="pr-stop" data-sym="${sym}">Set one 3% below</button>`);
+  if (dayUp > .015 && PR.mode === 'yesterday') coach('chase' + sym, `${esc(s.name)} is already up ${(dayUp*100).toFixed(1)}% today. Buying after a big run-up is called chasing. Ask yourself: would I buy this at yesterday's price?`);
+  if (PR.trades === 8) coach('many', 'Eight trades already. Every real trade has charges and taxes, and more trades usually means more mistakes. Investing is mostly waiting.');
+}
+function prSell(sym, auto){
+  const q = PR.hold[sym]; if (!q) return; const p = prPrice(sym), s = PR.set.stocks.find(x => x.sym === sym);
+  PR.cash += q * p; delete PR.hold[sym]; delete PR.stop[sym]; PR.trades++;
+  const recentHigh = Math.max(...s.path.slice(Math.max(0, PR.t - 6), PR.t + 1));
+  if (!auto && p < PR.avg[sym] * .99 && p < recentHigh) { PR.events.push({sym, price:p, t:PR.t}); coach('panic' + sym, `You sold ${esc(s.name)} right after a quick drop, at a loss. That's a panic sell. Before selling, ask: has anything changed about the company, or just the price?`); }
+  delete PR.avg[sym]; prDraw();
+}
+function prStop(sym){ if (!PR.hold[sym]) return; PR.stop[sym] = Math.round(prPrice(sym) * .97); prDraw(); coach(null, `Stop-loss set at ${inr(PR.stop[sym])}. Now a bad hour can't turn into a bad month.`); }
+function prReview(){
+  const v = prValue(), pl = v - 10000000, habit = PR.coached.has('panicINFY') || [...PR.coached].some(k => k.startsWith('panic')) ? 'Tomorrow, wait 15 minutes before selling anything that just dropped.' : [...PR.coached].some(k => k.startsWith('conc')) ? 'Tomorrow, keep any one stock under a quarter of your account.' : PR.trades === 0 ? 'Tomorrow, try one small trade with a stop-loss, just to feel how it works.' : 'Tomorrow, set a stop-loss the moment you buy.';
+  coach(null, `<b>End of day review</b><br>You made ${PR.trades} trade${PR.trades===1?'':'s'} and ended ${pl>=0?'up':'down'} <b class="num ${pl>=0?'up':'down'}">${inr(Math.abs(pl))}</b> on pretend money.<br><br>${PR.coached.size > 1 ? 'Habits I noticed are in the notes above.' : 'No bad habits spotted today.'}<br><b>One habit for tomorrow:</b> ${habit}`);
+}
+
+/* story mode: role-play a year of someone's money, month by month (amounts in paise) */
+const RP_ASSETS = [['nifty','Nifty 50 ETF','N50'],['gold','Gold ETF','GOLD'],['fd','Fixed deposit · 7% a year','FD']];
+// Sample monthly moves for the preview, with a crash in month 5 so the story has a test in it.
+const RP_MOVES = {nifty:[1.8,-0.9,2.4,0.6,-11.5,4.2,3.1,-1.2,2.7,1.5,-2.0,3.6], gold:[0.4,1.1,-0.3,0.9,3.2,-0.8,0.5,1.3,-0.4,0.7,1.9,0.2], fd:Array(12).fill(0.58)};
+const crashQ = {text:'Last month the market fell about 11%. Your shares are down. Sell everything to stop the loss?', choices:[
+  {label:'Sell all my shares', fn:R => { rpSell('nifty', true); }, coach:'You sold after the fall, so the loss is now real. Falls like this have usually recovered over the following years, but only for people who stayed in. Watch what the next months do.'},
+  {label:'Hold and keep investing', fn:() => {}, coach:'Holding through a fall is the hardest habit and the most useful one. You haven\'t lost anything you didn\'t sell.'}]};
+const RP_PEOPLE = {
+  ramesh:{name:'Ramesh', av:'RM', bg:'#06683F', start:1000000, income:4000000, spend:3200000, goal:'Early retirement', goalText:'Retire at 45 with ₹1 crore', target:1000000000, years:17,
+    intro:'Ramesh is 28, works in accounts in Pune and earns ₹40,000 a month. After rent and bills he has about ₹8,000 left. He has ₹10,000 saved. His dream: stop working at 45.',
+    events:{
+      1:{text:'First month. Ramesh has no emergency fund. Where does his spare money go first?', choices:[
+        {label:'Build a cash cushion first', fn:()=>{}, coach:'Good call. Most planners suggest 3 to 6 months of expenses in cash or an FD before investing in shares, so a bad month never forces you to sell.'},
+        {label:'Put it all in shares now', fn:()=>{}, coach:'Shares grow more over years, but with no cushion, the next surprise bill may force you to sell at a bad time. Let\'s see.'}]},
+      2:{text:'Ramesh\'s phone screen cracked. Repair costs ₹6,000.', choices:[
+        {label:'Repair it (₹6,000)', fn:R => rpSpend(600000), coach:'Fair: he uses it for work. This is exactly what a cash cushion is for.'},
+        {label:'Live with the crack', fn:()=>{}, coach:'₹6,000 kept. Small wants skipped early make the biggest difference later, because that money compounds for 17 years.'}]},
+      4:{text:'A colleague says his cousin\'s scheme doubles money in 90 days. "Just ₹10,000 to start."', choices:[
+        {label:'Put in ₹10,000', fn:R => { rpSpend(1000000); R.scam = true; }, coach:'Hmm. Nothing legal doubles money in 90 days. Let\'s see what happens.'},
+        {label:'Say no', fn:()=>{}, coach:'Right. "Double in 90 days" is the classic sign of a scam. Real returns are slower and come with risk.'}]},
+      6:crashQ,
+      7:{text:'Diwali. Gifts, sweets and new clothes for the family.', choices:[
+        {label:'Go big (₹12,000)', fn:R => rpSpend(1200000), coach:'Festivals matter. Just know that ₹12,000 invested every Diwali for 17 years adds up to a lot more than ₹2 lakh.'},
+        {label:'Keep it to ₹5,000', fn:R => rpSpend(500000), coach:'A planned festival budget. That\'s a habit that lasts.'}]},
+      8:{text:'Ramesh\'s bike broke down. The repair is ₹9,000 and he needs it for work tomorrow.', choices:[
+        {label:'Pay ₹9,000', fn:R => rpSpend(900000, true), coach:null}]},
+      10:{text:'Good news: a raise of ₹4,000 a month!', choices:[
+        {label:'Upgrade to a bigger flat', fn:R => { R.p.spend += 400000; }, coach:'His costs rose with his pay, so his savings didn\'t. That\'s called lifestyle creep, and it\'s why many people never feel richer.'},
+        {label:'Invest the whole raise', fn:R => { R.p.income += 400000; }, coach:'Now he saves ₹12,000 a month instead of ₹8,000. Raising what you invest with every raise is the fastest road to retiring early.'}]},
+    }},
+  amit:{name:'Amit', av:'AM', bg:'#B5134F', start:5000000, income:10000000, spend:8000000, goal:'Kid\'s college and life', goalText:'₹25 lakh for his daughter\'s college in 11 years', target:250000000, years:11,
+    intro:'Amit is 38, a sales manager in Bengaluru earning ₹1 lakh a month. His daughter Anya is 7. After the home loan EMI and school costs he has about ₹20,000 left each month, and ₹50,000 saved.',
+    events:{
+      1:{text:'Amit has no health cover beyond his office plan. A family floater costs about ₹2,000 a month.', choices:[
+        {label:'Buy the cover', fn:R => { R.p.spend += 200000; }, coach:'Insurance first, investing second. One hospital bill can wipe out years of savings.'},
+        {label:'Skip it, office plan is enough', fn:()=>{}, coach:'Office cover ends the day the job does. Worth thinking about.'}]},
+      3:{text:'Anya\'s school fees for the year are due: ₹60,000.', choices:[
+        {label:'Pay ₹60,000', fn:R => rpSpend(6000000, true), coach:null}]},
+      6:crashQ,
+      7:{text:'Amit\'s brother-in-law swears a small company will "10x by next year". He says put in ₹50,000.', choices:[
+        {label:'Put in ₹50,000', fn:R => { rpSpend(5000000); R.tip = true; }, coach:'Tips feel like secrets. Let\'s see how this one goes.'},
+        {label:'Politely say no', fn:()=>{}, coach:'Putting a big part of your savings in one tip is how goals get delayed by years. An index fund spreads the risk across 50 companies.'}]},
+      9:{text:'The bank raised the home loan rate. The EMI goes up by ₹3,000 a month.', choices:[
+        {label:'Okay, pay the higher EMI', fn:R => { R.p.spend += 300000; }, coach:'Nothing to decide here, but it\'s why an emergency fund matters: costs rise without asking.'}]},
+      11:{text:'Year-end bonus: ₹1,00,000!', choices:[
+        {label:'New TV and a family trip', fn:R => { R.cash += 2000000; }, coach:'Enjoyed ₹80,000 of it. Fair. A bonus is a good time to top up the college fund, though.'},
+        {label:'Invest most, keep ₹20,000 for fun', fn:R => { R.cash += 10000000 - 2000000; }, coach:'₹80,000 more towards Anya\'s college, and still a treat for the family. That\'s balance.'}]},
+    }},
+  rich:{name:'Rich guy', av:'RG', bg:'#4A3F8F', start:5000000000, income:100000000, spend:20000000, goal:'Anything', goalText:'No goal. This is the sandbox.', mod:true,
+    intro:'Mod account. ₹5 crore to start, ₹10 lakh a month coming in. Crash or boom the market, add money, skip ahead. Try things you\'d never risk for real.',
+    events:{}},
+};
+let RP = null;
+function rpPicker(){
+  full(header('Practice account', `<span class="badge">Pretend money</span>`) + `<div class="body"><div class="pad">
+    <div class="seg" role="tablist">${[['yesterday','Yesterday'],['classic','Classic day'],['story','Stories']].map(([m,l])=>`<button role="tab" ${m==='story'?'':'data-act="pr-mode" data-m="'+m+'"'} aria-selected="${m==='story'}">${l}</button>`).join('')}</div>
+    <p class="soft" style="line-height:1.5">Live a year of someone's money. Each month brings a salary, a surprise and a choice. GoodGuy coaches you along the way.</p>
+    ${['ramesh','amit','rich'].map(k => { const c = RP_PEOPLE[k]; return `<button class="opt" data-act="rp-pick" data-who="${k}" style="align-items:flex-start"><span class="avatar" style="background:${c.bg};flex:none" aria-hidden="true">${c.av}</span><span style="flex:1;min-width:0"><b style="display:block">${c.name}</b>
+      <span class="small soft" style="display:block">${c.mod ? 'Mod account: do whatever you want' : `Starts with ${inr(c.start)} · earns ${inr(c.income)} a month`}</span>
+      <span class="small muted" style="display:block">Goal: ${esc(c.goal)}</span></span></button>`; }).join('')}
+    <p class="disclaimer">Role-play with pretend money and sample market moves. Not a prediction and not investment advice.</p></div></div>`, 'Stories');
+}
+function rpStart(who){
+  const base = RP_PEOPLE[who];
+  RP = {who, p:{...base}, month:1, cash:base.start, hold:{nifty:0, gold:0, fd:0}, bought:0, events:{...base.events}, done:{}, note:base.intro, history:[], over:{}};
+  rpDraw();
+}
+function rpWorth(){ return RP.cash + RP.hold.nifty + RP.hold.gold + RP.hold.fd; }
+function rpSpend(amt, mustPay){
+  if (amt <= RP.cash) { RP.cash -= amt; return; }
+  const short = amt - RP.cash; RP.cash = 0;
+  if (!mustPay) return;
+  // not enough cash: sell investments to pay, shares first
+  let need = short; const sold = [];
+  for (const a of ['nifty','gold','fd']) { if (!need) break; const take = Math.min(need, RP.hold[a]); if (take) { RP.hold[a] -= take; need -= take; sold.push(RP_ASSETS.find(x=>x[0]===a)[1]); } }
+  RP.forced = sold.length ? `There wasn't enough cash, so ${inr(short - need)} of ${sold.join(' and ')} had to be sold to pay. This is why a cash cushion comes before investing.` : null;
+  if (need) RP.debt = (RP.debt || 0) + need;
+}
+function rpBuy(a, v){ const amt = Math.min(v, RP.cash); if (!amt) { RP.note = 'No cash left this month. Keeping a little cash is part of the plan too.'; rpDraw(); return; } RP.cash -= amt; RP.hold[a] += amt; RP.bought += amt;
+  const shares = RP.hold.nifty + RP.hold.gold, worth = rpWorth();
+  RP.note = a === 'fd' ? 'FDs are safe and steady. Good for the cushion, slow for long goals.' : RP.hold[a] / worth > .8 && !RP.p.mod ? `Over 80% of everything ${RP.p.name} has is now in one place. If it falls, so does every goal.` : RP.cash < RP.p.spend / 4 && !RP.p.mod ? `Careful: only ${inr(RP.cash)} left in cash. One surprise bill and you'll have to sell.` : `Invested ${inr(amt)}. ${shares > 0 && RP.hold.gold === 0 ? 'A little gold can soften the bad months.' : ''}`;
+  rpDraw(); }
+function rpSell(a, quiet){ const v = RP.hold[a]; if (!v) return; RP.cash += a === 'fd' ? Math.round(v * .99) : v; RP.hold[a] = 0; if (!quiet) { RP.note = a === 'fd' ? `Broke the FD early: banks usually cut the interest, here 1% (${inr(Math.round(v*.01))}).` : `Sold ${RP_ASSETS.find(x=>x[0]===a)[1]} for ${inr(v)}.`; rpDraw(); } }
+function rpChoose(i){ const ev = RP.events[RP.month], c = ev.choices[i]; RP.forced = null; c.fn(RP); RP.done[RP.month] = true; RP.history.push(`Month ${RP.month}: ${c.label}`); RP.note = [c.coach, RP.forced].filter(Boolean).join(' ') || 'Done.'; rpDraw(); }
+function rpMod(m){
+  if (m === 'cash') { RP.cash += 1000000000; RP.note = 'Added ₹1 crore. If only.'; }
+  if (m === 'crash') { RP.over.nifty = -25; RP.over.gold = 6; RP.note = 'Next month the market will crash 25%. Watch what it does to everything you hold, then try not selling.'; }
+  if (m === 'boom') { RP.over.nifty = 15; RP.over.gold = -2; RP.note = 'Next month the market jumps 15%. Notice how good it feels, and how that feeling makes people buy at the top.'; }
+  if (m === 'skip') { while (RP.month <= 12) rpNext(true); return; }
+  rpDraw();
+}
+function rpNext(silent){
+  if (RP.events[RP.month] && !RP.done[RP.month]) { RP.note = 'Decide this month\'s situation first.'; rpDraw(); return; }
+  const i = RP.month - 1, before = rpWorth();
+  for (const a of ['nifty','gold','fd']) { const pct = RP.over[a] ?? RP_MOVES[a][i]; RP.hold[a] = Math.round(RP.hold[a] * (1 + pct / 100)); }
+  RP.over = {};
+  RP.cash += RP.p.income - RP.p.spend;
+  if (RP.debt) { const pay = Math.min(RP.debt, RP.cash); RP.cash -= pay; RP.debt -= pay; }
+  const moved = rpWorth() - before - (RP.p.income - RP.p.spend);
+  RP.month++;
+  const notes = [];
+  if (RP.scam && RP.month === 6) { notes.push('The "double in 90 days" scheme has stopped answering calls. The ₹10,000 is gone. Lesson learnt the cheap way.'); RP.scam = false; }
+  if (RP.tip && RP.month === 9) { RP.cash += 2800000; notes.push('The tip stock fell 44%. Amit sold it for ₹28,000, a loss of ₹22,000.'); RP.tip = false; }
+  notes.push(`Month done. Salary in, bills out: ${inr(RP.p.income - RP.p.spend)} added to cash. Investments ${moved >= 0 ? 'gained' : 'lost'} ${inr(Math.abs(moved))}.`);
+  RP.note = notes.join(' ');
+  if (!silent || RP.month > 12) rpDraw();
+}
+function rpProjection(){
+  const r = 0.10 / 12, n = RP.p.years * 12, monthly = Math.max(0, RP.p.income - RP.p.spend);
+  return Math.round((rpWorth() * Math.pow(1 + r, n) + monthly * (Math.pow(1 + r, n) - 1) / r) / 100000) * 100000; // nearest ₹1,000
+}
+function rpDraw(){
+  const P = RP.p, worth = rpWorth(), end = RP.month > 12, ev = !end && RP.events[RP.month], open = ev && !RP.done[RP.month];
+  const proj = !P.mod ? rpProjection() : 0, pct = !P.mod ? Math.min(100, proj / P.target * 100) : 0;
+  const goal = P.mod ? '' : `<div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px"><div class="spread"><b class="small">Goal: ${esc(P.goalText)}</b></div><div class="bar"><i style="width:${pct}%;background:${pct>=100?'var(--up)':'var(--accent)'}"></i></div><span class="small muted">At this pace: about ${inr(proj)} by then (if investments grow 10% a year, which is an assumption, not a promise).</span></div>`;
+  full(header(`${P.name}'s year`, `<button class="link" data-act="rp-back">Stories</button>`) + `<div class="body"><div class="pad">
+    <div class="row"><span class="avatar" style="background:${P.bg}" aria-hidden="true">${P.av}</span><span><b>${end ? 'Year over' : `Month ${RP.month} of 12`}</b><span class="small muted" style="display:block">Earns ${inr(P.income)} · spends ${inr(P.spend)} a month</span></span></div>
+    <div class="statgrid"><div class="stat"><div class="small muted">Total money</div><div class="v num" style="font-size:18px">${inr(worth)}</div></div><div class="stat"><div class="small muted">Cash</div><div class="v num" style="font-size:18px">${inr(RP.cash)}</div></div></div>
+    ${goal}
+    <div class="msg them" style="max-width:100%" aria-live="polite"><b>GoodGuy</b><br>${esc(RP.note)}</div>
+    ${open ? `<div class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:10px;border-color:var(--accent)"><b>This month</b><p style="line-height:1.5">${esc(ev.text)}</p>${ev.choices.map((c,i)=>`<button class="btn ${i?'ghost':''} sm block" data-act="rp-choice" data-i="${i}">${esc(c.label)}</button>`).join('')}</div>` : ''}
+    ${end ? rpReview() : `<h3>Invest this month</h3>${RP_ASSETS.map(([a,nm,sh]) => `<div class="prow"><span class="tick" style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none">${sh}</span>
+      <span style="flex:1;min-width:0"><span style="display:block;font-weight:800;font-size:14px">${nm}</span><span class="small num muted">${inr(RP.hold[a])}</span></span>
+      <button class="btn sm" data-act="rp-buy" data-a="${a}" data-v="${P.mod ? 1000000000 : P.income >= 10000000 ? 500000 : 200000}" aria-label="Invest more in ${nm}">+${P.mod ? '₹1Cr' : P.income >= 10000000 ? '₹5k' : '₹2k'}</button>${RP.hold[a] ? `<button class="btn ghost sm" data-act="rp-sell" data-a="${a}">Sell</button>` : ''}</div>`).join('')}
+    ${P.mod ? `<h3>Mod controls</h3><div class="row" style="flex-wrap:wrap;gap:8px">${[['cash','+₹1 crore'],['crash','Crash next month'],['boom','Boom next month'],['skip','Skip to year end']].map(([m,l])=>`<button class="chip" data-act="rp-mod" data-m="${m}">${l}</button>`).join('')}</div>` : ''}
+    <button class="btn block" data-act="rp-next" ${open ? 'disabled' : ''}>${RP.month === 12 ? 'Finish the year' : 'Next month'}</button>`}
+    <p class="disclaimer">Role-play with pretend money and sample market moves, not a prediction. Not investment advice.</p>
+  </div></div>`, `${P.name}'s year`);
+}
+function rpReview(){
+  const P = RP.p, worth = rpWorth(), startedWith = P.start, added = 12 * (P.income - P.spend);
+  const lines = P.mod ? [`You ended with ${inr(worth)}. In the sandbox nothing is at stake. Notice which moves felt exciting; those are the ones to be careful with for real.`]
+    : [`${P.name} started with ${inr(startedWith)} and ends the year with ${inr(worth)}.`, `${inr(RP.bought)} went into investments.`, RP.history.length ? `Choices: ${RP.history.join('; ')}.` : ''];
+  return `<div class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:8px"><h3>Year in review</h3>${lines.filter(Boolean).map(l=>`<p class="small soft" style="line-height:1.5">${esc(l)}</p>`).join('')}
+    ${P.mod ? '' : `<p class="small" style="line-height:1.5"><b>One habit for real life:</b> ${RP.history.some(h => /Sell all/.test(h)) ? 'when the market falls, don\'t sell in the same week. Wait, and keep investing.' : RP.bought < added / 3 ? 'invest a fixed amount on salary day, before you spend.' : 'keep doing what you did: invest first, keep a cushion, ignore tips.'}</p>`}
+    <div class="row"><button class="btn sm" data-act="rp-pick" data-who="${RP.who}" style="flex:1">Play again</button><button class="btn ghost sm" data-act="rp-back" style="flex:1">Other stories</button></div></div>`;
+}
+
+/* ---------- stage controls ---------- */
+$('#theme-btn').addEventListener('click', () => {
+  const root = document.documentElement, dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme = dark ? 'light' : 'dark';
+});
+$('#restart-btn').addEventListener('click', () => {
+  onbStep = 0; state.user = {name:'', contact:'', monthly:null, goodId:'', topics:new Set(['Personal finance','Startups','Tech'])};
+  state.reminders = {on:false, every:'15 scrolls'}; state.nudgeShown = false; state.scrolled = 0;
+  go('feed'); onboarding();
+});
+
+/* ---------- boot ---------- */
+// #feed, #news, #money, #profile or #hissab opens that tab directly (skips sign-up)
+const startTab = location.hash.slice(1);
+if (TABS.some(([k]) => k === startTab)) go(startTab); else { go('feed'); onboarding(); }
+})();
+</script>

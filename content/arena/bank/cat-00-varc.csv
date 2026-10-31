@@ -1,0 +1,793 @@
+qid,chapter_no,chapter,topic,difficulty,hardness,est_seconds,quality,relevance,question,a,b,c,d,answer,why,modelled_on,score,selected
+cat-00-varc-1-e1,1,RC on economics and business,Detail and EXCEPT questions,easy,3,50,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: According to the passage, what two jobs does a higher delivery fee do during rain?",It discourages some customers from ordering and attracts more riders to work,It raises the app's profit and punishes careless customers,It cuts the number of riders and raises demand,It lets riders repay loans and lets customers order faster,A,The passage says the price nudges customers to wait and tempts more riders to take orders.,r-cat-00-varc-1-2,80,Y
+cat-00-varc-1-e2,1,RC on economics and business,Detail and EXCEPT questions,easy,5,55,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: The critics' reply challenges which assumption in the economists' argument?",That customers dislike paying higher fees,That riders can freely choose when they work,That rain reduces the demand for deliveries,That the app wants to maximise its profit,B,"Critics say many riders depend on a daily target to repay loans, so they are not free to choose.",r-cat-00-varc-1-2,80,Y
+cat-00-varc-1-m1,1,RC on economics and business,Main idea and structure,medium,5,70,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: Which statement best captures the author's overall position?",Surge pricing is plain exploitation and should be banned,Economists are wrong that prices send signals,The price-rise logic holds in theory but may shift risk onto the most vulnerable riders,Riders gain more than anyone from higher rain fees,C,"The author grants the economists' logic, then shows the risk it quietly moves to riders.",r-cat-00-varc-1-6,80,Y
+cat-00-varc-1-m2,1,RC on economics and business,Inference and tone,medium,6,75,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: 'The price signal may work on the screen' most nearly suggests that the signal",works only when customers use phones,is visible to riders but not to customers,produces the intended market outcome in the app's data while ignoring the human cost,is banned on the app's display screen,C,'On the screen' contrasts the neat market result with the real conditions riders face.,r-cat-00-varc-1-4,80,Y
+cat-00-varc-1-h1,1,RC on economics and business,Evaluating arguments,hard,8,110,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: Which finding would most weaken the critics' reply?",Several riders were injured on rainy-night deliveries last year,Customers wait longer for orders when it rains,Rival apps charge even higher fees in the rain,Most riders on the platform work part-time by choice and carry no vehicle loans,D,"The critics rely on riders being bound by loans; part-time, loan-free riders undercut that. Injuries support the critics; the others are irrelevant.",r-cat-00-varc-1-8,80,Y
+cat-00-varc-1-h2,1,RC on economics and business,Inference and tone,hard,7,100,4,4,"When a delivery app raises its fees during a downpour, customers grumble and call it profiteering. Economists tend to see something else. A higher price does two jobs at once: it nudges some customers to wait for the rain to stop, and it tempts more riders to leave their homes and take orders. Without the price rise, demand would stay high while the supply of riders shrank, and the app would simply run out of people to deliver, leaving everyone worse off. Critics reply that this logic assumes riders are free agents who can choose when to work. Many depend on a daily target to repay a motorbike loan, and for them a rainy night is not a chance to earn more but a pressure to ride in unsafe conditions. The price signal may work on the screen, then, while quietly transferring the risk to those least able to bear it.
+
+Question: If the app capped the fee at its normal level during rain, the passage suggests it would most likely",see more riders willing to work,run short of riders while demand stays high,lose all its customers,reduce the loan burden on its riders,B,The author says without the price rise demand stays high while rider supply shrinks.,r-cat-00-varc-1-11,80,Y
+cat-00-varc-1-e3,1,RC on economics and business,Detail and EXCEPT questions,easy,3,45,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: According to the passage, what did the kirana offer that supermarkets could not?",Lower prices on every item,Credit and familiarity,A wider range of goods,Deliveries within ten minutes,B,The first sentence names credit and familiarity.,r-cat-00-varc-1-2,80,Y
+cat-00-varc-1-e4,1,RC on economics and business,Detail and EXCEPT questions,easy,4,50,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: What do households mostly buy from the apps, according to the passage?",Forgotten items and impulse purchases,"The weekly stock of rice, oil and pulses",Goods bought on credit,Bulk groceries for the month,A,Staples and credit stay with the corner shop.,r-cat-00-varc-1-3,80,Y
+cat-00-varc-1-m3,1,RC on economics and business,Main idea and structure,medium,5,75,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: Why are investors described as willing to lose money on each order?",To offer families credit,To build customer habit,To buy up kirana stock,To lower staple prices permanently,B,The passage says they lose money 'in exchange for customer habit'.,r-cat-00-varc-1-5,80,Y
+cat-00-varc-1-m4,1,RC on economics and business,Inference and tone,medium,6,75,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: 'The apps compete with the kirana for convenience, not for trust' means that",kiranas have stopped offering convenience,apps are trusted more than shopkeepers,"apps win when speed matters, while the kirana keeps customers who value a relationship",customers no longer need either,C,Convenience is the apps' edge; trust (ledger credit) is the kirana's.,r-cat-00-varc-1-4,80,Y
+cat-00-varc-1-h3,1,RC on economics and business,Evaluating arguments,hard,8,110,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: Which finding would most undermine the author's picture of how the apps and kiranas coexist?",The apps cut delivery time from ten minutes to eight,Households trying the apps cut their weekly staple purchases from kiranas by half within a year,Many kirana owners now accept UPI payments,Households still buy forgotten items from the apps,B,The picture depends on staples staying with the kirana; a big drop in staple purchases breaks it.,r-cat-00-varc-1-10,80,Y
+cat-00-varc-1-h4,1,RC on economics and business,Inference and tone,hard,8,110,4,4,"For decades the neighbourhood kirana survived because it sold something no supermarket could: credit and familiarity. The shopkeeper knew which families ran short before the month's end and let the ledger run. Quick-commerce start-ups arrived with a different promise, groceries in ten minutes, funded by investors willing to lose money on each order in exchange for customer habit. Early on, kirana owners lost many evening orders. But a pattern has since emerged in several cities. Households use the apps for forgotten items and impulse purchases, while the weekly stock-up of rice, oil and pulses still flows to the corner shop, often on credit. The apps, it turns out, compete with the kirana for convenience, not for trust. Whether investors will keep paying for convenience alone will decide how long this arrangement lasts. If the subsidies end and delivery fees rise, the apps' advantage in speed may no longer justify the price.
+
+Question: The last two sentences most strongly imply that",the apps' present niche could shrink if subsidies end,kiranas will lose their staple business,the apps will become cheaper over time,investors will start funding credit,A,"Without subsidies, higher fees may cancel the speed advantage, weakening even the apps' current use.",r-cat-00-varc-1-11,80,Y
+cat-00-varc-1-e5,1,RC on economics and business,Detail and EXCEPT questions,easy,3,45,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: According to the passage, shrinkflation is the practice of",reducing a pack's size while keeping its price the same,raising prices on small packs only,cutting prices on large packs,inflating the cost of packaging,A,The biscuit example shows the price staying at ₹10 while the weight falls.,r-cat-00-varc-1-1,80,Y
+cat-00-varc-1-e6,1,RC on economics and business,Detail and EXCEPT questions,easy,4,50,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: Why do firms prefer shrinking the pack to raising the price?",Rivals cannot copy a lighter pack,Shrinking a pack lowers wheat costs,Regulators ban sticker-price rises,Buyers notice a higher price more readily than a lighter pack,D,The passage describes the asymmetry in what shoppers notice.,r-cat-00-varc-1-2,80,Y
+cat-00-varc-1-m5,1,RC on economics and business,Inference and tone,medium,5,70,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: Why do statisticians worry about shrinkflation more than shoppers do?",Shrinkflation lowers wheat production,Indices measure only packaging costs,Price indices not adjusted for size understate the real rise in cost,Shoppers never read wrappers,C,"If items are tracked by price alone, measured inflation misses the cost per gram.",r-cat-00-varc-1-6,80,Y
+cat-00-varc-1-m6,1,RC on economics and business,Inference and tone,medium,6,75,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: The author's attitude to the defenders of the firms is best described as","unconvinced, since the defence admits buyers pay more per gram",fully persuaded by the cost argument,hostile to any form of pricing,indifferent to the budget of buyers,A,The last sentence says the defence concedes the main point.,r-cat-00-varc-1-4,80,Y
+cat-00-varc-1-h5,1,RC on economics and business,Evaluating arguments,hard,8,100,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: A ₹10 packet shrinks from 80 g to 68 g at the same price. By roughly what percentage does the price per gram rise?",15%,12%,20%,About 17.6%,D,"Price per gram goes from 10/80 to 10/68, i.e. 80/68 = 1.176. The 15% is the drop in weight, a common trap.",r-cat-00-varc-1-8,80,Y
+cat-00-varc-1-h6,1,RC on economics and business,Evaluating arguments,hard,7,100,4,4,"When the price of a packet of biscuits rises from ₹10 to ₹12, shoppers notice at once. When it stays at ₹10 but the packet quietly shrinks from 80 grams to 68, most do not. Companies have long understood this asymmetry. A higher sticker price invites comparison with rivals, while a lighter pack is noticed only by those who check the small print on the wrapper. Economists call the practice shrinkflation, and statisticians worry about it more than shoppers do. Consumer price indices track the prices of items, and if the items are not adjusted for size, measured inflation understates the real rise in cost. Some agencies now adjust for pack size, but the exercise is laborious and possible only where weights are printed. Defenders of the firms argue that the costs of wheat, palm oil and packaging rise whatever they do, and that shrinking the pack is gentler on buyers with tight budgets than a sudden price jump. That defence, however, concedes the main point: the buyer is paying more per gram.
+
+Question: Which statement would the author most likely reject?",Adjusting indices for pack size is laborious,Shoppers react more to visible price jumps,Rising input costs explain the firms' behaviour but do not spare the buyer,Shrinkflation is harmless because the sticker price is unchanged,D,The author argues buyers pay more per gram even if the sticker price stays fixed.,r-cat-00-varc-1-8,80,Y
+cat-00-varc-2-e1,2,RC on science and technology,Detail and EXCEPT questions,easy,3,45,4,4,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: According to the passage, why did engineers once prefer concrete?",It repairs itself after storms,Its performance can be calculated,It is cheaper per kilometre,It supports aquaculture ponds,B,The passage says concrete's performance can be calculated.,r-cat-00-varc-2-1,80,Y
+cat-00-varc-2-e2,2,RC on science and technology,Detail and EXCEPT questions,easy,4,55,4,3,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: All of the following are mentioned as causes of thinning mangrove belts EXCEPT",cyclones destroying embankments,aquaculture ponds,firewood cutting,rising salinity,A,Cyclone damage to embankments is not listed among the causes of thinning.,r-cat-00-varc-2-2,70,Y
+cat-00-varc-2-m1,2,RC on science and technology,Inference,medium,5,70,4,4,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: What can be inferred about a thinned mangrove belt?",It is cheaper than a seawall of equal effect,It protects better because it is greener,It repairs itself after every storm,It may look healthy yet protect much less than it appears to,D,The last sentence says a thinned belt can look green yet offer far less protection.,r-cat-00-varc-2-2,80,Y
+cat-00-varc-2-m2,2,RC on science and technology,Main idea,medium,6,75,4,4,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: The central point of the passage is that","a mangrove belt can be an effective, low-cost defence, but only while it stays dense and wide",concrete seawalls should be abandoned,villagers' claims about forests are folklore,mangroves matter chiefly for aquaculture,A,The author supports mangroves with a physical basis and then qualifies the benefit.,r-cat-00-varc-2-4,80,Y
+cat-00-varc-2-h1,2,RC on science and technology,Weaken and strengthen,hard,8,110,4,4,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: Which finding would most weaken the author's case for relying on mangroves instead of seawalls?",Mangroves cost less to plant than concrete costs to pour,Villagers feel safer behind mangroves,Seawalls need regular repair budgets,"In many coastal districts, belts wide enough to cut waves are impossible because the land is already settled",D,"The case depends on belts being dense and wide; if width cannot be had, the case falls. The others support mangroves or are irrelevant.",r-cat-00-varc-2-12,80,Y
+cat-00-varc-2-h2,2,RC on science and technology,Inference,hard,7,100,4,4,"Along the Sundarbans coast, villagers say that the forest took the cyclone's first blow so that the village did not have to. The claim has a physical basis. Mangrove roots form a dense tangle that slows incoming water, and a belt a few hundred metres wide can reduce wave height considerably before it reaches an embankment. Engineers once treated this as a pleasant bonus, preferring concrete because its performance can be calculated. Recent studies suggest that a healthy belt is often cheaper per kilometre protected than a seawall of similar effect, and it repairs itself after storms instead of needing a budget line. The catch is that the benefit depends on the forest being dense and wide, and aquaculture ponds, firewood cutting and rising salinity have thinned it in many places. A thinned belt may look green from the road yet offer far less protection than its appearance suggests.
+
+Question: Which statement is most consistent with the passage?",A belt's protection depends only on its colour,Two belts of equal appearance may differ sharply in how well they shield a village,Self-repair makes monitoring unnecessary,Engineers now agree that concrete is obsolete,B,"Appearance does not measure density and width, so equal-looking belts can protect unequally.",r-cat-00-varc-2-9,80,Y
+cat-00-varc-2-e3,2,RC on science and technology,Detail and EXCEPT questions,easy,3,45,4,4,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: According to the passage, what extra demand does a data centre's cooling create?",A demand for faster internet,A demand for smaller models,A demand for new training data,A demand for water,D,Cooling is said to add a further demand for water.,r-cat-00-varc-2-2,80,Y
+cat-00-varc-2-e4,2,RC on science and technology,Detail and EXCEPT questions,easy,4,50,4,3,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: The passage says smaller models can",replace all large models on every task,match larger ones on narrow tasks at a fraction of the cost,be trained without any data,use no electricity once released,B,The researchers' result is limited to narrow tasks.,r-cat-00-varc-2-1,70,Y
+cat-00-varc-2-m3,2,RC on science and technology,Inference,medium,5,75,4,4,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: Why does the author call a focus on training alone 'misleading'?",Training uses little electricity,Total energy spent answering queries can exceed that of training over a model's lifetime,Queries are cheap for all models,Cooling water matters more than power,B,The passage argues lifetime query energy can exceed the creation energy.,r-cat-00-varc-2-5,80,Y
+cat-00-varc-2-m4,2,RC on science and technology,Inference,medium,6,75,4,4,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: Which is the author's explanation for why the industry favours big models?",Small models are less accurate everywhere,Large models use less water,Bigger models attract more attention and investment,Researchers dislike narrow tasks,C,The passage says the industry rewards headline size.,r-cat-00-varc-2-6,80,Y
+cat-00-varc-2-h3,2,RC on science and technology,Weaken and strengthen,hard,8,110,4,4,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: Which finding would most weaken the author's claim that query energy can exceed training energy?",Training runs are getting more expensive,Data centres use renewable power,Most deployed models receive only a few thousand queries over their entire lifetime,Smaller models are growing more popular,C,The claim relies on millions of daily queries; few queries would reverse it.,r-cat-00-varc-2-12,80,Y
+cat-00-varc-2-h4,2,RC on science and technology,Inference,hard,8,110,4,4,"Training a large language model consumes electricity on a scale that surprises people who think of software as weightless. A single training run can draw as much power as thousands of homes use over weeks, and the cooling of data centres adds a further demand for water. Yet focusing on training alone gives a misleading picture. Once a model is released, it is queried millions of times a day, and the total energy spent answering those queries can, over a model's lifetime, exceed the energy spent creating it. Researchers have shown that smaller models, trained on carefully chosen data, can match larger ones on narrow tasks at a fraction of the cost. The difficulty is that the industry rewards headline size: bigger models attract more attention and investment. Unless efficiency is measured and reported as routinely as accuracy, the incentive to shrink will remain weaker than the incentive to scale.
+
+Question: The final sentence implies that efficiency will matter more to the industry only if",it is measured and reported as routinely as accuracy,models become cheaper to train,accuracy stops improving,investors lose interest in size,A,The author makes the incentive to shrink depend on routine reporting of efficiency.,r-cat-00-varc-2-10,80,Y
+cat-00-varc-2-e5,2,RC on science and technology,Detail and EXCEPT questions,easy,3,45,4,4,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: According to the passage, what happens to neural activity during deep sleep?","Patterns recorded during the day are replayed, often faster",The brain switches off completely,New memories are erased,Activity slows to a single pattern,A,The first lines describe replay of daytime patterns.,r-cat-00-varc-2-8,80,Y
+cat-00-varc-2-e6,2,RC on science and technology,Detail and EXCEPT questions,easy,4,50,4,3,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: Which student does the passage say often recalls more?",One who revises through the night,One who studies only before an exam,One who avoids deep sleep,One who sleeps after studying,D,The passage compares a sleeping student with one who stays awake revising.,r-cat-00-varc-2-8,70,Y
+cat-00-varc-2-m5,2,RC on science and technology,Inference,medium,5,70,4,4,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: Sleep appears to favour memories that are",incidental,weak and unrelated,linked to a future goal,recorded just before waking,C,The passage says sleep favours goal-linked over incidental memories.,r-cat-00-varc-2-9,80,Y
+cat-00-varc-2-m6,2,RC on science and technology,Main idea,medium,6,75,4,4,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: What is the author's main point?",Sleep has no effect on memory,"Sleep does more than preserve memory; it also sorts, and even dims, what the brain keeps",Students should never revise at night,Forgetting is always a failure,B,The author qualifies the simple view that sleep merely preserves memories.,r-cat-00-varc-2-9,80,Y
+cat-00-varc-2-h5,2,RC on science and technology,Weaken and strengthen,hard,8,110,4,4,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: Which finding would most weaken the author's claim that forgetting during sleep can be useful?",People whose connections are not dimmed overnight show better learning the next day and no signs of overload,Students who sleep late score lower,Replay happens faster than the original event,Goal-linked memories are stronger,A,The claim says dimming prevents saturation; no saturation without dimming undermines this.,r-cat-00-varc-2-12,80,Y
+cat-00-varc-2-h6,2,RC on science and technology,Inference,hard,8,100,4,4,"Sleep is not merely rest for the brain; it appears to be a workshop. During the deep stages of sleep, patterns of neural activity recorded during the day are replayed, often faster than they first occurred. Researchers believe this replay helps convert fragile new memories into stable ones, which is why a student who sleeps after studying often recalls more than one who stays awake revising. The picture is not a simple one, however. Sleep seems to favour the memories that are linked to a future goal, such as an exam, over those that are incidental. It also does not store everything: experiments suggest that some weak connections are deliberately dimmed overnight, perhaps to keep the brain from saturating. If so, forgetting is not a failure of the system but one of its working parts. This complicates the popular advice to 'sleep on it', which assumes sleep merely preserves whatever we put in.
+
+Question: 'Sleep on it' advice is described as complicated because it assumes that sleep",is always short,helps only with exams,merely preserves whatever we put in,erases all weak memories,C,"The author says the advice treats sleep as pure storage, ignoring selective dimming.",r-cat-00-varc-2-9,80,Y
+cat-00-varc-3-e1,3,RC on philosophy and psychology,Inference,easy,3,45,4,4,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: The two drivers in the opening example are used to show that",drunk driving is always forgiven,children are careless near roads,the same choice can be judged very differently depending on the outcome,only the second driver was drunk,C,"Both made an identical choice, yet outcomes shaped the judgement.",r-cat-00-varc-3-1,80,Y
+cat-00-varc-3-e2,3,RC on philosophy and psychology,Inference,easy,4,50,4,3,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: According to the passage, the 'usual response' to moral luck is that blame should depend on",the damage caused,what the person chose and knew,the opinion of the victim's family,the driver's feelings afterwards,B,The usual response says blame tracks only choice and knowledge.,r-cat-00-varc-3-2,70,Y
+cat-00-varc-3-m1,3,RC on philosophy and psychology,Author's purpose and tone,medium,5,75,4,4,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: The author mentions that the unlucky driver often feels guilt more than anyone in order to",prove the driver was more careless,show that our practice of blame is not just a spectator's prejudice,suggest that guilt is irrational,argue for harsher punishment,B,"Even the agent feels it, which supports the view that the feeling reflects something real.",r-cat-00-varc-3-4,80,Y
+cat-00-varc-3-m2,3,RC on philosophy and psychology,Main idea,medium,6,80,4,4,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: The passage as a whole",presents a puzzle and two ways of answering it without declaring one the winner,proves that outcomes should never matter,defends the usual response against critics,argues only for the view that blame is an error,A,The author sets out two views; both are described fairly.,r-cat-00-varc-3-5,80,Y
+cat-00-varc-3-h1,3,RC on philosophy and psychology,Contradiction and implication,hard,8,120,4,4,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: Which of the following would the 'second view' in the passage most likely support?",Blame should be purely about intentions,The unlucky driver should feel no guilt,"Responsibility depends partly on what actions actually do, not only on intentions",Judging outcomes is a reasoning mistake,C,The second view says responsibility cannot be separated from what actions do.,r-cat-00-varc-3-8,80,Y
+cat-00-varc-3-h2,3,RC on philosophy and psychology,Contradiction and implication,hard,8,130,4,4,"Two drivers leave a party after the same number of drinks and take the same road. One reaches home; the other hits a child who runs into the street. Most of us judge the second driver far more harshly, though both made an identical choice. Philosophers call this puzzle moral luck: the idea that we are judged partly by outcomes beyond our control. The usual response is to insist that blame should track only what the person chose and knew. Yet our everyday practice resists this. We feel that the driver who caused a death has something to answer for that the lucky driver lacks, and the driver himself often feels it more than anyone. One might say this feeling is an error that careful reflection should remove. Another view holds that it reveals something true: that we are agents who act in a world, not only minds who intend, and that responsibility cannot be cleanly separated from what our actions actually do.
+
+Question: Which claim does the passage NOT support?",Many people judge outcomes as well as choices,The usual response ties blame to choice and knowledge,The feeling may be read as revealing something true,Reflection will always remove the feeling that outcomes matter,D,The passage only says one might think reflection should remove it; it does not claim it always will.,r-cat-00-varc-3-10,80,Y
+cat-00-varc-3-e3,3,RC on philosophy and psychology,Inference,easy,3,45,4,4,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: Hindsight bias is the tendency to","believe, once an outcome is known, that one predicted it",forget all events that went well,avoid learning from past events,predict outcomes more accurately,A,It is defined at the start of the passage.,r-cat-00-varc-3-1,80,Y
+cat-00-varc-3-e4,3,RC on philosophy and psychology,Inference,easy,4,50,4,3,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: According to the passage, warning people about hindsight bias",removes it completely,makes it worse,helps only accident investigators,barely reduces it,D,The passage states that warning subjects barely reduces it.,r-cat-00-varc-3-2,70,Y
+cat-00-varc-3-m3,3,RC on philosophy and psychology,Inference,medium,5,75,4,4,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: The explanation the author offers for the bias is that",people lie about their earlier beliefs,old beliefs are stored in a separate box,memory is reconstructed around the known outcome,outcomes are easier to predict than assumed,C,Memory is quietly reconstructed so earlier doubts fade.,r-cat-00-varc-3-4,80,Y
+cat-00-varc-3-m4,3,RC on philosophy and psychology,Author's purpose and tone,medium,6,80,4,4,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: The author mentions accident investigators to show that hindsight bias",makes investigations faster,can lead to unfair judgement of those involved,is unique to engineers,can be fully corrected by training,B,Warning signs look obvious now but were buried among harmless signals.,r-cat-00-varc-3-4,80,Y
+cat-00-varc-3-h3,3,RC on philosophy and psychology,Contradiction and implication,hard,8,120,4,4,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: Which finding would contradict the passage's account of hindsight bias?",People rate events as more predictable after learning the result,A person who learns an outcome recalls their earlier doubts as clearly as before,Warnings do little to reduce the bias,Investigators find it hard to be fair,B,The passage says earlier doubts fade after the outcome is learned.,r-cat-00-varc-3-10,80,Y
+cat-00-varc-3-h4,3,RC on philosophy and psychology,Inference,hard,8,120,4,4,"Psychologists have long observed that once people learn how an event turned out, they tend to believe they predicted it. This hindsight bias makes the past seem more orderly than it was, and it is difficult to remove: warning subjects about it barely reduces it. One explanation is that the mind does not store old beliefs and new facts in separate boxes. When the outcome is learned, memory is quietly reconstructed around it, so that earlier doubts fade and the final result seems to have been visible all along. The bias has costs beyond embarrassment. Investigators of accidents, for example, find it hard to be fair to the people involved, because the warning signs that look obvious now were buried among many harmless signals at the time. A better practice, some argue, is to reconstruct what the person actually knew at each moment, rather than to ask why they failed to see what we now see.
+
+Question: The 'better practice' mentioned at the end asks us to",ignore the outcome of events,blame the person who saw the signs,rely on memory more,"judge people by what they knew at the time, not by what we know now",D,The practice reconstructs the person's knowledge at each moment.,r-cat-00-varc-3-5,80,Y
+cat-00-varc-3-e5,3,RC on philosophy and psychology,Inference,easy,3,50,4,4,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: The ship of Theseus puzzle asks whether",a ship can sail without planks,old planks are worth keeping,a ship remains the same when all its planks are replaced,ships can think,C,It is stated in the second sentence.,r-cat-00-varc-3-1,80,Y
+cat-00-varc-3-e6,3,RC on philosophy and psychology,Inference,easy,4,50,4,3,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: According to the passage, why does the puzzle matter for people?","People's cells, memories and beliefs also change over time",People are built like ships,Ships have memories,Cells never change,A,The passage links the puzzle to renewal of cells and change of beliefs.,r-cat-00-varc-3-2,70,Y
+cat-00-varc-3-m5,3,RC on philosophy and psychology,Main idea,medium,5,80,4,4,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: According to the continuity view, identity depends on",unchanging material parts,an unbroken chain of small changes,the owner's opinion,the date of construction,B,"Some philosophers say identity is continuity, not unchanging parts.",r-cat-00-varc-3-5,80,Y
+cat-00-varc-3-m6,3,RC on philosophy and psychology,Inference,medium,6,80,4,4,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: On the continuity view, why does the rebuilt ship fail the test?",There is no continuous chain between its planks and the ship's voyages,It is made of old planks,It was built in a harbour,It looks different,A,The passage says no chain links the rebuilt ship to the voyages.,r-cat-00-varc-3-5,80,Y
+cat-00-varc-3-h5,3,RC on philosophy and psychology,Contradiction and implication,hard,8,120,4,4,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: Which statement is most consistent with the passage?",A rebuilt ship is the original on every theory,Personal identity depends on cells only,The puzzle has been settled,"If sameness required the same material, nobody would be the person who began school",D,The passage says this directly. Other options contradict it or overstate.,r-cat-00-varc-3-9,80,Y
+cat-00-varc-3-h6,3,RC on philosophy and psychology,Author's purpose and tone,hard,9,130,4,4,"The ship of Theseus is a puzzle about identity. If every plank of a wooden ship is gradually replaced, is it still the same ship? Most people say yes, since the ship has kept its form and its history. But suppose someone collects the discarded planks and rebuilds the old ship. Now two ships stand in the harbour, and each has a claim to be the original. The puzzle matters because people undergo similar replacement: nearly every cell in the body is renewed over years, and memories and beliefs change. If sameness required the same material, none of us would be the same person who began school. Some philosophers conclude that identity is a matter of continuity, an unbroken chain of small changes, not of unchanging parts. The rebuilt ship then fails the test, because there is no continuous chain between its planks and the voyages the ship made. Others think this answer simply settles a question that remains open.
+
+Question: The 'others' mentioned in the final sentence think that the continuity answer",settles by decision a question that is still open,has proved that two ships exist,is certainly correct,is irrelevant to the puzzle,A,The final sentence reports their view that the answer simply settles a question that remains open.,r-cat-00-varc-3-11,80,Y
+cat-00-varc-4-e1,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,3,45,4,4,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: According to the passage, who commissioned many of the stepwells?",Women of the royal household,Colonial surveyors,Local priests,Merchants and travellers,A,The passage says many were commissioned by women of the royal household.,r-cat-00-varc-4-1,80,Y
+cat-00-varc-4-e2,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,4,50,4,3,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: The wells fell out of use because of",colonial taxes,droughts,royal orders,piped water,D,Piped water is named as the cause.,r-cat-00-varc-4-1,70,Y
+cat-00-varc-4-m1,4,"RC on society, history and the arts",Purpose of an example,medium,5,75,4,4,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: The author mentions the carvings on the walls to show that",the wells were built by sculptors alone,the wells were religious temples,"builders regarded the wells as public buildings, not only utilities",women disliked the water,C,The carvings suggest the builders thought of the structure as a public building too.,r-cat-00-varc-4-4,80,Y
+cat-00-varc-4-m2,4,"RC on society, history and the arts",Main idea and structure,medium,6,80,4,4,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: The passage as a whole",blames colonial surveyors for their decline,describes how stepwells were built,proves taps are unreliable,argues that stepwells served social roles that piped water does not replace,D,"The closing sentences argue the loss was social, not only of water.",r-cat-00-varc-4-5,80,Y
+cat-00-varc-4-h1,4,"RC on society, history and the arts",Inference,hard,8,120,4,4,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: Which is the most reasonable inference from the last sentence?",A reliable water supply does not by itself keep a community connected,Taps should be removed,Chores should be made harder,Community life depends on royal patronage,A,The author says no tap replaces the casual encounters of the shared chore.,r-cat-00-varc-4-10,80,Y
+cat-00-varc-4-h2,4,"RC on society, history and the arts",Inference,hard,8,120,4,4,"The stepwells of western India were never only reservoirs. In the dry months, a woman descending the steps to fetch water entered a cool, shaded room where neighbours met, news travelled and travellers rested. The carvings that line the walls, of goddesses, musicians and everyday scenes, suggest that builders thought of the structure as a public building as much as a utility. Historians note that many were commissioned by women of the royal household, which is one of the few areas of monumental building where women's patronage is well recorded. With piped water, the wells fell out of use, and colonial surveyors often described them as curiosities. What was lost was not merely a source of water. When a community stops gathering at the same place for a necessary chore, it loses the casual encounters that held it together, and no tap, however reliable, replaces them.
+
+Question: Which of the following would most weaken the author's argument about the loss of community?","Studies show that communities in the region now meet more often at schools, markets and temples than they did around the wells",Piped water is cleaner than stepwell water,Colonial surveyors found the wells interesting,Many stepwells have carvings,A,"If communities keep or increase casual contact elsewhere, the claimed loss is doubtful.",r-cat-00-varc-4-12,80,Y
+cat-00-varc-4-e3,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,3,45,4,4,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: According to the passage, written records were mostly produced by",herders and potters,singers and patrons,weavers and farmers,officials and merchants,D,The second sentence names officials and merchants as the usual writers.,r-cat-00-varc-4-2,80,Y
+cat-00-varc-4-e4,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,4,50,4,3,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: Which is mentioned as a weakness of oral traditions?",They never mention events,They are kept by outsiders,A singer may flatter a patron or compress centuries into one hero,They record only taxes,C,The passage says oral traditions are not free from distortion.,r-cat-00-varc-4-3,70,Y
+cat-00-varc-4-m3,4,"RC on society, history and the arts",Purpose of an example,medium,5,75,4,4,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: The remark 'But documents flatter patrons too' serves to",praise the officials who wrote documents,show that written sources are not more trustworthy than oral ones on this point,prove that ballads are accurate,suggest that patrons are honest,B,It balances the earlier criticism of oral traditions.,r-cat-00-varc-4-3,80,Y
+cat-00-varc-4-m4,4,"RC on society, history and the arts",Main idea and structure,medium,6,80,4,4,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: The author's central recommendation to the historian is to","ask who made each source, for whom, and what it would omit",trust written records above all,prefer oral traditions to documents,avoid sources that flatter patrons,A,The passage says do not rank sources but question each.,r-cat-00-varc-4-5,80,Y
+cat-00-varc-4-h3,4,"RC on society, history and the arts",Inference,hard,8,120,4,4,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: The last sentence implies that",oral sources should replace documents,agreement between independent kinds of source increases confidence in a fact,facts in documents alone are false,ballads are better than registers,B,A fact supported by both is stronger than one supported by either alone.,r-cat-00-varc-4-10,80,Y
+cat-00-varc-4-h4,4,"RC on society, history and the arts",Inference,hard,8,125,4,4,"Written records are often treated as the surest evidence of the past, but the preference is more habit than logic. Documents were produced by those who could write, usually officials and merchants, and they recorded what such people thought worth keeping: taxes, land grants, disputes. The lives of herders, potters and weavers appear mostly as items in someone else's account. Oral traditions, by contrast, were kept by the people they described, and the ballads of many regions preserve events that no register mentions. They are not, of course, free from distortion; a singer may flatter a patron or compress centuries into a single hero. But documents flatter patrons too. The historian's task, then, is not to rank the two kinds of source but to ask of each who made it, for whom, and what it would have been convenient to leave out. A fact supported by both is stronger than a fact in either alone.
+
+Question: Which finding would most weaken the author's view that oral traditions complement documents?",Oral accounts of a region's events are shown to have always been copied from official registers,Documents record taxes accurately,Ballads praise heroes,Potters left few documents,A,"If oral accounts derive from registers, they add no independent check.",r-cat-00-varc-4-12,80,Y
+cat-00-varc-4-e5,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,3,45,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: Before the railways, how did towns in India keep time?",By a single national clock,By the railway timetable,By the sun at noon in each town,By court orders,C,Each town kept its own time set by local noon.,r-cat-00-varc-4-3,80,Y
+cat-00-varc-4-e6,4,"RC on society, history and the arts",Detail and EXCEPT questions,easy,4,50,4,3,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: Why could the railway companies not follow local noon?",Local clocks were illegal,A train leaving at a fixed hour could not wait for each town's noon,Train drivers disliked the sun,Courts demanded one clock,B,Fixed-hour trains need one standard.,r-cat-00-varc-4-3,70,Y
+cat-00-varc-4-m5,4,"RC on society, history and the arts",Inference,medium,5,75,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: According to the passage, why did offices, courts and schools adopt the railway standard?",The government forced them to,It was impractical to run a day by two clocks,Local noon had stopped,Railways paid them,B,The passage says running a day by two clocks was impractical.,r-cat-00-varc-4-5,80,Y
+cat-00-varc-4-m6,4,"RC on society, history and the arts",Purpose of an example,medium,6,80,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: The author mentions trams, newspapers and political meetings to show that",only the colonial economy benefited,trains created the political meeting,the clock had no uses,Indians also used standard time for their own purposes,D,These are examples of Indian uses of the clock.,r-cat-00-varc-4-4,80,Y
+cat-00-varc-4-h5,4,"RC on society, history and the arts",Inference,hard,8,125,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: 'Which is not the same as being neutral' most nearly means that",the technology was used by no one,the clock harmed everyone,a technology that serves many ends may still carry the discipline of its original purpose,neutral technologies never exist,C,Being useful for many ends does not show it is free of the original design's bias.,r-cat-00-varc-4-10,80,Y
+cat-00-varc-4-h6,4,"RC on society, history and the arts",Inference,hard,8,125,4,4,"Before the railways, towns in India kept their own time, set by the sun at noon, and a few minutes' difference between two cities troubled nobody. A traveller on a bullock cart crossed a region so slowly that the gap did not matter. The timetable changed this. A train that left at a fixed hour could not wait for local noon, and the railway companies adopted a single standard for their operations. Over the following decades, offices, courts and schools followed, since it was impractical to run a day by two clocks. Some historians argue that the new discipline of the clock served the colonial economy by making labour measurable and predictable. Others point out that Indians also used it for their own purposes, to run trams, newspapers and political meetings. The truth may be that a technology introduced for one end proved useful for many, which is not the same as being neutral.
+
+Question: Which finding would most weaken the historians who think the clock mainly served the colonial economy?",Railways were built by the colonial state,"Indian-owned factories adopted fixed hours before colonial offices did, for their own reasons",Courts adopted the standard clock,Trams ran on fixed schedules,B,"If Indian enterprises adopted it first for their own ends, the 'colonial' reading weakens.",r-cat-00-varc-4-12,80,Y
+cat-00-varc-5-e1,5,Para-jumbles,Chronology and cause-effect,easy,2,50,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. She waited till the water boiled, then added tea leaves and a little ginger.
+B. Meera filled a kettle with water and set it on the stove.
+C. Finally she strained the tea into two cups and called her father.
+D. She let it simmer for two minutes until the colour deepened.
+
+Question: Which is the correct order?",BADC,BDAC,ABDC,BACD,A,"The steps run in time order: fill the kettle, boil and add leaves, simmer, then strain and serve.",r-cat-00-varc-5-4,80,Y
+cat-00-varc-5-e2,5,Para-jumbles,Pronoun and link cues,easy,3,55,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. It was built in 1911 and has carried trains ever since.
+B. The old railway bridge over the Mahi river will close for repairs next month.
+C. Engineers found that its iron girders have rusted badly.
+D. Until it reopens, trains will take a longer route via Anand.
+
+Question: Which is the correct order?",ABCD,BACD,BADC,DBAC,B,B introduces the bridge. A ('It was built') and C ('its iron girders') refer back to it. D ('Until it reopens') closes the paragraph.,r-cat-00-varc-5-4,80,Y
+cat-00-varc-5-m1,5,Para-jumbles,Link words and pronouns,medium,5,90,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Chai sellers, however, kept the price-sensitive customers who pass their stalls every morning.
+B. Coffee chains entered Indian metros in the late 1990s, promising a premium experience.
+C. Their survival shows that a new habit does not always replace an old one; it can sit beside it.
+D. Within a decade, a café meeting had become a normal part of a young professional's week.
+
+Question: Which is the correct order?",BADC,DBAC,BDAC,BDCA,C,"B opens with the chains. D follows ('Within a decade'). A needs the contrast signalled by 'however', and C ('Their survival') needs A's chai sellers before it.",r-cat-00-varc-5-5,80,Y
+cat-00-varc-5-m2,5,Para-jumbles,Chronology and cause-effect,medium,6,95,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Pricing seats cheaply to fill planes brought flying within reach of first-time travellers.
+B. Low-cost airlines in India dropped meals and free baggage to cut costs.
+C. Airports soon struggled with crowds they had not been built for.
+D. Demand for domestic flights grew faster than anyone had planned for.
+
+Question: Which is the correct order?",BDAC,ABDC,BACD,BADC,D,"Cause runs to effect: cost cutting (B), cheap seats (A), demand growth (D), crowded airports (C).",r-cat-00-varc-5-7,80,Y
+cat-00-varc-5-h1,5,Para-jumbles,Opening and closing sentences,hard,6,130,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Yet that habit of checking has a cost, since time spent verifying is time not spent doing the work.
+B. Where institutions are trusted, people can hand over a task without inspecting how it is done.
+C. Where they are not, every transaction needs a witness, a receipt or a second opinion.
+D. Economists sometimes describe trust as a way of saving effort rather than as a feeling.
+
+Question: Which is the correct order?",DBCA,BCAD,DCBA,BDCA,A,"D states the idea and is the only sentence that works as an opener. B and C then contrast trusting and distrusting settings, and A ('that habit of checking', 'Yet') refers back to C.",r-cat-00-varc-5-11,80,Y
+cat-00-varc-5-h2,5,Para-jumbles,Logical flow,hard,7,140,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. The finding unsettled researchers who had assumed that more screen time simply meant less sleep.
+B. In a study of 2,000 teenagers, those who read on a tablet before bed slept no worse than those who read printed books.
+C. What mattered, it turned out, was whether the content was calming or exciting.
+D. Screen brightness, by contrast, made almost no measurable difference.
+
+Question: Which is the correct order?",BCAD,BACD,BCDA,ABCD,B,"B reports the study. A ('The finding') reacts to it. C gives what did matter, and D ('by contrast') contrasts brightness with that content effect.",r-cat-00-varc-5-13,80,Y
+cat-00-varc-6-e1,6,Para summary,Core claim,easy,2,55,4,4,"Read the passage and pick the option that best summarises it.
+
+Stepwells in Gujarat were never just places to draw water. Travellers rested in their cool chambers, women met there to talk, and festivals were held at the water's edge. When piped water arrived, most stepwells were abandoned, and today they survive mostly as tourist sights.
+
+Question: Which option is the best summary of the passage?",Stepwells in Gujarat are now popular tourist sights.,Piped water has damaged India's heritage.,"Stepwells served as social spaces as well as water sources, and lost their role once piped water arrived.",Travellers preferred stepwells to inns when they journeyed.,C,"The passage gives stepwells two roles, water and community life, and says the second faded with piped water. The other options take one detail or add a claim.",r-cat-00-varc-6-1,80,Y
+cat-00-varc-6-e2,6,Para summary,Core claim,easy,3,60,4,4,"Read the passage and pick the option that best summarises it.
+
+When a Pune school let children grow vegetables, attendance rose and lunch waste fell. Pupils who had refused to eat greens began to taste what they had planted. Teachers also noticed that the garden gave quiet children a chance to lead.
+
+Question: Which option is the best summary of the passage?",Vegetables grown at school are tastier than market vegetables.,Quiet children should be given leadership roles in every school.,Schools in Pune have higher attendance than other schools.,"A school garden changed children's eating habits and confidence, and not just their knowledge of plants.",D,"The passage lists better attendance, less waste, more eating of greens and a leadership chance. The correct option covers these effects without extra claims.",r-cat-00-varc-6-1,80,Y
+cat-00-varc-6-m1,6,Para summary,Eliminating over-narrow options,medium,5,90,4,4,"Read the passage and pick the option that best summarises it.
+
+Rating systems promise fairness: a customer scores a driver, and the score decides who gets work. But a score squeezes a messy trip into a single number, and it is rarely clear what caused a low one: a late train, a rude passenger, a wrong turn on the map. Workers learn to chase the number rather than the service, thanking customers for five stars and avoiding difficult routes. The system measures behaviour, then quietly reshapes it.
+
+Question: Which option is the best summary of the passage?","Ratings that look fair reduce complex service to a number, and workers end up serving the number.",Drivers have learned to thank passengers for five stars.,Customers should stop rating the people who serve them.,Technology has made work worse for most people.,A,"The core claim is that a single score misreads and then reshapes behaviour. Thanking customers is only one example, and the other options go beyond the passage.",r-cat-00-varc-6-4,80,Y
+cat-00-varc-6-m2,6,Para summary,Eliminating over-broad options,medium,6,95,4,4,"Read the passage and pick the option that best summarises it.
+
+Monsoon forecasts have improved sharply: models now track rain-bearing systems days ahead. Yet a farmer rarely acts on a forecast for a whole district. What matters is whether rain will reach the village before the sowing window closes. Until forecasts are issued at that scale, better science will not become better harvests.
+
+Question: Which option is the best summary of the passage?",Science alone cannot solve the problems of Indian agriculture.,Better monsoon forecasts will help farmers only when they are specific to the village and the sowing window.,Monsoon models can now track rain systems several days ahead.,Farmers should ignore district-level forecasts altogether.,B,The claim is conditional and specific: scale decides whether forecasts help. 'Science alone' is too broad and the tracking detail is too narrow.,r-cat-00-varc-6-6,80,Y
+cat-00-varc-6-h1,6,Para summary,Tone and scope,hard,7,130,4,4,"Read the passage and pick the option that best summarises it.
+
+Nostalgia is usually dismissed as a longing for a past that never was, a sentimental editing of memory. But research suggests the dismissal is hasty. People who recall warm moments report feeling more connected and more willing to help strangers, which suggests nostalgia works less as an escape from the present than as a resource for it. The risk lies elsewhere: when whole societies borrow the feeling to promise a return, a private comfort becomes a political tool.
+
+Question: Which option is the best summary of the passage?",Nostalgia is harmful because it distorts memory and escapes reality.,Nostalgia makes people more willing to help strangers.,"Nostalgia, often waved away as sentimental, can strengthen connection in the present, though collectively invoked it can become a political instrument.",Societies should never promise a return to the past.,C,"The passage defends nostalgia, then warns about its collective use. Option two keeps only the first half and the others reverse the tone or overstate it.",r-cat-00-varc-6-11,80,Y
+cat-00-varc-6-h2,6,Para summary,Core claim,hard,8,140,4,4,"Read the passage and pick the option that best summarises it.
+
+Cities that widen roads to ease traffic often find the congestion returns within a few years. The new lanes make driving quicker and so attract trips that people had earlier postponed, shared or given up. Planners therefore treat road space as something that generates its own demand, and some now measure success not by speed but by how many people a street moves.
+
+Question: Which option is the best summary of the passage?",Congestion returns within a few years of widening a road.,Cities should stop building roads and ban private cars.,Road widening is too expensive for most cities.,"Added road capacity brings new trips, so congestion returns, and some planners now judge streets by people moved, not vehicle speed.",D,"The passage links widening to induced demand and then to a changed measure of success. The wrong options give only the first step, an unsupported cost claim, or an extreme policy.",r-cat-00-varc-6-10,80,Y
+cat-00-varc-7-e1,7,Odd sentence out,Spotting the off-theme sentence,easy,2,50,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Kaju katli is made by grinding cashews and cooking them with sugar syrup.
+2. The warm mixture is rolled flat and cut into diamonds.
+3. A thin sheet of edible silver is laid on top before packing.
+4. Many families buy a box from the same sweet shop every Diwali.
+5. The pieces are cooled completely before they are boxed.
+
+Question: Which sentence does not belong?",4,1,2,3,A,"Sentences 1, 2, 3 and 5 describe how the sweet is made. Sentence 4 is about buying habits.",r-cat-00-varc-7-1,80,Y
+cat-00-varc-7-e2,7,Odd sentence out,Mismatched scope,easy,3,55,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Mumbai's local trains slow down when tracks flood.
+2. Roads at low-lying junctions fill with water within an hour of heavy rain.
+3. Schools often declare a holiday after a red alert.
+4. Delhi's winter mornings are often covered by dense fog.
+5. Civic workers pump water out of underpasses to keep traffic moving.
+
+Question: Which sentence does not belong?",1,4,2,3,B,All other sentences describe the monsoon's effects on Mumbai. Sentence 4 is about winter fog in Delhi.,r-cat-00-varc-7-3,80,Y
+cat-00-varc-7-m1,7,Odd sentence out,Same topic different focus,medium,5,90,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Since 2020 the town library has lent e-books to members at home.
+2. Its reading rooms now stay open until 10 pm for students preparing for exams.
+3. A children's corner opened last year and fills up with families on weekends.
+4. The building was designed by a British engineer and finished in 1910.
+5. It has also started free weekend classes in spoken English.
+
+Question: Which sentence does not belong?",1,2,4,3,C,The theme is how the library has adapted to its readers. Sentence 4 is about the building's design and date.,r-cat-00-varc-7-5,80,Y
+cat-00-varc-7-m2,7,Odd sentence out,Mismatched tone,medium,6,95,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Uniforms reduce visible differences of wealth in a classroom.
+2. They also spare parents a daily argument over what to wear.
+3. Critics reply that sameness can suppress a child's sense of self.
+4. Honestly, nothing says 'learning' like a tie that chokes you in May.
+5. The evidence on results is mixed, so the argument rests more on values than on data.
+
+Question: Which sentence does not belong?",1,2,3,4,D,The other sentences weigh the uniform debate in a measured way. Sentence 4 is a flippant joke.,r-cat-00-varc-7-5,80,Y
+cat-00-varc-7-h1,7,Odd sentence out,Same topic different focus,hard,6,130,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. UPI grew quickly because any bank account holder could pay with just a phone number.
+2. Small shopkeepers adopted it because it cost them nothing, unlike card machines.
+3. Its open design let many apps compete on the same rails.
+4. Mobile data prices fell sharply in the mid-2010s, which made phone payments affordable.
+5. Surveys show that some older rural customers still fear scams, which keeps them tied to cash.
+
+Question: Which sentence does not belong?",5,1,2,3,A,Sentences 1 to 4 give reasons for UPI's rapid growth. Sentence 5 describes a limit on adoption.,r-cat-00-varc-7-9,80,Y
+cat-00-varc-7-h2,7,Odd sentence out,Mismatched scope,hard,7,140,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Prices of staple goods rise by a few per cent every year.
+2. Over decades, this makes fixed savings buy much less.
+3. Savers therefore look for returns above the rate of inflation.
+4. The RBI targets retail inflation at 4 per cent, with a tolerance band of 2 points either side.
+5. A fixed deposit that pays less than inflation loses value in real terms.
+
+Question: Which sentence does not belong?",1,4,2,3,B,The paragraph is about what inflation does to savers. Sentence 4 turns to the central bank's policy target.,r-cat-00-varc-7-12,80,Y
+cat-00-varc-8-e1,8,Sentence placement,Where a sentence fits,easy,3,60,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Bengaluru's lakes were once linked by channels that carried water from one lake to the next.
+2. As the city grew, many of these channels were built over.
+3. Heavy rain now floods streets that were once drained safely.
+4. Restoring even a few channels would help.
+
+Sentence to place: ""Without these links, rainwater has nowhere to go.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 3,After sentence 2,After sentence 4,C,"'These links' refers to the channels that were built over in sentence 2, and the sentence explains the flooding in sentence 3.",r-cat-00-varc-8-1,80,Y
+cat-00-varc-8-e2,8,Sentence placement,Link words and pronouns,easy,4,60,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Many people think a savings account is the safest place for all their money.
+2. It is safe, and the money can be withdrawn at any time.
+3. The interest rate, however, is often lower than the rise in prices.
+4. That is why experts suggest keeping only an emergency fund there.
+
+Sentence to place: ""Over a few years, this slowly shrinks what the money can buy.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 4,After sentence 3,D,"'This' refers to interest lagging behind price rises in sentence 3, and the new sentence leads to the advice in sentence 4.",r-cat-00-varc-8-2,80,Y
+cat-00-varc-8-m1,8,Sentence placement,Before-after logic,medium,5,95,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Ravi's bakery was close to shutting down in 2019.
+2. He had borrowed money to buy a second oven, but sales did not rise.
+3. So he began delivering through an app and cut his menu to six items.
+4. By 2022 he was repaying the loan early.
+
+Sentence to place: ""The extra oven stood idle for most of the day.""
+
+Question: After which numbered sentence does it fit best?",After sentence 2,After sentence 1,After sentence 3,After sentence 4,A,"'The extra oven' needs the second oven introduced in sentence 2, and the sentence explains why sales did not rise, which leads to the 'So' of sentence 3.",r-cat-00-varc-8-7,80,Y
+cat-00-varc-8-m2,8,Sentence placement,Flow of argument,medium,6,100,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Many believe that a good memory is a gift of birth.
+2. Studies of London taxi drivers show something different.
+3. And the longer they had been on the road, the larger that area was.
+4. The brain, in other words, behaves more like a muscle than like a fixed possession.
+
+Sentence to place: ""The area of the brain linked to navigation was larger in drivers who had passed the city's hard test than in ordinary adults.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,B,"The sentence needs taxi drivers to be introduced first, and sentence 3 ('that area was larger') depends on the sentence naming the brain area.",r-cat-00-varc-8-9,80,Y
+cat-00-varc-8-h1,8,Sentence placement,Before-after logic,hard,7,130,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Public libraries in the nineteenth century were often founded by factory owners.
+2. Their motive was not pure generosity.
+3. A literate worker could follow safety rules and run new machines.
+4. Yet the habit of reading, once started, could not be steered.
+
+Sentence to place: ""Books, they hoped, would also keep workers away from taverns and union meetings.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,C,"'Also' adds a second hope after the benefit in sentence 3, and 'Yet' in sentence 4 contradicts the idea that reading could be steered.",r-cat-00-varc-8-11,80,Y
+cat-00-varc-8-h2,8,Sentence placement,Flow of argument,hard,7,140,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Languages rarely die because people stop loving them.
+2. They die when the daily reasons to use them disappear.
+3. A child who needs another language to study, earn or even joke with friends gradually stops answering in the home tongue.
+4. By the time the grandparents notice, the chain of speakers has broken.
+
+Sentence to place: ""Affection, in short, is not enough to keep a language alive.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,D,"'In short' sums up the argument, which is complete only after sentence 4. Earlier positions would cut off the example and its consequence.",r-cat-00-varc-8-10,80,Y
+cat-00-varc-5-e3,5,Para-jumbles,Chronology and cause-effect,easy,2,50,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. After pouring, she sealed the lid and wrote the date on the label.
+B. Mina washed the glass jar with hot water until no soap smell remained.
+C. Only then did she pour the warm brine in, leaving a finger's width at the top.
+D. Three days later, the pickle was ready to taste.
+
+Question: Which is the correct order?",BACD,BDCA,BCAD,CBAD,C,"B is the first step. C ('Only then') follows the washing, and A ('After pouring') follows C. D comes last, after the three days.",r-cat-00-varc-5-4,80,Y
+cat-00-varc-5-e4,5,Para-jumbles,Pronoun and link cues,easy,2,55,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Its new building, however, had no space for the children's corner that the first librarian had wanted.
+B. It moved in 1978 into a building paid for by local donors.
+C. The town library began in 1952 in two rented rooms above a grocer's shop.
+D. This gap was closed only in 1995, when a small annex finally gave the children their own shelves.
+
+Question: Which is the correct order?",CBAD,BCAD,CBDA,ACBD,A,"C opens the paragraph. B ('It moved') and A ('Its new building') refer back to the library, and D ('This gap') refers to the problem in A.",r-cat-00-varc-5-2,80,Y
+cat-00-varc-5-e5,5,Para-jumbles,Chronology and cause-effect,easy,3,50,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Only after the cracked drain was repaired did new cases finally fall.
+B. In the monsoon of 2019, several wells in the village turned bitter with sewage.
+C. Families who drank from those wells began to fall ill with fever and diarrhoea.
+D. Health workers traced most of the cases back to a single cracked drain.
+
+Question: Which is the correct order?",BDCA,CBDA,BCAD,BCDA,D,"Cause runs to effect: contaminated wells (B), illness (C), tracing to the drain (D), and recovery once the drain was repaired (A).",r-cat-00-varc-5-3,80,Y
+cat-00-varc-5-e6,5,Para-jumbles,Opening and closing sentences,easy,3,55,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Once the bollards went up, the number of students cycling to school doubled.
+B. In 2021, the city laid a protected cycle track along the riverfront.
+C. Parents feared that parked vans would block it, so the council added a row of bollards.
+D. As a result, the council now plans to protect other busy roads in the same way.
+
+Question: Which is the correct order?",CBAD,BCAD,BCDA,BACD,B,"B opens with the track. C ('it') follows it, A ('Once the bollards went up') follows C, and D ('As a result') closes on A's effect.",r-cat-00-varc-5-16,80,Y
+cat-00-varc-5-m3,5,Para-jumbles,Link words and pronouns,medium,5,85,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. The canal's gates, however, were designed for summer floods rather than the dry months that followed.
+B. The engineers who designed the canal network expected it to double crop yields in the region.
+C. Such gates were later rebuilt, yet their original purpose still explains why water often reached the tail-end villages late.
+D. Those villages, far from the head of the canal, were the first to feel any shortfall.
+
+Question: Which is the correct order?",BDAC,BACD,DBAC,CABD,B,"B sets out the expectation, A ('the canal's gates, however') turns to the gates, C ('Such gates') follows, and D ('Those villages') needs C's tail-end villages.",r-cat-00-varc-5-8,80,Y
+cat-00-varc-5-m4,5,Para-jumbles,Chronology and cause-effect,medium,5,90,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Weavers who could not match the price began to sell their looms and take work in the mills.
+B. Their machine-made cloth flooded regional markets within a decade.
+C. Once those looms had been sold, whole neighbourhoods that had lived on handloom work lost their main income.
+D. Mill owners had expanded only after the rail line made it cheap to ship bulk goods.
+
+Question: Which is the correct order?",DACB,BDAC,DBCA,DBAC,D,"D is the root cause and opens the sequence. B ('Their') follows, then A ('the price'), and C ('Once those looms had been sold') comes last.",r-cat-00-varc-5-17,80,Y
+cat-00-varc-5-m5,5,Para-jumbles,Pronoun and link cues,medium,6,90,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Their counts are why the town now holds a yearly festival dedicated to the lake's birds.
+B. For centuries the lake was a fishing ground for three villages, and its birds drew no attention.
+C. In the 1990s, however, factory waste reduced its fish stocks and drove the fishermen away.
+D. Birdwatchers, who arrived after the fishermen had left, began counting the species that remained.
+
+Question: Which is the correct order?",BCDA,BDCA,CBDA,BCAD,A,"B sets the scene, C turns to the 1990s, D follows the fishermen's departure, and A ('Their counts') depends on D.",r-cat-00-varc-5-9,80,Y
+cat-00-varc-5-m6,5,Para-jumbles,Logical flow,medium,5,85,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Yet the evidence on this is mixed, since other towns that tried the policy saw no change in grades.
+B. Many education officials now believe that longer school days raise test scores.
+C. The most cautious reading of such mixed data is that extra hours help only when teaching changes too.
+D. Supporters point to pilot schools where scores rose after the day was extended.
+
+Question: Which is the correct order?",BADC,DBCA,BDAC,BDCA,C,"B states the claim and D gives the supporters' evidence. A ('other towns') must follow D's pilot schools, and C ('such mixed data') concludes.",r-cat-00-varc-5-10,80,Y
+cat-00-varc-5-h3,5,Para-jumbles,Opening and closing sentences,hard,7,130,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. The lexicographer's task, then, is to notice this spread rather than to resist it.
+B. Such senses usually begin in one group of speakers and spread only when others adopt them.
+C. Dictionaries are often treated as rulebooks, but it is more accurate to read them as records.
+D. A faithful record of usage must sooner or later include senses that once looked like mistakes.
+
+Question: Which is the correct order?",DCBA,CBDA,CDAB,CDBA,D,"C opens by framing dictionaries as records, D draws the consequence, B ('Such senses') follows, and A ('this spread') concludes.",r-cat-00-varc-5-11,80,Y
+cat-00-varc-5-h4,5,Para-jumbles,Link words and pronouns,hard,8,140,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. This is why the haveli stays cool even in May, when the lanes outside are unbearable.
+B. Those balconies, however, matter less to comfort than the courtyard behind them.
+C. Visitors to the old haveli in Jaisalmer usually admire its carved balconies first.
+D. Such a courtyard draws cooler air downward at night, and thick sandstone walls around it hold that cold through the day.
+
+Question: Which is the correct order?",CBDA,CDBA,BCDA,CBAD,A,"C introduces the balconies, B ('Those balconies, however') turns to the courtyard, D ('Such a courtyard') explains it, and A ('This is why') concludes.",r-cat-00-varc-5-14,80,Y
+cat-00-varc-5-h5,5,Para-jumbles,Logical flow,hard,8,135,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. Field trials, however, show that much of the nitrogen drains into groundwater before any crop can use it.
+B. The assumption, then, fails, and the objection loses much of its force.
+C. Critics of the new fertiliser claimed that it would exhaust the soil within a decade.
+D. Their objection rests on a single assumption: that nutrients stay in the field until a crop takes them up.
+
+Question: Which is the correct order?",CABD,CDAB,DCAB,ACDB,B,"C states the objection, D ('Their objection rests') names its assumption, A ('however') tests it, and B ('then, fails') concludes from the test.",r-cat-00-varc-5-13,80,Y
+cat-00-varc-5-h6,5,Para-jumbles,Pronoun and link cues,hard,7,130,4,4,"The four sentences below are jumbled. Choose the order that makes the most logical paragraph.
+
+A. This close observation is why her reputation has grown since her death, and why the studio is now a museum.
+B. Yet the critics who dismissed her boats as sentimental had overlooked how carefully she observed the ropes.
+C. Ruth Anand spent her last years in a studio above the harbour, painting boats.
+D. Some critics dismissed these paintings as sentimental, because the boats looked too neat to be honest.
+
+Question: Which is the correct order?",DCBA,CBDA,CDBA,BCAD,C,"C introduces the painter, D ('these paintings') gives the criticism, B ('Yet the critics who dismissed') answers it, and A ('This close observation') closes.",r-cat-00-varc-5-12,80,Y
+cat-00-varc-6-e3,6,Para summary,Core claim,easy,2,50,4,4,"Read the passage and pick the option that best summarises it.
+
+Honeybees in the valley had been declining for years. Farmers blamed pesticides, but a survey of hives showed that the colonies with the most varied flowers were the strongest. Planting wildflower strips along field edges gave the bees a steady supply of pollen through the season.
+
+Question: Which option is the best summary of the passage?",Pesticides are the main cause of honeybee decline in the valley.,"Varied flowering plants help honeybee colonies stay strong, so wildflower strips along field edges are useful.",Farmers in the valley should stop using pesticides altogether.,Honeybees are the most important pollinators in the valley.,B,"The passage links colony strength to flower variety and shows wildflower strips supply that variety. The pesticide claim is only what farmers believed, and the other options go beyond the text.",r-cat-00-varc-6-1,80,Y
+cat-00-varc-6-e4,6,Para summary,Core claim,easy,3,55,4,4,"Read the passage and pick the option that best summarises it.
+
+Libraries in many small towns now lend far more than books. Visitors borrow seeds, sewing machines and tools, and some run repair cafes on weekends. Librarians say this shift was driven by residents who wanted to share things rather than buy them.
+
+Question: Which option is the best summary of the passage?",Libraries in small towns now lend books more quickly than before.,Sewing machines are the most borrowed items in small-town libraries.,Librarians prefer repair cafes to traditional reading programmes.,"Small-town libraries have widened what they lend, partly because residents want to share goods rather than buy them.",D,The passage says the range of lending has grown and gives residents' wish to share as the driver. The other options are either unsupported or only a detail.,r-cat-00-varc-6-3,80,Y
+cat-00-varc-6-e5,6,Para summary,Core claim,easy,3,55,4,4,"Read the passage and pick the option that best summarises it.
+
+A coastal village began keeping a simple logbook at its harbour, recording every boat that went out to sea and when it returned. Within two years, fishing accidents had fallen, because the record made it clear which boats were overdue and which trips were risky.
+
+Question: Which option is the best summary of the passage?",A simple logbook helped a fishing village cut accidents by tracking boats and making risks visible.,Coastal villages in Kerala have the most dangerous fishing waters in India.,Fishermen in every village should stop going to sea during the monsoon.,Written records are always more effective than radio communication at sea.,A,"The passage credits the logbook, a simple record, with lower accidents by showing overdue boats and risky trips. The other options add claims the passage never makes.",r-cat-00-varc-6-16,80,Y
+cat-00-varc-6-e6,6,Para summary,Core claim,easy,3,55,4,4,"Read the passage and pick the option that best summarises it.
+
+Machines can pick tea far faster than hands, but they take stems as well as leaves, and the resulting tea sells for less. Estates that want top-grade tea therefore still rely on hand-picking, even though it costs more.
+
+Question: Which option is the best summary of the passage?",Machine picking is faster than hand picking on every tea estate.,Hand-picked tea is always sold at the highest price in the market.,"Machine harvesting is faster but lowers tea quality, so top-grade estates still pick by hand despite the cost.",The Nilgiris produce the best tea in India.,C,"The passage contrasts speed with quality: machines are faster but lower the grade, so premium estates keep hand-picking. The other options are either a detail or a claim the passage does not make.",r-cat-00-varc-6-2,80,Y
+cat-00-varc-6-m3,6,Para summary,Eliminating over-narrow options,medium,5,85,4,4,"Read the passage and pick the option that best summarises it.
+
+Cities often plant trees to cool their streets, and the effect is real: shaded pavements can be several degrees cooler than sun-baked ones. But planting is only part of the work. Trees need water, space for roots and protection from careless pruning, and many new plantings in dense districts die within a few years for want of these things.
+
+Question: Which option is the best summary of the passage?",Shaded pavements are several degrees cooler than sun-baked ones.,Cities should plant fewer trees because pruning damages roots.,Dense districts are unsuitable for tree planting.,"Tree planting cools city streets only when the trees that are planted receive the water, space and care they need to survive.",D,"The passage argues that planting cools streets only if trees survive, which needs water, root space and care. The shade figure is a detail, and the other options reverse or distort the argument.",r-cat-00-varc-6-9,80,Y
+cat-00-varc-6-m4,6,Para summary,Eliminating over-broad options,medium,5,90,4,4,"Read the passage and pick the option that best summarises it.
+
+Language apps promise fluency through a few minutes a day, and their streaks and points keep many learners returning. Yet the apps are strongest at vocabulary and simple grammar drills, while conversation, the skill that learners most want, is rarely practised with a real person. Users who rely on the apps alone often feel confident with words but hesitant when they speak.
+
+Question: Which option is the best summary of the passage?",Language apps are useless for vocabulary and should be avoided by all learners.,"Language apps build vocabulary and grammar well but leave conversation underdeveloped, so learners often need speaking practice with people.",Language apps have made fluency easy to reach in a few minutes a day.,Streaks and points are the main reason people learn languages successfully.,B,"The passage says apps are strong on words and grammar but weak on conversation, which needs real speaking practice. The extreme option and the misreading of the app promise are both wrong.",r-cat-00-varc-6-8,80,Y
+cat-00-varc-6-m5,6,Para summary,Eliminating over-narrow options,medium,5,90,4,4,"Read the passage and pick the option that best summarises it.
+
+Ancient Roman roads were engineered in layers: a deep base of stone, a middle of rubble and lime, and a surface of fitted slabs. The layers spread heavy loads and let rainwater drain away, which is why many of these roads survive today. Later builders, however, broke up many surfaces to reuse their materials.
+
+Question: Which option is the best summary of the passage?",Roman roads were built entirely of fitted stone slabs.,Roman builders wanted their roads to last for many centuries.,"Roman roads lasted partly because their layered construction spread loads and drained water, though later reuse damaged many surfaces.",All Roman roads were destroyed when later builders took their materials.,C,"The passage credits the layered build for survival and notes that later reuse damaged many surfaces. The slab-only option, the intent claim and the 'all destroyed' option each fail against the text.",r-cat-00-varc-6-7,80,Y
+cat-00-varc-6-m6,6,Para summary,Eliminating over-broad options,medium,5,85,4,4,"Read the passage and pick the option that best summarises it.
+
+Some economists argue that minimum wages reduce jobs for the least skilled workers. Evidence from several regions, however, suggests the effect is small when the wage rise is modest and the local economy is growing. The size of the effect, in other words, depends on the details of each case rather than on the principle of a minimum wage.
+
+Question: Which option is the best summary of the passage?","The effect of a minimum wage on jobs depends on how large the rise is and on local conditions, rather than on the principle alone.",Minimum wages always reduce employment for unskilled workers.,Economists agree that minimum wages are harmful.,Minimum wages should be abolished in every region.,A,The passage's conclusion is that the effect depends on case details such as the rise and the local economy. The other options are absolute claims the passage rejects or never makes.,r-cat-00-varc-6-6,80,Y
+cat-00-varc-6-h3,6,Para summary,Tone and scope,hard,7,130,4,4,"Read the passage and pick the option that best summarises it.
+
+Studies linking green space to better mental health are often cited to justify new parks. The link is real, but the studies are mostly correlational: people who already feel well may be more likely to use parks. Experiments that assign people to green or grey settings are fewer, and their results are more modest. A park, then, may help, but it is unlikely to be a cure for the stresses of city life.
+
+Question: Which option is the best summary of the passage?","Green space probably helps mental health somewhat, but the evidence is mostly correlational and the effect may be smaller than park advocates suggest.","Parks have no effect on mental health, as shown by experiments.",People who feel well are the ones who build parks.,Cities should replace all grey infrastructure with green space to cure urban stress.,A,"The passage accepts a real but modest benefit, notes the correlational evidence and says parks are no cure. The other options either deny the effect or overreach.",r-cat-00-varc-6-11,80,Y
+cat-00-varc-6-h4,6,Para summary,Eliminating over-narrow options,hard,8,140,4,4,"Read the passage and pick the option that best summarises it.
+
+Historians once treated the printing press as the single cause of the Reformation, but the picture has changed. Printing certainly spread reformers' pamphlets more quickly than manuscripts could travel. Yet the pamphlets succeeded because they spoke to existing grievances about taxes, clergy and local authority, grievances that had long been voiced without wide hearing. The press amplified a movement that already had its causes.
+
+Question: Which option is the best summary of the passage?",The printing press caused the Reformation by spreading pamphlets faster than manuscripts could.,Reformers wrote pamphlets about taxes and clergy.,"The printing press amplified existing grievances, so it spread reform faster, though it did not create the causes behind it.",Historians have wholly rejected any role for printing in the Reformation.,C,"The passage keeps a role for printing but says it amplified existing grievances rather than causing them. The single-cause option is the one the passage rejects, and the others are too narrow or extreme.",r-cat-00-varc-6-13,80,Y
+cat-00-varc-6-h5,6,Para summary,Tone and scope,hard,7,135,4,4,"Read the passage and pick the option that best summarises it.
+
+Pilgrimage routes that once carried only the devout now carry walkers with guidebooks, cafes and daily tallies of kilometres. Some locals welcome the economic boost; others feel that the path has become a product, its meaning measured in stamps collected along the way. Both reactions point to the same question: whether a journey can keep its purpose when it is also marketed as an experience.
+
+Question: Which option is the best summary of the passage?",Pilgrimage routes should be closed to tourists to preserve their religious meaning.,"Pilgrimage routes have become popular with walkers, and locals disagree about whether commercial success preserves or erodes their purpose.","Local economies benefit greatly from pilgrimage tourism, and critics are a small minority.",Walkers with guidebooks have no interest in the meaning of the journey.,B,"The passage describes the popularity, the split among locals and the open question of whether a journey keeps its purpose. The other options are prescriptions or claims the passage never makes.",r-cat-00-varc-6-14,80,Y
+cat-00-varc-6-h6,6,Para summary,Core claim,hard,7,130,4,4,"Read the passage and pick the option that best summarises it.
+
+A bus network's design matters as much as its train lines. A dense grid of frequent buses lets people reach many destinations without a timetable, while a few long routes serve only the trips they were built for. Several cities that redesigned their networks around frequency rather than coverage saw ridership rise even where the number of buses stayed the same.
+
+Question: Which option is the best summary of the passage?",Adding more buses always increases ridership in a city.,Train lines are less important to city transport than bus networks.,Cities should cover every neighbourhood with long bus routes.,"How a bus network is designed, with frequent routes rather than broad coverage, can raise ridership even without extra buses.",D,The passage shows that frequency-based redesign raised ridership without more buses. The 'always more buses' option and the other claims go beyond the text.,r-cat-00-varc-6-10,80,Y
+cat-00-varc-7-e3,7,Odd sentence out,Spotting the off-theme sentence,easy,3,50,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Honeybees tell nestmates where nectar lies by performing a dance on the comb.
+2. The angle of the dance, measured against vertical, indicates the direction of the flowers from the hive.
+3. Scout bees that find a rich patch perform the dance for longer on their return.
+4. The length of the waggle run signals how far away the food source is.
+5. Honey sold at roadside stalls often fetches a higher price than supermarket honey.
+
+Question: Which sentence does not belong?",1,3,5,2,C,Sentences 1 to 4 explain how honeybees signal the location of food. Sentence 5 is about how honey is priced.,r-cat-00-varc-7-1,80,Y
+cat-00-varc-7-e4,7,Odd sentence out,Mismatched scope,easy,2,45,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Magma rises through cracks in the crust because it is less dense than the rock around it.
+2. When the pressure beneath a vent drops, dissolved gases escape and the magma erupts.
+3. Ash from a large eruption can drift across continents and disrupt flights.
+4. Volcanic rock weathers into soil that is rich in minerals.
+5. Tourists who visit the crater are advised to wear sturdy boots.
+
+Question: Which sentence does not belong?",1,5,3,4,B,"Sentences 1 to 4 explain volcanic activity and its effects. Sentence 5 is advice for visitors, not science.",r-cat-00-varc-7-3,80,Y
+cat-00-varc-7-e5,7,Odd sentence out,Spotting the off-theme sentence,easy,3,55,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. A leg-spin bowler relies on the wrist to make the ball turn sharply after it pitches.
+2. Batters often move down the pitch to disrupt a bowler's line.
+3. A Test pitch can change its behaviour over five days as it wears.
+4. Spinners who vary their flight and pace are harder to read than those who bowl the same delivery.
+5. Several cricket boards now pay women's players the same match fee as men.
+
+Question: Which sentence does not belong?",2,4,1,5,D,Sentences 1 to 4 describe spin bowling and how pitches and batters shape it. Sentence 5 is about player pay.,r-cat-00-varc-7-2,80,Y
+cat-00-varc-7-e6,7,Odd sentence out,Mismatched scope,easy,2,50,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Dosa batter ferments best in a warm kitchen, because yeast and bacteria grow faster at higher temperatures.
+2. Soaked rice and urad dal are ground separately before they are mixed.
+3. A well-fermented batter rises and shows small bubbles on its surface.
+4. Many supermarkets now sell dosa batter in sealed packets.
+5. Leftover batter should be refrigerated, as it keeps for several days.
+
+Question: Which sentence does not belong?",4,2,5,1,A,"Sentences 1, 2, 3 and 5 concern making, fermenting and storing batter at home. Sentence 4 is about retail packaging.",r-cat-00-varc-7-4,80,Y
+cat-00-varc-7-m3,7,Odd sentence out,Same topic different focus,medium,5,85,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Trees in dense neighbourhoods lower street temperatures by several degrees on summer afternoons.
+2. Shaded pavements are used more often by pedestrians, according to counts in several cities.
+3. Residents of tree-lined streets report better sleep, even after accounting for income.
+4. The city's first tree-planting rule dates back more than a century, to a time when its main roads were unpaved.
+5. Cool streets can cut the need for air conditioning, which lowers household electricity bills.
+
+Question: Which sentence does not belong?",2,4,5,1,B,"Sentences 1, 2, 3 and 5 list effects of street trees on residents. Sentence 4 is about the history of a tree-planting rule.",r-cat-00-varc-7-5,80,Y
+cat-00-varc-7-m4,7,Odd sentence out,Same topic different focus,medium,6,90,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Free trade lets countries specialise in the goods they can make most cheaply.
+2. Consumers gain access to a wider range of products at lower prices.
+3. Import competition pushes domestic firms to cut waste and adopt better technology.
+4. The word 'tariff' is thought to come from an Arabic term meaning notification.
+5. Economies that open up tend to attract more foreign investment over time.
+
+Question: Which sentence does not belong?",5,1,4,2,C,"Sentences 1, 2, 3 and 5 list economic gains from open trade. Sentence 4 is about the origin of a word.",r-cat-00-varc-7-6,80,Y
+cat-00-varc-7-m5,7,Odd sentence out,Mismatched scope,medium,5,80,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Many songbirds migrate at night, navigating by the stars and the Earth's magnetic field.
+2. Young birds on their first migration often fly without an older guide.
+3. Radar stations have recorded flocks crossing the sea at heights above a kilometre.
+4. Bird-watching tours in the hills attract thousands of visitors each winter, paying guides and hotels.
+5. Some species refuel at coastal wetlands before crossing long stretches of open water.
+
+Question: Which sentence does not belong?",2,5,1,4,D,"Sentences 1, 2, 3 and 5 describe how birds migrate. Sentence 4 is about human tourism.",r-cat-00-varc-7-14,80,Y
+cat-00-varc-7-m6,7,Odd sentence out,Same topic different focus,medium,6,95,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. The Green Revolution raised wheat yields in Punjab through high-yielding varieties and irrigation.
+2. Farmers who adopted the new seeds needed fertilisers and pesticides, which were costly.
+3. Critics argue that the gains were concentrated among farmers who already owned large holdings.
+4. Crop diversity fell as farmers planted fewer traditional varieties of rice and millet.
+5. Gene banks now hold samples of many traditional seed varieties for future breeding.
+
+Question: Which sentence does not belong?",5,2,3,1,A,Sentences 1 to 4 describe the gains and costs of the Green Revolution. Sentence 5 describes a later response to lost diversity.,r-cat-00-varc-7-7,80,Y
+cat-00-varc-7-h3,7,Odd sentence out,Same topic different focus,hard,7,120,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Early surveyors measured distances by counting the turns of a wheel attached to a cart.
+2. Triangulation later let mapmakers fix a distant point from one measured baseline and the angles at its ends.
+3. Each measurement had to be recorded in the same unit so that the sheets could be joined.
+4. Map projections distort area, so Greenland can look larger than Africa on some world maps.
+5. Surveyors working in hilly country had to convert slope distances into horizontal ones.
+
+Question: Which sentence does not belong?",1,2,4,5,C,"Sentences 1, 2, 3 and 5 describe surveying procedures. Sentence 4 is about how a finished map represents the Earth.",r-cat-00-varc-7-11,80,Y
+cat-00-varc-7-h4,7,Odd sentence out,Mismatched scope,hard,7,120,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. Carbon dioxide dissolves in seawater and forms carbonic acid, which lowers the water's pH.
+2. Shell-building organisms such as corals and some plankton need carbonate ions to build their skeletons.
+3. As acidity rises, the carbonate available for shell formation becomes scarcer.
+4. Several Pacific oyster hatcheries have reported die-offs of larvae in recent years.
+5. Coral reefs are also threatened by warming seas, which cause bleaching.
+
+Question: Which sentence does not belong?",5,2,1,4,A,"Sentences 1 to 4 trace how dissolved carbon dioxide harms shell-builders. Sentence 5 names a different threat, rising temperature.",r-cat-00-varc-7-10,80,Y
+cat-00-varc-7-h5,7,Odd sentence out,Same topic different focus,hard,8,140,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. The first railway lines in India were planned by British companies with offices in London.
+2. Railway companies were financed largely through guarantees paid by the colonial government.
+3. Those guarantees were later criticised for shifting risk onto the state while profits went to shareholders.
+4. Some stations were built in an ornate Gothic style, using imported stone and iron.
+5. Lines were laid to connect cotton-growing areas with ports, which eased the export of raw cotton.
+
+Question: Which sentence does not belong?",1,2,5,4,D,"Sentences 1, 2, 3 and 5 concern how railways were financed and why they were built. Sentence 4 describes architecture.",r-cat-00-varc-7-9,80,Y
+cat-00-varc-7-h6,7,Odd sentence out,Same topic different focus,hard,8,130,4,4,"Five sentences on a theme are given below; four belong together and one does not.
+
+1. People judge how likely an event is by how easily examples come to mind.
+2. After a well-publicised plane crash, many travellers choose to drive, which is statistically more dangerous per mile.
+3. Psychologists call this pattern the availability heuristic.
+4. Insurers set premiums using actuarial tables built from decades of claims data.
+5. Vivid, rare events also tend to be remembered longer than routine ones.
+
+Question: Which sentence does not belong?",3,4,1,5,B,"Sentences 1, 2, 3 and 5 explain how vivid examples distort judgements of risk. Sentence 4 shows how insurers measure risk from data.",r-cat-00-varc-7-15,80,Y
+cat-00-varc-8-e3,8,Sentence placement,Link words and pronouns,easy,3,50,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Dhokla is a steamed snack made from a batter of fermented rice and chickpea flour.
+2. The batter must rest overnight so that natural bacteria can make it rise.
+3. Cooks often add a spoonful of sugar and lemon juice just before steaming.
+4. The finished squares are topped with a tempering of mustard seeds and curry leaves.
+
+Sentence to place: ""Without this rest, the steamed cakes come out dense and heavy.""
+
+Question: After which numbered sentence does it fit best?",After sentence 3,After sentence 1,After sentence 2,After sentence 4,C,"'This rest' points back to the overnight rest in sentence 2, so the sentence belongs right after it.",r-cat-00-varc-8-2,80,Y
+cat-00-varc-8-e4,8,Sentence placement,Where a sentence fits,easy,2,45,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Lighthouse keepers once climbed hundreds of steps every night to tend the lamp.
+2. The clockwork that turned the lamp had to be wound every few hours.
+3. Automatic timers replaced the keepers in most coastal towers by the 1960s.
+4. Today the old towers are mostly museums run by volunteers.
+
+Sentence to place: ""Missing a single winding could leave ships in the dark.""
+
+Question: After which numbered sentence does it fit best?",After sentence 4,After sentence 2,After sentence 1,After sentence 3,B,"'A winding' refers to the clockwork in sentence 2, so the sentence must follow it.",r-cat-00-varc-8-15,80,Y
+cat-00-varc-8-e5,8,Sentence placement,Where a sentence fits,easy,3,55,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. The old bridge over the river was closed for repairs in March.
+2. Buses were diverted through a narrow road in the old town.
+3. Shopkeepers there reported a sharp fall in customers during the closure.
+4. The city plans to reopen the bridge with new pedestrian walkways next year.
+
+Sentence to place: ""Their losses prompted the council to offer temporary rent relief, but the aid was small.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 4,After sentence 2,After sentence 3,D,"'Their losses' refers to the shopkeepers' reports in sentence 3, so the sentence must follow it.",r-cat-00-varc-8-3,80,Y
+cat-00-varc-8-e6,8,Sentence placement,Link words and pronouns,easy,4,60,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Kite festivals in Gujarat are held around the day of Uttarayan in January.
+2. Thousands of kites fill the sky over Ahmedabad's rooftops during the day.
+3. Players coat their strings with powdered glass to cut their rivals' lines.
+4. Organisers now prohibit glass-coated strings because they injure birds and people.
+
+Sentence to place: ""Such strings are still sold openly in the bazaar despite the ban.""
+
+Question: After which numbered sentence does it fit best?",After sentence 4,After sentence 2,After sentence 1,After sentence 3,A,"'Such strings' and 'the ban' need the glass-coated strings and their prohibition in sentences 3 and 4, so the sentence comes after sentence 4.",r-cat-00-varc-8-16,80,Y
+cat-00-varc-8-m3,8,Sentence placement,Before-after logic,medium,5,85,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. The fish population of the lake collapsed after a dam was built across the river in 1962.
+2. Local fishers had to travel farther to reach the remaining breeding grounds.
+3. Their catches shrank by nearly half within a decade.
+4. The government finally funded a fish ladder in 2015 so that migrating species could pass the dam.
+
+Sentence to place: ""So many families left the village that its school closed in 1975.""
+
+Question: After which numbered sentence does it fit best?",After sentence 3,After sentence 2,After sentence 1,After sentence 4,A,"'So' signals a result of the shrinking catches in sentence 3, which is the cause that would drive families away.",r-cat-00-varc-8-5,80,Y
+cat-00-varc-8-m4,8,Sentence placement,Before-after logic,medium,6,90,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Early chess engines evaluated positions by counting material and piece mobility.
+2. Their programmers tuned the weights by hand, a slow process that rarely produced surprises.
+3. Later engines learned these weights from thousands of played games.
+4. The strongest modern systems combine such learning with deep search through millions of positions.
+
+Sentence to place: ""This change let engines make better judgements in quiet positions, where no immediate tactic is visible.""
+
+Question: After which numbered sentence does it fit best?",After sentence 4,After sentence 2,After sentence 1,After sentence 3,D,"'This change' refers to the move to learning from games in sentence 3, and sentence 4 then builds on that learning.",r-cat-00-varc-8-7,80,Y
+cat-00-varc-8-m5,8,Sentence placement,Flow of argument,medium,5,80,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Farmers in Maharashtra once relied on sayings passed down from grandparents to time their sowing.
+2. Many of those sayings linked the first rains to the flowering of particular trees.
+3. Meteorologists now issue district-level forecasts using satellite data and computer models.
+4. Surveys show that farmers still consult the old sayings, often alongside the new forecasts.
+
+Sentence to place: ""The trees, however, did not always flower on the same date, so farmers learned to watch several signs.""
+
+Question: After which numbered sentence does it fit best?",After sentence 3,After sentence 2,After sentence 4,After sentence 1,B,"'The trees' needs the trees named in sentence 2, and the point about their limits comes before the move to modern forecasts in sentence 3.",r-cat-00-varc-8-17,80,Y
+cat-00-varc-8-m6,8,Sentence placement,Link words and pronouns,medium,6,100,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Students who pulled all-nighters before exams often performed worse than those who slept.
+2. Sleep appears to consolidate newly learned material, moving it into longer-term memory.
+3. Some students still believe that extra hours of study outweigh the cost of lost rest.
+4. Teachers increasingly recommend a fixed bedtime during exam weeks.
+
+Sentence to place: ""Such a belief is hard to shake because the tired student does not feel the loss.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 3,After sentence 4,C,"'Such a belief' refers to the view in sentence 3, and the sentence explains why it persists before the teachers' advice in sentence 4.",r-cat-00-varc-8-8,80,Y
+cat-00-varc-8-h3,8,Sentence placement,Flow of argument,hard,7,130,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Historians of the Mughal court once relied almost entirely on chronicles written by court officials.
+2. Such chronicles were commissioned by the emperor, and their authors had every reason to flatter him.
+3. Recent scholars have therefore turned to letters, tax records and the accounts of foreign travellers.
+4. Read together, these sources give a picture that is less glorious but more varied than the chronicles alone.
+
+Sentence to place: ""Yet the newer sources cannot replace the chronicles as a guide to dates, so the two must be read side by side.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 2,After sentence 4,After sentence 3,D,"'The newer sources' refers to the letters, records and travellers' accounts in sentence 3, and sentence 4 then reads them together.",r-cat-00-varc-8-10,80,Y
+cat-00-varc-8-h4,8,Sentence placement,Before-after logic,hard,8,140,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. The Atlantic Meridional Overturning Circulation carries warm water northward near the surface.
+2. As the water cools near Greenland, it becomes denser, sinks, and returns south at depth.
+3. Models suggest that meltwater from ice sheets could make the surface water too light to sink.
+4. A slowdown would alter rainfall patterns far from the North Atlantic, including over the Sahel.
+
+Sentence to place: ""Whether this would happen within a century remains debated, because the records of past shutdowns are incomplete.""
+
+Question: After which numbered sentence does it fit best?",After sentence 3,After sentence 4,After sentence 1,After sentence 2,A,"'This' refers to the halt in sinking described in sentence 3, and sentence 4 then considers the effects of a slowdown.",r-cat-00-varc-8-18,80,Y
+cat-00-varc-8-h5,8,Sentence placement,Link words and pronouns,hard,8,140,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Dictionaries that list a word's earliest recorded use often make the word look newer than it is.
+2. The reason is that early speech was rarely written down, so the first written witness is usually a later one.
+3. A word may have circulated for generations before a scribe happened to record it.
+4. Linguists therefore treat first-attestation dates as lower bounds rather than as true origins.
+
+Sentence to place: ""A second reason is that the surviving manuscripts are themselves a small and accidental sample.""
+
+Question: After which numbered sentence does it fit best?",After sentence 3,After sentence 2,After sentence 4,After sentence 1,B,"'A second reason' needs the first reason given in sentence 2, so the sentence belongs right after it.",r-cat-00-varc-8-13,80,Y
+cat-00-varc-8-h6,8,Sentence placement,Before-after logic,hard,8,140,4,4,"A paragraph has four numbered sentences, and one sentence has been removed from it.
+
+1. Almond orchards in California now cover more land than almost any other crop in the state.
+2. Each spring, beekeepers truck millions of hives to the valley to pollinate the trees.
+3. The bloom lasts only a few weeks, so the bees must work intensively during that brief window.
+4. Growers pay rental fees that often exceed the honey the bees would have produced.
+
+Sentence to place: ""Any delay in that window, such as a cold week, can cost the grower a large share of the harvest.""
+
+Question: After which numbered sentence does it fit best?",After sentence 1,After sentence 4,After sentence 3,After sentence 2,C,"'That window' refers to the brief bloom in sentence 3, so the sentence must follow it.",r-cat-00-varc-8-14,80,Y

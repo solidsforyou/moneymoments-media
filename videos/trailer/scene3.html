@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Arena trailer v3 (and the website cut with ?cut=web). Real Arena screens from cap3/
+     (node capture3.cjs), cut to Welcome To Miami (Slowed) from 0:36.695: 110 BPM, t = 0 is
+     beat 0, breakdown at beat 32, drop at beat 40. Works at 16:9 and 9:16. -->
+<style>
+*{box-sizing:border-box;margin:0}html,body{width:100%;height:100%;overflow:hidden;background:#07060F;font-family:-apple-system,"Inter","Segoe UI",Roboto,sans-serif;color:#F5F3FF}
+#bg,#flash,#vig{position:absolute;inset:0}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55}
+#stage{position:absolute;inset:0;perspective:1600px}
+#phone{position:absolute;left:50%;top:50%;width:390px;height:844px;margin:-422px 0 0 -195px;border-radius:56px;background:#111;padding:12px;box-shadow:0 60px 120px rgba(0,0,0,.6),0 0 0 2px #2A2640 inset;transform-style:preserve-3d}
+#phone .scr{width:100%;height:100%;border-radius:44px;overflow:hidden;position:relative;background:#F4F1FF}
+#phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#glow{position:absolute;inset:-6px;border-radius:62px;pointer-events:none}
+.lift{position:absolute;left:50%;top:50%;border-radius:22px;background-repeat:no-repeat;box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9);opacity:0}
+.t{position:absolute;left:0;right:0;padding:0 5%;text-align:center;font-weight:850;letter-spacing:-.03em;line-height:1.05}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .08em .06em}.w>span{display:inline-block}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0}
+#end .m{width:200px;height:200px}#end .crew{display:flex;gap:24px}#end .crew>div{width:110px;height:110px}
+#flash{background:#fff;opacity:0}#vig{background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}
+.pill{display:inline-block;padding:.12em .5em;border-radius:999px;background:#6A3DF0}
+</style></head><body>
+<div id="bg"><div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div></div>
+<div id="stage"><div id="phone"><div class="scr"><img id="s1"><img id="s2"></div><div id="glow"></div></div></div>
+<div id="L1" class="lift"></div><div id="L2" class="lift"></div>
+<div id="T1" class="t"></div><div id="T2" class="t"></div>
+<div id="end"></div><div id="vig"></div><div id="flash"></div>
+<script src="cap3/mascots.js"></script><script src="cap3/boxes.js"></script>
+<script>
+const Q = new URLSearchParams(location.search), WEB = Q.get('cut') === 'web';
+const BEAT = 60 / 110, NB = 80.6; window.DURATION = NB * BEAT;
+const SH = ['title', 'maker', 'map', 'home', 'qmed', 'qhard', 'qmed-ans', 'result', 'lb'];
+let BOX = window.BOXES || {}; window.READY = Promise.all([...SH.map(n => new Promise(r => { const i = new Image(); i.onload = r; i.onerror = r; i.src = `cap3/${n}.png`; }))]);
+const $ = id => document.getElementById(id), W = innerWidth, H = innerHeight, P = H > W, U = Math.min(W, H) / 1080;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), mix = (a, b, k) => a + (b - a) * k;
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const out = x => 1 - Math.pow(1 - clamp(x), 4);
+const spring = x => { x = clamp(x); return 1 - Math.exp(-6 * x) * Math.cos(10 * x); };   // overshoots, settles
+const seg = (b, a, z) => clamp((b - a) / (z - a));
+const PS = (P ? H * .5 : H * .7) / 844, Y0 = P ? .03 : .06;   // phone scale
+
+// big type, word by word with a mask reveal; words: [[text, beat], ...]
+function words(el, list, b, { size = 140, y = .5, color = '#F5F3FF', exit = 1e9 } = {}) {
+  const k = clamp(1 - (b - exit) / .6);
+  el.style.cssText = `top:${y * H - size * U * .5}px;font-size:${size * U}px;color:${color};opacity:${k}`;
+  el.innerHTML = list.map(([w, at]) => { const p = out((b - at) / .45); return `<span class="w"><span style="transform:translateY(${(1 - p) * 110}%);opacity:${p > 0 ? 1 : 0}">${w}</span></span>`; }).join(' ');
+}
+// a piece of the screen lifting out of the phone toward the camera
+function lift(el, shot, key, b, a, z, { x = 0, y = 0, zoom = 2.2, tilt = 0 } = {}) {
+  const bx = BOX[shot]?.[key]; if (!bx || b < a - .1 || b > z + .6) { el.style.opacity = 0; return; }
+  const k = spring((b - a) / 1.2), e = clamp((z - b) / .5), s = PS * mix(1, zoom, k);
+  el.style.width = bx.width + 'px'; el.style.height = bx.height + 'px';
+  el.style.backgroundImage = `url(cap3/${shot}.png)`; el.style.backgroundSize = '390px 844px'; el.style.backgroundPosition = `-${bx.x}px -${bx.y}px`;
+  const cx = (bx.x + bx.width / 2 - 195) * PS, cy = (bx.y + bx.height / 2 - 422) * PS;
+  el.style.transform = `translate(-50%,-50%) translate(${mix(cx, x * W, k)}px,${mix(cy, y * H, k)}px) scale(${s}) rotate(${tilt * (1 - k)}deg)`;
+  el.style.opacity = Math.min(clamp((b - a) / .25), e);
+}
+let lastShot = '';
+function screen(a, bName, k) { $('s1').src = `cap3/${a}.png`; $('s2').src = `cap3/${bName || a}.png`; $('s2').style.opacity = k || 0; }
+
+function renderFrame(t) {
+  const b = t / BEAT, drop = b >= 40 && b < 64, pulse = b >= 40 ? Math.pow(1 - (b % 1), 6) : 0;
+  // background: violet; red after the drop (the Hard section), back to violet for the result
+  const red = clamp(seg(b, 40, 40.2) - seg(b, 47.5, 48.5));
+  $('b1').style.cssText = `width:${900 * U}px;height:${900 * U}px;left:${W * .15 + Math.sin(t * .4) * 120 * U}px;top:${H * .1 + Math.cos(t * .3) * 90 * U}px;background:${red > .5 ? '#E5322D' : '#6A3DF0'};opacity:${.35 + pulse * .25}`;
+  $('b2').style.cssText = `width:${700 * U}px;height:${700 * U}px;right:${W * .1 + Math.cos(t * .35) * 140 * U}px;bottom:${H * .05 + Math.sin(t * .5) * 100 * U}px;background:${red > .5 ? '#FF7A3D' : '#2448FF'};opacity:.35`;
+  $('b3').style.cssText = `width:${500 * U}px;height:${500 * U}px;left:${W * .45}px;top:${H * .45 + Math.sin(t * .7) * 60 * U}px;background:#FFC83D;opacity:${.12 + pulse * .15}`;
+  document.body.style.background = b < 4 ? '#000' : '#07060F';
+
+  // phone path: [beat, x, y, rotY, rotX, scale]
+  const KEY = [[7, 0, 1.3, 0, 30, .6], [9, 0, 0, -18, 6, 1], [11.5, P ? 0 : .18, 0, -24, 4, 1], [16, P ? 0 : .18, 0, -10, 2, 1], [17, P ? 0 : -.18, 0, 22, 4, 1], [23.5, P ? 0 : -.2, 0, 14, 2, 1.04], [24.5, P ? 0 : .2, 0, -20, 3, 1], [31.5, P ? 0 : .2, 0, -12, 2, 1.02], [33, 0, 0, 0, 0, 1], [39.5, 0, 0, 0, 0, 1.18], [40, 0, 0, 0, 0, 1.0], [47.5, 0, 0, -6, 0, 1.05], [48.5, P ? 0 : .2, 0, -16, 3, 1], [55.5, P ? 0 : .2, 0, -10, 2, 1], [56.5, P ? 0 : -.2, 0, 18, 3, 1], [63.5, P ? 0 : -.2, 0, 10, 1, 1], [65, 0, -1.4, 0, -20, .7]];
+  let k0 = KEY[0], k1 = KEY[KEY.length - 1];
+  for (let i = 0; i < KEY.length - 1; i++) if (b >= KEY[i][0] && b < KEY[i + 1][0]) { k0 = KEY[i]; k1 = KEY[i + 1]; break; }
+  const pk = b < KEY[0][0] ? 0 : b > k1[0] ? 1 : ease((b - k0[0]) / (k1[0] - k0[0])), pv = i => mix(k0[i], k1[i], pk);
+  const shake = b >= 40 && b < 41 ? Math.sin(t * 90) * 14 * (1 - (b - 40)) : 0, bump = drop ? 1 + pulse * .025 : 1;
+  const ph = $('phone'); ph.style.opacity = b < 7 || b > 65 ? 0 : 1;
+  ph.style.transform = `translate(${pv(1) * W + shake * U}px,${(pv(2) + Y0) * H}px) scale(${PS * pv(5) * bump}) rotateY(${pv(3) + Math.sin(t * .8) * 2}deg) rotateX(${pv(4)}deg)`;
+  $('glow').style.boxShadow = b >= 40 && b < 44.5 ? `0 0 0 ${4 + pulse * 6}px #E5322D, 0 0 ${60 + pulse * 80}px rgba(229,50,45,.8)` : 'none';
+
+  // which screen (crossfade 0.4 beat)
+  const S = [[0, 'title'], [11, 'maker'], [16.5, 'map'], [24, 'home'], [32.5, 'qmed'], [40, 'qhard'], [44.5, 'qmed-ans'], [48, 'result'], [56, 'lb']];
+  let cur = 0; for (let i = 0; i < S.length; i++) if (b >= S[i][0]) cur = i;
+  const nx = S[cur + 1], fade = nx ? clamp((b - (nx[0] - .4)) / .4) : 0;
+  screen(S[cur][1], nx ? nx[1] : null, nx && S[cur + 1][0] !== 40 ? fade : 0);
+
+  // lifted details: [shot, box, from, to, {x,y,zoom}]
+  const side = P ? 0 : -.22, yy = P ? .78 : 0;
+  lift($('L1'), 'maker', 'avatar', b, 12, 14, { x: side, y: P ? -.2 : -.05, zoom: 1.7, tilt: -8 });
+  lift($('L2'), 'maker', 'diffs', b, 14, 16, { x: side, y: P ? .3 : .12, zoom: 1.5 });
+  if (b >= 17 && b < 24.5) { lift($('L1'), 'map', 'open', b, 19, 23.5, { x: P ? 0 : .22, y: P ? .3 : -.1, zoom: 3.2 }); lift($('L2'), 'map', 'head', b, 21, 23.5, { x: P ? 0 : .2, y: P ? -.2 : .2, zoom: 1.4 }); }
+  if (b >= 24.5 && b < 33) { lift($('L1'), 'home', 'ring', b, 26, 31.5, { x: side, y: P ? -.3 : -.12, zoom: 4 }); lift($('L2'), 'home', 'course', b, 28.5, 31.5, { x: side, y: P ? .3 : .18, zoom: 1.4 }); }
+  if (b >= 33 && b < 40) { lift($('L1'), 'qmed', 'tag', b, 34, 39.5, { x: P ? 0 : -.28, y: P ? -.2 : -.1, zoom: 2.4 }); lift($('L2'), 'qmed', 'opts', b, 36, 39.5, { x: P ? 0 : .3, y: P ? .3 : .2, zoom: 1.3 }); }
+  if (b >= 40 && b < 48) { lift($('L1'), 'qhard', 'meter', b, 41, 44.3, { x: P ? 0 : -.28, y: P ? -.2 : -.15, zoom: 5 }); lift($('L2'), 'qmed-ans', 'why', b, 45, 47.6, { x: P ? 0 : .27, y: P ? .3 : .1, zoom: 1.6 }); }
+  if (b >= 48 && b < 56) { lift($('L1'), 'result', 'stars', b, 49, 55.5, { x: side, y: P ? -.2 : -.2, zoom: 2.2 }); lift($('L2'), 'result', 'xp', b, 51, 55.5, { x: side, y: P ? .3 : .12, zoom: 2.4 }); }
+  if (b >= 56 && b < 64) { lift($('L1'), 'lb', 'first', b, 57, 63.5, { x: P ? 0 : .26, y: P ? -.2 : -.2, zoom: 1.5 }); $('L2').style.opacity = 0; }
+  if (b >= 64) { $('L1').style.opacity = 0; $('L2').style.opacity = 0; }
+
+  // words
+  const big = P ? 92 : 150, mid = P ? 64 : 92, ty = P ? .1 : .14, tx = P ? '' : '';
+  const T1 = $('T1'), T2 = $('T2'); T1.innerHTML = ''; T2.innerHTML = ''; T1.style.opacity = 0; T2.style.opacity = 0;
+  if (b < 7.2) {
+    words(T1, [['Practice', 0], ['was', 1], ['never', 2], ['this', 3]], b, { size: big, y: .42, exit: 6.8 });
+    words(T2, [['<span class="pill">fun.</span>', 4]], b, { size: big * 1.2, y: .6, exit: 6.8 });
+  } else if (b < 11) words(T1, [['Meet', 8], ['Arena.', 8.5]], b, { size: big, y: P ? .1 : .12, exit: 10.6 });
+  else if (b < 16.5) words(T1, [['Make', 12], ['your', 12.4], ['player.', 12.8], ['Pick', 14], ['your', 14.3], ['level.', 14.6]], b, { size: mid, y: P ? .08 : .08, exit: 16.2 });
+  else if (b < 24.3) words(T1, [['Every', 17.5], ['NCERT', 18], ['chapter.', 18.5]], b, { size: mid, y: P ? .08 : .08, exit: 24 }), words(T2, [['Class', 20.5], ['5', 21], ['to', 21.3], ['12', 21.6], ['+', 22], ['CAT', 22.3]], b, { size: mid * .8, y: P ? .92 : .9, color: '#C9B8FF', exit: 24 });
+  else if (b < 32.5) words(T1, [['Know', 25], ['how', 25.4], ['ready', 25.8], ['you', 26.2], ['are.', 26.6]], b, { size: mid, y: P ? .08 : .08, exit: 32.2 }), words(T2, [['Unit', 28.5], ['test.', 28.8], ['Board.', 29.5], ['CAT.', 30.3]], b, { size: mid * .8, y: P ? .92 : .9, color: '#C9B8FF', exit: 32.2 });
+  else if (b < 39.8) words(T1, [['Every', 33.5], ['question', 34], ['shows', 34.5], ['how', 35], ['hard', 35.4], ['it', 35.7], ['is.', 36]], b, { size: mid * .78, y: P ? .05 : .07, exit: 38.6 }), words(T2, [['Ready?', 38.5]], b, { size: big, y: P ? .5 : .5, exit: 39.8 });
+  else if (b < 48) {
+    if (b < 44.5) words(T1, [['<span style="color:#FF5A52">Hard</span>', 40], ['means', 40.5], ['hard.', 41]], b, { size: big, y: P ? .08 : .08, exit: 44.3 });
+    else words(T1, [['Every', 45], ['answer,', 45.4], ['explained.', 45.8]], b, { size: mid, y: P ? .08 : .08, exit: 47.8 });
+  } else if (b < 56) words(T1, [['Clear', 48.8], ['chapters.', 49.2], ['Earn', 50], ['XP.', 50.4]], b, { size: mid, y: P ? .08 : .08, exit: 55.8 }), words(T2, [['Bronze', 52], ['→', 52.5], ['Champion', 53]], b, { size: mid * .75, y: P ? .93 : .9, color: '#FFC83D', exit: 55.8 });
+  else if (b < 64) words(T1, [['Climb', 57], ['your', 57.4], ['class.', 57.8]], b, { size: mid, y: P ? .08 : .08, exit: 63.8 }), words(T2, [['4,332', 59], ['questions', 59.5], ['·', 60], ['31', 60.4], ['courses', 60.8]], b, { size: mid * .7, y: P ? .93 : .9, color: '#C9B8FF', exit: 63.8 });
+
+  // end card
+  const E = $('end'), e = b >= 64.5;
+  E.style.opacity = e ? Math.min(clamp((b - 64.5) / .6), clamp((NB - .4 - b) / .8)) : 0;
+  if (e) {
+    const M = window.MASCOTS || {}, ak = spring((b - 64.5) / 1.6), webPart = WEB && b >= 72;
+    const r = (txt, at, size, color = '#F5F3FF') => { const p = out((b - at) / .5); return `<div style="font-weight:850;letter-spacing:-.03em;font-size:${size * U}px;color:${color};transform:translateY(${(1 - p) * 40}px);opacity:${p}">${txt}</div>`; };
+    E.innerHTML = webPart
+      ? `<div class="crew" style="transform:scale(${U * 1.4})">${['ace', 'sunny', 'goodguy', 'buddy', 'olly'].map((k, i) => `<div style="transform:translateY(${(1 - spring((b - 72 - i * .35) / 1.4)) * 300}px)">${M[k] || ''}</div>`).join('')}</div>
+         ${r('Arena is live.', 72.5, P ? 96 : 110)}${r('More apps coming soon.', 74, P ? 60 : 70, '#C9B8FF')}${r('OpenSource Everything', 76, P ? 54 : 60)}${r('Free on any phone.', 77, P ? 44 : 48, '#FFC83D')}`
+      : `<div class="m" style="transform:scale(${ak * U * 1.6}) rotate(${(1 - ak) * -20}deg)">${M.ace || ''}</div>
+         ${r('Arena', 65.5, P ? 150 : 170)}${r('Free. No ads. No sign-up to start.', 67, P ? 52 : 62, '#C9B8FF')}${r('Classes 5 to 12 and CAT', 68.5, P ? 52 : 60)}${r('Play free on any phone.', 70, P ? 46 : 54, '#FFC83D')}`;
+  }
+  // flash on the drop and on the whips
+  const fl = 0 * Math.max(b >= 40 ? Math.exp(-(b - 40) * 6) : 0, ...[11, 16.5, 24, 32.5, 44.5, 48, 56].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
+  $('flash').style.opacity = fl;
+}
+window.renderFrame = renderFrame;
+// sound design cues for sfx.py (beat, kind)
+window.SFX = [[0,'tick'],[1,'tick'],[2,'tick'],[3,'tick'],[4,'pop'],[7,'whoosh'],[8,'pop'],[8.5,'pop'],[11,'whoosh'],[12,'rise'],[14,'rise'],[16.5,'whoosh'],[19,'pop'],[21,'pop'],[24,'whoosh'],[26,'rise'],[28.5,'pop'],[32,'riser'],[32.5,'whoosh'],[34,'click'],[36,'click'],[40,'impact'],[41,'rise'],[44.5,'whoosh'],[45,'pop'],[48,'whoosh'],[49,'pop'],[49.3,'pop'],[49.6,'pop'],[51,'rise'],[56,'whoosh'],[57,'pop'],[59,'tick'],[60.4,'tick'],[64,'whoosh'],[64.5,'impact'],[65.5,'pop'],[72,'whoosh'],[72.5,'pop']];
+</script></body></html>

@@ -1,0 +1,27 @@
+# Copy to .github/workflows/ci.yml in the app repo and adjust the commands.
+# Runs on every push and pull request: install, lint, typecheck, test, build.
+# Action versions: bump to the latest major (github.com/actions/checkout, /setup-node).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      # Web apps: keep the build step. Expo apps: delete it (store builds run on EAS).
+      - run: npm run build
+      # Fails the run if a secret-looking string is committed.
+      - run: python3 .claude/skills/app-security/scripts/scan_secrets.py .

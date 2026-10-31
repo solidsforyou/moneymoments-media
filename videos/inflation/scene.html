@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+  Unicorn ka Hisab: Indian economy, inflation and the RBI hike (27 Oct 2026), about 60 s, visual-first:
+  every word on screen has a meaningful visual (videos/lib/icons.js). One continuous camera move
+  (videos/lib/hisab.js), twelve panels on the 60 s soundtrack's whooshes (mix from
+  public/reels/2026-10-26-1300-zerodha.mp4, drop 20.25 s).
+  Facts:
+    MoSPI CPI release, 12 Oct 2026: retail inflation 5.54% in Sept 2026 (Aug 4.83%), food 7.74%,
+      rural 6.08%, urban 4.88%; Jan 2026 was 2.75%; highest since Oct 2024.
+    RBI raised the repo rate 25 bp to 5.50% on 7 Oct 2026, first hike since 2023 (CNBC, Bloomberg).
+    RBI's inflation target: 4%. Drivers in coverage: deficient monsoon, higher crude prices (The Week).
+  Hook photo: vegetables at an Indian market by BPPrice (Flickr), CC BY 2.0, via Openverse.
+  All motion comes from renderFrame(t).
+-->
+<style>
+  :root { --bg: #07070a; --amber: #ffb02e; --orange: #ff7a00; --red: #ff5a5a; --white: #f5f5f7;
+    --muted: rgba(245,245,247,.62); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter Display", "Inter", sans-serif; color: var(--white); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  #world { position: absolute; left: 0; top: 0; height: 1920px; will-change: transform; }
+  .panel { position: absolute; top: 0; width: 1080px; height: 1920px; }
+  .abs { position: absolute; }
+  .center { left: 40px; right: 40px; text-align: center; }
+  #glow { position: absolute; width: 1500px; height: 1500px; left: -210px; top: 300px; border-radius: 50%;
+    filter: blur(60px); background: radial-gradient(circle, rgba(255,176,46,.22), rgba(255,122,0,.06) 45%, transparent 70%); }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  #tag { position: absolute; left: 60px; top: 150px; display: flex; gap: 14px; align-items: center; z-index: 6; }
+  .tpill { padding: 9px 20px; border-radius: 999px; font-size: 24px; font-weight: 600; letter-spacing: .08em;
+    border: 2px solid var(--amber); color: var(--amber); }
+  .handle { font-size: 24px; font-weight: 500; color: #bbb; }
+  .title { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1.1; }
+  .big { font-weight: 800; letter-spacing: -6px; line-height: 1; }
+  .label { font-size: 44px; font-weight: 600; color: var(--muted); }
+  .hl { display: inline-block; padding: 0 20px 8px; border-radius: 16px; background: var(--amber); color: #07070a; }
+  .note { font-size: 30px; color: var(--muted); }
+  .row { display: flex; justify-content: center; align-items: flex-start; gap: 18px; }
+  .iv { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 44px; font-weight: 700; }
+  .iv small { font-size: 32px; color: var(--muted); font-weight: 600; }
+  .ih { display: flex; align-items: center; gap: 22px; font-size: 50px; font-weight: 700; }
+  .arr { font-size: 64px; font-weight: 800; color: var(--amber); margin-top: 50px; }
+
+  #p0 { overflow: hidden; }
+  #hookBg { position: absolute; inset: -80px; background: url("stock/onions-tomatoes-market-india-3.jpg") center / cover;
+    filter: blur(34px) brightness(.4); }
+  #hookImg { position: absolute; left: 0; top: 560px; width: 1080px; height: 718px;
+    background: url("stock/onions-tomatoes-market-india-3.jpg") center / cover; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+  .hookTxt { font-weight: 800; letter-spacing: -3px; line-height: 1.06; text-shadow: 0 6px 30px rgba(0,0,0,.85); }
+  #credit { position: absolute; left: 40px; top: 1292px; font-size: 22px; color: rgba(255,255,255,.55); }
+
+  #lineSvg { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; }
+  #coin { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; z-index: 5; }
+  #coinFace { position: absolute; inset: 0; }
+  #coin .face { position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe2a3, #ffb02e 45%, #ff7a00 100%);
+    box-shadow: 0 0 0 5px rgba(255,176,46,.25), 0 0 40px rgba(255,140,0,.75); }
+  #coin .rs { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; font-weight: 800; color: #3a1d00; }
+  .ptl { position: absolute; width: 260px; margin-left: -130px; text-align: center; z-index: 5; }
+  .ptl b { display: block; font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
+  .ptl span { font-size: 30px; color: var(--muted); font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="glow"></div>
+  <div id="world">
+
+    <div class="panel" id="p0">
+      <div id="hookBg"></div>
+      <div id="hookImg"></div>
+      <div class="abs center hookTxt" id="h1" style="top:230px; font-size:104px">Prices hit a <span data-icon="chartUp" data-size="90" data-color="#ff6b6b" style="display:inline-block; vertical-align:middle"></span><br><span style="color:#ff6b6b">2-year high.</span></div>
+      <div class="abs center hookTxt" id="h2" style="top:1440px; font-size:104px"><span data-icon="home" data-size="96" style="display:inline-block; vertical-align:middle"></span> Your EMI <span class="hl">is next.</span></div>
+      <div id="credit">Photo: BPPrice, CC BY 2.0</div>
+    </div>
+
+    <!-- P1 inflation = the same thing costs more -->
+    <div class="panel" id="p1">
+      <div class="abs center title" id="a1" style="top:290px">What is inflation?</div>
+      <div class="abs center row" id="a2" style="top:450px; gap:30px">
+        <div class="iv"><span data-icon="tag" data-size="190"></span>₹100<small>last year</small></div><div class="arr" style="margin-top:70px">→</div>
+        <div class="iv"><span data-icon="tag" data-size="190" data-color="#ff6b6b"></span><span style="color:#ff6b6b">₹105</span><small>today</small></div>
+      </div>
+      <div class="abs center note" id="a3" style="top:1460px">at 5% inflation</div>
+    </div>
+
+    <!-- P2 the curve -->
+    <div class="panel" id="p2">
+      <div class="abs center row" id="b1" style="top:270px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="calendar" data-size="64"></span>September 2026</div></div>
+      <div class="abs center big" id="b2" style="top:360px; font-size:220px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
+      <div class="ptl" id="pj"><b>2.75%</b><span>Jan</span></div>
+      <div class="ptl" id="pa"><b>4.83%</b><span>Aug</span></div>
+    </div>
+
+    <!-- P3 doubled -->
+    <div class="panel" id="p3">
+      <div class="abs center row" id="c1" style="top:300px; gap:40px">
+        <div class="iv"><span data-icon="up" data-size="170" data-color="#ff6b6b"></span>2× since Jan</div>
+        <div class="iv"><span data-icon="calendar" data-size="170"></span>Highest since<br>Oct 2024</div>
+      </div>
+    </div>
+
+    <div class="panel" id="p4"><div class="abs center row" id="d1" style="top:330px"><div class="iv"><span data-icon="bowl" data-size="220"></span><span style="font-size:72px">And food?</span></div></div></div>
+    <div class="panel" id="p5"><div class="abs center row" id="e1" style="top:330px"><div class="iv"><span data-icon="up" data-size="220" data-color="#ff5a5a"></span><span style="font-size:72px; color:var(--red)">Worse.</span></div></div></div>
+
+    <!-- P6 food: number, two causes, village vs city -->
+    <div class="panel" id="p6">
+      <div class="abs center row" id="f1" style="top:250px"><div class="ih" style="font-size:42px; color:var(--muted)"><span data-icon="bowl" data-size="64"></span>Food inflation</div></div>
+      <div class="abs center big" id="f2" style="top:330px; font-size:200px; color:var(--red); text-shadow:0 0 50px rgba(255,90,90,.5)">0%</div>
+      <div class="abs center row" id="f3" style="top:570px; gap:16px">
+        <div class="iv" style="font-size:36px"><span data-icon="rain" data-size="120" data-color="#8a8a90"></span>Weak rain</div><div class="arr" style="margin-top:36px">→</div>
+        <div class="iv" style="font-size:36px"><span data-icon="onion" data-size="120" data-color="#ff6b6b"></span>Costly veg</div>
+        <div class="iv" style="font-size:36px; margin-left:40px"><span data-icon="drop" data-size="120" data-color="#ff6b6b"></span>Costly oil</div>
+      </div>
+      <div class="abs center row" id="f4" style="top:1450px; gap:90px">
+        <div class="iv" style="font-size:40px"><span data-icon="village" data-size="130" data-color="#ff6b6b"></span><span style="color:#ff6b6b">6.08%</span><small>villages</small></div>
+        <div class="iv" style="font-size:40px"><span data-icon="city" data-size="130"></span>4.88%<small>cities</small></div>
+      </div>
+    </div>
+
+    <!-- P7 RBI brakes -->
+    <div class="panel" id="p7">
+      <div class="abs center row" id="g1" style="top:260px; gap:30px"><span data-icon="bank" data-size="170"></span><span data-icon="brake" data-size="170" data-color="#ff6b6b"></span></div>
+      <div class="abs center title" id="g2" style="top:470px">RBI <span class="hl">hit the brakes</span></div>
+      <div class="ptl" id="r1" style="width:300px; margin-left:-150px"><b>5.25%</b><span>repo rate before</span></div>
+      <div class="ptl" id="r2" style="width:300px; margin-left:-150px"><b style="color:var(--amber)">5.50%</b><span>from 7 Oct</span></div>
+      <div class="abs center row" id="g3" style="top:1500px"><div class="ih" style="font-size:42px"><span data-icon="calendar" data-size="70"></span>First hike since 2023</div></div>
+      <div class="abs center note" id="g4" style="top:1620px">Sources: MoSPI (12 Oct 2026), RBI policy (7 Oct 2026)</div>
+    </div>
+
+    <!-- P8 why: costlier loans -> less spending -> prices cool -->
+    <div class="panel" id="p8">
+      <div class="abs center title" id="i1" style="top:280px">Why?</div>
+      <div class="abs center row" id="i2" style="top:420px; gap:8px">
+        <div class="iv" style="font-size:38px"><span data-icon="moneybag" data-size="150" data-color="#ff6b6b"></span>Costlier<br>loans</div><div class="arr">→</div>
+        <div class="iv" style="font-size:38px"><span data-icon="cart" data-size="150" data-color="#8a8a90"></span>Less<br>spending</div><div class="arr">→</div>
+        <div class="iv" style="font-size:38px"><span data-icon="tag" data-size="150" data-color="#7be08f"></span>Prices<br>cool</div>
+      </div>
+      <div class="abs center row" id="i3" style="top:1480px"><div class="ih" style="font-size:44px"><span data-icon="percent" data-size="70"></span>RBI's target: 4%</div></div>
+    </div>
+
+    <!-- P9 what it means for you -->
+    <div class="panel" id="p9">
+      <div class="abs center title" id="j1" style="top:280px">For you</div>
+      <div class="abs center" id="m1" style="top:420px; display:flex; justify-content:center"><div class="ih"><span data-icon="home" data-size="110"></span>Loan EMIs <span style="color:var(--red)">↑</span></div></div>
+      <div class="abs center" id="m2" style="top:560px; display:flex; justify-content:center"><div class="ih"><span data-icon="bank" data-size="110"></span>FD rates <span style="color:#7be08f">may ↑</span></div></div>
+      <div class="abs center" id="m3" style="top:700px; display:flex; justify-content:center"><div class="ih"><span data-icon="cart" data-size="110"></span>Groceries <span style="color:var(--red)">↑</span></div></div>
+    </div>
+
+    <!-- P10 payoff + teaser -->
+    <div class="panel" id="p10">
+      <div class="abs center row" id="t4" style="top:300px; gap:40px"><span data-icon="tag" data-size="150" data-color="#ff6b6b"></span><span data-icon="rupee" data-size="150"></span></div>
+      <div class="abs center title" id="t5" style="top:500px">Prices up.<br>Money costs more.</div>
+      <div class="abs center row" id="t6" style="top:1450px"><div class="ih" style="font-size:44px"><span data-icon="clock" data-size="80"></span>9 PM: <span class="hl">EMI or longer loan?</span></div></div>
+    </div>
+
+    <div class="panel" id="p11">
+      <div class="abs center" id="k1" style="top:560px; font-size:120px; font-weight:700; letter-spacing:-4px">Unicorn <span style="font-weight:400; opacity:.7">ka</span></div>
+      <div class="abs center" id="k2" style="top:720px"><span class="hl" style="font-size:150px; font-weight:800; letter-spacing:-5px; padding:0 40px 16px">Hisab</span></div>
+      <div class="abs center" id="k3" style="top:1400px; font-size:46px; font-weight:600">Money, simply explained</div>
+      <div class="abs center" id="k4" style="top:1480px; font-size:46px; color:var(--amber); font-weight:700">Follow @unicornkahisab</div>
+    </div>
+  </div>
+
+  <svg id="lineSvg" width="1080" height="1920"><path id="line" fill="none" stroke="url(#lg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 10px rgba(255,160,40,.7))"/>
+    <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#ff7a00"/><stop offset=".5" stop-color="#ffb02e"/><stop offset="1" stop-color="#fff1d6"/></linearGradient></defs></svg>
+  <div id="coin"><div id="coinFace"><div class="face"></div><div class="rs">₹</div></div></div>
+  <div id="tag"><span class="tpill">INDIAN ECONOMY</span><span class="handle">@unicornkahisab</span></div>
+  <div id="grain"></div>
+</div>
+<script src="../lib/motion.js"></script>
+<script src="../lib/icons.js"></script>
+<script src="../lib/hisab.js"></script>
+<script>
+window.MOTION = { fps: 30, beat: 60 / 97.6, beat0: 0.605, drop: 20.25 };
+const DURATION = 60;
+const CUTS = [0, 3.07, 6.15, 11.05, 15.35, 18.0, 20.25, 28.25, 35.6, 43.0, 51.0, 55.9, 60.0];
+const CUES = CUTS.slice(0, -1).map((a, i) => [a, CUTS[i + 1]]);
+const at = (i, off = 0) => CUES[i][0] + off;
+Icons.mount();
+
+const smooth = (pts) => (u) => {
+  if (u <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) {
+    const [u0, y0] = pts[i - 1], [u1, y1] = pts[i];
+    if (u <= u1) { const k = (u - u0) / (u1 - u0); return y0 + (y1 - y0) * (k * k * (3 - 2 * k)); }
+  }
+  return pts[pts.length - 1][1];
+};
+const INF = (v) => 1500 - (v - 2) * 160;
+const SHAPES = [
+  (u) => 1360,
+  (u) => 1320 - 60 * u,
+  smooth([[0, INF(2.75)], [0.12, INF(2.75)], [0.66, INF(4.83)], [0.86, INF(5.54)], [1, INF(5.54)]]),
+  (u) => INF(5.54) - 40 * u,
+  (u) => INF(5.54) + 200 * u,
+  (u) => 1150,
+  (u, t) => 1330 - 200 * u - 36 * Math.abs(Math.sin(u * 22 + t * 2)) * Math.min(1, u * 4),
+  (u) => 1300 - 140 / (1 + Math.exp(-(u - 0.5) * 60)),
+  (u) => 1160 + 120 * u * u,
+  (u) => 1280,
+  (u) => 1300 - 120 * u * u,
+  (u) => 1250,
+];
+Hisab.init({ cues: CUES, shapes: SHAPES, hop: (t) => 70 * Math.exp(-Math.pow((t - (CUES[7][0] + CUES[7][1]) / 2) / 0.2, 2)) });
+
+function slam(el, t, start, from = 1.2) {
+  const k = tween(t, start, frames(5), 0, 1, ease.outCubic);
+  el.style.opacity = t < start ? 0 : 1;
+  el.style.transform = `scale(${from + (1 - from) * k})`;
+}
+const pop = (els, t, start, gap) => [...els].forEach((el, j) => slam(el, t, start + j * gap, 1.4));
+const countPct = (el, t, start, from, to) => { el.textContent = `${tween(t, start, 1.2, from, to, ease.outExpo).toFixed(2)}%`; el.style.opacity = t < start ? 0 : 1; };
+
+function renderFrame(t) {
+  const p = pulse(t);
+  Hisab.frame(t);
+  $("tag").style.opacity = String(clamp((Hisab.coinX(t) - 700) / 300, 0, 1));
+  $("glow").style.transform = `translate(${Math.sin(t * .4) * 80}px, ${Math.cos(t * .3) * 60}px) scale(${1 + 0.08 * p})`;
+
+  $("hookImg").style.transform = `scale(${1 + 0.06 * clamp(t / 3.0, 0, 1)})`;
+  slam($("h1"), t, 0, 1.1);
+  slam($("h2"), t, 0.45, 1.25); $("h2").style.opacity = 1;
+
+  slam($("a1"), t, at(1, -0.3), 1.08);
+  pop($("a2").children, t, at(1, 0.2), 0.5);
+  slam($("a3"), t, at(1, 1.6), 1.0);
+
+  slam($("b1"), t, at(2, -0.3), 1.05);
+  countPct($("b2"), t, at(2, 0), 2.75, 5.54);
+  Hisab.place($("pj"), 2, 0.12, 190, t).style.opacity = tween(t, at(2, 1.4), frames(6), 0, 1);
+  Hisab.place($("pa"), 2, 0.66, 190, t).style.opacity = tween(t, at(2, 2.2), frames(6), 0, 1);
+
+  pop($("c1").children, t, at(3, -0.3), 1.2);
+  slam($("d1"), t, at(4, -0.3), 1.15);
+  slam($("e1"), t, at(5, -0.3), 1.3);
+
+  slam($("f1"), t, at(6, -0.2), 1.05);
+  countPct($("f2"), t, at(6, 0), 4.0, 7.74);
+  pop($("f3").children, t, at(6, 1.4), 0.5);
+  pop($("f4").children, t, at(6, 4.0), 0.8);
+
+  pop($("g1").children, t, at(7, -0.3), 0.4);
+  slam($("g2"), t, at(7, 0.6), 1.1);
+  Hisab.place($("r1"), 7, 0.22, 200, t).style.opacity = tween(t, at(7, 1.6), frames(6), 0, 1);
+  Hisab.place($("r2"), 7, 0.78, 200, t).style.opacity = tween(t, (CUES[7][0] + CUES[7][1]) / 2, frames(6), 0, 1);
+  slam($("g3"), t, at(7, 4.2), 1.12);
+  slam($("g4"), t, at(7, 4.2), 1.0);
+
+  slam($("i1"), t, at(8, -0.3), 1.1);
+  pop($("i2").children, t, at(8, 0.4), 0.6);
+  slam($("i3"), t, at(8, 4.2), 1.12);
+
+  slam($("j1"), t, at(9, -0.3), 1.08);
+  slam($("m1"), t, at(9, 0.8), 1.15);
+  slam($("m2"), t, at(9, 2.2), 1.15);
+  slam($("m3"), t, at(9, 3.6), 1.15);
+
+  pop($("t4").children, t, at(10, -0.3), 0.3);
+  slam($("t5"), t, at(10, 0.3), 1.08);
+  slam($("t6"), t, at(10, 2.0), 1.15);
+
+  slam($("k1"), t, at(11, 0.1), 1.1);
+  slam($("k2"), t, at(11, 0.4), 1.3);
+  slam($("k3"), t, at(11, 1.0), 1.1);
+  slam($("k4"), t, at(11, 1.3), 1.1);
+}
+window.renderFrame = renderFrame;
+window.DURATION = DURATION;
+if (!navigator.webdriver) {
+  const t0 = performance.now();
+  (function loop() { renderFrame(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+} else { renderFrame(0); }
+</script>
+</body>
+</html>

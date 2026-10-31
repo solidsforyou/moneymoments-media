@@ -1,0 +1,325 @@
+<title>Works with Telegram</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a sticky app switcher, then for each app a short walkthrough beside one or two phones (our app, and the Telegram side drawn as a generic chat). */
+:root{
+  --sys:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+  --bg:#F2F2F7; --card:#FFFFFF; --label:#000; --label2:rgba(60,60,67,.62); --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.18); --fill:rgba(120,120,128,.12);
+  --blue:#007AFF; --green:#34C759; --greenT:#248A3D; --red:#FF3B30; --redT:#D70015; --orange:#FF9500;
+  --tg-bg:#DCE6EF; --tg-bar:#F7F9FB; --tg-in:#FFFFFF; --tg-out:#E3F4D7; --tg-ink:#0B1621; --tg-accent:#3A8CC8; --phone:#111214;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.62); --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --fill:rgba(118,118,128,.24);
+  --blue:#0A84FF; --green:#30D158; --greenT:#30D158; --red:#FF453A; --redT:#FF453A;
+  --tg-bg:#0E1621; --tg-bar:#17212B; --tg-in:#182533; --tg-out:#2B5278; --tg-ink:#F5F5F5; --tg-accent:#6AB3F3; --phone:#2C2C2E; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.62); --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --fill:rgba(118,118,128,.24);
+  --blue:#0A84FF; --green:#30D158; --greenT:#30D158; --red:#FF453A; --redT:#FF453A;
+  --tg-bg:#0E1621; --tg-bar:#17212B; --tg-in:#182533; --tg-out:#2B5278; --tg-ink:#F5F5F5; --tg-accent:#6AB3F3; --phone:#2C2C2E; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--label);font-family:var(--sys);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--sep)}
+header.top .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.brandrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brandrow b{font-size:17px}
+.brandrow span{color:var(--label2);font-size:13px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs button{flex:none;min-height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--fill);color:var(--label);font-weight:600;font-size:14px;transition:transform .15s cubic-bezier(.3,.7,.4,1.4)}
+.tabs button[aria-current="page"]{background:var(--blue);color:#fff}
+.tabs button:active{transform:scale(.95)}
+main.wrap{padding-block:22px 60px;display:flex;flex-direction:column;gap:22px}
+h1{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:.005em;text-wrap:balance;margin:0}
+h2{font-size:22px;font-weight:700;margin:0;text-wrap:balance}
+h3{font-size:17px;font-weight:600;margin:0}
+p{margin:0}
+.lede{color:var(--label2);font-size:17px;max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.steps{background:var(--card);border-radius:14px;overflow:hidden}
+.step{display:flex;gap:12px;padding:12px 16px;border-bottom:.5px solid var(--sep);align-items:flex-start}
+.step:last-child{border-bottom:0}
+.step i{flex:none;width:24px;height:24px;border-radius:50%;background:var(--fill);color:var(--label2);font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.step.on i{background:var(--blue);color:#fff}
+.step.done i{background:var(--green);color:#fff}
+.step div{min-width:0}
+.step b{display:block;font-weight:600}
+.step span{color:var(--label2);font-size:14px}
+.note{background:var(--card);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.note .k{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--label2)}
+.note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap}
+.btn{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--blue);color:#fff;font-weight:700;transition:transform .15s cubic-bezier(.3,.7,.4,1.4),filter .15s}
+.btn.ghost{background:transparent;color:var(--label);box-shadow:inset 0 0 0 1.5px var(--label3)}
+.btn:active{transform:scale(.96);filter:brightness(.92)}
+@media (hover:hover){.btn:hover{transform:scale(1.03)}}
+.phones{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.phonebox{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phonebox>small{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--label2)}
+.phone{width:300px;max-width:100%;height:600px;border-radius:40px;background:var(--phone);padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.screen{width:100%;height:100%;border-radius:31px;overflow:hidden;display:flex;flex-direction:column;position:relative;background:var(--bg)}
+.notch{height:26px;flex:none;display:flex;justify-content:center;align-items:center}
+.notch::after{content:"";width:86px;height:22px;border-radius:12px;background:var(--phone)}
+/* our app screens */
+.app{flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);color:var(--label)}
+.appbar{display:flex;align-items:center;gap:8px;padding:6px 14px 8px;border-bottom:.5px solid var(--sep);font-weight:600;font-size:15px}
+.appbar .dot{width:22px;height:22px;border-radius:7px;flex:none}
+.appbody{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card{background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.big{font-size:24px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.muted{color:var(--label2);font-size:13px}
+.pbtn{min-height:44px;border-radius:999px;border:0;background:var(--blue);color:#fff;font-weight:700;width:100%;transition:transform .15s cubic-bezier(.3,.7,.4,1.4)}
+.pbtn.tg{background:var(--tg-accent)}
+.pbtn.ghost{background:transparent;color:var(--label);box-shadow:inset 0 0 0 1.5px var(--label3)}
+.pbtn:active{transform:scale(.96)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--fill);color:var(--label2)}
+.chip.ok{background:rgba(52,199,89,.15);color:var(--greenT)}
+.chip.no{background:rgba(255,59,48,.12);color:var(--redT)}
+.list{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.list div{display:flex;gap:8px;align-items:flex-start}
+.av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px}
+.msgs{display:flex;flex-direction:column;gap:6px}
+.m{max-width:85%;padding:7px 10px;border-radius:14px;font-size:14px;line-height:1.35}
+.m.them{background:var(--card);align-self:flex-start}
+.m.me{background:var(--blue);color:#fff;align-self:flex-end}
+.m small{display:block;font-size:11px;font-weight:700;opacity:.75;margin-bottom:1px}
+.lcard{background:var(--card);border-radius:14px;overflow:hidden;align-self:flex-start;max-width:88%;box-shadow:0 0 0 .5px var(--sep)}
+.lcard .lc-top{padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.lcard .lc-top b{font-size:15px}
+.lcard .lc-art{height:60px;display:flex;align-items:flex-end;padding:8px 12px;color:#fff;font-weight:700;font-size:13px}
+.lcard button{width:100%;border:0;border-top:.5px solid var(--sep);background:none;color:var(--blue);font-weight:600;min-height:40px}
+.composer{display:flex;gap:6px;padding:8px 10px;border-top:.5px solid var(--sep);background:var(--card)}
+.composer input{flex:1;min-width:0;min-height:36px;border-radius:18px;border:.5px solid var(--sep);background:var(--bg);color:var(--label);padding:0 12px;font:inherit;font-size:14px}
+.composer button{border:0;background:var(--blue);color:#fff;border-radius:50%;width:36px;height:36px;flex:none;font-weight:700}
+/* the Telegram side: a generic chat look, never Telegram's logo */
+.tg{flex:1;display:flex;flex-direction:column;min-height:0;background:var(--tg-bg);color:var(--tg-ink)}
+.tgbar{display:flex;align-items:center;gap:10px;padding:6px 12px 8px;background:var(--tg-bar);border-bottom:.5px solid var(--sep)}
+.tgbar .av{width:34px;height:34px}
+.tgbar b{display:block;font-size:15px}
+.tgbar span{display:block;font-size:12px;color:var(--label2)}
+.tgbody{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:6px}
+.tm{max-width:86%;padding:7px 10px;border-radius:12px;font-size:14px;line-height:1.35;background:var(--tg-in);align-self:flex-start;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.tm.out{background:var(--tg-out);align-self:flex-end}
+.tm small{display:block;font-size:11px;font-weight:700;color:var(--tg-accent);margin-bottom:1px}
+.tm a,.tm .lnk{color:var(--tg-accent);text-decoration:underline;cursor:pointer;background:none;border:0;padding:0;font:inherit;text-align:left}
+.tm.sys{align-self:center;background:rgba(0,0,0,.18);color:#fff;font-size:12px;border-radius:999px;padding:4px 10px;box-shadow:none}
+.tm.flag{background:rgba(255,59,48,.12);color:var(--tg-ink);box-shadow:inset 0 0 0 1px var(--red)}
+.ikb{display:grid;grid-template-columns:1fr 1fr;gap:4px;align-self:flex-start;width:86%}
+.ikb.one{grid-template-columns:1fr}
+.ikb button{min-height:34px;border:0;border-radius:8px;background:rgba(0,0,0,.12);color:var(--tg-ink);font-weight:600;font-size:13px}
+.ikb button.right{background:rgba(52,199,89,.35)}
+.ikb button.wrong{background:rgba(255,59,48,.3)}
+.ikb button:disabled{cursor:default}
+.tgcomp{display:flex;gap:6px;padding:8px 10px;background:var(--tg-bar);border-top:.5px solid var(--sep)}
+.tgcomp input{flex:1;min-width:0;min-height:36px;border-radius:18px;border:0;background:var(--tg-bg);color:var(--tg-ink);padding:0 12px;font:inherit;font-size:14px}
+.tgcomp button{border:0;background:var(--tg-accent);color:#fff;border-radius:50%;width:36px;height:36px;flex:none;font-weight:700}
+.mini{position:absolute;inset:26px 0 0;background:var(--bg);color:var(--label);display:flex;flex-direction:column;border-radius:16px 16px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.25);animation:up .25s ease-out}
+.mini .mhead{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:.5px solid var(--sep);font-weight:600;font-size:14px}
+.mini .mhead button{margin-left:auto;border:0;background:none;color:var(--tg-accent);font-weight:600}
+@keyframes up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.mini{animation:none}}
+.qopt{min-height:42px;border-radius:12px;border:0;background:var(--card);color:var(--label);box-shadow:inset 0 0 0 .5px var(--sep);font-size:15px}
+.qopt.right{background:rgba(52,199,89,.15);box-shadow:inset 0 0 0 1.5px var(--green)}
+.qopt.wrong{background:rgba(255,59,48,.12);box-shadow:inset 0 0 0 1.5px var(--red)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.consent{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end}
+.consent .sheet{background:var(--card);color:var(--label);width:100%;border-radius:16px 16px 0 0;padding:16px;display:flex;flex-direction:column;gap:10px;animation:up .25s ease-out}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:rgba(30,30,30,.92);color:#fff;padding:12px 16px;border-radius:14px;font-size:14px;max-width:min(92vw,460px);z-index:20}
+table.cmp{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border-radius:14px;overflow:hidden}
+.cmpwrap{overflow-x:auto;border-radius:14px}
+.cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:.5px solid var(--sep);vertical-align:top}
+.cmp th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--label2)}
+.src{font-size:13px;color:var(--label2)}
+.src a{color:var(--blue)}
+footer.wrap{padding-block:0 40px;color:var(--label2);font-size:13px}
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="brandrow"><b>Works with Telegram</b><span>How Telegram plugs into each OpenSource Everything app · clickable preview, sample people</span></div>
+  <nav class="tabs" id="tabs" aria-label="Apps"></nav>
+</div></header>
+<main class="wrap" id="main"></main>
+<footer class="wrap">Telegram is a trademark of its owner. OpenSource Everything works with Telegram and is not affiliated with it. The Telegram side here is drawn as a generic chat on purpose. Tomorrow is our social app.</footer>
+<div id="toastslot" aria-live="polite"></div>
+
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let toastT; function toast(m){ $('#toastslot').innerHTML = `<div class="toast" role="status">${esc(m)}</div>`; clearTimeout(toastT); toastT = setTimeout(() => $('#toastslot').innerHTML = '', 3200); }
+const TABS = [['ose','OSE · sign in'],['t','Tomorrow'],['prep','OpenPrep'],['habit','GoodHabit'],['stuff','The Good Stuff'],['safety','Safety and privacy']];
+const S = {ose:0, tlog:[['tg','Kabir','Day 12 of the daily CAT question 🔥'],['us','Riya','Nice! I just finished Percentages.']], prep:{step:0, ans:null, mini:false, mans:null}, habit:{log:[], hissab:'pending', mini:false}, stuff:false};
+const phone = (label, inner) => `<div class="phonebox"><small>${label}</small><div class="phone"><div class="screen"><div class="notch"></div>${inner}</div></div></div>`;
+const tgHead = (name, sub, col, ini) => `<div class="tgbar"><span class="av" style="background:${col}">${ini}</span><span><b>${esc(name)}</b><span>${esc(sub)}</span></span></div>`;
+const steps = (list, cur) => `<div class="steps">${list.map(([t, d], i) => `<div class="step ${i < cur ? 'done' : i === cur ? 'on' : ''}"><i>${i < cur ? '✓' : i + 1}</i><div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>`;
+const note = (k, items) => `<div class="note"><span class="k">${k}</span><ul>${items.map(t => `<li>${t}</li>`).join('')}</ul></div>`;
+
+/* ---------- OSE: log in with Telegram ---------- */
+function vOse(){
+  const st = S.ose;
+  const scr = st === 0 ? `<div class="app"><div class="appbar"><span class="dot" style="background:#007AFF"></span>OpenSource Everything</div><div class="appbody">
+      <div class="big">Built in the open, like the internet should be.</div><p class="muted">Free tools, open code, no ads. Works with your Telegram. Your chats stay where they are.</p>
+      <div class="card"><span class="chip ok">Open code</span><span class="muted">Every app's code and our weekly numbers are public.</span></div>
+      <button class="pbtn tg" data-a="ose-login">Log in with Telegram</button><button class="pbtn ghost" data-a="ose-other">Use phone number instead</button></div></div>`
+    : st === 1 ? `<div class="app"><div class="appbar"><span class="dot" style="background:#007AFF"></span>OpenSource Everything</div><div class="appbody"><div class="big">Built in the open, like the internet should be.</div></div>
+      <div class="consent"><div class="sheet"><b style="font-size:17px">Log in to OpenSource Everything</b><p class="muted">Confirm in Telegram. The site will receive:</p>
+      <div class="list"><div><span class="chip ok">✓</span>Your name and Telegram username</div><div><span class="chip ok">✓</span>Your profile photo</div><div><span class="chip no">✕</span>Your phone number</div><div><span class="chip no">✕</span>Your chats, groups or contacts</div></div>
+      <button class="pbtn tg" data-a="ose-allow">Allow</button><button class="pbtn ghost" data-a="ose-cancel">Cancel</button></div></div></div>`
+    : `<div class="app"><div class="appbar"><span class="dot" style="background:#007AFF"></span>OpenSource Everything</div><div class="appbody">
+      <div class="card" style="align-items:center;text-align:center"><span class="av" style="width:60px;height:60px;background:#5856D6;font-size:20px">KS</span><b style="font-size:18px">Kabir Shah</b><span class="muted">OpenID created · linked to Telegram @kabir_cat</span></div>
+      <div class="card"><b>Next, put your apps on your phone</b><span class="muted">Each one gets its own icon and opens straight in.</span><button class="pbtn" data-a="toast" data-m="Added OpenPrep to your phone (preview).">Add OpenPrep to my phone</button><button class="pbtn ghost" data-a="toast" data-m="Added GoodHabit to your phone (preview).">Add GoodHabit to my phone</button></div>
+      <button class="pbtn ghost" data-a="ose-reset">Start again</button></div></div>`;
+  return `<h1>Log in with Telegram</h1><p class="lede">Telegram users land on any of our pages and get in with one tap. We create their OpenID from what Telegram shares, and the first thing they see is "add the apps to your phone".</p>
+  <div class="grid"><div class="side">${steps([['Land on our page','"Built in the open". Log in with Telegram is the first button.'],['Confirm in Telegram','Telegram shows what we get: name, username, photo. Never the phone number or chats.'],['OpenID ready','Linked to Telegram. Next step: add the apps to the phone.']], st)}
+    ${note('What Telegram actually sends a website', ['A user ID, first and last name, username, photo link, the time of login, and a signature our server checks with our bot\'s key.', 'Last name, username and photo can be missing, so the app must work without them.', 'No phone number and no chats. That\'s why this is safe to offer.'])}
+    <p class="src">Source: <a href="https://core.telegram.org/widgets/login-legacy" target="_blank" rel="noopener">Telegram Login Widget docs</a>. Telegram also documents a newer login flow; we'd confirm which one to use before building.</p></div>
+  <div class="phones">${phone('Our site, on their phone', scr)}</div></div>`;
+}
+
+/* ---------- Tomorrow: a bridged group ---------- */
+function vT(){
+  const ourMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="lcard"><div class="lc-art" style="background:linear-gradient(135deg,#FF9500,#FF2D55)">${esc(card)}</div><div class="lc-top"><b>${esc(who)} shared a streak</b><span class="muted">${esc(txt)}</span></div><button data-a="toast" data-m="Opens Kabir's streak in Tomorrow (preview).">Open in Tomorrow</button></div>` : `<div class="m ${side === 'us' && who === 'You' ? 'me' : 'them'}"><small>${esc(who)}${side === 'tg' ? ' · via Telegram' : ''}</small>${esc(txt)}</div>`).join('');
+  const tgMsgs = S.tlog.map(([side, who, txt, card]) => card ? `<div class="tm"><small>${esc(who)} · from Tomorrow</small>🔥 ${esc(card)}: ${esc(txt)}<br><button class="lnk" data-a="toast" data-m="Opens the streak page in Tomorrow, with 'Log in with Telegram' (preview).">Open in Tomorrow →</button></div>` : `<div class="tm ${side === 'tg' && who === 'You' ? 'out' : ''}"><small>${esc(who)}${side === 'us' ? ' · from Tomorrow' : ''}</small>${esc(txt)}</div>`).join('');
+  const ours = `<div class="app"><div class="appbar"><span class="dot" style="background:linear-gradient(135deg,#FF9500,#FF2D55)"></span>Tomorrow · Driven in Pune</div><div class="appbody"><div class="msgs">${ourMsgs}</div></div>
+    <form class="composer" data-f="t-us"><input id="t-us" placeholder="Message as you, in Tomorrow" autocomplete="off" aria-label="Message in Tomorrow"><button aria-label="Send">↑</button></form></div>`;
+  const tg = `<div class="tg">${tgHead('Driven in Pune', '128 members · bridged with Tomorrow', '#FF2D55', 'DP')}<div class="tgbody">${tgMsgs}</div>
+    <form class="tgcomp" data-f="t-tg"><input id="t-tg" placeholder="Message as you, in Telegram" autocomplete="off" aria-label="Message in Telegram"><button aria-label="Send">↑</button></form></div>`;
+  return `<h1>Tomorrow: groups bridged with Telegram</h1><p class="lede">A group on Tomorrow and a Telegram group become one conversation. Telegram people stay in Telegram; people on Tomorrow stay on Tomorrow. Live Tomorrow cards show up in Telegram as tap-to-open links, which is how Telegram users find their way onto Tomorrow.</p>
+  <div class="ctrl"><button class="btn" data-a="t-card">Kabir shares his streak card</button><button class="btn ghost" data-a="t-reset">Reset</button></div>
+  <div class="grid"><div class="side">${note('Try it', ['Type in either phone. The message appears in both.', 'Share the streak card: a full card in Tomorrow, a link in Telegram.'])}
+    ${note('How it works', ['A bot from us sits in the Telegram group and passes messages both ways.', 'For a bot to see every message, the group admins either make it an admin or switch off its privacy mode. Admins choose to add it.', 'No one hands us their Telegram login.'])}
+    <p class="src">Source: bot privacy mode and admin bots, as described in <a href="https://docs.openclaw.ai/channels/telegram" target="_blank" rel="noopener">OpenClaw's Telegram channel docs</a>. We'd confirm against Telegram's Bot API docs before building.</p></div>
+  <div class="phones">${phone('Tomorrow (our app)', ours)}${phone('Telegram (generic look)', tg)}</div></div>`;
+}
+
+/* ---------- OpenPrep: bot + Mini App ---------- */
+const PQ = {q:'If x + 1/x = 3, what is x³ + 1/x³?', o:['27','24','21','18'], r:3, why:'(x + 1/x)³ = x³ + 1/x³ + 3(x + 1/x), so 27 = x³ + 1/x³ + 9, which gives 18.'};
+function vPrep(){
+  const P = S.prep;
+  const chat = [`<div class="tm out">/start</div>`, `<div class="tm"><small>OpenPrep bot</small>Hi! One CAT question every morning, free. Answer here, keep your streak. No spam, stop any time with /stop.</div>`];
+  if (P.step >= 1) { chat.push(`<div class="tm"><small>OpenPrep bot</small><b>Today's CAT question</b><br>${esc(PQ.q)}</div>`, `<div class="ikb">${PQ.o.map((o, i) => `<button data-a="prep-ans" data-i="${i}" ${P.ans != null ? 'disabled' : ''} class="${P.ans != null ? (i === PQ.r ? 'right' : i === P.ans ? 'wrong' : '') : ''}">${o}</button>`).join('')}</div>`); }
+  if (P.ans != null) chat.push(`<div class="tm"><small>OpenPrep bot</small>${P.ans === PQ.r ? '✅ Right!' : '❌ Not quite.'} ${esc(PQ.why)}<br>🔥 Streak: 1 day</div>`, `<div class="ikb one"><button data-a="prep-mini">Open OpenPrep (inside Telegram)</button><button data-a="toast" data-m="Opens openprep page with 'Add OpenPrep to my phone' (preview).">Add OpenPrep to my phone</button></div>`);
+  const mini = P.mini ? `<div class="mini" role="dialog" aria-label="OpenPrep inside Telegram"><div class="mhead"><span class="dot" style="width:20px;height:20px;border-radius:6px;background:#1B4DFF;display:inline-block"></span>OpenPrep<button data-a="prep-close">Close</button></div><div class="appbody">
+      <span class="muted">Mini App · runs inside Telegram</span><div class="big">Free full mock</div><p class="muted">CAT-style, 3 sections. Your score and section scores, free every month.</p>
+      ${P.mans == null ? `<div class="card"><b>Warm-up</b><span>A price rises 20%, then falls 20%. Net change?</span><div class="opts">${['0%','−4%','+4%','−2%'].map((o, i) => `<button class="qopt" data-a="prep-mans" data-i="${i}">${o}</button>`).join('')}</div></div>` : `<div class="card"><b>${P.mans === 1 ? 'Right: −4%' : 'It\'s −4%'}</b><span class="muted">1.2 × 0.8 = 0.96, so a 4% fall.</span></div><div class="card"><b>Keep going on your phone</b><span class="muted">The full mock, video lessons and your progress live in the OpenPrep app.</span><button class="pbtn" data-a="toast" data-m="Added OpenPrep to the home screen (preview).">Add OpenPrep to my phone</button></div>`}
+      </div></div>` : '';
+  const tg = `<div class="tg">${tgHead('OpenPrep', 'bot', '#1B4DFF', 'OP')}<div class="tgbody">${chat.join('')}</div>${P.step === 0 ? `<div class="tgcomp"><button class="pbtn tg" style="border-radius:999px;width:100%;height:40px" data-a="prep-next">Show today's question</button></div>` : ''}</div>${mini}`;
+  return `<h1>OpenPrep in Telegram</h1><p class="lede">CAT students already live on Telegram. The OpenPrep bot sends the daily question there, they answer with one tap, and the Mini App opens OpenPrep inside Telegram. Every step ends with "add OpenPrep to my phone".</p>
+  <div class="ctrl"><button class="btn ghost" data-a="prep-reset">Reset</button></div>
+  <div class="grid"><div class="side">${steps([['Start the bot','From a link on our page, a reel, or a friend.'],['Answer today\'s question in chat','Buttons under the message. Explanation and streak right away.'],['Open the Mini App','OpenPrep runs inside Telegram. No install.'],['Add OpenPrep to the phone','The real app, with the mock, lessons and progress.']], P.mini ? 3 : P.ans != null ? 2 : P.step)}
+    ${note('Also in OpenPrep', ['A "CAT Quant board" on Tomorrow can be bridged with a Telegram study group, exactly like the Tomorrow tab.', 'The bot only messages people who started it, once a day, and /stop always works.'])}
+    <p class="src">Mini Apps receive signed data that our server checks with the bot's key before trusting it. Sources: <a href="https://docs.telegram-mini-apps.com/platform/init-data" target="_blank" rel="noopener">Telegram Mini Apps docs (init data)</a>, <a href="https://docs.telegram-mini-apps.com/packages/tma-js-init-data-node/validating" target="_blank" rel="noopener">validating init data</a>.</p></div>
+  <div class="phones">${phone('Telegram (generic look)', tg)}</div></div>`;
+}
+
+/* ---------- GoodHabit: rules, scam filter, Mini App, Hissab ---------- */
+const SCAM = /(guarantee|guaranteed|sure.?shot|\b\d{2,4}\s?%\s*(return|profit)|vip|paid (call|group|tips?)|dm me|target price|jackpot|double your money|intraday call)/i;
+function vHabit(){
+  const H = S.habit;
+  const log = [`<div class="tm sys">Pinned: Learning and discussion only. No stock tips, no paid calls, no "DM me". Posts that look like tips or scams are held.</div>`, `<div class="tm"><small>Sana · from GoodHabit</small>Month two of my budget and it's holding. Anyone else doing one SIP before spending?</div>`, ...H.log.map(([kind, who, t]) => kind === 'flag' ? `<div class="tm flag"><small>Held by the GoodHabit bot</small>"${esc(t)}" looks like a stock tip or a scam, so it wasn't posted to the group or to GoodHabit. The sender can ask for a review.</div>` : kind === 'sim' ? `<div class="tm"><small>Riya · from GoodHabit</small>Play Jan 2020 in the trading simulator with me? Real past prices, pretend money.<br><button class="lnk" data-a="habit-mini">Play now (inside Telegram)</button></div>` : `<div class="tm ${who === 'You' ? 'out' : ''}"><small>${esc(who)}</small>${esc(t)}</div>`)];
+  const mini = H.mini ? `<div class="mini" role="dialog" aria-label="GoodHabit inside Telegram"><div class="mhead"><span class="dot" style="width:20px;height:20px;border-radius:6px;background:#17181A;display:inline-block"></span>GoodHabit<button data-a="habit-close">Close</button></div><div class="appbody">
+      <span class="muted">Mini App · trading simulator</span><div class="big">Jan 2020 with Riya</div><div class="card"><span class="muted">Wed, 1 Jan 2020 · day 1</span><b style="font-size:22px">₹1,00,000.00</b><span class="chip">0.0% since you started</span></div>
+      <div class="card"><b>NIFTYBEES</b><span class="muted">Nifty 50 ETF · ₹129.42 on 1 Jan 2020</span><button class="pbtn" data-a="toast" data-m="Bought 300 NIFTYBEES at ₹129.42 (+ ₹46.06 charges), pretend money.">Buy 300</button></div>
+      <button class="pbtn ghost" data-a="toast" data-m="Opens GoodHabit with 'Add GoodHabit to my phone' (preview).">Continue in the GoodHabit app</button></div></div>` : '';
+  const tg = `<div class="tg">${tgHead('Money learners', '412 members · bridged with GoodHabit', '#3A3D44', 'ML')}<div class="tgbody">${log.join('')}</div>
+    <form class="tgcomp" data-f="habit-tg"><input id="habit-tg" placeholder="Try: Guaranteed 300% returns, DM me" autocomplete="off" aria-label="Message in Telegram"><button aria-label="Send">↑</button></form></div>${mini}`;
+  const dm = `<div class="tg">${tgHead('Kabir Shah', 'last seen recently', '#06683F', 'KS')}<div class="tgbody"><div class="tm"><small>Kabir · from GoodHabit</small>💸 Hissab: Goa cab ₹900, split 2 ways.<br><b>You owe Kabir ₹450.</b></div>
+    ${H.hissab === 'pending' ? `<div class="ikb one"><button data-a="habit-hissab">Accept (log in with Telegram)</button><button data-a="habit-decline">Not mine</button></div>` : H.hissab === 'ok' ? `<div class="tm sys">You accepted. It's now in your GoodHabit Hissab with Kabir.</div>` : `<div class="tm sys">You declined. Kabir was told.</div>`}</div></div>`;
+  return `<h1>GoodHabit in Telegram</h1><p class="lede">Traders and money learners are on Telegram, and so are the tip sellers. GoodHabit's bridged groups are for learning, with a bot that holds anything that looks like a paid tip or a scam. The simulator and Hissab work from inside Telegram, and money always needs a login and a tap to confirm.</p>
+  <div class="ctrl"><button class="btn" data-a="habit-sim">Riya invites the group to the simulator</button><button class="btn ghost" data-a="habit-reset">Reset</button></div>
+  <div class="grid"><div class="side">${note('Try it', ['Post a normal message, then a tip like "Guaranteed 300% returns, DM me". The bot holds the tip.', 'Open Riya\'s simulator invite: it runs inside Telegram.', 'Accept Kabir\'s Hissab: money needs "Log in with Telegram" first.'])}
+    ${note('Why the no-tips rule matters', ['In India, buy/sell tips and trade calls for any kind of payment need SEBI registration as a research analyst or investment adviser.', 'SEBI has banned and fined people for tips given over Telegram, and was talking to Telegram about misuse in 2025.', 'So our groups are for learning and discussion, with the bot and a report button on every message.'])}
+    <p class="src">Sources: <a href="https://www.outlookmoney.com/invest/sme-stock-fraud-sebi-bans-7-unregistered-finfluencers-over-rs-20-crore-social-media-scam" target="_blank" rel="noopener">Outlook Money on SEBI bans</a>, <a href="https://www.angelone.in/news/market-updates/sebi-plans-action-against-unregistered-finfluencers-talks-with-google-and-telegram" target="_blank" rel="noopener">Angel One on SEBI talks with Telegram</a>, <a href="https://www.sahi.com/blogs/telegram-stock-tips-vs-sebi-registered-research-india" target="_blank" rel="noopener">Sahi on registration rules</a>. A lawyer should confirm the current rules.</p></div>
+  <div class="phones">${phone('Telegram group (generic look)', tg)}${phone('Telegram chat (generic look)', dm)}</div></div>`;
+}
+
+/* ---------- The Good Stuff (inside OSE) ---------- */
+function vStuff(){
+  const tg = `<div class="tg">${tgHead('Small shop owners, Jaipur', '89 members', '#FF9500', 'SJ')}<div class="tgbody">
+    <div class="tm"><small>Meena</small>Does anyone have a simple way to understand GST filing dates?</div>
+    <div class="tm"><small>Arjun · from OSE</small>🧰 <b>GST Basics for shops</b>, a free AI skill from The Good Stuff. Rates, invoices and filing dates in plain words.<br><button class="lnk" data-a="stuff-open">Import · free →</button></div></div></div>`;
+  const ose = S.stuff ? `<div class="app"><div class="appbar"><span class="dot" style="background:#007AFF"></span>OpenSource Everything</div><div class="appbody">
+      <span class="muted">The Good Stuff · part of OSE</span><div class="big">GST Basics for shops</div><p class="muted">Free · works with Claude, ChatGPT and other AIs</p>
+      <div class="card"><b>1. Log in with Telegram</b><span class="muted">One tap. We get your name and photo, nothing else.</span></div>
+      <div class="card"><b>2. Import into your AI</b><span class="muted">Copy one message and paste it into your AI chat.</span><button class="pbtn" data-a="toast" data-m="Copied the import message (preview).">Copy import message</button></div>
+      <button class="pbtn ghost" data-a="stuff-close">Back to Telegram</button></div></div>` : `<div class="app"><div class="appbar"><span class="dot" style="background:#007AFF"></span>OpenSource Everything</div><div class="appbody"><p class="muted">Tap "Import · free" in the Telegram chat to see this side.</p></div></div>`;
+  return `<h1>The Good Stuff, shared in Telegram</h1><p class="lede">Skills travel as simple cards. Someone shares one in a Telegram group, others tap Import, and OSE opens with "Log in with Telegram" and a copy-and-paste import. Paid packs only show up when someone asks for them.</p>
+  <div class="grid"><div class="side">${steps([['A skill is shared in a group','A short card with what it does and "Import · free".'],['Tap Import','OSE opens on the skill page.'],['Log in with Telegram, then import','One tap to log in, one copy-and-paste into their AI.']], S.stuff ? 2 : 0)}
+    ${note('Rules we keep', ['Free skills are shared freely. Paid packs (₹100) never get pushed into groups.', 'Every shared card says where it comes from: OSE.'])}</div>
+  <div class="phones">${phone('Telegram (generic look)', tg)}${phone('OSE (our app)', ose)}</div></div>`;
+}
+
+/* ---------- Safety and privacy ---------- */
+function vSafety(){
+  return `<h1>Safety and privacy</h1><p class="lede">What we take from Telegram, what we never ask for, and how people leave. Short enough to put on every landing page.</p>
+  <div class="grid" style="grid-template-columns:1fr"><div class="side">
+    ${note('What we get from "Log in with Telegram"', ['Name, username, profile photo and a Telegram user ID, signed by Telegram so we can check it.', 'That\'s all. No phone number, no chats, no contacts.'])}
+    ${note('What we never ask for', ['Your Telegram login code or password.', 'Access to your chats. We don\'t build a Telegram client inside our site.', 'Permission to message you without you starting a bot first.'])}
+    ${note('Groups and bridges', ['A bridge exists only if the group\'s admins add our bot.', 'Learning and discussion only. No stock tips or paid calls; the bot holds posts that look like them.', 'Report and block on every message, on both sides.'])}
+    ${note('Leaving', ['Unlink Telegram from Me → Privacy any time. Your OpenID stays, or you delete it.', 'Type /stop to any of our bots and it goes quiet.'])}
+    <div class="cmpwrap"><table class="cmp"><thead><tr><th>Open and private?</th><th>Telegram</th><th>OpenSource Everything</th></tr></thead><tbody>
+      <tr><td>App code public</td><td>Yes, the apps are open source</td><td>Yes</td></tr>
+      <tr><td>Server code public</td><td>No</td><td>Yes, the plan for all our services</td></tr>
+      <tr><td>End-to-end encrypted chats</td><td>Only Secret Chats, not normal chats or groups</td><td>Planned for our own messaging</td></tr>
+      <tr><td>Ads</td><td>Ads in some public channels</td><td>None</td></tr>
+      <tr><td>Our numbers in public</td><td>No</td><td>Every Monday</td></tr>
+    </tbody></table></div>
+    ${note('Brand rules we follow', ['We never use Telegram\'s logo, and we say "works with Telegram", never that we\'re Telegram or partnered with it.', 'Apps that use Telegram\'s full API must get their own API ID and make clear they use Telegram. We don\'t need that API for any of this.'])}
+    <p class="src">Sources: <a href="https://core.telegram.org/api/terms" target="_blank" rel="noopener">Telegram API Terms of Service</a>, <a href="https://core.telegram.org/widgets/login-legacy" target="_blank" rel="noopener">Telegram Login Widget</a>. The Telegram comparison rows come from what Telegram publishes about Secret Chats and open-source apps; we'd re-check them before using them in marketing.</p>
+  </div></div>`;
+}
+
+const VIEWS = {ose:vOse, t:vT, prep:vPrep, habit:vHabit, stuff:vStuff, safety:vSafety};
+function cur(){ const h = location.hash.slice(1); return VIEWS[h] ? h : 'ose'; }
+let lastView = null;
+function render(){
+  const v = cur();
+  $('#tabs').innerHTML = TABS.map(([k, l]) => `<button data-tab="${k}" ${k === v ? 'aria-current="page"' : ''}>${l}</button>`).join('');
+  $('#main').innerHTML = VIEWS[v]();
+  document.querySelectorAll('.tgbody,.appbody').forEach(el => { el.scrollTop = el.scrollHeight; });
+  if (lastView !== v) { window.scrollTo(0, 0); lastView = v; }
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-tab]'); if (t) { location.hash = t.dataset.tab; return; }
+  const b = e.target.closest('[data-a]'); if (!b) return; const a = b.dataset.a;
+  switch (a) {
+    case 'toast': toast(b.dataset.m); break;
+    case 'ose-login': S.ose = 1; render(); break;
+    case 'ose-allow': S.ose = 2; render(); toast('Logged in with Telegram. Your OpenID is ready.'); break;
+    case 'ose-cancel': S.ose = 0; render(); break;
+    case 'ose-other': toast('Phone number login works too. Telegram is just the fastest way in.'); break;
+    case 'ose-reset': S.ose = 0; render(); break;
+    case 't-card': S.tlog.push(['us', 'Kabir', 'Day 12 of the daily CAT question', '12-day streak']); render(); break;
+    case 't-reset': S.tlog = S.tlog.slice(0, 2); render(); break;
+    case 'prep-next': S.prep.step = 1; render(); break;
+    case 'prep-ans': S.prep.ans = +b.dataset.i; render(); break;
+    case 'prep-mini': S.prep.mini = true; render(); break;
+    case 'prep-close': S.prep.mini = false; render(); break;
+    case 'prep-mans': S.prep.mans = +b.dataset.i; render(); break;
+    case 'prep-reset': S.prep = {step:0, ans:null, mini:false, mans:null}; render(); break;
+    case 'habit-sim': S.habit.log.push(['sim']); render(); break;
+    case 'habit-mini': S.habit.mini = true; render(); break;
+    case 'habit-close': S.habit.mini = false; render(); break;
+    case 'habit-hissab': S.habit.hissab = 'ok'; render(); toast('Logged in with Telegram, then accepted. Nothing moves without your tap.'); break;
+    case 'habit-decline': S.habit.hissab = 'no'; render(); break;
+    case 'habit-reset': S.habit = {log:[], hissab:'pending', mini:false}; render(); break;
+    case 'stuff-open': S.stuff = true; render(); break;
+    case 'stuff-close': S.stuff = false; render(); break;
+  }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target.dataset.f; const inp = e.target.querySelector('input'); const v = inp.value.trim(); if (!v) return;
+  if (f === 't-us') S.tlog.push(['us', 'You', v]);
+  if (f === 't-tg') S.tlog.push(['tg', 'You', v]);
+  if (f === 'habit-tg') S.habit.log.push(SCAM.test(v) ? ['flag', 'You', v] : ['msg', 'You', v]);
+  render(); const again = document.getElementById(inp.id); if (again) again.focus();
+});
+window.addEventListener('hashchange', render);
+render();
+})();
+</script>

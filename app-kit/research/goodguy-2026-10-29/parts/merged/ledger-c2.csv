@@ -1,0 +1,9 @@
+id,competitor_id,field,value,unit,source_url,captured_at,method,quote,confidence,verified
+c2-001,c2,positioning,Free and open stock market and financial education,,https://zerodha.com/varsity/,2026-10-29T06:31:21Z,page,Free and open stock market and financial education,high,
+c2-002,c2,price_selling,0,INR,https://zerodha.com/varsity/,2026-10-29T06:31:21Z,page,"It is free and openly accessible to everyone ... No signup, no pay-wall, no ads.",high,
+c2-003,c2,pack_qty,1,month,https://zerodha.com/varsity/,2026-10-29T06:31:21Z,page,free and openly accessible,low,
+c2-004,c2,claim,"No signup, no pay-wall, no ads.",,https://zerodha.com/varsity/,2026-10-29T06:31:21Z,page,"No signup, no pay-wall, no ads.",high,
+c2-005,c2,note,"AI explainer, demo/virtual trading, data delay, SEBI registration claim: not found on the Varsity home page (education content; quizzes and tests only)",,https://zerodha.com/varsity/,2026-10-29T06:31:21Z,page,"Explore stock market lessons in bite size modules, quizzes, and tests.",medium,
+c2-006,c2,rating,4.43,stars,https://play.google.com/store/apps/details?id=com.zerodha.varsity&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,json_ld,"""ratingValue"":""4.433472633361816",high,
+c2-007,c2,ratings_count,12193,,https://play.google.com/store/apps/details?id=com.zerodha.varsity&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,json_ld,"""ratingCount"":""12193",high,
+c2-008,c2,note,Play downloads 10L+ (10 lakh plus),downloads,https://play.google.com/store/apps/details?id=com.zerodha.varsity&hl=en_IN&gl=IN,2026-10-29T06:36:20Z,page,10L+ Downloads,high,

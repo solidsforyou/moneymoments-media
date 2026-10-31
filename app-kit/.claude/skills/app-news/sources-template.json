@@ -1,0 +1,22 @@
+{
+  "video_id": "<video id>",
+  "published": "<YYYY-MM-DD>",
+  "kind": "news",
+  "claims": [
+    {
+      "id": "c1",
+      "at": "<mm:ss in the video>",
+      "text": "<the claim exactly as said>",
+      "risk": "normal",
+      "evergreen": false,
+      "sources": [
+        {
+          "url": "https://<full link>",
+          "publisher": "<who published it>",
+          "date": "<YYYY-MM-DD>",
+          "archived_url": "https://web.archive.org/web/<...>"
+        }
+      ]
+    }
+  ]
+}

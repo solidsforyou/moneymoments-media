@@ -1,0 +1,17 @@
+{
+ "name": "Tomorrow",
+ "short_name": "Tomorrow",
+ "start_url": "/tomorrow/",
+ "scope": "/tomorrow/",
+ "display": "standalone",
+ "background_color": "#F2F2F7",
+ "theme_color": "#FF6B5A",
+ "icons": [
+  {
+   "src": "/icons/sunny.svg",
+   "sizes": "any",
+   "type": "image/svg+xml",
+   "purpose": "any"
+  }
+ ]
+}
