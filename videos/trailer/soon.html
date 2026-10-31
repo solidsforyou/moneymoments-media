@@ -173,9 +173,9 @@ function renderFrame(t) {
     const r = (txt, at, size, color = '#F5F3FF') => { const p = out((b - at) / .5); return `<div style="font-weight:850;letter-spacing:-.03em;font-size:${px(size)};color:${color};transform:translateY(${(1 - p) * 40}px);opacity:${p}">${txt}</div>`; };
     E.innerHTML = `<div style="width:${px(220)};height:${px(220)};transform:scale(${ak}) rotate(${(1 - ak) * -20}deg)">${mascot()}</div>
       ${r(A.name, 28.8, A.name.length > 14 ? 110 : 140)}${r(A.line, 30, 54, '#C9B8FF')}
-      ${r(`<span class="pill" style="background:${A.c1}">Coming soon</span>`, 31.2, 50)}${r('Tap “I\'m interested” at opensourceeverything.in', 32.2, 44, '#FFC83D')}`;
+      ${r(`<span class="pill" style="background:${A.c1}">Coming soon</span>`, 31.2, 50)}${r('Tap “I\'m interested” to hear first.', 32.2, 44, '#FFC83D')}`;
   }
-  const fl = Math.max(...[CUE.demo, CUE.whip + .3].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
+  const fl = 0 * Math.max(...[CUE.demo, CUE.whip + .3].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
   $('flash').style.opacity = fl;
 }
 window.renderFrame = renderFrame;

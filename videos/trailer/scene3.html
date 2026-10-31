@@ -120,12 +120,12 @@ function renderFrame(t) {
     const r = (txt, at, size, color = '#F5F3FF') => { const p = out((b - at) / .5); return `<div style="font-weight:850;letter-spacing:-.03em;font-size:${size * U}px;color:${color};transform:translateY(${(1 - p) * 40}px);opacity:${p}">${txt}</div>`; };
     E.innerHTML = webPart
       ? `<div class="crew" style="transform:scale(${U * 1.4})">${['ace', 'sunny', 'goodguy', 'buddy', 'olly'].map((k, i) => `<div style="transform:translateY(${(1 - spring((b - 72 - i * .35) / 1.4)) * 300}px)">${M[k] || ''}</div>`).join('')}</div>
-         ${r('Arena is live.', 72.5, P ? 96 : 110)}${r('More apps coming soon.', 74, P ? 60 : 70, '#C9B8FF')}${r('OpenSource Everything', 76, P ? 54 : 60)}${r('opensourceeverything.in', 77, P ? 44 : 48, '#FFC83D')}`
+         ${r('Arena is live.', 72.5, P ? 96 : 110)}${r('More apps coming soon.', 74, P ? 60 : 70, '#C9B8FF')}${r('OpenSource Everything', 76, P ? 54 : 60)}${r('Free on any phone.', 77, P ? 44 : 48, '#FFC83D')}`
       : `<div class="m" style="transform:scale(${ak * U * 1.6}) rotate(${(1 - ak) * -20}deg)">${M.ace || ''}</div>
-         ${r('Arena', 65.5, P ? 150 : 170)}${r('Free. No ads. No sign-up to start.', 67, P ? 52 : 62, '#C9B8FF')}${r('Classes 5 to 12 · CAT', 68.5, P ? 52 : 60)}${r('opensourceeverything.in/arena', 70, P ? 46 : 54, '#FFC83D')}`;
+         ${r('Arena', 65.5, P ? 150 : 170)}${r('Free. No ads. No sign-up to start.', 67, P ? 52 : 62, '#C9B8FF')}${r('Classes 5 to 12 and CAT', 68.5, P ? 52 : 60)}${r('Play free on any phone.', 70, P ? 46 : 54, '#FFC83D')}`;
   }
   // flash on the drop and on the whips
-  const fl = Math.max(b >= 40 ? Math.exp(-(b - 40) * 6) : 0, ...[11, 16.5, 24, 32.5, 44.5, 48, 56].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
+  const fl = 0 * Math.max(b >= 40 ? Math.exp(-(b - 40) * 6) : 0, ...[11, 16.5, 24, 32.5, 44.5, 48, 56].map(w => b >= w - .05 ? Math.exp(-(b - w + .05) * 14) * .35 : 0));
   $('flash').style.opacity = fl;
 }
 window.renderFrame = renderFrame;
