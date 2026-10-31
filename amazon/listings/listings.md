@@ -162,7 +162,7 @@ Values marked **TBC** need the founder. Sizes, weights and stock per SKU: amazon
 | Special features | Printed neck label (tagless), Breathable |
 | Occasion | Casual, Daily wear, Lounge |
 | Season | All season (tees); Winter / All season (joggers) |
-| Customer care | shashwat@solidsforyou.com, phone **TBC** |
+| Customer care | shashwat@solidsforyou.com, +91 9220399947 |
 | Month and year of manufacture | October 2026 |
 | GST rate | 5% |
 | Fulfilment | Merchant (Easy Ship), handling time 1 day |
