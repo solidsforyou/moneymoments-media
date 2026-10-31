@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Independent answer check for a bank sheet.
 
-  blind.py export <name>            writes content/arena/check/<name>.questions.csv (no answers)
+  blind.py export <name> [frac]     writes content/arena/check/<name>.questions.csv (no answers);
+                                    frac (e.g. 0.2) exports a fixed random sample, spread over chapters and bands
   blind.py compare <name>           compares content/arena/check/<name>.answers.csv
                                     (columns: qid, answer, confidence) with the bank and
                                     prints every disagreement; writes <name>.report.csv
@@ -17,21 +18,32 @@ def bank(name):
         return [r for r in csv.DictReader(f) if r.get('selected') == 'Y']
 
 
-def export(name):
+def export(name, frac=None):
     os.makedirs(CHECK, exist_ok=True)
+    rows = bank(name)
+    if frac:
+        import random
+        rnd, groups = random.Random(name), {}
+        for r in rows:
+            groups.setdefault((r['chapter_no'], r['difficulty']), []).append(r)
+        keep = set()
+        for g in groups.values():
+            keep.update(r['qid'] for r in rnd.sample(g, max(1, round(len(g) * float(frac)))))
+        rows = [r for r in rows if r['qid'] in keep]
     p = os.path.join(CHECK, name + '.questions.csv')
     with open(p, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
         w.writerow(['qid', 'chapter', 'question', 'A', 'B', 'C', 'D'])
-        for r in bank(name):
+        for r in rows:
             w.writerow([r['qid'], r['chapter'], r['question'], r['a'], r['b'], r['c'], r['d']])
-    print(p)
+    print(p, len(rows), 'questions')
 
 
 def compare(name):
     rows = {r['qid']: r for r in bank(name)}
     with open(os.path.join(CHECK, name + '.answers.csv'), newline='', encoding='utf-8') as f:
         got = {r['qid']: r for r in csv.DictReader(f)}
+    rows = {q: r for q, r in rows.items() if q in got} or rows  # a sample checks only what was exported
     out, missing = [], [q for q in rows if q not in got]
     for qid, r in rows.items():
         g = got.get(qid)
@@ -46,4 +58,4 @@ def compare(name):
 
 
 if __name__ == '__main__':
-    {'export': export, 'compare': compare}[sys.argv[1]](sys.argv[2])
+    {'export': export, 'compare': compare}[sys.argv[1]](*sys.argv[2:4])

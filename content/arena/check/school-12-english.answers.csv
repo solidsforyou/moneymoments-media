@@ -1,0 +1,22 @@
+qid,answer,confidence,note
+school-12-english-1-e7,C,high,
+school-12-english-1-m8,B,high,
+school-12-english-1-h3,C,high,
+school-12-english-2-e7,A,high,
+school-12-english-2-m6,B,high,
+school-12-english-2-h8,B,low,no exact fit; 'empty' is the closest of the options
+school-12-english-3-e5,A,low,no option says 'beginning of the notes'; ambiguous
+school-12-english-3-m5,C,high,
+school-12-english-3-h8,D,high,
+school-12-english-4-e8,B,high,
+school-12-english-4-m6,B,high,
+school-12-english-4-h3,A,high,
+school-12-english-5-e1,A,high,
+school-12-english-5-m6,D,high,
+school-12-english-5-h3,C,high,
+school-12-english-6-e5,C,high,
+school-12-english-6-m2,B,high,
+school-12-english-6-h8,B,high,
+school-12-english-7-e2,B,high,
+school-12-english-7-m4,B,high,
+school-12-english-7-h4,D,high,
